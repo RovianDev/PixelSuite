@@ -8,16 +8,25 @@ A small LSPosed module that adds the Pixel quality-of-life tweaks Google never s
 
 ## Features
 
-| Feature | What it does |
-|---|---|
-| **Always-visible "Clear all"** | Keeps the *Clear all* button visible in Pixel Launcher's recents screen and removed from last recent page |
-| **Power button flashlight** | Double-press the power button to toggle the flashlight (anywhere) |
-| **Volume down camera** | Double-press the volume down button to instantly open Pixel Camera from the always-on display. Won't launch if media is playing or a phone call is active |
-| **Three-finger screenshot** | Swipe down with three fingers to take a screenshot (inspired by Chinese phones like Xiaomi, OPPO, Vivo) |
-| **Double-tap to lock screen** | Double-tap an empty spot on the home screen to lock the screen |
-| **Files sorted newest-first** | Folders in Files by Google are sorted by newest first instead of alphabetically |
+🧹 **Always-visible "Clear all"**  
+The "Clear all" button stays visible in Pixel Launcher's recents screen, so there's no need to scroll to the last page to find it.
 
-Each feature has its own toggle, so you only run what you want.
+🔦 **Double-press power for flashlight**  
+Double-press the power button to toggle the flashlight, from anywhere.
+
+📷 **Double-press volume down for camera**  
+Double-press the volume down button to open Pixel Camera from the always-on display. It won't launch if media is playing or a phone call is active.
+
+📸 **Three-finger screenshot**  
+Swipe down with three fingers to take a screenshot. Inspired by Chinese phones like Xiaomi, OPPO and Vivo.
+
+🔒 **Double-tap to lock**  
+Double-tap an empty spot on the home screen to lock your phone. Also inspired by Chinese phones.
+
+📁 **Newest-first in Files by Google**  
+By default, Files by Google sorts folders A-Z. This puts the newest first, so a file you just downloaded is easy to find when you're attaching it to another app like Gemini.
+
+Every feature has its own toggle in the module settings, so you only run what you want.
 
 ## Requirements
 
