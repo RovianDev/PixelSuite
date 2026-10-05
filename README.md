@@ -12,6 +12,7 @@ A small LSPosed module that adds the Pixel quality-of-life tweaks Google never s
 |---|---|
 | **Always-visible "Clear all"** | Keeps the *Clear all* button visible in Pixel Launcher's recents screen and removed from last recent page |
 | **Power button flashlight** | Double-press the power button to toggle the flashlight (anywhere) |
+| **Volume down camera** | Double-press the volume down button to instantly open Pixel Camera from the always-on display. Won't launch if media is playing or a phone call is active |
 | **Three-finger screenshot** | Swipe down with three fingers to take a screenshot (inspired by Chinese phones like Xiaomi, OPPO, Vivo) |
 | **Double-tap to lock screen** | Double-tap an empty spot on the home screen to lock the screen |
 | **Files sorted newest-first** | Folders in Files by Google are sorted by newest first instead of alphabetically |
