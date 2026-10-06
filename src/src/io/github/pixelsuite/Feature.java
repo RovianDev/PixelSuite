@@ -21,11 +21,13 @@ final class Feature {
     static final String DOUBLE_TAP_SLEEP = "pixelsuite_double_tap_sleep";
     static final String CLEAR_ALL = "pixelsuite_clear_all";
     static final String FILES_SORT = "pixelsuite_files_sort";
+    static final String DOUBLE_TAP_WAKE = "pixelsuite_double_tap_wake";
+    static final String LOCK_SLEEP = "pixelsuite_lockscreen_double_tap_sleep";
 
     private Feature() {}
 
     static int defaultFor(String key) {
-        return FLASHLIGHT.equals(key) ? 0 : 1;   // everything else starts on
+        return (FLASHLIGHT.equals(key) || DOUBLE_TAP_WAKE.equals(key) || LOCK_SLEEP.equals(key)) ? 0 : 1;   // everything else starts on
     }
 
     static boolean on(Context ctx, String key) {

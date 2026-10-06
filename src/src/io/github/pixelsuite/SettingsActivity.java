@@ -107,6 +107,16 @@ public class SettingsActivity extends Activity {
         row(gestures, Feature.DOUBLE_TAP_SLEEP, "ic_ps_sleep", 0xFF6750A4,
                 "Double tap to sleep",
                 "Double-tap empty space on the home screen to lock the phone.");
+        row(gestures, Feature.DOUBLE_TAP_WAKE, "ic_ps_sleep", 0xFF3949AB,
+                "Double tap to wake",
+                "Double-tap the screen to wake it, instead of a single tap. Same as "
+                        + "Settings \u203a Gestures \u203a "
+                        + "Tap or Double Tap to check phone.");
+        row(gestures, Feature.LOCK_SLEEP, "ic_ps_sleep", 0xFF5C6BC0,
+                "Double tap lock screen to sleep",
+                "Double-tap the lock screen to turn the screen off (never while the PIN pad is "
+                        + "open). Also in "
+                        + "Settings \u203a Gestures \u203a Tap or Double Tap to check phone.");
         finishGroup(gestures);
 
         section(page, "Apps");
@@ -120,7 +130,7 @@ public class SettingsActivity extends Activity {
                 "Folders in Files by Google open sorted newest first instead of by name.");
         finishGroup(apps);
 
-        TextView footer = text("The four gestures also appear in Settings \u203a System \u203a "
+        TextView footer = text("The gestures also appear in Settings \u203a System \u203a "
                 + "Gestures. Both places control the same switches.\n\n"
                 + "Pixel Suite " + versionName(), 13, mTextSecondary, false);
         footer.setPadding(dp(8), dp(20), dp(8), 0);
@@ -215,6 +225,10 @@ public class SettingsActivity extends Activity {
             // (that keeps the gesture armed; the module turns it into the flashlight).
             return put + "; settings put secure " + Flashlight.KEY_TARGET + " 0"
                     + "; settings put secure " + Flashlight.KEY_ENABLED + " 1";
+        }
+        if (Feature.DOUBLE_TAP_WAKE.equals(key)) {
+            // Both modes need the stock tap sensor on (the double-tap sensor depends on it).
+            return put + "; settings put secure " + DoubleTapWake.KEY_TAP_GESTURE + " 1";
         }
         if (Feature.CLEAR_ALL.equals(key)) {
             return put + "; am force-stop " + LAUNCHER;   // the button is built with recents
