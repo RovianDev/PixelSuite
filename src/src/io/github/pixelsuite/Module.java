@@ -31,6 +31,7 @@ public class Module extends XposedModule {
         VolumeCamera.installSystem(cl);
         ThreeFinger.installSystem(cl);
         DoubleTapSleep.installSystem(cl);
+        DoubleTapWake.installSystem(cl);
     }
 
     @Override
@@ -41,6 +42,7 @@ public class Module extends XposedModule {
         if (SETTINGS.equals(pkg)) {
             Flashlight.installSettings(cl);
             GesturePages.install(cl);
+            DoubleTapWake.installSettings(cl);
         } else if (SYSTEMUI.equals(pkg)) {
             VolumeCamera.installSystemUi(cl);
         } else if (LAUNCHER.equals(pkg)) {
