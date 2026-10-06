@@ -18,7 +18,7 @@ Double-press the power button to toggle the flashlight, from anywhere.
 Double-press the volume down button to open Pixel Camera from the always-on display. It won't launch if media is playing or a phone call is active.
 
 👆 **Tap or Double Tap to check phone**  
-Choose how the screen wakes: **Tap to wake** or **Double tap to wake**. Turning one on turns the other off. A separate option lets you **double-tap the lock screen to turn the screen off**, anywhere on the lock screen and never while the PIN pad is open. No vibration. The options appear in the module's settings and in **Settings → System → Gestures → Tap or Double Tap to check phone**.
+One master toggle, **Tap or Double tap to wake**, with everything on one page. Choose how the screen wakes: **Tap to wake** or **Double tap to wake** (turning one on turns the other off). A separate option lets you **double-tap the lock screen to turn the screen off**, anywhere on the lock screen and never while the PIN pad is open. A **Lock screen shortcuts** switch controls the lock screen cards: off by default, tapping the clock, alarm, weather and other cards doesn't launch apps and doesn't vibrate (the clock still expands); on gives you the stock behavior, including the stock vibration. The options appear in the module's settings and in **Settings → System → Gestures → Tap or Double Tap to check phone**, right above "Double tap to sleep".
 
 📸 **Three-finger screenshot**  
 Swipe down with three fingers to take a screenshot. Inspired by Chinese phones like Xiaomi, OPPO and Vivo.
@@ -30,6 +30,12 @@ Double-tap an empty spot on the home screen to lock your phone. Also inspired by
 By default, Files by Google sorts folders A-Z. This puts the newest first, so a file you just downloaded is easy to find when you're attaching it to another app like Gemini.
 
 Every feature has its own toggle in the module settings, so you only run what you want.
+
+## What's new in v1.1.1
+
+- "Tap or Double tap to wake" is now a single master toggle
+- New "Lock screen shortcuts" switch: no app launches or tap vibrations from lock screen cards when off
+- Fixed stray vibrations, cards launching apps after a double tap, and double tap getting disarmed after swipes or a long press
 
 ## Requirements
 
