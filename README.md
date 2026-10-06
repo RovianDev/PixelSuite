@@ -17,6 +17,9 @@ Double-press the power button to toggle the flashlight, from anywhere.
 📷 **Double-press volume down for camera**  
 Double-press the volume down button to open Pixel Camera from the always-on display. It won't launch if media is playing or a phone call is active.
 
+👆 **Tap or Double Tap to check phone**  
+Choose how the screen wakes: **Tap to wake** or **Double tap to wake**. Turning one on turns the other off. A separate option lets you **double-tap the lock screen to turn the screen off**, anywhere on the lock screen and never while the PIN pad is open. No vibration. The options appear in the module's settings and in **Settings → System → Gestures → Tap or Double Tap to check phone**.
+
 📸 **Three-finger screenshot**  
 Swipe down with three fingers to take a screenshot. Inspired by Chinese phones like Xiaomi, OPPO and Vivo.
 
@@ -31,7 +34,7 @@ Every feature has its own toggle in the module settings, so you only run what yo
 ## Requirements
 
 - A rooted device (KernelSU / KernelSU-Next, Magisk or APatch)
-- [LSPosed](https://lsposed.org) with LSPosed API 102 or higher
+- [LSPosed](https://lsposed.org) with LSPosed API 102
 - Android version: **Android 17** (tested on Pixel 11 Pro)
 
 ## Installation
@@ -43,6 +46,8 @@ Every feature has its own toggle in the module settings, so you only run what yo
 5. Make sure the recommended scope is selected: **System Framework, System UI, Settings, Pixel Launcher, Files and Files by Google**.
 6. Reboot, then open the module's settings screen and choose which features you want.
 7. **Refresh toggles:** Open the Settings app, swipe to close it, then reopen it to refresh the toggles in **System → Gestures**. (Note: This may crash Settings the first time – this is a Google bug, not ours. It happens even with stock gestures. After your phone boots, just wait for all settings to load.)
+
+**Updating:** install the new APK over the old one (no uninstall needed) and reboot.
 
 ## Building from Source
 
@@ -71,7 +76,7 @@ Found a bug, or have an idea for a new feature? Open an [issue](../../issues). F
 - Root method and LSPosed version
 - An LSPosed log (Logs → Save)
 
-I read every request, and good ideas make it into future versions.
+I read every request, and good ideas make it into future versions. The "Tap or Double Tap to check phone" feature came from a request by Reddit user [Lord_Sithek](https://www.reddit.com/user/Lord_Sithek/).
 
 ## Support the project
 
