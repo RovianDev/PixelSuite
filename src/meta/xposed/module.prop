@@ -1,7 +1,7 @@
 id=io.github.roviandev.pixelsuite
 name=Pixel Suite
-version=1.1.0
-versionCode=2
+version=1.1.2
+versionCode=11
 author=Rovian.Dev
 description=Custom gestures and UI tweaks for Pixel devices
 minApiVersion=102

@@ -22,6 +22,7 @@ import java.util.List;
  *
  *   Double press volume down   On / Open Camera
  *   Three-finger screenshot    On
+ *   (Tap or Double Tap to check phone, the stock row, moved up here; see DoubleTapWake)
  *   Double tap to sleep        On
  *
  * Each row opens a page with a main switch and a footer, built the way Settings builds its own:
@@ -81,6 +82,11 @@ final class GesturePages {
     private static final String DASHBOARD = "com.android.settings.dashboard.DashboardFragment";
     private static final String DTPS = "com.android.settings.gestures.DoubleTapPowerSettings";
     private static final String STOCK_ENTRY_KEY = "gesture_double_tap_power_input_summary";
+    /** Stock "Tap to check phone" row; it goes right above our Double tap to sleep row. */
+    private static final String TAP_CHECK_KEY = "gesture_tap_screen_input_summary";
+    private static final String TAP_CHECK_FRAGMENT =
+            "com.android.settings.gestures.TapScreenGestureSettings";
+    private static final String TAP_CHECK_BEFORE = "doubletapsleep";
     private static final String EXTRA_PAGE = "pixelsuite_page";
     private static final String F_PAGE = "pixelsuite.page";
     private static final long PENDING_WINDOW_MS = 5000L;
@@ -213,7 +219,38 @@ final class GesturePages {
             Xp.callMethod(row, "setSummary", summary(ctx, page));
             ours[i] = row;
         }
+        Object tapCheck = findTapCheckEntry(group);
+        if (tapCheck != null) {
+            Object[] rows = new Object[ours.length + 1];
+            int j = 0;
+            for (int i = 0; i < PAGES.length; i++) {
+                if (TAP_CHECK_BEFORE.equals(PAGES[i].id)) rows[j++] = tapCheck;
+                rows[j++] = ours[i];
+            }
+            if (j == ours.length) rows[j] = tapCheck;   // no Double tap to sleep row: last
+            ours = rows;
+        }
         placeAfter(group, stock, ours);
+    }
+
+    /** The stock tap-to-check-phone row, if it sits in the same list as ours. */
+    private static Object findTapCheckEntry(Object group) {
+        Object p = find(group, TAP_CHECK_KEY);
+        if (p == null) p = findByFragment(group, TAP_CHECK_FRAGMENT);
+        if (p == null) {
+            int n = (Integer) Xp.callMethod(group, "getPreferenceCount");
+            for (int i = 0; i < n && p == null; i++) {
+                Object c = Xp.callMethod(group, "getPreference", i);
+                Object key = c == null ? null : Xp.callMethod(c, "getKey");
+                Object title = c == null ? null : Xp.callMethod(c, "getTitle");
+                if (title == null || (key != null && key.toString().startsWith("pixelsuite_"))) {
+                    continue;
+                }
+                String s = title.toString();
+                if (DoubleTapWake.OLD_TITLE.equals(s) || DoubleTapWake.NEW_TITLE.equals(s)) p = c;
+            }
+        }
+        return p != null && Xp.callMethod(p, "getParent") == group ? p : null;
     }
 
     /**

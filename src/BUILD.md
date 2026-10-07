@@ -44,12 +44,15 @@ bash build.sh
 
 ## Signing a release build
 
-The test-signed APK is fine for trying the module. For a release, sign it with your own keystore. The password is requested at the prompt:
+The test-signed APK is fine for trying the module. For a release, sign the aligned APK with your own keystore. The password is requested at the prompt:
 
 ```bash
 apksigner sign --ks your-keystore.jks --ks-key-alias youralias \
-  --min-sdk-version 26 --out PixelSuite-signed.apk out/aligned.apk
+  --min-sdk-version 26 --v4-signing-enabled false \
+  --out PixelSuite-signed.apk out/aligned.apk
 ```
+
+`--v4-signing-enabled false` stops apksigner from writing a separate `.idsig` file next to the APK; it isn't needed to install the module.
 
 The build script generates a test keystore called `key.jks` on its first run. Don't commit it or use it for releases.
 
@@ -58,7 +61,7 @@ An update only installs over an existing install if it is signed with the same k
 ## Verification
 
 ```bash
-apksigner verify --print-certs out/PixelSuite.apk
+apksigner verify --print-certs PixelSuite-signed.apk
 ```
 
 ## License

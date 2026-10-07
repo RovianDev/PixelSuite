@@ -18,7 +18,12 @@ Double-press the power button to toggle the flashlight, from anywhere.
 Double-press the volume down button to open Pixel Camera from the always-on display. It won't launch if media is playing or a phone call is active.
 
 👆 **Tap or Double Tap to check phone**  
-One master toggle, **Tap or Double tap to wake**, with everything on one page. Choose how the screen wakes: **Tap to wake** or **Double tap to wake** (turning one on turns the other off). A separate option lets you **double-tap the lock screen to turn the screen off**, anywhere on the lock screen and never while the PIN pad is open. A **Lock screen shortcuts** switch controls the lock screen cards: off by default, tapping the clock, alarm, weather and other cards doesn't launch apps and doesn't vibrate (the clock still expands); on gives you the stock behavior, including the stock vibration. The options appear in the module's settings and in **Settings → System → Gestures → Tap or Double Tap to check phone**, right above "Double tap to sleep".
+One toggle, **Tap or Double tap to wake**, with the choices in **Settings → System → Gestures → Tap or Double Tap to check phone**, right above "Double tap to sleep":
+
+- **Wake the screen:** *Tap to wake* or *Double tap to wake*. With double tap, the touchscreen stays fully awake on the always-on display, so the first double tap always wakes the phone. That uses a little extra battery while the always-on display is showing (none while charging), and it pauses itself in a pocket, with Battery Saver on, or when the battery is low.
+- **Double tap lock screen to sleep:** double-tap anywhere on the lock screen to turn the screen off (never while the PIN pad is open). Choose how the lock screen behaves:
+  - **Modded behavior** (recommended): the alarm, weather and date under the clock act like empty space and lock screen taps don't vibrate, so a double tap never opens anything by mistake.
+  - **Stock behavior**: the lock screen stays as Google made it, with tappable cards and tap vibrations. The trade-off: a double tap that lands on a card can open it instead of turning the screen off.
 
 📸 **Three-finger screenshot**  
 Swipe down with three fingers to take a screenshot. Inspired by Chinese phones like Xiaomi, OPPO and Vivo.
@@ -31,11 +36,14 @@ By default, Files by Google sorts folders A-Z. This puts the newest first, so a 
 
 Every feature has its own toggle in the module settings, so you only run what you want.
 
-## What's new in v1.1.1
+## What's new in v1.1.2
 
-- "Tap or Double tap to wake" is now a single master toggle
-- New "Lock screen shortcuts" switch: no app launches or tap vibrations from lock screen cards when off
-- Fixed stray vibrations, cards launching apps after a double tap, and double tap getting disarmed after swipes or a long press
+- **Tap or Double tap to wake is now one setting.** Double tap the lock screen to sleep is part of it, and with *Double tap to wake* one double tap now works on the always-on display too (the separate "One double tap on Always On Display" switch is gone).
+- **New lock screen choice:** *Modded behavior* (recommended) or *Stock behavior*, replacing the old "Lock screen shortcuts" switch.
+- **Fixed:** unlocking with your fingerprint right after locking could pull the notification shade down.
+- **Fixed:** a double tap to wake right after locking could be missed while the lock screen was still coming up.
+- **Lighter on battery:** the lock screen touch listener now only runs while the lock screen can show (before, it saw every touch all day), the three-finger screenshot listener only runs while that feature is on, the flashlight shares Pixel Suite's background thread instead of keeping its own, and internal lookups and Files sorting are cached.
+- **Fixed:** in the module's settings screen, a switch flipped while the screen was reloading could jump back.
 
 ## Requirements
 
@@ -65,7 +73,7 @@ cd src
 bash build.sh
 ```
 
-The compiled APK will be in `out/PixelSuite.apk`.
+The compiled APK will be in `src/out/PixelSuite.apk`.
 
 ## Compatibility
 
