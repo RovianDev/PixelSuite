@@ -20,5 +20,5 @@ zipalign -f -p 4 out/unsigned.apk out/aligned.apk
 [ -f key.jks ] || keytool -genkeypair -keystore key.jks -alias pixelsuite -keyalg RSA -keysize 2048 \
   -validity 10000 -storepass pixelsuite -keypass pixelsuite -dname "CN=PixelSuite" >/dev/null 2>&1
 apksigner sign --ks key.jks --ks-pass pass:pixelsuite --ks-key-alias pixelsuite \
-  --min-sdk-version 26 --out out/PixelSuite.apk out/aligned.apk
+  --min-sdk-version 26 --v4-signing-enabled false --out out/PixelSuite.apk out/aligned.apk
 apksigner verify -v out/PixelSuite.apk | head -5

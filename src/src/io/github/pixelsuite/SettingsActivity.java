@@ -28,10 +28,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class SettingsActivity extends Activity {
 
@@ -42,10 +43,12 @@ public class SettingsActivity extends Activity {
     private int mBg, mCard, mText, mTextSecondary, mAccent;
 
     private final Map<String, Switch> mSwitches = new LinkedHashMap<String, Switch>();
-    private final ExecutorService mIo = Executors.newSingleThreadExecutor();
+    private static final ExecutorService IO = new ThreadPoolExecutor(0, 1, 10L,
+            TimeUnit.SECONDS, new LinkedBlockingQueue<Runnable>());
     private final Handler mMain = new Handler(Looper.getMainLooper());
     private TextView mBanner;
     private boolean mUpdating;
+    private int mSaves;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,16 +100,12 @@ public class SettingsActivity extends Activity {
         row(gestures, Feature.DOUBLE_TAP_SLEEP, "ic_ps_sleep", 0xFF6750A4,
                 "Double tap to sleep",
                 "Double-tap empty space on the home screen to lock the phone.");
-        row(gestures, Feature.DOUBLE_TAP_WAKE, "ic_ps_sleep", 0xFF3949AB,
-                "Double tap to wake",
-                "Double-tap the screen to wake it, instead of a single tap. Same as "
-                        + "Settings \u203a Gestures \u203a "
+        row(gestures, Feature.TAP_CHECK, "ic_ps_tapwake", 0xFF3949AB,
+                "Tap or Double tap to wake",
+                "Wake the screen with a tap or a double tap (one double tap works even on the "
+                        + "Always On Display), and double-tap the lock screen to turn it off. "
+                        + "Choose the options in Settings \u203a System \u203a Gestures \u203a "
                         + "Tap or Double Tap to check phone.");
-        row(gestures, Feature.LOCK_SLEEP, "ic_ps_sleep", 0xFF5C6BC0,
-                "Double tap lock screen to sleep",
-                "Double-tap the lock screen to turn the screen off (never while the PIN pad is "
-                        + "open). Also in "
-                        + "Settings \u203a Gestures \u203a Tap or Double Tap to check phone.");
         finishGroup(gestures);
 
         section(page, "Apps");
@@ -150,21 +149,21 @@ public class SettingsActivity extends Activity {
         load();
     }
 
-    @Override
-    protected void onDestroy() {
-        mIo.shutdown();
-        super.onDestroy();
-    }
-
     private void load() {
         final String[] keys = mSwitches.keySet().toArray(new String[0]);
-        mIo.execute(new Runnable() {
+        final int savesBefore = mSaves;
+        IO.execute(new Runnable() {
             @Override
             public void run() {
                 final int[] values = Root.readSecure(keys);
                 mMain.post(new Runnable() {
                     @Override
                     public void run() {
+                        if (isFinishing() || isDestroyed()) return;
+                        if (mSaves != savesBefore && values != null) {
+                            load();
+                            return;
+                        }
                         if (values == null) {
                             showRootBanner(true);
                             for (Switch sw : mSwitches.values()) sw.setEnabled(false);
@@ -185,14 +184,15 @@ public class SettingsActivity extends Activity {
     }
 
     private void save(final String key, final boolean on, final Switch sw) {
-        mIo.execute(new Runnable() {
+        mSaves++;
+        IO.execute(new Runnable() {
             @Override
             public void run() {
                 final boolean ok = Root.run(command(key, on)) != null;
                 mMain.post(new Runnable() {
                     @Override
                     public void run() {
-                        if (ok) return;
+                        if (ok || isFinishing() || isDestroyed()) return;
                         mUpdating = true;
                         sw.setChecked(!on);
                         mUpdating = false;
@@ -210,9 +210,6 @@ public class SettingsActivity extends Activity {
         if (Feature.FLASHLIGHT.equals(key) && on) {
             return put + "; settings put secure " + Flashlight.KEY_TARGET + " 0"
                     + "; settings put secure " + Flashlight.KEY_ENABLED + " 1";
-        }
-        if (Feature.DOUBLE_TAP_WAKE.equals(key)) {
-            return put + "; settings put secure " + DoubleTapWake.KEY_TAP_GESTURE + " 1";
         }
         if (Feature.CLEAR_ALL.equals(key)) {
             return put + "; am force-stop " + LAUNCHER;
