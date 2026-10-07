@@ -1,114 +1,85 @@
 # Pixel Suite
 
-A small LSPosed module that adds the Pixel quality-of-life tweaks Google never shipped. Every feature can be switched on or off from a settings screen inside LSPosed.
+A small LSPosed module that adds Pixel features Google never shipped. Every feature has its own on/off switch in the module settings.
 
-> **Tested only on a Pixel 11 Pro.** It may work on other devices, but I can't promise it. I'll keep updating it, and I'm open to ideas (see [Feedback](#feedback--ideas)).
+> **Tested only on a Pixel 11 Pro.** It may work on other devices. Feedback is welcome.
 
 ---
 
 ## Features
 
-🧹 **Always-visible "Clear all"**  
-The "Clear all" button stays visible in Pixel Launcher's recents screen, so there's no need to scroll to the last page to find it.
+🧹 **Always-visible "Clear all"**
+The Clear all button stays on screen in Pixel Launcher's recents, so you don't have to scroll to find it.
 
-🔦 **Double-press power for flashlight**  
-Double-press the power button to toggle the flashlight, from anywhere.
+🔦 **Double-press power for flashlight**
+Double-press the power button to toggle the flashlight.
 
-📷 **Double-press volume down for camera**  
-Double-press the volume down button to open Pixel Camera from the always-on display. It won't launch if media is playing or a phone call is active.
+📷 **Double-press volume down for camera**
+Double-press volume down on the always-on display to open Pixel Camera. It won't open while media is playing or a call is active.
 
-👆 **Tap or Double Tap to check phone**  
-One toggle, **Tap or Double tap to wake**, with the choices in **Settings → System → Gestures → Tap or Double Tap to check phone**, right above "Double tap to sleep":
+👆 **Tap or double tap to wake**
+One setting, found in **Settings → System → Gestures → Tap or Double Tap to check phone**:
+- **Tap to wake** or **Double tap to wake**. Double tap also works on the always-on display, which uses a little extra battery while it shows (none while charging). It pauses in a pocket, with Battery Saver on, or when the battery is low.
+- **Double-tap the lock screen to sleep**: double-tap anywhere on the lock screen to turn the screen off. It never works while the PIN pad is open.
+- **Lock screen behavior**:
+  - **Modded** (recommended): the clock, alarm, weather and date act like empty space, so a double tap never opens anything by mistake.
+  - **Stock**: the lock screen works as Google made it. A double tap that lands on a card can open it instead of turning the screen off.
 
-- **Wake the screen:** *Tap to wake* or *Double tap to wake*. With double tap, the touchscreen stays fully awake on the always-on display, so the first double tap always wakes the phone. That uses a little extra battery while the always-on display is showing (none while charging), and it pauses itself in a pocket, with Battery Saver on, or when the battery is low.
-- **Double tap lock screen to sleep:** double-tap anywhere on the lock screen to turn the screen off (never while the PIN pad is open). Choose how the lock screen behaves:
-  - **Modded behavior** (recommended): the alarm, weather and date under the clock act like empty space and lock screen taps don't vibrate, so a double tap never opens anything by mistake.
-  - **Stock behavior**: the lock screen stays as Google made it, with tappable cards and tap vibrations. The trade-off: a double tap that lands on a card can open it instead of turning the screen off.
+📸 **Three-finger screenshot**
+Swipe down with three fingers to take a screenshot.
 
-📸 **Three-finger screenshot**  
-Swipe down with three fingers to take a screenshot. Inspired by Chinese phones like Xiaomi, OPPO and Vivo.
+🔒 **Double-tap to lock**
+Double-tap an empty spot on the home screen to lock the phone.
 
-🔒 **Double-tap to lock**  
-Double-tap an empty spot on the home screen to lock your phone. Also inspired by Chinese phones.
+📁 **Newest-first in Files by Google**
+Sorts folders so the newest files appear first.
 
-📁 **Newest-first in Files by Google**  
-By default, Files by Google sorts folders A-Z. This puts the newest first, so a file you just downloaded is easy to find when you're attaching it to another app like Gemini.
-
-Every feature has its own toggle in the module settings, so you only run what you want.
-
-## What's new in v1.1.2
-
-- **Tap or Double tap to wake is now one setting.** Double tap the lock screen to sleep is part of it, and with *Double tap to wake* one double tap now works on the always-on display too (the separate "One double tap on Always On Display" switch is gone).
-- **New lock screen choice:** *Modded behavior* (recommended) or *Stock behavior*, replacing the old "Lock screen shortcuts" switch.
-- **Fixed:** unlocking with your fingerprint right after locking could pull the notification shade down.
-- **Fixed:** a double tap to wake right after locking could be missed while the lock screen was still coming up.
-- **Lighter on battery:** the lock screen touch listener now only runs while the lock screen can show (before, it saw every touch all day), the three-finger screenshot listener only runs while that feature is on, the flashlight shares Pixel Suite's background thread instead of keeping its own, and internal lookups and Files sorting are cached.
-- **Fixed:** in the module's settings screen, a switch flipped while the screen was reloading could jump back.
+---
 
 ## Requirements
 
 - A rooted device (KernelSU / KernelSU-Next, Magisk or APatch)
-- [LSPosed](https://lsposed.org) with LSPosed API 102
-- Android version: **Android 17** (tested on Pixel 11 Pro)
+- [LSPosed](https://lsposed.org) with API 102
+- Android 17
 
 ## Installation
 
-1. Download the latest APK from the [Releases](../../releases) page.
-2. Install it like any other APK.
-3. Grant it root access in your root manager (KernelSU / KernelSU-Next, Magisk or APatch).
-4. Open **LSPosed → Modules → Pixel Suite** and enable it.
-5. Make sure the recommended scope is selected: **System Framework, System UI, Settings, Pixel Launcher, Files and Files by Google**.
-6. Reboot, then open the module's settings screen and choose which features you want.
-7. **Refresh toggles:** Open the Settings app, swipe to close it, then reopen it to refresh the toggles in **System → Gestures**. (Note: This may crash Settings the first time – this is a Google bug, not ours. It happens even with stock gestures. After your phone boots, just wait for all settings to load.)
+1. Download the latest APK from the [Releases](../../releases) page and install it.
+2. Grant it root access in your root manager.
+3. Open **LSPosed → Modules → Pixel Suite** and enable it.
+4. Select the scopes: **System Framework, System UI, Settings, Pixel Launcher, Files and Files by Google**.
+5. Reboot, then open the module settings and choose your features.
 
 **Updating:** install the new APK over the old one (no uninstall needed) and reboot.
 
+**Note:** the first time you open **System → Gestures** after changing a toggle, Settings may crash. This is a Google bug that happens with stock gestures too. Reopen Settings after boot and wait for everything to load.
+
 ## Building from Source
 
-Want to build Pixel Suite yourself? See [BUILD.md](src/BUILD.md) for detailed instructions.
+See [BUILD.md](src/BUILD.md). Quick start on Linux or macOS:
 
-**Quick start (Linux / macOS):**
 ```bash
 cd src
 bash build.sh
 ```
 
-The compiled APK will be in `src/out/PixelSuite.apk`.
+The APK will be in `src/out/PixelSuite.apk`.
 
-## Compatibility
+## Feedback
 
-| Device | Status |
-|---|---|
-| Pixel 11 Pro | Tested |
-| Other Pixels / other devices | Untested. Reports welcome |
-
-## Feedback & ideas
-
-Found a bug, or have an idea for a new feature? Open an [issue](../../issues). For bugs, please include:
-
-- Device and Android version
-- Root method and LSPosed version
-- An LSPosed log (Logs → Save)
-
-I read every request, and good ideas make it into future versions. The "Tap or Double Tap to check phone" feature came from a request by Reddit user [Lord_Sithek](https://www.reddit.com/user/Lord_Sithek/).
+Found a bug or have an idea? Open an [issue](../../issues). For bugs, include your device, Android version, root method, LSPosed version and an LSPosed log (Logs → Save).
 
 ## Support the project
 
-Pixel Suite is free and open source, and always will be. If it saves you some taps and you'd like to say thanks:
-
-- [Buy Me a Coffee ☕](https://buymeacoffee.com/RovianDev)
-- [Patreon](https://patreon.com/RovianDev)
-
-Starring the repo and sharing it helps just as much. ❤️
+Free and open source. If it helps you, you can [buy me a coffee ☕](https://buymeacoffee.com/RovianDev) or [support on Patreon](https://patreon.com/RovianDev). Starring the repo helps too.
 
 ## Credits
 
-- [LSPosed](https://lsposed.org): the framework that makes this possible
-- Xposed API (libxposed): module API
+- [LSPosed](https://lsposed.org) and the libxposed module API
 
 ## Disclaimer
 
-Modules that hook system components can cause instability. Use at your own risk and keep a backup. Pixel Suite is an independent project and is **not affiliated with, endorsed by, or sponsored by Google LLC**. "Pixel", "Pixel Launcher", "Google" and "Files by Google" are trademarks of Google LLC and are used only to describe compatibility.
+Modules that hook system components can cause instability. Use at your own risk and keep a backup. Pixel Suite is an independent project, not affiliated with or endorsed by Google LLC. "Pixel", "Pixel Launcher", "Google" and "Files by Google" are trademarks of Google LLC, used only to describe compatibility.
 
 ## License
 
