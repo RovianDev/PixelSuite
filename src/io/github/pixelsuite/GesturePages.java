@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.Settings;
-import android.widget.CompoundButton;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -415,22 +414,6 @@ final class GesturePages {
             Xp.callMethod(sw, "setOnPreferenceChangeListener", accept);
         } catch (Throwable t) {
             Module.log("gesture pages: change listener unavailable", t);
-        }
-        try {
-            Xp.callMethod(sw, "addOnSwitchChangeListener",
-                    new CompoundButton.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(CompoundButton button, boolean checked) {
-                            try {
-                                Object cur = Xp.callMethod(sw, "isChecked");
-                                if (!Boolean.valueOf(checked).equals(cur)) {
-                                    Xp.callMethod(sw, "setChecked", checked);
-                                }
-                            } catch (Throwable ignored) { }
-                        }
-                    });
-        } catch (Throwable t) {
-            Module.log("gesture pages: switch listener unavailable", t);
         }
     }
 
