@@ -118,8 +118,8 @@ public class SettingsActivity extends Activity {
                 "Double-tap empty space on the home screen to lock the phone.");
         row(gestures, Feature.TAP_CHECK, "ic_ps_tapwake", 0xFF3949AB,
                 "Tap or Double tap to wake",
-                "Wake the screen with a tap or a double tap (one double tap works even on the "
-                        + "Always On Display), and double-tap the lock screen to turn it off. "
+                "Wake the screen with a tap or a double tap, and double-tap the lock screen to "
+                        + "turn it off. "
                         + "Choose the options in Settings \u203a System \u203a Gestures \u203a "
                         + "Tap or Double Tap to check phone.");
         finishGroup(gestures);

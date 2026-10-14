@@ -23,10 +23,11 @@ final class Feature {
     static final String FILES_SORT = "pixelsuite_files_sort";
     /**
      * Master switch for "Tap or Double tap to wake". On, it brings: tap or double tap to wake
-     * (DOUBLE_TAP_WAKE picks which; with double tap the touchscreen also stays fully awake on
-     * the Always On Display, so one double tap always works there), double tap the lock screen
-     * to sleep, and the lock screen behavior (LOCK_SHORTCUTS). The choices live on Settings >
-     * System > Gestures > Tap or Double Tap to check phone. Default on.
+     * (DOUBLE_TAP_WAKE picks which; on the Always On Display the touchscreen stays on while
+     * the phone is in the hand, and lying still the second tap of a double tap is felt by the
+     * motion sensor), double tap the lock screen to sleep, and the
+     * lock screen behavior (LOCK_SHORTCUTS). The choices live on Settings > System >
+     * Gestures > Tap or Double Tap to check phone. Default on.
      */
     static final String TAP_CHECK = "pixelsuite_tap_check";
     /** 1 = double tap to wake, 0 = tap to wake. Default tap. */
