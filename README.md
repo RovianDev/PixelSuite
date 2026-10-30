@@ -1,6 +1,6 @@
-[![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases/tag/v3.0.0)
+[![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases/tag/v3.0.1)
 
-# Pixel Suite 3.0.0
+# Pixel Suite 3.0.1
 
 Your Pixel. Your way.
 
@@ -8,9 +8,11 @@ Made by **RovianDev**. An open-source LSPosed module for Pixel phones: launcher 
 
 **Open Pixel Suite from your home screen:** touch and hold an empty area, then choose **Pixel Suite settings**.
 
-[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases/tag/v3.0.0) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases/tag/561-3.0.0) · [Full 3.0.0 release notes](RELEASE-NOTES-v3.0.0.md) · [Changelog](CHANGELOG.md)
+[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases/tag/v3.0.1) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases/tag/562-3.0.1) · [Full 3.0.0 release notes](RELEASE-NOTES-v3.0.0.md) · [Changelog](CHANGELOG.md)
 
 ## What's new in 3.0.0
+
+3.0.1 fixes the share menu's top row when you pin an app. See the [3.0.1 release notes](RELEASE-NOTES-v3.0.1.md).
 
 The biggest Pixel Suite release yet:
 
@@ -225,7 +227,7 @@ Pixel Suite has no ads, analytics or tracking, and the module itself never conne
 
 **Root + LSPosed API 102 required.** Tested on Pixel 11 Pro with Android 17.
 
-1. Install **PixelSuite-v3.0.0.apk** over your current version.
+1. Install **PixelSuite-v3.0.1.apk** over your current version.
 2. Enable Pixel Suite in LSPosed and grant its app root access.
 3. Open Pixel Suite and turn on the features you want. Each feature page has an **LSPosed scope** section listing the apps to select for it.
 4. Select those apps in LSPosed, then reboot.

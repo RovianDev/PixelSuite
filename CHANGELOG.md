@@ -1,3 +1,11 @@
+## v3.0.1
+
+A quick fix for the share menu.
+
+### 🐞 Bug fixes
+
+- **Share menu:** pinning an app no longer pushes the suggested apps out of the top row. Your pinned apps come first, and the suggestions fill the rest.
+
 ## v3.0.0
 
 **The biggest Pixel Suite release yet.** 3.0.0 brings a smarter share menu, a reimagined Pixel Studio, icon packs, call recording, system-wide ad blocking, Do Not Annoy, OTA & Play Store blockers, navigation buttons and much more, shaped across 191 preview builds. It also fixes bugs in Google's own apps, works with more Pixel Launcher versions, and gives the Pixel Suite app a fresh new look.

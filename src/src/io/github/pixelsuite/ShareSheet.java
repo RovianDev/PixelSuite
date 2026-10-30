@@ -244,7 +244,7 @@ final class ShareSheet {
                 if (!(n instanceof Integer) || (Integer) n == 0) return;
                 try {
                     int pinned = (Integer) n;
-                    int want = pinned;
+                    int want = p.getResult() instanceof Integer ? Math.max(pinned, (Integer) p.getResult()) : pinned;
                     int count = ((List<?>) Xp.getObjectField(p.thisObject, "mDisplayList")).size();
                     if (Xp.getBooleanField(p.thisObject, "mFilterLastUsed") && (Integer) Xp.getObjectField(p.thisObject, "mLastChosenPosition") >= 0) count--;
                     p.setResult(Math.max(0, Math.min(want, count)));
