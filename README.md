@@ -1,4 +1,4 @@
-[![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v2.png)](https://github.com/RovianDev/PixelSuite/releases/tag/v3.0.0)
+[![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases/tag/v3.0.0)
 
 # Pixel Suite 3.0.0
 
