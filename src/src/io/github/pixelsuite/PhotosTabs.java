@@ -44,9 +44,9 @@ final class PhotosTabs {
             Resources r = app.getResources(); String pkg = app.getPackageName();
             cropLabel = r.getIdentifier("photos_photoeditor_enchilada_effects_crop", "string", pkg);
             anchor = r.getIdentifier("photos_photoeditor_enchilada_landingpage_carousel_toolbox", "string", pkg);
-            if (cropLabel == 0 || anchor == 0) { PhotosEditor.log("tab row resources not found, no Doodles tab"); return; }
+            if (cropLabel == 0 || anchor == 0) { return; }
             fakeLabel = (cropLabel & 0xffff0000) | 0xfff7;
-        } catch (Throwable error) { PhotosEditor.logOnce("tab row unavailable", error); return; }
+        } catch (Throwable error) { return; }
         Xp.Callback label = new Xp.Callback() {
             protected void beforeHookedMethod(Xp.Param p) {
                 if (p.args.length == 0 || !(p.args[0] instanceof Integer)) return;
@@ -55,12 +55,10 @@ final class PhotosTabs {
                 if (id == anchor) { bodyRan = true; discover(); }
             }
         };
-        int n = 0;
         for (String m : new String[]{"getText", "getString"})
-            try { for (Method x : Resources.class.getDeclaredMethods()) if (x.getName().equals(m) && x.getParameterTypes().length == 1 && x.getParameterTypes()[0] == int.class) { Xp.hookMethod(x, label); n++; } }
-            catch (Throwable error) { PhotosEditor.logOnce("tab label hook unavailable", error); }
+            try { for (Method x : Resources.class.getDeclaredMethods()) if (x.getName().equals(m) && x.getParameterTypes().length == 1 && x.getParameterTypes()[0] == int.class) { Xp.hookMethod(x, label); } }
+            catch (Throwable error) { }
         for (String key : load(app)) hook(key);
-        if (n == 0) PhotosEditor.log("tab label hooks unavailable, no Doodles tab");
     }
 
     static void discover() {
@@ -79,7 +77,7 @@ final class PhotosTabs {
                 if (hook(key)) save(key);
                 return;
             }
-        } catch (Throwable error) { PhotosEditor.logOnce("tab row search failed", error); }
+        } catch (Throwable error) { }
     }
 
     static boolean takesList(Class<?> type, String name) {
@@ -108,7 +106,7 @@ final class PhotosTabs {
                                 if (with != null) p.args[i] = with;
                                 if (has || with != null) { asked = false; bodyRan = false; Xp.setAdditionalInstanceField(p, "pixelsuite_tabs", Boolean.TRUE); }
                             }
-                        } catch (Throwable error) { PhotosEditor.logOnce("Doodles tab could not be added", error); }
+                        } catch (Throwable error) { }
                     }
                     protected void afterHookedMethod(Xp.Param p) {
                         if (!Boolean.TRUE.equals(Xp.getAdditionalInstanceField(p, "pixelsuite_tabs"))) return;
@@ -123,7 +121,7 @@ final class PhotosTabs {
             }
             if (n > 0) hooked.add(key);
             return n > 0;
-        } catch (Throwable error) { PhotosEditor.logOnce("tab row hook failed for " + key, error); return false; }
+        } catch (Throwable error) { return false; }
     }
 
     static List<?> insert(List<?> list) throws Exception {
@@ -259,6 +257,6 @@ final class PhotosTabs {
             List<String> keys = load(app); if (!keys.contains(key)) keys.add(key);
             StringBuilder b = new StringBuilder(); for (String k : keys) b.append(k).append('\n');
             FileOutputStream out = new FileOutputStream(f); try { out.write(b.toString().getBytes("UTF-8")); } finally { out.close(); }
-        } catch (Throwable error) { PhotosEditor.logOnce("tab row not remembered", error); }
+        } catch (Throwable error) { }
     }
 }

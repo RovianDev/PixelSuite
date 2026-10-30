@@ -8,8 +8,8 @@ public final class FolderGridSizingTest {
                 int viewport=width*density, chrome=24*density;
                 int cell=FolderGridSizing.cellWidth(viewport,chrome,2*density,12*density);
                 int icon=FolderGridSizing.iconSize(52*density,cell,4*density);
-                int preview30=Math.max(1,Math.min(Math.round(52*density*1.30f),cell-4*density));
-                int expected=Math.min(Math.round(preview30*1.15f),cell-4*density);
+                int baseIcon=Math.max(1,Math.min(Math.round(52*density*1.30f),cell-4*density));
+                int expected=Math.min(Math.round(baseIcon*1.15f),cell-4*density);
                 if(icon!=expected)throw new AssertionError("Not a bounded 15 percent increase");
                 if (5*cell+chrome+8*density+24*density>viewport) throw new AssertionError("Grid overflow");
                 if (icon<=0 || icon+4*density>cell) throw new AssertionError("Icon overflow");
@@ -45,6 +45,6 @@ public final class FolderGridSizingTest {
         if(widened==0)throw new AssertionError("Widening never exercised");
         if(FolderGridSizing.cellWidth(1,100,4,12)!=1) throw new AssertionError("Degenerate viewport");
         if(FolderGridSizing.iconSize(1,1,4)!=1) throw new AssertionError("Degenerate icon");
-        System.out.println("PASS: "+checked+" viewport/density sizing cases and 2 degenerate bounds");
+        System.err.println("PASS: "+checked+" viewport/density sizing cases and 2 degenerate bounds");
     }
 }

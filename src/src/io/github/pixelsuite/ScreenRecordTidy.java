@@ -8,7 +8,7 @@ final class ScreenRecordTidy {
     private ScreenRecordTidy() {}
 
     static void install(ClassLoader cl) {
-        try { composeHooks(cl); } catch (Throwable error) { Module.log("Screen record sheet hooks unavailable", error); }
+        try { composeHooks(cl); } catch (Throwable error) { }
         try {
             Xp.hookAllMethods(android.content.res.Resources.class, "getText", new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) {
@@ -60,19 +60,18 @@ final class ScreenRecordTidy {
                         } catch (Throwable ignored) { }
                     }
                 });
-            } catch (Throwable error) { Module.log("Screen record: message pills unavailable", error); }
+            } catch (Throwable error) { }
             Xp.hookAllMethods(android.app.Activity.class, "onPause", new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) {
                     if (p.thisObject.getClass().getName().endsWith("PostRecordingActivity")) { recordingFront = false; DarkChips.off(); }
                 }
             });
-        } catch (Throwable error) { Module.log("Screen record tidy unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static volatile boolean recordingFront;
     static final java.util.Map<Object, Boolean> pills = new java.util.WeakHashMap<Object, Boolean>();
 
-    private static void frostDialog(android.view.View decor) { frostDialog(decor, null); }
     private static void frostDialog(android.view.View decor, android.view.Window window) {
         android.view.View content = decor.findViewById(android.R.id.content);
         android.view.View card = card(content == null ? decor : content, decor.getWidth() > 0 ? decor.getWidth() : decor.getResources().getDisplayMetrics().widthPixels);
@@ -114,7 +113,6 @@ final class ScreenRecordTidy {
         } catch (Throwable ignored) { }
     }
     private static final java.util.Map<Object, Object> wrapped = new java.util.WeakHashMap<Object, Object>();
-    private static boolean loggedSwap, loggedSkip;
     private static final String COMPOSE = "com.android.systemui.screencapture.record.smallscreen.ui.compose.";
 
     private static void composeHooks(ClassLoader cl) throws Throwable {
@@ -145,7 +143,7 @@ final class ScreenRecordTidy {
                     } catch (Throwable ignored) { }
                 }
             });
-        } catch (Throwable error) { Module.log("Screen record sheet exit unavailable", error); }
+        } catch (Throwable error) { }
         Xp.hookAllMethods(columnKt, "columnMeasurePolicy", new Xp.Callback() {
             protected void afterHookedMethod(Xp.Param p) {
                 try {
@@ -172,7 +170,7 @@ final class ScreenRecordTidy {
                         }
                     }
                     p.setResult(proxy);
-                } catch (Throwable error) { if (!loggedSwap) { loggedSwap = true; Module.log("Screen record sheet swap failed", error); } }
+                } catch (Throwable error) { }
             }
         });
         final Class<?> settings = Xp.findClass(COMPOSE + "RecordDetailsSettingsKt", cl);
@@ -192,10 +190,9 @@ final class ScreenRecordTidy {
                             return;
                         }
                     }
-                } catch (Throwable error) { if (!loggedSkip) { loggedSkip = true; Module.log("Screen record sheet row check failed", error); } }
+                } catch (Throwable error) { }
             }
         });
-        Module.log("Screen record sheet hooks installed");
     }
 
     private static final Feature.Cached switchCache = new Feature.Cached(KEY);

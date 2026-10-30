@@ -20,6 +20,6 @@ public class SearchResultMergeTest {
         check(AliasBridgeAccess.allows(new String[]{"com.google.android.apps.nexuslauncher"},true),"Launcher can publish");
         check(!AliasBridgeAccess.allows(new String[]{"com.google.android.apps.nexuslauncher.fake"},true),"Prefix spoof rejected");
         check(!AliasBridgeAccess.allows(null,false),"Unknown caller rejected");
-        System.out.println("PASS: 6 search merge cases and 6 alias bridge caller-access cases");
+        System.err.println("PASS: 6 search merge cases and 6 alias bridge caller-access cases");
     }
 }

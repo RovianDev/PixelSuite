@@ -6,8 +6,6 @@ import android.view.View;
 final class WindowFrost {
     private WindowFrost() {}
 
-    private static final java.util.Set<String> logged = new java.util.HashSet<String>();
-
     static void frost(final Activity a, String what) { frost(a, what, true); }
     static void frost(final Activity a, String what, boolean blur) {
         try {
@@ -26,6 +24,6 @@ final class WindowFrost {
             m.invoke(a, null, null);
             PillFrost d = PillFrost.frost(decor, false, 0f);
             a.getWindow().setBackgroundDrawable(d);
-        } catch (Throwable error) { if (logged.add(what)) Module.log(what + ": window not frosted", error); }
+        } catch (Throwable ignored) { }
     }
 }

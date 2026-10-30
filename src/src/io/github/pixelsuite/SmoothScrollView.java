@@ -19,7 +19,7 @@ final class SmoothScrollView extends ScrollView {
     private final Runnable idle = new Runnable() { public void run() { if (!touching) release(); } };
 
     SmoothScrollView(Activity activity) {
-        super(activity); this.activity=activity;
+        super(activity); this.activity=activity;ToastMotion.watchScroll(this);
         Method method=null;
         try { method=View.class.getMethod("setRequestedFrameRate",float.class); }
         catch (Throwable older) { }

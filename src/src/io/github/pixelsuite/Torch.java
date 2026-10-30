@@ -49,7 +49,6 @@ final class Torch {
             public void run() {
                 String id = flashId();
                 if (id == null) {
-                    Module.log("no camera with a flash unit found");
                     return;
                 }
                 Boolean on = sState.get(id);
@@ -63,7 +62,6 @@ final class Torch {
                     sCameraManager.setTorchMode(id, target);
                     if (after != null) after.run();
                 } catch (Throwable t) {
-                    Module.log("setTorchMode(" + target + ") failed", t);
                 } finally {
                     Binder.restoreCallingIdentity(token);
                 }
@@ -91,7 +89,6 @@ final class Torch {
             sFlashId = anyWithFlash;
             return anyWithFlash;
         } catch (Throwable t) {
-            Module.log("camera id lookup failed", t);
             return null;
         } finally {
             Binder.restoreCallingIdentity(token);

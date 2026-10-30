@@ -4,11 +4,12 @@ The source package contains the Android module, resources, compile-only API 102 
 
 The supplied build.sh uses a Unix shell (Linux or WSL), a JDK supporting javac --release 8, an Android compile jar, aapt, D8, zip and zipalign. Set ANDROID_JAR to your compile jar if it is not in the script's default SDK location. The current source is compiled against API 23 with compatibility stubs; the manifest minimum is API 26 and target is API 35.
 
-Run bash build.sh from the source directory. Its output is out/aligned.apk, which is unsigned. Sign it using your own Android release keystore and apksigner, then verify the signature and ZIP alignment. The official release is named PixelSuite-v2.0.8.apk.
+Run bash build.sh from the source directory. Its output is out/aligned.apk, which is unsigned. Sign it using your own Android release keystore and apksigner, then verify the signature and ZIP alignment. The official release is named PixelSuite-v3.0.0.apk.
 
 The maintainer's signing key, passwords, local paths and private signing script are not included. Using a different certificate cannot update an already installed official build in place.
 
-Current metadata: versionName 2.0.8, versionCode 358, LSPosed minimum/target API 102. The Xposed repository release tag is 358-2.0.8; the source repository tag is v2.0.8.
+Current metadata: versionName 3.0.0, versionCode 561, LSPosed minimum/target API 102. The Xposed repository release tag is 561-3.0.0; the source repository tag is v3.0.0.
+
 ## Test builds
 
 `bash build.sh --fast` uses D8 without shrinking or obfuscation. Both modes keep compiler intermediates in WSL/Linux temporary storage and remove them afterward. Official builds use D8 --release; test builds use D8 --debug. Neither mode shrinks or obfuscates code. Both modes print step timings and use a 6 GB dex heap; override it with `PIXELSUITE_DEX_HEAP=4g` if needed.

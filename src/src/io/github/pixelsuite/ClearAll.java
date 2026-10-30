@@ -19,12 +19,8 @@ import java.util.WeakHashMap;
 
 final class ClearAll {
 
-    private static final String SUB = "clear-all: ";
-
     private ClearAll() {}
 
-    static final String TAG = "[ClearAllFix] ";
-    private static final String LAUNCHER = "com.google.android.apps.nexuslauncher";
     private static final String RECENTS_VIEW = "com.android.quickstep.views.RecentsView";
     private static final String ACTIONS_VIEW = "com.android.quickstep.views.OverviewActionsView";
     private static final String STOCK_CLEAR_ALL = "com.android.quickstep.views.ClearAllButton";
@@ -51,8 +47,7 @@ final class ClearAll {
                 android.graphics.Rect given = (android.graphics.Rect) Xp.getObjectField(actions, "mTaskSize");
                 if (task.equals(given) && dp == Xp.getObjectField(actions, "mDp")) return;
                 Xp.callMethod(actions, "updateDimension", dp, new android.graphics.Rect(task));
-                LauncherFeatures.logOnce("Recents: action row placed again for the current card size", null);
-            } catch (Throwable error) { LauncherFeatures.logOnce("Recents: action row size check unavailable", error); }
+            } catch (Throwable error) { }
         }
     }
 
@@ -69,7 +64,7 @@ final class ClearAll {
                 Xp.hookAllMethods(sRecentsClass, "updateSizeAndPadding", new Xp.Callback() {
                     @Override protected void afterHookedMethod(Xp.Param p) { if (p.thisObject instanceof View) resyncRow((View) p.thisObject); }
                 });
-            } catch (Throwable error) { Module.log(SUB + "action row size check unavailable", error); }
+            } catch (Throwable error) { }
 
             sDismissAllWithView = Xp.findMethodExactIfExists(
                     sRecentsClass, "dismissAllTasks", View.class);
@@ -113,7 +108,7 @@ final class ClearAll {
                         } catch (Throwable ignored) { }
                     }
                 });
-            } catch (Throwable t) { Module.log(SUB + "kept-enabled hook unavailable (" + t + ")"); }
+            } catch (Throwable t) { }
 
             try {
                 Class<?> base = Xp.findClass("com.android.quickstep.views.OverviewActionsView", cl);
@@ -123,7 +118,7 @@ final class ClearAll {
                         try { keepRowForPairs((ViewGroup) param.thisObject); } catch (Throwable ignored) { }
                     }
                 });
-            } catch (Throwable t) { Module.log(SUB + "pair row hook unavailable (" + t + ")"); }
+            } catch (Throwable t) { }
             try {
                 Xp.hookAllMethods(View.class, "setEnabled", new Xp.Callback() {
                     @Override
@@ -132,15 +127,11 @@ final class ClearAll {
                                 && Boolean.TRUE.equals(Xp.getAdditionalInstanceField(param.thisObject, KEY_KEEP_ON))) param.args[0] = Boolean.TRUE;
                     }
                 });
-            } catch (Throwable t) { Module.log(SUB + "keep-on hook unavailable (" + t + ")"); }
+            } catch (Throwable t) { }
 
             hideStockClearAll(cl);
 
-            Module.log(SUB + "hooks installed (dismissAllTasks(View)="
-                    + (sDismissAllWithView != null) + ", ()=" + (sDismissAllNoArg != null) + ")");
         } catch (Throwable t) {
-            Module.log(SUB + "hook setup failed");
-            Xp.log(t);
         }
     }
 
@@ -169,18 +160,12 @@ final class ClearAll {
                                     try {
                                         setDisallow.invoke(param.thisObject, Boolean.TRUE);
                                     } catch (Throwable t) {
-                                        Xp.log(t);
                                     }
                                 }
                             });
                 }
-            } else {
-                Module.log(SUB + "setDisallowScrollToClearAll not found: stock button "
-                        + "hidden, but its page stays scrollable on this build");
             }
         } catch (Throwable t) {
-            Module.log(SUB + "could not block scrolling to stock Clear all");
-            Xp.log(t);
         }
 
         try {
@@ -202,10 +187,7 @@ final class ClearAll {
                     v.setFocusable(false);
                 }
             });
-            Module.log(SUB + "stock Clear all hidden");
         } catch (Throwable t) {
-            Module.log(SUB + "could not hide stock Clear all");
-            Xp.log(t);
         }
     }
 
@@ -239,12 +221,10 @@ final class ClearAll {
 
             final LinearLayout row = actionRow(host);
             if (row == null) {
-                Module.log(SUB + "action_buttons row not found yet");
                 return false;
             }
             final TextView stock = styleSource(row, host);
             if (stock == null) {
-                Module.log(SUB + "no stock button to copy the look from yet");
                 return false;
             }
 
@@ -279,11 +259,8 @@ final class ClearAll {
                 }
             });
 
-            Module.log(SUB + "button installed in " + host.getClass().getName());
             return true;
         } catch (Throwable t) {
-            Module.log(SUB + "install failed");
-            Xp.log(t);
             return false;
         }
     }
@@ -303,11 +280,9 @@ final class ClearAll {
             if (stock == null) return;
             if (mine.getParent() == null) {
                 addToRow(row, mine, stock, host);
-                Module.log(SUB + "button re-attached to row");
             }
             Look.applyIfChanged(stock, mine);
         } catch (Throwable t) {
-            Xp.log(t);
         }
     }
 
@@ -340,8 +315,12 @@ final class ClearAll {
         if (!(mine instanceof View) || row == null || ((View) mine).getParent() != row) return;
         boolean pair = Boolean.TRUE.equals(Xp.getObjectField(host, "mIsGroupedTask"));
         if (pair) {
-            Object alphas = Xp.callMethod(host, "getActionsAlphas");
-            Xp.callMethod(Xp.callMethod(alphas, "get", 6), "setValue", 1f);
+            try {
+                Object alphas;
+                try { alphas = Xp.callMethod(host, "getActionsAlphas"); }
+                catch (Throwable olderLauncher) { alphas = Xp.getObjectField(host, "mMultiValueAlpha"); }
+                Xp.callMethod(Xp.callMethod(alphas, "get", 6), "setValue", 1f);
+            } catch (Throwable ignored) { }
         }
         for (int i = 0; i < row.getChildCount(); i++) {
             View c = row.getChildAt(i);
@@ -442,7 +421,6 @@ final class ClearAll {
     private static void clearAll(ViewGroup host, View button) {
         View rv = findRecentsView(host);
         if (rv == null) {
-            Module.log(SUB + "click: no attached RecentsView found");
             return;
         }
         try {
@@ -455,15 +433,11 @@ final class ClearAll {
                 return;
             }
         } catch (Throwable t) {
-            Module.log(SUB + "dismissAllTasks failed, falling back to stock button");
-            Xp.log(t);
         }
         int cid = id(host, "clear_all", "id");
         View stockClear = cid != 0 ? rv.findViewById(cid) : null;
         if (stockClear != null) {
             stockClear.performClick();
-        } else {
-            Module.log(SUB + "click: no way to clear tasks on this launcher build");
         }
     }
 

@@ -11,9 +11,6 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.LinearGradient;
 import android.graphics.drawable.GradientDrawable;
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.UserHandle;
@@ -23,13 +20,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +61,7 @@ final class LauncherFeatures {
     static boolean on(String key){return Boolean.TRUE.equals(enabled.get(key));}
     static void reload(Activity a){
         Map<String,Boolean> next=new java.util.HashMap<String,Boolean>();
-        for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,LABEL_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY})next.put(key,Feature.on(a,key));
+        for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,LABEL_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,DrawerIconColors.KEY})next.put(key,Feature.on(a,key));
         labelLevel=IconLabelScale.level(Settings.Secure.getInt(a.getContentResolver(),LABEL_LEVEL,2));
         SurfaceStyle.refresh();restyle=SurfaceStyle.restyled(a);styleDisc=restyle||!FrostedSurface.dark(a);
         enabled=next;
@@ -77,7 +71,7 @@ final class LauncherFeatures {
     static boolean frosted(){return restyle&&(on(GRID)||on(DRAWER)||on(RENAME)||on(ICONS)||on(DRAG_PILL));}
     static void install(ClassLoader cl) {
         loader = cl;
-        try {
+        Safe.run(() -> {
             Xp.hookAllMethods(type("Launcher"), "onCreate", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
                     Activity a = (Activity) p.thisObject; activity = new WeakReference<Activity>(a); data = new LauncherData(a); reload(a);
@@ -93,7 +87,7 @@ final class LauncherFeatures {
                             refresh();
                         }
                     };
-                    for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,LABEL_SIZE,LABEL_LEVEL,GRID_SIZE,DRAWER_GRID_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,SurfaceStyle.KEY})
+                    for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,LABEL_SIZE,LABEL_LEVEL,GRID_SIZE,DRAWER_GRID_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,SurfaceStyle.KEY,DrawerIconColors.KEY})
                         a.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(key),false,observer);
                     Xp.setAdditionalInstanceField(a,"pixelsuite_settings_observer",observer);
                     GoogleAliases.publish();
@@ -115,6 +109,8 @@ final class LauncherFeatures {
                 }
             });
             Xp.hookAllMethods(type("Launcher"),"onPause",new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){MultiDrag.cancel();DrawerFolders.cancelHold();DrawerFolderMenu.dismiss();DrawerHomeTarget.hide();DrawerDrag.pause();}});
+        });
+        Safe.run(() -> {
             Xp.hookAllMethods(type("views.ActivityContext"),"dispatchDeviceProfileChanged",new Xp.Callback(){
                 protected void afterHookedMethod(Xp.Param p){
                     final Activity a=activity.get();
@@ -124,17 +120,27 @@ final class LauncherFeatures {
                     }});
                 }
             });
-            installAliases();
-            LauncherIcon.install();
-            installGrid();
-            installBackdropDrawing();
-            DrawerFolders.install();
-            DrawerDrag.install();DrawerHomeTarget.install();FolderDrag.install();installFolderDropSettle();Balloon.install();ScatterEffect.install();MultiDrag.install();ShapeWatch.install();SnackbarPlace.install();
-            ThemeFolderRestore.install();
-            installMenus();
-            try{HomeOptions.install();}catch(Throwable error){Module.log("Pixel Suite settings row unavailable",error);}
-            Module.log("Launcher customization hooks installed (Launcher 17, 2.0.6)");
-        } catch (Throwable error) { Module.log("Launcher customization unavailable", error); }
+        });
+        Safe.run(() -> installAliases());
+        Safe.run(() -> LauncherIcon.install());
+        Safe.run(() -> DrawerIconColors.install());
+        Safe.run(() -> installGrid());
+        Safe.run(() -> installBackdropDrawing());
+        Safe.run(() -> DrawerFolders.install());
+        Safe.run(() -> DrawerDrag.install());
+        Safe.run(() -> DrawerHomeTarget.install());
+        Safe.run(() -> FolderDrag.install());
+        Safe.run(() -> installFolderDropSettle());
+        Safe.run(() -> Balloon.install());
+        Safe.run(() -> ScatterEffect.install());
+        Safe.run(() -> MultiDrag.install());
+        Safe.run(() -> ShapeWatch.install());
+        Safe.run(() -> FolderCloseClip.install());
+        Safe.run(() -> ThemedIconEdges.install());
+        Safe.run(() -> SnackbarPlace.install());
+        Safe.run(() -> ThemeFolderRestore.install());
+        Safe.run(() -> installMenus());
+        Safe.run(HomeOptions::install);
     }
     static Class<?> type(String name) { return Xp.findClass(ROOT + name, loader); }
     static void installBackdropDrawing(){
@@ -205,7 +211,7 @@ final class LauncherFeatures {
             View decor = a.getWindow().getDecorView(); refreshLabels(decor);
             Object ah = get(call(a, "getAppsView"), "mAH");
             for (Object holder : (List<?>) ah) if (holder != null) call(get(holder, "mAppsList"), "onAppsUpdated");
-        } catch (Throwable e) { Module.log("Launcher refresh failed", e); }
+        } catch (Throwable e) { }
         DrawerFolders.scheduleRebind();
         GoogleAliases.publish();
     }
@@ -215,7 +221,7 @@ final class LauncherFeatures {
         try {
             Object ah = get(call(a, "getAppsView"), "mAH");
             for (Object holder : (List<?>) ah) if (holder != null) call(get(holder, "mAppsList"), "onAppsUpdated");
-        } catch (Throwable e) { Module.log("Launcher refresh failed", e); refresh(); }
+        } catch (Throwable e) { refresh(); }
     }
     static void refreshLabels(View v) {
         if(type("BubbleTextView").isInstance(v)){
@@ -223,7 +229,7 @@ final class LauncherFeatures {
         }
         if(type("folder.FolderIcon").isInstance(v)&&DrawerFolderAlignment.drawer(v)){
             final View folderIcon=v;
-            folderIcon.post(new Runnable(){public void run(){try{DrawerFolderAlignment.align(folderIcon);}catch(Throwable error){logOnce("Drawer folder label refresh unavailable",error);}}});
+            folderIcon.post(new Runnable(){public void run(){try{DrawerFolderAlignment.align(folderIcon);}catch(Throwable error){}}});
         }
         Object info = v.getTag();
         if(info!=null && type("model.data.FolderInfo").isInstance(info)){
@@ -313,7 +319,7 @@ final class LauncherFeatures {
                     if (!Boolean.TRUE.equals(Xp.getAdditionalInstanceField(p.thisObject, "pixelsuite_full_rows"))) return;
                     int rows = ((Number) get(p.thisObject, "mMaxCountY")).intValue();
                     if (rows >= 4 && ((Number) get(p.thisObject, "mCountY")).intValue() < rows) set(p.thisObject, "mCountY", rows);
-                } catch (Throwable error) { logOnce("Equal folder height unavailable", error); }
+                } catch (Throwable error) { }
             }
         });
         for (Method m : type("folder.FolderPagedView").getDeclaredMethods()) {
@@ -353,7 +359,7 @@ final class LauncherFeatures {
             });
         }
         Xp.hookAllMethods(type("folder.Folder"), "animateOpen", new Xp.Callback() {
-            protected void beforeHookedMethod(Xp.Param p) { styleFolder(p.thisObject);attachFolderMenu(p.thisObject);if(gridFor(get(p.thisObject,"mInfo"))>0)((View)get(p.thisObject,"mFolderName")).setVisibility(View.VISIBLE);FolderRules.layoutFooter(p.thisObject,false); }
+            protected void beforeHookedMethod(Xp.Param p) { styleFolder(p.thisObject);attachFolderMenu(p.thisObject);if(gridFor(get(p.thisObject,"mInfo"))>0)((View)get(p.thisObject,"mFolderName")).setVisibility(View.VISIBLE);FolderRules.layoutFooter(p.thisObject,false);folderNameLook(p.thisObject); }
         });
         for(Method method:type("folder.Folder").getDeclaredMethods())if(method.getName().equals("onSizeChanged"))Xp.x().hook(method).intercept(new XposedInterface.Hooker(){public Object intercept(XposedInterface.Chain chain)throws Throwable{
             View folder=(View)chain.getThisObject();View footer=(View)get(folder,"mFooter");
@@ -417,7 +423,7 @@ final class LauncherFeatures {
                                 settleBeforeClose(opening);
                             }
                         }
-                        catch (Throwable error) { logOnce("Folder dock alignment unavailable", error); }
+                        catch (Throwable error) { }
                     }
                     final Integer previousPreview=activePreviewColor.get();
                     View animatedFolder=(View)get(chain.getThisObject(),"folder");
@@ -448,12 +454,10 @@ final class LauncherFeatures {
             Object delegate=get(p.thisObject,"mInvalidateDelegate");
             if(delegate instanceof View&&styledPreview(((View)delegate).getTag()))p.setResult(FrostedSurface.closedFolderColor(((View)delegate).getContext()));
         }});
-        if(Xp.hookAllMethods(type("folder.Folder"),"centerAboutIcon",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
-            try{alignAboveDock((View)p.thisObject);}catch(Throwable error){logOnce("Folder dock alignment unavailable",error);}
-        }}).isEmpty())Module.log("Folder.centerAboutIcon not found: 4x4 folders are placed from the open animation instead");
+        Xp.hookAllMethods(type("folder.Folder"),"centerAboutIcon",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
+            try{alignAboveDock((View)p.thisObject);}catch(Throwable error){}
+        }});
     }
-    static final java.util.Set<String> loggedOnce=java.util.Collections.synchronizedSet(new java.util.HashSet<String>());
-    static void logOnce(String message,Throwable error){if(!loggedOnce.add(message))return;if(error==null)Module.log(message);else Module.log(message,error);}
     static final int DOCK_GAP_DP = 28;
     static final int HOME_5X5_GAP_DP = 20, DRAWER_5X5_GAP_DP = -20;
     static void alignAboveDock(View folder){
@@ -497,7 +501,7 @@ final class LauncherFeatures {
             for (java.lang.reflect.Field f : manager.getClass().getDeclaredFields()) {
                 f.setAccessible(true);
                 Object v = f.get(manager);
-                if (state.isInstance(v)) { logOnce("Launcher state read from StateManager." + f.getName(), null); return v; }
+                if (state.isInstance(v)) { return v; }
             }
         } catch (Throwable ignored) { }
         return null;
@@ -509,14 +513,14 @@ final class LauncherFeatures {
             Object manager = call(a, "getStateManager"), state = launcherState(manager);
             Object normal = type("LauncherState").getField("NORMAL").get(null), spring = type("LauncherState").getField("SPRING_LOADED").get(null);
             if (state == normal || state == spring) call(manager, "goToState", normal, false);
-        } catch (Throwable error) { logOnce("Folder: home page settle unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static final ThreadLocal<Boolean> folderDrop = new ThreadLocal<Boolean>();
     static final ThreadLocal<Boolean> drawerDrop = new ThreadLocal<Boolean>();
     static void installFolderDropSettle() {
         try {
-            int drops = Xp.hookAllMethods(type("folder.Folder"), "onDrop", new Xp.Callback() {
+            Xp.hookAllMethods(type("folder.Folder"), "onDrop", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
                     folderDrop.set(Boolean.TRUE);
                     if (DrawerFolders.drawerFolderView((View) p.thisObject)) drawerDrop.set(Boolean.TRUE);
@@ -526,8 +530,8 @@ final class LauncherFeatures {
                     folderDrop.remove(); drawerDrop.remove();
                     if (!drawer) new Handler(Looper.getMainLooper()).post(new Runnable() { public void run() { settleHomePage("drop"); } });
                 }
-            }).size();
-            int states = Xp.hookAllMethods(type("statemanager.StateManager"), "goToState", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(type("statemanager.StateManager"), "goToState", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
                     if (folderDrop.get() == null || p.args.length < 1) return;
                     try {
@@ -537,16 +541,14 @@ final class LauncherFeatures {
                         else if (p.args.length >= 2 && p.args[1] instanceof Integer) p.args[1] = 0;
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-            Module.log("Folder drop settle: " + drops + " drop hooks, " + states + " state hooks");
-        } catch (Throwable error) { logOnce("Folder drop settle unavailable", error); }
+            });
+        } catch (Throwable error) { }
     }
     static boolean isOpening(XposedInterface.Chain chain,View folder){
         List<Object> args=chain.getArgs();
         if(args.size()>0&&args.get(0) instanceof Boolean)return (Boolean)args.get(0);
         try{return Boolean.TRUE.equals(get(folder,"mIsOpen"));}catch(Throwable unknown){return false;}
     }
-    static int dockLine(Activity a,ViewGroup drag,int[] dock){return dockLine(a,drag,dock,DOCK_GAP_DP);}
     static int dockLine(Activity a,ViewGroup drag,int[] dock,int gapDp){
         View hotseat;
         try{hotseat=(View)get(a,"mHotseat");}catch(Throwable olderLauncher){hotseat=(View)call(a,"getHotseat");}
@@ -581,16 +583,7 @@ final class LauncherFeatures {
         }
         return current==ancestor?y:Integer.MIN_VALUE;
     }
-    static Integer popupColor(Context c){
-        try{int attr=c.getResources().getIdentifier("popupColorPrimary","attr",c.getPackageName());if(attr==0)return null;Object v=Xp.callStaticMethod(type("icons.GraphicsUtils"),"getAttrColor",attr,c);return v instanceof Integer?(Integer)v|0xff000000:null;}catch(Throwable t){return null;}
-    }
     static boolean styledPreview(Object info){return styleDisc&&info!=null&&(DrawerFolders.isFolder(info)||on(GRID));}
-    static void decorateAnimator(Object result,final XposedInterface.Chain chain){
-        if(result instanceof AnimatorSet && Boolean.TRUE.equals(chain.getArgs().get(0))){
-            final Object folder=get(chain.getThisObject(),"folder");
-            ((AnimatorSet)result).addListener(new AnimatorListenerAdapter(){public void onAnimationEnd(Animator a){styleFolder(folder);}});
-        }
-    }
     static void afterClose(Object folder,Runnable task){
         Xp.setAdditionalInstanceField(folder,"pixelsuite_after_close",task);call(folder,"close",true);
     }
@@ -643,8 +636,8 @@ final class LauncherFeatures {
     static int defaultDrawerGrid(){Activity a=activity.get();return a==null?3:LauncherData.grid(Settings.Secure.getInt(a.getContentResolver(),DRAWER_GRID_SIZE,3));}
     static final float ICON_4X4_SCALE = 1.013f;
     static final float ICON_4X4_MATCH = 1.036f, ICON_5X5_TRIM = 0.965f;
-    static final float ICON_5X5_PREVIEW35 = 1.07f;
-    static final float ICON_4X4_BOOST = 1.042f, ICON_5X5_BOOST = ICON_5X5_PREVIEW35 * 0.96f;
+    static final float ICON_5X5_BASE = 1.07f;
+    static final float ICON_4X4_BOOST = 1.042f, ICON_5X5_BOOST = ICON_5X5_BASE * 0.96f;
     static final float FOLDER_4X4_HEIGHT = 0.87f;
     static final float FOLDER_4X4_COLUMN_GAP = 0.5f;
     static void applyChrome(ViewGroup paged,Object profile){
@@ -667,11 +660,11 @@ final class LauncherFeatures {
                 Object inner=null;try{if(children!=null)inner=get(children,"mBorderSpace");}catch(Throwable ignored){}
                 if(inner instanceof Point&&inner!=space&&!inner.equals(border)){((Point)inner).set(border.x,border.y);((View)children).requestLayout();}
             }
-        }catch(Throwable error){logOnce("Folder spacing unavailable",error);}
+        }catch(Throwable error){}
     }
     static int folderChrome(View folder,int pad,Activity a){
         if(folder==null)return 2*pad;
-        try{return measuredChrome(folder,pad,a);}catch(Throwable error){logOnce("Folder chrome measurement unavailable",error);return 2*pad;}
+        try{return measuredChrome(folder,pad,a);}catch(Throwable error){return 2*pad;}
     }
     static int measuredChrome(View folder,int pad,Activity a){
         int chrome=folder.getPaddingLeft()+folder.getPaddingRight();
@@ -710,9 +703,9 @@ final class LauncherFeatures {
         int maxCellHeight = Math.max(1, (contentLimit - (n - 1) * border.y) / n);
         int cellHeight = Math.min(oldHeight, maxCellHeight);
         int nativeIcon=((Number)get(old,"childIconSizePx")).intValue();
-        int preview33 = n==5 ? Math.max(1,Math.round(FolderGridSizing.iconSize(nativeIcon,cellWidth,dp(a,4))*ICON_5X5_TRIM))
+        int baseIcon = n==5 ? Math.max(1,Math.round(FolderGridSizing.iconSize(nativeIcon,cellWidth,dp(a,4))*ICON_5X5_TRIM))
                              : Math.max(1,Math.min(Math.round(Math.min(nativeIcon,cellWidth-dp(a,12))*ICON_4X4_SCALE*ICON_4X4_MATCH),cellWidth-dp(a,8)));
-        int target = Math.max(1, Math.round(preview33 * (n==5 ? ICON_5X5_BOOST : ICON_4X4_BOOST)));
+        int target = Math.max(1, Math.round(baseIcon * (n==5 ? ICON_5X5_BOOST : ICON_4X4_BOOST)));
         int margin = n==5 ? dp(a,12) : dp(a,20);
         if (cellWidth < target + dp(a,4)) {
             if (n==5) {
@@ -742,7 +735,7 @@ final class LauncherFeatures {
             icon=smaller;
         }
         if(n==5){
-            int before=Math.max(1,Math.round(preview33*ICON_5X5_PREVIEW35));
+            int before=Math.max(1,Math.round(baseIcon*ICON_5X5_BASE));
             if(icon<before){int needed5=icon+fittedPadding+labelHeight(text,1)+dp(a,4);cellHeight=Math.max(needed5,cellHeight-(before-icon));}
         }
         if(n==4){
@@ -778,6 +771,15 @@ final class LauncherFeatures {
         int top=((Number)get(folderProfile,"contentPaddingTop")).intValue();
         return Math.max(1,available-footer-top-dp(a,64)-menuReserve(info,a));
     }
+    static void folderNameLook(Object folder){
+        try{
+            TextView name=(TextView)get(folder,"mFolderName");if(name==null)return;
+            name.setGravity(android.view.Gravity.START|android.view.Gravity.CENTER_VERTICAL);
+            name.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+            android.graphics.Typeface tf=name.getTypeface();
+            if(tf==null||!tf.isBold())name.setTypeface(android.graphics.Typeface.create(tf,android.graphics.Typeface.BOLD));
+        }catch(Throwable ignored){}
+    }
     static void attachFolderMenu(final Object folder) {
         final Object info = get(folder, "mInfo");
         if (gridFor(info) == 0) return;
@@ -804,7 +806,7 @@ final class LauncherFeatures {
                     if (((Float) p.args[0]).floatValue() < 1f) p.args[0] = Float.valueOf(1f);
                 }
             });
-        } catch (Throwable error) { logOnce("Menu open fade unavailable", error); }
+        } catch (Throwable error) { }
         Xp.hookAllMethods(type("popup.PopupContainerWithArrow"),"populateAndShowRows",new Xp.Callback(){
             protected void beforeHookedMethod(Xp.Param p){
                 if(!on(HIDE_SHORTCUTS))return;
@@ -814,25 +816,32 @@ final class LauncherFeatures {
         });
         Xp.hookAllMethods(type("popup.ArrowPopup"),"assignMarginsAndBackgrounds",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             if(p.args.length>0&&p.args[0]==p.thisObject&&type("popup.PopupContainer").isInstance(p.thisObject)&&!privateItem(get(p.thisObject,"itemInfo"))){
-                try{DrawerPopupLayout.compact((ViewGroup)p.thisObject);}catch(Throwable error){Module.log("Drawer compact menu unavailable",error);}
-                try{MenuFont.match((ViewGroup)p.thisObject);}catch(Throwable error){logOnce("Menu font matching unavailable",error);}
+                try{DrawerPopupLayout.compact((ViewGroup)p.thisObject);}catch(Throwable error){}
+                try{MenuFont.match((ViewGroup)p.thisObject);}catch(Throwable error){}
                 FrostedSurface.popup((ViewGroup)p.thisObject);
-                try{if(Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_compact_menu")==null)PopupAbove.place((ViewGroup)p.thisObject);}catch(Throwable error){logOnce("Menu placement unavailable",error);}
+                try{if(Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_compact_menu")==null)PopupAbove.place((ViewGroup)p.thisObject);}catch(Throwable error){}
             }
         }});
         Xp.hookAllMethods(type("popup.ArrowPopup"),"onLayout",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             if(Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_compact_menu")!=null)DrawerPopupLayout.place((ViewGroup)p.thisObject);
         }});
+        Xp.hookAllMethods(type("popup.ArrowPopup"),"addArrow",new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){
+            try{Object arrow=get(p.thisObject,"mArrow");
+                if(arrow instanceof View&&((View)arrow).getParent() instanceof ViewGroup){
+                    ((ViewGroup)((View)arrow).getParent()).removeView((View)arrow);
+                }}catch(Throwable ignored){}
+        }});
         Xp.hookAllMethods(type("popup.ArrowPopup"),"addArrow",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
-            if(type("popup.PopupContainer").isInstance(p.thisObject)&&!privateItem(get(p.thisObject,"itemInfo"))){View arrow=(View)get(p.thisObject,"mArrow");if(arrow.getBackground()!=null)arrow.getBackground().setColorFilter(FrostedSurface.colors(arrow.getContext())[0],android.graphics.PorterDuff.Mode.SRC_IN);}
+            if(type("popup.PopupContainer").isInstance(p.thisObject)&&!privateItem(get(p.thisObject,"itemInfo"))){ View arrow=(View)get(p.thisObject,"mArrow");if(arrow.getBackground()!=null)arrow.getBackground().setColorFilter(FrostedSurface.colors(arrow.getContext())[0],android.graphics.PorterDuff.Mode.SRC_IN);}
         }});
         Xp.hookAllMethods(type("popup.ArrowPopup"), "show", new Xp.Callback() {
             protected void beforeHookedMethod(Xp.Param p) {
                 if (!type("popup.PopupContainer").isInstance(p.thisObject)) return;
                 final Object popup = p.thisObject; final Object info = get(popup, "itemInfo");
                 if (frosted() && !privateItem(info)) openingUntil.put(popup, android.os.SystemClock.uptimeMillis() + 450);
-                if (info != null && type("model.data.FolderInfo").isInstance(info) && !DrawerFolders.isFolder(info)) { try { addHomeFolderRows(popup, info); } catch (Throwable error) { logOnce("Home folder menu unavailable", error); } return; }
+                if (info != null && type("model.data.FolderInfo").isInstance(info) && !DrawerFolders.isFolder(info)) { try { addHomeFolderRows(popup, info); } catch (Throwable error) { } return; }
                 if (identity(info) == null || privateItem(info)) return;
+                if (ComposeMenu.active && get(popup, "systemShortcutContainer") == null) return;
                 ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
                 if (rows == null) {
                     rows = new LinearLayout(((View)popup).getContext()); ((LinearLayout)rows).setOrientation(1);
@@ -840,19 +849,24 @@ final class LauncherFeatures {
                 }
                 if (rows.findViewWithTag("pixelsuite_create") != null || rows.findViewWithTag("pixelsuite_rename") != null || rows.findViewWithTag("pixelsuite_icon") != null) return;
                 if(on(DRAWER)||on(ICONS)||on(RENAME))moveBubbleAboveHome(rows);
-                boolean drawer = type("model.data.AppInfo").isInstance(info);
-                if (drawer && on(DRAWER)) addMenuRow(rows, "Create folder", "pixelsuite_create", new View.OnClickListener() {
-                    public void onClick(View v) { call(popup,"close",true); DrawerFolders.create(info); }
-                }, true);
-                if (on(ICONS)) addMenuRow(rows, "Change icon", "pixelsuite_icon", new View.OnClickListener() {
-                    public void onClick(View v) { call(popup,"close",true); LauncherIcon.choose(info, popup); }
-                }, false);
-                if (on(RENAME)) addMenuRow(rows, "Rename", "pixelsuite_rename", new View.OnClickListener() {
-                    public void onClick(View v) { call(popup,"close",true); rename(info); }
-                }, false);
-                if (!drawer || !DrawerFolders.isFolder(info)) PrivacyLock.addRow(rows, popup, info);
+                appRows(popup, info, rows);
             }
         });
+        Safe.run(() -> ComposeMenu.install());
+        Safe.run(() -> NavButtons.install(loader));
+    }
+    static void appRows(final Object popup, final Object info, ViewGroup rows) {
+        boolean drawer = type("model.data.AppInfo").isInstance(info);
+        if (drawer && on(DRAWER)) addMenuRow(rows, "Create folder", "pixelsuite_create", new View.OnClickListener() {
+            public void onClick(View v) { call(popup,"close",true); DrawerFolders.create(info); }
+        }, true);
+        if (on(ICONS)) addMenuRow(rows, "Change icon", "pixelsuite_icon", new View.OnClickListener() {
+            public void onClick(View v) { call(popup,"close",true); LauncherIcon.choose(info, popup); }
+        }, false);
+        if (on(RENAME)) addMenuRow(rows, "Rename", "pixelsuite_rename", new View.OnClickListener() {
+            public void onClick(View v) { call(popup,"close",true); rename(info); }
+        }, false);
+        if (!drawer || !DrawerFolders.isFolder(info)) PrivacyLock.addRow(rows, popup, info);
     }
     static void addHomeFolderRows(final Object popup, final Object info) {
         ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
@@ -904,9 +918,9 @@ final class LauncherFeatures {
         android.animation.ValueAnimator anim = android.animation.ValueAnimator.ofFloat(from, opening ? 1f : 0f);
         anim.setDuration(opening ? 260 : 200); anim.setInterpolator(new android.view.animation.PathInterpolator(.2f, 0f, 0f, 1f));
         anim.addUpdateListener(new android.animation.ValueAnimator.AnimatorUpdateListener() { public void onAnimationUpdate(android.animation.ValueAnimator va) {
-            float t = (Float) va.getAnimatedValue(); int added = 0;
+            float t = (Float) va.getAnimatedValue();
             for (int i = 0; i < 2; i++) {
-                View r = choices[i]; int h = Math.max(0, Math.round(full * t)); r.getLayoutParams().height = h; added += h;
+                View r = choices[i]; int h = Math.max(0, Math.round(full * t)); r.getLayoutParams().height = h;
                 float shown = Math.max(0f, Math.min(1f, (t - .15f * i) / (1f - .15f * i)));
                 r.setAlpha(shown); r.setTranslationY(-FrostedSurface.dp(c, 6) * (1f - shown));
             }

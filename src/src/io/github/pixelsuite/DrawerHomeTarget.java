@@ -2,13 +2,11 @@ package io.github.pixelsuite;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
-import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
-import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +15,7 @@ final class DrawerHomeTarget {
     static Activity owner;
     static LinearLayout pill;
     static GradientDrawable background;
-    static int savedFlags,hover=-1;
+    static int hover=-1;
     static boolean intro;
     static final Rect bounds=new Rect();
     static final int[] position=new int[2],origin=new int[2];
@@ -56,7 +54,7 @@ final class DrawerHomeTarget {
                 removePill=second;removeHover=0;
                 animateIn(second,height,false);
             }
-        }catch(Throwable error){Module.log("Drawer home target unavailable",error);hide();}
+        }catch(Throwable error){hide();}
     }
     private static GradientDrawable pillBackground;
     private static LinearLayout makePill(Activity a,String text,int glyph,boolean compact,String description){
@@ -76,7 +74,6 @@ final class DrawerHomeTarget {
         layer.addView(view,(ViewGroup.LayoutParams)params);
     }
     private static void animateIn(final View view,int height,final boolean first){
-        Activity a=LauncherFeatures.activity.get();
         view.setTranslationY(0);
         Balloon.inflate(view,first?0:45,new Runnable(){public void run(){if(first&&pill==view){intro=false;motion();}}});
     }
@@ -114,7 +111,7 @@ final class DrawerHomeTarget {
     static void hide(){
         final LinearLayout second=removePill;removePill=null;removeBackground=null;removeHover=0;overRemove=false;
         if(second!=null)Balloon.deflate(second,0,new Runnable(){public void run(){if(second.getParent() instanceof ViewGroup)((ViewGroup)second.getParent()).removeView(second);}});
-        final LinearLayout old=pill;final Activity a=owner;pill=null;owner=null;background=null;hover=-1;intro=false;
+        final LinearLayout old=pill;pill=null;owner=null;background=null;hover=-1;intro=false;
         if(old!=null)Balloon.deflate(old,25,new Runnable(){public void run(){if(old.getParent() instanceof ViewGroup)((ViewGroup)old.getParent()).removeView(old);}});
     }
 }

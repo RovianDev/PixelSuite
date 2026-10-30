@@ -28,7 +28,7 @@ final class ShapeWatch {
                 Object shape = LauncherFeatures.call(manager, "getIconShape");
                 return (Path) shape.getClass().getMethod("getPath", float.class).invoke(shape, 100f);
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("Icon shape from the launcher unavailable", error); return null; }
+        } catch (Throwable error) { return null; }
     }
 
     static String token(Context c) {
@@ -68,7 +68,7 @@ final class ShapeWatch {
                     } catch (Throwable ignored) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drawer icon shape unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static void installFolderShape() {
@@ -79,10 +79,10 @@ final class ShapeWatch {
                         Object state = p.getResult(); if (state == null) return;
                         Object icon = LauncherFeatures.get(state, "iconShape");
                         if (icon != null) LauncherFeatures.set(state, "folderShape", icon);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Folder shape from icon shape unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder shape hook unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static void installThemedLookups() {
@@ -90,12 +90,10 @@ final class ShapeWatch {
             Class<?> type = Class.forName("com.android.launcher3.icons.cache.CacheLookupFlag", true, LauncherFeatures.type("Launcher").getClassLoader());
             java.lang.reflect.Field flag = type.getDeclaredField("flag"); flag.setAccessible(true);
             Object[] cache = (Object[]) type.getField("flagCache").get(null);
-            int changed = 0;
-            for (Object f : cache) if (f != null) { int v = flag.getInt(f); if ((v & 8) == 0) { flag.setInt(f, v | 8); changed++; } }
+            for (Object f : cache) if (f != null) { int v = flag.getInt(f); if ((v & 8) == 0) { flag.setInt(f, v | 8); } }
             Object fallback = type.getField("DEFAULT_LOOKUP_FLAG").get(null);
-            if (fallback != null) { int v = flag.getInt(fallback); if ((v & 8) == 0) { flag.setInt(fallback, v | 8); changed++; } }
-            Module.log("Themed icons for every app: " + changed + " lookup flags");
-        } catch (Throwable error) { LauncherFeatures.logOnce("Themed icons for drawer apps unavailable", error); }
+            if (fallback != null) { int v = flag.getInt(fallback); if ((v & 8) == 0) { flag.setInt(fallback, v | 8); } }
+        } catch (Throwable error) { }
     }
 
     private static final java.util.Set<String> neverThemed = new java.util.HashSet<String>();
@@ -132,10 +130,10 @@ final class ShapeWatch {
                             synchronized (neverThemed) { neverThemed.add(key); }
                             try { fadeIn((android.graphics.drawable.Drawable) LauncherFeatures.get(cell, "mIcon")); } catch (Throwable ignored) { }
                         } }, 800);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Themed icon wait unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Themed icon wait hook unavailable", error); }
+        } catch (Throwable error) { }
     }
     private static void fadeIn(final android.graphics.drawable.Drawable icon) {
         if (icon == null) return;
@@ -161,10 +159,10 @@ final class ShapeWatch {
                         }
                         int loading = ((Number) LauncherFeatures.get(p.thisObject, "loadingColor")).intValue();
                         LauncherFeatures.set(delegate, "fillColor", FrostedSurface.composite(loading, themedFill | 0xff000000));
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Themed loading placeholder unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Themed loading placeholder hook unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static void install() {
@@ -184,7 +182,7 @@ final class ShapeWatch {
         try {
             Xp.hookAllMethods(LauncherFeatures.type("Launcher"), "onResume", check);
             Xp.hookAllMethods(LauncherFeatures.type("LauncherModel"), "rebindCallbacks", check);
-        } catch (Throwable error) { LauncherFeatures.logOnce("Icon shape watch unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static void check(Activity a) {
@@ -195,22 +193,20 @@ final class ShapeWatch {
             if (now.equals(last)) return;
             last = now;
             refreshDrawer(a);
-        } catch (Throwable error) { LauncherFeatures.logOnce("Icon shape refresh unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static void refreshDrawer(Activity a) {
-        int lists = 0;
         try {
             Object holders = LauncherFeatures.get(LauncherFeatures.call(a, "getAppsView"), "mAH");
             for (Object holder : (List<?>) holders) {
                 if (holder == null) continue;
                 try {
                     Object list = LauncherFeatures.get(holder, "mRecyclerView");
-                    if (list != null) { LauncherFeatures.call(LauncherFeatures.call(list, "getRecycledViewPool"), "clear"); LauncherFeatures.call(LauncherFeatures.call(list, "getAdapter"), "notifyDataSetChanged"); lists++; }
+                    if (list != null) { LauncherFeatures.call(LauncherFeatures.call(list, "getRecycledViewPool"), "clear"); LauncherFeatures.call(LauncherFeatures.call(list, "getAdapter"), "notifyDataSetChanged"); }
                 } catch (Throwable ignored) { }
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drawer rebind after shape change unavailable", error); }
+        } catch (Throwable error) { }
         LauncherFeatures.refresh();
-        Module.log("Icon shape changed: drawer redrawn (" + lists + " lists)");
     }
 }

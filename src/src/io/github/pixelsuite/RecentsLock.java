@@ -49,33 +49,24 @@ final class RecentsLock {
     private static final Handler main = new Handler(Looper.getMainLooper());
     private static final Set<Integer> partial = new HashSet<Integer>();
     private static final java.util.concurrent.ExecutorService worker = java.util.concurrent.Executors.newSingleThreadExecutor();
-    private static boolean failedLogged;
 
     private RecentsLock() {}
 
     static void install(ClassLoader loader) {
         cl = loader;
-        int n = 0;
         try {
             cRecents = Xp.findClass(QS + "views.RecentsView", cl);
             cTaskView = Xp.findClass(QS + "views.TaskView", cl);
             cRemove = Xp.findClass(QS + "TaskViewShortFactory$RemoveTaskSystemShortcut", cl);
             cTaskData = Xp.findClass(QS + "views.RecentsDismissUtils$DismissedTaskData", cl);
-        } catch (Throwable error) { Module.log("Recents lock unavailable", error); return; }
-        n += menuHooks();
-        n += snapshotHook();
-        n += dismissHooks();
-        n += badgeHooks();
-        Module.log("Recents lock: " + n + " hooks");
+        } catch (Throwable error) { return; }
+        menuHooks();
+        snapshotHook();
+        dismissHooks();
+        badgeHooks();
     }
 
     static boolean on(Context c) { try { return c != null && sOn.on(c); } catch (Throwable t) { return false; } }
-
-    private static void fail(String what, Throwable error) {
-        if (failedLogged) return;
-        failedLogged = true;
-        Module.log("Recents lock: " + what, error);
-    }
 
     private static void load(Context c) {
         if (prefs != null || c == null) return;
@@ -83,10 +74,10 @@ final class RecentsLock {
             prefs = c.getApplicationContext().getSharedPreferences(PREFS, 0);
             Set<String> saved = prefs.getStringSet(PREF_KEY, null);
             if (saved != null) locked.addAll(saved);
-        } catch (Throwable error) { fail("locks could not be read", error); }
+        } catch (Throwable error) { }
     }
     private static void save() {
-        try { if (prefs != null) prefs.edit().putStringSet(PREF_KEY, new HashSet<String>(locked)).apply(); } catch (Throwable error) { fail("locks could not be saved", error); }
+        try { if (prefs != null) prefs.edit().putStringSet(PREF_KEY, new HashSet<String>(locked)).apply(); } catch (Throwable error) { }
     }
 
     static String identity(Object container) {
@@ -175,9 +166,9 @@ final class RecentsLock {
                         } catch (Throwable ignored) { }
                     }
                 }).size();
-            } catch (Throwable error) { Module.log("Recents lock: split tracking unavailable", error); }
+            } catch (Throwable error) { }
             return n;
-        } catch (Throwable error) { Module.log("Recents lock: picture fill unavailable", error); return 0; }
+        } catch (Throwable error) { return 0; }
     }
     private static final Set<Integer> wasSplit = java.util.Collections.newSetFromMap(RecentsLock.<Boolean>lastUsedIds(64));
     private static <V> java.util.Map<Integer, V> lastUsedIds(final int max) {
@@ -186,11 +177,11 @@ final class RecentsLock {
         };
     }
     private static final WeakHashMap<android.graphics.Bitmap, Band> bands = new WeakHashMap<android.graphics.Bitmap, Band>();
-    private static final Band NO_BAND = new Band(0, 0, null);
+    private static final Band NO_BAND = new Band(null);
     private static final WeakHashMap<android.graphics.Bitmap, Boolean> made = new WeakHashMap<android.graphics.Bitmap, Boolean>();
     private static final class Band {
-        final int top, bottom; final android.graphics.Bitmap card;
-        Band(int top, int bottom, android.graphics.Bitmap card) { this.top = top; this.bottom = bottom; this.card = card; }
+        final android.graphics.Bitmap card;
+        Band(android.graphics.Bitmap card) { this.card = card; }
     }
 
     private static void fill(Object thumbnail) {
@@ -418,7 +409,7 @@ final class RecentsLock {
                 blend.startTransition(220);
                 main.postDelayed(new Runnable() { public void run() { Xp.setAdditionalInstanceField(iv, "pixelsuite_launching", null); } }, 1500);
             }
-        } catch (Throwable error) { fail("launch settle", error); }
+        } catch (Throwable error) { }
     }
 
     private static void unband(android.widget.ImageView image) {
@@ -466,7 +457,7 @@ final class RecentsLock {
                 if (edge >= h * 0.3f) { top = edge; bottom = h; }
             }
             if (top < 0 || bottom - top < 20) return NO_BAND;
-            return new Band(top, bottom, compose(b, top, bottom));
+            return new Band(compose(b, top, bottom));
         } catch (Throwable t) { return NO_BAND; }
         finally { if (b != source && b != null) try { b.recycle(); } catch (Throwable ignored) { } }
     }
@@ -563,7 +554,7 @@ final class RecentsLock {
                         Xp.setAdditionalInstanceField(p.thisObject, "pixelsuite_glyph", glyph);
                         Xp.setAdditionalInstanceField(p.thisObject, "pixelsuite_text", text);
                         p.setResult(null);
-                    } catch (Throwable error) { fail("menu row", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
             n += Xp.hookAllMethods(cRemove, "onClick", new Xp.Callback() {
@@ -586,10 +577,10 @@ final class RecentsLock {
                             try { Xp.callMethod(item, "dismissTaskMenuView"); } catch (Throwable ignored) { }
                             toggle(taskView, container);
                         } }, close);
-                    } catch (Throwable error) { fail("menu click", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
-        } catch (Throwable error) { Module.log("Recents lock: menu unavailable", error); }
+        } catch (Throwable error) { }
         return n;
     }
 
@@ -603,7 +594,7 @@ final class RecentsLock {
                         if (!(p.args[0] instanceof MotionEvent) || ((MotionEvent) p.args[0]).getAction() != MotionEvent.ACTION_DOWN) return;
                         Object tv = Xp.getObjectField(p.thisObject, "taskBeingDragged");
                         if (tv != null && active(tv)) Xp.setObjectField(p.thisObject, "allowDetach", Boolean.FALSE);
-                    } catch (Throwable error) { fail("swipe guard", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
             n += Xp.hookAllMethods(touch, "onDrag", new Xp.Callback() {
@@ -625,7 +616,7 @@ final class RecentsLock {
                         try { upTravel = (Boolean) Xp.callMethod(handler, "isGoingUp", travel, rtl) && Math.abs(travel) > length * 0.2f; } catch (Throwable ignored) { }
                         boolean tried = upFling || upTravel;
                         Xp.setAdditionalInstanceField(p.thisObject, "pixelsuite_tried", tried ? tv : null);
-                    } catch (Throwable error) { fail("swipe end", error); }
+                    } catch (Throwable error) { }
                 }
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     Object tv = Xp.getAdditionalInstanceField(p.thisObject, "pixelsuite_tried");
@@ -639,7 +630,7 @@ final class RecentsLock {
                         p.args[1] = Boolean.FALSE; p.args[3] = Boolean.FALSE;
                         Object d = p.args[2];
                         if (d != null && cTaskData.isInstance(d)) p.args[2] = Xp.newInstance(cTaskData, ((Number) Xp.getObjectField(d, "startVelocity")).floatValue(), ((Number) Xp.getObjectField(d, "dismissLength")).intValue(), 0f, ((Number) Xp.getObjectField(d, "dismissThreshold")).intValue());
-                    } catch (Throwable error) { fail("settle guard", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
             n += Xp.hookAllMethods(cRecents, "dismissTaskView", new Xp.Callback() {
@@ -648,7 +639,7 @@ final class RecentsLock {
                         if (p.args.length < 2 || !Boolean.TRUE.equals(p.args[1]) || !active(p.args[0])) return;
                         p.setResult(null);
                         refused((View) p.args[0]);
-                    } catch (Throwable error) { fail("dismiss guard", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
             n += Xp.hookAllMethods(cRecents, "dismissTask", new Xp.Callback() {
@@ -670,10 +661,10 @@ final class RecentsLock {
                         if (!any) return;
                         p.setResult(null);
                         clearUnlocked(recents, all);
-                    } catch (Throwable error) { fail("clear all", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
-        } catch (Throwable error) { Module.log("Recents lock: dismiss guard unavailable", error); }
+        } catch (Throwable error) { }
         return n;
     }
 
@@ -697,7 +688,6 @@ final class RecentsLock {
             Xp.setAdditionalInstanceField(taskView, "pixelsuite_split_off", Boolean.TRUE);
             float top = Math.min(keepView.getY(), goView.getY()), bottom = Math.max(keepView.getY() + keepView.getHeight(), goView.getY() + goView.getHeight());
             float left = Math.min(keepView.getX(), goView.getX()), right = Math.max(keepView.getX() + keepView.getWidth(), goView.getX() + goView.getWidth());
-            float scale = Math.min((right - left) / Math.max(1, keepView.getWidth()), (bottom - top) / Math.max(1, keepView.getHeight()));
             float cx = (left + right) / 2f, cy = (top + bottom) / 2f;
             PathInterpolator ease = new PathInterpolator(0.2f, 0f, 0f, 1f);
             keepView.setTranslationZ(2f); goView.setTranslationZ(-2f);
@@ -713,7 +703,7 @@ final class RecentsLock {
                     .translationXBy(cx - (keepView.getX() + keepView.getWidth() / 2f))
                     .translationYBy(cy - (keepView.getY() + keepView.getHeight() / 2f))
                     .setStartDelay(60).setDuration(320).setInterpolator(ease).start();
-        } catch (Throwable error) { fail("split animation", error); }
+        } catch (Throwable error) { }
         final Object rv = recentsOf(taskView);
         final Runnable remove = new Runnable() { public void run() { removeTasks(rv, java.util.Collections.singletonList(goId), true); } };
         boolean running = false;
@@ -737,7 +727,7 @@ final class RecentsLock {
             try {
                 Object wrapper = Xp.callStaticMethod(Xp.findClass("com.android.systemui.shared.system.ActivityManagerWrapper", cl), "getInstance");
                 for (int id : ids) Xp.callMethod(wrapper, "removeTask", id);
-            } catch (Throwable error) { fail("remove task", error); }
+            } catch (Throwable error) { }
         } });
         if (recents != null) {
             Runnable reload = new Runnable() { public void run() { try { Xp.callMethod(recents, "reloadIfNeeded"); } catch (Throwable ignored) { } } };
@@ -805,7 +795,7 @@ final class RecentsLock {
             boolean closed = false;
             try { Xp.callMethod(recents, "finishRecentsAnimation", true, false, (Runnable) new Runnable() { public void run() { try { Xp.callMethod(recents, "startHome"); } catch (Throwable ignored) { } } }); closed = true; }
             catch (Throwable ignored) { }
-            if (!closed) try { Xp.callMethod(recents, "startHome"); } catch (Throwable error) { fail("clear close", error); }
+            if (!closed) try { Xp.callMethod(recents, "startHome"); } catch (Throwable error) { }
             main.postDelayed(after, 150);
             main.postDelayed(new Runnable() { public void run() {
                 try { View rv = (View) recents; if (rv.isShown() && rv.getAlpha() > 0.5f) Xp.callMethod(recents, "startHome"); } catch (Throwable ignored) { }
@@ -883,13 +873,13 @@ final class RecentsLock {
                         if (p.thisObject instanceof Activity) { try { base = ((Activity) p.thisObject).getWindow().getDecorView(); } catch (Throwable ignored) { } }
                         else if (p.thisObject instanceof View) base = (View) p.thisObject;
                         if (tap((MotionEvent) p.args[0], base)) p.setResult(Boolean.TRUE);
-                    } catch (Throwable error) { fail("badge tap", error); }
+                    } catch (Throwable error) { }
                 }
             };
             int t = Xp.hookAllMethods(Xp.findClass("com.android.launcher3.Launcher", cl), "dispatchTouchEvent", taps).size();
             if (t == 0) t = Xp.hookAllMethods(Xp.findClass("com.android.launcher3.views.BaseDragLayer", cl), "dispatchTouchEvent", taps).size();
             n += t;
-        } catch (Throwable error) { Module.log("Recents lock: badges unavailable", error); }
+        } catch (Throwable error) { }
         return n;
     }
 
@@ -919,7 +909,7 @@ final class RecentsLock {
                 if (b != null) b.owner = id;
             }
             for (int i = list.size(); i < 3; i++) { Badge b = badgeFor(tv, i); if (b != null) b.remove(); }
-        } catch (Throwable error) { fail("badge", error); }
+        } catch (Throwable error) { }
     }
     private static Badge badgeFor(View tv, int slot) {
         ViewGroup g = (ViewGroup) tv;
@@ -1250,6 +1240,6 @@ final class RecentsLock {
                 } }).start();
                 for (View v : hidden) if (v.getParent() != null && !((Badge) v).leaving) v.animate().alpha(1f).setDuration(160).start();
             } }, 2500);
-        } catch (Throwable error) { fail("message", error); }
+        } catch (Throwable error) { }
     }
 }

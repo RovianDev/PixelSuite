@@ -55,7 +55,6 @@ final class IconEditor {
         Editor editor = null;
         try { editor = new Editor(a, picture, label, icon, result); editor.open(); }
         catch (Throwable error) {
-            Module.log("Icon editor unavailable", error);
             if (editor != null && editor.dialog != null && editor.dialog.isShowing()) return;
             int side = Math.min(picture.getWidth(), picture.getHeight());
             RectF middle = new RectF((picture.getWidth() - side) / 2f, (picture.getHeight() - side) / 2f, 0, 0);
@@ -104,7 +103,7 @@ final class IconEditor {
             Xp.callMethod(delegate, "addToPath", 0f, 0f, size / 2f, p);
             RectF b = new RectF(); p.computeBounds(b, true);
             if (b.width() > size * 0.8f && b.height() > size * 0.8f && b.width() < size * 1.2f) return p;
-        } catch (Throwable error) { LauncherFeatures.logOnce("Icon editor: launcher icon shape unavailable, circle used", error); }
+        } catch (Throwable error) { }
         p.reset();
         p.addCircle(size / 2f, size / 2f, size / 2f, Path.Direction.CW);
         return p;

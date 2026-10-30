@@ -11,6 +11,6 @@ public final class DrawerPickerOrderTest {
   int checks=8;
   for(String a:names)for(String b:names){check(Integer.signum(cmp(a,b))==-Integer.signum(cmp(b,a)));checks++;
    for(String c:names)if(cmp(a,b)<=0&&cmp(b,c)<=0){check(cmp(a,c)<=0);checks++;}}
-  System.out.println("PASS: "+checks+" picker fixtures, antisymmetry/transitivity checks; drawer order preserved");
+  System.err.println("PASS: "+checks+" picker fixtures, antisymmetry/transitivity checks; drawer order preserved");
  }
 }

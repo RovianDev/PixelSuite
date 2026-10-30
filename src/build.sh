@@ -61,6 +61,7 @@ package_apk() {
 }
 printf 'Dex heap: %s\n' "$HEAP"
 step 'Preparation' prepare
+step 'Search catalog' python3 generate-app-search.py .
 step 'javac (stubs + app)' compile
 if [[ "$MODE" == --fast ]]; then step 'd8 (test mode; no shrinking or obfuscation)' dex; else step 'd8 (release mode; no shrinking or obfuscation)' dex; fi
 step 'Resources' resources

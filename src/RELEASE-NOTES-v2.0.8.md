@@ -35,6 +35,8 @@ Bugs in Google's own apps that Pixel Suite now fixes:
 - **Pixel Launcher:** after split screen in landscape, Screenshot / Select / Clear all sat lower in portrait recents, then snapped into place. They're in their place from the first frame now.
 - **Pixel Launcher:** Undo after removing a home folder didn't bring the folder back. Now it grows back into its place (with its page, if it was alone there), and a locked folder gets its lock back.
 
+## ⚡ Clean-up
+- Every temporary diagnostic from the previews is gone.
 
 ## Setup
 Update and reboot. Keep the recommended LSPosed scope (with Pixel Studio and Google Photos).

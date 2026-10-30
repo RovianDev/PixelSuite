@@ -24,21 +24,19 @@ final class DarkChips {
         screenW = android.content.res.Resources.getSystem().getDisplayMetrics().widthPixels;
         panels = "Pixel Studio".equals(where) || "screen recording".equals(where);
         wide = "screen recording".equals(where);
-        int n = 0;
         for (String name : new String[]{"android.graphics.BaseRecordingCanvas", "android.graphics.Canvas"}) {
             try {
                 Class<?> c = Class.forName(name);
                 Method rect = c.getDeclaredMethod("drawRect", float.class, float.class, float.class, float.class, Paint.class);
                 Method round = c.getDeclaredMethod("drawRoundRect", float.class, float.class, float.class, float.class, float.class, float.class, Paint.class);
-                handles.add(Xp.hookMethod(rect, new Fill(false))); n++;
-                handles.add(Xp.hookMethod(round, new Fill(true))); n++;
+                handles.add(Xp.hookMethod(rect, new Fill(false)));
+                handles.add(Xp.hookMethod(round, new Fill(true)));
                 if (wide) {
-                    handles.add(Xp.hookMethod(c.getDeclaredMethod("drawRoundRect", android.graphics.RectF.class, float.class, float.class, Paint.class), new Shape(0))); n++;
-                    handles.add(Xp.hookMethod(c.getDeclaredMethod("drawPath", android.graphics.Path.class, Paint.class), new Shape(1))); n++;
+                    handles.add(Xp.hookMethod(c.getDeclaredMethod("drawRoundRect", android.graphics.RectF.class, float.class, float.class, Paint.class), new Shape(0)));
+                    handles.add(Xp.hookMethod(c.getDeclaredMethod("drawPath", android.graphics.Path.class, Paint.class), new Shape(1)));
                 }
-            } catch (Throwable missing) { Module.log("dark buttons: " + name + " unavailable (" + missing + ")"); }
+            } catch (Throwable missing) { }
         }
-        Module.log("dark buttons: " + n + " hooks (" + where + ")");
     }
 
     static synchronized void off() {
@@ -122,6 +120,7 @@ final class DarkChips {
     }
 
     static void drawRim(Canvas canvas, float l, float t, float r, float b, float radius, int alpha) {
+        if (!GlassRim.superDarkRims()) return;
         Paint p = rim.get();
         float width = 1.5f * density;
         if (p == null) {

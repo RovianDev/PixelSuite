@@ -1,7 +1,6 @@
 package io.github.pixelsuite;
 
 import android.app.Activity;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +47,7 @@ final class DrawerDrag {
                     Object[] h=hidden.get();hidden.remove();if(h!=null)try{set(h[0],"id",h[1]);}catch(Throwable ignored){}
                 }
             });
-        }catch(Throwable error){LauncherFeatures.logOnce("Drawer folder Cancel label unavailable",error);}
+        }catch(Throwable error){}
         Xp.hookAllMethods(type("DropTargetBar"),"onDragStart",new Xp.Callback(){
             protected void afterHookedMethod(Xp.Param p){
                 Session s=session;if(s!=null&&!s.exited)return;
@@ -65,7 +64,6 @@ final class DrawerDrag {
         for(android.view.ViewParent p=v.getParent();p!=null;p=p.getParent())if(p==s.stay.folder)return true;
         return false;
     }
-    static String heldKey(){Session s=session;return s==null?null:s.key;}
     static void refreshHover(){Session s=session;if(s==null||s.exited)return;try{call(s.controller,"handleMoveEvent",s.lastX,s.lastY);}catch(Throwable ignored){}}
     static void pause(){if(session!=null&&!session.exited)cancel();}
     static boolean start(final View source){
@@ -87,11 +85,11 @@ final class DrawerDrag {
             finally{source.setTag(info);set(get(a,"mWorkspace"),"mDragSourceInternal",null);}
             source.setVisibility(View.INVISIBLE);
             return true;
-        }catch(Throwable error){Module.log("Drawer drag could not start",error);finish();return false;}
+        }catch(Throwable error){finish();return false;}
     }
     static void cancel(){
         Session s=session;if(s==null)return;
-        try{call(s.controller,"cancelDrag");}catch(Throwable error){Module.log("Drawer drag cleanup",error);}
+        try{call(s.controller,"cancelDrag");}catch(Throwable error){}
         if(session!=null)finish();
     }
     static void move(float rawX,float rawY){
@@ -151,7 +149,7 @@ final class DrawerDrag {
                 if(candidate!=hovered){clearHover();hovered=candidate;}
                 if(hovered!=null){int[] location=new int[2],base=new int[2];hovered.getLocationOnScreen(location);layer.getLocationOnScreen(base);localX=x-(location[0]-base[0]);localY=y-(location[1]-base[1]);}
                 boolean folderDrop=hovered!=null&&LauncherFeatures.on(LauncherFeatures.DRAWER)&&intoFolder(hovered);
-                if(folderDrop!=indicating){indicating=folderDrop;try{if(folderDrop)DropIndicator.show(hovered);else DropIndicator.hide(hovered);}catch(Throwable error){LauncherFeatures.logOnce("Drawer drop indicator unavailable",error);}}
+                if(folderDrop!=indicating){indicating=folderDrop;try{if(folderDrop)DropIndicator.show(hovered);else DropIndicator.hide(hovered);}catch(Throwable error){}}
                 boolean lift=hovered!=null&&key.startsWith("folder:")&&DrawerFolders.isFolder(hovered.getTag());
                 if(lift!=lifted&&hovered!=null){lifted=lift;hovered.animate().scaleX(lift?1.06f:1f).scaleY(lift?1.06f:1f).setDuration(150).start();}
                 return null;
@@ -206,14 +204,14 @@ final class DrawerDrag {
                 String targetKey=LauncherFeatures.identity(target.getTag());if(targetKey==null)return;
                 int to=f.apps.indexOf(targetKey);if(to<0)return;
                 if(FolderSort.drawerMove(id,key,to)){DrawerFolders.reopenId=id;try{call(stay.folder,"close",false);}catch(Throwable ignored){}}
-            }catch(Throwable error){Module.log("Drawer folder reorder failed",error);}
+            }catch(Throwable error){}
         }
         void takeOut(){
             try{
                 if(reorder!=null)reorder.restore();
                 DrawerFolders.closeDrawerFolder(false);
                 MultiDrag.takeOut(key);
-            }catch(Throwable error){Module.log("Drawer folder remove failed",error);}
+            }catch(Throwable error){}
         }
         void clearHover(){
             if(hovered!=null){
@@ -248,7 +246,6 @@ final class DrawerDrag {
             Object workspace=get(activity,"mWorkspace");set(workspace,"mDragSourceInternal",null);
             call(workspace,"onDragStart",drag,get(controller,"mOptions"));
             call(get(activity,"mDropTargetBar"),"onDragStart",drag,get(controller,"mOptions"));
-            Module.log("Drawer drag handed off above search bar");
         }
     }
     static Object objectMethod(Object self,Method m,Object[] args){

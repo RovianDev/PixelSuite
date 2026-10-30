@@ -78,14 +78,13 @@ final class GoogleAppCards {
         return new BitmapDrawable(c.getResources(),bitmap);
     }
     static final java.util.regex.Pattern HASH=java.util.regex.Pattern.compile("[a-f0-9]{64}");
-    static volatile boolean loggedIcon;
     static void load(final String hash){
         if(!HASH.matcher(hash).matches())return;synchronized(pending){if(!pending.add(hash))return;}
         IO.execute(new Runnable(){public void run(){try{
             Context c=GoogleAliases.context();if(c==null)return;Bitmap image;
             try(java.io.InputStream in=c.getContentResolver().openInputStream(AliasProvider.URI.buildUpon().appendPath("icons").appendPath(hash).build())){image=BitmapFactory.decodeStream(in);}
             if(image!=null&&image.getWidth()<=256&&image.getHeight()<=256)images.put(hash,image);
-        }catch(Throwable error){if(!loggedIcon){loggedIcon=true;Module.log("Google app icon unavailable",error);}}finally{synchronized(pending){pending.remove(hash);}if(images.get(hash)!=null)changed();}}});
+        }catch(Throwable error){}finally{synchronized(pending){pending.remove(hash);}if(images.get(hash)!=null)changed();}}});
     }
     static void install(){
         Xp.findAndHookMethod(TextView.class,"setText",CharSequence.class,TextView.BufferType.class,new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){

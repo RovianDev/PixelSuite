@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 final class ComposeFrost {
+    private static GlassRim glassRim;
+
     private ComposeFrost() {}
 
     static final class Frame {
@@ -44,25 +46,23 @@ final class ComposeFrost {
         editorMode = "Pixel Studio".equals(where);
         android.util.DisplayMetrics m = android.content.res.Resources.getSystem().getDisplayMetrics();
         density = m.density; screenW = m.widthPixels; screenH = m.heightPixels;
-        int n = 0;
         if (invertDarkCards) {
             try {
-                n += Xp.hookAllMethods(android.app.Dialog.class, "onStart", new Xp.Callback() {
+                Xp.hookAllMethods(android.app.Dialog.class, "onStart", new Xp.Callback() {
                     @Override protected void afterHookedMethod(Xp.Param p) { viewDialog((android.app.Dialog) p.thisObject); }
-                }).size();
-            } catch (Throwable missing) { Module.log("compose frost: Dialog.onStart unavailable", missing); }
+                });
+            } catch (Throwable missing) { }
         }
         if (editorMode) {
-            n += editorHooks();
-            n += enableDraw();
+            editorHooks();
+            enableDraw();
         } else if (titleFilter != null) {
-            n += windowHooks();
+            windowHooks();
         } else if (activityFilter != null) {
-            n += activityHooks();
+            activityHooks();
         } else {
-            n += enableDraw();
+            enableDraw();
         }
-        Module.log("compose frost: " + n + " hooks (" + where + ")");
     }
 
     private static final List<Object> drawHandles = new ArrayList<Object>();
@@ -80,7 +80,7 @@ final class ComposeFrost {
                     if (f != null) fade(f);
                 }
             }));
-        } catch (Throwable error) { Module.log("compose frost: ViewRootImpl unavailable", error); return 0; }
+        } catch (Throwable error) { return 0; }
         for (String name : new String[]{"android.graphics.BaseRecordingCanvas", "android.graphics.Canvas"}) {
             try {
                 Class<?> c = Class.forName(name);
@@ -98,7 +98,7 @@ final class ComposeFrost {
                     try { add(c.getDeclaredMethod("drawColor", long.class, Class.forName("android.graphics.BlendMode")), new Fill()); } catch (Throwable ignored) { }
                     try { drawHandles.addAll(Xp.hookAllMethods(c, "drawBitmap", new Icon())); } catch (Throwable ignored) { }
                 }
-            } catch (Throwable missing) { Module.log("compose frost: " + name + " unavailable", missing); }
+            } catch (Throwable missing) { }
         }
         try {
             Class<?> rc = Class.forName("android.graphics.RecordingCanvas"), rn = Class.forName("android.graphics.RenderNode");
@@ -108,7 +108,6 @@ final class ComposeFrost {
             add(rc.getDeclaredMethod("drawRenderNode", rn), new Parent());
         } catch (Throwable error) {
             sNodeAlpha = null;
-            if (!sFadeFailed) { sFadeFailed = true; Module.log("compose frost: the frost can't follow its card's fade", error); }
         }
         return drawHandles.size() - before;
     }
@@ -147,7 +146,7 @@ final class ComposeFrost {
                     } catch (Throwable ignored) { }
                 }
             }).size();
-        } catch (Throwable error) { Module.log("compose frost: window hooks unavailable, always on", error); n += enableDraw(); }
+        } catch (Throwable error) { n += enableDraw(); }
         return n;
     }
 
@@ -160,7 +159,7 @@ final class ComposeFrost {
             if (Xp.hookMethod(android.app.Activity.class.getDeclaredMethod("onDestroy"), new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { if (named(p.thisObject.getClass().getName())) disableDraw(); }
             }) != null) n++;
-        } catch (Throwable error) { Module.log("compose frost: activity hooks unavailable, always on", error); n += enableDraw(); }
+        } catch (Throwable error) { n += enableDraw(); }
         return n;
     }
 
@@ -186,7 +185,7 @@ final class ComposeFrost {
                     } catch (Throwable ignored) { }
                 }
             }).size();
-        } catch (Throwable missing) { Module.log("compose frost: PhoneWindow unavailable", missing); }
+        } catch (Throwable missing) { }
         try {
             n += Xp.hookAllMethods(View.class, "setBackgroundDrawable", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
@@ -203,7 +202,7 @@ final class ComposeFrost {
             n += Xp.hookAllMethods(android.app.Activity.class, "onPause", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) { if (resumedEditor == p.thisObject) resumedEditor = null; }
             }).size();
-        } catch (Throwable missing) { Module.log("compose frost: editor lifecycle hooks unavailable", missing); }
+        } catch (Throwable missing) { }
         Xp.Callback keep = new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
                 try {
@@ -214,7 +213,7 @@ final class ComposeFrost {
                 } catch (Throwable ignored) { }
             }
         };
-        try { n += Xp.hookAllMethods(android.app.Activity.class, "convertFromTranslucent", keep).size(); } catch (Throwable missing) { Module.log("compose frost: convertFromTranslucent unavailable", missing); }
+        try { n += Xp.hookAllMethods(android.app.Activity.class, "convertFromTranslucent", keep).size(); } catch (Throwable missing) { }
         try { n += Xp.hookAllMethods(android.app.Activity.class, "setTranslucent", keep).size(); } catch (Throwable ignored) { }
         return n;
     }
@@ -340,7 +339,6 @@ final class ComposeFrost {
     private static final Map<Drawable, Integer> shownAlpha = new WeakHashMap<Drawable, Integer>();
     private static java.lang.reflect.Field sCanvasNode, sBlurNode;
     private static volatile Method sNodeAlpha;
-    private static boolean sFadeFailed;
 
     static final class Parent extends Xp.Callback {
         @Override protected void beforeHookedMethod(Xp.Param p) {
@@ -416,9 +414,7 @@ final class ComposeFrost {
                     return;
                 }
                 if (darkCard && phoneDark() && SuperDark.inEffect(ctx)) {
-                    if (c == 0xff000000) return;
-                    paint.setColor(0xff000000);
-                    Xp.setAdditionalInstanceField(p, "pixelsuite_card", c);
+                    if (c != 0xff000000) { paint.setColor(0xff000000); Xp.setAdditionalInstanceField(p, "pixelsuite_card", c); }
                     Xp.setAdditionalInstanceField(p, "pixelsuite_rim", new float[]{l, t, r, b, rx});
                     return;
                 }
@@ -437,6 +433,7 @@ final class ComposeFrost {
                 d.draw((Canvas) p.thisObject);
                 paint.setColor(flip ? preInvert(tone(ctx, false)) : tone(ctx, darkCard));
                 Xp.setAdditionalInstanceField(p, "pixelsuite_card", c);
+                if (GlassRim.wanted(ctx)) Xp.setAdditionalInstanceField(p, "pixelsuite_glass", new float[]{l, t, r, b, rx, flip ? 1f : 0f});
             } catch (Throwable ignored) { }
         }
         @Override protected void afterHookedMethod(Xp.Param p) {
@@ -445,6 +442,22 @@ final class ComposeFrost {
             if (was instanceof Integer) try { ((Paint) p.args[rectF ? 3 : 6]).setColor((Integer) was); } catch (Throwable ignored) { }
             Object rim = Xp.getAdditionalInstanceField(p, "pixelsuite_rim");
             if (rim instanceof float[]) try { float[] k = (float[]) rim; DarkChips.drawRim((Canvas) p.thisObject, k[0], k[1], k[2], k[3], k[4], 255); } catch (Throwable ignored) { }
+            Object glass = Xp.getAdditionalInstanceField(p, "pixelsuite_glass");
+            if (glass instanceof float[]) try {
+                float[] k = (float[]) glass;
+                boolean dk = phoneDark();
+                if (glassRim == null || glassRim.dark != dk) glassRim = new GlassRim(k[4], 1.5f * density, dk);
+                Canvas cv = (Canvas) p.thisObject;
+                int save = -1;
+                if (k.length > 5 && k[5] != 0f) {
+                    Paint pre = new Paint();
+                    pre.setColorFilter(new android.graphics.ColorMatrixColorFilter(new float[]{
+                            1f / K, 0, 0, 0, -O / K,  0, 1f / K, 0, 0, -O / K,  0, 0, 1f / K, 0, -O / K,  0, 0, 0, 1, 0}));
+                    save = cv.saveLayer(k[0] - 8f * density, k[1] - 8f * density, k[2] + 8f * density, k[3] + 8f * density, pre);
+                }
+                glassRim.draw(cv, k[0], k[1], k[2], k[3], Math.min(k[4], Math.min(k[2] - k[0], k[3] - k[1]) / 2f), 255);
+                if (save >= 0) cv.restoreToCount(save);
+            } catch (Throwable ignored) { }
         }
     }
 
@@ -519,7 +532,7 @@ final class ComposeFrost {
                 try { Object inner = unwrap(card.getBackground()); if (inner instanceof android.graphics.drawable.GradientDrawable) { float x = (Float) Xp.callMethod(inner, "getCornerRadius"); if (x > 0) r = x; } } catch (Throwable ignored) { }
                 android.graphics.drawable.GradientDrawable black = new android.graphics.drawable.GradientDrawable();
                 black.setColor(0xff000000); black.setCornerRadius(r);
-                Drawable sd = new android.graphics.drawable.LayerDrawable(new Drawable[]{black, new DoodleOverlay.Rim(r, FrostedSurface.dp(ctx, 1.5f))});
+                Drawable sd = GlassRim.superDarkRims(ctx) ? new android.graphics.drawable.LayerDrawable(new Drawable[]{black, new DoodleOverlay.Rim(r, FrostedSurface.dp(ctx, 1.5f))}) : black;
                 if (card == decor) dialog.getWindow().setBackgroundDrawable(sd); else card.setBackground(sd);
                 return;
             }
@@ -531,9 +544,8 @@ final class ComposeFrost {
             PillFrost d = PillFrost.frost(card, false, corner);
             if (flip) d.fill.setColor(preInvert(tone(ctx, false)));
             if (card == decor) dialog.getWindow().setBackgroundDrawable(d);
-        } catch (Throwable error) { if (!viewDialogFailed) { viewDialogFailed = true; Module.log("compose frost: view dialog not handled", error); } }
+        } catch (Throwable error) { }
     }
-    private static boolean viewDialogFailed;
     static View backgrounded(View v) {
         if (fillOf(v.getBackground()) != null && v.getWidth() > 0) return v;
         if (v instanceof android.view.ViewGroup) { android.view.ViewGroup g = (android.view.ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) { View f = backgrounded(g.getChildAt(i)); if (f != null) return f; } }

@@ -44,7 +44,7 @@ final class HomeFolderApps {
                         try { LauncherFeatures.call(folder, "animateOpen", 0, new ArrayList<Object>((List<?>) LauncherFeatures.get(info, "contents"))); } catch (Throwable ignored) { }
                     }});
                     return true;
-                } catch (Throwable error) { Module.log("Home folder Add apps failed", error); return false; }
+                } catch (Throwable error) { return false; }
             }
         });
     }
@@ -68,14 +68,22 @@ final class HomeFolderApps {
         Class<?> array=java.lang.reflect.Array.newInstance(item,0).getClass();
         folder.getMethod("addFolderContent",item,int.class,boolean.class);folder.getMethod("removeFolderContent",boolean.class,array);
         folder.getMethod("updateItemLocationsInDatabaseBatch",boolean.class);
-        Class<?> callback=Xp.findClass("cb.c",LauncherFeatures.loader);callback.getMethod("invoke",Object.class);
-        LauncherFeatures.type("model.ModelWriter").getMethod("execute",callback);
+        Class<?> callback=callbackType();callback.getMethod("invoke",Object.class);
         LauncherFeatures.type("model.TransactionContext").getMethod("deleteItemsFromDatabase",String.class,List.class);
-        Xp.findClass("oa.i",LauncherFeatures.loader).getField("a");
+    }
+    static Class<?> callbackType()throws Exception{
+        for(java.lang.reflect.Method m:LauncherFeatures.type("model.ModelWriter").getMethods())
+            if(m.getName().equals("execute")&&m.getParameterTypes().length==1&&m.getParameterTypes()[0].isInterface())return m.getParameterTypes()[0];
+        throw new NoSuchMethodException("ModelWriter.execute(block)");
+    }
+    static Object unit(){
+        try{return Class.forName("kotlin.Unit",false,LauncherFeatures.loader).getField("INSTANCE").get(null);}catch(Throwable renamed){}
+        try{Object u=Xp.findClass("oa.i",LauncherFeatures.loader).getField("a").get(null);if(u!=null&&"kotlin.Unit".equals(u.toString()))return u;}catch(Throwable otherBuild){}
+        return null;
     }
     static void remove(Activity a,Object folder,final List<Object> items)throws Exception {
-        final Object unit=Xp.findClass("oa.i",LauncherFeatures.loader).getField("a").get(null);
-        Class<?> callback=Xp.findClass("cb.c",LauncherFeatures.loader);
+        final Object unit=unit();
+        Class<?> callback=callbackType();
         Object block=java.lang.reflect.Proxy.newProxyInstance(LauncherFeatures.loader,new Class<?>[]{callback},new java.lang.reflect.InvocationHandler(){
             public Object invoke(Object proxy,java.lang.reflect.Method method,Object[] args){
                 if(method.getName().equals("invoke")){LauncherFeatures.call(args[0],"deleteItemsFromDatabase","Pixel Suite: removed in Add apps",items);return unit;}

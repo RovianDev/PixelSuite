@@ -34,16 +34,15 @@ final class DevOptionsHide {
     static synchronized void install(String pkg) {
         if (installed) return;
         installed = true;
-        int n = 0;
         try {
             Class<?> sp = Class.forName("android.os.SystemProperties");
-            n += Xp.hookAllMethods(sp, "get", new Xp.Callback() {
+            Xp.hookAllMethods(sp, "get", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     if (p.args.length == 0 || !(p.args[0] instanceof String) || !(p.getResult() instanceof String) || !on()) return;
                     String v = hide((String) p.args[0], (String) p.getResult());
                     if (v != null) p.setResult(v);
                 }
-            }).size();
+            });
             Xp.Callback number = new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     if (p.args.length == 0 || !(p.args[0] instanceof String) || !on()) return;
@@ -52,12 +51,12 @@ final class DevOptionsHide {
                     else if ("service.adb.tcp.port".equals(k)) { if (p.getResult() instanceof Integer) p.setResult(-1); else if (p.getResult() instanceof Long) p.setResult(-1L); }
                 }
             };
-            n += Xp.hookAllMethods(sp, "getInt", number).size();
-            n += Xp.hookAllMethods(sp, "getLong", number).size();
-            n += Xp.hookAllMethods(sp, "getBoolean", number).size();
-        } catch (Throwable error) { Module.log("Hide developer options: properties unavailable in " + pkg, error); }
+            Xp.hookAllMethods(sp, "getInt", number);
+            Xp.hookAllMethods(sp, "getLong", number);
+            Xp.hookAllMethods(sp, "getBoolean", number);
+        } catch (Throwable error) { }
         try {
-            n += Xp.hookAllMethods(Runtime.class, "exec", new Xp.Callback() {
+            Xp.hookAllMethods(Runtime.class, "exec", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     if (!on() || p.args.length == 0) return;
                     String[] cmd = p.args[0] instanceof String[] ? (String[]) p.args[0] : p.args[0] instanceof String ? ((String) p.args[0]).trim().split("\\s+") : null;
@@ -68,8 +67,7 @@ final class DevOptionsHide {
                         if (v != null) p.args[0] = new String[] { "echo", v };
                     }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("Hide developer options: getprop command unavailable", error); }
-        Module.log("Hide developer options: " + n + " hooks in " + pkg);
+            });
+        } catch (Throwable error) { }
     }
 }

@@ -33,6 +33,7 @@ final class FeaturePreview extends View implements ViewTreeObserver.OnPreDrawLis
         super(c);normalSurface=AppSurfaces.normalCard(c);icons=new PreviewIcons(c);scenes=new PreviewScenes(key,accent,onAccent,ink,muted,surface,dark,icons);
         setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);
     }
+    void setCompact(boolean value){scenes.compact(value);invalidate();}
     void setHostActive(boolean value){active=value;if(value){allowed=motionAllowed();check();}else stop();}
     void dispose(){disposed=true;active=false;stop();if(getViewTreeObserver().isAlive())getViewTreeObserver().removeOnPreDrawListener(this);}
     void onIconsReady(){if(disposed)return;icons.refresh();invalidate();check();}
@@ -71,5 +72,5 @@ final class FeaturePreview extends View implements ViewTreeObserver.OnPreDrawLis
         });animator.start();
     }
     private void stop(){removeCallbacks(continuation);waiting=false;ValueAnimator running=animator;animator=null;if(running!=null)running.cancel();}
-    @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);scenes.surfaceColor(AppSurfaces.active(getContext())?0xff0b0b0b:normalSurface);scenes.draw(canvas,getWidth(),getHeight(),progress,phase==RESET?reset:0);}
+    @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);scenes.rimMode(GlassRim.mode(getContext()));scenes.surfaceColor(AppSurfaces.active(getContext())?0xff0b0b0b:normalSurface);scenes.draw(canvas,getWidth(),getHeight(),progress,phase==RESET?reset:0);}
 }

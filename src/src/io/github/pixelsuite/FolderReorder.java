@@ -45,7 +45,7 @@ final class FolderReorder {
             for (Object v : (List<?>) LauncherFeatures.call(folder, "getIconsInReadingOrder")) if (v instanceof View) views.add((View) v);
             if (!views.contains(source)) return null;
             return new FolderReorder(folder, paged, source, views);
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drawer folder reorder unavailable", error); return null; }
+        } catch (Throwable error) { return null; }
     }
 
     void over(Object dragObject, int x, int y) {
@@ -100,7 +100,6 @@ final class FolderReorder {
             Xp.setAdditionalInstanceField(folder, "pixelsuite_after_close", new Runnable() { public void run() { LauncherFeatures.refresh(); } });
             return true;
         } catch (Throwable error) {
-            Module.log("Drawer folder reorder failed", error);
             try { layout(original); } catch (Throwable ignored) { }
             return false;
         }
@@ -109,7 +108,7 @@ final class FolderReorder {
     void restore() {
         if (done) return;
         done = true; cancelPending();
-        if (arranged) try { layout(original); } catch (Throwable error) { LauncherFeatures.logOnce("Drawer folder reorder restore failed", error); }
+        if (arranged) try { layout(original); } catch (Throwable error) { }
     }
 
     void leave() {
@@ -170,7 +169,7 @@ final class FolderReorder {
                 rank = next * itemsPerPage() + nearest[1] * countX + nearest[0];
             }
             return Math.max(0, Math.min(rank, rest().size()));
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drawer folder target slot unavailable", error); return -1; }
+        } catch (Throwable error) { return -1; }
     }
 
     private void show(int rank) {
@@ -179,7 +178,7 @@ final class FolderReorder {
         List<View> order = new ArrayList<View>(rest);
         for (int i = 0; i < gap; i++) order.add(rank, null);
         try { layout(order); arranged = true; shownRank = rank; }
-        catch (Throwable error) { LauncherFeatures.logOnce("Drawer folder reorder failed", error); }
+        catch (Throwable error) { }
     }
 
     private void layout(List<View> order) {
@@ -261,7 +260,7 @@ final class FolderReorder {
                 public void onAnimationCancel(android.animation.Animator an) { overlay.remove(d); }
             });
             a.start();
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drawer folder page push animation unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private int page() { try { return ((Number) LauncherFeatures.call(paged, "getNextPage")).intValue(); } catch (Throwable t) { return 0; } }

@@ -10,7 +10,6 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,14 +22,17 @@ final class PromptStyle {
     static final String[] OURS = { "Please authenticate to proceed", "Confirm it's you to lock this app", "Confirm it's you to unlock this app", "Confirm it's you to lock this folder", "Confirm it's you to unlock this folder",
             "Confirm it's you to change privacy settings",
             "Confirm it's you to uninstall this app", "Confirm it's you to disable this app", "Confirm it's you to pause this app",
-            "Confirm it's you to remove this app", "Confirm it's you to remove this folder" };
+            "Confirm it's you to remove this app", "Confirm it's you to remove this folder",
+            "Confirm it's you to uninstall this core app", "Confirm it's you to disable this core app" };
+    static final String CORE_UNINSTALL = "Confirm it's you to uninstall this core app", CORE_DISABLE = "Confirm it's you to disable this core app";
+    static final String WARNING = "Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.";
     private static boolean pinText(CharSequence t) { return "Pin".contentEquals(t) || "Use PIN".contentEquals(t) || "PIN".contentEquals(t); }
     private static final Map<String, Object[]> apps = new HashMap<String, Object[]>();
 
     static void install(ClassLoader cl) {
         try {
             Class<?> container = Xp.findClass("com.android.systemui.biometrics.AuthContainerView", cl);
-            int n = Xp.hookAllMethods(container, "onAttachedToWindow", new Xp.Callback() {
+            Xp.hookAllMethods(container, "onAttachedToWindow", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         final View root = (View) p.thisObject;
@@ -40,12 +42,11 @@ final class PromptStyle {
                         };
                         root.getViewTreeObserver().addOnGlobalLayoutListener(l);
                         Xp.setAdditionalInstanceField(root, "pixelsuite_prompt", l);
-                    } catch (Throwable error) { Module.log("App lock sheet style unavailable", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-            Module.log("App lock sheet style: " + n + " hooks");
+            });
             warmLater(0);
-        } catch (Throwable error) { Module.log("App lock sheet style unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static View find(View root, String name) {
@@ -102,6 +103,25 @@ final class PromptStyle {
         if (Math.abs(pin.getTranslationX() - tx) > 0.5f) pin.setTranslationX(tx);
         if (Math.abs(pin.getTranslationY() - ty) > 0.5f) pin.setTranslationY(ty);
         pin.setVisibility(original.getVisibility());
+        View desc = find(root, "description");
+        boolean core = desc instanceof TextView && (CORE_UNINSTALL.contentEquals(((TextView) desc).getText()) || CORE_DISABLE.contentEquals(((TextView) desc).getText()));
+        TextView note = (TextView) panel.findViewWithTag("pixelsuite_core_warning");
+        if (core && note == null) {
+            note = new TextView(root.getContext());
+            note.setTag("pixelsuite_core_warning");
+            note.setText(WARNING);
+            note.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+            note.setGravity(Gravity.CENTER);
+            if (desc instanceof TextView) note.setTextColor(((TextView) desc).getCurrentTextColor());
+            panel.addView(note, new ViewGroup.MarginLayoutParams(Math.round(260 * dp), ViewGroup.LayoutParams.WRAP_CONTENT));
+        }
+        if (note != null) {
+            float nx = (panel.getWidth() - note.getWidth()) / 2f - note.getLeft();
+            float ny = under.getBottom() + 16 * dp + pin.getHeight() + 10 * dp - note.getTop();
+            if (Math.abs(note.getTranslationX() - nx) > 0.5f) note.setTranslationX(nx);
+            if (Math.abs(note.getTranslationY() - ny) > 0.5f) note.setTranslationY(ny);
+            note.setVisibility(core ? pin.getVisibility() : View.GONE);
+        }
     }
 
     private static boolean aboutApp(View root) {
@@ -180,7 +200,7 @@ final class PromptStyle {
                         synchronized (apps) { apps.put(label, entry); }
                     } catch (Throwable ignored) { }
                 }
-            } catch (Throwable error) { Module.log("App lock sheet: icons not loaded ahead", error); }
+            } catch (Throwable error) { }
         } }, "PixelSuitePromptWarm").start();
     }
 

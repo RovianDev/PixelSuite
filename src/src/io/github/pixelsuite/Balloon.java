@@ -79,14 +79,13 @@ final class Balloon {
 
     static void install() {
         try {
-            int n = Xp.hookAllMethods(LauncherFeatures.type("DropTargetBar"), "animateToVisibility", new Xp.Callback() {
+            Xp.hookAllMethods(LauncherFeatures.type("DropTargetBar"), "animateToVisibility", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
                     try { if (p.args.length == 1 && p.args[0] instanceof Boolean) { bar((ViewGroup) p.thisObject, (Boolean) p.args[0]); p.setResult(null); } }
-                    catch (Throwable error) { LauncherFeatures.logOnce("Drop bar balloon unavailable, stock fade used", error); }
+                    catch (Throwable error) { }
                 }
-            }).size();
-            Module.log("Drop bar balloon: " + n + " hooks");
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drop bar balloon unavailable", error); }
+            });
+        } catch (Throwable error) { }
     }
 
     static void bar(final ViewGroup bar, boolean show) {
@@ -98,6 +97,8 @@ final class Balloon {
         bar.animate().cancel();
         final List<View> buttons = new ArrayList<View>(); buttons(bar, buttons);
         if (show) {
+            MultiDrag.unlight();
+            settle(bar);
             bar.setVisibility(View.VISIBLE); bar.setAlpha(1f);
             for (int i = 0; i < buttons.size(); i++) {
                 View b = buttons.get(i);
@@ -116,8 +117,14 @@ final class Balloon {
     private static void finish(ViewGroup bar, List<View> buttons) {
         bar.setAlpha(0f);
         for (View b : buttons) { stop(b); apply(b, 1f, 1f); }
+        settle(bar);
         Object end = LauncherFeatures.get(bar, "mFadeAnimationEndRunnable");
         if (end instanceof Runnable) ((Runnable) end).run();
+    }
+
+    private static void settle(View v) {
+        try { if (LauncherFeatures.type("ButtonDropTarget").isInstance(v)) { if (!MultiDrag.holds(v) && v.getTranslationX() != 0f) v.setTranslationX(0f); return; } } catch (Throwable ignored) { }
+        if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) settle(g.getChildAt(i)); }
     }
 
     static void buttons(View v, List<View> out) {

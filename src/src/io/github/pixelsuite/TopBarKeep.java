@@ -19,9 +19,19 @@ final class TopBarKeep {
     static void install(ClassLoader cl) {
         try {
             String names = StudioNames.get("touch"), m = StudioNames.get("touch.m");
-            if (names == null || m == null) { ScreenshotEditor.logOnce("top bar: not known for this Pixel Studio version, stock kept", null); return; }
-            int n = 0;
+            if (names == null || m == null) { return; }
             for (String name : names.split("\\|")) {
+                try {
+                    for (java.lang.reflect.Constructor<?> c : Class.forName(name, false, cl).getDeclaredConstructors()) {
+                        Xp.hookMethod(c, new Xp.Callback() {
+                            @Override protected void afterHookedMethod(Xp.Param p) {
+                                Object was = last.get();
+                                if (was == null || was.getClass() == p.thisObject.getClass()) { last = new java.lang.ref.WeakReference<Object>(p.thisObject); statePage = null; }
+                                watchSoon(p.thisObject, 0);
+                            }
+                        });
+                    }
+                } catch (Throwable missing) { }
                 try {
                     Method touch = Class.forName(name, false, cl).getDeclaredMethod(m, MotionEvent.class);
                     Xp.hookMethod(touch, new Xp.Callback() {
@@ -29,18 +39,30 @@ final class TopBarKeep {
                             try {
                                 MotionEvent e = (MotionEvent) p.args[0];
                                 last = new java.lang.ref.WeakReference<Object>(p.thisObject);
-                                if (e == null || !"CROP_TOOL".equals(page(p.thisObject))) return;
+                                touchedAt = android.os.SystemClock.uptimeMillis();
+                                String page = page(p.thisObject);
+                                CropRemember.pageSeen(page);
                                 watchCopies(stateOf(p.thisObject));
+                                if (e == null || !"CROP_TOOL".equals(page)) return;
                                 CROP.set(Boolean.TRUE);
-                            } catch (Throwable error) { ScreenshotEditor.logOnce("top bar keep failed, stock kept", error); }
+                            } catch (Throwable error) { }
                         }
                         @Override protected void afterHookedMethod(Xp.Param p) { CROP.set(null); }
                     });
-                    n++;
-                } catch (Throwable missing) { ScreenshotEditor.logOnce("top bar: " + name + " not found", missing); }
+                } catch (Throwable missing) { }
             }
-            Module.log("screenshot-editor: top bar keep: " + n + " hooks");
-        } catch (Throwable error) { ScreenshotEditor.logOnce("top bar keep unavailable", error); }
+        } catch (Throwable error) { }
+    }
+
+    private static final android.os.Handler main = new android.os.Handler(android.os.Looper.getMainLooper());
+
+    private static void watchSoon(final Object viewModel, final int attempt) {
+        try {
+            Object state = viewModel == null ? null : stateOf(viewModel);
+            if (state != null) { watchCopies(state); return; }
+        } catch (Throwable ignored) { }
+        if (attempt >= 20 || viewModel == null) return;
+        main.postDelayed(new Runnable() { @Override public void run() { watchSoon(viewModel, attempt + 1); } }, 50);
     }
 
     static final ThreadLocal<Boolean> CROP = new ThreadLocal<Boolean>();
@@ -59,32 +81,47 @@ final class TopBarKeep {
     static synchronized void watchCopies(Object state) {
         if (state == null || watched == state.getClass()) return;
         Class<?> k = state.getClass(); watched = k;
-        int n = 0;
         for (Method m : k.getDeclaredMethods()) {
             Class<?>[] t = m.getParameterTypes();
             if (!Modifier.isStatic(m.getModifiers()) || m.getReturnType() != k || t.length < 20 || t[0] != k) continue;
             if (t[4] != boolean.class || t[t.length - 2] != int.class) continue;
             Xp.hookMethod(m, new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (!Boolean.TRUE.equals(CROP.get())) return;
                     Object mask = p.args[p.args.length - 2];
+                    try { if (mask instanceof Integer && ((Integer) mask & 1) == 0 && p.args[1] instanceof Enum) { } } catch (Throwable ignored) { }
+                    if (!Boolean.TRUE.equals(CROP.get())) return;
                     if (mask instanceof Integer && (Integer) mask == ~8) p.args[4] = Boolean.TRUE;
                 }
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    try {
+                        String pg = pageOfState(p.getResult());
+                        if (pg != null) { statePage = pg; stateAt = android.os.SystemClock.uptimeMillis(); }
+                        CropRemember.pageSeen(pg); CaptionDeselect.pageSet(pg); TextTool.pageSet(pg);
+                        if (pg != null && !"STROKE_TOOL".equals(pg)) StudioToolbar.close();
+                        if (pg != null && !"READY".equals(pg) && !"INITIAL".equals(pg) && DoodleOverlay.active()
+                                && ScreenshotEditor.lastDownAt > ScreenshotEditor.openedAt) StudioToolbar.otherMenu();
+                    } catch (Throwable ignored) { }
+                }
             });
-            n++;
         }
-        Module.log("screenshot-editor: top bar keep: " + n + " state copies watched");
     }
 
     static volatile java.lang.ref.WeakReference<Object> last = new java.lang.ref.WeakReference<Object>(null);
-    static String currentPage() { Object vm = last.get(); return vm == null ? null : page(vm); }
+    private static volatile String statePage;
+    private static volatile long stateAt, touchedAt;
+    static String currentPage() {
+        Object vm = last.get();
+        String fromVm = vm == null ? null : page(vm), fromState = statePage;
+        if (fromState != null && (fromVm == null || stateAt >= touchedAt)) return fromState;
+        return fromVm;
+    }
 
     static String page(Object viewModel) {
         Class<?> k = viewModel.getClass();
         List<Field> path;
         synchronized (pagePath) {
             path = pagePath.get(k);
-            if (path == null && !pagePath.containsKey(k)) { path = find(viewModel, new ArrayList<Field>(), 0); pagePath.put(k, path); }
+            if (path == null) { path = find(viewModel, new ArrayList<Field>(), 0); if (path != null) pagePath.put(k, path); }
         }
         if (path == null) return null;
         Object o = viewModel;
@@ -114,6 +151,13 @@ final class TopBarKeep {
             }
         }
         return null;
+    }
+
+    static String pageOfState(Object state) {
+        if (state == null) return null;
+        Field pf = pageOf(state.getClass());
+        if (pf == null) return null;
+        try { Object v = pf.get(state); return v instanceof Enum ? ((Enum<?>) v).name() : null; } catch (Throwable t) { return null; }
     }
 
     private static Field pageOf(Class<?> k) {

@@ -124,7 +124,6 @@ final class DrawerPopupLayout {
                     int[] a=new int[2],o=new int[2];held.getLocationOnScreen(a);layer.getLocationOnScreen(o);
                     Rect r=new Rect(a[0]-o[0],a[1]-o[1],a[0]-o[0]+Math.round(held.getWidth()*held.getScaleX()*scaleOf(held)),a[1]-o[1]+Math.round(held.getHeight()*held.getScaleY()*scaleOf(held)));
                     if(!r.isEmpty()){
-                        if(icon!=null&&icon!=held)LauncherFeatures.logOnce("Drawer folder menu: originalView differs from the held icon",new IllegalStateException(String.valueOf(icon.getClass().getName())));
                         return r;
                     }
                 }
@@ -165,7 +164,7 @@ final class DrawerPopupLayout {
     }
 
     static void place(ViewGroup popup){
-        try{placeNow(popup);}catch(Throwable error){LauncherFeatures.logOnce("Drawer menu placement failed",error);}
+        try{placeNow(popup);}catch(Throwable error){}
     }
     private static void placeNow(ViewGroup popup){
         if(!eligible(popup)||!(popup.getParent() instanceof ViewGroup))return;

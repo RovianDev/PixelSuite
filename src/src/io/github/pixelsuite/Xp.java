@@ -25,21 +25,6 @@ final class Xp {
     static void attach(XposedInterface x) { sX = x; }
     static XposedInterface x() { return sX; }
 
-    static void log(String msg) {
-        XposedInterface x = sX;
-        if (x != null) x.log(4 , Module.TAG, msg);
-    }
-
-    static void log(String msg, Throwable t) {
-        XposedInterface x = sX;
-        if (x != null) x.log(6 , Module.TAG, msg, t);
-    }
-
-    static void log(Throwable t) {
-        XposedInterface x = sX;
-        if (x != null) x.log(6, Module.TAG, "", t);
-    }
-
     abstract static class Callback {
         protected void beforeHookedMethod(Param param) throws Throwable {}
         protected void afterHookedMethod(Param param) throws Throwable {}
@@ -86,7 +71,6 @@ final class Xp {
             Method m = clazz.getDeclaredMethod(name, types);
             return hook(m, cb);
         } catch (Throwable t) {
-            Xp.log("findAndHookMethod " + clazz.getName() + "#" + name + " failed", t);
             return null;
         }
     }
@@ -98,7 +82,7 @@ final class Xp {
     static void deoptimize(Executable executable) {
         XposedInterface x = sX;
         if (x == null || executable == null) return;
-        try { x.deoptimize(executable); } catch (Throwable t) { Xp.log("deoptimize " + executable.getName() + " failed", t); }
+        try { x.deoptimize(executable); } catch (Throwable t) { }
     }
     static void deoptimizeAll(Class<?> clazz, String name) {
         if (clazz == null) return;
@@ -121,7 +105,6 @@ final class Xp {
                     try {
                         cb.beforeHookedMethod(p);
                     } catch (Throwable t) {
-                        Xp.log(t);
                     }
                     if (!p.resultSet) {
                         Object res = chain.proceed(p.args);
@@ -130,14 +113,12 @@ final class Xp {
                     try {
                         cb.afterHookedMethod(p);
                     } catch (Throwable t) {
-                        Xp.log(t);
                     }
                     return p.result;
                 }
             };
             return x.hook(exec).intercept(hooker);
         } catch (Throwable t) {
-            Xp.log("hook " + describe(executable) + " failed", t);
             return null;
         }
     }
@@ -171,11 +152,29 @@ final class Xp {
     static Object callMethod(Object obj, String name, Object... args) {
         try {
             Method m = bestMethod(obj.getClass(), name, args);
-            if (m == null) throw new NoSuchMethodException(obj.getClass().getName() + "#" + name);
+            if (m == null) {
+                String field = getterField(name, args);
+                if (field != null) {
+                    try { return findField(obj.getClass(), field).get(obj); } catch (NoSuchFieldException ignored) { }
+                }
+                throw new NoSuchMethodException(obj.getClass().getName() + "#" + name);
+            }
             return m.invoke(obj, args);
         } catch (Throwable t) {
             throw rethrow(t);
         }
+    }
+
+    static String otherSpelling(String name) {
+        if (name == null || name.length() < 2) return null;
+        if (name.charAt(0) == 'm' && Character.isUpperCase(name.charAt(1))) return Character.toLowerCase(name.charAt(1)) + name.substring(2);
+        if (Character.isLowerCase(name.charAt(0))) return "m" + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+        return null;
+    }
+
+    private static String getterField(String name, Object[] args) {
+        if ((args != null && args.length > 0) || name == null || name.length() < 4 || !name.startsWith("get") || !Character.isUpperCase(name.charAt(3))) return null;
+        return Character.toLowerCase(name.charAt(3)) + name.substring(4);
     }
 
     static Object callStaticMethod(Class<?> clazz, String name, Object... args) {
@@ -340,6 +339,16 @@ final class Xp {
                     hit = f;
                 } catch (NoSuchFieldException ignored) { }
             }
+            if (hit == NONE) {
+                String other = otherSpelling(name);
+                for (Class<?> c = clazz; other != null && c != null && hit == NONE; c = c.getSuperclass()) {
+                    try {
+                        Field f = c.getDeclaredField(other);
+                        f.setAccessible(true);
+                        hit = f;
+                    } catch (NoSuchFieldException ignored) { }
+                }
+            }
             sFields.put(key, hit);
         }
         if (hit == NONE) throw new NoSuchFieldException(clazz.getName() + "#" + name);
@@ -407,10 +416,6 @@ final class Xp {
             return mHash == k.mHash && mClass == k.mClass && mName.equals(k.mName)
                     && Arrays.equals(mTypes, k.mTypes);
         }
-    }
-
-    private static String describe(Executable e) {
-        return e.getDeclaringClass().getName() + "#" + e.getName();
     }
 
     private static RuntimeException rethrow(Throwable t) {

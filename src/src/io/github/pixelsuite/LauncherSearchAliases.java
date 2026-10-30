@@ -1,6 +1,5 @@
 package io.github.pixelsuite;
 import android.content.ComponentName;
-import android.os.UserHandle;
 import java.lang.reflect.Field;
 import java.util.*;
 final class LauncherSearchAliases {

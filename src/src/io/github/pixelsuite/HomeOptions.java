@@ -58,13 +58,13 @@ final class HomeOptions {
                     }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Home menu finger position unavailable", error); }
+        } catch (Throwable error) { }
         try {
             final Class<?> options = LauncherFeatures.type("views.OptionsPopupView");
             Xp.hookAllMethods(LauncherFeatures.type("popup.ArrowPopup"), "onLayout", new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) { if (options.isInstance(p.thisObject) && Xp.getAdditionalInstanceField(p.thisObject, "pixelsuite_follow") == null) follow((View) p.thisObject); }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Home menu placement unavailable", error); }
+        } catch (Throwable error) { }
         Class<?> popup = LauncherFeatures.type("views.OptionsPopupView");
         int hooks = 0;
         for (Method m : popup.getDeclaredMethods()) {
@@ -77,7 +77,7 @@ final class HomeOptions {
             Xp.hookMethod(m, new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
                     try { p.args[at] = withSettings((List<?>) p.args[at]); }
-                    catch (Throwable error) { LauncherFeatures.logOnce("Pixel Suite settings row unavailable", error); }
+                    catch (Throwable error) { }
                 }
             });
             hooks++;
@@ -85,19 +85,24 @@ final class HomeOptions {
         if (hooks == 0) installNexusBuilder();
     }
 
+    private static java.lang.reflect.Field sPopupField;
     static void installNexusBuilder() {
         try {
+            Class<?> popupType=Xp.findClass("com.google.android.apps.nexuslauncher.customize.OptionsPopupDialog$PopupView",LauncherFeatures.loader);
             Class<?> builder=Xp.findClass("c7.m",LauncherFeatures.loader);
+            java.lang.reflect.Field popup=null;
+            for(java.lang.reflect.Field f:builder.getDeclaredFields())if(f.getType()==popupType){f.setAccessible(true);popup=f;break;}
             Method build=builder.getDeclaredMethod("c");
+            if(popup==null||build.getReturnType()!=void.class)return;
+            sPopupField=popup;
             Xp.hookMethod(build,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
-                try{appendNativeRow(p.thisObject);}catch(Throwable error){LauncherFeatures.logOnce("Pixel Suite native home row unavailable",error);}
+                try{appendNativeRow(p.thisObject);}catch(Throwable error){}
             }});
-        }catch(Throwable error){LauncherFeatures.logOnce("Pixel Suite home menu builder unavailable",error);}
+        }catch(Throwable error){}
     }
-    static void appendNativeRow(final Object builder) {
-        android.view.ViewGroup popup;
-        try{popup=(android.view.ViewGroup)LauncherFeatures.get(builder,"j");}
-        catch(Throwable otherMapping){popup=(android.view.ViewGroup)LauncherFeatures.get(builder,"f9310j");}
+    static void appendNativeRow(final Object builder) throws Exception {
+        if(sPopupField==null)return;
+        android.view.ViewGroup popup=(android.view.ViewGroup)sPopupField.get(builder);
         if(popup!=null)removeAppsList(popup);
         if(popup!=null)follow(popup);
         if(popup==null||popup.findViewWithTag("pixelsuite_settings")!=null)return;
@@ -138,7 +143,6 @@ final class HomeOptions {
             if(text==null||!(apps.toString().contentEquals(text)||"Apps list".contentEquals(text)))continue;
             popup.removeViewAt(i);
             try{LauncherFeatures.call(popup,"assignMarginsAndBackgrounds",popup);}catch(Throwable noReshape){}
-            LauncherFeatures.logOnce("Home menu: Apps list row removed",null);
         }
     }
 
@@ -158,7 +162,7 @@ final class HomeOptions {
         CharSequence apps = appsListLabel(a);
         ArrayList<Object> kept = new ArrayList<Object>();
         for (Object item : items) { CharSequence l = item == null ? "" : label(item); if (!(apps.toString().contentEquals(l) || "Apps list".contentEquals(l))) kept.add(item); }
-        if (kept.size() != items.size()) { items = kept; LauncherFeatures.logOnce("Home menu: Apps list row removed", null); }
+        if (kept.size() != items.size()) { items = kept; }
         int home = -1;
         for (int i = 0; i < items.size(); i++) {
             Object item = items.get(i);
@@ -204,9 +208,8 @@ final class HomeOptions {
                 return k.newInstance(LABEL, new LauncherGlyph(c, 10), event, new View.OnLongClickListener() {
                     public boolean onLongClick(View v) { open(v); return true; }
                 });
-            } catch (Throwable error) { LauncherFeatures.logOnce("Pixel Suite settings row could not be created", error); return null; }
+            } catch (Throwable error) { return null; }
         }
-        LauncherFeatures.logOnce("Pixel Suite settings row: no OptionItem(label, icon, event, listener)", null);
         return null;
     }
 
@@ -219,7 +222,6 @@ final class HomeOptions {
         try { options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight()).toBundle(); } catch (Throwable ignored) { }
         try { c.startActivity(intent, options); }
         catch (Throwable error) {
-            Module.log("Pixel Suite settings could not open", error);
             Toast.makeText(c, "Pixel Suite isn't available", Toast.LENGTH_SHORT).show();
         }
     }

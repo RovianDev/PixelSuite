@@ -58,7 +58,7 @@ final class MiscAppPicker {
         };
         filter.setAdapter(choices);filter.setContentDescription("Filter installed apps");box.addView(filter,new LinearLayout.LayoutParams(-1,dp(48)));
         status=new TextView(activity);status.setTextColor(secondary);status.setText("Loading apps…");status.setPadding(0,dp(6),0,dp(6));box.addView(status);
-        list=new ListView(activity);list.setDivider(null);adapter=new AppsAdapter();list.setAdapter(adapter);
+        list=new ListView(activity);ToastMotion.watchScroll(list);list.setDivider(null);adapter=new AppsAdapter();list.setAdapter(adapter);
         int listHeight=Math.min(dp(330),Math.max(dp(140),activity.getResources().getDisplayMetrics().heightPixels-dp(420)));
         box.addView(list,new LinearLayout.LayoutParams(-1,listHeight));
         dialog=new AlertDialog.Builder(activity).setTitle("Choose apps").setView(box).setPositiveButton("Save",null).setNegativeButton("Cancel",null).create();
@@ -95,7 +95,7 @@ final class MiscAppPicker {
             boolean saved=Root.run(MiscOptions.listCommand(next))!=null;
             if(saved){List<String> on=Root.run("settings get secure "+MiscSystem.A11Y_KEY);if(on!=null&&!on.isEmpty()&&"1".equals(on.get(0))&&!changed.isEmpty())Root.run("true"+MiscOptions.stopCommands(changed));}
             final boolean ok=saved;
-            main.post(new Runnable(){public void run(){if(!live())return;if(ok){dialog.dismiss();Toast.makeText(activity,"Saved. Changes apply the next time these apps open.",Toast.LENGTH_LONG).show();}else{saving=false;dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(true);search.setEnabled(true);filter.setEnabled(true);adapter.notifyDataSetChanged();status.setText("Couldn't save. Check root access and try again.");}}});
+            main.post(new Runnable(){public void run(){if(!live())return;if(ok){dialog.dismiss();AppToast.makeText(activity,"Saved. Changes apply the next time these apps open.",Toast.LENGTH_LONG).show();}else{saving=false;dialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setEnabled(true);dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(true);search.setEnabled(true);filter.setEnabled(true);adapter.notifyDataSetChanged();status.setText("Couldn't save. Check root access and try again.");}}});
         }});
     }
     private final class AppsAdapter extends BaseAdapter {

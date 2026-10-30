@@ -36,7 +36,7 @@ final class PhotosDarkPanel {
                     } catch (Throwable ignored) { }
                 }
             });
-            int n = Xp.hookAllMethods(android.view.LayoutInflater.class, "inflate", new Xp.Callback() {
+            Xp.hookAllMethods(android.view.LayoutInflater.class, "inflate", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     if (p.args.length == 0 || !(p.args[0] instanceof Integer) || !(p.getResult() instanceof View)) return;
                     int id = (Integer) p.args[0];
@@ -46,9 +46,8 @@ final class PhotosDarkPanel {
                     if (!SuperDark.inEffect(panel.getContext())) return;
                     panel.post(new Runnable() { public void run() { darken(panel); } });
                 }
-            }).size();
-            Module.log("SuperDark Photos: selection panel hooks " + n);
-        } catch (Throwable error) { Module.log("SuperDark Photos: selection panel unavailable", error); }
+            });
+        } catch (Throwable error) { }
     }
 
     static void resolve(Context c) {
@@ -56,7 +55,7 @@ final class PhotosDarkPanel {
             android.content.res.Resources r = c.getResources(); String pkg = c.getPackageName();
             phone = r.getIdentifier("photos_gridactionpanel_impl_fragment", "layout", pkg);
             secondary = r.getIdentifier("photos_gridactionpanel_impl_secondary_display_fragment", "layout", pkg);
-            if (phone == 0 && secondary == 0) { phone = -1; Module.log("SuperDark Photos: selection panel layout not found"); }
+            if (phone == 0 && secondary == 0) { phone = -1; }
         } catch (Throwable ignored) { phone = -1; }
     }
 

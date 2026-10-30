@@ -100,7 +100,7 @@ final class Doodle {
 
     static Path outline(int kind, float l, float t, float r, float b, float width) {
         Path p = new Path();
-        float w = r - l, h = b - t, cx = (l + r) / 2, cy = (t + b) / 2;
+        float w = r - l, h = b - t, cx = (l + r) / 2;
         switch (kind) {
             case OVAL:
                 p.addOval(new RectF(l, t, r, b), Path.Direction.CW);

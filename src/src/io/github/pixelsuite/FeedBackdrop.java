@@ -6,10 +6,14 @@ import java.util.Map;
 final class FeedBackdrop {
     private FeedBackdrop() {}
     private static final Map<String, Boolean> callers = new HashMap<String, Boolean>();
+    private static final String GOOGLE = "com.google.android.googlequicksearchbox";
+    private static volatile boolean watching;
+    private static volatile boolean stale;
 
     static void install() {
         Xp.Callback black = new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
+                if (!watching) watchGoogleUpdates();
                 try {
                     if (p.args.length != 1 || !SuperDark.inEffectNow()) return;
                     int c;
@@ -22,9 +26,49 @@ final class FeedBackdrop {
                 } catch (Throwable ignored) { }
             }
         };
-        int n = 0;
-        try { n += Xp.hookAllMethods(Class.forName("android.graphics.BaseRecordingCanvas"), "drawColor", black).size(); } catch (Throwable ignored) { }
-        Module.log("Super Dark: feed backdrop " + (n > 0 ? "ready" : "unavailable"));
+        try { Xp.hookAllMethods(Class.forName("android.graphics.BaseRecordingCanvas"), "drawColor", black); } catch (Throwable ignored) { }
+        try {
+            Xp.hookAllMethods(android.app.Application.class, "onCreate", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) { watchGoogleUpdates(); }
+            });
+        } catch (Throwable ignored) { }
+    }
+
+    private static synchronized void watchGoogleUpdates() {
+        if (watching) return;
+        try {
+            Object a = Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+            if (!(a instanceof android.content.Context)) return;
+            final android.content.Context app = ((android.content.Context) a).getApplicationContext();
+            watching = true;
+            android.content.IntentFilter pkgs = new android.content.IntentFilter();
+            pkgs.addAction(android.content.Intent.ACTION_PACKAGE_REPLACED);
+            pkgs.addAction(android.content.Intent.ACTION_PACKAGE_ADDED);
+            pkgs.addDataScheme("package");
+            app.registerReceiver(new android.content.BroadcastReceiver() {
+                @Override public void onReceive(android.content.Context c, android.content.Intent i) {
+                    android.net.Uri d = i.getData();
+                    if (d == null || !GOOGLE.equals(d.getSchemeSpecificPart())) return;
+                    stale = true;
+                    if (!awake(app)) restart();
+                }
+            }, pkgs);
+            app.registerReceiver(new android.content.BroadcastReceiver() {
+                @Override public void onReceive(android.content.Context c, android.content.Intent i) {
+                    if (stale) restart();
+                }
+            }, new android.content.IntentFilter(android.content.Intent.ACTION_SCREEN_OFF));
+        } catch (Throwable ignored) { }
+    }
+
+    private static boolean awake(android.content.Context c) {
+        try { return ((android.os.PowerManager) c.getSystemService(android.content.Context.POWER_SERVICE)).isInteractive(); }
+        catch (Throwable t) { return true; }
+    }
+
+    private static void restart() {
+        stale = false;
+        android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     static boolean panelGrey(int c) {
@@ -44,7 +88,6 @@ final class FeedBackdrop {
                 if (hit == null) {
                     hit = !(k.startsWith("android.") || k.startsWith("com.android.") || k.startsWith("androidx.") || k.startsWith("io.github.pixelsuite"));
                     callers.put(k, hit);
-                    if (hit) Module.log("Super Dark: feed backdrop black for " + k);
                 }
                 return hit;
             }

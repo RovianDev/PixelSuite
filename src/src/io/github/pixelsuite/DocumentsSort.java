@@ -8,7 +8,6 @@ final class DocumentsSort {
     static final String AOSP = "com.android.documentsui";
     private static final Feature.Cached sOn = new Feature.Cached(Feature.FILES_SORT);
     private static volatile Context sContext;
-    private static boolean sLogged, sLoggedNoDate;
     private static int sResourceDateId = -1;
     private static boolean sNoDateField, sNoUserSpecified;
 
@@ -21,15 +20,13 @@ final class DocumentsSort {
                 @Override
                 protected void beforeHookedMethod(Xp.Param p) {
                     try { if (active()) newestFirst(p.thisObject); }
-                    catch (Throwable error) { if (!sLogged) { sLogged = true; Module.log("documents-sort: could not set newest first", error); } }
+                    catch (Throwable error) { }
                 }
             };
-            int hooks = Xp.hookAllMethods(model, "sortCursor", newest).size()
-                    + Xp.hookAllMethods(model, "addQuerySortArgs", newest).size()
-                    + Xp.hookAllMethods(model, "getDocumentSortQuery", newest).size();
-            Module.log("documents-sort hooks installed (" + hooks + ")");
+            Xp.hookAllMethods(model, "sortCursor", newest);
+            Xp.hookAllMethods(model, "addQuerySortArgs", newest);
+            Xp.hookAllMethods(model, "getDocumentSortQuery", newest);
         } catch (Throwable error) {
-            Module.log("documents-sort unavailable", error);
         }
     }
 
@@ -63,7 +60,6 @@ final class DocumentsSort {
             }
         }
         if (date == null) {
-            if (!sLoggedNoDate) { sLoggedNoDate = true; Module.log("documents-sort: Date sort column unavailable"); }
             return;
         }
         if (!sNoUserSpecified) try { Xp.setObjectField(model, "mIsUserSpecified", true); } catch (Throwable older) { if (missingField(older)) sNoUserSpecified = true; }

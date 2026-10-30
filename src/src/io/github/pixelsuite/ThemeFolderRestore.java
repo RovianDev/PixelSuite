@@ -29,7 +29,7 @@ final class ThemeFolderRestore {
         }});
         Xp.hookAllMethods(LauncherFeatures.type("Launcher"),"onResume",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             if(!pending()||!drawer||previous.get()==p.thisObject||!LauncherFeatures.on(LauncherFeatures.DRAWER))return;
-            try{Object state=LauncherFeatures.type("LauncherState").getField("ALL_APPS").get(null);LauncherFeatures.call(LauncherFeatures.call(p.thisObject,"getStateManager"),"goToState",state,false);LauncherFeatures.refresh();}catch(Throwable e){clear();Module.log("Theme folder drawer restoration unavailable",e);}
+            try{Object state=LauncherFeatures.type("LauncherState").getField("ALL_APPS").get(null);LauncherFeatures.call(LauncherFeatures.call(p.thisObject,"getStateManager"),"goToState",state,false);LauncherFeatures.refresh();}catch(Throwable e){clear();}
         }});
         Xp.hookAllMethods(LauncherFeatures.type("folder.FolderIcon"),"inflateFolderAndIcon",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             if(!pending()||!(p.getResult() instanceof View)||LauncherFeatures.activity.get()==previous.get())return;
@@ -43,9 +43,9 @@ final class ThemeFolderRestore {
                     if(!pending()||LauncherFeatures.activity.get()==previous.get())return;
                     clear();icon.post(new Runnable(){public void run(){try{
                         Object folder=LauncherFeatures.get(icon,"mFolder");LauncherFeatures.call(folder,"animateOpen",0,new ArrayList<Object>((List<?>)LauncherFeatures.get(info,"contents")));
-                    }catch(Throwable e){Module.log("Theme folder restoration unavailable",e);}}});
+                    }catch(Throwable e){}}});
                 }});
             }});
         }});
-    }catch(Throwable e){Module.log("Theme folder restoration unavailable",e);}}
+    }catch(Throwable e){}}
 }

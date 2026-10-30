@@ -7,21 +7,21 @@ public final class ScreenshotEditorGeometryTest {
     public static void main(String[] args) {
         float touch = 63;
 
-        check(CropHit.pick(100, 100, 900, 1500, 120, 800, touch) == 0, "left edge");
-        check(CropHit.pick(100, 100, 900, 1500, 890, 800, touch) == 2, "right edge");
-        check(CropHit.pick(100, 100, 900, 1500, 500, 110, touch) == 1, "top edge");
-        check(CropHit.pick(100, 100, 900, 1500, 500, 1490, touch) == 3, "bottom edge");
+        check(CropHit.pick(100, 100, 900, 1500, 120, 800, touch) == 8, "left edge, inside: the box, not the edge");
+        check(CropHit.pick(100, 100, 900, 1500, 85, 800, touch) == -1, "left edge, outside: nothing");
+        check(CropHit.pick(100, 100, 900, 1500, 915, 800, touch) == -1, "right edge, outside: nothing");
+        check(CropHit.pick(100, 100, 900, 1500, 500, 90, touch) == -1, "top edge, outside: nothing");
+        check(CropHit.pick(100, 100, 900, 1500, 500, 1510, touch) == -1, "bottom edge, outside: nothing");
         check(CropHit.pick(100, 100, 900, 1500, 110, 110, touch) == 4, "top-left");
         check(CropHit.pick(100, 100, 900, 1500, 890, 110, touch) == 5, "top-right");
         check(CropHit.pick(100, 100, 900, 1500, 110, 1490, touch) == 6, "bottom-left");
         check(CropHit.pick(100, 100, 900, 1500, 890, 1490, touch) == 7, "bottom-right");
         check(CropHit.pick(100, 100, 900, 1500, 500, 800, touch) == 8, "inside");
         check(CropHit.pick(100, 100, 900, 1500, 500, 1800, touch) == -1, "outside");
+        check(CropHit.nearCorner(100, 100, 900, 1500, 120, 115, 73), "near top-left corner");
+        check(!CropHit.nearCorner(100, 100, 900, 1500, 120, 800, 73), "left edge middle: not a corner");
+        check(!CropHit.nearCorner(100, 100, 900, 1500, 500, 1490, 73), "bottom edge middle: not a corner");
 
-        check(CropHit.pick(500, 100, 503, 1500, 470, 800, touch) == 0, "thin strip, left side");
-        check(CropHit.pick(500, 100, 503, 1500, 540, 800, touch) == 2, "thin strip, right side");
-        check(CropHit.pick(100, 700, 900, 702, 500, 690, touch) == 1, "flat strip, top");
-        check(CropHit.pick(100, 700, 900, 702, 500, 712, touch) == 3, "flat strip, bottom");
         check(CropHit.pick(500, 500, 502, 502, 520, 520, touch) == 7, "tiny box corner");
         check(CropHit.pick(500, 500, 502, 502, 480, 480, touch) == 4, "tiny box other corner");
 
@@ -67,6 +67,6 @@ public final class ScreenshotEditorGeometryTest {
         Doodle sq = new Doodle(Doodle.RECT, 0, 0, 30, 30, 0, 2, true);
         sq.convertTo(Doodle.TRIANGLE);
         check(sq.kind == Doodle.TRIANGLE && sq.right() == 30 && sq.fill, "box to box only changes the kind");
-        System.out.println("PASS: " + checked + " free-crop and doodle geometry cases");
+        System.err.println("PASS: " + checked + " free-crop and doodle geometry cases");
     }
 }

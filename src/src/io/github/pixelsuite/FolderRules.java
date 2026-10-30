@@ -24,7 +24,7 @@ final class FolderRules {
             };
             Xp.hookAllMethods(LauncherFeatures.type("folder.Folder"), "removeFolderContent", follow);
             Xp.hookAllMethods(LauncherFeatures.type("folder.Folder"), "onDrop", follow);
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder rules unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static void layoutFooter(Object folder, boolean animate) {
@@ -49,6 +49,6 @@ final class FolderRules {
                 apply.run();
                 footer.animate().alpha(1f).setDuration(160).start();
             } }).start();
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder footer unavailable", error); }
+        } catch (Throwable error) { }
     }
 }

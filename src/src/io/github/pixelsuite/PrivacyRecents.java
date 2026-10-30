@@ -29,18 +29,17 @@ final class PrivacyRecents {
     private static final String TAG_LOCK = "pixelsuite_privacy_lock";
 
     static void install(ClassLoader cl) {
-        int n = 0;
         try {
             final Class<?> taskView = Xp.findClass("com.android.quickstep.views.TaskView", cl);
-            n += Xp.hookAllMethods(taskView, "onBind", new Xp.Callback() {
+            Xp.hookAllMethods(taskView, "onBind", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     final View tv = (View) p.thisObject;
                     try { decorate(tv); } catch (Throwable ignored) { }
                     tv.post(new Runnable() { public void run() { decorate(tv); } });
                 }
-            }).size();
+            });
             Class<?> recents = Xp.findClass("com.android.quickstep.views.RecentsView", cl);
-            n += Xp.hookAllMethods(recents, "setEnableDrawingLiveTile", new Xp.Callback() {
+            Xp.hookAllMethods(recents, "setEnableDrawingLiveTile", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         if (p.args.length != 1 || !Boolean.TRUE.equals(p.args[0])) return;
@@ -51,16 +50,16 @@ final class PrivacyRecents {
                         Xp.callMethod(rv, "switchToScreenshot", (Runnable) new Runnable() { public void run() {
                             try { Xp.callMethod(rv, "finishRecentsAnimation", true, false, (Runnable) null); } catch (Throwable ignored) { }
                         } });
-                    } catch (Throwable error) { LauncherFeatures.logOnce("App lock: recents picture switch unavailable", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-            n += Xp.hookAllMethods(taskView, "onLayout", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(taskView, "onLayout", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { try { place((View) p.thisObject); } catch (Throwable ignored) { } }
-            }).size();
-            n += Xp.hookAllMethods(taskView, "onRecycle", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(taskView, "onRecycle", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { try { clear((View) p.thisObject); } catch (Throwable ignored) { } }
-            }).size();
-            n += Xp.hookAllMethods(taskView, "onClick", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(taskView, "onClick", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         if (p.args.length != 0) return;
@@ -69,10 +68,10 @@ final class PrivacyRecents {
                         if (passing.containsKey(tv)) return;
                         p.setResult(null);
                         ask(tv, pkg);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("App lock: recents tap check unavailable", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-            n += Xp.hookAllMethods(Xp.findClass("com.android.quickstep.TaskOverlayFactory", cl), "getEnabledShortcuts", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(Xp.findClass("com.android.quickstep.TaskOverlayFactory", cl), "getEnabledShortcuts", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         if (!(p.getResult() instanceof List) || p.args.length < 2) return;
@@ -87,9 +86,8 @@ final class PrivacyRecents {
                         p.setResult(kept);
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock: recents unavailable", error); }
-        Module.log("App lock recents: " + n + " hooks");
+            });
+        } catch (Throwable error) { }
     }
 
     private static String packageOf(Object container) {
@@ -153,7 +151,7 @@ final class PrivacyRecents {
             }
             View.class.getMethod("setRenderEffect", Class.forName("android.graphics.RenderEffect")).invoke(snapshot, effect);
             if (on) blurred.put(snapshot, Boolean.TRUE); else blurred.remove(snapshot);
-        } catch (Throwable error) { LauncherFeatures.logOnce("App lock: recents blur unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static void place(View tv) {
@@ -197,7 +195,7 @@ final class PrivacyRecents {
                     final View card = ref == null ? null : ref.get();
                     if (card == null) return;
                     passing.put(card, Boolean.TRUE);
-                    try { Xp.callMethod(card, "onClick"); } catch (Throwable error) { Module.log("App lock: opening from recents failed", error); }
+                    try { Xp.callMethod(card, "onClick"); } catch (Throwable error) { }
                     card.postDelayed(new Runnable() { public void run() { passing.remove(card); } }, 2000);
                 }
             };
@@ -205,7 +203,7 @@ final class PrivacyRecents {
                 Context app = a.getApplicationContext();
                 try { Context.class.getMethod("registerReceiver", BroadcastReceiver.class, IntentFilter.class, int.class).invoke(app, r, new IntentFilter(ACTION_RECENTS_OK), 2); }
                 catch (Throwable older) { app.registerReceiver(r, new IntentFilter(ACTION_RECENTS_OK)); }
-            } catch (Throwable error) { listening = false; Module.log("App lock: recents answer unavailable", error); return; }
+            } catch (Throwable error) { listening = false; return; }
         }
         Intent i = new Intent().setComponent(new ComponentName(PrivacyLock.OUR, PrivacyLock.MENU_ACTIVITY));
         i.putExtra(PrivacyLock.EXTRA_MODE, MODE_RECENTS); i.putExtra(PrivacyLock.EXTRA_PACKAGE, pkg); i.putExtra(EXTRA_TOKEN, token);
@@ -216,6 +214,6 @@ final class PrivacyRecents {
             android.app.ActivityOptions.class.getMethod("setShareIdentityEnabled", boolean.class).invoke(o, true);
             options = o.toBundle();
         } catch (Throwable ignored) { }
-        try { a.startActivity(i, options); } catch (Throwable error) { Module.log("App lock: unlock screen unavailable", error); }
+        try { a.startActivity(i, options); } catch (Throwable error) { }
     }
 }

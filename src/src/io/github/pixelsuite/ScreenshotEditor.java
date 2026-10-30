@@ -29,28 +29,49 @@ final class ScreenshotEditor {
     private static final Feature.Cached sFreeCrop = new Feature.Cached(Feature.SCREENSHOT_FREE_CROP);
     private static Boolean sDoodles;
     static ClassLoader loader;
-    private static final java.util.Set<String> sLogged = java.util.Collections.synchronizedSet(new java.util.HashSet<String>());
 
     private ScreenshotEditor() {}
-
-    static void logOnce(String message, Throwable error) {
-        if (!sLogged.add(message)) return;
-        if (error == null) Module.log("screenshot-editor: " + message); else Module.log("screenshot-editor: " + message, error);
-    }
 
     static void install(ClassLoader cl, android.content.pm.ApplicationInfo ai) {
         loader = cl;
         StudioNames.resolve(cl, ai);
         installFreeCrop(cl);
         CropLook.install(cl);
+        CropKeep.install(cl);
+        StudioItems.install(cl);
         TopBarKeep.install(cl);
+        StudioToolbar.install(cl);
+        TextTool.install(cl);
         installDoodles(cl);
+        try { } catch (Throwable ignored) { }
         installUndoRedo(cl);
+        try {
+            Xp.hookMethod(android.app.Activity.class.getDeclaredMethod("dispatchTouchEvent", android.view.MotionEvent.class), new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        if (!(p.args[0] instanceof android.view.MotionEvent)) return;
+                        android.view.MotionEvent e = (android.view.MotionEvent) p.args[0];
+                        boolean ours = false;
+                        if (!StudioItems.injecting) {
+                            android.view.View cv = canvasView.get();
+                            if (cv != null && activity() == p.thisObject) {
+                                if (TextTool.touch((android.app.Activity) p.thisObject, cv, e)) { p.setResult(true); return; }
+                                if (TextTool.menuTouching()) return;
+                            }
+                            if (cv != null && activity() == p.thisObject) ours = CropGrab.touch((android.app.Activity) p.thisObject, cv, e);
+                            if (!ours && cv != null && activity() == p.thisObject) ours = StrokeFence.touch((android.app.Activity) p.thisObject, cv, e);
+                        }
+                        if (!ours) ours = StudioZoom.touch((android.app.Activity) p.thisObject, e, p);
+                        if (ours) p.setResult(true);
+                    } catch (Throwable ignored) { }
+                }
+            });
+        } catch (Throwable ignored) { }
         try {
             Xp.hookMethod(android.app.Activity.class.getDeclaredMethod("onResume"), new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { if (SuperDark.inEffectNow()) DarkChips.on("Pixel Studio"); }
             });
-        } catch (Throwable error) { logOnce("dark tool bar unavailable", error); }
+        } catch (Throwable error) { }
         try {
             Xp.hookMethod(android.app.Activity.class.getDeclaredMethod("onCreate", android.os.Bundle.class), new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
@@ -64,7 +85,7 @@ final class ScreenshotEditor {
                     }
                 }
             });
-        } catch (Throwable error) { logOnce("editor window frost unavailable", error); }
+        } catch (Throwable error) { }
         ComposeFrost.install("Pixel Studio", null, true);
     }
 
@@ -103,14 +124,12 @@ final class ScreenshotEditor {
                         undoFaded = !canUndo;
                         p.args[2] = wrapClick(function, p.args[2], true, unit, canUndo);
                         p.args[3] = wrapClick(function, p.args[3], false, unit, canRedo);
-                    } catch (Throwable error) { logOnce("undo/redo wrap failed", error); }
+                    } catch (Throwable error) { }
                 }
             });
             fadedIcons(cl);
             boldIcons(cl);
-            Module.log("screenshot-editor: undo/redo hooks installed");
         } catch (Throwable error) {
-            logOnce("undo/redo for doodles unavailable in this Pixel Studio version", error);
         }
     }
 
@@ -132,7 +151,6 @@ final class ScreenshotEditor {
                         if (undoIcon < 0) {
                             Context c = app(); if (c == null) return;
                             undoIcon = c.getResources().getIdentifier("gs_undo_rond100_vd_theme_24", "drawable", c.getPackageName());
-                            if (undoIcon == 0) logOnce("undo icon not found, the editor's own faint look stays", null);
                         }
                         if (id == 0 || id != undoIcon) return;
                         if (fadedPainter == null) {
@@ -141,10 +159,10 @@ final class ScreenshotEditor {
                             fadedPainter = bitmapPainter.newInstance(imageBitmap.newInstance(b));
                         }
                         p.setResult(fadedPainter);
-                    } catch (Throwable error) { logOnce("faded undo icon unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-        } catch (Throwable error) { logOnce("faded undo icon unavailable", error); }
+        } catch (Throwable error) { }
     }
     private static final Map<Integer, Integer> regularIcons = new java.util.HashMap<Integer, Integer>();
     private static void boldIcons(ClassLoader cl) {
@@ -167,10 +185,10 @@ final class ScreenshotEditor {
                             synchronized (regularIcons) { regularIcons.put(id, regular); }
                         }
                         if (regular != 0) p.args[0] = regular;
-                    } catch (Throwable error) { logOnce("regular tool icons unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-        } catch (Throwable error) { logOnce("regular tool icons unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static Bitmap faded(Context c, int id, int alpha) {
@@ -222,7 +240,7 @@ final class ScreenshotEditor {
             Object now = sStateGet.invoke(state);
             sStateSet.invoke(state, sHistoryMake.newInstance(
                     sCanUndo.getBoolean(now) || undo, sCanRedo.getBoolean(now) || redo, sModified.getBoolean(now) || any));
-        } catch (Throwable error) { logOnce("undo/redo state not published", error); }
+        } catch (Throwable error) { }
     }
 
     private static Field historyField(Object owner) {
@@ -236,7 +254,6 @@ final class ScreenshotEditor {
                 } catch (Throwable ignored) { }
             }
         }
-        logOnce("undo/redo state field not found", null);
         return null;
     }
 
@@ -244,7 +261,7 @@ final class ScreenshotEditor {
         try {
             Object owner = sHistoryOwner.get();
             if (owner != null && sHistoryRefresh != null) sHistoryRefresh.invoke(owner);
-        } catch (Throwable error) { logOnce("undo/redo state not refreshed", error); }
+        } catch (Throwable error) { }
     }
 
     static Context app() {
@@ -256,7 +273,7 @@ final class ScreenshotEditor {
         Context c = app(); if (c == null) return true;
         try { Settings.Secure.getInt(c.getContentResolver(), key); }
         catch (Settings.SettingNotFoundException unset) { return true; }
-        catch (Throwable unreadable) { logOnce("settings not readable here, " + key + " stays on", unreadable); return true; }
+        catch (Throwable unreadable) { return true; }
         return cached.on(c);
     }
 
@@ -268,12 +285,6 @@ final class ScreenshotEditor {
         return sDoodles;
     }
 
-    static Object staticField(Class<?> type, String name) throws Exception {
-        Field f = type.getDeclaredField(name); f.setAccessible(true); return f.get(null);
-    }
-    static Field field(Class<?> type, String name) throws Exception {
-        Field f = type.getDeclaredField(name); f.setAccessible(true); return f;
-    }
     static Method method(Class<?> type, String name, Class<?>... params) throws Exception {
         Method m = type.getDeclaredMethod(name, params); m.setAccessible(true); return m;
     }
@@ -333,17 +344,17 @@ final class ScreenshotEditor {
             Constructor<?> ctor = handler.getDeclaredConstructor(state, state, rect, float.class, svq);
             Xp.hookMethod(ctor, new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
+                    boolean fresh = p.args[0] != null && !holds(sRectStates, p.args[0]);
                     remember(sRectStates, p.args[0]);
                     remember(sHandleStates, p.args[1]);
                     sCropBounds = p.args[2];
+                    if (fresh) CropRemember.newState(p.args[0]);
                     if (!setting(sFreeCrop, Feature.SCREENSHOT_FREE_CROP)) return;
                     p.args[3] = 1f;
                 }
             });
             installCropHandles(cl, rect, state);
-            Module.log("screenshot-editor: free crop hooks installed");
         } catch (Throwable error) {
-            logOnce("free crop unavailable in this Pixel Studio version", error);
         }
     }
 
@@ -376,6 +387,42 @@ final class ScreenshotEditor {
             return ltrb(get.invoke(state));
         } catch (Throwable t) { return null; }
     }
+    static volatile int sForcedPick = -1;
+    static volatile boolean sCropDragging;
+    private static volatile Constructor<?> sRectMake;
+    private static volatile Method sRectSet;
+
+    static void setCropBox(Object state, android.graphics.RectF box) {
+        try {
+            Method set = sRectSet; Constructor<?> make = sRectMake;
+            if (set == null || make == null || state == null || box == null) return;
+            set.invoke(state, make.newInstance(box.left, box.top, box.right, box.bottom));
+        } catch (Throwable ignored) { }
+    }
+
+    static void setCropCorner(int pick, float x, float y, float min) {
+        try {
+            Field[] e = sLtrb; Method get = sRectGet, set = sRectSet; Constructor<?> make = sRectMake;
+            if (e == null || get == null || set == null || make == null || pick < 4 || pick > 7) return;
+            Object state = null;
+            synchronized (sRectStates) { for (int i = sRectStates.size() - 1; i >= 0 && state == null; i--) state = sRectStates.get(i).get(); }
+            if (state == null) return;
+            android.graphics.RectF r = ltrb(get.invoke(state)), lim = cropBounds();
+            if (r == null) return;
+            if (lim != null && !lim.isEmpty()) { x = Math.max(lim.left, Math.min(lim.right, x)); y = Math.max(lim.top, Math.min(lim.bottom, y)); }
+            boolean left = pick == 4 || pick == 6, top = pick == 4 || pick == 5;
+            if (left) r.left = Math.min(x, r.right - min); else r.right = Math.max(x, r.left + min);
+            if (top) r.top = Math.min(y, r.bottom - min); else r.bottom = Math.max(y, r.top + min);
+            set.invoke(state, make.newInstance(r.left, r.top, r.right, r.bottom));
+        } catch (Throwable ignored) { }
+    }
+
+    static android.graphics.RectF currentCropRect() {
+        Object state = null;
+        synchronized (sRectStates) { for (int i = sRectStates.size() - 1; i >= 0 && state == null; i--) state = sRectStates.get(i).get(); }
+        return cropRect(state);
+    }
+
     static android.graphics.RectF cropBounds() { try { return ltrb(sCropBounds); } catch (Throwable t) { return null; } }
     private static android.graphics.RectF ltrb(Object r) throws Exception {
         Field[] e = sLtrb;
@@ -419,12 +466,13 @@ final class ScreenshotEditor {
         }
         for (Field f : ltrb) if (f == null) throw new NoSuchFieldException("crop rect edges in " + rectType.getName());
         sLtrb = ltrb; sRectGet = get;
+        sRectMake = make; sRectSet = set;
         final Map<String, Object> edges = enumByName(StudioNames.cls("edges", cl));
         final Object[] handle = new Object[9];
         String[] names = {"LEFT", "TOP", "RIGHT", "BOTTOM", "TOP_LEFT", "TOP_RIGHT", "BOTTOM_LEFT", "BOTTOM_RIGHT", "INSIDE"};
         for (int i = 0; i < 9; i++) {
             handle[i] = edges.get(names[i]);
-            if (handle[i] == null) { logOnce("crop handle names changed (" + edges.keySet() + "), stock touch areas kept", null); return; }
+            if (handle[i] == null) { return; }
         }
         final Object unit = unit(cl);
         Method invoke = lambda.getDeclaredMethod(sam(StudioNames.cls("fn1", cl)).getName(), Object.class);
@@ -450,10 +498,11 @@ final class ScreenshotEditor {
                     float x = Float.intBitsToFloat((int) (packed >> 32)), y = Float.intBitsToFloat((int) packed);
                     int pick = CropHit.pick(ltrb[0].getFloat(r), ltrb[1].getFloat(r), ltrb[2].getFloat(r), ltrb[3].getFloat(r), x, y,
                             24 * Resources.getSystem().getDisplayMetrics().density);
+                    int forced = sForcedPick;
+                    if (forced >= 0) { pick = forced; sCropDragging = true; }
                     set.invoke(handleState, pick < 0 ? null : handle[pick]);
                     p.setResult(unit);
                 } catch (Throwable error) {
-                    logOnce("crop handle hit test failed, stock one used", error);
                 }
             }
         });
@@ -479,7 +528,7 @@ final class ScreenshotEditor {
             if (Math.abs(y - doodlesButtonY) > 30 * d || Math.abs(x - doodlesButtonX) < 28 * d) return;
             if (DoodleOverlay.onPanel(x, y)) return;
             main.post(new Runnable() { public void run() { if (DoodleOverlay.active()) DoodleOverlay.leave(false); } });
-        } catch (Throwable error) { logOnce("tool bar tap not read", error); }
+        } catch (Throwable error) { }
     }
     static final Handler main = new Handler(Looper.getMainLooper());
 
@@ -495,7 +544,7 @@ final class ScreenshotEditor {
             try {
                 spacer = method(StudioNames.cls("spacer", cl), StudioNames.m("spacer.m"), modifier, composer);
                 width = method(StudioNames.cls("width", cl), StudioNames.m("width.m"), modifier, float.class);
-            } catch (Throwable missing) { spacer = width = null; logOnce("doodles button gap left out (" + missing + ")", null); }
+            } catch (Throwable missing) { spacer = width = null; }
             emptyModifier = emptyModifier(modifier);
             readState = getter(stateType);
             writeState = setter(stateType);
@@ -516,7 +565,7 @@ final class ScreenshotEditor {
                     try {
                         if (painter == null) painter = bitmapPainter.newInstance(imageBitmap.newInstance(DoodleOverlay.toolIcon(app())));
                         p.setResult(painter);
-                    } catch (Throwable error) { logOnce("doodles icon unavailable", error); }
+                    } catch (Throwable error) { }
                 }
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     Object r = p.getResult();
@@ -537,7 +586,7 @@ final class ScreenshotEditor {
                         boolean selected = Boolean.TRUE.equals(readState.invoke(selectedState));
                         if (spacer != null && width != null) spacer.invoke(null, width.invoke(null, emptyModifier, 4f), composer);
                         toolButton.invoke(null, ICON_ID, click(), selected, emptyModifier, composer, 0);
-                    } catch (Throwable error) { logOnce("doodles button could not be added", error); }
+                    } catch (Throwable error) { }
                 }
             });
             Xp.hookMethod(toolButton, new Xp.Callback() {
@@ -548,6 +597,13 @@ final class ScreenshotEditor {
                 }
             });
             Xp.hookMethod(doneButton, new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        Context c = app();
+                        int id = c == null ? 0 : c.getResources().getIdentifier("edit_menu_icon_done_accessibility", "string", PACKAGE);
+                        if (id != 0 && c.getString(id).equals(p.args[0])) p.args[2] = wrapDone(p.args[2]);
+                    } catch (Throwable ignored) { }
+                }
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         Context c = app();
@@ -565,9 +621,7 @@ final class ScreenshotEditor {
                     else if (e.getActionMasked() == MotionEvent.ACTION_UP) toolbarTap(e);
                 }
             });
-            Module.log("screenshot-editor: doodles hooks installed");
         } catch (Throwable error) {
-            logOnce("doodles unavailable in this Pixel Studio version", error);
         }
     }
 
@@ -579,7 +633,7 @@ final class ScreenshotEditor {
         if (sNormalPen == 0) {
             Context c = app();
             if (c != null) sNormalPen = c.getResources().getIdentifier("brush_normal_bristles", "drawable", PACKAGE);
-            if (sNormalPen == 0) { logOnce("pen icon not found, doodles button skipped", null); return -1; }
+            if (sNormalPen == 0) { return -1; }
         }
         return sNormalPen;
     }
@@ -608,7 +662,6 @@ final class ScreenshotEditor {
     }
 
     static final int ROW = 0, RESTART = 1, OTHER = 2;
-    static boolean fromToolbarRow() { return toolbarCaller() == ROW; }
     static int toolbarCaller() {
         String row = StudioNames.get("toolbarLambda"), restart = StudioNames.get("penRestart");
         StackTraceElement[] stack = new Throwable().getStackTrace();
@@ -626,7 +679,6 @@ final class ScreenshotEditor {
                 return painters < 2 ? ROW : RESTART;
             } catch (Throwable ignored) { }
         }
-        logOnce("toolbar row not found on the stack, doodles button skipped", null);
         return OTHER;
     }
 
@@ -640,13 +692,41 @@ final class ScreenshotEditor {
         }
     }
 
+    private static final Map<Object, Object> doneWraps = new java.util.WeakHashMap<Object, Object>();
+    private static Object wrapDone(final Object original) {
+        if (original == null || svfType == null || !svfType.isInstance(original) || Proxy.isProxyClass(original.getClass())) return original;
+        synchronized (doneWraps) {
+            Object w = doneWraps.get(original);
+            if (w != null) return w;
+            w = Proxy.newProxyInstance(svfType.getClassLoader(), new Class<?>[]{svfType}, new InvocationHandler() {
+                @Override public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
+                    if (m.getDeclaringClass() == Object.class) {
+                        if (m.getName().equals("equals")) return proxy == args[0];
+                        if (m.getName().equals("hashCode")) return System.identityHashCode(proxy);
+                        if (m.getName().equals("toString")) return original.toString();
+                    }
+                    if (m.getParameterTypes().length == 0) { try { if (TextTool.donePressed()) return m.getReturnType() == void.class ? null : unitOr(m); } catch (Throwable ignored) { } }
+                    if (m.getParameterTypes().length == 0) { try { CaptionDeselect.donePressed(); } catch (Throwable ignored) { } }
+                    Object r;
+                    try { r = m.invoke(original, args); } catch (java.lang.reflect.InvocationTargetException e) { throw e.getCause(); }
+                    if (m.getParameterTypes().length == 0) { try { CropRemember.donePressed(); } catch (Throwable ignored) { } }
+                    return r;
+                }
+            });
+            doneWraps.put(original, w);
+            return w;
+        }
+    }
+
+    private static Object unitOr(Method m) { try { return unit(loader); } catch (Throwable t) { return null; } }
+
     static boolean anyNativeToolOn() {
         for (Boolean b : nativeSelected.values()) if (Boolean.TRUE.equals(b)) return true;
         return false;
     }
 
     static void setSelected(boolean on) {
-        try { writeState.invoke(selectedState, on); } catch (Throwable error) { logOnce("doodles button state not updated", error); }
+        try { writeState.invoke(selectedState, on); } catch (Throwable error) { }
     }
 
     static Object click() {
@@ -658,6 +738,7 @@ final class ScreenshotEditor {
                 if ("hashCode".equals(name)) return System.identityHashCode(proxy);
                 if ("toString".equals(name)) return "PixelSuiteDoodlesClick";
                 doodlesButtonX = lastDownRawX; doodlesButtonY = lastDownRawY;
+                StudioToolbar.close();
                 main.post(new Runnable() { public void run() { DoodleOverlay.toggle(); } });
                 return unit(loader);
             }
@@ -671,10 +752,10 @@ final class ScreenshotEditor {
         openedAt = android.os.SystemClock.uptimeMillis();
         String page = TopBarKeep.currentPage();
         boolean toolPage = page != null && !"CROP_TOOL".equals(page) && !"READY".equals(page) && !"INITIAL".equals(page);
-        if (done == null || (!toolPage && (!anyNativeToolOn() || doneSeen < toolOnAt))) { doneClick = null; return; }
+        if (done == null || (page != null ? !toolPage : (!anyNativeToolOn() || doneSeen < toolOnAt))) { doneClick = null; return; }
         doneClick = null;
         for (Map.Entry<String, Boolean> e : nativeSelected.entrySet()) e.setValue(Boolean.FALSE);
-        try { sam(svfType).invoke(done); } catch (Throwable error) { logOnce("native tool could not be closed", error); }
+        try { sam(svfType).invoke(done); } catch (Throwable error) { }
     }
 
     static Field rendererCanvas;
@@ -686,8 +767,14 @@ final class ScreenshotEditor {
         rendererCanvas = fieldOfType(renderer, area);
         canvasMatrix = method(area, StudioNames.m("area.matrix"));
         Xp.hookMethod(method(renderer, StudioNames.m("renderer.picture"), config), new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                try { PenOnTop.begin(p.thisObject); } catch (Throwable ignored) { }
+            }
             @Override protected void afterHookedMethod(Xp.Param p) {
+                boolean inline = false;
+                try { inline = PenOnTop.end(p.thisObject); } catch (Throwable ignored) { }
                 if (p.getResult() instanceof Picture) CropLook.picture((Picture) p.getResult());
+                if (inline) return;
                 if (!(p.getResult() instanceof Picture) || !DoodleOverlay.hasShapes(p.thisObject)) return;
                 List<Doodle> shapes = DoodleOverlay.snapshot(p.thisObject);
                 if (shapes.isEmpty()) return;
@@ -704,7 +791,7 @@ final class ScreenshotEditor {
                     out.endRecording();
                     p.setResult(out);
                     CropLook.picture(out);
-                } catch (Throwable error) { logOnce("doodles could not be drawn into the image", error); }
+                } catch (Throwable error) { }
             }
         });
         Xp.hookAllConstructors(view, new Xp.Callback() {

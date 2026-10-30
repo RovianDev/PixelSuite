@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="12dp">
+    <TextView
+        android:id="@+id/ps_dna_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textAppearance="@android:style/TextAppearance.Material.Notification.Title" />
+    <TextView
+        android:id="@+id/ps_dna_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Notification" />
+    <TextView
+        android:id="@+id/ps_dna_call"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:translationX="@dimen/ps_dna_shift_expanded"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingEnd="20dp"
+        android:background="@drawable/ps_dna_call_bg"
+        android:drawableStart="@drawable/ps_dna_call_glyph"
+        android:drawablePadding="6dp"
+        android:text="Call"
+        android:textColor="@color/ps_dna_call_ink"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium" />
+</LinearLayout>

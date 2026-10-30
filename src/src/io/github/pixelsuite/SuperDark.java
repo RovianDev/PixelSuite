@@ -11,18 +11,14 @@ final class SuperDark {
 
     private SuperDark() {}
 
-    private static int sHooks;
-
     static void installSystemUi(ClassLoader cl) {
-        int n = 0;
         for (String c : new String[] {"android.content.om.FabricatedOverlay", "android.content.om.FabricatedOverlay$Builder"}) {
-            try { n += Xp.hookAllMethods(Class.forName(c), "setResourceValue", HOOK).size(); }
-            catch (Throwable t) { Module.log("SuperDark: " + c + " unavailable", t); }
+            try { Xp.hookAllMethods(Class.forName(c), "setResourceValue", HOOK); }
+            catch (Throwable t) { }
         }
-        sHooks += n;
         try {
             Class<?> c = Class.forName("com.android.systemui.theme.ThemeOverlayController", false, cl);
-            int h = Xp.hookAllMethods(c, "reevaluateSystemTheme", new Xp.Callback() {
+            Xp.hookAllMethods(c, "reevaluateSystemTheme", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     sController = p.thisObject;
                     if (!sStarted) { sStarted = true; start(); }
@@ -36,19 +32,17 @@ final class SuperDark {
                         if (p.args.length > 0 && p.args[0] instanceof Boolean) p.args[0] = Boolean.TRUE;
                     }
                 }
-            }).size();
-            sHooks += h;
-        } catch (Throwable t) { Module.log("SuperDark: ThemeOverlayController unavailable", t); }
+            });
+        } catch (Throwable t) { }
         try {
             Class<?> cc = Class.forName("com.android.systemui.statusbar.phone.ConfigurationControllerImpl", false, cl);
-            int h = Xp.hookAllMethods(cc, "onConfigurationChanged", new Xp.Callback() {
+            Xp.hookAllMethods(cc, "onConfigurationChanged", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { if (sController != null) scheduleSync("System UI configuration"); }
-            }).size();
-            sHooks += h;
-        } catch (Throwable t) { Module.log("SuperDark: ConfigurationControllerImpl unavailable (" + t + ")"); }
+            });
+        } catch (Throwable t) { }
         try {
             Class<?> sv = Class.forName("com.android.systemui.scrim.ScrimView", false, cl);
-            int h = Xp.hookAllMethods(sv, "setTint", new Xp.Callback() {
+            Xp.hookAllMethods(sv, "setTint", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     if (p.args.length == 0 || !(p.args[0] instanceof Integer)) return;
                     if (!effective(app())) {
@@ -59,15 +53,13 @@ final class SuperDark {
                     int c = (Integer) p.args[0]; if ((c & 0xffffff) == 0) return;
                     p.args[0] = c & 0xff000000;
                 }
-            }).size();
-            sHooks += h;
-        } catch (Throwable t) { Module.log("SuperDark: ScrimView unavailable (" + t + ")"); }
-        int n2 = 0;
-        n2 += hookPanel(android.graphics.drawable.ColorDrawable.class, "setColor");
-        n2 += hookPanel(android.graphics.drawable.GradientDrawable.class, "setColor");
-        n2 += hookPanel(android.view.View.class, "setBackgroundColor");
-        sHooks += n2 + backdropHooks() + splashHooks(cl);
-        Module.log("SuperDark: " + sHooks + " hooks");
+            });
+        } catch (Throwable t) { }
+        hookPanel(android.graphics.drawable.ColorDrawable.class, "setColor");
+        hookPanel(android.graphics.drawable.GradientDrawable.class, "setColor");
+        hookPanel(android.view.View.class, "setBackgroundColor");
+        backdropHooks();
+        splashHooks(cl);
     }
 
     private static int backdropHooks() {
@@ -76,14 +68,14 @@ final class SuperDark {
             n += Xp.hookMethod(android.content.res.Resources.class.getDeclaredMethod("getColor", int.class, android.content.res.Resources.Theme.class), new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { backdrop(p, (android.content.res.Resources) p.thisObject, (Integer) p.args[0]); }
             }) != null ? 1 : 0;
-        } catch (Throwable t) { Module.log("Blur Off: Resources.getColor hook", t); }
+        } catch (Throwable t) { }
         try {
             n += Xp.hookMethod(android.content.res.TypedArray.class.getDeclaredMethod("getColor", int.class, int.class), new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try { android.content.res.TypedArray a = (android.content.res.TypedArray) p.thisObject; int id = a.getResourceId((Integer) p.args[0], 0); if (id != 0) backdrop(p, a.getResources(), id); } catch (Throwable ignored) { }
                 }
             }) != null ? 1 : 0;
-        } catch (Throwable t) { Module.log("Blur Off: TypedArray.getColor hook", t); }
+        } catch (Throwable t) { }
         return n;
     }
     private static final String GOOGLE_APP = "com.google.android.googlequicksearchbox";
@@ -112,7 +104,7 @@ final class SuperDark {
                     } catch (Throwable ignored) { }
                 }
             }).size();
-        } catch (Throwable t) { Module.log("SuperDark: starting window colour unavailable", t); }
+        } catch (Throwable t) { }
         return n;
     }
     private static boolean darkGrey(int c) {
@@ -186,7 +178,7 @@ final class SuperDark {
                     p.args[0] = v & 0xff000000;
                 }
             }).size();
-        } catch (Throwable t) { Module.log("SuperDark: " + name + " hook", t); return 0; }
+        } catch (Throwable t) { return 0; }
     }
 
     private static volatile Boolean sApplied;
@@ -242,7 +234,7 @@ final class SuperDark {
                 android.provider.Settings.Global.putInt(cr, "disable_window_blurs", 0);
                 android.provider.Settings.Secure.putInt(cr, KEY_BLUR_OFF, 0);
             }
-        } catch (Throwable t) { Module.log("SuperDark: blur setting", t); }
+        } catch (Throwable t) { }
     }
 
     private static boolean needCreation(Object controller) {
@@ -254,7 +246,7 @@ final class SuperDark {
             if (f == null) throw new NoSuchFieldException("mNeedsOverlayCreation");
             f.setAccessible(true); f.setBoolean(controller, true);
             return true;
-        } catch (Throwable t) { Module.log("SuperDark: could not rebuild colours", t); return false; }
+        } catch (Throwable t) { return false; }
     }
 
     private static void sync(String why) {
@@ -273,7 +265,7 @@ final class SuperDark {
             }
             if (m == null) throw new NoSuchMethodException("reevaluateSystemTheme(boolean)");
             m.setAccessible(true); m.invoke(controller, true);
-        } catch (Throwable t) { Module.log("SuperDark: " + why + " failed", t); }
+        } catch (Throwable t) { }
     }
 
     private static void start() {
@@ -290,11 +282,11 @@ final class SuperDark {
                         public void onConfigurationChanged(android.content.res.Configuration c) { scheduleSync("configuration"); }
                         public void onLowMemory() {}
                     });
-                } catch (Throwable t) { Module.log("SuperDark: theme listener", t); }
+                } catch (Throwable t) { }
                 try {
                     ctx.getContentResolver().registerContentObserver(android.provider.Settings.Secure.getUriFor("ui_night_mode"), false,
                             new android.database.ContentObserver(h) { @Override public void onChange(boolean self) { scheduleSync("dark theme setting"); } });
-                } catch (Throwable t) { Module.log("SuperDark: dark theme observer", t); }
+                } catch (Throwable t) { }
             }
         }, 6000);
     }

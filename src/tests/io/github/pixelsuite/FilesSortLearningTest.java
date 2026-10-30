@@ -38,6 +38,6 @@ public final class FilesSortLearningTest {
         check(access!=null&&time(access,first)==times[0],"Named modified compatibility fallback");
         check(learn(NotFile.class,new NotFile(times[0]),new NotFile(times[1]),new NotFile(times[2]))==null,"Non-file model changed");
         for(File f:root.listFiles())check(f.delete(),"Fixture cleanup");check(root.delete(),"Directory cleanup");
-        System.out.println("PASS: obfuscated ms/seconds disk matches, ambiguous-date rejection, named fallback and non-file exclusion");
+        System.err.println("PASS: obfuscated ms/seconds disk matches, ambiguous-date rejection, named fallback and non-file exclusion");
     }
 }

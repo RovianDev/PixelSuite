@@ -22,12 +22,12 @@ final class Feature {
     private Feature() {}
 
     static int defaultFor(String key) {
-        if(PrivacyLock.GRACE_KEY.equals(key)||MiscOptions.defaultOff(key))return 0;
+        if(DOUBLE_TAP_SLEEP.equals(key)||TAP_CHECK.equals(key)||NavButtons.KEY.equals(key)||VOLDOWN_CAMERA.equals(key)||FLASHLIGHT.equals(key)||PrivacyLock.GRACE_KEY.equals(key)||MiscOptions.defaultOff(key))return 0;
         if(LauncherFeatures.LABEL_LEVEL.equals(key))return 2;
         if(SurfaceStyle.KEY.equals(key))return SurfaceStyle.FROSTED;
         if(LauncherFeatures.GRID_SIZE.equals(key)||LauncherFeatures.DRAWER_GRID_SIZE.equals(key))return 3;
-        return (LauncherFeatures.LABEL_SIZE.equals(key) || LauncherFeatures.HIDE_SHORTCUTS.equals(key) || LauncherFeatures.GRID.equals(key) || LauncherFeatures.DRAWER.equals(key) || LauncherFeatures.RENAME.equals(key) || LauncherFeatures.DRAG_PILL.equals(key) || LauncherFeatures.ICONS.equals(key) || FLASHLIGHT.equals(key) || DOUBLE_TAP_WAKE.equals(key)
-                || LOCK_SHORTCUTS.equals(key) || SuperDark.KEY.equals(key)) ? 0 : 1;
+        return (LauncherFeatures.ICONS.equals(key) || FLASHLIGHT.equals(key) || DOUBLE_TAP_WAKE.equals(key)
+                || LOCK_SHORTCUTS.equals(key) || SuperDark.KEY.equals(key) || DrawerIconColors.KEY.equals(key)) ? 0 : 1;
     }
 
     static boolean on(Context ctx, String key) {

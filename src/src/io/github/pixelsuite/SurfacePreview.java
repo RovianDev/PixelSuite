@@ -15,6 +15,8 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
     int style = SurfaceStyle.FROSTED;
     final boolean dark; final int frost, off, stock, text, accent;
     Bitmap wall, blurred;
+    private SurfaceDemoLayout layout;
+    private final Paint.FontMetrics captionMetrics=new Paint.FontMetrics();
     final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG), textPaint = new Paint(Paint.ANTI_ALIAS_FLAG), fill = new Paint(Paint.ANTI_ALIAS_FLAG);
     final Path clip = new Path();
     final RectF all = new RectF(), card = new RectF();
@@ -91,20 +93,30 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
     @Override protected void onWindowVisibilityChanged(int v) { super.onWindowVisibilityChanged(v); if (v == VISIBLE) check(); else stop(); }
     @Override public boolean onPreDraw() { check(); return true; }
 
+    final GlassRim lightRim=new GlassRim(24,1.5f*getResources().getDisplayMetrics().density,false),darkRim=new GlassRim(24,1.5f*getResources().getDisplayMetrics().density,true);
     private void drawSurface(Canvas c, RectF all, RectF card, float r, int value, int alpha) {
         if (alpha <= 0) return;
         int save = c.saveLayerAlpha(card, alpha, Canvas.ALL_SAVE_FLAG);
-        if (value == SurfaceStyle.FROSTED) {
+        boolean black=AppSurfaces.active(getContext());
+        if(black)paint.setColor(Color.BLACK);
+        else if (value == SurfaceStyle.FROSTED) {
             c.drawBitmap(blurred, null, all, paint);
             paint.setColor((frost & 0xffffff) | 0xcc000000);
         } else paint.setColor(value == SurfaceStyle.OFF ? off : stock);
         c.drawRoundRect(card, r, r, paint);
+        if(value!=SurfaceStyle.OFF&&(black||value==SurfaceStyle.FROSTED)){
+            int rimSave=c.save();c.translate(card.left,card.top);
+            (dark||black?darkRim:lightRim).draw(c,0,0,card.width(),card.height(),r,255);
+            c.restoreToCount(rimSave);
+        }
         c.restoreToCount(save);
         paint.setColor(Color.WHITE);
     }
 
     @Override protected void onSizeChanged(int w, int h, int ow, int oh) {
         if (w <= 0 || h <= 0) return;
+        float d=getResources().getDisplayMetrics().density;textPaint.setTextSize(12*d);textPaint.getFontMetrics(captionMetrics);
+        layout=new SurfaceDemoLayout(w,h,d,captionMetrics.descent-captionMetrics.ascent);
         int bw = Math.max(8, w / 4), bh = Math.max(8, h / 4);
         wall = Bitmap.createBitmap(bw, bh, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(wall);
@@ -127,7 +139,7 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
         int save = c.save();
         clip.reset(); clip.addRoundRect(all, 20 * d, 20 * d, Path.Direction.CW); c.clipPath(clip);
         c.drawBitmap(wall, null, all, paint);
-        card.set(w * 0.14f, h * 0.17f, w * 0.86f, h * 0.71f);
+        card.set(w * 0.14f, 24*d, w * 0.86f, layout.barTop-12*d);
         float r = 24 * d;
         clip.reset(); clip.addRoundRect(card, r, r, Path.Direction.CW);
         int inner = c.save(); c.clipPath(clip);
@@ -143,8 +155,8 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
         int[] dots = dark ? DOTS_DARK : DOTS_LIGHT;
         float cy = card.centerY() + 8 * d, step = (card.width() - 36 * d) / 4f, radius = Math.min(14 * d, step * 0.32f);
         for (int i = 0; i < 4; i++) { fill.setColor(dots[i]); c.drawCircle(card.left + 18 * d + step * (i + 0.5f), cy, radius, fill); }
-        float y = h * 0.84f, left = w * 0.24f, right = w * 0.76f;
-        RectF meter = new RectF(w*.09f, h*.755f, w*.91f, h*.99f);
+        float y=layout.trackY,left=layout.trackLeft,right=layout.trackRight;
+        RectF meter=new RectF(layout.barLeft,layout.barTop,layout.barRight,layout.barBottom);
         int meterSave = c.save();
         clip.reset(); clip.addRoundRect(meter, 16*d, 16*d, Path.Direction.CW); c.clipPath(clip);
         drawSurface(c, all, meter, 16*d, lower, 255);
@@ -152,12 +164,12 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
         c.restoreToCount(meterSave);
         fill.setColor(dark ? 0xff91939a : 0xff73757c); fill.setStrokeWidth(2*d);
         c.drawLine(left, y, right, y, fill);
-        for (int i=0;i<3;i++) c.drawCircle(left + (right-left)*i/2f, y, 3*d, fill);
-        float position = displayedPosition;
-        fill.setColor(accent); c.drawCircle(left + (right-left)*position/2f, y, 7*d, fill);
-        textPaint.setTextAlign(Paint.Align.CENTER); textPaint.setTextSize(11*d); textPaint.setColor(text);
-        String label = SurfaceStyle.NAMES[Math.max(0, Math.min(2, Math.round(displayedPosition)))];
-        c.drawText(label, w*.5f, h*.955f, textPaint); textPaint.setTextAlign(Paint.Align.LEFT);
+        float thumbX=layout.position(displayedPosition);
+        for(int i=0;i<3;i++){float dotX=layout.position(i);if(Math.abs(dotX-thumbX)>10*d)c.drawCircle(dotX,y,3*d,fill);}
+        fill.setColor(accent);c.drawCircle(thumbX,y,7*d,fill);
+        textPaint.setTextAlign(Paint.Align.CENTER);textPaint.setTextSize(12*d);textPaint.setColor(text);
+        String label=SurfaceStyle.NAMES[Math.max(0,Math.min(2,Math.round(displayedPosition)))];
+        c.drawText(label,meter.centerX(),layout.barBottom-12*d-captionMetrics.descent,textPaint);textPaint.setTextAlign(Paint.Align.LEFT);
         c.restoreToCount(save);
     }
 }

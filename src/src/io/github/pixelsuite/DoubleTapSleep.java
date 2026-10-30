@@ -27,19 +27,16 @@ final class DoubleTapSleep {
     static void installSystem(ClassLoader cl) {
         try {
             Class<?> session = Xp.findClass(SESSION, cl);
-            int n = Xp.hookAllMethods(session, "sendWallpaperCommand", new Xp.Callback() {
+            Xp.hookAllMethods(session, "sendWallpaperCommand", new Xp.Callback() {
                 @Override
                 protected void afterHookedMethod(Xp.Param param) {
                     try {
                         onCommand(param.thisObject, param.args);
                     } catch (Throwable t) {
-                        Module.log("double-tap-sleep: tap handling failed", t);
                     }
                 }
-            }).size();
-            Module.log("double-tap-sleep: hooked " + n + " method(s)");
+            });
         } catch (Throwable t) {
-            Module.log("double-tap-sleep: hook failed", t);
         }
     }
 
@@ -82,7 +79,6 @@ final class DoubleTapSleep {
             PowerManager.class.getMethod("goToSleep", long.class, int.class, int.class)
                     .invoke(pm, SystemClock.uptimeMillis(), SLEEP_REASON_POWER_BUTTON, 0);
         } catch (Throwable t) {
-            Module.log("double-tap-sleep: goToSleep failed", t);
         }
     }
 

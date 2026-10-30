@@ -35,7 +35,7 @@ final class FolderDrag {
                     } catch (Throwable ignored) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder border area unavailable", error); }
+        } catch (Throwable error) { }
         try {
             Xp.hookAllMethods(type("folder.Folder"), "onDragExit", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
@@ -51,20 +51,19 @@ final class FolderDrag {
                                 if (((Number) q.args[0]).longValue() < EXIT_MS) q.args[0] = Long.valueOf(EXIT_MS);
                             }
                         });
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Folder exit delay unavailable", error); }
+                    } catch (Throwable error) { }
                 }
                 protected void afterHookedMethod(Xp.Param p) { exiting.remove(); }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder exit delay unavailable", error); }
+        } catch (Throwable error) { }
         try {
             Xp.Callback callback = new Xp.Callback() {
-                protected void beforeHookedMethod(Xp.Param p) { try { touch(p); } catch (Throwable error) { LauncherFeatures.logOnce("Two-finger drag unavailable", error); } }
+                protected void beforeHookedMethod(Xp.Param p) { try { touch(p); } catch (Throwable error) { } }
             };
             if (Xp.hookAllMethods(type("Launcher"), "dispatchTouchEvent", callback).isEmpty()) {
                 Xp.hookMethod(Activity.class.getMethod("dispatchTouchEvent", MotionEvent.class), callback);
-                Module.log("Second-finger gestures: hooked Activity.dispatchTouchEvent");
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("Two-finger drag unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static boolean dragging(Activity a) {
@@ -82,7 +81,6 @@ final class FolderDrag {
         boolean paging = LauncherFeatures.on(TWO_FINGER), picking = MultiDrag.on();
         int action = e.getActionMasked();
         if (picking && action == MotionEvent.ACTION_MOVE) MultiDrag.follow();
-        if (action == MotionEvent.ACTION_POINTER_DOWN && picking) MultiDrag.why("second finger down, dragging=" + dragging(a) + ", paging=" + paging);
         if ((!paging && !picking) || !dragging(a)) { second = -1; return; }
         if (action == MotionEvent.ACTION_POINTER_DOWN) {
             if (second < 0) {
@@ -149,7 +147,7 @@ final class FolderDrag {
                     } catch (Throwable ignored) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Drawer fling unavailable", error); }
+        } catch (Throwable error) { }
         finally { tracker.recycle(); }
     }
 
@@ -170,7 +168,7 @@ final class FolderDrag {
                 Object list = call(call(a, "getAppsView"), "getActiveRecyclerView");
                 int move = Math.round(-dy);
                 if (move != 0) { call(list, "scrollBy", 0, move); anchorX = x; anchorY = y; DrawerDrag.refreshHover(); }
-            } catch (Throwable error) { LauncherFeatures.logOnce("Two-finger drawer scroll unavailable", error); }
+            } catch (Throwable error) { }
             return;
         }
         if (Math.abs(dx) > step && Math.abs(dx) > Math.abs(dy)) { page(get(a, "mWorkspace"), dx < 0 ? 1 : -1); anchorX = x; anchorY = y; }
@@ -183,7 +181,7 @@ final class FolderDrag {
             call(paged, "snapToPage", to);
             try { ((View) paged).performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK); } catch (Throwable ignored) { }
             return true;
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder page change unavailable", error); return false; }
+        } catch (Throwable error) { return false; }
     }
 
     static View openFolder(Activity a) {

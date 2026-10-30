@@ -8,7 +8,20 @@ import java.lang.reflect.Field;
 final class SystemToasts {
     private SystemToasts() {}
 
-    static boolean movedFailed;
+    static final String KEY = "pixelsuite_toast_position";
+    static final int TOP = 0, MIDDLE = 1, BOTTOM = 2;
+
+    static int position(View v) {
+        try {
+            String value = android.provider.Settings.Secure.getString(v.getContext().getContentResolver(), KEY);
+            if ("middle".equals(value)) return MIDDLE;
+            if ("bottom".equals(value)) return BOTTOM;
+        } catch (Throwable ignored) { }
+        return TOP;
+    }
+    static int gravity(int where) { return where == MIDDLE ? Gravity.CENTER : Gravity.TOP | Gravity.CENTER_HORIZONTAL; }
+    static int offset(View v, int where) { return where == MIDDLE ? 0 : TOP_DP(v); }
+
     static int TOP_DP(View v) { return dp(v, 98) - statusBar(v) - dp(v, 22); }
 
     static void install(ClassLoader cl) { install(); }
@@ -29,7 +42,7 @@ final class SystemToasts {
     static void install() {
         try {
             Class<?> presenter = Class.forName("android.widget.ToastPresenter");
-            int n = Xp.hookAllMethods(presenter, "show", new Xp.Callback() {
+            Xp.hookAllMethods(presenter, "show", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         int view = -1;
@@ -44,8 +57,10 @@ final class SystemToasts {
                         View v = (View) p.args[view];
                         frost(v);
                         if (gravity < 0 || y < 0) return;
-                        p.args[gravity] = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
-                        p.args[y] = TOP_DP(v);
+                        int where = position(v);
+                        if (where == BOTTOM) return;
+                        p.args[gravity] = gravity(where);
+                        p.args[y] = offset(v, where);
                     } catch (Throwable ignored) { }
                 }
                 @Override protected void afterHookedMethod(Xp.Param p) {
@@ -55,15 +70,16 @@ final class SystemToasts {
                         android.view.WindowManager.LayoutParams lp = (android.view.WindowManager.LayoutParams) sParams.get(p.thisObject);
                         Object wm = sManager.get(p.thisObject);
                         if (lp == null || wm == null) return;
-                        int top = Gravity.TOP | Gravity.CENTER_HORIZONTAL, y = TOP_DP(v);
-                        if (lp.gravity == top && lp.y == y) return;
-                        lp.gravity = top; lp.y = y;
+                        int where = position(v);
+                        if (where == BOTTOM) return;
+                        int g = gravity(where), y = offset(v, where);
+                        if (lp.gravity == g && lp.y == y) return;
+                        lp.gravity = g; lp.y = y;
                         ((android.view.WindowManager) wm).updateViewLayout(v, lp);
-                    } catch (Throwable error) { if (!movedFailed) { movedFailed = true; Module.log("toasts: toast could not be moved", error); } }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-            Module.log("toasts: " + n + " hooks");
-        } catch (Throwable error) { Module.log("toasts: ToastPresenter unavailable", error); }
+            });
+        } catch (Throwable error) { }
     }
 
     static void frost(View v) {

@@ -21,6 +21,6 @@ final class LauncherLabelSizing {
             int side=LauncherFeatures.dp(view.getContext(),2);
             int left=enabled?Math.min(padding[0],side):padding[0],right=enabled?Math.min(padding[1],side):padding[1];
             if(left!=view.getPaddingLeft()||right!=view.getPaddingRight())view.setPadding(left,view.getPaddingTop(),right,view.getPaddingBottom());
-        }catch(Throwable error){LauncherFeatures.logOnce("Icon label sizing unavailable",error);}
+        }catch(Throwable error){}
     }
 }

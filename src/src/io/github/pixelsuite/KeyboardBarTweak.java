@@ -14,7 +14,7 @@ final class KeyboardBarTweak {
     private KeyboardBarTweak() {}
     static final String KEY = "pixelsuite_keyboard_bar";
     private static final String NAV = "android.inputmethodservice.navigationbar.";
-    private static boolean installed, loggedFallback;
+    private static boolean installed;
     private static Boolean on;
 
     private static boolean on() {
@@ -30,33 +30,48 @@ final class KeyboardBarTweak {
     static synchronized void install(String pkg) {
         if (installed) return;
         installed = true;
-        int n = 0;
         try {
             Class<?> inflater = Class.forName(NAV + "NavigationBarInflaterView");
-            n += Xp.hookAllMethods(inflater, "inflateLayout", new Xp.Callback() {
+            Xp.hookAllMethods(inflater, "inflateLayout", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     if (p.args.length > 0 && p.args[0] instanceof String && on()) p.args[0] = rewrite((String) p.args[0]);
                 }
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     if (p.thisObject instanceof View && on()) keepLeftToRight((View) p.thisObject);
                 }
-            }).size();
-            n += Xp.hookAllMethods(inflater, "getDefaultLayout", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(inflater, "getDefaultLayout", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     if (p.getResult() instanceof String && on()) p.setResult(rewrite((String) p.getResult()));
                 }
-            }).size();
+            });
             Xp.deoptimizeAll(inflater, "inflateLayout");
             Xp.deoptimizeAll(inflater, "onFinishInflate");
-        } catch (Throwable error) { Module.log("Keyboard bar: layout hook unavailable", error); }
+        } catch (Throwable error) { }
         try {
-            n += Xp.hookAllMethods(Class.forName(NAV + "NavigationBarView"), "onFinishInflate", new Xp.Callback() {
+            Xp.hookAllMethods(Class.forName(NAV + "NavigationBarView"), "onFinishInflate", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
-                    try { if (p.thisObject instanceof View && on()) fixViews((View) p.thisObject); } catch (Throwable error) { Module.log("Keyboard bar: view fallback failed", error); }
+                    try { if (p.thisObject instanceof View){View bar=(View)p.thisObject;if(on())fixViews(bar);installNavArrow(bar);} } catch (Throwable error) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("Keyboard bar: view fallback unavailable", error); }
-        Module.log("Keyboard bar: " + n + " hooks in " + pkg);
+            });
+        } catch (Throwable error) { }
+    }
+
+    private static void installNavArrow(View bar){
+        if(Xp.getAdditionalInstanceField(bar,"pixelsuite_nav_arrow")!=null)return;
+        View back=find(bar,id(bar.getResources(),"input_method_nav_back"));if(back==null)return;
+        ViewGroup ends=group(bar,id(bar.getResources(),"input_method_nav_ends_group"));
+        View item=ends==null?back:childOf(ends,back);if(item==null)item=back;
+        ArrowPlacement placement=new ArrowPlacement(bar,back,item);Xp.setAdditionalInstanceField(bar,"pixelsuite_nav_arrow",placement);bar.addOnAttachStateChangeListener(placement);if(bar.isAttachedToWindow())placement.onViewAttachedToWindow(bar);
+    }
+    private static final class ArrowPlacement implements android.view.ViewTreeObserver.OnPreDrawListener,View.OnAttachStateChangeListener {
+        final View bar,back,item;final float original;final int[] at=new int[2],rootAt=new int[2];boolean nav,attached;
+        final android.database.ContentObserver observer=new android.database.ContentObserver(new android.os.Handler(android.os.Looper.getMainLooper())){public void onChange(boolean self){read();}};
+        ArrowPlacement(View b,View arrow,View moving){bar=b;back=arrow;item=moving;original=item.getTranslationX();}
+        void read(){try{nav="1".equals(Settings.Secure.getString(bar.getContext().getContentResolver(),NavButtons.KEY));}catch(Throwable ignored){nav=false;}if(!nav)item.setTranslationX(original);bar.invalidate();}
+        public void onViewAttachedToWindow(View v){if(attached)return;attached=true;read();bar.getContext().getContentResolver().registerContentObserver(Settings.Secure.getUriFor(NavButtons.KEY),false,observer);bar.getViewTreeObserver().addOnPreDrawListener(this);}
+        public void onViewDetachedFromWindow(View v){if(!attached)return;attached=false;bar.getContext().getContentResolver().unregisterContentObserver(observer);if(bar.getViewTreeObserver().isAlive())bar.getViewTreeObserver().removeOnPreDrawListener(this);item.setTranslationX(original);}
+        public boolean onPreDraw(){if(nav&&back.isShown()){View root=bar.getRootView();back.getLocationOnScreen(at);root.getLocationOnScreen(rootAt);float target=rootAt[0]+root.getWidth()-36*bar.getResources().getDisplayMetrics().density;float delta=target-(at[0]+back.getWidth()/2f);if(Math.abs(delta)>.5f)item.setTranslationX(item.getTranslationX()+delta);}return true;}
     }
 
     static String rewrite(String spec) {
@@ -90,19 +105,17 @@ final class KeyboardBarTweak {
         ViewGroup ends = group(bar, id(res, "input_method_nav_ends_group"));
         if (ends == null) return;
         ViewGroup center = group(bar, id(res, "input_method_nav_center_group"));
-        boolean changed = false;
         View switcher = find(bar, id(res, "input_method_nav_ime_switcher"));
-        if (switcher != null) { if (!removeFrom(ends, switcher) && !removeFrom(center, switcher)) switcher.setVisibility(View.GONE); changed = true; }
+        if (switcher != null) { if (!removeFrom(ends, switcher) && !removeFrom(center, switcher)) switcher.setVisibility(View.GONE); }
         View back = find(bar, id(res, "input_method_nav_back"));
         if (back != null) {
             View item = childOf(ends, back);
             if (item == null && center != null) {
                 View fromCenter = childOf(center, back);
-                if (fromCenter != null) { center.removeView(fromCenter); ends.addView(fromCenter); changed = true; }
-            } else if (item != null && ends.indexOfChild(item) != ends.getChildCount() - 1) { ends.removeView(item); ends.addView(item); changed = true; }
+                if (fromCenter != null) { center.removeView(fromCenter); ends.addView(fromCenter); }
+            } else if (item != null && ends.indexOfChild(item) != ends.getChildCount() - 1) { ends.removeView(item); ends.addView(item); }
         }
         keepLeftToRight(bar);
-        if (changed && !loggedFallback) { loggedFallback = true; Module.log("Keyboard bar: fixed by the view fallback"); }
     }
 
     private static void keepLeftToRight(View root) {

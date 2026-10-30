@@ -72,7 +72,6 @@ final class StudioNames {
         sNames = new HashMap<String, String>();
         String build = moduleBuild();
         if (m != null && build != null && build.equals(m.get(NOT_FOUND))) {
-            Module.log("screenshot-editor: Pixel Studio " + version + ": the editor's toolbar was not recognised, features stay off");
             return;
         }
         try {
@@ -80,13 +79,10 @@ final class StudioNames {
             if (valid(m, cl)) {
                 sNames = m;
                 save(cache, m);
-                if (m.size() < KEYS.length) Module.log("screenshot-editor: Pixel Studio " + version + ": names not found, their features stay off: " + missing(m));
                 return;
             }
-            Module.log("screenshot-editor: Pixel Studio " + version + ": the editor's toolbar was not recognised, features stay off");
             if (build != null) { Map<String, String> none = new HashMap<String, String>(); none.put(NOT_FOUND, build); save(cache, none); }
         } catch (Throwable t) {
-            Module.log("screenshot-editor: Pixel Studio " + version + " could not be read, features stay off", t);
         }
     }
 
@@ -103,12 +99,6 @@ final class StudioNames {
             Class.forName(m.get("ui"), false, cl).getDeclaredMethod(m.get("ui.pen"), modifier, painter, painter, long.class, boolean.class, fn0, composer, int.class);
             return true;
         } catch (Throwable notThisBuild) { return false; }
-    }
-
-    private static String missing(Map<String, String> m) {
-        StringBuilder b = new StringBuilder();
-        for (String k : KEYS) if (!m.containsKey(k)) b.append(b.length() == 0 ? "" : ", ").append(k);
-        return b.length() == 0 ? "none" : b.toString();
     }
 
     static String moduleBuild() {
@@ -157,6 +147,6 @@ final class StudioNames {
             for (Map.Entry<String, String> e : m.entrySet()) p.setProperty(e.getKey(), e.getValue());
             FileOutputStream out = new FileOutputStream(f);
             try { p.store(out, "Pixel Suite: Pixel Studio names found by reading the app"); } finally { out.close(); }
-        } catch (Throwable notSaved) { Module.log("screenshot-editor: names not cached (" + notSaved + ")"); }
+        } catch (Throwable notSaved) { }
     }
 }

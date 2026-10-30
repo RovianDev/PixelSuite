@@ -67,14 +67,11 @@ final class FilesSort {
                 });
             }
             installQueries();
-            Module.log("files-sort hooks installed");
         } catch (Throwable t) {
-            Module.log("files-sort hook failed", t);
         }
     }
 
     private static void installQueries() {
-        int hooks = 0;
         for (Method m : android.content.ContentResolver.class.getDeclaredMethods()) {
             Class<?>[] t = m.getParameterTypes();
             if (!m.getName().equals("query") || t.length != 4 || t[2] != android.os.Bundle.class) continue;
@@ -88,9 +85,7 @@ final class FilesSort {
                     } catch (Throwable ignored) { }
                 }
             });
-            hooks++;
         }
-        if (hooks == 0) Module.log("files-sort: ContentResolver.query(Bundle) not found");
     }
 
     private static final String SQL_ORDER = "android:query-arg-sql-sort-order";

@@ -47,51 +47,48 @@ final class PrivacyBadges {
     private static Set<String> lastApps = Collections.emptySet(), lastFolders = Collections.emptySet();
 
     static void install(ClassLoader cl) {
-        int n = 0;
         try {
             Class<?> bubble = Xp.findClass("com.android.launcher3.BubbleTextView", cl);
             Xp.Callback draw = new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
-                    try { drawOnApp((View) p.thisObject, (Canvas) p.args[0]); } catch (Throwable error) { LauncherFeatures.logOnce("App lock badge unavailable (icons)", error); }
+                    try { drawOnApp((View) p.thisObject, (Canvas) p.args[0]); } catch (Throwable error) { }
                 }
             };
             int d = Xp.hookAllMethods(bubble, "drawRunningAppIndicatorIfNecessary", draw).size();
             if (d == 0) d = Xp.hookAllMethods(bubble, "onDraw", draw).size();
-            n += d;
-            n += Xp.hookAllMethods(bubble, "setIconVisible", new Xp.Callback() {
+            Xp.hookAllMethods(bubble, "setIconVisible", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { if (p.args.length == 1 && Boolean.TRUE.equals(p.args[0])) settled((View) p.thisObject); }
-            }).size();
+            });
             Class<?> folderIcon = Xp.findClass("com.android.launcher3.folder.FolderIcon", cl);
-            n += Xp.hookAllMethods(folderIcon, "dispatchDraw", new Xp.Callback() {
+            Xp.hookAllMethods(folderIcon, "dispatchDraw", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
-                    try { drawOnFolder((View) p.thisObject, (Canvas) p.args[0]); } catch (Throwable error) { LauncherFeatures.logOnce("App lock badge unavailable (folders)", error); }
+                    try { drawOnFolder((View) p.thisObject, (Canvas) p.args[0]); } catch (Throwable error) { }
                 }
-            }).size();
-            n += Xp.hookAllMethods(folderIcon, "setIconVisible", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(folderIcon, "setIconVisible", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { if (p.args.length == 1 && Boolean.TRUE.equals(p.args[0])) settled((View) p.thisObject); }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock badge unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Class<?> drag = Xp.findClass("com.android.launcher3.dragndrop.DragController", cl);
-            n += Xp.hookAllMethods(drag, "startDrag", new Xp.Callback() {
+            Xp.hookAllMethods(drag, "startDrag", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { try { dragStarted(p); } catch (Throwable ignored) { } }
-            }).size();
+            });
             Xp.Callback end = new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { if (dragging) { dragging = false; droppedAt = SystemClock.uptimeMillis(); } }
             };
-            n += Xp.hookAllMethods(drag, "endDrag", end).size();
-            try { n += Xp.hookAllMethods(Xp.findClass("com.android.launcher3.dragndrop.LauncherDragController", cl), "endDrag", end).size(); } catch (Throwable ignored) { }
-        } catch (Throwable error) { Module.log("App lock badge: drag fade unavailable", error); }
+            Xp.hookAllMethods(drag, "endDrag", end);
+            try { Xp.hookAllMethods(Xp.findClass("com.android.launcher3.dragndrop.LauncherDragController", cl), "endDrag", end); } catch (Throwable ignored) { }
+        } catch (Throwable error) { }
         try {
             Class<?> launcher = Xp.findClass("com.android.launcher3.Launcher", cl);
-            n += Xp.hookAllMethods(launcher, "onResume", new Xp.Callback() {
+            Xp.hookAllMethods(launcher, "onResume", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { try { onResume((Activity) p.thisObject); } catch (Throwable ignored) { } }
-            }).size();
-            n += Xp.hookAllMethods(launcher, "onPause", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(launcher, "onPause", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { resumed = false; resumeGen++; }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock badge: return tracking unavailable", error); }
-        Module.log("App lock badges: " + n + " hooks");
+            });
+        } catch (Throwable error) { }
     }
 
     private static boolean isFolder(Object info) {
@@ -403,7 +400,7 @@ final class PrivacyBadges {
             };
             app.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(PrivacyLock.KEY), false, changed);
             app.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(PrivacyFolders.KEY), false, changed);
-        } catch (Throwable error) { listening = false; Module.log("App lock badge: changes not followed", error); }
+        } catch (Throwable error) { listening = false; }
     }
 
     private static void refresh() {

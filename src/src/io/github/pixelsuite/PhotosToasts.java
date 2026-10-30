@@ -1,14 +1,5 @@
 package io.github.pixelsuite;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Path;
-import android.graphics.PixelFormat;
-import android.graphics.Rect;
-import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
@@ -26,20 +17,19 @@ final class PhotosToasts {
     static Object translationHook;
 
     static void install(ClassLoader cl) {
-        int n = 0;
         try {
             Class<?> snack = Class.forName(SNACK, false, cl);
             Class<?> base = snack.getSuperclass();
-            n += Xp.hookAllMethods(base, "onAttachedToWindow", new Xp.Callback() {
+            Xp.hookAllMethods(base, "onAttachedToWindow", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { attached((View) p.thisObject); }
-            }).size();
-            n += Xp.hookAllMethods(base, "onLayout", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(base, "onLayout", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { seat((View) p.thisObject); }
-            }).size();
-        } catch (Throwable error) { Module.log("Photos messages: snackbar unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Class<?> wm = Class.forName("android.view.WindowManagerImpl");
-            n += Xp.hookAllMethods(wm, "addView", new Xp.Callback() {
+            Xp.hookAllMethods(wm, "addView", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     if (p.args.length < 2 || !(p.args[0] instanceof View) || !(p.args[1] instanceof android.view.WindowManager.LayoutParams)) return;
                     View root = (View) p.args[0];
@@ -50,8 +40,8 @@ final class PhotosToasts {
                     lp.y = dp(root, 8);
                     toast(root);
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("Photos messages: toast bar unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Xp.hookAllMethods(android.app.Activity.class, "onResume", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { prewarm((android.app.Activity) p.thisObject); }
@@ -59,17 +49,15 @@ final class PhotosToasts {
         } catch (Throwable ignored) { }
         try {
             Class<?> ftl = Class.forName("com.google.android.material.floatingtoolbar.FloatingToolbarLayout", false, cl);
-            int m = Xp.hookAllConstructors(ftl, new Xp.Callback() {
+            Xp.hookAllConstructors(ftl, new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     final View v = (View) p.thisObject;
                     v.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
                         @Override public void onLayoutChange(View x, int l, int t, int r, int b, int ol, int ot, int or, int ob) { barLaidOut(v); }
                     });
                 }
-            }).size();
-            n += m;
+            });
         } catch (Throwable missing) { }
-        Module.log("Photos messages: " + n + " hooks");
     }
 
     static void attached(final View bar) {
@@ -88,7 +76,7 @@ final class PhotosToasts {
                     return narrow(bar);
                 }
             });
-        } catch (Throwable error) { Module.log("Photos messages: snackbar not restyled", error); }
+        } catch (Throwable error) { }
     }
 
     static void seat(View bar) {
@@ -193,7 +181,7 @@ final class PhotosToasts {
             if (fab == null || frosted.containsKey(fab)) return;
             frosted.put(fab, Boolean.TRUE);
             PillFrost.frost(fab, true);
-        } catch (Throwable error) { Module.log("Photos messages: tab bar not frosted", error); }
+        } catch (Throwable error) { }
     }
     static java.io.File cacheFile(android.content.Context c) { return new java.io.File(c.getCacheDir(), "pixelsuite-photos-tabbar"); }
     static void remember(android.content.Context c) {
@@ -229,7 +217,7 @@ final class PhotosToasts {
             });
             if (bar == null) return;
             matchBar(bar, PillFrost.apply(bar, root, false));
-        } catch (Throwable error) { Module.log("Photos messages: toast bar not restyled", error); }
+        } catch (Throwable error) { }
     }
 
     static synchronized void mirror(View v, boolean on) {
@@ -241,7 +229,7 @@ final class PhotosToasts {
                         if (mirrored.containsKey(p.thisObject) && p.args[0] instanceof Float) p.args[0] = -(Float) p.args[0];
                     }
                 });
-            } catch (Throwable error) { Module.log("Photos messages: slide from the top unavailable", error); }
+            } catch (Throwable error) { }
         } else if (mirrored.isEmpty() && translationHook != null) {
             try { if (translationHook instanceof io.github.libxposed.api.XposedInterface.HookHandle) ((io.github.libxposed.api.XposedInterface.HookHandle) translationHook).unhook(); } catch (Throwable ignored) { }
             translationHook = null;
@@ -258,28 +246,4 @@ final class PhotosToasts {
     }
     static int dp(View v, float d) { return Math.round(d * v.getResources().getDisplayMetrics().density); }
 
-    static final class Pill extends Drawable implements Drawable.Callback {
-        final Drawable in; final Path clip = new Path(); final android.graphics.Paint black = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
-        Pill(Drawable in) { this.in = in; if (in != null) in.setCallback(this); black.setColor(Color.BLACK); }
-        @Override protected void onBoundsChange(Rect b) {
-            if (in != null) in.setBounds(b);
-            clip.reset(); float r = b.height() / 2f;
-            clip.addRoundRect(new RectF(b), r, r, Path.Direction.CW);
-        }
-        @Override public void draw(Canvas c) {
-            Rect b = getBounds(); if (b.isEmpty()) return;
-            float r = b.height() / 2f;
-            if (in == null) { c.drawRoundRect(new RectF(b), r, r, black); return; }
-            int save = c.save(); c.clipPath(clip); in.draw(c); c.restoreToCount(save);
-        }
-        @Override public void getOutline(android.graphics.Outline o) { Rect b = getBounds(); o.setRoundRect(b, b.height() / 2f); }
-        @Override public boolean isStateful() { return in != null && in.isStateful(); }
-        @Override protected boolean onStateChange(int[] s) { return in != null && in.setState(s); }
-        @Override public void setAlpha(int a) { if (in != null) in.setAlpha(a); black.setAlpha(a); }
-        @Override public void setColorFilter(ColorFilter f) { }
-        @Override public int getOpacity() { return PixelFormat.TRANSLUCENT; }
-        @Override public void invalidateDrawable(Drawable who) { invalidateSelf(); }
-        @Override public void scheduleDrawable(Drawable who, Runnable what, long when) { scheduleSelf(what, when); }
-        @Override public void unscheduleDrawable(Drawable who, Runnable what) { unscheduleSelf(what); }
-    }
 }

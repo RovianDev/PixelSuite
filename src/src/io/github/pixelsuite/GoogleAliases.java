@@ -60,14 +60,14 @@ final class GoogleAliases {
                         if(!exportedIcons.contains(hash.toString())){Bundle data=new Bundle();data.putByteArray("png",png);owner.getContentResolver().call(AliasProvider.URI,"icon",hash.toString(),data);exportedIcons.add(hash.toString());}
                         root.getJSONObject(item.getKey()).put("icon",hash.toString());
                         synchronized(iconHashes){iconHashes.put(item.getKey(),new String[]{signatures.get(item.getKey()),hash.toString()});}
-                    }catch(Throwable error){LauncherFeatures.logOnce("Icon export for the Google app unavailable",error);}
+                    }catch(Throwable error){}
                 }
                 String json=root.toString();if(json.equals(published))return;
                 Bundle data=new Bundle();data.putString("aliases",json);owner.getContentResolver().call(AliasProvider.URI,"replace",null,data);published=json;
                 Set<String> active=new HashSet<String>();Iterator<String> keys=root.keys();while(keys.hasNext())active.add(root.getJSONObject(keys.next()).optString("icon"));
                 exportedIcons.retainAll(active);
-            }catch(Throwable error){Module.log("Google app customization sync unavailable",error);}}});
-        }catch(Throwable error){Module.log("Google app label sync unavailable",error);}
+            }catch(Throwable error){}}});
+        }catch(Throwable error){}
     }
     private static volatile Context sContext;
     static Context context(){
@@ -133,6 +133,5 @@ final class GoogleAliases {
         Xp.hookAllMethods(LauncherActivityInfo.class,"getIcon",icon);
         Xp.hookAllMethods(LauncherActivityInfo.class,"getBadgedIcon",icon);
         Xp.hookAllMethods(Instrumentation.class,"callActivityOnResume",new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){loaded=0;reload();}});
-        Module.log("Google app label hooks installed");
     }
 }

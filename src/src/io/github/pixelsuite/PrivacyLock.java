@@ -43,6 +43,7 @@ final class PrivacyLock {
     static final String MODE_CONFIRM = "confirm", ACTION_CONFIRMED = "io.github.pixelsuite.APP_LOCK_CONFIRMED";
     static final String EXTRA_REASON = "pixelsuite_reason", EXTRA_TOKEN = "pixelsuite_token", EXTRA_OK = "pixelsuite_ok";
     static final String REASON_UNINSTALL = "uninstall", REASON_DISABLE = "disable", REASON_PAUSE = "pause";
+    static final String REASON_UNINSTALL_CORE = "uninstall_core", REASON_DISABLE_CORE = "disable_core";
     private static final long ARRIVE_MS = 4000;
 
     static Set<String> parse(String value) {
@@ -62,6 +63,7 @@ final class PrivacyLock {
     private static final int FLAG_SHOW_WHEN_LOCKED = 0x800000;
 
     private static volatile Set<String> locked = Collections.emptySet();
+    private static volatile Set<String> guarded = Collections.emptySet();
     private static final Map<String, Boolean> open = new ConcurrentHashMap<String, Boolean>();
     private static final Map<String, Long> leftAt = new ConcurrentHashMap<String, Long>();
     private static final Map<String, Long> coveredAt = new ConcurrentHashMap<String, Long>();
@@ -83,15 +85,14 @@ final class PrivacyLock {
     private static volatile Handler worker;
 
     static void installSystem(ClassLoader cl) {
-        int n = 0;
         try {
             Class<?> ams = Xp.findClass("com.android.server.am.ActivityManagerService", cl);
-            n += Xp.hookAllMethods(ams, "systemReady", new Xp.Callback() {
+            Xp.hookAllMethods(ams, "systemReady", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
-                    try { start((Context) Xp.getObjectField(p.thisObject, "mContext")); } catch (Throwable error) { Module.log("App lock: start failed", error); }
+                    try { start((Context) Xp.getObjectField(p.thisObject, "mContext")); } catch (Throwable error) { }
                 }
-            }).size();
-            int b = Xp.hookAllMethods(ams, "broadcastIntentWithFeature", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(ams, "broadcastIntentWithFeature", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         Intent i = null; for (Object o : p.args) if (o instanceof Intent) { i = (Intent) o; break; }
@@ -111,31 +112,29 @@ final class PrivacyLock {
                         p.setResult(0);
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-            if (b == 0) Module.log("App lock: unlock reports unavailable (a covered app asks again when it returns)");
-            n += b;
-        } catch (Throwable error) { Module.log("App lock: system start hook unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Class<?> starter = Xp.findClass("com.android.server.wm.ActivityStarter", cl);
-            n += Xp.hookAllMethods(starter, "executeRequest", new Xp.Callback() {
+            Xp.hookAllMethods(starter, "executeRequest", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try { starting.set(p.args.length > 0 && p.args[0] != null ? Xp.getObjectField(p.args[0], "originatingPendingIntent") : null); } catch (Throwable t) { starting.set(null); }
                 }
                 @Override protected void afterHookedMethod(Xp.Param p) { starting.remove(); }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock: start origin unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Class<?> interceptor = Xp.findClass("com.android.server.wm.ActivityStartInterceptor", cl);
-            n += Xp.hookAllMethods(interceptor, "intercept", new Xp.Callback() {
+            Xp.hookAllMethods(interceptor, "intercept", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try { if (!Boolean.TRUE.equals(p.getResult()) && intercept(p.thisObject)) p.setResult(Boolean.TRUE); }
-                    catch (Throwable error) { Module.log("App lock: start check failed (the app opens)", error); }
+                    catch (Throwable error) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock: start hook unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Class<?> atms = Xp.findClass("com.android.server.wm.ActivityTaskManagerService", cl);
-            int r = Xp.hookAllMethods(atms, "setLastResumedActivityUncheckLocked", new Xp.Callback() {
+            Xp.hookAllMethods(atms, "setLastResumedActivityUncheckLocked", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         if (p.args.length == 0 || p.args[0] == null) return;
@@ -145,10 +144,8 @@ final class PrivacyLock {
                         if (pkg instanceof String) resumed((String) pkg, owner == null ? (String) pkg : owner, flags);
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-            if (r == 0) Module.log("App lock: screen tracking unavailable (relocks only when the screen turns off; recents not covered)");
-            n += r;
-            n += Xp.hookAllMethods(atms, "removeTask", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(atms, "removeTask", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         if (p.args.length == 0 || !(p.args[0] instanceof Integer) || open.isEmpty()) return;
@@ -159,10 +156,9 @@ final class PrivacyLock {
                         if (pkg != null) { open.remove(pkg); leftAt.remove(pkg); arriving.remove(pkg); }
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock: screen tracking unavailable (relocks only when the screen turns off)", error); }
-        n += installProtection(cl);
-        Module.log("App lock: " + n + " system hooks");
+            });
+        } catch (Throwable error) { }
+        installProtection(cl);
     }
 
     private static int installProtection(ClassLoader cl) {
@@ -174,34 +170,35 @@ final class PrivacyLock {
             n += Xp.hookAllMethods(k, "deletePackageVersioned", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
-                        if (!protect || Boolean.TRUE.equals(replaying.get())) return;
+                        if (Boolean.TRUE.equals(replaying.get())) return;
                         String pkg = null; Object observer = null;
                         for (Object a : p.args) {
                             if (a != null && a.getClass().getName().equals("android.content.pm.VersionedPackage")) pkg = (String) Xp.callMethod(a, "getPackageName");
                             else if (a != null && !(a instanceof Number) && !(a instanceof String)) observer = a;
                         }
-                        if (pkg == null || !locked.contains(pkg)) return;
+                        String why = uninstallReason(pkg);
+                        if (why == null) return;
                         int uid = android.os.Binder.getCallingUid();
                         if (installerUid >= 0 && uid == installerUid) return;
                         final long caller = android.os.Binder.clearCallingIdentity(); android.os.Binder.restoreCallingIdentity(caller);
                         p.setResult(null);
                         final Object to = observer; final String name = pkg;
-                        ask(pkg, REASON_UNINSTALL, replay(p, caller), new Runnable() { public void run() { deleted(to, name, -5 ); } });
-                        Module.log("App lock: an app asked to uninstall " + pkg + ", asking first");
-                    } catch (Throwable error) { Module.log("App lock: uninstall check failed (it goes on)", error); }
+                        ask(pkg, why, replay(p, caller), new Runnable() { public void run() { deleted(to, name, -5 ); } });
+                    } catch (Throwable error) { }
                 }
             }).size();
             n += Xp.hookAllMethods(k, "setApplicationEnabledSetting", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(final Xp.Param p) {
                     try {
-                        if (!protect || Boolean.TRUE.equals(replaying.get()) || p.args.length < 2) return;
+                        if (Boolean.TRUE.equals(replaying.get()) || p.args.length < 2) return;
                         if (!(p.args[0] instanceof String) || !(p.args[1] instanceof Integer)) return;
                         String pkg = (String) p.args[0]; int state = (Integer) p.args[1];
                         if (state != 2 && state != 3 && state != 4) return;
-                        if (!locked.contains(pkg)) return;
+                        String why = protect && locked.contains(pkg) ? REASON_DISABLE : guarded.contains(pkg) ? REASON_DISABLE_CORE : null;
+                        if (why == null) return;
                         p.setResult(null);
-                        ask(pkg, REASON_DISABLE, replay(p));
-                    } catch (Throwable error) { Module.log("App lock: disable check failed (it goes on)", error); }
+                        ask(pkg, why, replay(p));
+                    } catch (Throwable error) { }
                 }
             }).size();
             n += Xp.hookAllMethods(k, "setPackagesSuspendedAsUser", new Xp.Callback() {
@@ -215,7 +212,7 @@ final class PrivacyLock {
                         if (first == null) return;
                         p.setResult(pkgs.clone());
                         ask(first, REASON_PAUSE, replay(p));
-                    } catch (Throwable error) { Module.log("App lock: pause check failed (it goes on)", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
         }
@@ -224,24 +221,30 @@ final class PrivacyLock {
             n += Xp.hookAllMethods(installer, "uninstall", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(final Xp.Param p) {
                     try {
-                        if (!protect || Boolean.TRUE.equals(replaying.get())) return;
+                        if (Boolean.TRUE.equals(replaying.get())) return;
                         String pkg = null; IntentSender receiver = null;
                         for (Object a : p.args) {
                             if (a != null && a.getClass().getName().equals("android.content.pm.VersionedPackage")) pkg = (String) Xp.callMethod(a, "getPackageName");
                             else if (a instanceof IntentSender) receiver = (IntentSender) a;
                         }
-                        if (pkg == null || !locked.contains(pkg)) return;
+                        final String why = uninstallReason(pkg);
+                        if (why == null) return;
                         if (installerUid >= 0 && android.os.Binder.getCallingUid() == installerUid) return;
                         final long caller = android.os.Binder.clearCallingIdentity(); android.os.Binder.restoreCallingIdentity(caller);
                         p.setResult(null);
                         final String name = pkg; final IntentSender to = receiver;
-                        ask(pkg, REASON_UNINSTALL, replay(p, caller), new Runnable() { public void run() { aborted(to, name); } });
-                    } catch (Throwable error) { Module.log("App lock: uninstall check failed (it goes on)", error); }
+                        ask(pkg, why, replay(p, caller), new Runnable() { public void run() { aborted(to, name); } });
+                    } catch (Throwable error) { }
                 }
             }).size();
-        } catch (Throwable error) { Module.log("App lock: app uninstall check unavailable", error); }
-        if (n == 0) Module.log("App lock: uninstall / disable / pause protection unavailable");
+        } catch (Throwable error) { }
         return n;
+    }
+
+    private static String uninstallReason(String pkg) {
+        if (pkg == null) return null;
+        if (protect && locked.contains(pkg)) return REASON_UNINSTALL;
+        return guarded.contains(pkg) ? REASON_UNINSTALL_CORE : null;
     }
 
     private static Runnable replay(Xp.Param p) { return replay(p, Long.MIN_VALUE); }
@@ -252,7 +255,7 @@ final class PrivacyLock {
             long id = android.os.Binder.clearCallingIdentity();
             if (caller != Long.MIN_VALUE) android.os.Binder.restoreCallingIdentity(caller);
             try { m.setAccessible(true); m.invoke(self, args); }
-            catch (Throwable error) { Module.log("App lock: confirmed action failed", error); }
+            catch (Throwable error) { }
             finally { android.os.Binder.restoreCallingIdentity(id); replaying.remove(); }
         } };
     }
@@ -264,7 +267,7 @@ final class PrivacyLock {
         try {
             for (java.lang.reflect.Method m : observer.getClass().getMethods())
                 if (m.getName().equals("onPackageDeleted") && m.getParameterTypes().length == 3) { m.invoke(observer, pkg, code, "Cancelled: the app is locked by Pixel Suite"); return; }
-        } catch (Throwable error) { Module.log("App lock: uninstall cancel not delivered", error); }
+        } catch (Throwable error) { }
     }
 
     private static void aborted(IntentSender to, String pkg) {
@@ -275,7 +278,7 @@ final class PrivacyLock {
             fill.putExtra("android.content.pm.extra.STATUS", 3);
             fill.putExtra("android.content.pm.extra.STATUS_MESSAGE", "Cancelled: the app is locked by Pixel Suite");
             to.sendIntent(system, 0, fill, null, null);
-        } catch (Throwable error) { Module.log("App lock: uninstall cancel not delivered", error); }
+        } catch (Throwable error) { }
     }
 
     private static void ask(final String pkg, final String reason, Runnable action, Runnable cancel) {
@@ -294,7 +297,7 @@ final class PrivacyLock {
                 i.putExtra(EXTRA_MODE, MODE_CONFIRM); i.putExtra(EXTRA_PACKAGE, pkg); i.putExtra(EXTRA_REASON, reason); i.putExtra(EXTRA_TOKEN, token);
                 i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 c.startActivity(i);
-            } catch (Throwable error) { Module.log("App lock: confirm sheet unavailable", error); }
+            } catch (Throwable error) { }
         } });
     }
     private static void confirmed(String token, boolean ok) {
@@ -317,15 +320,6 @@ final class PrivacyLock {
         return i.getData().getSchemeSpecificPart();
     }
 
-    private static String labelOf(String pkg) {
-        try { Context c = system; android.content.pm.PackageManager pm = c.getPackageManager(); return String.valueOf(pm.getApplicationLabel(pm.getApplicationInfo(pkg, 0))); }
-        catch (Throwable t) { return pkg; }
-    }
-    private static void say(final String text) {
-        final Context c = system; Handler h = worker; if (c == null || h == null) return;
-        h.post(new Runnable() { public void run() { try { android.widget.Toast.makeText(c, text, android.widget.Toast.LENGTH_LONG).show(); } catch (Throwable ignored) { } } });
-    }
-
     private static void start(final Context c) {
         if (ready || c == null) return;
         ready = true;
@@ -338,8 +332,9 @@ final class PrivacyLock {
             try {
                 boolean on = onValue(Settings.Secure.getString(c.getContentResolver(), ENABLED_KEY));
                 locked = on ? Collections.unmodifiableSet(parse(Settings.Secure.getString(c.getContentResolver(), KEY))) : Collections.<String>emptySet();
-            } catch (Throwable error) { Module.log("App lock: list unreadable", error); }
+            } catch (Throwable error) { }
             try { protect = onValue(Settings.Secure.getString(c.getContentResolver(), PROTECT_KEY)); } catch (Throwable ignored) { }
+            try { guarded = StoreBlocker.guarded(c.getContentResolver()); } catch (Throwable ignored) { }
             for (String installer : new String[] { "com.google.android.packageinstaller", "com.android.packageinstaller" }) {
                 try { installerUid = c.getPackageManager().getApplicationInfo(installer, 0).uid; break; } catch (Throwable ignored) { }
             }
@@ -356,12 +351,13 @@ final class PrivacyLock {
             c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(GRACE_KEY), false, reload);
             c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(ENABLED_KEY), false, reload);
             c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(PROTECT_KEY), false, reload);
-        } catch (Throwable error) { Module.log("App lock: list changes not followed", error); }
+            c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(StoreBlocker.UNLOCK_KEY), false, reload);
+        } catch (Throwable error) { }
         try {
             c.registerReceiver(new BroadcastReceiver() {
                 @Override public void onReceive(Context x, Intent i) { open.clear(); arriving.clear(); front = null; guest = null; }
             }, new IntentFilter(Intent.ACTION_SCREEN_OFF), null, h);
-        } catch (Throwable error) { Module.log("App lock: screen-off relock unavailable", error); }
+        } catch (Throwable error) { }
         try {
             IntentFilter f = new IntentFilter(); f.addAction(Intent.ACTION_PACKAGE_ADDED); f.addAction(Intent.ACTION_PACKAGE_REPLACED); f.addDataScheme("package");
             c.registerReceiver(new BroadcastReceiver() {
@@ -377,7 +373,7 @@ final class PrivacyLock {
                     if (pkg != null) forget(c, pkg);
                 }
             }, f, null, h);
-        } catch (Throwable error) { Module.log("App lock: uninstall cleanup unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static volatile int launcherUid = -1;
@@ -390,8 +386,7 @@ final class PrivacyLock {
             try {
                 Set<String> list = parse(Settings.Secure.getString(c.getContentResolver(), PrivacyFolders.KEY));
                 if (list.add(key)) Settings.Secure.putString(c.getContentResolver(), PrivacyFolders.KEY, join(list));
-                Module.log("App lock: folder lock given back after Undo");
-            } catch (Throwable error) { Module.log("App lock: folder lock not given back after Undo", error); }
+            } catch (Throwable error) { }
             finally { android.os.Binder.restoreCallingIdentity(id); }
         } });
     }
@@ -404,8 +399,7 @@ final class PrivacyLock {
             String value = join(list);
             if (value.isEmpty()) Settings.Secure.putString(c.getContentResolver(), KEY, null); else Settings.Secure.putString(c.getContentResolver(), KEY, value);
             open.remove(pkg); leftAt.remove(pkg); arriving.remove(pkg);
-            Module.log("App lock: " + pkg + " was uninstalled, taken off the lock list");
-        } catch (Throwable error) { Module.log("App lock: lock list not updated after an uninstall", error); }
+        } catch (Throwable error) { }
         finally { android.os.Binder.restoreCallingIdentity(id); }
     }
 
@@ -436,7 +430,7 @@ final class PrivacyLock {
                 cover.putExtra(EXTRA_PACKAGE, pkg);
                 cover.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
                 c.startActivity(cover);
-            } catch (Throwable error) { Module.log("App lock: cover unavailable", error); }
+            } catch (Throwable error) { }
         } });
     }
 
@@ -484,21 +478,21 @@ final class PrivacyLock {
 
     private static boolean intercept(Object it) throws Exception {
         Set<String> list = locked;
-        if (list.isEmpty() || ourUid < 0) return false;
+        if ((list.isEmpty() && guarded.isEmpty()) || ourUid < 0) return false;
         ActivityInfo target = (ActivityInfo) Xp.getObjectField(it, "mAInfo");
-        String victim = protect ? uninstallTarget((Intent) Xp.getObjectField(it, "mIntent")) : null;
-        if (victim != null && list.contains(victim) && ((Number) Xp.getObjectField(it, "mUserId")).intValue() == 0) {
+        String victim = uninstallTarget((Intent) Xp.getObjectField(it, "mIntent"));
+        String why = uninstallReason(victim);
+        if (why != null && ((Number) Xp.getObjectField(it, "mUserId")).intValue() == 0) {
             Object origin = starting.get();
             if (((Number) Xp.getObjectField(it, "mRealCallingUid")).intValue() == ourUid && origin != null) {
                 boolean ours; synchronized (carried) { ours = carried.remove(origin); }
                 if (ours) return false;
             }
-            return gate(it, victim, REASON_UNINSTALL);
+            return gate(it, victim, why);
         }
         if (target == null || target.packageName == null || !list.contains(target.packageName)) return false;
         String pkg = target.packageName;
         int realUid = ((Number) Xp.getObjectField(it, "mRealCallingUid")).intValue();
-        int realPid = ((Number) Xp.getObjectField(it, "mRealCallingPid")).intValue();
         int userId = ((Number) Xp.getObjectField(it, "mUserId")).intValue();
         int appUid = target.applicationInfo != null ? target.applicationInfo.uid : -1;
         if (userId != 0) return false;
@@ -567,14 +561,6 @@ final class PrivacyLock {
         return graceRead;
     }
 
-    static boolean lockedCard(View taskView) {
-        try {
-            Set<String> list = lockedNow(taskView.getContext()); if (list.isEmpty()) return false;
-            for (Object c : RecentsLock.containers(taskView)) { String id = RecentsLock.identity(c); if (id != null && list.contains(id.substring(0, id.indexOf('|')))) return true; }
-        } catch (Throwable ignored) { }
-        return false;
-    }
-
     static void addRow(final ViewGroup rows, final Object popup, final Object info) {
         try {
             Object component = LauncherFeatures.call(info, "getTargetComponent");
@@ -582,7 +568,6 @@ final class PrivacyLock {
             final String pkg = ((ComponentName) component).getPackageName();
             if (pkg == null || OUR.equals(pkg) || pkg.equals(rows.getContext().getPackageName()) || "com.android.systemui".equals(pkg)) return;
             final boolean isLocked = lockedNow(rows.getContext()).contains(pkg);
-            final CharSequence label = (CharSequence) LauncherFeatures.get(info, "title");
             String title = isLocked ? "Unlock app" : "Lock app";
             LauncherFeatures.addMenuRow(rows, title, "pixelsuite_privacy", new View.OnClickListener() {
                 public void onClick(View v) {
@@ -598,7 +583,7 @@ final class PrivacyLock {
                         android.app.ActivityOptions.class.getMethod("setShareIdentityEnabled", boolean.class).invoke(o, true);
                         options = o.toBundle();
                     } catch (Throwable ignored) { }
-                    try { a.startActivity(i, options); changed(); } catch (Throwable error) { Module.log("App lock: unlock screen unavailable", error); }
+                    try { a.startActivity(i, options); changed(); } catch (Throwable error) { }
                 }
             }, false);
             View row = rows.findViewWithTag("pixelsuite_privacy");
@@ -609,6 +594,6 @@ final class PrivacyLock {
                 int color = ((TextView) LauncherFeatures.get(row, "mBubbleText")).getCurrentTextColor();
                 icon.setBackground(new RecentsLock.Lock(color, isLocked ? 1f : 0f));
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("App lock menu row unavailable", error); }
+        } catch (Throwable error) { }
     }
 }

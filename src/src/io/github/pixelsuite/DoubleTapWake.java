@@ -35,8 +35,6 @@ final class DoubleTapWake {
     static final String KEY_TAP_GESTURE = "doze_tap_gesture";
     static final String KEY_DOUBLE_TAP_GESTURE = "doze_pulse_on_double_tap";
 
-    private static final String KEY_TAP = "pixelsuite_wake_tap";
-
     private static final String PWM = "com.android.server.policy.PhoneWindowManager";
     private static final String PMS = "com.android.server.power.PowerManagerService";
     private static final int STATE_ON = 2, STATE_DOZE = 3, STATE_DOZE_SUSPEND = 4;
@@ -141,21 +139,18 @@ final class DoubleTapWake {
             sBiometricReason = PowerManager.class.getField("WAKE_REASON_BIOMETRIC").getInt(null);
         } catch (Throwable ignored) { }
 
-        int hooks = 0;
         try {
-            hooks += Xp.hookAllMethods(Xp.findClass(PWM, cl), "systemBooted", new Xp.Callback() {
+            Xp.hookAllMethods(Xp.findClass(PWM, cl), "systemBooted", new Xp.Callback() {
                 @Override
                 protected void afterHookedMethod(Xp.Param param) {
                     try {
                         init(param.thisObject,
                                 (Context) Xp.getObjectField(param.thisObject, "mContext"));
                     } catch (Throwable t) {
-                        Module.log("double-tap-wake: init failed", t);
                     }
                 }
-            }).size();
+            });
         } catch (Throwable t) {
-            Module.log("double-tap-wake: systemBooted hook failed", t);
         }
 
         Xp.Callback wake = new Xp.Callback() {
@@ -164,7 +159,6 @@ final class DoubleTapWake {
                 try {
                     onWakeRequest(param);
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: wake handling failed", t);
                 }
             }
         };
@@ -177,17 +171,14 @@ final class DoubleTapWake {
                 n = Xp.hookAllMethods(Xp.findClass(POWER_GROUP, cl), "wakeUpLocked", wake).size();
             } catch (Throwable ignored) { }
         }
-        if (n == 0) Module.log("double-tap-wake: wake hook unavailable");
-        hooks += n;
-        hooks += installWindowWatch(cl);
-        hooks += installSmartspaceWatch(cl);
-        hooks += installLaunchGuard(cl);
-        hooks += installTapQuiet(cl);
-        hooks += installFingerWatch(cl);
-        hooks += installAodTouch(cl);
-        hooks += installShadeGuard(cl);
-        hooks += installUnlockTouchEnd(cl);
-        Module.log("double-tap-wake: " + hooks + " hooks");
+        installWindowWatch(cl);
+        installSmartspaceWatch(cl);
+        installLaunchGuard(cl);
+        installTapQuiet(cl);
+        installFingerWatch(cl);
+        installAodTouch(cl);
+        installShadeGuard(cl);
+        installUnlockTouchEnd(cl);
     }
 
     private static volatile long sEndedTouchAt;
@@ -205,7 +196,6 @@ final class DoubleTapWake {
                         }
                     }
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: unlock touch end failed", t);
                 }
             }
         };
@@ -220,7 +210,6 @@ final class DoubleTapWake {
                 n += Xp.hookAllMethods(Xp.findClass(c, cl), "onAuthenticated", cb).size();
             } catch (Throwable ignored) { }
         }
-        if (n == 0) Module.log("double-tap-wake: unlock touch end unavailable (shade guard only)");
         return n;
     }
 
@@ -262,9 +251,7 @@ final class DoubleTapWake {
                 }
             }).size();
         } catch (Throwable t) {
-            Module.log("double-tap-wake: shade guard failed", t);
         }
-        if (n == 0) Module.log("double-tap-wake: shade guard unavailable");
         return n + hidden;
     }
 
@@ -287,7 +274,6 @@ final class DoubleTapWake {
                     try {
                         Xp.callMethod(statusBarService, "collapsePanels");
                     } catch (Throwable t) {
-                        Module.log("double-tap-wake: could not close the shade", t);
                     }
                 }
             }, delay);
@@ -321,9 +307,7 @@ final class DoubleTapWake {
                         }
                     }).size();
         } catch (Throwable t) {
-            Module.log("double-tap-wake: always-on touch hook failed", t);
         }
-        if (n == 0) Module.log("double-tap-wake: always-on touch unavailable");
         return n;
     }
 
@@ -352,13 +336,11 @@ final class DoubleTapWake {
                         reapplyAodNow();
                         updateRecording();
                     } catch (Throwable t) {
-                        Module.log("double-tap-wake: charging change failed", t);
                     }
                 }
             };
             registerReceiver(ctx, r, f, new Handler(looper));
         } catch (Throwable t) {
-            Module.log("double-tap-wake: charging watch unavailable", t);
         }
     }
 
@@ -371,7 +353,6 @@ final class DoubleTapWake {
                 try {
                     reapplyAodNow();
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: always-on display re-apply failed", t);
                 }
             }
         });
@@ -396,7 +377,6 @@ final class DoubleTapWake {
             }
             return true;
         } catch (Throwable t) {
-            Module.log("double-tap-wake: always-on display re-apply failed", t);
             return false;
         }
     }
@@ -494,17 +474,13 @@ final class DoubleTapWake {
                             if (fsm.registerListener(kick, facc,
                                     SensorManager.SENSOR_DELAY_FASTEST, 0, sensorThread())) {
                                 sLiveKick = kick;
-                            } else {
-                                Module.log("double-tap-wake: live motion readings unavailable");
                             }
                         } catch (Throwable t) {
-                            Module.log("double-tap-wake: motion live start failed", t);
                         }
                     }
                 });
             } else {
                 if (!sm.registerListener(m, acc, SensorManager.SENSOR_DELAY_FASTEST, 0, h)) {
-                    Module.log("double-tap-wake: motion sensor unavailable");
                     return;
                 }
                 sMotion = m;
@@ -516,7 +492,6 @@ final class DoubleTapWake {
                 }
             }, MOTION_LISTEN_MS);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: motion sensor start failed", t);
         }
     }
 
@@ -565,7 +540,6 @@ final class DoubleTapWake {
     private static final int RECORD_KEEP = 800;
     private static final long PRE_RECORD_MS = 8000L;
     private static volatile Recorder sRecorder;
-    private static boolean sRecordUnsupportedLogged;
 
     private static boolean recordWanted() {
         return sWakeOn && sPm != null && !sPm.isInteractive()
@@ -595,7 +569,6 @@ final class DoubleTapWake {
                     stopRecording();
                 }
             } catch (Throwable t) {
-                Module.log("double-tap-wake: motion recording update failed", t);
             }
         }
     };
@@ -615,17 +588,10 @@ final class DoubleTapWake {
         if (acc == null) return;
         int fifo = acc.getFifoMaxEventCount();
         if (fifo < RECORD_MIN_FIFO || acc.isWakeUpSensor()) {
-            if (!sRecordUnsupportedLogged) {
-                sRecordUnsupportedLogged = true;
-                Module.log("double-tap-wake: the sensor hub can't record the accelerometer ("
-                        + fifo + (acc.isWakeUpSensor() ? ", wake-up" : "") + "), the motion"
-                        + " sensor starts at tap 1 instead");
-            }
             return;
         }
         Recorder rec = new Recorder(sm);
         if (!sm.registerListener(rec, acc, RECORD_PERIOD_US, RECORD_LATENCY_US, h)) {
-            Module.log("double-tap-wake: motion recording unavailable");
             return;
         }
         sRecorder = rec;
@@ -646,7 +612,7 @@ final class DoubleTapWake {
         private final float[] mX = new float[RECORD_KEEP], mY = new float[RECORD_KEEP],
                 mZ = new float[RECORD_KEEP];
         private int mN;
-        private boolean mStopped, mErrorLogged;
+        private boolean mStopped;
 
         Recorder(SensorManager sm) {
             mSm = sm;
@@ -668,10 +634,6 @@ final class DoubleTapWake {
                 if (m != null && m.mFromRecording) m.feed(ts, e.values[0], e.values[1],
                         e.values[2]);
             } catch (Throwable t) {
-                if (!mErrorLogged) {
-                    mErrorLogged = true;
-                    Module.log("double-tap-wake: motion recording reading failed", t);
-                }
             }
         }
 
@@ -683,7 +645,6 @@ final class DoubleTapWake {
             try {
                 if (!mStopped) onRecordingFlushed(this);
             } catch (Throwable t) {
-                Module.log("double-tap-wake: hand-held judgement failed", t);
             }
         }
 
@@ -903,7 +864,6 @@ final class DoubleTapWake {
                 if (mFromRecording) return;
                 feed(e.timestamp, e.values[0], e.values[1], e.values[2]);
             } catch (Throwable t) {
-                Module.log("double-tap-wake: motion sensor reading failed", t);
                 stopMotionTap();
             }
         }
@@ -1034,7 +994,6 @@ final class DoubleTapWake {
                 mNoiseSum += Math.min(hp, MOTION_MIN);
                 mNoiseN++;
             } catch (Throwable t) {
-                Module.log("double-tap-wake: motion sensor reading failed", t);
                 stopMotionTap();
             }
         }
@@ -1174,7 +1133,6 @@ final class DoubleTapWake {
                     float noise = probe.finish();
                     done.done(noise, probe.samples());
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: motion listen failed", t);
                     endShaking();
                 }
             }
@@ -1199,7 +1157,6 @@ final class DoubleTapWake {
                 }
             }, SHAKING_RECHECK_MS);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: shaking watch failed", t);
         }
     }
 
@@ -1230,7 +1187,6 @@ final class DoubleTapWake {
                 }
             }, SHAKING_AFTER_OFF_MS);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: shaking watch failed", t);
         }
     }
 
@@ -1247,7 +1203,6 @@ final class DoubleTapWake {
                 }
             });
         } catch (Throwable t) {
-            Module.log("double-tap-wake: shaking check failed", t);
         }
     }
 
@@ -1299,7 +1254,6 @@ final class DoubleTapWake {
             });
             if (!started) endShaking();
         } catch (Throwable t) {
-            Module.log("double-tap-wake: shaking check failed", t);
             endShaking();
         }
     }
@@ -1478,7 +1432,6 @@ final class DoubleTapWake {
                         }
                     }, JUDGE_MAX_MS);
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: hand-held judgement failed", t);
                     sJudgeUntil = 0;
                     startHeldCheck(trigger);
                 }
@@ -1554,7 +1507,6 @@ final class DoubleTapWake {
                     if (sHeldUntil != until) return;
                     startHeldWatch(trigger, until);
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: hand-held check failed", t);
                     endHeld(true);
                 }
             }
@@ -1687,7 +1639,6 @@ final class DoubleTapWake {
                     mWinNs = 0;
                 }
             } catch (Throwable t) {
-                Module.log("double-tap-wake: hand-held reading failed", t);
                 endHeld(true);
             }
         }
@@ -1754,7 +1705,6 @@ final class DoubleTapWake {
                 try {
                     armPickup();
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: pickup sensor failed", t);
                 }
             }
         });
@@ -1824,7 +1774,6 @@ final class DoubleTapWake {
                 try {
                     onPickup();
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: pickup handling failed", t);
                 }
             }
         });
@@ -1858,7 +1807,6 @@ final class DoubleTapWake {
                 }
             }
         } catch (Throwable t) {
-            Module.log("double-tap-wake: sensor list unavailable", t);
         }
         return sPickupSensor;
     }
@@ -1868,7 +1816,6 @@ final class DoubleTapWake {
             PowerManager.class.getMethod("wakeUp", long.class, int.class, String.class)
                     .invoke(sPm, SystemClock.uptimeMillis(), sTapReason, MOTION_DETAILS);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: motion tap wake failed", t);
         }
     }
 
@@ -1911,7 +1858,6 @@ final class DoubleTapWake {
                 if (sWindowUntil == 0) judgeHeld(AFTER_A_TAP, true);
                 reapplyAodNow();
             } catch (Throwable t) {
-                Module.log("double-tap-wake: touch window close failed", t);
             }
         }
     }
@@ -1926,7 +1872,6 @@ final class DoubleTapWake {
             }
             if (wl != null) wl.acquire(ms);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: wake lock unavailable", t);
         }
     }
 
@@ -1949,7 +1894,6 @@ final class DoubleTapWake {
             u += Xp.hookAllMethods(c, "setDeviceLockedForUser", unlock).size();
             u += Xp.hookAllMethods(c, "notifyKeystoreOfDeviceLockState", unlock).size();
         } catch (Throwable t) {
-            Module.log("double-tap-wake: unlock watch failed", t);
         }
         for (int i = 1; i <= 15; i++) {
             try {
@@ -1968,11 +1912,6 @@ final class DoubleTapWake {
                         }
                     }).size();
         } catch (Throwable t) {
-            Module.log("double-tap-wake: launch guard failed", t);
-        }
-        if (a == 0 || u == 0) {
-            Module.log("double-tap-wake: launch guard incomplete (starts " + a + ", unlock " + u
-                    + ")");
         }
         return a + u;
     }
@@ -1993,9 +1932,7 @@ final class DoubleTapWake {
                 }).size();
             }
         } catch (Throwable t) {
-            Module.log("double-tap-wake: tap vibration guard failed", t);
         }
-        if (n == 0) Module.log("double-tap-wake: tap vibration guard unavailable");
         return n;
     }
 
@@ -2066,10 +2003,6 @@ final class DoubleTapWake {
             try {
                 n += Xp.hookAllMethods(Xp.findClass(t[0], cl), t[1], finger).size();
             } catch (Throwable ignored) { }
-        }
-        if (n == 0) {
-            Module.log("double-tap-wake: fingerprint watch unavailable (fingerprint haptics may"
-                    + " wait up to " + DOWN_WAIT_MS + " ms)");
         }
         return n;
     }
@@ -2168,9 +2101,7 @@ final class DoubleTapWake {
                         }
                     }).size();
         } catch (Throwable t) {
-            Module.log("double-tap-wake: smartspace watch failed", t);
         }
-        if (n == 0) Module.log("double-tap-wake: smartspace watch unavailable");
         return n;
     }
 
@@ -2270,7 +2201,6 @@ final class DoubleTapWake {
                         }).size();
             } catch (Throwable ignored) { }
         }
-        if (n == 0) Module.log("double-tap-wake: window watch unavailable");
         return n;
     }
 
@@ -2368,7 +2298,6 @@ final class DoubleTapWake {
             sSystemUiUid = ctx.getPackageManager()
                     .getApplicationInfo("com.android.systemui", 0).uid;
         } catch (Throwable t) {
-            Module.log("double-tap-wake: System UI uid unknown", t);
         }
         HandlerThread t = new HandlerThread("PixelSuiteDoubleTap");
         t.start();
@@ -2467,7 +2396,6 @@ final class DoubleTapWake {
                     Xp.callMethod(monitor, "dispose");
                 } catch (Throwable ignored) { }
             }
-            Module.log("double-tap-wake: touch monitor unavailable", e);
         }
     }
 
@@ -2485,7 +2413,6 @@ final class DoubleTapWake {
         try {
             if (monitor != null) Xp.callMethod(monitor, "dispose");
         } catch (Throwable t) {
-            Module.log("double-tap-wake: monitor dispose failed", t);
         }
     }
 
@@ -2516,7 +2443,6 @@ final class DoubleTapWake {
                 ctx.registerReceiver(r, f, null, handler);
             }
         } catch (Throwable t) {
-            Module.log("double-tap-wake: receiver registration failed", t);
         }
     }
 
@@ -2546,7 +2472,6 @@ final class DoubleTapWake {
                 Settings.Secure.putInt(r, KEY_DOUBLE_TAP_GESTURE, 1);
             }
         } catch (Throwable e) {
-            Module.log("double-tap-wake: settings check failed", e);
         }
     }
 
@@ -2577,7 +2502,6 @@ final class DoubleTapWake {
                     try {
                         endTouchAtUnlock(wakeAt);
                     } catch (Throwable t) {
-                        Module.log("double-tap-wake: unlock touch end failed", t);
                     }
                 }
             });
@@ -2631,7 +2555,6 @@ final class DoubleTapWake {
                 try {
                     if (!openTouchWindow(tapAt)) requestPulse(tapAt);
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: first tap handling failed", t);
                 }
             }
         });
@@ -2651,7 +2574,6 @@ final class DoubleTapWake {
                     UserHandle all = (UserHandle) UserHandle.class.getField("ALL").get(null);
                     ctx.sendBroadcastAsUser(i, all);
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: pulse request failed", t);
                 }
                 confirmPulse(tapAt);
             }
@@ -2694,7 +2616,6 @@ final class DoubleTapWake {
             PowerManager.class.getMethod("wakeUp", long.class, int.class, String.class)
                     .invoke(sPm, SystemClock.uptimeMillis(), sTapReason, BACKUP_DETAILS);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: backup wake failed", t);
         }
     }
 
@@ -2793,10 +2714,6 @@ final class DoubleTapWake {
                     if (sSleepOn || sWakeOn) onTouch((MotionEvent) event);
                 }
             } catch (Throwable t) {
-                if (!sTouchErrorLogged) {
-                    sTouchErrorLogged = true;
-                    Module.log("double-tap-wake: touch handling failed", t);
-                }
             } finally {
                 finishInputEvent(event, false);
             }
@@ -2827,7 +2744,11 @@ final class DoubleTapWake {
         }
 
         private boolean offWithoutIcon() {
-            return !mPilfered && !sUdfpsSeen;
+            return !mPilfered && !iconShowing();
+        }
+
+        private boolean iconShowing() {
+            return sUdfpsSeen && sUdfpsVisibility == android.view.View.VISIBLE;
         }
 
         void disarmFromIcon() {
@@ -2872,7 +2793,7 @@ final class DoubleTapWake {
                         if (pilfer(0L)) mPilfered = true;
                     }
                     if (mPrevUpAt != 0 && down - mPrevUpAt > DOUBLE_GAP_MS) {
-                        if (sUdfpsSeen) {
+                        if (iconShowing()) {
                             mPrevUpAt = 0;
                         } else {
                             disarm();
@@ -2961,7 +2882,6 @@ final class DoubleTapWake {
                     if (sTouchDownAt != down || (up != 0 && up >= down) || cancel >= down) return;
                     Xp.callMethod(monitor, "pilferPointers");
                 } catch (Throwable t) {
-                    Module.log("double-tap-wake: could not cancel touch", t);
                 } finally {
                     if (done != null) done.countDown();
                 }
@@ -2978,7 +2898,6 @@ final class DoubleTapWake {
     private static final long PILFER_WAIT_MS = 50L;
 
     private static final long STALE_TOUCH_MS = 600L;
-    private static volatile boolean sTouchErrorLogged;
     private static volatile Handler sPilferThread;
 
     private static Handler pilferThread() {
@@ -3007,7 +2926,6 @@ final class DoubleTapWake {
                 Xp.callMethod(im, "injectInputEvent", ev, 0 );
             }
         } catch (Throwable t) {
-            Module.log("double-tap-wake: could not close the fingerprint prompt", t);
         }
     }
 
@@ -3055,7 +2973,6 @@ final class DoubleTapWake {
             PowerManager.class.getMethod("goToSleep", long.class, int.class, int.class)
                     .invoke(sPm, SystemClock.uptimeMillis(), SLEEP_REASON_POWER_BUTTON, 0);
         } catch (Throwable t) {
-            Module.log("double-tap-wake: goToSleep failed", t);
         }
     }
 

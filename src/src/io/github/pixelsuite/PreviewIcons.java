@@ -2,6 +2,12 @@ package io.github.pixelsuite;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -15,6 +21,11 @@ final class PreviewIcons {
     private static final Drawable.ConstantState[] CACHE=new Drawable.ConstantState[PACKAGES.length];
     private static final ArrayList<WeakReference<FeaturePreview>> WAITERS=new ArrayList<WeakReference<FeaturePreview>>();
     private static boolean loading,loaded;
+    private static Bitmap contactAtlas;
+    private final Paint avatarPaint=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
+    private final Path avatarClip=new Path();
+    private final Rect avatarSource=new Rect();
+    private final RectF avatarTarget=new RectF();
     private static final ThreadPoolExecutor IO=new ThreadPoolExecutor(0,1,5,TimeUnit.SECONDS,new LinkedBlockingQueue<Runnable>());
     private final Context context;
     private final Drawable[] drawables=new Drawable[PACKAGES.length];
@@ -26,6 +37,8 @@ final class PreviewIcons {
         synchronized(CACHE){if(loaded){view.onIconsReady();return;}WAITERS.add(new WeakReference<FeaturePreview>(view));if(loading)return;loading=true;}
         IO.execute(new Runnable(){public void run(){
             android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+            int photoId=app.getResources().getIdentifier("preview_share_contacts","raw",app.getPackageName());
+            if(photoId!=0){BitmapFactory.Options opts=new BitmapFactory.Options();opts.inSampleSize=2;contactAtlas=BitmapFactory.decodeResource(app.getResources(),photoId,opts);}
             Drawable.ConstantState[] found=new Drawable.ConstantState[PACKAGES.length];
             for(int i=0;i<PACKAGES.length;i++)try{found[i]=app.getPackageManager().getApplicationIcon(PACKAGES[i]).getConstantState();}catch(Exception unavailable){}
             final ArrayList<WeakReference<FeaturePreview>> views;
@@ -36,5 +49,12 @@ final class PreviewIcons {
     boolean draw(Canvas canvas,int app,float x,float y,float size,float alpha){
         Drawable icon=drawables[Math.floorMod(app,drawables.length)];if(icon==null)return false;
         icon.setBounds(Math.round(x-size/2),Math.round(y-size/2),Math.round(x+size/2),Math.round(y+size/2));icon.setAlpha(Math.round(255*alpha));icon.draw(canvas);return true;
+    }
+    boolean contact(Canvas canvas,int who,float x,float y,float size,float alpha){
+        Bitmap image=contactAtlas;if(image==null)return false;
+        int cell=image.getWidth()/3,side=Math.min(cell,image.getHeight());int left=(who%3)*cell+(cell-side)/2,top=(image.getHeight()-side)/2;
+        avatarSource.set(left,top,left+side,top+side);avatarTarget.set(x-size/2,y-size/2,x+size/2,y+size/2);
+        avatarClip.reset();avatarClip.addCircle(x,y,size/2,Path.Direction.CW);int save=canvas.save();canvas.clipPath(avatarClip);
+        avatarPaint.setAlpha(Math.round(255*alpha));canvas.drawBitmap(image,avatarSource,avatarTarget,avatarPaint);canvas.restoreToCount(save);return true;
     }
 }

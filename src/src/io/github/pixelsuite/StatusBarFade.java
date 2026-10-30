@@ -29,14 +29,13 @@ final class StatusBarFade {
             Intent i = new Intent(ACTION).setPackage("com.android.systemui").putExtra("hide", hide);
             i.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
             c.sendBroadcast(i);
-        } catch (Throwable error) { LauncherFeatures.logOnce("Status bar fade: request failed", error); }
+        } catch (Throwable error) { }
     }
 
     static void installSystemUi(ClassLoader cl) {
-        int n = 0;
         try {
             Class<?> window = Xp.findClass("com.android.systemui.statusbar.window.StatusBarWindowView", cl);
-            n += Xp.hookAllConstructors(window, new Xp.Callback() {
+            Xp.hookAllConstructors(window, new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         final View v = (View) p.thisObject;
@@ -44,9 +43,8 @@ final class StatusBarFade {
                         register(v.getContext());
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("Status bar fade unavailable", error); }
-        Module.log("Status bar fade: " + n + " hooks");
+            });
+        } catch (Throwable error) { }
     }
 
     private static void register(Context c) {

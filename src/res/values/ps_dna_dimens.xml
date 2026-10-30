@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ps_dna_shift_expanded">-28dp</dimen>
+    <dimen name="ps_dna_shift_compact">-10dp</dimen>
+</resources>

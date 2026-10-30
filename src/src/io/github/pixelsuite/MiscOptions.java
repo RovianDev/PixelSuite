@@ -6,7 +6,7 @@ import java.util.TreeSet;
 final class MiscOptions {
     private MiscOptions() {}
     static boolean defaultOff(String key) {
-        return MiscSystem.SECURE_KEY.equals(key) || MiscSystem.A11Y_KEY.equals(key) || KeyboardBarTweak.KEY.equals(key) || MiscSystem.DEV_KEY.equals(key);
+        return "pixelsuite_dna_watch".equals(key) || DoNotAnnoy.KEY.equals(key) || RefreshRate90.KEY.equals(key) || ShowFps.KEY.equals(key) || StoreBlocker.UNLOCK_KEY.equals(key) || OtaBlocker.KEY.equals(key) || OtaBlocker.RESET_KEY.equals(key) || CallRecording.KEY.equals(key) || MiscSystem.SECURE_KEY.equals(key) || MiscSystem.A11Y_KEY.equals(key) || KeyboardBarTweak.KEY.equals(key) || MiscSystem.DEV_KEY.equals(key);
     }
     static boolean packageName(String value) {
         return value != null && value.matches("[A-Za-z0-9_]+(?:\\.[A-Za-z0-9_]+)*");

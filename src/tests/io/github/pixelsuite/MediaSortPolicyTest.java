@@ -21,6 +21,6 @@ public final class MediaSortPolicyTest {
   check(run("external/file",ROW,null,"name ASC LIMIT 10 OFFSET 5")==null);
   check(run("external/file",ROW,null,null)==null);check(run("external/file",ROW,null,"")==null);
   check(run("external/file",null,null,"name ASC")==null);
-  System.out.println("PASS: "+count+" media-list/aggregate/URI/paging policy cases");
+  System.err.println("PASS: "+count+" media-list/aggregate/URI/paging policy cases");
  }
 }

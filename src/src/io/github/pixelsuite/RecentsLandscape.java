@@ -1,16 +1,8 @@
 package io.github.pixelsuite;
 
-import android.animation.ValueAnimator;
 import android.content.res.Configuration;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.animation.PathInterpolator;
-
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.List;
 
 final class RecentsLandscape {
     private RecentsLandscape() {}
@@ -20,12 +12,11 @@ final class RecentsLandscape {
 
     static void install(ClassLoader loader) {
         cl = loader;
-        int n = 0;
         try {
             Class<?> taskView = Xp.findClass("com.android.quickstep.views.TaskView", cl);
-            n += Xp.hookAllMethods(taskView, "onLayout", new Xp.Callback() {
+            Xp.hookAllMethods(taskView, "onLayout", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) { try { centreChips((View) p.thisObject); } catch (Throwable ignored) { } }
-            }).size();
+            });
             Class<?> recents = Xp.findClass("com.android.quickstep.views.RecentsView", cl);
             Xp.Callback watch = new Xp.Callback() {
                 @Override protected void afterHookedMethod(final Xp.Param p) {
@@ -49,7 +40,7 @@ final class RecentsLandscape {
                     } catch (Throwable ignored) { }
                 }
             };
-            n += Xp.hookAllMethods(recents, "animateRecentsRotationInPlace", new Xp.Callback() {
+            Xp.hookAllMethods(recents, "animateRecentsRotationInPlace", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         View rv = (View) p.thisObject;
@@ -59,11 +50,11 @@ final class RecentsLandscape {
                         turned(rv, r == 1 || r == 3 || landscape(rv));
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-            n += Xp.hookAllMethods(recents, "setOverviewStateEnabled", watch).size();
+            });
+            Xp.hookAllMethods(recents, "setOverviewStateEnabled", watch);
             try {
                 final Class<?> state = Xp.findClass("com.android.quickstep.util.RecentsOrientedState", cl);
-                n += Xp.hookAllMethods(Xp.findClass("com.android.quickstep.util.RecentsOrientedState$1", cl), "onOrientationChanged", new Xp.Callback() {
+                Xp.hookAllMethods(Xp.findClass("com.android.quickstep.util.RecentsOrientedState$1", cl), "onOrientationChanged", new Xp.Callback() {
                     @Override protected void beforeHookedMethod(Xp.Param p) {
                         try {
                             final View rv = last == null ? null : last.get();
@@ -84,12 +75,11 @@ final class RecentsLandscape {
                             } });
                         } catch (Throwable ignored) { }
                     }
-                }).size();
-            } catch (Throwable error) { Module.log("Recents landscape: early turn unavailable", error); }
-            n += Xp.hookAllMethods(recents, "setVisibility", watch).size();
-            n += Xp.hookAllMethods(recents, "onConfigurationChanged", watch).size();
-        } catch (Throwable error) { Module.log("Recents landscape unavailable", error); }
-        Module.log("Recents landscape: " + n + " hooks");
+                });
+            } catch (Throwable error) { }
+            Xp.hookAllMethods(recents, "setVisibility", watch);
+            Xp.hookAllMethods(recents, "onConfigurationChanged", watch);
+        } catch (Throwable error) { }
     }
 
     private static boolean autoRotate(View v) {

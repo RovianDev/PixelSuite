@@ -93,7 +93,7 @@ final class FolderSort {
                 try { LauncherFeatures.call(folder, "animateOpen", 0, homeContents(snapshot)); } catch (Throwable ignored) { }
             }});
             return true;
-        } catch (Throwable error) { Module.log("Home folder sort failed", error); return false; }
+        } catch (Throwable error) { return false; }
     }
 
     static View findFolderIcon(Object info) {
@@ -128,7 +128,6 @@ final class FolderSort {
                     if (icon != null) try { ((android.widget.TextView) LauncherFeatures.get(icon, "mFolderName")).setText(name); } catch (Throwable ignored) { }
                     dialog.dismiss();
                 } catch (Throwable error) {
-                    Module.log("Home folder rename failed", error);
                     android.widget.Toast.makeText(a, "Could not save the name", android.widget.Toast.LENGTH_SHORT).show();
                 }
             }

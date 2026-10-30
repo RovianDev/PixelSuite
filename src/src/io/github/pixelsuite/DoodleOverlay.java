@@ -63,7 +63,11 @@ final class DoodleOverlay extends FrameLayout {
         View canvas; final Object renderer;
         StudioHost(View canvas) throws Exception { this.canvas = canvas; renderer = Bridge.renderer(canvas); }
         boolean rehost(View newCanvas) {
-            try { if (Bridge.renderer(newCanvas) != renderer) return false; canvas = newCanvas; return true; } catch (Throwable t) { return false; }
+            try {
+                if (Bridge.renderer(newCanvas) != renderer) return false;
+                if (canvas != newCanvas) { canvas.setScaleX(1f); canvas.setScaleY(1f); canvas.setTranslationX(0); canvas.setTranslationY(0); }
+                canvas = newCanvas; return true;
+            } catch (Throwable t) { return false; }
         }
         public Object key() { return renderer; }
         public Bridge.Space space(View overlay) { return Bridge.space(canvas, overlay); }
@@ -80,9 +84,7 @@ final class DoodleOverlay extends FrameLayout {
             RectF r = ScreenshotEditor.cropFrame(s.image);
             if (r == null) r = s.image;
             float band = 28 * canvas.getResources().getDisplayMetrics().density;
-            boolean nearX = x > r.left - band && x < r.right + band, nearY = y > r.top - band && y < r.bottom + band;
-            if (!nearX || !nearY) return false;
-            return Math.abs(x - r.left) < band || Math.abs(x - r.right) < band || Math.abs(y - r.top) < band || Math.abs(y - r.bottom) < band;
+            return CropHit.nearCorner(r.left, r.top, r.right, r.bottom, x, y, band);
         }
     }
 
@@ -107,6 +109,20 @@ final class DoodleOverlay extends FrameLayout {
     SeekBar size;
 
     @Override public boolean hasOverlappingRendering() { return false; }
+
+    static boolean editorWants(float rawX, float rawY) {
+        DoodleOverlay o = current.get();
+        if (o == null || !o.isAttachedToWindow()) return false;
+        try {
+            Bridge.Space s = o.host.space(o.layer);
+            if (s == null) return false;
+            int[] me = new int[2]; o.layer.getLocationOnScreen(me);
+            float x = rawX - me[0], y = rawY - me[1];
+            if (o.selected != null && Doodle.handleAt(o.selected.isLine(), o.layer.screen(o.selected, s), x, y, o.dp(26)) >= 0) return false;
+            if (o.layer.hit(s, x, y) != null) return false;
+            return o.host.editorTouch(s, x, y);
+        } catch (Throwable t) { return false; }
+    }
 
     static boolean active() {
         DoodleOverlay o = current.get();
@@ -142,16 +158,16 @@ final class DoodleOverlay extends FrameLayout {
     static void enter() {
         Activity a = ScreenshotEditor.activity();
         View canvas = a == null ? null : ScreenshotEditor.canvasFor(a);
-        if (a == null || canvas == null) { ScreenshotEditor.logOnce("doodles: editor canvas not found", null); return; }
+        if (a == null || canvas == null) { return; }
         try {
             ScreenshotEditor.closeNativeTool();
             open(a, new StudioHost(canvas), ScreenshotEditor.lastDownRawY);
         } catch (Throwable error) {
-            ScreenshotEditor.logOnce("doodles could not open", error);
         }
     }
 
     static DoodleOverlay open(Activity a, Host host, float toolbarRawY) throws Exception {
+        TextTool.doodlesOpening();
         sKind = Doodle.ARROW;
         DoodleOverlay old = current.get();
         if (old != null) { old.registerBack(false); if (old.getParent() instanceof ViewGroup) ((ViewGroup) old.getParent()).removeView(old); }
@@ -373,7 +389,6 @@ final class DoodleOverlay extends FrameLayout {
                 backCallback = null;
             }
         } catch (Throwable error) {
-            ScreenshotEditor.logOnce("doodles back gesture not registered", error);
         }
     }
 
@@ -403,7 +418,7 @@ final class DoodleOverlay extends FrameLayout {
     }
 
     final class Layer extends View {
-        static final int NONE = 0, PENDING = 1, CREATE = 2, MOVE = 3, HANDLE = 4, PINCH = 5;
+        static final int NONE = 0, PENDING = 1, CREATE = 2, MOVE = 3, HANDLE = 4, PINCH = 5, ZOOM = 6, ZOOMED = 7;
         int mode = NONE, handle = -1;
         float downX, downY, lastX, lastY;
         boolean hadSelection, saved;
@@ -430,13 +445,50 @@ final class DoodleOverlay extends FrameLayout {
             return p;
         }
 
+        boolean insideKept(float x, float y) {
+            try {
+                if (!(host instanceof StudioHost)) return true;
+                View cv = ((StudioHost) host).canvas;
+                RectF cut = CropKeep.lastCut;
+                if (cv != null && cut != null && CropKeep.keeping() && !"CROP_TOOL".equals(TopBarKeep.currentPage())) {
+                    RectF onScreen = CropGrab.onScreen(cv, cut);
+                    int[] me = new int[2]; getLocationOnScreen(me);
+                    return onScreen.contains(x + me[0], y + me[1]);
+                }
+                Bridge.Space s = host.space(DoodleOverlay.this);
+                if (s == null) return true;
+                RectF frame = ScreenshotEditor.cropFrame(s.image);
+                if (frame == null) return true;
+                float e = 2f;
+                if (Math.abs(frame.left - s.image.left) < e && Math.abs(frame.top - s.image.top) < e && Math.abs(frame.right - s.image.right) < e && Math.abs(frame.bottom - s.image.bottom) < e) return true;
+                return frame.contains(x, y);
+            } catch (Throwable t) { return true; }
+        }
+
         boolean ours(Bridge.Space s, float x, float y) {
             int[] me = new int[2]; getLocationOnScreen(me);
             if (grabberNear(x + me[0], y + me[1]) != null) return true;
+            int bar = StudioToolbar.topBarBottom(activity);
+            if (bar > 0 && y + me[1] < bar) return false;
             if (selected != null && Doodle.handleAt(selected.isLine(), screen(selected, s), x, y, dp(26)) >= 0) return true;
             RectF area = new RectF(s.image.left - dp(24), s.image.top - dp(8), s.image.right + dp(24), s.image.bottom + dp(24));
             if (toolbarTopRaw > 0) area.bottom = Math.min(area.bottom, toolbarTopRaw - me[1]);
             return area.contains(x, y);
+        }
+
+        boolean onBody(Doodle d, Bridge.Space s, float x, float y) {
+            float[] p = screen(d, s);
+            float[] h = Doodle.handlePoints(d.isLine(), p);
+            float near = Float.MAX_VALUE;
+            for (int i = 0; i < h.length / 2; i++) near = Math.min(near, (float) Math.hypot(x - h[i * 2], y - h[i * 2 + 1]));
+            if (d.isLine()) {
+                float dx = p[2] - p[0], dy = p[3] - p[1], len2 = dx * dx + dy * dy;
+                if (len2 <= 0) return false;
+                float t = ((x - p[0]) * dx + (y - p[1]) * dy) / len2;
+                return t > 0f && t < 1f && near > (float) Math.sqrt(len2) / 3f && hit(s, x, y) == d;
+            }
+            float l = Math.min(p[0], p[2]), r = Math.max(p[0], p[2]), t = Math.min(p[1], p[3]), b = Math.max(p[1], p[3]);
+            return x > l && x < r && y > t && y < b && near > Math.min(r - l, b - t) / 3f;
         }
 
         Doodle hit(Bridge.Space s, float x, float y) {
@@ -449,8 +501,12 @@ final class DoodleOverlay extends FrameLayout {
         }
 
         View grabbing;
+        boolean passThrough;
+        long handedOffAt;
 
         @Override public boolean onTouchEvent(MotionEvent e) {
+            if (passThrough) return false;
+            if (e.getActionMasked() == MotionEvent.ACTION_DOWN) handedOffAt = 0;
             if (e.getActionMasked() == MotionEvent.ACTION_DOWN) grabbing = grabberNear(e.getRawX(), e.getRawY());
             if (grabbing != null) {
                 View pill = grabbing;
@@ -470,6 +526,7 @@ final class DoodleOverlay extends FrameLayout {
                     hadSelection = selected != null;
                     saved = false; free = null; snapX = snapY = snapLevel = snapUpright = false;
                     handle = selected == null ? -1 : Doodle.handleAt(selected.isLine(), screen(selected, s), x, y, dp(26));
+                    if (handle >= 0 && onBody(selected, s, x, y)) { handle = -1; mode = MOVE; invalidate(); return true; }
                     if (handle >= 0) { mode = HANDLE; return true; }
                     Doodle d = hit(s, x, y);
                     if (d != null) {
@@ -481,16 +538,11 @@ final class DoodleOverlay extends FrameLayout {
                     return true;
                 }
                 case MotionEvent.ACTION_POINTER_DOWN:
-                    if (selected != null && e.getPointerCount() == 2) {
-                        mode = PINCH;
-                        pinchStart = spacing(e);
-                        pinchMid = image(s, (e.getX(0) + e.getX(1)) / 2, (e.getY(0) + e.getY(1)) / 2);
-                        pinchFrom = selected.copy();
-                        if (!saved) { checkpoint(); saved = true; }
-                        dim(true);
-                    }
+                    if (e.getPointerCount() == 2) { if (host instanceof StudioHost) startZoom(e); else handOff(e); }
                     return true;
                 case MotionEvent.ACTION_MOVE: {
+                    if (mode == ZOOM) { if (e.getPointerCount() >= 2) zoomMove(e); return true; }
+                    if (mode == PENDING && Math.hypot(x - downX, y - downY) > slop && !insideKept(downX, downY)) { mode = NONE; return true; }
                     if (mode == PENDING && Math.hypot(x - downX, y - downY) > slop) {
                         float[] a = image(s, downX, downY), b = image(s, x, y);
                         Doodle d = new Doodle(sKind, a[0], a[1], b[0], b[1], sColor, widthInImage(), sFill && !Doodle.isLine(sKind));
@@ -534,13 +586,15 @@ final class DoodleOverlay extends FrameLayout {
                     return true;
                 }
                 case MotionEvent.ACTION_POINTER_UP:
+                    if (mode == ZOOM) { mode = ZOOMED; settleZoom(); return true; }
                     if (mode == PINCH) mode = NONE;
                     return true;
                 case MotionEvent.ACTION_UP:
+                    if (mode == ZOOM || mode == ZOOMED) { if (mode == ZOOM) settleZoom(); mode = NONE; return true; }
                     if (mode == PENDING) {
                         if (hadSelection) {
                             selected = null;
-                        } else {
+                        } else if (insideKept(x, y)) {
                             float half = dp(Doodle.isLine(sKind) ? 64 : 56), tall = Doodle.isLine(sKind) ? 0 : (sKind == Doodle.RECT || sKind == Doodle.BUBBLE ? half * 0.75f : half);
                             float[] a = image(s, x - half, y - tall), b = image(s, x + half, y + tall);
                             Doodle d = new Doodle(sKind, a[0], a[1], b[0], b[1], sColor, widthInImage(), sFill && !Doodle.isLine(sKind));
@@ -587,6 +641,75 @@ final class DoodleOverlay extends FrameLayout {
 
         void tick() { performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK); }
 
+        void revertStarted() {
+            if (saved) {
+                synchronized (models) {
+                    History h = history(renderer);
+                    if (!h.undo.isEmpty()) { List<Doodle> before = h.undo.remove(h.undo.size() - 1); shapes.clear(); shapes.addAll(before); }
+                }
+                if (mode == CREATE) selected = null;
+                if (lastHost != null) lastHost.history();
+            }
+            mode = NONE; saved = false; free = null; snapX = snapY = snapLevel = snapUpright = false;
+            dim(false);
+        }
+
+        float zStart, zSpan, zTx, zTy, zMidX, zMidY;
+
+        View zoomTarget() { return host instanceof StudioHost ? ((StudioHost) host).canvas : null; }
+
+        void startZoom(MotionEvent e) {
+            View c = zoomTarget();
+            if (c == null) { handOff(e); return; }
+            revertStarted();
+            float ox = e.getRawX() - e.getX(), oy = e.getRawY() - e.getY();
+            StudioZoom.begin(c, (e.getX(0) + e.getX(1)) / 2f + ox, (e.getY(0) + e.getY(1)) / 2f + oy, spacing(e));
+            mode = ZOOM;
+        }
+
+        void zoomMove(MotionEvent e) {
+            View c = zoomTarget();
+            if (c == null) return;
+            float ox = e.getRawX() - e.getX(), oy = e.getRawY() - e.getY();
+            StudioZoom.move(c, (e.getX(0) + e.getX(1)) / 2f + ox, (e.getY(0) + e.getY(1)) / 2f + oy, spacing(e));
+        }
+
+        void settleZoom() { StudioZoom.settle(zoomTarget()); }
+
+        void resetZoom(boolean animate) { View c = zoomTarget(); if (c != null) StudioZoom.reset(c, animate); }
+
+        void handOff(MotionEvent e) {
+            revertStarted();
+            View root = getRootView();
+            int[] at = new int[2], rootAt = new int[2];
+            getLocationOnScreen(at); root.getLocationOnScreen(rootAt);
+            float dx = at[0] - rootAt[0], dy = at[1] - rootAt[1];
+            int n = e.getPointerCount();
+            MotionEvent.PointerProperties[] props = new MotionEvent.PointerProperties[n];
+            MotionEvent.PointerCoords[] coords = new MotionEvent.PointerCoords[n];
+            for (int i = 0; i < n; i++) {
+                props[i] = new MotionEvent.PointerProperties(); e.getPointerProperties(i, props[i]);
+                coords[i] = new MotionEvent.PointerCoords(); e.getPointerCoords(i, coords[i]);
+                coords[i].x += dx; coords[i].y += dy;
+            }
+            int first = e.getActionIndex() == 0 ? 1 : 0;
+            MotionEvent down = MotionEvent.obtain(e.getDownTime(), e.getEventTime(), MotionEvent.ACTION_DOWN, 1,
+                    new MotionEvent.PointerProperties[]{props[first]}, new MotionEvent.PointerCoords[]{coords[first]},
+                    e.getMetaState(), e.getButtonState(), 1f, 1f, e.getDeviceId(), 0, e.getSource(), e.getFlags());
+            int second = 1 - first;
+            MotionEvent.PointerProperties[] pp = {props[first], props[second]};
+            MotionEvent.PointerCoords[] pc = {coords[first], coords[second]};
+            MotionEvent two = MotionEvent.obtain(e.getDownTime(), e.getEventTime(),
+                    MotionEvent.ACTION_POINTER_DOWN | (1 << MotionEvent.ACTION_POINTER_INDEX_SHIFT), 2, pp, pc,
+                    e.getMetaState(), e.getButtonState(), 1f, 1f, e.getDeviceId(), 0, e.getSource(), e.getFlags());
+            passThrough = true;
+            try { root.dispatchTouchEvent(down); root.dispatchTouchEvent(two); }
+            catch (Throwable ignored) { }
+            finally { passThrough = false; down.recycle(); two.recycle(); }
+            handedOffAt = android.os.SystemClock.uptimeMillis();
+            invalidate();
+        }
+
         float spacing(MotionEvent e) {
             return (float) Math.hypot(e.getX(0) - e.getX(1), e.getY(0) - e.getY(1));
         }
@@ -609,6 +732,7 @@ final class DoodleOverlay extends FrameLayout {
         }
 
         @Override protected void onDraw(Canvas canvas) {
+            if (handedOffAt > 0 && android.os.SystemClock.uptimeMillis() - handedOffAt < 8000) postInvalidateOnAnimation();
             Bridge.Space s = null; boolean placed = false;
             if (!host.drawsShapes() && !leaving) { s = host.space(DoodleOverlay.this); placed = true; drawShapes(canvas, s, shapes); }
             Doodle d = selected;
@@ -760,7 +884,8 @@ final class DoodleOverlay extends FrameLayout {
         bg.setColor(surface);
         bg.setCornerRadius(dp(28));
         shell.setBackground(frosted ? HoleFrost.panel(c, dp(28)) : bg);
-        if (superDark) shell.setForeground(new Rim(dp(28), dp(1.5f)));
+        if (superDark && GlassRim.superDarkRims(c)) shell.setForeground(new Rim(dp(28), dp(1.5f)));
+        else if (GlassRim.wanted(c)) shell.setForeground(GlassRim.of(c, dp(28)));
         shell.setElevation(dp(6));
         shell.setClipToOutline(true);
         shell.setClickable(true);
@@ -1150,21 +1275,22 @@ final class DoodleOverlay extends FrameLayout {
     float topLimit() {
         if (sTopLimit < 0) {
             Bridge.Space s = host.space(this);
-            if (s != null && s.image.top > dp(40)) {
-                float top = s.image.top, bottom = s.image.bottom;
+            RectF img = s == null ? null : unzoomed(s.image);
+            if (img != null && img.top > dp(40)) {
+                float top = img.top, bottom = img.bottom;
                 View root = getRootView();
                 float screen = root != null && root.getHeight() > 0 ? root.getWidth() / (float) root.getHeight() : 0;
-                float aspect = s.image.height() > 0 ? s.image.width() / s.image.height() : 0;
+                float aspect = img.height() > 0 ? img.width() / img.height() : 0;
                 if (screen > 0 && Math.abs(aspect - screen) <= screen * 0.04f) { sFullTop = top; sFullBottom = bottom; sFullFor = getHeight(); }
                 else if (sFullFor == getHeight() && sFullTop > 0) { top = sFullTop; bottom = sFullBottom; }
                 else if (screen > 0) {
                     View cv = ScreenshotEditor.canvasView.get();
                     if (cv != null && cv.isAttachedToWindow() && cv.getHeight() > 0) {
                         int[] a = new int[2], b = new int[2]; cv.getLocationOnScreen(a); getLocationOnScreen(b);
-                        float cTop = a[1] - b[1], cBottom = cTop + cv.getHeight();
-                        float h = Math.min(cv.getHeight(), s.image.width() / screen);
-                        top = Math.max(cTop, s.image.centerY() - h / 2f); bottom = Math.min(cBottom, s.image.centerY() + h / 2f);
-                        top = Math.min(top, s.image.top); bottom = Math.max(bottom, s.image.bottom);
+                        float cTop = a[1] - cv.getTranslationY() - b[1], cBottom = cTop + cv.getHeight();
+                        float h = Math.min(cv.getHeight(), img.width() / screen);
+                        top = Math.max(cTop, img.centerY() - h / 2f); bottom = Math.min(cBottom, img.centerY() + h / 2f);
+                        top = Math.min(top, img.top); bottom = Math.max(bottom, img.bottom);
                     }
                 }
                 sTopLimit = Math.max(dp(32), Math.min(dp(160), top - FRAME_DP * density));
@@ -1173,6 +1299,20 @@ final class DoodleOverlay extends FrameLayout {
             if (sTopLimit < 0) return dp(110);
         }
         return sTopLimit;
+    }
+
+    RectF unzoomed(RectF r) {
+        RectF out = new RectF(r);
+        try {
+            View cv = ScreenshotEditor.canvasView.get();
+            if (cv == null || !cv.isAttachedToWindow()) return out;
+            float z = cv.getScaleX(), tx = cv.getTranslationX(), ty = cv.getTranslationY();
+            if (z == 1f && tx == 0f && ty == 0f || z <= 0f) return out;
+            int[] a = new int[2], b = new int[2]; cv.getLocationOnScreen(a); getLocationOnScreen(b);
+            float ox = a[0] - tx - b[0], oy = a[1] - ty - b[1];
+            out.set(ox + (r.left - ox - tx) / z, oy + (r.top - oy - ty) / z, ox + (r.right - ox - tx) / z, oy + (r.bottom - oy - ty) / z);
+        } catch (Throwable ignored) { }
+        return out;
     }
 
     float bottomLimit() {
@@ -1495,6 +1635,10 @@ final class DoodleOverlay extends FrameLayout {
             return sceneRenderer.get(viewScene.get(canvas));
         }
 
+        static RectF sceneRect(View canvas) {
+            try { resolve(canvas); return new RectF((RectF) sceneRect.get(viewScene.get(canvas))); } catch (Throwable t) { return null; }
+        }
+
         static Space space(View canvas, View overlay) {
             try {
                 resolve(canvas);
@@ -1507,17 +1651,22 @@ final class DoodleOverlay extends FrameLayout {
                 float b = e.width() / width;
                 int[] lc = new int[2], lo = new int[2];
                 canvas.getLocationOnScreen(lc); overlay.getLocationOnScreen(lo);
-                float dx = e.left + lc[0] - lo[0], dy = e.top + lc[1] - lo[1];
+                Matrix vm = canvas.getMatrix();
+                float[] o0 = {0, 0}; vm.mapPoints(o0);
                 Space s = new Space();
                 s.toScreen.set(f);
                 s.toScreen.postScale(b, b);
-                s.toScreen.postTranslate(dx, dy);
+                s.toScreen.postTranslate(e.left, e.top);
+                s.toScreen.postConcat(vm);
+                s.toScreen.postTranslate(lc[0] - o0[0] - lo[0], lc[1] - o0[1] - lo[1]);
                 if (!s.toScreen.invert(s.toImage)) return null;
-                s.image.set(dx, dy, dx + e.width(), dy + e.height());
+                RectF img = new RectF(e.left, e.top, e.right, e.bottom);
+                vm.mapRect(img);
+                img.offset(lc[0] - o0[0] - lo[0], lc[1] - o0[1] - lo[1]);
+                s.image.set(img);
                 s.scale = s.toScreen.mapRadius(1f);
                 return s;
             } catch (Throwable error) {
-                ScreenshotEditor.logOnce("doodles: canvas geometry unavailable", error);
                 return null;
             }
         }

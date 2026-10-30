@@ -58,7 +58,9 @@ final class PillFrost extends Drawable {
         d.corner = cornerPx;
         pill.setBackgroundTintList(null);
         pill.setBackground(d);
-        pill.setForeground(d.superDark && cornerPx != 0 ? new DoodleOverlay.Rim(cornerPx < 0 ? FrostedSurface.dp(pill.getContext(), 100) : cornerPx, FrostedSurface.dp(pill.getContext(), 1.5f)) : null);
+        float rimR = cornerPx < 0 ? FrostedSurface.dp(pill.getContext(), 100) : cornerPx;
+        pill.setForeground(d.superDark && cornerPx != 0 && GlassRim.superDarkRims(pill.getContext()) ? new DoodleOverlay.Rim(rimR, FrostedSurface.dp(pill.getContext(), 1.5f))
+                : cornerPx != 0 && GlassRim.wanted(pill.getContext()) ? GlassRim.of(pill.getContext(), rimR) : null);
         pill.setClipToOutline(true);
         return d;
     }
@@ -142,7 +144,6 @@ final class PillFrost extends Drawable {
 
     static final int SOFT = 6;
     static final Paint SOFT_PAINT = new Paint(Paint.FILTER_BITMAP_FLAG);
-    static boolean softLogged;
     boolean softwareFrost(Canvas c, Rect b) {
         if (!(host.getParent() instanceof ViewGroup)) return false;
         android.graphics.Bitmap bmp = null;
@@ -180,7 +181,6 @@ final class PillFrost extends Drawable {
             c.restoreToCount(save);
             return true;
         } catch (Throwable error) {
-            if (!softLogged) { softLogged = true; Module.log("frost pill: software canvas, blur failed (" + host.getClass().getSimpleName() + ")", error); }
             return false;
         } finally { if (bmp != null) bmp.recycle(); }
     }
@@ -244,10 +244,8 @@ final class PillFrost extends Drawable {
         } catch (Throwable unavailable) { solid("recording the views under it", unavailable); return false; }
     }
 
-    static boolean solidLogged;
     void solid(String what, Throwable why) {
         fill.setColor(tint | 0xff000000); region = null; node = null; off = true;
-        if (!solidLogged) { solidLogged = true; Module.log("frost pill: " + what + " unavailable, solid tint instead", why); }
     }
 
     @Override protected void onBoundsChange(Rect b) {

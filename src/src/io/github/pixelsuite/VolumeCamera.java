@@ -34,7 +34,6 @@ final class VolumeCamera {
 
     private static long sLastDown;
     private static boolean sConsumingPress;
-    private static boolean sErrorLogged;
 
     static void installSystem(ClassLoader cl) {
         sClassLoader = cl;
@@ -49,16 +48,10 @@ final class VolumeCamera {
                     try {
                         if (onVolumeDown(param.thisObject, ev)) param.setResult(RESULT_CONSUMED);
                     } catch (Throwable t) {
-                        if (!sErrorLogged) {
-                            sErrorLogged = true;
-                            Module.log("volume key handling failed", t);
-                        }
                     }
                 }
             });
-            Module.log("volume-down camera: system hooks installed");
         } catch (Throwable t) {
-            Module.log("system hook setup failed", t);
         }
     }
 
@@ -116,10 +109,6 @@ final class VolumeCamera {
             TelecomManager tm = (TelecomManager) ctx.getSystemService(Context.TELECOM_SERVICE);
             return tm == null || !tm.isInCall();
         } catch (Throwable t) {
-            if (!sErrorLogged) {
-                sErrorLogged = true;
-                Module.log("volume-down camera: rule check failed", t);
-            }
             return false;
         }
     }
@@ -145,7 +134,6 @@ final class VolumeCamera {
             Settings.Global.putLong(ctx.getContentResolver(), KEY_LAUNCH_AT,
                     SystemClock.uptimeMillis());
         } catch (Throwable t) {
-            Module.log("could not mark launch for SystemUI", t);
         }
 
         try {
@@ -155,7 +143,6 @@ final class VolumeCamera {
                         pwm, "mPowerButtonLaunchGestureTriggeredDuringGoingToSleep", true);
             }
         } catch (Throwable t) {
-            Module.log("could not set the camera gesture flags", t);
         }
 
         try {
@@ -166,11 +153,8 @@ final class VolumeCamera {
             if (sbm != null) {
                 Xp.callMethod(sbm, "onCameraLaunchGestureDetected",
                         SOURCE_POWER_DOUBLE_TAP);
-            } else {
-                Module.log("StatusBarManagerInternal unavailable");
             }
         } catch (Throwable t) {
-            Module.log("could not notify SystemUI", t);
         }
 
         wake(pwm, ctx);
@@ -184,7 +168,6 @@ final class VolumeCamera {
                 return;
             }
         } catch (Throwable t) {
-            Module.log("wake policy unavailable, using PowerManager", t);
         }
         try {
             PowerManager pm = (PowerManager) ctx.getSystemService(Context.POWER_SERVICE);
@@ -192,7 +175,6 @@ final class VolumeCamera {
                     .invoke(pm, SystemClock.uptimeMillis(), WAKE_REASON_CAMERA_LAUNCH,
                             "CAMERA_GESTURE_PREVENT_LOCK");
         } catch (Throwable t) {
-            Module.log("wake up failed", t);
         }
     }
 
@@ -212,7 +194,6 @@ final class VolumeCamera {
                         });
                 sInitDone = true;
             } catch (Throwable t) {
-                Module.log("volume-down camera: init failed", t);
             }
         }
     }
@@ -240,7 +221,6 @@ final class VolumeCamera {
         try {
             callbacks = Xp.findClass(CALLBACKS, cl);
         } catch (Throwable t) {
-            Module.log("SystemUI camera callbacks not found", t);
             return;
         }
         try {
@@ -269,9 +249,7 @@ final class VolumeCamera {
                     Xp.hookMethod(m, skipWhileSuppressed);
                 }
             }
-            Module.log("volume-down camera: SystemUI hooks installed");
         } catch (Throwable t) {
-            Module.log("SystemUI hook setup failed", t);
         }
     }
 

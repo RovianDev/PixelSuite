@@ -34,9 +34,9 @@ final class FrostedSurface {
         return composite(resourceColor(c,"blur_shade_panel_fg",dark(c)?0x522c303d:0x66dedee8),resourceColor(c,"blur_shade_panel_bg",dark(c)?0x520e0e0f:0x66f9f9fe));
     }
     static int blend(int color,int amount){int r=(Color.red(color)*(255-amount)+255*amount)/255,g=(Color.green(color)*(255-amount)+255*amount)/255,b=(Color.blue(color)*(255-amount)+255*amount)/255;return Color.rgb(r,g,b);}
-    static int[] colors(Context c){int base=(tone(c)&0xffffff)|(blurEnabled(c)?0xcc000000:0xff000000); if(!c.getPackageName().equals("com.google.android.apps.nexuslauncher"))base=LauncherFeatures.surface(c,dark(c)?"system_surface_container_high_dark":"system_surface_container_high_light",fallback(c));return new int[]{base,base};}
+    static int[] colors(Context c){if(SuperDark.inEffect(c))return new int[]{Color.BLACK,Color.BLACK};int base=(tone(c)&0xffffff)|(blurEnabled(c)?0xcc000000:0xff000000); if(!c.getPackageName().equals("com.google.android.apps.nexuslauncher"))base=LauncherFeatures.surface(c,dark(c)?"system_surface_container_high_dark":"system_surface_container_high_light",fallback(c));return new int[]{base,base};}
     static int[] folderColors(Context c){return colors(c);}
-    static final int SUPER_DARK_PANEL=0xff0a0a0a,SUPER_DARK_CLOSED_FOLDER=0xff161616;
+    static final int SUPER_DARK_PANEL=0xff000000,SUPER_DARK_CLOSED_FOLDER=0xff161616;
     static int closedFolderColor(Context c){
         if(dark(c)&&Feature.on(c,SuperDark.KEY))return SUPER_DARK_CLOSED_FOLDER;
         if(!dark(c)&&!SurfaceStyle.restyled(c))return 0xebffffff;
@@ -51,16 +51,16 @@ final class FrostedSurface {
             content.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener(){public void onViewDetachedFromWindow(View v){}public void onViewAttachedToWindow(final View v){v.removeOnAttachStateChangeListener(this);v.post(new Runnable(){public void run(){if(v.isAttachedToWindow())frost(v,corners,what);}});}});
             return;
         }
-        if(!blurEnabled(content.getContext())){content.setBackground(solidMenu(content.getContext(),radius));return;}
+        if(!blurEnabled(content.getContext())){content.setBackground(GlassRim.over(content.getContext(),solidMenu(content.getContext(),radius),dp(content.getContext(),radius)));return;}
         try{
             Object root=LauncherFeatures.call(content,"getViewRootImpl");
             Drawable blur=(Drawable)LauncherFeatures.call(root,"createBackgroundBlurDrawable");
             LauncherFeatures.call(blur,"setBlurRadius",blurEnabled(content.getContext())?depthBlurRadius(content.getContext()):0);
             LauncherFeatures.call(blur,"setCornerRadius",(float)dp(content.getContext(),radius));
             try{LauncherFeatures.call(blur,"setColor",Color.TRANSPARENT);}catch(Throwable ignored){}
-            content.setBackground(new android.graphics.drawable.LayerDrawable(new Drawable[]{blur,windowDrawable(content.getContext(),radius)}));
-            final Drawable shown=blur;final View view=content;content.post(new Runnable(){public void run(){SuiteLog.log(what+" blur: bounds="+shown.getBounds().toShortString()+", view="+view.getWidth()+"x"+view.getHeight()+", radius="+depthBlurRadius(view.getContext()));}});
-        }catch(Throwable unavailable){GradientDrawable bg=windowDrawable(content.getContext(),radius);bg.setColor(tone(content.getContext())|0xff000000);content.setBackground(bg);SuiteLog.log("Popup window blur unavailable",unavailable);}
+            Drawable[] layers=GlassRim.wanted(content.getContext())?new Drawable[]{blur,windowDrawable(content.getContext(),radius),GlassRim.of(content.getContext(),dp(content.getContext(),radius))}:new Drawable[]{blur,windowDrawable(content.getContext(),radius)};
+            content.setBackground(new android.graphics.drawable.LayerDrawable(layers));
+        }catch(Throwable unavailable){GradientDrawable bg=windowDrawable(content.getContext(),radius);bg.setColor(tone(content.getContext())|0xff000000);content.setBackground(bg);}
     }
     static GradientDrawable drawable(Context c,float radius){
         return new BackdropSurface(c,radius);
@@ -131,13 +131,13 @@ final class FrostedSurface {
                 android.widget.Button b=dialog.getButton(which);if(b==null)continue;
                 b.setTextSize(14);b.setMinHeight(dp(c,40));b.setMinimumHeight(dp(c,40));b.setPadding(dp(c,14),0,dp(c,14),0);
             }
-        }catch(Throwable error){SuiteLog.log("Compact dialog unavailable",error);}
+        }catch(Throwable error){}
     }
     private static View find(View root,String name){int id=root.getResources().getIdentifier(name,"id","android");return id==0?null:root.findViewById(id);}
     static void style(AlertDialog dialog){
         Window window=dialog.getWindow();if(window==null)return;Context c=dialog.getContext();window.setDimAmount(dark(c)?.18f:.10f);
         View panel=window.getDecorView().findViewById(android.R.id.content);
-        if(!blurEnabled(c)||panel==null){window.setBackgroundDrawable(solidMenu(c,24));return;}
+        if(!blurEnabled(c)||panel==null){window.setBackgroundDrawable(GlassRim.over(c,solidMenu(c,24),dp(c,24)));return;}
         window.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(Color.TRANSPARENT));
         final float corners=dp(c,24);
         panel.setOutlineProvider(new android.view.ViewOutlineProvider(){public void getOutline(View v,android.graphics.Outline outline){outline.setRoundRect(0,0,v.getWidth(),v.getHeight(),corners);}});
@@ -145,7 +145,7 @@ final class FrostedSurface {
         frost(panel,24,"Dialog");
     }
     static void popup(ViewGroup popup){
-        if(!blurEnabled(popup.getContext()))popup.setBackground(solidMenu(popup.getContext(),24));
+        if(!blurEnabled(popup.getContext()))popup.setBackground(GlassRim.over(popup.getContext(),solidMenu(popup.getContext(),24),dp(popup.getContext(),24)));
         else{BackdropSurface background=new BackdropSurface(popup.getContext(),24);background.bind(popup);popup.setBackground(background);}
         clearRows(popup,LauncherFeatures.get(popup,"mIterateChildrenTag"));Xp.setAdditionalInstanceField(popup,"pixelsuite_panel",Boolean.TRUE);
         try{View arrow=(View)LauncherFeatures.get(popup,"mArrow");if(arrow.getBackground()!=null)arrow.getBackground().setColorFilter(colors(popup.getContext())[0],PorterDuff.Mode.SRC_IN);}catch(Throwable ignored){}

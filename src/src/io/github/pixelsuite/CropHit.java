@@ -3,6 +3,12 @@ package io.github.pixelsuite;
 final class CropHit {
     private CropHit() {}
 
+    static boolean nearCorner(float l, float t, float r, float b, float x, float y, float band) {
+        boolean ex = Math.abs(x - l) < band || Math.abs(x - r) < band;
+        boolean ey = Math.abs(y - t) < band || Math.abs(y - b) < band;
+        return ex && ey;
+    }
+
     static int pick(float l, float t, float r, float b, float x, float y, float touch) {
         float tol = Math.max(0.2f * (r - l), touch);
         float dl = Math.abs(x - l), dr = Math.abs(x - r), dt = Math.abs(y - t), db = Math.abs(y - b);
@@ -13,10 +19,6 @@ final class CropHit {
         if (nr && nt) return 5;
         if (nl && nb) return 6;
         if (nr && nb) return 7;
-        if (nl) return 0;
-        if (nr) return 2;
-        if (nt) return 1;
-        if (nb) return 3;
         if (x >= l && x <= r && y >= t && y <= b) return 8;
         return -1;
     }

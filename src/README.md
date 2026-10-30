@@ -1,3 +1,3 @@
-# Pixel Suite 2.0.7 source
+# Pixel Suite 3.0.0 source
 
-Official release: v2.0.7, versionCode 314. See BUILD.md for compilation.
+Official release: v3.0.0, versionCode 561. See BUILD.md for compilation.

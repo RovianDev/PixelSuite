@@ -83,23 +83,21 @@ final class PrivacyFolders {
                     if (id < 0) return;
                     lockedCopy = null;
                     PrivacyGuard.relock("h:" + id);
-                    Module.log("App lock: locked drawer folder put on the home screen, the copy is locked too");
-                } catch (Throwable error) { LauncherFeatures.logOnce("App lock: home copy of a locked folder not locked", error); }
+                } catch (Throwable error) { }
             }
         };
         try {
             Class<?> writer = Xp.findClass("com.android.launcher3.model.ModelWriter", cl);
-            int n = Xp.hookAllMethods(writer, "addItemToDatabase", saved).size() + Xp.hookAllMethods(writer, "addOrMoveItemInDatabase", saved).size();
-            if (n == 0) Module.log("App lock: home copies of locked drawer folders stay unlocked (save step not found)");
-        } catch (Throwable error) { Module.log("App lock: home copies of locked drawer folders stay unlocked", error); }
+            Xp.hookAllMethods(writer, "addItemToDatabase", saved);
+            Xp.hookAllMethods(writer, "addOrMoveItemInDatabase", saved);
+        } catch (Throwable error) { }
     }
 
     static void install(ClassLoader cl) {
         installCopyLock(cl);
-        int n = 0;
         try {
             Class<?> folder = Xp.findClass("com.android.launcher3.folder.Folder", cl);
-            n += Xp.hookAllMethods(folder, "animateOpen", new Xp.Callback() {
+            Xp.hookAllMethods(folder, "animateOpen", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         Object f = p.thisObject;
@@ -112,10 +110,10 @@ final class PrivacyFolders {
                         if (hovering) return;
                         Object icon = null; try { icon = LauncherFeatures.get(f, "mFolderIcon"); } catch (Throwable ignored) { }
                         ask(a, key, name(info), icon instanceof View ? (View) icon : null);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("App lock: folder check unavailable (it opens)", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-            n += Xp.hookAllMethods(folder, "handleClose", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(folder, "handleClose", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
                         String key = key(LauncherFeatures.get(p.thisObject, "mInfo")); if (key == null || !open.containsKey(key)) return;
@@ -123,9 +121,8 @@ final class PrivacyFolders {
                         PrivacyBadges.folderClosed(((View) p.thisObject).getContext(), key);
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock: folders unavailable", error); }
-        Module.log("App lock folders: " + n + " hooks");
+            });
+        } catch (Throwable error) { }
     }
 
     static void addHomeRow(final ViewGroup rows, final Object popup, final Object info) {
@@ -149,7 +146,7 @@ final class PrivacyFolders {
                 int color = ((TextView) LauncherFeatures.get(row, "mBubbleText")).getCurrentTextColor();
                 icon.setBackground(new RecentsLock.Lock(color, isLocked ? 1f : 0f));
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("App lock: home folder menu row unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     static void addDrawerRow(final android.widget.LinearLayout card, final Object info, final Runnable dismiss) {
@@ -163,7 +160,7 @@ final class PrivacyFolders {
                 int color = LauncherFeatures.surface(card.getContext(), FrostedSurface.dark(card.getContext()) ? "system_on_surface_dark" : "system_on_surface_light", FrostedSurface.dark(card.getContext()) ? 0xffeee9f1 : 0xff202027);
                 icon.setImageDrawable(new RecentsLock.Lock(color, isLocked ? 1f : 0f));
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("App lock: drawer folder menu row unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static void change(String key, String name, boolean isLocked) {
@@ -172,7 +169,7 @@ final class PrivacyFolders {
         i.putExtra(PrivacyLock.EXTRA_MODE, isLocked ? MODE_UNLOCK : MODE_LOCK);
         i.putExtra(EXTRA_FOLDER, key); i.putExtra(EXTRA_NAME, name);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        try { a.startActivity(i, identity()); readAt = 0; } catch (Throwable error) { Module.log("App lock: unlock screen unavailable", error); }
+        try { a.startActivity(i, identity()); readAt = 0; } catch (Throwable error) { }
     }
 
     private static final Map<String, Object[]> asking = new ConcurrentHashMap<String, Object[]>();
@@ -203,14 +200,14 @@ final class PrivacyFolders {
                 try { Context.class.getMethod("registerReceiver", BroadcastReceiver.class, IntentFilter.class, int.class).invoke(app, r, new IntentFilter(ACTION_OK), 2); }
                 catch (Throwable older) { app.registerReceiver(r, new IntentFilter(ACTION_OK)); }
                 app.registerReceiver(new BroadcastReceiver() { @Override public void onReceive(Context c, Intent i) { open.clear(); } }, new IntentFilter(Intent.ACTION_SCREEN_OFF));
-            } catch (Throwable error) { listening = false; Module.log("App lock: folder answer unavailable", error); return; }
+            } catch (Throwable error) { listening = false; return; }
         }
         Haptics.tick(a);
         Intent i = new Intent().setComponent(new ComponentName(PrivacyLock.OUR, PrivacyLock.MENU_ACTIVITY));
         i.putExtra(PrivacyLock.EXTRA_MODE, MODE_OPEN); i.putExtra(EXTRA_FOLDER, key); i.putExtra(EXTRA_NAME, name);
         i.putExtra(PrivacyRecents.EXTRA_TOKEN, token);
         i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        try { a.startActivity(i, identity()); } catch (Throwable error) { Module.log("App lock: unlock screen unavailable", error); }
+        try { a.startActivity(i, identity()); } catch (Throwable error) { }
     }
 
     private static android.os.Bundle identity() {

@@ -45,16 +45,15 @@ final class PhotosSave {
                     names = scan(app.getApplicationInfo().sourceDir);
                     remember(app, names);
                 }
-                if (names == null || names == NONE) { PhotosEditor.log("save controller not found, Save appears only with Photos' own edits"); return; }
+                if (names == null || names == NONE) { return; }
                 stateType = Class.forName(names[0], false, cl);
                 copyFn = copyFunction(stateType);
-                if (copyFn == null) { PhotosEditor.log("save state has no copy function, Save appears only with Photos' own edits"); return; }
+                if (copyFn == null) { return; }
                 Class<?> holder = Class.forName(names[1], false, cl);
-                int n = Xp.hookAllConstructors(holder, new Xp.Callback() {
+                Xp.hookAllConstructors(holder, new Xp.Callback() {
                     protected void afterHookedMethod(Xp.Param p) { onHolder(p.thisObject); }
-                }).size();
-                if (n == 0) PhotosEditor.log("save controller hooks unavailable, Save appears only with Photos' own edits");
-            } catch (Throwable error) { PhotosEditor.logOnce("Save for doodles unavailable", error); }
+                });
+            } catch (Throwable error) { }
         }}, "pixelsuite-photos-save").start();
     }
 
@@ -67,14 +66,13 @@ final class PhotosSave {
                 if (path == null) continue;
                 if (flowType == null) {
                     flowType = v.getClass(); flowValue = path; flowSet = setter(flowType); flowCas = cas(flowType);
-                    if (flowSet == null) { PhotosEditor.logOnce("save state flow has no setter (" + flowType.getName() + ")", null); flowType = null; return; }
+                    if (flowSet == null) { flowType = null; return; }
                     guard();
                 }
                 stateFlow = new WeakReference<Object>(v);
                 return;
             }
-            PhotosEditor.logOnce("save state flow not found in " + h.getClass().getName(), null);
-        } catch (Throwable error) { PhotosEditor.logOnce("save state setup failed", error); }
+        } catch (Throwable error) { }
     }
 
     static void reset() { dirty = false; }
@@ -97,10 +95,9 @@ final class PhotosSave {
                 String s = String.valueOf(v);
                 if (s.contains("canSave=true") && !s.contains("canRevertToOriginal=true")) return;
                 try { Object fixed = forced(v); if (fixed != null) p.args[p.args.length - 1] = fixed; }
-                catch (Throwable error) { PhotosEditor.logOnce("save state could not be corrected", error); }
+                catch (Throwable error) { }
             }
         };
-        int n = 0;
         for (Class<?> k = flowType; k != null && k != Object.class; k = k.getSuperclass())
             for (Method m : k.getDeclaredMethods()) {
                 Class<?>[] p = m.getParameterTypes();
@@ -108,10 +105,9 @@ final class PhotosSave {
                 boolean set = p.length == 1 && p[0] == Object.class && m.getReturnType() == void.class;
                 boolean cas = p.length == 2 && p[0] == Object.class && p[1] == Object.class && m.getReturnType() == boolean.class;
                 if (!set && !cas) continue;
-                try { Xp.hookMethod(m, fix); n++; }
-                catch (Throwable error) { PhotosEditor.logOnce("save state hook failed", error); }
+                try { Xp.hookMethod(m, fix); }
+                catch (Throwable error) { }
             }
-        if (n == 0) PhotosEditor.logOnce("save state guard unavailable", null);
     }
 
     static Object forced(Object cur) throws Exception {
@@ -130,16 +126,16 @@ final class PhotosSave {
     static void force() {
         try {
             Object flow = stateFlow.get();
-            if (flow == null || flowValue == null || flowSet == null || copyFn == null) { PhotosEditor.logOnce("no save state: Save appears only with Photos' own edits", null); return; }
+            if (flow == null || flowValue == null || flowSet == null || copyFn == null) { return; }
             Object cur = read(flow);
             if (cur == null || !stateType.isInstance(cur)) return;
             String s = String.valueOf(cur);
             if (s.contains("canSave=true") && !s.contains("canRevertToOriginal=true")) return;
             Object forced = forced(cur);
-            if (forced == null) { PhotosEditor.logOnce("save state copy did not switch canSave / canRevertToOriginal", null); return; }
+            if (forced == null) { return; }
             if (flowCas != null) { if (!Boolean.TRUE.equals(flowCas.invoke(flow, cur, forced))) return; }
             else flowSet.invoke(flow, forced);
-        } catch (Throwable error) { PhotosEditor.logOnce("Save could not be shown for doodles", error); }
+        } catch (Throwable error) { }
     }
 
     static Method getParams, setParams;
@@ -169,13 +165,13 @@ final class PhotosSave {
             contrast.setFloat(copy, to);
             setParams.invoke(processor, handle, copy);
             before.set(cur);
-        } catch (Throwable error) { PhotosEditor.logOnce("render-time edit failed", error); }
+        } catch (Throwable error) { }
     }
 
     static void afterRender(Object processor, long handle) {
         Object cur = before.get(); if (cur == null) return;
         before.set(null);
-        try { setParams.invoke(processor, handle, cur); } catch (Throwable error) { PhotosEditor.logOnce("render-time edit could not be put back", error); }
+        try { setParams.invoke(processor, handle, cur); } catch (Throwable error) { }
     }
 
     static Object blank(Class<?> t) {

@@ -44,30 +44,26 @@ final class PhotosEditor {
     private static final Map<Object, Boolean> imageSpace = new WeakHashMap<Object, Boolean>();
     private static final Map<Bitmap, Boolean> painted = new WeakHashMap<Bitmap, Boolean>();
     private static final Map<Activity, Preview> previews = new WeakHashMap<Activity, Preview>();
-
-    static void log(String m) { Module.log("photos-doodles: " + m); }
-    static void logOnce(String m, Throwable t) { ScreenshotEditor.logOnce("photos " + m, t); }
-
     static void install(ClassLoader cl) {
-        int hooks = installV2(cl), saves = 0;
+        installV2(cl);
         Class<?> nr = null;
         try { nr = Class.forName(NATIVE, false, cl); }
-        catch (Throwable missing) { log("older editor renderer not found (" + missing + ")"); }
+        catch (Throwable missing) { }
         if (nr != null) {
             try {
                 screenRect = find(nr, "getImageScreenRect", 1);
                 pipelineParams = find(nr, "getPipelineParams", 0);
-            } catch (Throwable missing) { log("older editor picture position unavailable (" + missing + ")"); }
+            } catch (Throwable missing) { }
             Xp.Callback mine = new Xp.Callback() { protected void afterHookedMethod(Xp.Param p) { renderer = new WeakReference<Object>(p.thisObject); } };
-            hooks += Xp.hookAllMethods(nr, "surfaceCreated", mine).size();
-            hooks += Xp.hookAllConstructors(nr, new Xp.Callback() { protected void afterHookedMethod(Xp.Param p) { if (renderer.get() == null) renderer = new WeakReference<Object>(p.thisObject); } }).size();
-            saves += Xp.hookAllMethods(nr, "computeResultImage", new Xp.Callback() {
+            Xp.hookAllMethods(nr, "surfaceCreated", mine);
+            Xp.hookAllConstructors(nr, new Xp.Callback() { protected void afterHookedMethod(Xp.Param p) { if (renderer.get() == null) renderer = new WeakReference<Object>(p.thisObject); } });
+            Xp.hookAllMethods(nr, "computeResultImage", new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) {
                     try { if (p.getResult() instanceof Bitmap) { Bitmap out = paint((Bitmap) p.getResult(), false); if (out != p.getResult()) p.setResult(out); } }
-                    catch (Throwable error) { logOnce("doodles could not be drawn into the saved picture", error); }
+                    catch (Throwable error) { }
                 }
-            }).size();
-            saves += Xp.hookAllMethods(nr, "computeResultImageAndGainMap", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(nr, "computeResultImageAndGainMap", new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) {
                     try {
                         Object r = p.getResult(); if (r == null) return;
@@ -77,13 +73,13 @@ final class PhotosEditor {
                         if (out != image) sdr.set(r, out);
                         Bitmap map = (Bitmap) gain.get(r);
                         if (map != null) { Bitmap m2 = paint(map, true); if (m2 != map) gain.set(r, m2); }
-                    } catch (Throwable error) { logOnce("doodles could not be drawn into the saved picture (HDR)", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
+            });
         }
         try {
             Class<?> tabs = Class.forName(TABS, false, cl);
-            hooks += Xp.hookAllConstructors(tabs, new Xp.Callback() {
+            Xp.hookAllConstructors(tabs, new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) {
                     final View v = (View) p.thisObject;
                     v.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
@@ -91,8 +87,8 @@ final class PhotosEditor {
                     });
                     v.post(new Runnable() { public void run() { addTab(v); } });
                 }
-            }).size();
-        } catch (Throwable missing) { log("editor tabs not found, no Doodles tab (" + missing + ")"); }
+            });
+        } catch (Throwable missing) { }
         try {
             Xp.hookAllMethods(Activity.class, "dispatchTouchEvent", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
@@ -110,14 +106,13 @@ final class PhotosEditor {
                             Xp.hookMethod(Activity.class.getDeclaredMethod("onDestroy"), new Xp.Callback() {
                                 protected void afterHookedMethod(Xp.Param q) { closed((Activity) q.thisObject); }
                             });
-                        } catch (Throwable error) { logOnce("editor close tracking unavailable", error); }
+                        } catch (Throwable error) { }
                     }
                     if (tabsReady) return; tabsReady = true;
                     if (enabled(a)) { PhotosTabs.install(a.getClassLoader(), a.getApplicationContext()); PhotosSave.install(a.getClassLoader(), a.getApplicationContext()); }
                 }
             });
-        } catch (Throwable error) { logOnce("picture movement tracking unavailable", error); }
-        log("hooks installed (" + hooks + ", saving " + saves + ")");
+        } catch (Throwable error) { }
     }
 
     static volatile RectF v2Rect;
@@ -127,7 +122,7 @@ final class PhotosEditor {
         Object r = v2Renderer.get(); long h = v2Handle;
         if (r == null || h == 0 || v2GetRect == null) return null;
         try { synchronized (r) { RectF got = (RectF) v2GetRect.invoke(r, h); if (got != null) { v2Rect = new RectF(got); v2ToImage = toImage(r, h); keep(); } return got; } }
-        catch (Throwable error) { logOnce("picture position (V2, direct) unavailable", error); return null; }
+        catch (Throwable error) { return null; }
     }
     static Method v2GetRect, v2GetToImage;
     static volatile android.graphics.Matrix v2ToImage;
@@ -138,7 +133,7 @@ final class PhotosEditor {
     static android.graphics.Matrix rawToImage(Object r, long h) {
         if (v2GetToImage == null) return null;
         try { Object m = v2GetToImage.invoke(r, h); return m instanceof android.graphics.Matrix ? (android.graphics.Matrix) m : null; }
-        catch (Throwable error) { logOnce("picture transform (V2) unavailable", error); return null; }
+        catch (Throwable error) { return null; }
     }
     static final Runnable movedOnScreen = new Runnable() { public void run() { cache = null; redraw(); } };
     static android.graphics.Matrix square(android.graphics.Matrix m) {
@@ -183,7 +178,7 @@ final class PhotosEditor {
                 else if (v instanceof android.os.Parcelable || v instanceof android.os.Bundle || v instanceof android.os.Parcelable[] || v instanceof List) storeIds(parcelText(v), ids);
             }
         } catch (Throwable ignored) { }
-        try { PhotosNames.fromDatabase(a.getApplicationContext(), i, ids, keys); } catch (Throwable error) { logOnce("photo's name from Photos' database unavailable", error); }
+        try { PhotosNames.fromDatabase(a.getApplicationContext(), i, ids, keys); } catch (Throwable error) { }
         for (String id : ids) keys.add("store:" + id);
         try { String mk = i.getStringExtra(MEDIA_KEY); if (mk != null && mk.length() > 0) keys.add("media:" + mk); } catch (Throwable ignored) { }
         try {
@@ -273,7 +268,7 @@ final class PhotosEditor {
             imageSpace.put(a, Boolean.TRUE);
             restored.put(a, Boolean.TRUE);
             Kept.store(keys, kept);
-        } catch (Throwable error) { logOnce("doodles of this photo could not be brought back", error); }
+        } catch (Throwable error) { }
     }
 
     static boolean editing() {
@@ -342,7 +337,7 @@ final class PhotosEditor {
         try {
             Class<?> r2 = Class.forName(V2 + "NativeRendererV2", false, cl);
             v2GetRect = find(r2, "nativeGetImageScreenRect", 1);
-            try { v2GetToImage = find(r2, "nativeGetScreenToImageTransform", 1); } catch (Throwable missing) { log("picture transform not found, shapes follow the picture as shown"); }
+            try { v2GetToImage = find(r2, "nativeGetScreenToImageTransform", 1); } catch (Throwable missing) { }
             Xp.Callback setup = new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) {
                     if (p.args.length == 0 || !(p.args[0] instanceof Long) || (Long) p.args[0] == 0) return;
@@ -383,10 +378,10 @@ final class PhotosEditor {
                         if (was != null && was.equals(r) && (m == null ? wasM == null : m.equals(wasM))) return;
                         v2Rect = new RectF(r); v2ToImage = m == null ? null : new android.graphics.Matrix(m); keep();
                         main.post(movedOnScreen);
-                    } catch (Throwable error) { logOnce("picture position (V2) unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
-        } catch (Throwable missing) { log("renderer V2 not found (" + missing + ")"); }
+        } catch (Throwable missing) { }
         try {
             Class<?> e2 = Class.forName(V2 + "NativeEditProcessorV2", false, cl);
             n += Xp.hookAllMethods(e2, "nativeRender", new Xp.Callback() {
@@ -405,16 +400,16 @@ final class PhotosEditor {
                         if (out != image) img.set(r, out);
                         Bitmap map = (Bitmap) gain.get(r);
                         if (map != null) { Bitmap m2 = paint(map, true); if (m2 != map) gain.set(r, m2); }
-                    } catch (Throwable error) { logOnce("doodles could not be drawn into the saved picture (V2)", error); }
+                    } catch (Throwable error) { }
                 }
             }).size();
-        } catch (Throwable missing) { log("edit processor V2 not found (" + missing + ")"); }
+        } catch (Throwable missing) { }
         return n;
     }
 
     static void redraw() {
         Activity a = editor.get();
-        if (a != null && !a.isFinishing() && DoodleOverlay.hasShapes(a)) try { preview(a); } catch (Throwable error) { logOnce("preview view unavailable", error); }
+        if (a != null && !a.isFinishing() && DoodleOverlay.hasShapes(a)) try { preview(a); } catch (Throwable error) { }
         for (Preview p : previews.values()) if (p != null) p.invalidate();
         DoodleOverlay.redraw();
     }
@@ -476,7 +471,7 @@ final class PhotosEditor {
             ViewGroup.LayoutParams lp = cropTab.getLayoutParams();
             list.addView(tab, list.indexOfChild(cropTab) + 1, lp instanceof LinearLayout.LayoutParams ? new LinearLayout.LayoutParams((LinearLayout.LayoutParams) lp) : new LinearLayout.LayoutParams(-2, -2));
             preview(a);
-        } catch (Throwable error) { logOnce("Doodles tab could not be added", error); }
+        } catch (Throwable error) { }
     }
 
     static String text(Context c, String name) {
@@ -517,7 +512,7 @@ final class PhotosEditor {
             DoodleOverlay.open(a, new Host(a, tabs, tab), toolbarRawY);
             begin();
             return true;
-        } catch (Throwable error) { logOnce("Doodles could not open", error); return false; }
+        } catch (Throwable error) { return false; }
     }
 
     private static Cache cache;
@@ -572,7 +567,7 @@ final class PhotosEditor {
             s.image.set(rect); s.image.offset(dx, dy);
             s.scale = k;
             return s;
-        } catch (Throwable error) { logOnce("picture position unavailable", error); return null; }
+        } catch (Throwable error) { return null; }
     }
 
     private static WeakReference<View> surfaceRef = new WeakReference<View>(null);
@@ -658,9 +653,7 @@ final class PhotosEditor {
         public boolean editorTouch(DoodleOverlay.Bridge.Space s, float x, float y) {
             float band = DoodleOverlay.dpOf(activity, 28);
             RectF r = s.image;
-            boolean nearX = x > r.left - band && x < r.right + band, nearY = y > r.top - band && y < r.bottom + band;
-            if (!nearX || !nearY) return false;
-            return Math.abs(x - r.left) < band || Math.abs(x - r.right) < band || Math.abs(y - r.top) < band || Math.abs(y - r.bottom) < band;
+            return CropHit.nearCorner(r.left, r.top, r.right, r.bottom, x, y, band);
         }
         public void outside(float x, float y) {
             if (tabs == null) return;
@@ -697,9 +690,8 @@ final class PhotosEditor {
         android.graphics.Matrix toOut = null;
         if (inImage) {
             RectF shown = shownNow; android.graphics.Matrix m = square(mNow);
-            if (shown == null || m == null || shown.width() < 2) { logOnce("picture position unknown at saving, doodles left out", null); return b; }
+            if (shown == null || m == null || shown.width() < 2) { return b; }
             if (Math.abs(shown.height() / shown.width() - (float) b.getHeight() / b.getWidth()) / (shown.height() / shown.width()) > 0.03f) {
-                if (!gainmap) logOnce("picture of a different shape, doodles left out", null);
                 return b;
             }
             toOut = new android.graphics.Matrix();
@@ -708,7 +700,7 @@ final class PhotosEditor {
             toOut.postScale(b.getWidth() / shown.width(), b.getHeight() / shown.height());
         }
         float mine = (float) b.getHeight() / b.getWidth();
-        if (toOut == null && (aspect == null || Math.abs(aspect - mine) / aspect > 0.03f)) { if (!gainmap) logOnce("picture of a different shape, doodles left out", null); return b; }
+        if (toOut == null && (aspect == null || Math.abs(aspect - mine) / aspect > 0.03f)) { return b; }
         if (!gainmap && b.getWidth() < 256) return b;
         Bitmap out = b;
         boolean hardware = b.getConfig() != null && "HARDWARE".equals(b.getConfig().name());

@@ -20,12 +20,12 @@ final class SnackbarPlace {
                         View bar = null;
                         for (int i = layer.getChildCount() - 1; i >= 0; i--) if (snackbar.isInstance(layer.getChildAt(i))) { bar = layer.getChildAt(i); break; }
                         if (bar == null) return;
-                        if (SuperDark.inEffect(a)) try { PillFrost.apply(bar, bar, true); } catch (Throwable error) { LauncherFeatures.logOnce("Message pill Super Dark unavailable", error); }
+                        if (SuperDark.inEffect(a)) try { PillFrost.apply(bar, bar, true); } catch (Throwable error) { }
                         place(a, layer, bar);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Message pill placement unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Message pill placement hook unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static void place(Activity a, ViewGroup layer, View bar) throws Exception {

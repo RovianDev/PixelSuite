@@ -11,7 +11,6 @@ import android.view.View;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.Map;
-import java.util.WeakHashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 final class PrivacyGuard {
@@ -19,15 +18,12 @@ final class PrivacyGuard {
     static final String MODE_REMOVE_APP = "removeapp", MODE_REMOVE_FOLDER = "removefolder";
     static final String ACTION_OK = "io.github.pixelsuite.APP_LOCK_REMOVE_OK";
 
-    private static final Map<Object, Boolean> passing = new WeakHashMap<Object, Boolean>();
-
     private static volatile boolean passingDelete;
 
     static void install(final ClassLoader cl) {
-        int n = 0;
         try {
             Class<?> handler = Xp.findClass("com.android.launcher3.DropTargetHandler", cl);
-            n += Xp.hookAllMethods(handler, "onDeleteComplete", new Xp.Callback() {
+            Xp.hookAllMethods(handler, "onDeleteComplete", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(final Xp.Param p) {
                     try {
                         if (p.args.length < 2) return;
@@ -40,16 +36,16 @@ final class PrivacyGuard {
                         if (key == null || key.startsWith("a:")) { remember(self, view, info, null); return; }
                         boolean asked = ask(a, key, folderName(info), new Runnable() { public void run() {
                             passingDelete = true; passingKey = key;
-                            try { Xp.callMethod(self, "onDeleteComplete", view, info); Module.log("App lock: locked folder deleted after confirming"); }
-                            catch (Throwable error) { Module.log("App lock: folder delete failed", error); }
+                            try { Xp.callMethod(self, "onDeleteComplete", view, info); }
+                            catch (Throwable error) { }
                             finally { passingDelete = false; passingKey = null; }
                         } }, new Runnable() { public void run() { restore(self, view != null ? view : heldView(info), info); } });
                         if (asked) p.setResult(null);
                         else remember(self, view, info, null);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("App lock: folder delete check unavailable (it is deleted)", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-            n += Xp.hookAllMethods(Xp.findClass("com.android.launcher3.DeleteDropTarget", cl), "onDrop", new Xp.Callback() {
+            });
+            Xp.hookAllMethods(Xp.findClass("com.android.launcher3.DeleteDropTarget", cl), "onDrop", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         Object d = p.args[0];
@@ -57,13 +53,12 @@ final class PrivacyGuard {
                         if (view instanceof View) { held = new java.lang.ref.WeakReference<View>((View) view); heldInfo = new java.lang.ref.WeakReference<Object>(info); }
                     } catch (Throwable ignored) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("App lock: folder delete check unavailable", error); }
+            });
+        } catch (Throwable error) { }
         try {
             Class<?> pill = Xp.findClass("com.android.launcher3.DropTargetHandler$onDeleteComplete$onDismissed$1", cl);
             final Field kind = intField(pill);
-            if (kind == null) Module.log("Folder undo: the pill's action is unreadable (the launcher's own Undo is kept)");
-            else n += Xp.hookAllMethods(pill, "run", new Xp.Callback() {
+            if (kind != null) Xp.hookAllMethods(pill, "run", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         Removed r = lastRemoved;
@@ -74,11 +69,56 @@ final class PrivacyGuard {
                         lastRemoved = null;
                         if (r.lockKey != null) relock(r.lockKey);
                         if (putBackAfterUndo(r)) p.setResult(null);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Folder undo failed (the launcher's own Undo runs)", error); }
+                    } catch (Throwable error) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("Folder undo unavailable (the launcher's own Undo is kept)", error); }
-        Module.log("App lock remove checks: " + n + " hooks");
+            });
+        } catch (Throwable error) { }
+        installItemDeleteHandler(cl);
+    }
+
+    static void installItemDeleteHandler(final ClassLoader cl) {
+        try {
+            Class<?> deleter = Xp.findClass("com.android.launcher3.dragndrop.ItemDeleteHandler", cl);
+            Xp.hookAllMethods(deleter, "completeDelete", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(final Xp.Param p) {
+                    try {
+                        if (p.args.length < 1) return;
+                        final Object info = p.args[0];
+                        final Object[] args = p.args.clone();
+                        final Object self = p.thisObject;
+                        if (passingDelete) { remember(self, null, info, passingKey); return; }
+                        Activity a = LauncherFeatures.activity.get(); if (a == null) return;
+                        final String key = PrivacyBadges.lockedKey(a, info);
+                        if (key == null || key.startsWith("a:")) { remember(self, null, info, null); return; }
+                        boolean asked = ask(a, key, folderName(info), new Runnable() { public void run() {
+                            passingDelete = true; passingKey = key;
+                            try { Xp.callMethod(self, "completeDelete", args); }
+                            catch (Throwable error) { }
+                            finally { passingDelete = false; passingKey = null; }
+                        } }, new Runnable() { public void run() { restore(self, heldView(info), info); } });
+                        if (asked) p.setResult(null);
+                        else remember(self, null, info, null);
+                    } catch (Throwable error) { }
+                }
+            });
+        } catch (Throwable error) { }
+        try {
+            Class<?> pill = Xp.findClass("com.android.launcher3.dragndrop.ItemDeleteHandler$completeDelete$onDismissed$1", cl);
+            final Field kind = intField(pill);
+            if (kind != null) Xp.hookAllMethods(pill, "run", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        Removed r = lastRemoved;
+                        if (kind.getInt(p.thisObject) == 0) { lastRemoved = null; return; }
+                        if (r == null || android.os.SystemClock.uptimeMillis() - r.at > 30000) return;
+                        Object handler = null; try { handler = Xp.getObjectField(p.thisObject, "this$0"); } catch (Throwable ignored) { }
+                        if (handler != null && handler != r.handler) return;
+                        lastRemoved = null;
+                        if (r.lockKey != null) relock(r.lockKey);
+                    } catch (Throwable error) { }
+                }
+            });
+        } catch (Throwable error) { }
     }
 
     private static final class Removed {
@@ -130,7 +170,6 @@ final class PrivacyGuard {
                     Xp.callMethod(workspace, "insertNewWorkspaceScreen", screen, at);
                 } catch (Throwable ignored) { }
                 if (Xp.callMethod(workspace, "getScreenWithId", screen) == null) {
-                    Module.log("Folder undo: its page is gone, the launcher's own Undo runs");
                     return false;
                 }
             }
@@ -142,13 +181,12 @@ final class PrivacyGuard {
             boolean resumed = false;
             for (java.lang.reflect.Method m : writer.getClass().getMethods()) if (m.getName().equals("resumeWrites") && m.getParameterTypes().length == 2) { m.invoke(writer, null, true); resumed = true; break; }
             if (!resumed) return false;
-        } catch (Throwable error) { Module.log("Folder undo: the delete could not be cancelled here, the launcher's own Undo runs", error); return false; }
+        } catch (Throwable error) { return false; }
         try {
             if (view.getParent() == null) Xp.callMethod(workspace, "addInScreenFromBind", view, r.info);
-            if (view.getParent() == null) { Module.log("Folder undo: tile not placed, home screen loaded again"); reload(); return true; }
+            if (view.getParent() == null) { reload(); return true; }
             inflate(view);
-            Module.log("Folder undo: folder put back");
-        } catch (Throwable error) { Module.log("Folder undo: tile not placed, home screen loaded again", error); reload(); }
+        } catch (Throwable error) { reload(); }
         return true;
     }
 
@@ -167,7 +205,7 @@ final class PrivacyGuard {
         try {
             Activity a = LauncherFeatures.activity.get(); if (a == null) return;
             a.sendBroadcast(new Intent(ACTION_RELOCK).setPackage("android").putExtra(PrivacyFolders.EXTRA_FOLDER, key));
-        } catch (Throwable error) { Module.log("Folder undo: lock not given back", error); }
+        } catch (Throwable error) { }
     }
 
     private static java.lang.ref.WeakReference<View> held; private static java.lang.ref.WeakReference<Object> heldInfo;
@@ -182,17 +220,16 @@ final class PrivacyGuard {
             ((java.util.List<?>) Xp.getObjectField(controller, "pendingDeletes")).clear();
             Object writer = Xp.callMethod(Xp.getObjectField(controller, "activityContext"), "getModelWriter");
             for (java.lang.reflect.Method m : writer.getClass().getMethods()) if (m.getName().equals("resumeWrites") && m.getParameterTypes().length == 2) { m.invoke(writer, null, true); break; }
-        } catch (Throwable error) { Module.log("App lock: writes not resumed", error); }
+        } catch (Throwable error) { }
         Activity a = LauncherFeatures.activity.get();
-        if (view == null || a == null) { Module.log("App lock: folder delete cancelled, no tile to put back (" + (view == null) + ")"); reload(); return; }
+        if (view == null || a == null) { reload(); return; }
         try {
             if (view.getParent() == null) {
                 Object workspace = LauncherFeatures.get(a, "mWorkspace");
                 Xp.callMethod(workspace, "addInScreenFromBind", view, info);
             }
             inflate(view);
-            Module.log("App lock: folder delete cancelled, folder put back");
-        } catch (Throwable error) { Module.log("App lock: folder tile could not be put back", error); reload(); }
+        } catch (Throwable error) { reload(); }
     }
     private static void reload() {
         try {
@@ -233,7 +270,7 @@ final class PrivacyGuard {
                 @Override public void onReceive(Context c, Intent i) {
                     String t = i.getStringExtra(PrivacyRecents.EXTRA_TOKEN); if (t == null) return;
                     Runnable job = asking.remove(t), no = cancels.remove(t);
-                    if (ACTION_NO.equals(i.getAction())) { Module.log("App lock: remove dismissed (" + (no != null) + ")"); if (no != null) no.run(); return; }
+                    if (ACTION_NO.equals(i.getAction())) { if (no != null) no.run(); return; }
                     if (job != null) job.run();
                 }
             };
@@ -242,7 +279,7 @@ final class PrivacyGuard {
                 IntentFilter f = new IntentFilter(ACTION_OK); f.addAction(ACTION_NO);
                 try { Context.class.getMethod("registerReceiver", BroadcastReceiver.class, IntentFilter.class, int.class).invoke(app, r, f, 2); }
                 catch (Throwable older) { app.registerReceiver(r, f); }
-            } catch (Throwable error) { listening = false; Module.log("App lock: remove answer unavailable", error); return false; }
+            } catch (Throwable error) { listening = false; return false; }
         }
         Haptics.tick(a);
         Intent i = new Intent().setComponent(new ComponentName(PrivacyLock.OUR, PrivacyLock.MENU_ACTIVITY));
@@ -258,7 +295,7 @@ final class PrivacyGuard {
             android.app.ActivityOptions.class.getMethod("setShareIdentityEnabled", boolean.class).invoke(o, true);
             options = o.toBundle();
         } catch (Throwable ignored) { }
-        try { a.startActivity(i, options); return true; } catch (Throwable error) { asking.remove(token); cancels.remove(token); Module.log("App lock: unlock screen unavailable", error); return false; }
+        try { a.startActivity(i, options); return true; } catch (Throwable error) { asking.remove(token); cancels.remove(token); return false; }
     }
 
     private static String folderName(Object info) {

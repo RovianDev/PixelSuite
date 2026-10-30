@@ -38,7 +38,7 @@ final class Kept {
                     .append(' ').append(d.color).append(' ').append(d.width).append(' ').append(d.fill ? 1 : 0).append('\n');
             FileOutputStream out = new FileOutputStream(f);
             try { out.write(b.toString().getBytes("UTF-8")); } finally { out.close(); }
-        } catch (Throwable error) { PhotosEditor.logOnce("doodles could not be kept for this photo", error); }
+        } catch (Throwable error) { }
     }
 
     static List<Doodle> load(Context c, String keys) {
@@ -60,7 +60,7 @@ final class Kept {
                 out.add(new Doodle(kind, Float.parseFloat(v[1]), Float.parseFloat(v[2]), Float.parseFloat(v[3]), Float.parseFloat(v[4]),
                         Integer.parseInt(v[5]), Float.parseFloat(v[6]), "1".equals(v[7])));
             }
-        } catch (Throwable error) { PhotosEditor.logOnce("kept doodles unreadable", error); out.clear(); }
+        } catch (Throwable error) { out.clear(); }
         return out;
     }
 

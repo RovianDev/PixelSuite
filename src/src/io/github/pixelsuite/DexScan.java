@@ -342,11 +342,4 @@ final class DexScan {
         return r;
     }
 
-    public static void main(String[] a) throws Exception {
-        long t = System.currentTimeMillis();
-        DexScan s = read(a[0]);
-        Map<String, String> r = s.resolve();
-        for (Map.Entry<String, String> e : r.entrySet()) System.out.println(e.getKey() + "=" + e.getValue());
-        System.out.println("# " + r.size() + " names in " + (System.currentTimeMillis() - t) + " ms");
-    }
 }

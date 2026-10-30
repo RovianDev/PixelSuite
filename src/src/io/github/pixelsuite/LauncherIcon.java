@@ -36,6 +36,27 @@ final class LauncherIcon {
     static Object get(Object o,String f){return LauncherFeatures.get(o,f);}
     static Object call(Object o,String f,Object...v){return LauncherFeatures.call(o,f,v);}
     static void install(){
+        try{
+            Xp.hookAllMethods(LauncherFeatures.type("icons.BitmapInfo"),"getMatchingLookupFlag",new Xp.Callback(){
+                @Override protected void afterHookedMethod(Xp.Param p){
+                    try{Object flag=p.getResult();if(flag!=null&&ours(p.thisObject))p.setResult(Xp.callMethod(flag,"updateMask",8,true));}catch(Throwable ignored){}
+                }
+            });
+        }catch(Throwable ignored){}
+        try{
+            Xp.hookAllMethods(LauncherFeatures.type("folder.PreviewItemManager"),"setDrawableInternal",new Xp.Callback(){
+                @Override protected void beforeHookedMethod(Xp.Param p){
+                    try{if(p.args.length>1&&p.args[1]!=null&&LauncherFeatures.type("model.data.ItemInfoWithIcon").isInstance(p.args[1]))LauncherFeatures.label(p.args[1]);}catch(Throwable ignored){}
+                }
+            });
+        }catch(Throwable ignored){}
+        try{
+            Xp.hookAllMethods(LauncherFeatures.type("graphics.IconLoader"),"getFullDrawable",new Xp.Callback(){
+                @Override protected void beforeHookedMethod(Xp.Param p){
+                    try{if(p.args.length>0&&p.args[0]!=null&&ours(get(p.args[0],"bitmap")))p.setResult(null);}catch(Throwable ignored){}
+                }
+            });
+        }catch(Throwable ignored){}
         Xp.hookAllMethods(LauncherFeatures.type("uioverrides.QuickstepLauncher"),"handlePendingActivityRequest",new Xp.Callback(){
             protected void beforeHookedMethod(Xp.Param p){
                 if(((Number)get(p.thisObject,"mPendingActivityRequestCode")).intValue()==REQUEST && Xp.getAdditionalInstanceField(p.thisObject,PENDING)!=null)p.setResult(null);
@@ -53,7 +74,7 @@ final class LauncherIcon {
                         ((java.util.Queue<?>)get(call(provider,"getIconPool"),"pool")).clear();
                         LauncherFeatures.refresh();
                         AppPicker.refreshIcons();
-                    }catch(Throwable error){Module.log("Custom icon shape refresh failed",error);}
+                    }catch(Throwable error){}
                 }});
             }
         });
@@ -61,7 +82,10 @@ final class LauncherIcon {
             protected void beforeHookedMethod(Xp.Param p){Object key=Xp.getAdditionalInstanceField(p.thisObject,PENDING);if(key instanceof String)((Bundle)p.args[0]).putString(PENDING,(String)key);}
         });
         Xp.hookAllMethods(LauncherFeatures.type("Launcher"),"onCreate",new Xp.Callback(){
-            protected void afterHookedMethod(Xp.Param p){if(p.args[0] instanceof Bundle){String key=((Bundle)p.args[0]).getString(PENDING);if(key!=null)Xp.setAdditionalInstanceField(p.thisObject,PENDING,key);}}
+            protected void afterHookedMethod(Xp.Param p){
+                if(p.args[0] instanceof Bundle){String key=((Bundle)p.args[0]).getString(PENDING);if(key!=null)Xp.setAdditionalInstanceField(p.thisObject,PENDING,key);}
+                try{LauncherIconPack.attach((Activity)p.thisObject);}catch(Throwable ignored){}
+            }
         });
         Xp.hookAllMethods(LauncherFeatures.type("proxy.ProxyActivityStarter"),"getLaunchIntent",new Xp.Callback(){
             protected void afterHookedMethod(Xp.Param p){
@@ -94,12 +118,11 @@ final class LauncherIcon {
         String pending=proxy?receiver.getIntent().getStringExtra(PENDING):(String)Xp.getAdditionalInstanceField(receiver,PENDING);
         if(owner!=null){LauncherFeatures.set(owner,"mPendingActivityRequestCode",-1);Xp.setAdditionalInstanceField(owner,PENDING,null);}
         final String key=pending;
-        Module.log("Icon picker result: "+resultCode+", pending="+(key!=null));
         if(key==null || resultCode!=Activity.RESULT_OK || result==null || result.getData()==null){finishReceiver(receiver,proxy);return;}
         final Uri uri=result.getData();
         IO.execute(new Runnable(){public void run(){
             Bitmap picture=null;
-            try{picture=load(receiver,uri);}catch(Throwable error){Module.log("Custom icon import failed",error);}
+            try{picture=load(receiver,uri);}catch(Throwable error){}
             final Bitmap loaded=picture;
             receiver.runOnUiThread(new Runnable(){public void run(){
                 Activity host=proxy?LauncherFeatures.activity.get():receiver;
@@ -113,7 +136,7 @@ final class LauncherIcon {
                         boolean success=false;
                         try{int side=Math.min(loaded.getWidth(),loaded.getHeight());RectF middle=new RectF((loaded.getWidth()-side)/2f,(loaded.getHeight()-side)/2f,(loaded.getWidth()+side)/2f,(loaded.getHeight()+side)/2f);
                             Bitmap icon=IconEditor.render(loaded,middle,512);try{store(app,key,icon);success=true;}finally{icon.recycle();}}
-                        catch(Throwable error){Module.log("Custom icon save failed",error);}
+                        catch(Throwable error){}
                         finally{loaded.recycle();}
                         final boolean ok=success;
                         main.post(new Runnable(){public void run(){
@@ -133,7 +156,7 @@ final class LauncherIcon {
                         IO.execute(new Runnable(){public void run(){
                             boolean success=false;
                             try{Bitmap icon=IconEditor.render(picture,area,512);try{store(c,key,icon);success=true;}finally{icon.recycle();}}
-                            catch(Throwable error){Module.log("Custom icon save failed",error);}
+                            catch(Throwable error){}
                             final boolean ok=success;
                             main.post(new Runnable(){public void run(){
                                 if(ok){synchronized(cache){retire(key);}LauncherFeatures.refresh();}
@@ -158,16 +181,18 @@ final class LauncherIcon {
         final Activity a=LauncherFeatures.activity.get();final String key=LauncherFeatures.identity(info);if(a==null||key==null)return;
         Chosen chosen=new Chosen();
         try{Object title=get(info,"title");if(title!=null)chosen.label=title.toString();}catch(Throwable ignored){}
-        try{Object view=popup==null?null:get(popup,"originalIcon");if(view instanceof android.view.View)chosen.icon=new java.lang.ref.WeakReference<android.view.View>((android.view.View)view);}catch(Throwable ignored){}
+        Object view=null;
+        if(popup!=null){try{view=get(popup,"originalIcon");}catch(Throwable newerMenu){try{view=get(popup,"originalView");}catch(Throwable ignored){}}}
+        if(view instanceof android.view.View)chosen.icon=new java.lang.ref.WeakReference<android.view.View>((android.view.View)view);
         synchronized(chosenApps){chosenApps.clear();chosenApps.put(key,chosen);}
         pick(a,key);
     }
     static void pick(final Activity a,final String key){
         AlertDialog.Builder chooser=new AlertDialog.Builder(a).setTitle("Change icon")
-            .setItems(new String[]{"Photos","Files"},new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dialog,int which){openPicker(a,key,which==0);}
+            .setItems(new String[]{"Photos","Files","Icon pack"},new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog,int which){if(which==2)LauncherIconPack.openPicker(a,key);else openPicker(a,key,which==0);}
             }).setNegativeButton("Cancel",null);
-        try{if(file(a,key).isFile())chooser.setNeutralButton("Reset icon",new DialogInterface.OnClickListener(){public void onClick(DialogInterface dialog,int which){reset(a,key);}});}catch(Exception ignored){}
+        try{if(file(a,key).isFile()||LauncherIconPack.pickFile(a,key).isFile())chooser.setNeutralButton("Reset icon",new DialogInterface.OnClickListener(){public void onClick(DialogInterface dialog,int which){reset(a,key);}});}catch(Exception ignored){}
         AlertDialog dialog=FrostedSurface.show(chooser.create());
         android.widget.Button button=dialog.getButton(DialogInterface.BUTTON_NEUTRAL);
         if(button!=null&&button.getVisibility()==android.view.View.VISIBLE){
@@ -179,7 +204,7 @@ final class LauncherIcon {
         }
     }
     static void reset(final Activity a,final String key){IO.execute(new Runnable(){public void run(){
-        boolean success=false;try{File f=file(a,key);success=!f.exists()||f.delete();}catch(Exception ignored){}
+        boolean success=false;try{File f=file(a,key);success=!f.exists()||f.delete();File pk=LauncherIconPack.pickFile(a,key);if(pk.exists()&&!pk.delete())success=false;}catch(Exception ignored){}
         final boolean ok=success;a.runOnUiThread(new Runnable(){public void run(){
             if(ok)synchronized(cache){retire(key);}
             LauncherFeatures.refresh();Toast.makeText(a,ok?"Original icon restored":"Could not reset the icon",0).show();
@@ -224,6 +249,7 @@ final class LauncherIcon {
         try{
             try(FileOutputStream out=new FileOutputStream(output)){if(!icon.compress(Bitmap.CompressFormat.PNG,100,out))throw new IOException("Cannot encode image");out.getFD().sync();}
             if(!output.renameTo(file(c,key)))throw new IOException("Cannot save image");
+            File pack=LauncherIconPack.pickFile(c,key);if(pack.exists())pack.delete();
         }finally{output.delete();}
     }
     static void importImage(Context c,String key,Uri uri)throws Exception{
@@ -278,7 +304,7 @@ final class LauncherIcon {
             Canvas canvas=picture.beginRecording(size,size);
             try{d.draw(canvas);}finally{picture.endRecording();}
             return picture;
-        }catch(Throwable error){LauncherFeatures.logOnce("Icon export: launcher drawing unavailable, shape used",error);}
+        }catch(Throwable error){}
         try{
             Object image=get(bitmapInfo,"icon");if(!(image instanceof Bitmap))return null;
             picture=new android.graphics.Picture();
@@ -310,8 +336,8 @@ final class LauncherIcon {
         main.removeCallbacks(reloadAll);main.postDelayed(reloadAll,300);
     }
     static final Runnable reloadAll=new Runnable(){public void run(){
-        try{Activity a=LauncherFeatures.activity.get();if(a==null)return;Object model=get(a,"mModel");call(model,"forceReload","pixelsuite icon reset");Module.log("Custom icons: launcher icons reloaded to find an app's own icon");}
-        catch(Throwable error){LauncherFeatures.logOnce("Icon reload unavailable",error);}
+        try{Activity a=LauncherFeatures.activity.get();if(a==null)return;Object model=get(a,"mModel");call(model,"forceReload","pixelsuite icon reset");}
+        catch(Throwable error){}
     }};
     static void nativeLoaded(Object info){
         String key=LauncherFeatures.identity(info);if(key==null)return;
@@ -331,11 +357,14 @@ final class LauncherIcon {
                 Object saved=nativeIcons.get(key);
                 if(saved!=null&&!ours(saved))originals.put(info,saved);else reloadNatives(key);
             }
-            if(!LauncherFeatures.on(LauncherFeatures.ICONS)){LauncherFeatures.set(info,"bitmap",originals.get(info));return;}
+            boolean custom=LauncherFeatures.on(LauncherFeatures.ICONS);
             Object replacement=cache.get(key);
             if(replacement==null&&!missing.contains(key))try{
-                Activity a=LauncherFeatures.activity.get();File f=file(a,key);
-                if(!f.isFile()){missing.add(key);}else{
+                Activity a=LauncherFeatures.activity.get();
+                File f=custom?file(a,key):null;boolean bleed=true;
+                if(f==null||!f.isFile()){f=custom?LauncherIconPack.pickFile(a,key):null;}
+                if(f==null||!f.isFile())f=LauncherIconPack.globalFile(a,key,info);
+                if(f==null||!f.isFile()){missing.add(key);}else{
                     Bitmap image=BitmapFactory.decodeFile(f.getPath());if(image==null)throw new IOException("Invalid icon file");
                     Object factory=Xp.callStaticMethod(LauncherFeatures.type("icons.LauncherIcons$Companion"),"obtain",a);
                     try{
@@ -344,15 +373,15 @@ final class LauncherIcon {
                             Class<?> unsafe=Class.forName("sun.misc.Unsafe");java.lang.reflect.Field field=unsafe.getDeclaredField("theUnsafe");field.setAccessible(true);
                             options=unsafe.getMethod("allocateInstance",Class.class).invoke(field.get(null),optionsType);
                         }
-                        LauncherFeatures.set(options,"wrapNonAdaptiveIcon",true);LauncherFeatures.set(options,"addShadows",true);
-                        LauncherFeatures.set(options,"iconScale",1f);LauncherFeatures.set(options,"isFullBleed",true);
+                        LauncherFeatures.set(options,"wrapNonAdaptiveIcon",bleed);LauncherFeatures.set(options,"addShadows",true);
+                        LauncherFeatures.set(options,"iconScale",1f);LauncherFeatures.set(options,"isFullBleed",bleed);
                         LauncherFeatures.set(options,"userHandle",get(info,"user"));
-                        replacement=call(factory,"createBadgedIconBitmap",new Bleed(a.getResources(),image),options);
+                        replacement=call(factory,"createBadgedIconBitmap",bleed?new Bleed(a.getResources(),image):new BitmapDrawable(a.getResources(),image),options);
                         cache.put(key,replacement);
                         try{Object picture=get(replacement,"icon");if(picture!=null)ourPictures.add(picture);}catch(Throwable ignored){}
                     }finally{call(factory,"close");image.recycle();}
                 }
-            }catch(Throwable error){missing.add(key);Module.log("Custom icon unavailable",error);}
+            }catch(Throwable error){missing.add(key);}
             LauncherFeatures.set(info,"bitmap",replacement!=null?replacement:originals.get(info));
         }
     }

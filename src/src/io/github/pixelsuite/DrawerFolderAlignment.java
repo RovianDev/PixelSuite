@@ -26,7 +26,7 @@ final class DrawerFolderAlignment {
             if(!Boolean.TRUE.equals(Xp.getAdditionalInstanceField(icon,"pixelsuite_align_pending")))return true;
             Xp.setAdditionalInstanceField(icon,"pixelsuite_align_pending",false);
             boolean changed=false;
-            try{changed=align(icon);}catch(Throwable error){LauncherFeatures.logOnce("Drawer folder alignment unavailable",error);}
+            try{changed=align(icon);}catch(Throwable error){}
             Object skipped=Xp.getAdditionalInstanceField(icon,"pixelsuite_align_skipped");
             if(changed&&!Boolean.TRUE.equals(skipped)){Xp.setAdditionalInstanceField(icon,"pixelsuite_align_skipped",true);return false;}
             Xp.setAdditionalInstanceField(icon,"pixelsuite_align_skipped",false);
@@ -37,7 +37,7 @@ final class DrawerFolderAlignment {
             try{android.view.ViewTreeObserver o=icon.getViewTreeObserver();if(o.isAlive())o.removeOnPreDrawListener(hook[0]);}catch(Throwable ignored){}
             if(!Boolean.TRUE.equals(Xp.getAdditionalInstanceField(icon,"pixelsuite_align_pending")))return;
             Xp.setAdditionalInstanceField(icon,"pixelsuite_align_pending",false);
-            try{align(icon);}catch(Throwable error){LauncherFeatures.logOnce("Drawer folder alignment unavailable",error);}
+            try{align(icon);}catch(Throwable error){}
         }});
     }
 
@@ -133,7 +133,7 @@ final class DrawerFolderAlignment {
         }
         Xp.setAdditionalInstanceField(frame,"pixelsuite_last_alignment",new int[]{size,top,Math.round(label.getTranslationY())});
         String note="Drawer folder aligned: cell "+frame.getWidth()+"x"+frame.getHeight()+", icon top "+top+", size "+size+", baseline "+baseline+", caption top "+label.getTop()+" shift "+Math.round(label.getTranslationY());
-        if(!note.equals(lastNote)){lastNote=note;Module.log(note);}
+        if(!note.equals(lastNote)){lastNote=note;}
         return changed;
     }
     static String lastNote;

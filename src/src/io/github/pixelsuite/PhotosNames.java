@@ -60,7 +60,6 @@ final class PhotosNames {
                         } finally { c.close(); }
                     }
                 } catch (Throwable error) {
-                    PhotosEditor.logOnce("Photos' database could not be read for the photo's name", error);
                 } finally { if (db != null) try { db.close(); } catch (Throwable ignored) { } }
             }
         } finally { android.os.StrictMode.setThreadPolicy(old); }

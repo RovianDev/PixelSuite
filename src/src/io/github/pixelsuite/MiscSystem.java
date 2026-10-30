@@ -10,8 +10,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.provider.Settings;
+import android.view.WindowManager;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
@@ -35,19 +36,17 @@ final class MiscSystem {
     private static final ThreadLocal<Boolean> inside = new ThreadLocal<Boolean>();
 
     static void installSystem(ClassLoader cl) {
-        int n = 0;
         try {
-            n += Xp.hookAllMethods(Xp.findClass("com.android.server.am.ActivityManagerService", cl), "systemReady", new Xp.Callback() {
+            Xp.hookAllMethods(Xp.findClass("com.android.server.am.ActivityManagerService", cl), "systemReady", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
-                    try { start((Context) Xp.getObjectField(p.thisObject, "mContext")); } catch (Throwable error) { Module.log("Miscellaneous: start failed", error); }
+                    try { start((Context) Xp.getObjectField(p.thisObject, "mContext")); } catch (Throwable error) { }
                 }
-            }).size();
-        } catch (Throwable error) { Module.log("Miscellaneous: start hook unavailable", error); }
-        n += installSecure(cl);
-        n += installAccessibility(cl);
-        n += installSettingsBridge();
-        n += installSettingsQuery();
-        Module.log("Miscellaneous: " + n + " system hooks");
+            });
+        } catch (Throwable error) { }
+        installSecure(cl);
+        installAccessibility(cl);
+        installSettingsBridge();
+        installSettingsQuery();
     }
 
     private static synchronized void start(final Context c) {
@@ -60,9 +59,8 @@ final class MiscSystem {
                 secureOn = "1".equals(Settings.Secure.getString(c.getContentResolver(), SECURE_KEY));
                 a11yOn = "1".equals(Settings.Secure.getString(c.getContentResolver(), A11Y_KEY));
                 devOn = "1".equals(Settings.Secure.getString(c.getContentResolver(), DEV_KEY));
-                Module.log("Miscellaneous: secure screenshots " + (secureOn ? "on" : "off") + ", hide accessibility " + (a11yOn ? "on" : "off") + " (" + a11yApps.size() + " apps), hide developer options " + (devOn ? "on" : "off"));
                 a11yApps = Collections.unmodifiableSet(PrivacyLock.parse(Settings.Secure.getString(c.getContentResolver(), A11Y_APPS_KEY)));
-            } catch (Throwable error) { Module.log("Miscellaneous: settings unreadable", error); }
+            } catch (Throwable error) { }
         } };
         h.post(load);
         h.post(new Runnable() { public void run() { findProvider(h); } });
@@ -72,70 +70,42 @@ final class MiscSystem {
                 c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(k), false, o);
             IntentFilter f = new IntentFilter(); f.addAction(Intent.ACTION_PACKAGE_ADDED); f.addAction(Intent.ACTION_PACKAGE_REMOVED); f.addDataScheme("package");
             c.registerReceiver(new BroadcastReceiver() { @Override public void onReceive(Context x, Intent i) { uidPackages.clear(); regularApp.clear(); } }, f, null, h);
-        } catch (Throwable error) { Module.log("Miscellaneous: settings changes not followed", error); }
+        } catch (Throwable error) { }
     }
+
+    private static final int FLAG_SECURE = 0x2000;
 
     private static int installSecure(ClassLoader cl) {
         int n = 0;
         try {
-            n += Xp.hookAllMethods(Xp.findClass("com.android.server.wm.ActivityTaskManagerService", cl), "registerScreenCaptureObserver", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) { if (secureOn) p.setResult(null); }
-            }).size();
-        } catch (Throwable error) { Module.log("Secure screenshots: capture observer unavailable", error); }
-        try {
-            n += Xp.hookAllMethods(Xp.findClass("com.android.server.wm.WindowManagerService", cl), "registerScreenRecordingCallback", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) { if (secureOn) p.setResult(Boolean.FALSE); }
-            }).size();
-        } catch (Throwable error) { Module.log("Secure screenshots: recording callback unavailable", error); }
-        try {
-            Class<?> capture, args; String fieldName; final boolean policy;
-            Class<?> internal = null; try { internal = Class.forName("android.window.ScreenCaptureInternal", false, cl); } catch (Throwable ignored) { }
-            if (internal != null) { capture = internal; args = Class.forName("android.window.ScreenCaptureInternal$CaptureArgs", false, cl); fieldName = "mSecureContentPolicy"; policy = true; }
-            else { capture = Class.forName("android.window.ScreenCapture", false, cl); args = Class.forName("android.window.ScreenCapture$CaptureArgs", false, cl); fieldName = "mCaptureSecureLayers"; policy = false; }
-            final Field field = args.getDeclaredField(fieldName); field.setAccessible(true);
-            Xp.Callback withSecure = new Xp.Callback() {
+            Class<?> wms = Xp.findClass("com.android.server.wm.WindowManagerService", cl);
+            Xp.Callback strip = new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (!secureOn || p.args.length == 0 || p.args[0] == null) return;
-                    try { if (policy) field.setInt(p.args[0], 1); else field.setBoolean(p.args[0], true); } catch (Throwable ignored) { }
+                    if (!secureOn || Binder.getCallingUid() < 10000) return;
+                    for (Object a : p.args) {
+                        if (a instanceof WindowManager.LayoutParams) {
+                            WindowManager.LayoutParams lp = (WindowManager.LayoutParams) a;
+                            if ((lp.flags & FLAG_SECURE) != 0) lp.flags &= ~FLAG_SECURE;
+                            return;
+                        }
+                    }
                 }
             };
-            n += Xp.hookAllMethods(capture, "nativeCaptureDisplay", withSecure).size();
-            n += Xp.hookAllMethods(capture, "nativeCaptureLayers", withSecure).size();
-        } catch (Throwable error) { Module.log("Secure screenshots: screen capture unavailable", error); }
-        try {
-            n += Xp.hookAllMethods(Xp.findClass("com.android.server.display.DisplayControl", cl), "createVirtualDisplay", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) { if (secureOn && p.args.length == 2 && p.args[1] instanceof Boolean) p.args[1] = Boolean.TRUE; }
+            n += Xp.hookAllMethods(wms, "addWindow", strip).size();
+            n += Xp.hookAllMethods(wms, "relayoutWindow", strip).size();
+            n += Xp.hookAllMethods(wms, "notifyScreenshotListeners", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) { if (secureOn) p.setResult(new java.util.ArrayList<Object>()); }
             }).size();
-        } catch (Throwable error) { Module.log("Secure screenshots: display control unavailable", error); }
+        } catch (Throwable error) { }
         try {
-            n += Xp.hookAllMethods(Xp.findClass("com.android.server.display.VirtualDisplayAdapter", cl), "createVirtualDisplayLocked", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (!secureOn || p.args.length < 4) return;
-                    int caller = p.args[2] instanceof Integer ? (Integer) p.args[2] : 0;
-                    if (caller >= 10000 && p.args[1] == null) return;
-                    for (int i = 3; i < p.args.length; i++) if (p.args[i] instanceof Integer) { p.args[i] = ((Integer) p.args[i]) | 4 ; return; }
-                }
+            Class<?> rec = Xp.findClass("com.android.server.wm.ScreenRecordingCallbackController", cl);
+            n += Xp.hookAllMethods(rec, "uidHasRecordedActivity", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) { if (secureOn) p.setResult(Boolean.FALSE); }
             }).size();
-        } catch (Throwable error) { Module.log("Secure screenshots: virtual displays unavailable", error); }
-        try {
-            Class<?> state = Xp.findClass("com.android.server.wm.WindowState", cl);
-            n += Xp.hookAllMethods(state, "isSecureLocked", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (!secureOn) return;
-                    for (StackTraceElement f : new Throwable().getStackTrace()) {
-                        String m = f.getMethodName();
-                        if (("setInitialSurfaceControlProperties".equals(m) || "createSurfaceLocked".equals(m)) && f.getClassName().startsWith("com.android.server.wm.")) return;
-                    }
-                    p.setResult(Boolean.FALSE);
-                }
+            n += Xp.hookAllMethods(rec, "dispatchCallbacks", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) { if (secureOn) p.setResult(null); }
             }).size();
-            Xp.deoptimizeAll(Xp.findClass("com.android.server.wm.WindowStateAnimator", cl), "createSurfaceLocked");
-            Xp.deoptimizeAll(Xp.findClass("com.android.server.wm.WindowManagerService", cl), "relayoutWindow");
-            for (int i = 0; i < 20; i++) {
-                try { Class<?> k = Class.forName("com.android.server.wm.RootWindowContainer$$ExternalSyntheticLambda" + i, false, cl); if (java.util.function.BiConsumer.class.isAssignableFrom(k)) Xp.deoptimizeAll(k, "accept"); } catch (Throwable ignored) { }
-                try { Class<?> k = Class.forName("com.android.server.wm.DisplayContent$" + i, false, cl); if (java.util.function.BiPredicate.class.isAssignableFrom(k)) Xp.deoptimizeAll(k, "test"); } catch (Throwable ignored) { }
-            }
-        } catch (Throwable error) { Module.log("Secure screenshots: secure windows unavailable", error); }
+        } catch (Throwable error) { }
         return n;
     }
 
@@ -169,17 +139,44 @@ final class MiscSystem {
         try {
             Class<?> ams = Xp.findClass("com.android.server.accessibility.AccessibilityManagerService", cl);
             n += Xp.hookAllMethods(ams, "addClient", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (p.args.length == 2 && hiddenFromCaller()) p.setResult(0L);
-                }
+                @Override protected void afterHookedMethod(Xp.Param p) { if (p.getResult() instanceof Long && hiddenFromCaller()) p.setResult(0L); }
             }).size();
+            for (Method m : ams.getDeclaredMethods()) {
+                if (!m.getName().startsWith("lambda$sendStateToClients$") || m.getParameterTypes().length != 2 || m.getParameterTypes()[0] != int.class) continue;
+                Xp.hookMethod(m, new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        if (!a11yOn || a11yApps.isEmpty() || p.args[1] == null) return;
+                        try { if (pickedUid(((Number) Xp.getObjectField(p.args[1], "mUid")).intValue())) p.args[0] = 0; } catch (Throwable ignored) { }
+                    }
+                });
+                n++;
+            }
             n += Xp.hookAllMethods(ams, "getEnabledAccessibilityServiceList", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (hiddenFromCaller()) p.setResult(new java.util.ArrayList<Object>());
+                @Override protected void afterHookedMethod(Xp.Param p) { if (hiddenFromCaller()) p.setResult(new java.util.ArrayList<Object>()); }
+            }).size();
+            n += Xp.hookAllMethods(ams, "getInstalledAccessibilityServiceList", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    if (p.getResult() == null || !hiddenFromCaller()) return;
+                    try { p.setResult(p.getResult().getClass().getConstructor(java.util.List.class).newInstance(new java.util.ArrayList<Object>())); } catch (Throwable ignored) { }
                 }
             }).size();
-        } catch (Throwable error) { Module.log("Hide accessibility: unavailable", error); }
+        } catch (Throwable error) { }
         return n;
+    }
+
+    private static boolean pickedUid(int uid) {
+        if (uid < 10000) return false;
+        String[] pkgs = uidPackages.get(uid);
+        if (pkgs == null) {
+            Context c = system; if (c == null) return false;
+            long id = Binder.clearCallingIdentity();
+            try { pkgs = c.getPackageManager().getPackagesForUid(uid); } catch (Throwable t) { pkgs = null; } finally { Binder.restoreCallingIdentity(id); }
+            if (pkgs == null) pkgs = new String[0];
+            uidPackages.put(uid, pkgs);
+        }
+        Set<String> list = a11yApps;
+        for (String p : pkgs) if (list.contains(p)) return true;
+        return false;
     }
 
     private static volatile boolean providerHooked;
@@ -198,7 +195,7 @@ final class MiscSystem {
                     callAfter(p, s[1], s[2]);
                 }
             }).size();
-        } catch (Throwable error) { Module.log("Miscellaneous: settings bridge unavailable", error); return 0; }
+        } catch (Throwable error) { return 0; }
     }
 
     private static int hookProvider(Object provider) {
@@ -214,7 +211,7 @@ final class MiscSystem {
                     if (uri != null) queryAfter(p, uri);
                 }
             }).size();
-        } catch (Throwable error) { Module.log("Miscellaneous: settings provider hooks failed", error); }
+        } catch (Throwable error) { }
         return n;
     }
     private static String[] methodArg(Object[] args) {
@@ -238,15 +235,13 @@ final class MiscSystem {
                 }
                 if (found != null) break;
             }
-        } catch (Throwable error) { Module.log("Miscellaneous: provider lookup failed", error); }
+        } catch (Throwable error) { }
         if (found == null) {
             if (++providerTries < 10) h.postDelayed(new Runnable() { public void run() { findProvider(h); } }, 3000);
-            else Module.log("Miscellaneous: settings provider not found (Binder hooks kept)");
             return;
         }
         int n = hookProvider(found);
         providerHooked = n > 0;
-        Module.log("Miscellaneous: settings provider " + found.getClass().getName() + ": " + n + " hooks");
     }
 
     private static void callBefore(Xp.Param p, String method, String arg) {
@@ -290,7 +285,7 @@ final class MiscSystem {
         } else {
             if (!"GET_secure".equals(method)) return;
             if ("enabled_accessibility_services".equals(arg)) value = "";
-            else if ("accessibility_enabled".equals(arg)) value = "0";
+            else if ("accessibility_enabled".equals(arg) || "touch_exploration_enabled".equals(arg)) value = "0";
             else return;
             if (!hiddenFromCaller() || !(p.getResult() instanceof Bundle)) return;
         }
@@ -335,7 +330,7 @@ final class MiscSystem {
                     queryAfter(p, uri);
                 }
             }).size();
-        } catch (Throwable error) { Module.log("Hide developer options: settings query unavailable", error); return 0; }
+        } catch (Throwable error) { return 0; }
     }
     private static void queryAfter(Xp.Param p, android.net.Uri uri) {
         if (!devOn || Boolean.TRUE.equals(inside.get())) return;

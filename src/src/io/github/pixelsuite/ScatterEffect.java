@@ -27,7 +27,7 @@ final class ScatterEffect {
     static void play(final View view) {
         try {
             String skip = view == null ? "no folder view" : !view.isAttachedToWindow() ? "folder view not on screen" : view.getWidth() <= 0 || view.getHeight() <= 0 ? "folder view not laid out" : null;
-            if (skip != null) { Module.log("Folder remove animation skipped: " + skip); return; }
+            if (skip != null) {  return; }
             Activity a = LauncherFeatures.activity.get(); if (a == null) return;
             if (android.provider.Settings.Global.getFloat(a.getContentResolver(), android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f) return;
             final ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
@@ -35,7 +35,7 @@ final class ScatterEffect {
             final float left = at[0] - base[0], top = at[1] - base[1], density = view.getContext().getResources().getDisplayMetrics().density;
             Rect source = new Rect(inWindow[0], inWindow[1], inWindow[0] + view.getWidth(), inWindow[1] + view.getHeight());
             if (!source.intersect(0, 0, decor.getWidth(), decor.getHeight())) return;
-            if (source.width() <= 0 || source.height() <= 0) { Module.log("Folder remove animation skipped: folder outside the window"); return; }
+            if (source.width() <= 0 || source.height() <= 0) {  return; }
             final Bitmap picture = Bitmap.createBitmap(source.width(), source.height(), Bitmap.Config.ARGB_8888);
             final float sx = left + (source.left - inWindow[0]), sy = top + (source.top - inWindow[1]);
             float[] round = null;
@@ -51,16 +51,16 @@ final class ScatterEffect {
                 public Object invoke(Object proxy, java.lang.reflect.Method method, Object[] args) {
                     if (!"onPixelCopyFinished".equals(method.getName())) return null;
                     try {
-                        if (args == null || ((Number) args[0]).intValue() != 0 || !decor.isAttachedToWindow()) { picture.recycle(); Module.log("Folder remove animation skipped: screen copy failed or window closed"); return null; }
+                        if (args == null || ((Number) args[0]).intValue() != 0 || !decor.isAttachedToWindow()) { picture.recycle();  return null; }
                         if (keep != null) clip(picture, keep);
                         start(decor, picture, sx, sy, density);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Folder remove animation unavailable", error); }
+                    } catch (Throwable error) { }
                     return null;
                 }
             });
             copy.getMethod("request", android.view.Window.class, Rect.class, Bitmap.class, listener, android.os.Handler.class)
                     .invoke(null, a.getWindow(), source, picture, done, new android.os.Handler(android.os.Looper.getMainLooper()));
-        } catch (Throwable error) { LauncherFeatures.logOnce("Folder remove animation unavailable", error); }
+        } catch (Throwable error) { }
     }
 
     private static void clip(Bitmap picture, float[] circle) {
@@ -86,7 +86,6 @@ final class ScatterEffect {
             public void onAnimationEnd(Animator x) { decor.getOverlay().remove(effect); decor.invalidate(); effect.release(); }
         });
         animator.start();
-        Module.log("Folder remove animation: " + effect.count + " pieces at " + Math.round(effect.left) + "," + Math.round(effect.top));
     }
 
     private static final class Piece extends Drawable {
@@ -155,7 +154,7 @@ final class ScatterEffect {
 
     static void install() {
         try {
-            java.util.Set<?> hooks = Xp.hookAllMethods(LauncherFeatures.type("Launcher"), "removeItem", new Xp.Callback() {
+            Xp.hookAllMethods(LauncherFeatures.type("Launcher"), "removeItem", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
                     try {
                         if (p.args.length < 2 || !(p.args[0] instanceof View)) return;
@@ -165,10 +164,9 @@ final class ScatterEffect {
                         Activity a = LauncherFeatures.activity.get();
                         if (a != null && FolderDrag.dragging(a)) return;
                         play((View) p.args[0]);
-                    } catch (Throwable error) { LauncherFeatures.logOnce("Home folder remove animation unavailable", error); }
+                    } catch (Throwable error) { }
                 }
             });
-            if (hooks.isEmpty()) Module.log("Launcher.removeItem not found: home folders remove without the animation");
-        } catch (Throwable error) { LauncherFeatures.logOnce("Home folder remove animation unavailable", error); }
+        } catch (Throwable error) { }
     }
 }

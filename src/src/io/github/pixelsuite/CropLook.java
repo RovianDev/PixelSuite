@@ -25,7 +25,7 @@ final class CropLook {
     static void install(ClassLoader cl) {
         try {
             String name = StudioNames.get("cropDraw"), cut = StudioNames.get("cropDraw.cut"), arcs = StudioNames.get("cropDraw.arcs");
-            if (name == null || cut == null || arcs == null) { ScreenshotEditor.logOnce("crop look: not known for this Pixel Studio version, stock look kept", null); return; }
+            if (name == null || cut == null || arcs == null) { return; }
             cutCase = Integer.parseInt(cut); arcsCase = Integer.parseInt(arcs);
             Class<?> k = Class.forName(name, false, cl);
             for (Field f : k.getDeclaredFields()) {
@@ -45,22 +45,25 @@ final class CropLook {
                         if (c != cutCase && c != arcsCase) return;
                         Object state = fObj.get(p.thisObject);
                         if (!ScreenshotEditor.isCropState(state)) return;
+                        if (CropKeep.keeping() && !"CROP_TOOL".equals(TopBarKeep.currentPage())) { p.setResult(unit); return; }
                         Canvas canvas = nativeCanvas(p.args[0]);
                         if (canvas == null) return;
+                        StudioZoom.cropLayer(canvas);
+                        if (c == arcsCase) CropRemember.boxDrew(state);
                         if (c == cutCase) blur(canvas, fLong.getLong(p.thisObject));
                         else if (arcs(canvas, state, fLong.getLong(p.thisObject))) p.setResult(unit);
-                    } catch (Throwable error) { ScreenshotEditor.logOnce("crop look failed, stock look kept", error); }
+                    } catch (Throwable error) { }
                 }
             });
             try {
                 Xp.hookMethod(StudioNames.cls("view", cl).getDeclaredMethod("onDraw", Canvas.class), new Xp.Callback() {
                     @Override protected void afterHookedMethod(Xp.Param p) {
                         canvasDrew();
+                        try { CropRemember.pageSeen(TopBarKeep.currentPage()); } catch (Throwable ignored) { }
                     }
                 });
-            } catch (Throwable error) { ScreenshotEditor.logOnce("crop blur: canvas draw not found, the blur follows only when the box draws", error); }
-            Module.log("screenshot-editor: crop look hooks installed");
-        } catch (Throwable error) { ScreenshotEditor.logOnce("crop look unavailable in this Pixel Studio version", error); }
+            } catch (Throwable error) { }
+        } catch (Throwable error) { }
     }
 
     private static final java.util.Map<Class<?>, Method[]> chains = new java.util.HashMap<Class<?>, Method[]>();
@@ -73,7 +76,7 @@ final class CropLook {
             chain = chains.get(scope.getClass());
             if (chain == null && !chains.containsKey(scope.getClass())) { chain = findChain(scope); chains.put(scope.getClass(), chain); }
         }
-        if (chain == null) { ScreenshotEditor.logOnce("crop look: drawing canvas not found", null); return null; }
+        if (chain == null) { return null; }
         try {
             Object c = chain[1].invoke(chain[0].invoke(scope));
             Canvas n = android(c);
@@ -155,6 +158,7 @@ final class CropLook {
         nodeBounds = new RectF(bounds);
         if (!record()) return;
         float radius = Float.intBitsToFloat((int) (corner >> 32));
+        try { radius = Math.max(radius, 16f * ScreenshotEditor.app().getResources().getDisplayMetrics().density); } catch (Throwable ignored) { }
         int save = canvas.save();
         try {
             Path clip = new Path();
@@ -167,7 +171,7 @@ final class CropLook {
 
     static void canvasDrew() {
         if (node == null || nodeBounds == null) return;
-        try { record(); } catch (Throwable error) { ScreenshotEditor.logOnce("crop blur could not follow the picture", error); }
+        try { record(); } catch (Throwable error) { }
     }
 
     private static boolean record() throws Exception {
@@ -205,12 +209,21 @@ final class CropLook {
     private static final Paint mark = new Paint(Paint.ANTI_ALIAS_FLAG), rim = new Paint(Paint.ANTI_ALIAS_FLAG);
     static { for (Paint p : new Paint[]{mark, rim}) { p.setStyle(Paint.Style.STROKE); p.setStrokeCap(Paint.Cap.ROUND); } }
 
+    static volatile long lastMarkColour = 0L;
+
+    static volatile long cropLayerFrame = -1;
+
     private static boolean arcs(Canvas canvas, Object state, long colour) {
-        RectF box = ScreenshotEditor.cropRect(state);
+        lastMarkColour = colour;
+        cropLayerFrame = android.view.animation.AnimationUtils.currentAnimationTimeMillis();
+        return marks(canvas, ScreenshotEditor.cropRect(state), colour);
+    }
+
+    static boolean marks(Canvas canvas, RectF box, long colour) {
         android.content.Context c = ScreenshotEditor.app();
         if (box == null || c == null) return false;
         float d = c.getResources().getDisplayMetrics().density;
-        int main = composeColor(colour, 0xff444746);
+        int main = colour == 0L ? 0xff444746 : composeColor(colour, 0xff444746);
         boolean darkMark = luminance(main) < 0.5f;
         mark.setColor(main);
         mark.setStrokeWidth(4f * d);

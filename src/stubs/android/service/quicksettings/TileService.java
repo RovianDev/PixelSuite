@@ -1,0 +1,2 @@
+package android.service.quicksettings;
+public class TileService extends android.app.Service {public android.os.IBinder onBind(android.content.Intent intent){return null;}public void onStartListening(){}public void onStopListening(){}public void onClick(){}public Tile getQsTile(){return null;}public static void requestListeningState(android.content.Context context,android.content.ComponentName name){}}

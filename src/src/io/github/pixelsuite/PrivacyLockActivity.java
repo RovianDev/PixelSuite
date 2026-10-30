@@ -19,7 +19,7 @@ import java.util.concurrent.Executor;
 
 public class PrivacyLockActivity extends Activity {
     private static final int BIOMETRIC_ANY = 0x00FF, DEVICE_CREDENTIAL = 0x8000;
-    private static final int ERROR_CANCELED = 5, ERROR_LOCKOUT = 7, ERROR_LOCKOUT_PERMANENT = 9, ERROR_USER_CANCELED = 10,
+    private static final int ERROR_LOCKOUT = 7, ERROR_LOCKOUT_PERMANENT = 9,
             ERROR_NO_BIOMETRICS = 11, ERROR_HW_NOT_PRESENT = 12, ERROR_NEGATIVE_BUTTON = 13, ERROR_HW_UNAVAILABLE = 1;
 
     private final Handler main = new Handler(Looper.getMainLooper());
@@ -32,7 +32,8 @@ public class PrivacyLockActivity extends Activity {
     private boolean finished, started;
 
     protected boolean accepts(String m) { return PrivacyLock.MODE_OPEN.equals(m) || PrivacyLock.MODE_COVER.equals(m) || PrivacyLock.MODE_CONFIRM.equals(m); }
-    private String reason() { String r = getIntent().getStringExtra(PrivacyLock.EXTRA_REASON); return PrivacyLock.REASON_UNINSTALL.equals(r) || PrivacyLock.REASON_DISABLE.equals(r) || PrivacyLock.REASON_PAUSE.equals(r) ? r : null; }
+    private String reason() { String r = getIntent().getStringExtra(PrivacyLock.EXTRA_REASON); return PrivacyLock.REASON_UNINSTALL.equals(r) || PrivacyLock.REASON_DISABLE.equals(r) || PrivacyLock.REASON_PAUSE.equals(r)
+            || PrivacyLock.REASON_UNINSTALL_CORE.equals(r) || PrivacyLock.REASON_DISABLE_CORE.equals(r) ? r : null; }
 
     @Override protected void onCreate(Bundle state) {
         super.onCreate(state);
@@ -88,7 +89,7 @@ public class PrivacyLockActivity extends Activity {
         started = true;
         KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         if (km == null || !km.isDeviceSecure()) {
-            Toast.makeText(this, "Set a screen lock first to lock apps", Toast.LENGTH_LONG).show();
+            AppToast.makeText(this, "Set a screen lock first to lock apps", Toast.LENGTH_LONG).show();
             if (PrivacyLock.MODE_OPEN.equals(mode)) proceed();
             else if (PrivacyLock.MODE_CONFIRM.equals(mode)) success();
             else done(false);
@@ -113,6 +114,8 @@ public class PrivacyLockActivity extends Activity {
         if (PrivacyLock.REASON_UNINSTALL.equals(r)) return "Confirm it's you to uninstall this app";
         if (PrivacyLock.REASON_DISABLE.equals(r)) return "Confirm it's you to disable this app";
         if (PrivacyLock.REASON_PAUSE.equals(r)) return "Confirm it's you to pause this app";
+        if (PrivacyLock.REASON_UNINSTALL_CORE.equals(r)) return PromptStyle.CORE_UNINSTALL;
+        if (PrivacyLock.REASON_DISABLE_CORE.equals(r)) return PromptStyle.CORE_DISABLE;
         return "Please authenticate to proceed";
     }
 
@@ -141,7 +144,6 @@ public class PrivacyLockActivity extends Activity {
                 }
             });
         } catch (Throwable error) {
-            Module.log("App lock: fingerprint sheet unavailable, screen lock used", error);
             credential();
         }
     }
@@ -168,8 +170,7 @@ public class PrivacyLockActivity extends Activity {
                 @Override public void onAuthenticationError(int code, CharSequence msg) { if (mine == generation && !finished) done(false); }
             });
         } catch (Throwable error) {
-            Module.log("App lock: screen lock entry unavailable", error);
-            Toast.makeText(this, "Could not check your screen lock", Toast.LENGTH_SHORT).show();
+            AppToast.makeText(this, "Could not check your screen lock", Toast.LENGTH_SHORT).show();
             done(false);
         }
     }
@@ -186,7 +187,7 @@ public class PrivacyLockActivity extends Activity {
                         String value = PrivacyLock.join(list);
                         Root.run(value.isEmpty() ? "settings delete secure " + PrivacyFolders.KEY : "settings put secure " + PrivacyFolders.KEY + " '" + value + "'");
                     }
-                } catch (Throwable error) { Module.log("App lock: folder lock not cleared before deleting", error); }
+                } catch (Throwable error) { }
                 main.post(new Runnable() { public void run() {
                     try { sendBroadcast(new Intent(PrivacyGuard.ACTION_OK).setPackage(PrivacyLock.LAUNCHER).putExtra(PrivacyRecents.EXTRA_TOKEN, token)); } catch (Throwable ignored) { }
                     done(true);
@@ -235,10 +236,10 @@ public class PrivacyLockActivity extends Activity {
                 if (lock) list.add(item); else list.remove(item);
                 String value = PrivacyLock.join(list);
                 ok = Root.run(value.isEmpty() ? "settings delete secure " + key : "settings put secure " + key + " '" + value + "'") != null;
-            } catch (Throwable error) { Module.log("App lock: list not saved", error); }
+            } catch (Throwable error) { }
             final boolean saved = ok;
             main.post(new Runnable() { public void run() {
-                Toast.makeText(PrivacyLockActivity.this, !saved ? "Could not save. Is root allowed for Pixel Suite?" : lock ? label + " is locked" : label + " is unlocked", Toast.LENGTH_SHORT).show();
+                AppToast.makeText(PrivacyLockActivity.this, !saved ? "Could not save. Is root allowed for Pixel Suite?" : lock ? label + " is locked" : label + " is unlocked", Toast.LENGTH_SHORT).show();
                 done(saved);
             } });
         } }, "PixelSuiteAppLockSave").start();
@@ -256,7 +257,7 @@ public class PrivacyLockActivity extends Activity {
                 } catch (Throwable ignored) { }
                 int forward = getCallingActivity() != null || (getIntent().getFlags() & Intent.FLAG_ACTIVITY_FORWARD_RESULT) != 0 ? Intent.FLAG_ACTIVITY_FORWARD_RESULT : 0;
                 startIntentSender((IntentSender) extra, null, forward, forward, 0, options);
-            } catch (Throwable error) { Module.log("App lock: the app could not be opened after unlocking", error); }
+            } catch (Throwable error) { }
         }
         done(true);
     }

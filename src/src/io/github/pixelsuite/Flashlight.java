@@ -1,11 +1,8 @@
 package io.github.pixelsuite;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.provider.Settings;
@@ -39,7 +36,6 @@ final class Flashlight {
         try {
             gls = Xp.findClass(GLS, cl);
         } catch (Throwable t) {
-            Module.log("GestureLauncherService not found, system side disabled", t);
             return;
         }
 
@@ -72,9 +68,7 @@ final class Flashlight {
             hookIfPresent(gls, "handleWalletGesture");
             hookIfPresent(gls, "sendGestureTargetActivityPendingIntent");
 
-            Module.log("flashlight: system hooks installed");
         } catch (Throwable t) {
-            Module.log("system hook setup failed", t);
         }
     }
 
@@ -133,7 +127,6 @@ final class Flashlight {
                         });
                 sInitDone = true;
             } catch (Throwable t) {
-                Module.log("flashlight: init failed", t);
             }
         }
     }
@@ -163,7 +156,6 @@ final class Flashlight {
                         .invoke(pm, SystemClock.uptimeMillis());
             }
         } catch (Throwable t) {
-            Module.log("goToSleep failed", t);
         }
     }
 

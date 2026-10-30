@@ -31,7 +31,7 @@ final class MultiDrag {
 
     static final class Pick {
         View view; Object info; String key; Bitmap icon; final RectF from = new RectF();
-        float alpha, scaleX, scaleY; long added; float x, y; boolean placed;
+        float alpha, scaleX, scaleY; long added; float x, y; boolean placed; float sx, sy; long landed;
     }
 
     static final List<Pick> picks = new ArrayList<Pick>();
@@ -63,23 +63,27 @@ final class MultiDrag {
             });
             try {
             Xp.hookAllMethods(type("ButtonDropTarget"), "onDragStart", new Xp.Callback() {
-                protected void afterHookedMethod(Xp.Param p) { try { frost((View) p.thisObject); } catch (Throwable error) { LauncherFeatures.logOnce("Remove/Uninstall frosting unavailable", error); } }
+                protected void afterHookedMethod(Xp.Param p) { try { frost((View) p.thisObject); } catch (Throwable error) { } }
             });
             Xp.hookAllMethods(type("ButtonDropTarget"), "onDragEnter", new Xp.Callback() {
-                protected void afterHookedMethod(Xp.Param p) { try { hover((View) p.thisObject, true); } catch (Throwable error) { LauncherFeatures.logOnce("Remove/Uninstall highlight unavailable", error); } }
+                protected void afterHookedMethod(Xp.Param p) { try { hover((View) p.thisObject, true); } catch (Throwable error) { } }
             });
             Xp.hookAllMethods(type("ButtonDropTarget"), "onDragExit", new Xp.Callback() {
                 protected void afterHookedMethod(Xp.Param p) { try { hover((View) p.thisObject, false); } catch (Throwable ignored) { } }
             });
             Xp.hookAllMethods(type("ButtonDropTarget"), "onDrop", new Xp.Callback() {
-                protected void afterHookedMethod(Xp.Param p) { if (active()) { buttonDropped = p.thisObject; why("dropped on " + p.thisObject.getClass().getSimpleName()); } }
+                protected void afterHookedMethod(Xp.Param p) {
+                    if (!active()) return;
+                    buttonDropped = p.thisObject;
+                    try { if (isRemoveButton(p.thisObject)) flyInto((View) p.thisObject, p.args.length > 0 ? p.args[0] : null); } catch (Throwable ignored) { }
+                }
             });
             Xp.Callback noUninstall = new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) { if (active() && p.thisObject == uninstallButton) p.setResult(false); }
             };
             Xp.hookAllMethods(type("ButtonDropTarget"), "isDropEnabled", noUninstall);
             Xp.hookAllMethods(type("ButtonDropTarget"), "acceptDrop", noUninstall);
-            } catch (Throwable error) { LauncherFeatures.logOnce("Multi-app drag: Remove/Uninstall buttons unavailable", error); }
+            } catch (Throwable error) { }
             try {
                 Xp.hookAllMethods(type("dragndrop.DragController"), "checkTouchMove", new Xp.Callback() {
                     protected void afterHookedMethod(Xp.Param p) {
@@ -93,45 +97,42 @@ final class MultiDrag {
                         } catch (Throwable ignored) { }
                     }
                 });
-            } catch (Throwable error) { LauncherFeatures.logOnce("Held app opacity fix unavailable", error); }
+            } catch (Throwable error) { }
             Xp.hookAllMethods(type("dragndrop.DragController"), "callOnDragEnd", new Xp.Callback() {
-                protected void afterHookedMethod(Xp.Param p) { try { restoreStarters(); ended(); } catch (Throwable error) { Module.log("Multi-app drag end failed", error); reset(); } }
+                protected void afterHookedMethod(Xp.Param p) { try { restoreStarters(); ended(); } catch (Throwable error) { reset(); } }
             });
-        } catch (Throwable error) { LauncherFeatures.logOnce("Multi-app drag unavailable", error); }
+        } catch (Throwable error) { }
     }
-
-    private static final java.util.HashSet<String> told = new java.util.HashSet<String>();
-    static void why(String reason) { if (told.add(reason)) Module.log("Multi-app drag: " + reason); }
 
     static void tap(Activity a, float x, float y) {
         try {
-            if (ending) { why("tap ignored: previous drop still finishing"); return; }
+            if (ending) { return; }
             Object controller = get(a, "mDragController"), drag = get(controller, "mDragObject");
-            if (drag == null) { why("tap ignored: no drag object"); return; }
+            if (drag == null) { return; }
             Object info = get(drag, "dragInfo");
-            if (info == null || type("model.data.FolderInfo").isInstance(info) || DrawerFolders.isFolder(info)) { why("tap ignored: held item is " + (info == null ? "null" : info.getClass().getSimpleName()) + " (folders move alone)"); return; }
+            if (info == null || type("model.data.FolderInfo").isInstance(info) || DrawerFolders.isFolder(info)) { return; }
             if (picks.isEmpty()) {
                 primaryInfo = info; primaryKey = LauncherFeatures.identity(info);
                 drawerHandled = false; workspaceDropped = false; droppedFolder = null;
             }
             View hit = findApp(a.getWindow().getDecorView(), Math.round(x), Math.round(y));
-            if (hit == null) { why("tap ignored: no app icon under the second finger at " + Math.round(x) + "," + Math.round(y)); return; }
+            if (hit == null) { return; }
             Object tag = hit.getTag(); String key = LauncherFeatures.identity(tag);
-            if (key == null || tag == info || tag == primaryInfo) { why("tap ignored: that icon is the held app or has no identity"); return; }
+            if (key == null || tag == info || tag == primaryInfo) { return; }
             boolean drawer = drawerItem(tag);
             boolean inFolder = DrawerFolders.isDrawerMember(tag);
-            if (DrawerDrag.fromFolder() && !inFolder) { why("tap ignored: apps held from a folder can only join with apps of the same folder"); return; }
-            if (DrawerDrag.fromFolder() && !DrawerDrag.inHeldFolder(hit)) { why("tap ignored: app belongs to another folder"); return; }
-            if (DrawerDrag.active() && !DrawerDrag.fromFolder() && (inFolder || !drawer || featured(hit, tag))) { why("tap ignored: featured apps and folder apps cannot be picked from the drawer"); return; }
-            if (!DrawerDrag.active() && inFolder) { why("tap ignored: folder apps cannot join a drag that did not start in the folder"); return; }
+            if (DrawerDrag.fromFolder() && !inFolder) { return; }
+            if (DrawerDrag.fromFolder() && !DrawerDrag.inHeldFolder(hit)) { return; }
+            if (DrawerDrag.active() && !DrawerDrag.fromFolder() && (inFolder || !drawer || featured(hit, tag))) { return; }
+            if (!DrawerDrag.active() && inFolder) { return; }
             if (drawer && key.equals(primaryKey)) return;
             for (Pick old : picks) if (old.view == hit || (drawer && key.equals(old.key))) return;
             Pick pick = new Pick(); pick.view = hit; pick.info = tag; pick.key = key; pick.added = SystemClock.uptimeMillis();
             pick.icon = iconOf(hit, pick.from);
-            if (pick.icon == null) { why("tap ignored: could not copy the icon picture"); return; }
+            if (pick.icon == null) { return; }
             pick.alpha = hit.getAlpha(); pick.scaleX = hit.getScaleX(); pick.scaleY = hit.getScaleY();
             picks.add(pick);
-            if (!attach(a)) { picks.remove(pick); why("tap ignored: could not attach the stack to the drag layer"); return; }
+            if (!attach(a)) { picks.remove(pick); return; }
             Xp.setAdditionalInstanceField(hit, "pixelsuite_picked", Boolean.TRUE); hidden.put(hit, Boolean.TRUE);
             float left = 0f;
             hit.animate().alpha(left).scaleX(.82f).scaleY(.82f).setDuration(160).setInterpolator(STANDARD).start();
@@ -139,8 +140,7 @@ final class MultiDrag {
             shiftBar(a, true);
             Haptics.tick(a);
             loop();
-            Module.log("Multi-app drag: " + (1 + picks.size()) + " apps");
-        } catch (Throwable error) { LauncherFeatures.logOnce("Multi-app pick failed", error); }
+        } catch (Throwable error) { }
     }
 
     static void rebound(View v) {
@@ -204,7 +204,6 @@ final class MultiDrag {
         if (heldKey != null) keys.add(heldKey);
         for (Pick p : picks) if (drawerItem(p.info) && p.key != null && !keys.contains(p.key)) keys.add(p.key);
         if (DrawerFolders.takeOut(keys)) drawerHandled = true;
-        Module.log("Drawer folder: " + keys.size() + " app(s) removed from the folder");
     }
 
     static boolean drawerItem(Object tag) { return type("model.data.AppInfo").isInstance(tag) || DrawerFolders.isDrawerMember(tag); }
@@ -240,15 +239,15 @@ final class MultiDrag {
                 float left = at[0] + (v.getWidth() - size) / 2f * scale, top = at[1] + v.getPaddingTop() * scale;
                 out.set(left, top, left + size * scale, top + size * scale);
                 return drawn;
-            } catch (Throwable t) { why("icon as shown unavailable: " + t); }
+            } catch (Throwable t) { }
             Bitmap own = findBitmap(d, 0);
             if (own != null) {
                 try { b = own.copy(Bitmap.Config.ARGB_8888, false); if (b != null && (b.getWidth() != size || b.getHeight() != size)) { Bitmap fit = Bitmap.createScaledBitmap(b, size, size, true); if (fit != b) { b.recycle(); b = fit; } } }
-                catch (Throwable t) { why("icon bitmap copy failed: " + t); b = null; }
+                catch (Throwable t) { b = null; }
             }
             if (b == null) {
                 try { b = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888); Rect old = d.copyBounds(); d.setBounds(0, 0, size, size); d.draw(new Canvas(b)); d.setBounds(old); }
-                catch (Throwable t) { why("icon draw failed (" + d.getClass().getName() + "): " + t.getMessage()); return null; }
+                catch (Throwable t) { return null; }
             }
             int[] at = new int[2]; v.getLocationInWindow(at);
             float left = at[0] + (v.getWidth() - size) / 2f * scale, top = at[1] + v.getPaddingTop() * scale;
@@ -257,7 +256,7 @@ final class MultiDrag {
         } catch (Throwable error) { return null; }
     }
 
-    private static String maskPackage, maskData; private static android.graphics.Path maskPath;
+    private static String maskPackage; private static android.graphics.Path maskPath;
     private static android.graphics.Path currentMask(Context c) {
         try {
             String json = android.provider.Settings.Secure.getString(c.getContentResolver(), "theme_customization_overlay_packages");
@@ -271,10 +270,9 @@ final class MultiDrag {
             }
             if (data == null) { Resources sys = Resources.getSystem(); data = sys.getString(sys.getIdentifier("config_icon_mask", "string", "android")); }
             android.graphics.Path path = (android.graphics.Path) Class.forName("android.util.PathParser").getMethod("createPathFromPathData", String.class).invoke(null, data);
-            maskPackage = pkg; maskData = data; maskPath = path;
-            Module.log("Multi-app drag: icon shape " + (pkg.isEmpty() ? "default" : pkg));
+            maskPackage = pkg; maskPath = path;
             return path;
-        } catch (Throwable error) { why("icon shape unavailable: " + error); return null; }
+        } catch (Throwable error) { return null; }
     }
 
     private static Bitmap shaped(Bitmap b) {
@@ -290,7 +288,7 @@ final class MultiDrag {
             canvas.drawBitmap(b, 0, 0, paint);
             b.recycle();
             return out;
-        } catch (Throwable error) { why("icon shaping failed: " + error); return b; }
+        } catch (Throwable error) { return b; }
     }
 
     private static Bitmap findBitmap(Object o, int depth) {
@@ -371,8 +369,7 @@ final class MultiDrag {
             if (target != null) { int at = target.apps.indexOf(primaryKey) + 1; target.apps.addAll(Math.max(0, Math.min(at, target.apps.size())), keys); }
             for (int i = folders.size() - 1; i >= 0; i--) if (folders.get(i).apps.isEmpty()) folders.remove(i);
             if (LauncherFeatures.data.save(folders)) { drawerHandled = true; LauncherFeatures.refresh(); }
-            Module.log("Multi-app drag: " + keys.size() + " drawer apps " + (target == null ? "taken out of folders" : "moved into “" + target.name + "”"));
-        } catch (Throwable error) { Module.log("Multi-app drawer drop failed", error); }
+        } catch (Throwable error) { }
     }
 
     private static void ended() {
@@ -383,23 +380,21 @@ final class MultiDrag {
         final boolean removing = buttonDropped != null && !drawerHandled && isRemoveButton(buttonDropped);
         final boolean success = drawerHandled || workspaceDropped || droppedFolder != null || removing;
         if (removing && a != null) {
-            int n = 0;
-            for (Pick p : picks) if (homeItem(p)) n++;
             removeOriginals(a, new ArrayList<Pick>(picks));
-            Module.log("Multi-app drag: " + n + " more home apps removed");
         }
         if (stack != null) stack.finish(success);
         if (badge != null) badge.finish();
+        final long flight = stack != null ? stack.flightLeft() : 0;
         if (success && !drawerHandled && !removing && a != null) {
             stack.postDelayed(new Runnable() { public void run() {
                 if (session != generation) return;
-                try { placeOnHome(a); } catch (Throwable error) { Module.log("Multi-app home drop failed", error); }
+                try { placeOnHome(a); } catch (Throwable error) { }
                 restoreViews(); reset();
             }}, 320);
         } else {
             View host = stack;
             Runnable done = new Runnable() { public void run() { if (session == generation) { restoreViews(); reset(); } } };
-            if (host != null) host.postDelayed(done, success ? 240 : 380); else done.run();
+            if (host != null) host.postDelayed(done, Math.max(flight, success ? 240 : 380)); else done.run();
         }
     }
 
@@ -422,23 +417,22 @@ final class MultiDrag {
             if (type("model.data.AppInfo").isInstance(p.info)) return call(p.info, "makeWorkspaceItem", a);
             Object app = HomeFolderApps.find(LauncherFeatures.apps(), p.key);
             return app == null ? null : call(app, "makeWorkspaceItem", a);
-        } catch (Throwable error) { Module.log("Multi-app drag: no copy for " + p.key, error); return null; }
+        } catch (Throwable error) { return null; }
     }
 
     private static boolean homeItem(Pick p) { return !drawerItem(p.info); }
 
     private static void intoFolder(Activity a, Object folder, List<Pick> moving) throws Exception {
-        Object info = get(folder, "mInfo"); int id = FolderSort.homeId(info), added = 0; List<Pick> gone = new ArrayList<Pick>();
+        Object info = get(folder, "mInfo"); int id = FolderSort.homeId(info); List<Pick> gone = new ArrayList<Pick>();
         for (Pick p : moving) {
             int from = -1; try { from = ((Number) get(p.info, "container")).intValue(); } catch (Throwable ignored) { }
             if (homeItem(p) && from == id) continue;
             Object item = newItem(a, p); if (item == null) continue;
-            HomeFolderApps.add(folder, info, item); added++;
+            HomeFolderApps.add(folder, info, item);
             if (homeItem(p)) gone.add(p);
         }
         removeOriginals(a, gone);
         try { Object icon = get(folder, "mFolderIcon"); call(icon, "updatePreviewItems", false); ((View) icon).invalidate(); } catch (Throwable ignored) { }
-        Module.log("Multi-app drag: " + added + " apps added to a home folder");
     }
 
     private static void onPage(Activity a, List<Pick> moving, int wx, int wy) throws Exception {
@@ -460,7 +454,7 @@ final class MultiDrag {
         }
         if (screenId < 0) try { screenId = ((Number) call(workspace, "getScreenIdForPageIndex", pageIndex)).intValue(); } catch (Throwable ignored) { }
         if (screenId < 0) try { screenId = ((Number) call(workspace, "getIdForScreen", page)).intValue(); } catch (Throwable ignored) { }
-        if (screenId < 0) { Module.log("Multi-app drag: home page id unknown, extra apps not placed"); return; }
+        if (screenId < 0) { return; }
         int[] at = new int[2]; page.getLocationInWindow(at);
         float cw = (page.getWidth() - page.getPaddingLeft() - page.getPaddingRight()) * page.getScaleX() / countX;
         float ch = (page.getHeight() - page.getPaddingTop() - page.getPaddingBottom()) * page.getScaleY() / countY;
@@ -485,7 +479,6 @@ final class MultiDrag {
         }
         removeOriginals(a, placed);
         if (placed.size() < moving.size()) toast(a, (moving.size() - placed.size()) + " apps did not fit on this page");
-        Module.log("Multi-app drag: " + placed.size() + " apps placed on home page " + screenId + " near cell " + dropCellX + "," + dropCellY);
     }
 
     private static void removeOriginals(final Activity a, List<Pick> list) {
@@ -508,11 +501,11 @@ final class MultiDrag {
                     } catch (Throwable ignored) { }
                 }
                 if (busy) {
-                    if (waited >= 3000) { Module.log("Multi-app drag: old icons retained because source folder is still open or animating"); return; }
+                    if (waited >= 3000) { return; }
                     handler.postDelayed(this, 120); return;
                 }
             }
-            try { removeNow(a, todo); } catch (Throwable error) { Module.log("Multi-app drag: could not remove the old icons", error); }
+            try { removeNow(a, todo); } catch (Throwable error) { }
         } });
     }
 
@@ -522,13 +515,13 @@ final class MultiDrag {
             int container = ((Number) get(p.info, "container")).intValue();
             if (container >= 0) { List<Object> l = byFolder.get(container); if (l == null) byFolder.put(container, l = new ArrayList<Object>()); l.add(p.info); continue; }
             View view = p.view != null && p.view.isAttachedToWindow() && p.view.getTag() == p.info ? p.view : viewOf(a.getWindow().getDecorView(), p.info);
-            if (view == null) { Module.log("Multi-app drag: old icon of " + p.key + " is not on screen"); continue; }
+            if (view == null) { continue; }
             try { call(a, "removeItem", view, p.info, true, "Pixel Suite: moved with other apps"); }
             catch (Throwable fourArgs) { call(a, "removeItem", view, p.info, true); }
         }
         for (java.util.Map.Entry<Integer, List<Object>> e : byFolder.entrySet()) {
             View icon = findFolderIcon(a.getWindow().getDecorView(), e.getKey());
-            if (icon == null) { Module.log("Multi-app drag: folder " + e.getKey() + " is gone, nothing to remove"); continue; }
+            if (icon == null) { continue; }
             Object folder = get(icon, "mFolder"), info = get(icon, "mInfo");
             List<?> contents = (List<?>) get(info, "contents");
             List<Object> removing = new ArrayList<Object>();
@@ -606,27 +599,57 @@ final class MultiDrag {
         }
     }
 
+    private static View lit;
     static void hover(final View button, boolean on) {
+        if (on) { if (lit != null && lit != button) light(lit, false); lit = button; }
+        else if (lit == button) lit = null;
+        light(button, on);
+    }
+    static void unlight() { View v = lit; lit = null; if (v != null) light(v, false); }
+    private static void light(final View button, boolean on) {
         Context c = button.getContext(); boolean dark = FrostedSurface.dark(c);
         int accent = LauncherFeatures.surface(c, dark ? "system_accent1_700" : "system_accent1_200", dark ? 0xff0842a0 : 0xffa8c7fa);
         int ink = on ? (dark ? 0xffd3e3fd : 0xff041e49) : (dark ? 0xffeee9f1 : 0xff202027);
+        outline(button, false);
         android.graphics.drawable.Drawable bg = button.getBackground();
         if (bg instanceof android.graphics.drawable.LayerDrawable) {
             android.graphics.drawable.LayerDrawable layers = (android.graphics.drawable.LayerDrawable) bg;
             Drawable tint = layers.getNumberOfLayers() > 1 ? layers.getDrawable(1) : null;
             if (tint instanceof android.graphics.drawable.GradientDrawable) {
-                int base[] = FrostedSurface.colors(c), lit = (accent & 0xffffff) | 0xe6000000;
-                ((android.graphics.drawable.GradientDrawable) tint).setColors(on ? new int[]{lit, lit} : base);
+                int base[] = FrostedSurface.colors(c), glow = (accent & 0xffffff) | 0xe6000000;
+                ((android.graphics.drawable.GradientDrawable) tint).setColors(on ? new int[]{glow, glow} : base);
             }
         }
         if (button instanceof TextView) {
             TextView t = (TextView) button; t.setTextColor(ink); t.setCompoundDrawableTintList(android.content.res.ColorStateList.valueOf(ink));
         }
+        if (on) outline(button, true);
         button.invalidate();
         button.animate().scaleX(on ? 1.08f : 1f).scaleY(on ? 1.08f : 1f).setDuration(on ? 220 : 180).setStartDelay(0).setInterpolator(on ? EMPHASIZED_DECELERATE : STANDARD).start();
     }
 
+    private static void outline(View button, boolean on) {
+        Object mine = Xp.getAdditionalInstanceField(button, "pixelsuite_outline");
+        if (mine instanceof Object[]) {
+            Object[] kept = (Object[]) mine;
+            Xp.setAdditionalInstanceField(button, "pixelsuite_outline", null);
+            if (button.getBackground() == kept[0]) button.setBackground((Drawable) kept[1]);
+        }
+        if (!on) return;
+        Drawable base = button.getBackground();
+        android.graphics.drawable.GradientDrawable ring = new android.graphics.drawable.GradientDrawable();
+        float h = button.getHeight() > 0 ? button.getHeight() : FrostedSurface.dp(button.getContext(), 48);
+        ring.setColor(0); ring.setCornerRadius(h / 2f); ring.setStroke(FrostedSurface.dp(button.getContext(), 1), 0x66ffffff);
+        android.graphics.drawable.LayerDrawable lit = new android.graphics.drawable.LayerDrawable(base == null ? new Drawable[]{ring} : new Drawable[]{base, ring});
+        lit.setPaddingMode(android.graphics.drawable.LayerDrawable.PADDING_MODE_STACK);
+        int l = button.getPaddingLeft(), t = button.getPaddingTop(), r = button.getPaddingRight(), b = button.getPaddingBottom();
+        Xp.setAdditionalInstanceField(button, "pixelsuite_outline", new Object[]{lit, base});
+        button.setBackground(lit);
+        button.setPadding(l, t, r, b);
+    }
+
     static boolean hiding(View v) { return barShifted && v != null && v == uninstallButton; }
+    static boolean holds(View v) { return barShifted && v != null && (v == uninstallButton || v == removeButton); }
 
     private static boolean isRemoveButton(Object target) {
         String n = target.getClass().getSimpleName().toLowerCase(), t = text(target);
@@ -657,7 +680,6 @@ final class MultiDrag {
                 removeButton = null; uninstallButton = null;
                 for (View b : all) frost(b);
                 for (View b : all) { if (isUninstallButton(b)) uninstallButton = b; else if (isRemoveButton(b)) removeButton = b; }
-                why("drop targets: " + all.size() + ", remove=" + (removeButton != null) + ", uninstall=" + (uninstallButton != null));
                 if (uninstallButton != null) uninstallButton.animate().cancel();
                 if (uninstallButton != null) uninstallButton.animate().alpha(0f).scaleX(.8f).scaleY(.8f).setDuration(220).setInterpolator(STANDARD).start();
                 if (removeButton != null) {
@@ -670,11 +692,50 @@ final class MultiDrag {
             } else {
                 barShifted = false;
                 final View u = uninstallButton, r = removeButton;
-                if (u != null && !Balloon.busy(u)) { u.animate().cancel(); u.animate().alpha(1f).scaleX(1f).scaleY(1f).setStartDelay(0).setDuration(200).setInterpolator(STANDARD).start(); }
-                if (r != null) { r.animate().cancel(); r.animate().translationX(0f).setStartDelay(0).setDuration(240).setInterpolator(STANDARD).start(); }
+                boolean shown = bar.getVisibility() == View.VISIBLE && bar.getAlpha() > 0f && bar.isAttachedToWindow();
+                if (u != null && !Balloon.busy(u)) {
+                    u.animate().cancel();
+                    if (shown) u.animate().alpha(1f).scaleX(1f).scaleY(1f).setStartDelay(0).setDuration(200).setInterpolator(STANDARD).start();
+                    else { u.setAlpha(1f); u.setScaleX(1f); u.setScaleY(1f); }
+                }
+                if (r != null) {
+                    r.animate().cancel();
+                    if (shown) r.animate().translationX(0f).setStartDelay(0).setDuration(240).setInterpolator(STANDARD).start();
+                    else r.setTranslationX(0f);
+                }
                 uninstallButton = null; removeButton = null;
             }
-        } catch (Throwable error) { LauncherFeatures.logOnce("Multi-app drag: drop bar shift unavailable", error); }
+        } catch (Throwable error) { }
+    }
+
+    private static void flyInto(View button, Object drag) {
+        Activity a = LauncherFeatures.activity.get();
+        if (a == null || stack == null || picks.isEmpty()) return;
+        int[] sw = new int[2]; stack.getLocationInWindow(sw);
+        float x = Float.NaN, y = Float.NaN;
+        try {
+            Rect to = (Rect) call(button, "getIconRect", drag);
+            View dv = drag == null ? null : (View) get(drag, "dragView");
+            ViewGroup layer = (ViewGroup) call(a, "getDragLayer");
+            if (to != null && dv != null && dv.getMeasuredWidth() > 0) {
+                int[] lw = new int[2]; layer.getLocationInWindow(lw);
+                x = lw[0] + to.left + dv.getMeasuredWidth() / 2f - sw[0];
+                y = lw[1] + to.top + dv.getMeasuredHeight() / 2f - sw[1];
+            }
+        } catch (Throwable ignored) { }
+        if (Float.isNaN(x)) {
+            int[] bw = new int[2]; button.getLocationInWindow(bw);
+            float icon = FrostedSurface.dp(a, 24);
+            if (button instanceof TextView) {
+                Drawable[] d = ((TextView) button).getCompoundDrawablesRelative();
+                if (d[0] != null && d[0].getBounds().width() > 0) icon = d[0].getBounds().width();
+            }
+            boolean rtl = button.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+            x = bw[0] + (rtl ? button.getWidth() - button.getPaddingRight() - icon / 2f : button.getPaddingLeft() + icon / 2f) * button.getScaleX() - sw[0];
+            y = bw[1] + button.getHeight() * button.getScaleY() / 2f - sw[1];
+        }
+        stack.fly(x, y);
+        if (badge != null) badge.fly(x + sw[0], y + sw[1]);
     }
 
     static void cancel() {
@@ -690,11 +751,31 @@ final class MultiDrag {
         final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG), shade = new Paint(Paint.ANTI_ALIAS_FLAG);
         final float density; float cx, cy, size; boolean known; long last;
         final float[] hx = new float[24], hy = new float[24]; final long[] ht = new long[24]; int head;
-        int state; long stateAt;
+        int state; long stateAt; float flyX, flyY;
+        final Paint ring = new Paint(Paint.ANTI_ALIAS_FLAG);
         StackView(Context c) { super(c); density = c.getResources().getDisplayMetrics().density; setWillNotDraw(false); setClickable(false); setFocusable(false); setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO); }
         public boolean onTouchEvent(android.view.MotionEvent e) { return false; }
 
-        void finish(boolean success) { state = success ? 1 : 2; stateAt = SystemClock.uptimeMillis(); }
+        void finish(boolean success) { if (state == 3) return; state = success ? 1 : 2; stateAt = SystemClock.uptimeMillis(); }
+
+        static final long FLIGHT = 300, STAGGER = 34, RIPPLE = 260;
+        static long delayOf(int order) { return Math.min(order, 8) * STAGGER; }
+
+        void fly(float x, float y) {
+            if (state == 3 || !known) return;
+            flyX = x; flyY = y;
+            for (Pick p : picks) { p.sx = p.x; p.sy = p.y; p.landed = 0; }
+            state = 3; stateAt = SystemClock.uptimeMillis();
+            boolean dark = FrostedSurface.dark(getContext());
+            ring.setStyle(Paint.Style.STROKE); ring.setStrokeWidth(2f * density);
+            ring.setColor(LauncherFeatures.surface(getContext(), dark ? "system_accent1_200" : "system_accent1_600", dark ? 0xffaac7ff : 0xff3d5f99));
+        }
+
+        long flightLeft() {
+            if (state != 3) return 0;
+            long total = delayOf(Math.max(0, picks.size() - 1)) + FLIGHT + RIPPLE + 40;
+            return Math.max(0, total - (SystemClock.uptimeMillis() - stateAt));
+        }
 
         void frame() {
             Activity a = LauncherFeatures.activity.get(); long now = SystemClock.uptimeMillis();
@@ -727,6 +808,7 @@ final class MultiDrag {
             if (!known || picks.isEmpty()) return;
             long now = SystemClock.uptimeMillis(); int n = picks.size();
             float card = size * .86f;
+            if (state == 3) { flight(c, now, n, card); return; }
             float end = state == 0 ? 0f : Math.min(1f, (now - stateAt) / (state == 1 ? 220f : 340f));
             if (state == 0) {
                 Pick top = picks.get(n - 1);
@@ -757,6 +839,37 @@ final class MultiDrag {
             }
         }
 
+        private void flight(Canvas c, long now, int n, float card) {
+            float lift = 34 * density;
+            for (int i = 0; i < n; i++) {
+                Pick p = picks.get(i); int order = n - 1 - i;
+                float t = (now - stateAt - delayOf(order)) / (float) FLIGHT;
+                if (t >= 1f) { if (p.landed == 0) p.landed = now; continue; }
+                int depth = order;
+                float rest = (depth % 2 == 0 ? 5f : -4f) * (depth + 1) * .6f;
+                if (t <= 0f) {
+                    if (depth >= 3) continue;
+                    draw(c, p.icon, p.sx, p.sy, card, rest, 1f - depth * .12f);
+                    continue;
+                }
+                float e = STANDARD.getInterpolation(t);
+                float x = p.sx + (flyX - p.sx) * e;
+                float y = p.sy + (flyY - p.sy) * e - (float) Math.sin(Math.PI * e) * lift * (1f - Math.min(depth, 4) * .12f);
+                float s = card * (1f - .84f * e);
+                float alpha = t < .65f ? 1f : 1f - (t - .65f) / .35f;
+                float turn = rest * (1f - e) + (order % 2 == 0 ? 18f : -18f) * e;
+                if (depth >= 3) alpha *= Math.min(1f, t * 4f);
+                draw(c, p.icon, x, y, s, turn, alpha);
+            }
+            for (int i = 0; i < n; i++) {
+                Pick p = picks.get(i); if (p.landed == 0) continue;
+                float r = (now - p.landed) / (float) RIPPLE; if (r >= 1f) continue;
+                float e = EMPHASIZED_DECELERATE.getInterpolation(r);
+                ring.setAlpha(Math.round(110 * (1f - r)));
+                c.drawCircle(flyX, flyY, (8 + 18 * e) * density, ring);
+            }
+        }
+
         private void draw(Canvas c, Bitmap icon, float x, float y, float s, float turn, float alpha) {
             if (icon == null || icon.isRecycled()) return;
             c.save(); c.rotate(turn, x, y);
@@ -782,12 +895,14 @@ final class MultiDrag {
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.BOLD));
         }
         void count(int n) { long now = SystemClock.uptimeMillis(); if (count == 0) shownAt = now; previous = count; count = n; changedAt = now; }
-        void finish() { endAt = SystemClock.uptimeMillis(); }
+        void finish() { if (endAt == 0) endAt = SystemClock.uptimeMillis(); }
+        float flyX, flyY; long flyAt;
+        void fly(float x, float y) { if (flyAt != 0) return; flyX = x; flyY = y; flyAt = SystemClock.uptimeMillis(); }
         public void draw(Canvas c) {
             Activity a = LauncherFeatures.activity.get(); if (a == null || count < 2) return;
             View drag = dragView(a); if (drag == null && stack == null) return;
             float x, y;
-            if (drag != null && endAt == 0) {
+            if (drag != null && endAt == 0 && flyAt == 0) {
                 int[] at = new int[2]; drag.getLocationInWindow(at);
                 float w = drag.getWidth() * drag.getScaleX();
                 x = at[0] + w * .86f; y = at[1] + drag.getHeight() * drag.getScaleY() * .12f;
@@ -797,6 +912,11 @@ final class MultiDrag {
             float appear = pop(Math.min(1f, (now - shownAt) / 320f));
             float pulse = (now - changedAt) < 240 && previous >= 2 ? 1f + .18f * (float) Math.sin(Math.PI * (now - changedAt) / 240f) : 1f;
             float vanish = endAt == 0 ? 1f : 1f - Math.min(1f, (now - endAt) / 160f);
+            if (flyAt != 0) {
+                float t = Math.min(1f, (now - flyAt) / 240f), e = STANDARD.getInterpolation(t);
+                x += (flyX - x) * e * .5f; y += (flyY - y) * e * .5f;
+                vanish = Math.min(vanish, 1f - e);
+            }
             float scale = appear * pulse * vanish; if (scale <= .01f) return;
             String label = count > 99 ? "99+" : String.valueOf(count);
             float h = 22 * density, w = Math.max(h, text.measureText(label) + 14 * density);
