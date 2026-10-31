@@ -398,6 +398,8 @@ public class SettingsActivity extends Activity {
 
         else if(getIntent().hasExtra("patron_error")){final String error=getIntent().getStringExtra("patron_error");getIntent().removeExtra("patron_error");mMain.post(new Runnable(){public void run(){PatronPaper.open(SettingsActivity.this,0,error);}});}
 
+        else if(PatronAccess.claimPending(this))claimSignIn(0);
+
         else if(PatronAccess.prefs(this).getBoolean("join_return",false)&&!PatronAccess.loggedIn(this)){PatronAccess.prefs(this).edit().putBoolean("join_return",false).apply();mMain.post(new Runnable(){public void run(){PatronPaper.open(SettingsActivity.this,1,null);}});}
 
         if(mPatronMembershipRefresh==null)mPatronMembershipRefresh=new PatronMembershipRefresh(this);
@@ -721,6 +723,18 @@ public class SettingsActivity extends Activity {
     }
 
     private boolean mPageResumed,mPageNavigation,mPageClosing;
+    private boolean mClaiming;
+    private void claimSignIn(final int attempt){
+        if(mClaiming&&attempt==0)return;mClaiming=true;
+        PatronAccess.claim(this,new java.util.function.Consumer<String>(){public void accept(String error){
+            mClaiming=false;if(isFinishing()||isDestroyed())return;
+            if(error==null&&PatronAccess.unlocked())PatronPaper.open(SettingsActivity.this,2,null);
+            else PatronPaper.open(SettingsActivity.this,0,error==null?PatronAccess.membershipMessage(SettingsActivity.this):error);
+        }},new Runnable(){public void run(){
+            if(isFinishing()||isDestroyed()||!mPageResumed||!PatronAccess.claimPending(SettingsActivity.this)||attempt>=45){mClaiming=false;return;}
+            mMain.postDelayed(new Runnable(){public void run(){if(mPageResumed&&PatronAccess.claimPending(SettingsActivity.this))claimSignIn(attempt+1);else mClaiming=false;}},2000);
+        }});
+    }
     @Override public void startActivity(Intent intent,Bundle options){
         boolean page=intent.getComponent()!=null&&SettingsActivity.class.getName().equals(intent.getComponent().getClassName());
         mPageNavigation=page&&!"privacy".equals(intent.getStringExtra("page"));

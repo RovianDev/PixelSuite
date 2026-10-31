@@ -147,12 +147,34 @@ final class PatronAccess {
     static void accept(final Context context,final android.net.Uri uri,final java.util.function.Consumer<String> done){
         final Context c=context.getApplicationContext();NET.execute(new Runnable(){public void run(){String error=null;try{
             String state=uri.getQueryParameter("state"),expected=prefs(c).getString("nonce","");long started=prefs(c).getLong("login_at",0);
+            if(expected.isEmpty()&&state!=null&&state.equals(prefs(c).getString("claimed_nonce",""))){MAIN.post(new Runnable(){public void run(){done.accept(null);}});return;}
             if(expected.isEmpty()||!expected.equals(state)||System.currentTimeMillis()-started>10*60*1000)throw new Exception("Sign-in expired. Tap Unlock to try again.");
-            prefs(c).edit().remove("nonce").remove("join_return").apply();String code=uri.getQueryParameter("error");
+            prefs(c).edit().remove("nonce").remove("join_return").putString("claimed_nonce",expected).apply();String code=uri.getQueryParameter("error");
             if(code!=null)throw new Exception("not_active".equals(code)?"No active membership found. Join, then tap Unlock again.":"Sign-in wasn't completed. You can try again.");
             String token=uri.getQueryParameter("pass");try{verify(c,token,true);}catch(Exception invalid){throw new Exception("Couldn't verify this sign-in. Tap Unlock to try again.");}
             savePass(c,token,verify(c,token,true),true);ensureProfile(c);
         }catch(Exception e){error=e.getMessage()==null?"Couldn't confirm membership. Try again.":e.getMessage();}final String message=error;MAIN.post(new Runnable(){public void run(){done.accept(message);}});}});
+    }
+    static boolean claimPending(Context c){long started=prefs(c).getLong("login_at",0);return !prefs(c).getString("nonce","").isEmpty()&&started>0&&System.currentTimeMillis()-started<10*60*1000;}
+    static void claim(final Context context,final java.util.function.Consumer<String> done,final Runnable pending){
+        final Context c=context.getApplicationContext();NET.execute(new Runnable(){public void run(){
+            HttpURLConnection connection=null;android.net.Uri result=null;
+            try{
+                if(!configured()||!claimPending(c))return;
+                String nonce=prefs(c).getString("nonce","");
+                JSONObject body=new JSONObject().put("state",nonce).put("device",device(c));
+                connection=(HttpURLConnection)new URL(PatronConfig.SERVER+"/claim").openConnection();connection.setRequestMethod("POST");connection.setInstanceFollowRedirects(false);connection.setConnectTimeout(10000);connection.setReadTimeout(10000);connection.setDoOutput(true);connection.setRequestProperty("Content-Type","application/json");
+                byte[] bytes=body.toString().getBytes("UTF-8");connection.getOutputStream().write(bytes);
+                if(connection.getResponseCode()==200){
+                    JSONObject answer=new JSONObject(read(connection.getInputStream()));
+                    android.net.Uri.Builder uri=android.net.Uri.parse("pixelsuite://unlock").buildUpon().appendQueryParameter("state",nonce);
+                    if(answer.has("pass"))uri.appendQueryParameter("pass",answer.getString("pass"));else uri.appendQueryParameter("error",answer.optString("error","sign_in_failed"));
+                    result=uri.build();
+                }
+            }catch(Exception ignored){}
+            finally{if(connection!=null)connection.disconnect();}
+            if(result!=null&&claimPending(c))accept(c,result,done);else if(pending!=null)MAIN.post(pending);
+        }});
     }
     private static void schedule(Context c){try{android.app.job.JobScheduler scheduler=(android.app.job.JobScheduler)c.getSystemService(Context.JOB_SCHEDULER_SERVICE);if(scheduler==null)return;for(android.app.job.JobInfo job:scheduler.getAllPendingJobs())if(job.getId()==0x5AD1)return;scheduler.schedule(new android.app.job.JobInfo.Builder(0x5AD1,new android.content.ComponentName(c,PatronRefreshJob.class)).setRequiredNetworkType(android.app.job.JobInfo.NETWORK_TYPE_ANY).setPersisted(true).setPeriodic(7*DAY*1000).build());}catch(Exception ignored){}}
     static boolean loggedIn(Context c){return prefs(c).getBoolean("logged_in",false);}

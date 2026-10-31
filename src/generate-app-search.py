@@ -155,6 +155,8 @@ for p in (root/'res/raw').glob('*changelog*'):
 # LSPosed setup stays on its settings pages; it is not a search result or a source of keywords.
 out=root/'res/raw/app_search.json';out.parent.mkdir(parents=True,exist_ok=True)
 for entry in entries:
+    if entry.get('anchor') == '@PatronAccount':
+        entry['keywords'] = (entry.get('keywords', '') + ' patreon sign in unlock').strip()
     page=entry['page'];trail=[];visited=set()
     while page and page not in visited:
         visited.add(page);trail.insert(0,titles.get(page,page));page=parents.get(page,'')

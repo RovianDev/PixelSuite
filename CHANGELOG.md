@@ -1,3 +1,11 @@
+## v3.0.3
+
+A fix for Patreon sign-in.
+
+### 🐞 Bug fixes
+
+- **Patreon:** signing in now completes even when your browser can't open Pixel Suite (for example, when it shows a Play Store "item not found" page). After signing in, just switch back to Pixel Suite and it unlocks on its own.
+
 ## v3.0.2
 
 A share menu you can arrange by hand, app drawer folders you can place anywhere, and icon pack fixes.

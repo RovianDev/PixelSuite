@@ -1,3 +1,11 @@
+## v3.0.3
+A fix for Patreon sign-in.
+
+🐞 Bug fixes
+• Patreon: signing in now completes even when your browser can't open Pixel Suite (for example, when it shows a Play Store "item not found" page). After signing in, just switch back to Pixel Suite and it unlocks on its own.
+
+Install over your current version.
+
 ## v3.0.2
 A share menu you can arrange by hand, app drawer folders you can place anywhere, and icon pack fixes.
 
@@ -35,56 +43,3 @@ A quick fix for the share menu.
 • Share menu: pinning an app no longer pushes the suggested apps out of the top row. Your pinned apps come first, and the suggestions fill the rest.
 
 Install over your current version and reboot.
-
-## v3.0.0
-Our biggest update yet 🎉 A smarter share menu, a reimagined Pixel Studio, icon packs, call recording, ad blocking, Do Not Annoy and a fresh new look, plus fixes for bugs in Google's own apps.
-
-✨ New
-📤 Share menu: drag your pinned apps and contacts into the order you like, and tuck the ones you never use into a Hidden folder, so they're out of the way but still one tap away. You can also fold the whole contacts row out of sight. Google Photos' share page now uses the same colours as the share menu.
-🖼️ Pixel Studio, reimagined: faster, more precise editing, with zoom, a brand-new text tool with a floating fonts & colours panel you can flick to the top or bottom, smarter cropping and a tool bar that's always within reach.
-🎨 Icon packs: use any icon pack from the Play Store on your home screen, folders, dock and app drawer. Every icon is cut cleanly into the icon shape you picked, and apps the pack doesn't cover keep their own icons. Want just one app changed? Long-press it > Change icon > Icon pack.
-📞 Call recording (Patreon): record calls in the Google Phone app, in any country, without the "This call is now being recorded" announcement. Each recording is also saved as a file you can keep or share.
-🚫 Ad blocking (Patreon): system-wide ad-free, including your Google feed, Chrome and Google News. In Chrome: zero ads, no ad gaps or empty boxes, no "turn off your ad blocker" pop-ups, no floating video ads, and no sponsored stories on the new tab.
-🔕 Do Not Annoy: silence every incoming call while your data, Wi-Fi and messages keep working. Callers hear that you're unavailable, and you get a notification with a Call back button for each one. Comes with a Quick Settings tile, and it works in sync with an LTE Pixel Watch through the optional Pixel Suite Watch app.
-🛡️ OTA & Store blocker: stop system updates from downloading, lock factory reset, and keep your chosen apps on the version you like, so the Play Store never updates them behind your back.
-⌚ Pixel Watch eSIM: set up your watch's eSIM with a QR code, even where Google says no carrier is supported. A one-time purchase, no Patreon needed.
-🧭 Navigation buttons: add Back, Home or Recent apps right beside the gesture bar, so you get buttons and gestures together. Hold Home for Circle to Search or Gemini.
-🍞 Toasts: choose where those little pop-up messages appear: at the top, in the middle, or at the bottom like stock Android.
-⚡ Refresh rate & FPS: a 60 / 120 Hz slider in Display settings, and a live FPS counter to see how smooth things really run.
-💾 Backup & restore: save your whole setup to one file from About and support, including every setting, your drawer folders and sorting, renamed apps, custom icons and share menu. Restore it anytime, even after clearing Pixel Launcher or resetting your phone.
-
-💎 Polish
-🏠 A brand-new Pixel Suite app: a Frosted Glass design, a fresh home screen, colour-coded icons and sections, and a new search bar that finds any setting instantly. Each feature page also shows exactly which apps to tick in LSPosed.
-🌑 Super Dark, even darker: every sheet, menu and dialog in the app is now true black, perfect for OLED screens.
-🧊 Glass rims: Frosted Glass panels, folders, menus and toasts get a soft glass edge. In Super Dark they get their own soft rim instead, now on Settings pop-ups too.
-🪟 Glassy Settings: Android Settings now feels frosted too, with soft glass edges as you scroll through every screen and rimmed pop-ups in Super Dark. The app drawer gets the same soft edges under its search bar.
-🏷️ The app drawer always shows its "All apps" label under your suggestions.
-🎯 Remove, Cancel and Uninstall light up with an outline as an app reaches them, so you always know where it'll land. Drag several apps at once and they all fly in together.
-📁 Folder names are now bold, and folders in the app drawer lift when you hold them, just like apps.
-🌈 Colorful drawer icons: Pixel Suite themes your whole app drawer, but if you prefer the stock look, this option keeps themed icons on your home screen only and shows the drawer in full colour.
-✏️ Doodles: new shapes stay inside your crop, so you can't accidentally draw on the blurred area around it.
-🔐 Secure screenshots and Hide accessibility now run on Pixel Suite's own code, with the same behaviour as before.
-
-🔧 Compatibility
-• Works with more Pixel Launcher versions, including the newest builds with the redesigned app menu. Each feature now loads on its own, so if a launcher update changes something, everything else keeps working.
-
-🐞 Bug fixes
-• Pixel Studio: a typed text no longer gets copied when you switch to another tool.
-• Double tap to sleep: typing your PIN right after a reboot no longer turns the screen off.
-• Custom and icon-pack icons no longer flash back to the stock icon when you swipe an app away or close a folder.
-• Remove and Cancel no longer overlap Uninstall after moving several apps at once.
-• Pixel Launcher: opening an app's menu no longer crashes on newer launcher builds.
-• Pixel Launcher: dragging apps out of the app list or drawer folders works again on newer launcher builds, and icon labels keep the right size.
-
-🛠️ Google & Pixel bugs fixed
-• Pixel Launcher: themed icons had rough, stepped edges with a thin light rim. They're smooth now, in every icon shape.
-• Pixel Launcher: closing a folder from its second page could go blank with non-round icon shapes. Folders now close cleanly from any page.
-• Pixel Studio: a selected text no longer jumps around while you drag the crop corners.
-• Pixel Studio: tapping a text on the crop page no longer throws away your crop.
-• Pixel Studio: the tool bar stays visible with a text selected, and no longer shrinks to a single pen.
-• Pixel Studio: pen strokes stay visible over selected texts and stickers.
-
-🔒 Privacy
-• No ads, no analytics, no tracking. The app only goes online to check for updates, refresh the ad blocker's lists, and for Patreon or eSIM checks if you use them. Your screenshots, recordings and choices never leave your phone.
-
-Install over your current version and reboot. Each feature page shows the LSPosed scopes it needs.
