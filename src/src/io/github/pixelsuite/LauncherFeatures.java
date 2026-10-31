@@ -137,6 +137,9 @@ final class LauncherFeatures {
         Safe.run(() -> ShapeWatch.install());
         Safe.run(() -> FolderCloseClip.install());
         Safe.run(() -> ThemedIconEdges.install());
+        Safe.run(() -> FullBleedEdges.install());
+        Safe.run(() -> DrawerFolderDots.install());
+        Safe.run(() -> BadgeClear.install());
         Safe.run(() -> SnackbarPlace.install());
         Safe.run(() -> ThemeFolderRestore.install());
         Safe.run(() -> installMenus());
@@ -177,7 +180,7 @@ final class LauncherFeatures {
     }
     static void label(Object info) {
         if (data == null || info == null || privateItem(info)) return;
-        try { if (((Number)get(info,"itemType")).intValue() != 0) return; } catch (Throwable ignored) { return; }
+        try { int kind = ((Number)get(info,"itemType")).intValue(); if (kind == 6) { LauncherIcon.badge(info); return; } if (kind != 0) return; } catch (Throwable ignored) { return; }
         String key = identity(info); if (key == null) return;
         LauncherIcon.apply(info,key);
         synchronized (originals) {
@@ -867,6 +870,9 @@ final class LauncherFeatures {
             public void onClick(View v) { call(popup,"close",true); rename(info); }
         }, false);
         if (!drawer || !DrawerFolders.isFolder(info)) PrivacyLock.addRow(rows, popup, info);
+        if (BadgeClear.has(info)) addFolderRow(rows, "Clear badge", "pixelsuite_badge", 16, 0, new View.OnClickListener() {
+            public void onClick(View v) { call(popup, "close", true); BadgeClear.clear(info); }
+        });
     }
     static void addHomeFolderRows(final Object popup, final Object info) {
         ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
@@ -881,6 +887,9 @@ final class LauncherFeatures {
             public void onClick(View v) { toggleHomeSort(popup, list, v, info); }
         });
         PrivacyFolders.addHomeRow(rows, popup, info);
+        if (BadgeClear.has(info)) addFolderRow(rows, "Clear badge", "pixelsuite_badge", 16, 0, new View.OnClickListener() {
+            public void onClick(View v) { call(popup, "close", true); BadgeClear.clear(info); }
+        });
     }
 
     static void toggleHomeSort(final Object popup, final ViewGroup rows, final View sortRow, final Object info) {

@@ -241,7 +241,7 @@ final class LauncherIconPack {
     }
 
     private static File dir(Context c, IconPacks.Pack pack) {
-        return new File(new File(new File(c.getFilesDir(), "pixelsuite-icons"), "packs"), pack.pkg + "-" + pack.version + "-v4");
+        return new File(new File(new File(c.getFilesDir(), "pixelsuite-icons"), "packs"), pack.pkg + "-" + pack.version + "-v6");
     }
 
     private static void cleanOld(Context c, File keep) {
@@ -376,6 +376,7 @@ final class LauncherIconPack {
         grid.setNumColumns(GridView.AUTO_FIT);
         grid.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
         grid.setVerticalSpacing(dp(a, 6));
+        grid.setHorizontalSpacing(dp(a, 6));
         grid.setSelector(new android.graphics.drawable.ColorDrawable(0));
         grid.setClipToPadding(false);
         grid.setPadding(dp(a, 12), dp(a, 4), dp(a, 12), dp(a, 12));
@@ -600,7 +601,8 @@ final class LauncherIconPack {
             GradientDrawable g = new GradientDrawable();
             g.setCornerRadius(dp(getContext(), 18));
             g.setColor((accent & 0xffffff) | 0x29000000);
-            setBackground(g);
+            int in = dp(getContext(), 2);
+            setBackground(new android.graphics.drawable.InsetDrawable(g, in, 0, in, 0));
         }
     }
 

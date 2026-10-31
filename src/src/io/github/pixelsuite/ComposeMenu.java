@@ -103,7 +103,8 @@ final class ComposeMenu {
                     return unit();
                 }
             });
-            items.add(newItem.newInstance(icon, newString.newInstance(id), action, fixedCategory));
+            Object made = newItem.newInstance(icon, newString.newInstance(id), action, fixedCategory);
+            if ("pixelsuite_badge".equals(tag)) items.add(0, made); else items.add(made);
         }
         p.args[1] = items;
     }
@@ -132,7 +133,7 @@ final class ComposeMenu {
 
     private static int icon(Context c, String tag, int fallback) {
         String name = tag.equals("pixelsuite_create") ? "ic_create_new_folder" : tag.equals("pixelsuite_icon") ? "ic_palette"
-                : tag.equals("pixelsuite_rename") ? "ic_create" : tag.equals("pixelsuite_privacy") ? "ic_lock" : null;
+                : tag.equals("pixelsuite_rename") ? "ic_create" : tag.equals("pixelsuite_privacy") ? "ic_lock" : tag.equals("pixelsuite_badge") ? "ic_notification_off" : null;
         int id = name == null ? 0 : c.getResources().getIdentifier(name, "drawable", c.getPackageName());
         return id != 0 ? id : fallback;
     }

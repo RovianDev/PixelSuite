@@ -45,6 +45,8 @@ final class PreviewScenes {
     private static final String[] DARK_TILES={"Internet","Bluetooth","Flashlight","Do Not Disturb"};
     PreviewScenes(String key,int accent,int onAccent,int ink,int muted,int surface,boolean dark,PreviewIcons icons){this.key=key;this.accent=accent;this.onAccent=onAccent;this.ink=ink;this.muted=muted;this.surface=surface;this.dark=dark;this.icons=icons;this.privacyLockGlyph=new PrivacyBadges.Glyph(dark?0xffffffff:0xff1c1b1f,dark?0x8c000000:0xb3ffffff,1f);}
     long duration(){
+        if("clear_badge".equals(key))return 4800;
+        if("drawer_folder_move".equals(key)||"drawer_move_bottom".equals(key))return 5200;
         if("209_share_combined".equals(key))return 15000;
         if("209_store".equals(key))return 9000;
         if("209_recording".equals(key))return 7600;
@@ -319,6 +321,10 @@ final class PreviewScenes {
     }
 
     private void scene(Canvas c,float t){
+        if("clear_badge".equals(key)){clearBadgeScene(c,t);return;}
+        if("drawer_folder_move".equals(key)){drawerFolderScene(c,t,0);return;}
+        if("drawer_move_bottom".equals(key)){drawerFolderScene(c,t,1);return;}
+        if(FolderDrag.TWO_FINGER.equals(key)&&!customCycle){drawerFolderScene(c,t,2);return;}
         if(additions209(c,t))return;
         if("privacy_combined".equals(key)){privacyCombinedScene(c,t);
         }else if("privacy_folder".equals(key)){privacyFolderScene(c,t);
@@ -449,6 +455,48 @@ final class PreviewScenes {
             text(c,"Files \u00b7 date modified",120,151,10,muted);float f=e(.16f,.7f,t);for(int i=0;i<6;i++)if(i!=2)fileRow(c,i,f);fileRow(c,2,f);pill(c,1);
         }else {home(c,true);pill(c,1);}
     }
+    private void previewFolder(Canvas c,float x,float y,float size){
+        panel(c,x-size/2,y-size/2,size,size,size*.3f,tint(surface,accent,.18f));
+        for(int j=0;j<4;j++)app(c,j,x+(j%2==0?-.22f:.22f)*size,y+(j<2?-.22f:.22f)*size,size*.3f,false);
+    }
+    private void clearBadgeScene(Canvas c,float t){
+        home(c,true);pill(c,1);
+        if(customCycle)previewFolder(c,120,255,48);else app(c,5,120,255,48,true);
+        float clear=e(.58f,.67f,t),old=opacity;opacity*=1-clear;circle(c,140,234,6,accent);opacity=old;
+        touch(c,120,255,t,.08f,.16f);heldTouch(c,120,255,e(.14f,.2f,t)*(1-e(.31f,.36f,t)));
+        float menu=e(.28f,.37f,t)*(1-e(.7f,.78f,t));
+        if(menu>0){opacity*=menu;panel(c,26,310,188,56,20,tint(surface,ink,.065f));
+            text(c,"Clear badge",120,344,16,ink);touch(c,120,337,t,.5f,.11f);opacity=old;}
+        if(clear>0){opacity*=clear;text(c,"Dot cleared",120,408,16,muted);opacity=old;}
+    }
+    private void drawerFolderScene(Canvas c,float t,int mode){
+        box(c,0,0,240,500,0,tint(surface,ink,.025f));
+        float lift=e(.1f,.2f,t),move=e(.3f,.67f,t),drop=e(.78f,.91f,t);
+        float scroll=mode==0?0:160*e(.43f,.73f,t);
+        int save=c.save();c.clipRect(0,80,240,450);
+        for(int i=1;i<28;i++){
+            float x=33+(i%4)*58,y=104+(i/4)*71-scroll;
+            int slot=mode==0?10:22;
+            float gap=mode==0?move:e(.65f,.83f,t);
+            if(i<=slot){x=mix(x,33+((i-1)%4)*58,gap);y=mix(y,104+((i-1)/4)*71-scroll,gap);}
+            app(c,i%13,x,y,34,true);
+        }
+        if(lift<1){float old=opacity;opacity*=1-lift;previewFolder(c,33,104,36);opacity=old;}
+        c.restoreToCount(save);search(c);
+        float top=e(.12f,.21f,t)*(1-e(.89f,.96f,t));
+        if(top>0){float old=opacity;opacity*=top;panel(c,15,12,210,38,19,tint(surface,accent,.16f));text(c,"+ Add to home screen",120,36,13,ink);opacity=old;}
+        float x=mode==0?mix(33,149,move):mix(33,120,lift);
+        float y=mode==0?mix(104,246,move):mode==1?mix(104,460,e(.22f,.43f,t)):mix(104,242,lift);
+        if(mode>0){x=mix(x,149,drop);y=mix(y,104+5*71-scroll,drop);}
+        if(mode==1){float visible=e(.15f,.22f,t)*(1-e(.43f,.5f,t));float old=opacity;opacity*=visible;
+            c.save();c.translate(120,460);float scale=1-.18f*e(.43f,.5f,t);c.scale(scale,scale);panel(c,-105,-19,210,38,19,tint(surface,accent,.16f));text(c,"↓ Move to bottom",0,5,13,ink);c.restore();opacity=old;}
+        float size=36+6*lift*(1-drop)-3*(float)Math.sin(drop*Math.PI);previewFolder(c,x,y,size);
+        if(drop>0){float old=opacity;opacity*=drop;text(c,"Folder",x,y+28,10,ink);opacity=old;}
+        touch(c,33,104,t,.025f,.09f);heldTouch(c,x,y,e(.1f,.16f,t)*(1-e(.85f,.92f,t)));
+        if(mode==2){float finger=e(.32f,.4f,t)*(1-e(.73f,.8f,t));float old=opacity;opacity*=finger;heldTouch(c,198,mix(400,190,move),1);arrow(c,198,400,198,190,move,accent);opacity=old;}
+        pill(c,1);
+    }
+
     private void shareCombined(Canvas c,float t){
         float seconds=t*15f;int stage=Math.min(3,(int)(seconds/3.75f));float local=(seconds-stage*3.75f)/3.75f;
         float fade=e(0,.07f,local);if(stage==0)fade=1;

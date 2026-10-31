@@ -41,12 +41,31 @@ final class DrawerHomeTarget {
             int gap=FrostedSurface.dp(a,8);
             int addWidth=remove?Math.round((total-gap)*.6f):total,removeWidth=total-gap-addWidth;
             int x=position[0]-origin[0]+(search.getWidth()-total)/2;
-            int y=position[1]-origin[1]+(search.getHeight()-height)/2;
+            int y=position[1]-origin[1]+(search.getHeight()-height)/2-FrostedSurface.dp(a,30);
+            y=Math.max(FrostedSurface.dp(a,6),y);
+            try{
+                View sheet=(View)LauncherFeatures.get(LauncherFeatures.call(a,"getAppsView"),"mBottomSheetBackground");
+                if(sheet!=null&&sheet.isShown()&&sheet.getHeight()>0){
+                    int[] at=new int[2];sheet.getLocationOnScreen(at);
+                    int top=at[1]-origin[1],searchTop=position[1]-origin[1];
+                    if(top>=FrostedSurface.dp(a,20)&&top<searchTop)y=top;
+                }
+            }catch(Throwable ignored){}
             final LinearLayout view=makePill(a,"Add to home screen",3,remove,"Drag here to add to home screen");
             background=pillBackground;
             addPill(layer,view,addWidth,height,x,y);
-            owner=a;pill=view;hover=0;intro=true;
+            owner=a;pill=view;hover=0;intro=true;folderSource=DrawerFolders.isFolder(source.getTag());
             animateIn(view,height,true);
+            if(folderSource){
+                int bottomInset=0;
+                try{android.view.WindowInsets insets=layer.getRootWindowInsets();if(insets!=null)bottomInset=insets.getStableInsetBottom();}catch(Throwable ignored){}
+                final LinearLayout low=makePill(a,"Move to bottom",15,false,"Drag a folder here to move it to the end of the list");
+                bottomBackground=pillBackground;
+                int by=layer.getHeight()-bottomInset-FrostedSurface.dp(a,18)-height;
+                addPill(layer,low,addWidth,height,x,by);bottomY=by;
+                bottomPill=low;bottomHover=0;
+                animateIn(low,height,false);
+            }
             if(remove){
                 final LinearLayout second=makePill(a,"Remove",12,true,"Drag here to take out of the folder");
                 removeBackground=pillBackground;
@@ -98,7 +117,29 @@ final class DrawerHomeTarget {
         if(inside)view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
         return inside;
     }
-    private static float reach(View v){return FrostedSurface.dp(v.getContext(),26);}
+    private static float reach(View v){return FrostedSurface.dp(v.getContext(),folderSource&&v==pill?8:26);}
+    static boolean folderSource;
+    static LinearLayout bottomPill;
+    static GradientDrawable bottomBackground;
+    static int bottomHover;
+    static int bottomY;
+    static int bottomTop(ViewGroup layer){return bottomY;}
+    static boolean updateBottom(int x,int y,ViewGroup layer){
+        LinearLayout view=bottomPill;if(view==null)return false;
+        layer.getLocationOnScreen(origin);int rawX=x+origin[0],rawY=y+origin[1];
+        boolean inside=distance(view,rawX,rawY)<=FrostedSurface.dp(view.getContext(),34);
+        int next=inside?2:0;
+        if(next!=bottomHover&&bottomBackground!=null){bottomHover=next;bottomBackground.setStroke(FrostedSurface.dp(view.getContext(),1),next>0?0x66ffffff:0x25ffffff);}
+        return inside;
+    }
+    static void hideBottom(boolean quick){
+        final LinearLayout low=bottomPill;bottomPill=null;bottomBackground=null;bottomHover=0;
+        if(low==null)return;
+        if(quick){
+            low.animate().cancel();
+            low.animate().alpha(0f).scaleX(.86f).scaleY(.86f).translationY(FrostedSurface.dp(low.getContext(),10)).setDuration(140).setInterpolator(new android.view.animation.AccelerateInterpolator(1.4f)).withEndAction(new Runnable(){public void run(){if(low.getParent() instanceof ViewGroup)((ViewGroup)low.getParent()).removeView(low);}}).start();
+        }else Balloon.deflate(low,0,new Runnable(){public void run(){if(low.getParent() instanceof ViewGroup)((ViewGroup)low.getParent()).removeView(low);}});
+    }
     private static float distance(View v,int rawX,int rawY){
         v.getLocationOnScreen(position);
         float tx=v.getTranslationX(),ty=v.getTranslationY();
@@ -109,6 +150,7 @@ final class DrawerHomeTarget {
     static void motion(){LinearLayout view=pill;if(view==null)return;view.animate().scaleX(hover>0?1.035f:1).scaleY(hover>0?1.035f:1).translationY(hover>0?-FrostedSurface.dp(view.getContext(),3):0).setDuration(110).setInterpolator(new DecelerateInterpolator()).start();}
     static void release(){if(!DrawerDrag.active())hide();}
     static void hide(){
+        hideBottom(false);folderSource=false;
         final LinearLayout second=removePill;removePill=null;removeBackground=null;removeHover=0;overRemove=false;
         if(second!=null)Balloon.deflate(second,0,new Runnable(){public void run(){if(second.getParent() instanceof ViewGroup)((ViewGroup)second.getParent()).removeView(second);}});
         final LinearLayout old=pill;pill=null;owner=null;background=null;hover=-1;intro=false;

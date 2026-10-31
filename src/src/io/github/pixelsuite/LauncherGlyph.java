@@ -45,6 +45,8 @@ final class LauncherGlyph extends Drawable {
             c.drawLine(3.5f,10.5f,6.25f,3.5f,paint);c.drawLine(6.25f,3.5f,9f,10.5f,paint);c.drawLine(4.6f,7.8f,7.9f,7.8f,paint);
             c.drawLine(3.5f,13.5f,9f,13.5f,paint);c.drawLine(9f,13.5f,3.5f,20.5f,paint);c.drawLine(3.5f,20.5f,9f,20.5f,paint);
             c.drawLine(16.5f,4,16.5f,20,paint);c.drawLine(13.5f,17,16.5f,20,paint);c.drawLine(16.5f,20,19.5f,17,paint);}
+        else if(kind==15){c.drawLine(12,3.5f,12,15.5f,paint);c.drawLine(7,10.5f,12,15.5f,paint);c.drawLine(12,15.5f,17,10.5f,paint);c.drawLine(5,20.5f,19,20.5f,paint);}
+        else if(kind==16){c.drawLine(9,4.8f,12,3.5f,paint);c.drawLine(12,3.5f,15,4.8f,paint);c.drawLine(15,4.8f,17,8,paint);c.drawLine(17,8,17,13,paint);c.drawLine(17,13,19,17,paint);c.drawLine(19,17,5,17,paint);c.drawLine(5,17,7,13,paint);c.drawLine(7,13,7,8,paint);c.drawLine(7,8,9,4.8f,paint);c.drawLine(10,20,14,20,paint);c.drawLine(4,3,20,21,paint);}
         else if(kind==14){
             c.drawRoundRect(3.5f,3.5f,10f,10f,1.8f,1.8f,paint);c.drawRoundRect(14f,3.5f,20.5f,10f,1.8f,1.8f,paint);
             c.drawRoundRect(3.5f,14f,10f,20.5f,1.8f,1.8f,paint);c.drawRoundRect(14f,14f,20.5f,20.5f,1.8f,1.8f,paint);}

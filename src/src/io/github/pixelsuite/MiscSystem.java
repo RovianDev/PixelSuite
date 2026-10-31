@@ -47,6 +47,26 @@ final class MiscSystem {
         installAccessibility(cl);
         installSettingsBridge();
         installSettingsQuery();
+        installUsbState(cl);
+    }
+
+    private static void installUsbState(ClassLoader cl) {
+        Xp.Callback sticky = new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                try {
+                    Object r = p.getResult();
+                    if (!(r instanceof Intent) || !"android.hardware.usb.action.USB_STATE".equals(((Intent) r).getAction())) return;
+                    if (!devHiddenFromCaller()) return;
+                    Intent copy = new Intent((Intent) r);
+                    if (copy.hasExtra("adb")) copy.putExtra("adb", false);
+                    if (copy.hasExtra("adb_wifi")) copy.putExtra("adb_wifi", false);
+                    p.setResult(copy);
+                } catch (Throwable ignored) { }
+            }
+        };
+        for (String owner : new String[] { "com.android.server.am.ActivityManagerService", "com.android.server.am.BroadcastController" }) {
+            try { Xp.hookAllMethods(Xp.findClass(owner, cl), "registerReceiverWithFeature", sticky); } catch (Throwable missing) { }
+        }
     }
 
     private static synchronized void start(final Context c) {

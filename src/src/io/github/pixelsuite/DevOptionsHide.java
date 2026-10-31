@@ -56,6 +56,24 @@ final class DevOptionsHide {
             Xp.hookAllMethods(sp, "getBoolean", number);
         } catch (Throwable error) { }
         try {
+            Xp.Callback usb = new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    if (!on() || p.args.length == 0 || !("adb".equals(p.args[0]) || "adb_wifi".equals(p.args[0]))) return;
+                    if (!(p.thisObject instanceof android.content.Intent) || !"android.hardware.usb.action.USB_STATE".equals(((android.content.Intent) p.thisObject).getAction())) return;
+                    if (p.getResult() instanceof Boolean) p.setResult(Boolean.FALSE);
+                }
+            };
+            Xp.hookAllMethods(android.content.Intent.class, "getBooleanExtra", usb);
+            Xp.hookAllMethods(android.content.Intent.class, "getExtras", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    if (!on() || !(p.getResult() instanceof android.os.Bundle) || !"android.hardware.usb.action.USB_STATE".equals(((android.content.Intent) p.thisObject).getAction())) return;
+                    android.os.Bundle b = new android.os.Bundle((android.os.Bundle) p.getResult());
+                    if (b.containsKey("adb")) b.putBoolean("adb", false);
+                    p.setResult(b);
+                }
+            });
+        } catch (Throwable error) { }
+        try {
             Xp.hookAllMethods(Runtime.class, "exec", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     if (!on() || p.args.length == 0) return;

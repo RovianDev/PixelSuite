@@ -65,7 +65,8 @@ final class ShareSheet {
     static final String PACKAGE = "com.android.intentresolver";
     static final String KEY = "pixelsuite_share_sheet";
     private static final String PREFS = "pixelsuite_share";
-    private static final String P_HIDDEN = "hidden", P_ORDER = "order";
+    private static final String P_HIDDEN = "hidden", P_ORDER = "order", P_LORDER = "list_order";
+    private static volatile Map<String, Integer> sLOrder = Collections.emptyMap();
     private static final int FOLDER_TYPE = 77, CFOLDER_TYPE = 78;
     private static final String P_CHIDDEN = "hidden_contacts", P_CORDER = "contact_order", P_CHIDE = "contacts_row_hidden", F_CSTASH = "ps_share_cstash";
     private static volatile Set<String> sHiddenContacts = Collections.emptySet();
@@ -74,7 +75,7 @@ final class ShareSheet {
     private static volatile boolean sContactsHidden, sInHidden;
     private static final String F_TARGET = "ps_share_t", F_POS = "ps_share_pos", F_ADAPTER = "ps_share_la",
             F_FOLDER = "ps_share_folder", F_GRID = "ps_share_grid", F_STASH = "ps_share_stash", F_DIM = "ps_share_dim",
-            F_CHECK = "ps_share_check", F_PINNED = "ps_share_pinned", F_LABELKEY = "ps_share_lk", F_PREVW = "ps_share_prevw";
+            F_CHECK = "ps_share_check", F_MULTI = "ps_share_multi", F_PINNED = "ps_share_pinned", F_LABELKEY = "ps_share_lk", F_PREVW = "ps_share_prevw";
     private static volatile Set<String> sHiddenPkgs = Collections.emptySet();
 
     private static volatile boolean sOn;
@@ -84,6 +85,9 @@ final class ShareSheet {
     private static Class<?> cListAdapter, cDialog, cGrid, cRci;
     private static WeakReference<Activity> sAct = new WeakReference<>(null);
     private static Drag sDrag;
+    private static ListDrag sListDrag;
+    private static boolean sBypassLong;
+    private static boolean dragging() { return sDrag != null || sListDrag != null; }
     private static boolean sSelecting;
     private static final LinkedHashMap<String, List<String>> sSel = new LinkedHashMap<>();
     private static int sFolderPop;
@@ -101,6 +105,13 @@ final class ShareSheet {
         cGrid = Xp.findClass("com.android.intentresolver.grid.ChooserGridAdapter", cl);
         cRci = Xp.findClass("com.android.intentresolver.ResolvedComponentInfo", cl);
         if (cListAdapter == null || cGrid == null) return;
+        Class<?> cMulti = Xp.findClass("com.android.intentresolver.chooser.MultiDisplayResolveInfo", cl);
+        if (cMulti != null) Xp.hookAllMethods(cMulti, "isPinned", new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                if (!sOn || Boolean.TRUE.equals(p.getResult())) return;
+                try { if (Xp.getBooleanField(p.thisObject, "mPinned")) p.setResult(Boolean.TRUE); } catch (Throwable ignored) { }
+            }
+        });
 
         Xp.hookAllMethods(act, "onCreate", new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
@@ -113,23 +124,24 @@ final class ShareSheet {
                 if (!sOn) return;
                 final Activity a = (Activity) p.thisObject;
                 sAct = new WeakReference<>(a);
-                sSelecting = false; sSel.clear(); sDrag = null;
+                sSelecting = false; sSel.clear(); sDrag = null; sListDrag = null;
                 a.getWindow().getDecorView().post(() -> attachChrome(a));
             }
         });
         Xp.hookAllMethods(act, "onDestroy", new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
                 if (sAct.get() != p.thisObject) return;
-                sDrag = null; sSelecting = false; sSel.clear(); setBack((Activity) p.thisObject, false);
+                sDrag = null; sListDrag = null; sSelecting = false; sSel.clear(); setBack((Activity) p.thisObject, false);
                 if (sChrome != null && sChrome.act == p.thisObject) sChrome = null;
             }
         });
         Xp.hookAllMethods(Activity.class, "dispatchTouchEvent", new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
+                if (!(p.args[0] instanceof MotionEvent)) return;
                 Drag d = sDrag;
-                if (d == null || d.act != p.thisObject || !(p.args[0] instanceof MotionEvent)) return;
-                d.onTouch((MotionEvent) p.args[0]);
-                p.setResult(Boolean.TRUE);
+                if (d != null && d.act == p.thisObject) { d.onTouch((MotionEvent) p.args[0]); p.setResult(Boolean.TRUE); return; }
+                ListDrag ld = sListDrag;
+                if (ld != null && ld.act == p.thisObject) { ld.onTouch((MotionEvent) p.args[0]); p.setResult(Boolean.TRUE); }
             }
         });
 
@@ -212,18 +224,23 @@ final class ShareSheet {
                 if (!sOn || !(p.getResult() instanceof List)) return;
                 try {
                     Object la = p.thisObject;
+                    try { learnGroups(la, (List<?>) p.getResult()); } catch (Throwable ignored) { }
                     int ranked = (Integer) Xp.callMethod(la, "getRankedTargetCount");
                     List<?> dl = new ArrayList<>((List<?>) Xp.getObjectField(la, "mDisplayList"));
                     Set<String> top = new HashSet<>();
-                    for (int i = 0; i < Math.min(ranked, dl.size()); i++) {
-                        String c = flat(Xp.callMethod(dl.get(i), "getResolvedComponentName")); if (c != null) top.add(c);
-                    }
+                    for (int i = 0; i < Math.min(ranked, dl.size()); i++) top.addAll(comps(dl.get(i)));
                     try { for (Object o : (List<?>) Xp.getObjectField(la, "mCallerTargets")) { String c = flat(Xp.callMethod(o, "getResolvedComponentName")); if (c != null) top.add(c); } } catch (Throwable ignored) { }
-                    if (top.isEmpty()) return;
                     List<Object> out = new ArrayList<>();
                     for (Object o : (List<?>) p.getResult()) {
-                        if (!bool(o, "isMultiDisplayResolveInfo") && top.contains(flat(Xp.callMethod(o, "getResolvedComponentName")))) continue;
+                        List<String> cs = comps(o);
+                        if (!cs.isEmpty() && top.containsAll(cs)) continue;
                         out.add(o);
+                    }
+                    final Map<String, Integer> lo = sLOrder;
+                    if (!lo.isEmpty()) {
+                        final Map<Object, Integer> rank = new HashMap<>();
+                        for (Object o : out) { Integer r = lo.get(key(comps(o))); rank.put(o, r == null ? Integer.MAX_VALUE : r); }
+                        Collections.sort(out, (a, b) -> Integer.compare(rank.get(a), rank.get(b)));
                     }
                     p.setResult(out);
                 } catch (Throwable ignored) { }
@@ -232,8 +249,15 @@ final class ShareSheet {
         if (rla != null) Xp.hookAllMethods(rla, "processSortedList", new Xp.Callback() {
             @Override protected void afterHookedMethod(Xp.Param p) {
                 if (!cListAdapter.isInstance(p.thisObject)) return;
+                if (sOn) try { groupPinned(p.thisObject); } catch (Throwable ignored) { }
                 int n = 0;
-                try { for (Object o : (List<?>) Xp.getObjectField(p.thisObject, "mDisplayList")) if (Xp.getBooleanField(o, "mPinned")) n++; } catch (Throwable ignored) { }
+                try {
+                    for (Object o : (List<?>) Xp.getObjectField(p.thisObject, "mDisplayList")) {
+                        boolean pin;
+                        try { pin = Xp.getBooleanField(o, "mPinned"); } catch (Throwable t) { pin = bool(o, "isPinned"); }
+                        if (pin) n++;
+                    }
+                } catch (Throwable ignored) { }
                 Xp.setAdditionalInstanceField(p.thisObject, F_PINNED, n);
             }
         });
@@ -241,10 +265,10 @@ final class ShareSheet {
             @Override protected void afterHookedMethod(Xp.Param p) {
                 if (!sOn) return;
                 Object n = Xp.getAdditionalInstanceField(p.thisObject, F_PINNED);
-                if (!(n instanceof Integer) || (Integer) n == 0) return;
+                if (!(n instanceof Integer)) return;
                 try {
                     int pinned = (Integer) n;
-                    int want = p.getResult() instanceof Integer ? Math.max(pinned, (Integer) p.getResult()) : pinned;
+                    int want = pinned;
                     int count = ((List<?>) Xp.getObjectField(p.thisObject, "mDisplayList")).size();
                     if (Xp.getBooleanField(p.thisObject, "mFilterLastUsed") && (Integer) Xp.getObjectField(p.thisObject, "mLastChosenPosition") >= 0) count--;
                     p.setResult(Math.max(0, Math.min(want, count)));
@@ -313,10 +337,23 @@ final class ShareSheet {
                 if (!sOn || p.args.length != 3 || !(p.args[0] instanceof View)) return;
                 View v = (View) p.args[0];
                 try {
+                    if (Boolean.TRUE.equals(v.getTag(CELL_SETTLE))) clearCell(v);
                     Object[] prev = (Object[]) Xp.getAdditionalInstanceField(v, F_PREVW);
                     Object t = p.args[1];
                     View tv = v.findViewById(android.R.id.text1);
                     if (tv instanceof TextView) oneLine(v, (TextView) tv);
+                    if (t != null && tv instanceof TextView && bool(t, "isMultiDisplayResolveInfo") && bool(t, "isPinned")
+                            && Integer.valueOf(2).equals(Xp.callMethod(p.thisObject, "getPositionTargetType", p.args[2]))) {
+                        int pinId = v.getResources().getIdentifier("chooser_pinned_background", "drawable", v.getContext().getPackageName());
+                        if (pinId != 0) {
+                            Drawable pin = v.getContext().getDrawable(pinId);
+                            tv.setPaddingRelative(pin.getIntrinsicWidth(), 0, 0, 0);
+                            tv.setBackground(pin);
+                            View.OnLayoutChangeListener spacing = (View.OnLayoutChangeListener) Xp.getObjectField(p.thisObject, "mPinTextSpacingListener");
+                            tv.removeOnLayoutChangeListener(spacing);
+                            tv.addOnLayoutChangeListener(spacing);
+                        }
+                    }
                     if (t != null && tv instanceof TextView && tv.getBackground() != null && bool(t, "isPinned")) {
                         int fitted = fitPinnedLabel(v, (TextView) tv);
                         if (fitted <= 0 && prev != null && (prev[0] == t || key(comps(prev[0])).equals(key(comps(t))))) fitted = (Integer) prev[1];
@@ -391,13 +428,27 @@ final class ShareSheet {
                 try {
                     Object grid = Xp.getObjectField(p.thisObject, "f$0"), holder = Xp.getObjectField(p.thisObject, "f$1");
                     int idx = (Integer) Xp.getObjectField(p.thisObject, "f$2");
-                    if (startDrag(grid, holder, idx)) p.setResult(Boolean.TRUE);
+                    if (startDrag(grid, holder, idx)) { p.setResult(Boolean.TRUE); return; }
+                    View[] cs = (View[]) Xp.getObjectField(holder, "mCells");
+                    Object t = cs != null && idx >= 0 && idx < cs.length && cs[idx] != null ? Xp.getAdditionalInstanceField(cs[idx], F_TARGET) : null;
+                    if (t != null && bool(t, "isMultiDisplayResolveInfo")) p.setResult(Boolean.TRUE);
                 } catch (Throwable ignored) { }
             }
         });
         Class<?> itemLong = Xp.findClass("com.android.intentresolver.grid.ItemViewHolder$$ExternalSyntheticLambda1", cl);
         if (itemLong != null) Xp.hookAllMethods(itemLong, "onLongClick", new Xp.Callback() {
-            @Override protected void beforeHookedMethod(Xp.Param p) { if (sOn && sSelecting) p.setResult(Boolean.TRUE); }
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                if (!sOn || sBypassLong) return;
+                if (sSelecting) { p.setResult(Boolean.TRUE); return; }
+                try {
+                    if (p.args.length != 1 || !(p.args[0] instanceof View)) return;
+                    if (ListDrag.start((View) p.args[0])) { p.setResult(Boolean.TRUE); return; }
+                    View c = (View) p.args[0];
+                    while (c != null && Xp.getAdditionalInstanceField(c, F_TARGET) == null) c = c.getParent() instanceof View ? (View) c.getParent() : null;
+                    Object t = c == null ? null : Xp.getAdditionalInstanceField(c, F_TARGET);
+                    if (t != null && bool(t, "isMultiDisplayResolveInfo")) p.setResult(Boolean.TRUE);
+                } catch (Throwable ignored) { }
+            }
         });
         Xp.Callback tap = new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
@@ -418,6 +469,30 @@ final class ShareSheet {
                     boolean contact = Xp.getObjectField(p.thisObject, "mShortcutId") != null;
                     List<?> t = (List<?>) Xp.getObjectField(p.thisObject, "mTargetInfos");
                     if (t == null || t.isEmpty()) return;
+                    if (!contact && t.size() > 1) {
+                        try {
+                            View rv0 = findByClass((View) p.getResult(), "RecyclerView");
+                            Object ad0 = rv0 == null ? null : Xp.getObjectField(rv0, "mAdapter");
+                            if (ad0 == null) return;
+                            List<?> old = (List<?>) Xp.getObjectField(ad0, "mItems");
+                            Context c = ((View) p.getResult()).getContext();
+                            boolean pinned = false;
+                            for (Object o : t) if (bool(o, "isPinned")) { pinned = true; break; }
+                            CharSequence name = appName(c, t.get(0));
+                            Object pinIcon = old != null && !old.isEmpty() && old.get(0) instanceof Pair ? ((Pair<?, ?>) old.get(0)).first : null;
+                            List<Object> items = new ArrayList<>();
+                            items.add(new Pair<Object, Object>(pinIcon, (pinned ? "Unpin " : "Pin ") + name));
+                            for (Object o : t) {
+                                Drawable ic = icon(c, o);
+                                items.add(new Pair<Object, Object>(ic == null ? null : new NoTint(copy(c, ic)), shortcutName(c, o)));
+                            }
+                            items.add(new Pair<Object, Object>(new Glyph(Glyph.EYE_OFF, Color.BLACK, ((View) p.getResult()).getResources()), "Hide app"));
+                            Xp.setObjectField(ad0, "mItems", items);
+                            Xp.setAdditionalInstanceField(p.thisObject, F_MULTI, Boolean.TRUE);
+                            try { Xp.callMethod(ad0, "notifyDataSetChanged"); } catch (Throwable ignored) { }
+                        } catch (Throwable ignored) { }
+                        return;
+                    }
                     if (contact) {
                         if (Xp.getBooleanField(p.thisObject, "mIsShortcutPinned")) return;
                     } else {
@@ -439,6 +514,29 @@ final class ShareSheet {
                     if (!sOn || p.thisObject.getClass() != cDialog || p.args.length != 2) return;
                     List<?> t = (List<?>) Xp.getObjectField(p.thisObject, "mTargetInfos");
                     if (t == null) return;
+                    if (Boolean.TRUE.equals(Xp.getAdditionalInstanceField(p.thisObject, F_MULTI))) {
+                        p.setResult(null);
+                        final Activity a = activityOf(p.thisObject);
+                        try { Xp.callMethod(p.thisObject, "dismissInternal", false, false); } catch (Throwable ignored) { }
+                        if (a == null || t.isEmpty()) return;
+                        List<String> cs = new ArrayList<>();
+                        boolean pinned = false;
+                        for (Object o : t) { String c = flat(Xp.callMethod(o, "getResolvedComponentName")); if (c != null && !cs.contains(c)) cs.add(c); if (bool(o, "isPinned")) pinned = true; }
+                        int which = (Integer) p.args[1];
+                        if (which >= 1 && which <= t.size()) { launch(a, t.get(which - 1)); return; }
+                        if (which == 0) {
+                            try { Fly.start(a, t.get(0)); } catch (Throwable ignored) { }
+                            for (String c : cs) { setPinned(a, c, !pinned); if (pinned) dropFromOrder(a, c); }
+                            if (!pinned) { List<String> order = new ArrayList<>(sOrderList); for (String c : cs) if (!order.contains(c)) order.add(c); setOrder(order); prefs(a).edit().putString(P_ORDER, TextUtils.join("\n", order)).apply(); }
+                            refresh(a);
+                        } else {
+                            for (String c : cs) { setPinned(a, c, false); dropFromOrder(a, c); }
+                            for (Object o : t) try { Xp.setBooleanField(o, "mPinned", false); } catch (Throwable ignored) { }
+                            hideApps(a, cs, null);
+                            if (pinned) { final Activity fa = a; MAIN.postDelayed(() -> refresh(fa), 450); }
+                        }
+                        return;
+                    }
                     if ((Integer) p.args[1] < t.size()) {
                         if (Xp.getObjectField(p.thisObject, "mShortcutId") == null) {
                             try { Fly.start(activityOf(p.thisObject), t.get((Integer) p.args[1])); } catch (Throwable ignored) { }
@@ -486,6 +584,7 @@ final class ShareSheet {
         if (pruned) sp.edit().putStringSet(P_HIDDEN, new HashSet<>(h)).apply();
         setHidden(h);
         setOrder(split(sp.getString(P_ORDER, "")));
+        setLOrder(split(sp.getString(P_LORDER, "")));
         Set<String> hc = new HashSet<>(sp.getStringSet(P_CHIDDEN, Collections.<String>emptySet()));
         boolean cpruned = false;
         for (String k : new ArrayList<>(hc)) {
@@ -500,6 +599,19 @@ final class ShareSheet {
         sHiddenContacts = hc;
         setCOrder(split(sp.getString(P_CORDER, "")));
         sContactsHidden = sp.getBoolean(P_CHIDE, false);
+    }
+
+    private static void setLOrder(List<String> list) {
+        Map<String, Integer> m = new HashMap<>();
+        for (int i = 0; i < list.size(); i++) m.put(list.get(i), i);
+        sLOrder = m;
+    }
+
+    private static void saveListOrder(Context c, List<?> items) {
+        List<String> keys = new ArrayList<>();
+        for (Object o : items) { String k = key(comps(o)); if (!k.isEmpty() && !keys.contains(k)) keys.add(k); }
+        setLOrder(keys);
+        prefs(c).edit().putString(P_LORDER, TextUtils.join("\n", keys)).apply();
     }
 
     private static void setOrder(List<String> list) {
@@ -893,7 +1005,7 @@ final class ShareSheet {
                 if (!Integer.valueOf(contacts ? 1 : 2).equals(Xp.callMethod(la, "getPositionTargetType", lp))) continue;
                 Object t = Xp.callMethod(la, "targetInfoForPosition", lp, true);
                 if (t == null || !bool(t, "isPinned")) continue;
-                if (contacts ? !bool(t, "isSelectableTargetInfo") : (!bool(t, "isDisplayResolveInfo") || bool(t, "isMultiDisplayResolveInfo"))) continue;
+                if (contacts ? !bool(t, "isSelectableTargetInfo") : (!bool(t, "isDisplayResolveInfo") && !bool(t, "isMultiDisplayResolveInfo"))) continue;
                 boolean dup = false;
                 for (Object[] f : found) if (f[0] == c || ((Integer) f[2]) == lp) { dup = true; break; }
                 if (dup) continue;
@@ -927,6 +1039,9 @@ final class ShareSheet {
     private static final class Drag {
         final Activity act; final Object grid, la; final List<View> pins; final List<Object> targets; final int origin, listPos;
         final float[] cx, cy; final List<ViewGroup> unclipped = new ArrayList<>(); int slot; boolean contacts; List<Integer> positions; Ghost ghost; float refX, refY, gx0, gy0; boolean started, moved, done; final int slop;
+        int zone = ZONE_TOP; float topBottom; View folder;
+        final List<View> lcells = new ArrayList<>(); final List<Object> ltargets = new ArrayList<>(); float[] lx = new float[0], ly = new float[0]; int lslot = -1; float lstep;
+        List<View> folders = new ArrayList<>(); boolean emptiesRow; float rowShift, shiftY;
 
         Drag(Activity a, Object grid, Object la, List<View> pins, List<Object> targets, int origin, int listPos) {
             this.act = a; this.grid = grid; this.la = la; this.pins = pins; this.targets = targets; this.origin = origin; this.listPos = listPos;
@@ -953,6 +1068,30 @@ final class ShareSheet {
                 p.setTranslationZ(0f);
             }
             View cell = pins.get(origin);
+            float maxY = 0; for (float y : cy) maxY = Math.max(maxY, y);
+            topBottom = maxY + cell.getHeight() / 2f;
+            if (!contacts) {
+                folder = findFolder(decor, FOLDER_TYPE);
+                List<View> all = new ArrayList<>(); cells(decor, all);
+                List<Object[]> lf = new ArrayList<>();
+                int[] lc = new int[2];
+                for (View v : all) {
+                    Object o = Xp.getAdditionalInstanceField(v, F_TARGET);
+                    if (o == null || !v.isShown() || v.getWidth() == 0 || bool(o, "isSelectableTargetInfo") || Fly.posType(v) != 3) continue;
+                    v.getLocationInWindow(lc);
+                    lf.add(new Object[]{v, o, lc[0] - ld0[0] + v.getWidth() / 2f, lc[1] - ld0[1] + v.getHeight() / 2f});
+                }
+                ListDrag.sortCells(lf, Math.max(1, cell.getHeight() / 2), cell.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL);
+                lx = new float[lf.size()]; ly = new float[lf.size()];
+                for (int k = 0; k < lf.size(); k++) { lcells.add((View) lf.get(k)[0]); ltargets.add(lf.get(k)[1]); lx[k] = (Float) lf.get(k)[2]; ly[k] = (Float) lf.get(k)[3]; }
+                lstep = lcells.size() >= 2 && ly[0] == ly[1] ? Math.abs(lx[1] - lx[0]) : cell.getWidth();
+                folders = folderViews(decor);
+                View prow = cell.getParent() instanceof View ? (View) cell.getParent() : cell;
+                int cols = colsOf(act, prow);
+                emptiesRow = false;
+                rowShift = prow.getHeight();
+                for (View v : lcells) if (v.getParent() instanceof ViewGroup && ((ViewGroup) v.getParent()).getClipChildren() && !unclipped.contains(v.getParent())) { ((ViewGroup) v.getParent()).setClipChildren(false); unclipped.add((ViewGroup) v.getParent()); }
+            }
             ghost = Ghost.of(cell, decor);
             if (ghost == null) return false;
             gx0 = ghost.getTranslationX(); gy0 = ghost.getTranslationY();
@@ -980,6 +1119,25 @@ final class ShareSheet {
                 if (Math.abs(dx) > slop || Math.abs(dy) > slop) moved = true;
                 ghost.setTranslationX(gx0 + dx); ghost.setTranslationY(gy0 + dy);
                 float centerX = gx0 + dx + ghost.getWidth() / 2f, centerY = gy0 + dy + ghost.getHeight() / 2f;
+                if (!contacts) {
+                    int z = overFolder(act, folder, centerX, centerY) ? ZONE_FOLDER : centerY > topBottom + pins.get(origin).getHeight() * 0.3f ? ZONE_LIST : ZONE_TOP;
+                    if (z != zone) {
+                        if (zone == ZONE_FOLDER) hoverFolder(folder, false);
+                        zone = z;
+                        if (z == ZONE_FOLDER) hoverFolder(folder, true);
+                        Haptics.tick(act);
+                        if (z != ZONE_TOP) { slot = origin; reflow(act, pins, cx, cy, origin, -1); }
+                        else shuffle();
+                    }
+                    int ls = z == ZONE_LIST ? listSlot(lx, ly, centerX, centerY, -1) : -1;
+                    float sh = z != ZONE_TOP && emptiesRow ? -rowShift : 0f;
+                    if (ls != lslot || sh != shiftY) {
+                        lslot = ls; shiftY = sh;
+                        openGap(lcells, lx, ly, lslot, lstep, null, shiftY);
+                        for (View f : folders) slide(f, 0f, shiftY);
+                    }
+                    if (z != ZONE_TOP) return;
+                }
                 int best = 0; float bd = Float.MAX_VALUE;
                 int nearRow = origin; float rd = Float.MAX_VALUE;
                 for (int k = 0; k < cy.length; k++) { float d = Math.abs(cy[k] - centerY); if (d < rd) { rd = d; nearRow = k; } }
@@ -1002,12 +1160,14 @@ final class ShareSheet {
                 else if (slot < origin && k >= slot && k < origin) to = k + 1;
                 View pk = pins.get(k);
                 if (cy[to] != cy[k] && pk.getParent() instanceof View) ((View) pk.getParent()).setTranslationZ(1f);
-                pk.animate().translationX(cx[to] - cx[k]).translationY(cy[to] - cy[k]).setDuration(300).setInterpolator(new OvershootInterpolator(1.5f)).start();
+                slide(pk, cx[to] - cx[k], cy[to] - cy[k]);
             }
         }
 
         void drop(boolean released) {
             done = true;
+            if (zone == ZONE_FOLDER) hoverFolder(folder, false);
+            if (released && !contacts && zone != ZONE_TOP) { leave(zone); return; }
             final boolean still = !moved && slot == origin;
             float tx = gx0 + (cx[slot] - cx[origin]), ty = gy0 + (cy[slot] - cy[origin]);
             ghost.lift(false);
@@ -1034,6 +1194,34 @@ final class ShareSheet {
             }
             if (openDialog) {
                 try { Xp.callMethod(Xp.getObjectField(grid, "mChooserActivityDelegate"), "onTargetLongPressed", listPos); } catch (Throwable ignored) { }
+            }
+        }
+
+        void leave(int z) {
+            if (sDrag == this) sDrag = null;
+            for (ViewGroup g : unclipped) g.setClipChildren(true);
+            final View cell = pins.get(origin);
+            final Object t = targets.get(origin);
+            final List<String> cs = comps(t);
+            final Activity a = act;
+            List<View> others = new ArrayList<>(pins); others.remove(cell);
+            settleRows(others);
+            settleCells(lcells); settleCells(folders);
+            if (cs.isEmpty()) { ViewGroup gp = (ViewGroup) ghost.getParent(); if (gp != null) gp.removeView(ghost); cell.setAlpha(1f); refresh(a); return; }
+            for (String c : cs) { setPinned(a, c, false); dropFromOrder(a, c); }
+            if (z == ZONE_FOLDER) {
+                intoFolder(a, ghost, () -> {
+                    try { Xp.setBooleanField(t, "mPinned", false); } catch (Throwable ignored) { }
+                    cell.setAlpha(1f);
+                    hideApps(a, cs, new ArrayList<View>());
+                    refresh(a);
+                });
+            } else {
+                Object before = lslot >= 0 && lslot < ltargets.size() ? ltargets.get(lslot) : null;
+                placeAt(a, t, before);
+                settleCells(lcells);
+                Fly.fromGhost(a, ghost, cell, flat(Xp.callMethod(t, "getResolvedComponentName")), false);
+                if (!pinInPlace(a, t, false, 0, before)) refresh(a);
             }
         }
 
@@ -1067,10 +1255,622 @@ final class ShareSheet {
                 return;
             }
             List<String> order = new ArrayList<>();
-            for (Object o : dl) if (Xp.getBooleanField(o, "mPinned")) { String c = flat(Xp.callMethod(o, "getResolvedComponentName")); if (c != null && !order.contains(c)) order.add(c); }
+            for (Object o : dl) if (bool(o, "isPinned")) for (String c : comps(o)) if (!order.contains(c)) order.add(c);
             for (String old : sOrderList) if (!order.contains(old)) order.add(old);
             setOrder(order);
             prefs(act).edit().putString(P_ORDER, TextUtils.join("\n", order)).apply();
+        }
+    }
+
+    private static final int ZONE_TOP = 0, ZONE_LIST = 1, ZONE_FOLDER = 2;
+    private static final int ROW_SETTLE = 0x7f7ffd41 + 3;
+
+    private static final int CELL_SETTLE = 0x7f7ffd41 + 4;
+    private static final android.view.animation.Interpolator GLIDE = new PathInterpolator(0.2f, 0f, 0f, 1f);
+
+    private static void slide(View v, float x, float y) {
+        if (v.getTranslationX() == x && v.getTranslationY() == y) return;
+        v.animate().translationX(x).translationY(y).setDuration(340).setInterpolator(GLIDE).start();
+    }
+
+    private static void clearCell(View v) {
+        v.setTag(CELL_SETTLE, null);
+        v.animate().cancel();
+        v.setTranslationX(0f); v.setTranslationY(0f); v.setAlpha(1f);
+    }
+
+    private static void settleCells(final List<View> cells) {
+        for (View v : cells) v.setTag(CELL_SETTLE, Boolean.TRUE);
+        MAIN.postDelayed(() -> { for (View v : cells) if (Boolean.TRUE.equals(v.getTag(CELL_SETTLE))) clearCell(v); }, 1500);
+    }
+
+    private static int listSlot(float[] lx, float[] ly, float x, float y, int skip) {
+        int n = lx.length;
+        if (n == 0) return 0;
+        int near = -1; float rd = Float.MAX_VALUE;
+        for (int k = 0; k < n; k++) { if (k == skip) continue; float d = Math.abs(ly[k] - y); if (d < rd) { rd = d; near = k; } }
+        if (near < 0) return 0;
+        int s = -1;
+        for (int k = 0; k < n; k++) if (k != skip && ly[k] == ly[near] && x < lx[k]) { s = k; break; }
+        if (s < 0) { for (int k = n - 1; k >= 0; k--) if (k != skip && ly[k] == ly[near]) { s = k + 1; break; } }
+        return s < 0 ? n : s;
+    }
+
+    private static void reflow(Activity a, List<View> all, float[] cx, float[] cy, int skip, int insertAt) {
+        if (all.isEmpty()) return;
+        View decor = a.getWindow().getDecorView();
+        int[] ld = new int[2]; decor.getLocationInWindow(ld);
+        List<ViewGroup> rows = new ArrayList<>();
+        for (View v : all) if (v.getParent() instanceof ViewGroup && !rows.contains(v.getParent())) rows.add((ViewGroup) v.getParent());
+        if (rows.isEmpty()) return;
+        ViewGroup first = rows.get(0);
+        int cols = colsOf(a, first);
+        for (ViewGroup r : rows) {
+            if (r.getClipChildren()) { r.setClipChildren(false); r.setTag(ROW_SETTLE + 2, Boolean.TRUE); }
+            if (r.getParent() instanceof ViewGroup && ((ViewGroup) r.getParent()).getClipChildren()) { ((ViewGroup) r.getParent()).setClipChildren(false); r.setTag(ROW_SETTLE + 3, Boolean.TRUE); }
+        }
+        float[] rowY = new float[rows.size()];
+        for (int r = 0; r < rows.size(); r++) {
+            rowY[r] = Float.NaN;
+            for (int k = 0; k < all.size(); k++) if (all.get(k).getParent() == rows.get(r)) { rowY[r] = cy[k]; break; }
+        }
+        float rowH = rows.size() >= 2 && !Float.isNaN(rowY[0]) && !Float.isNaN(rowY[1]) ? rowY[1] - rowY[0] : all.get(0).getHeight();
+        int n = all.size() - (skip >= 0 ? 1 : 0) + (insertAt >= 0 ? 1 : 0);
+        int idx = 0;
+        for (int k = 0; k < all.size(); k++) {
+            if (k == skip) continue;
+            int slot = insertAt >= 0 && idx >= insertAt ? idx + 1 : idx;
+            idx++;
+            int r = slot / cols, inRow = Math.min(cols, n - r * cols), col = slot % cols;
+            ViewGroup row = rows.get(Math.min(r, rows.size() - 1));
+            View cell = all.get(k);
+            int[] lr = new int[2]; row.getLocationInWindow(lr);
+            float rowLeft = lr[0] - ld[0] + row.getPaddingLeft();
+            float rowW = row.getWidth() - row.getPaddingLeft() - row.getPaddingRight();
+            Object base = cell.getTag(ROW_GLIDE + 2);
+            float per = base instanceof Integer && (Integer) base > 0 ? (Integer) base : rowW / cols;
+            boolean partial = inRow < cols;
+            float want = partial ? Math.max(per, Math.min(Math.round(per * 1.2f), rowW / Math.max(1, inRow))) : per;
+            float left = partial ? rowLeft + (rowW - inRow * want) / 2f : rowLeft;
+            if (cell.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) col = inRow - 1 - col;
+            float x = left + want * col + want / 2f;
+            float y = r < rows.size() && !Float.isNaN(rowY[r]) ? rowY[r] : rowY[0] + rowH * r;
+            if (y != cy[k] && cell.getParent() instanceof View) ((View) cell.getParent()).setTranslationZ(1f);
+            slide(cell, x - cx[k], y - cy[k]);
+        }
+    }
+
+    private static void openGap(List<View> cells, float[] cx, float[] cy, int slot, float step, View rowRef) { openGap(cells, cx, cy, slot, step, rowRef, 0f); }
+
+    private static void preDraw(final View v, final Runnable r) {
+        v.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override public boolean onPreDraw() {
+                v.getViewTreeObserver().removeOnPreDrawListener(this);
+                try { r.run(); } catch (Throwable ignored) { }
+                return !v.isLayoutRequested();
+            }
+        });
+    }
+
+    private static String panelKey(View c, int i) { return c.getId() != View.NO_ID ? "id:" + c.getId() : "i:" + i; }
+
+    private static void watchSheet(final Activity a, long ms) {
+        final View decor = a.getWindow().getDecorView();
+        final int[] ld = new int[2]; decor.getLocationInWindow(ld);
+        View d0 = findByClass(decor, "ResolverDrawerLayout");
+        if (!(d0 instanceof ViewGroup)) return;
+        final Map<String, Float> last = new HashMap<>();
+        ViewGroup dr = (ViewGroup) d0;
+        for (int i = 0; i < dr.getChildCount(); i++) { View c = dr.getChildAt(i); last.put(panelKey(c, i), at(c, ld)[1] - c.getTranslationY()); }
+        final long until = android.os.SystemClock.uptimeMillis() + ms;
+        final View[] held = {d0};
+        final float jump = dp(a, 32);
+        decor.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override public boolean onPreDraw() {
+                if (android.os.SystemClock.uptimeMillis() > until || a.isDestroyed()) { decor.getViewTreeObserver().removeOnPreDrawListener(this); return true; }
+                try {
+                    if (held[0] == null || !held[0].isAttachedToWindow()) held[0] = findByClass(decor, "ResolverDrawerLayout");
+                    View d = held[0];
+                    if (!(d instanceof ViewGroup)) return true;
+                    ViewGroup g = (ViewGroup) d;
+                    for (int i = 0; i < g.getChildCount(); i++) {
+                        View c = g.getChildAt(i);
+                        String k = panelKey(c, i);
+                        float layout = at(c, ld)[1] - c.getTranslationY();
+                        Float was = last.get(k);
+                        last.put(k, layout);
+                        if (was == null) continue;
+                        float moved = layout - was;
+                        if (Math.abs(moved) < jump) continue;
+                        float from = c.getTranslationY() - moved;
+                        c.animate().cancel();
+                        c.setTranslationY(from);
+                        c.animate().translationY(0f).setDuration(340).setInterpolator(GLIDE).start();
+                    }
+                } catch (Throwable ignored) { }
+                return true;
+            }
+        });
+    }
+
+    private static float[] at(View v, int[] ld) {
+        int[] l = new int[2]; v.getLocationInWindow(l);
+        return new float[]{l[0] - ld[0], l[1] - ld[1]};
+    }
+
+    private static String flipKey(View v) {
+        Object t = Xp.getAdditionalInstanceField(v, F_TARGET);
+        if (t != null) return bool(t, "isSelectableTargetInfo") ? "c:" + contactKey(t) : "a:" + key(comps(t)) + ":" + Fly.posType(v);
+        Object f = Xp.getAdditionalInstanceField(v, F_FOLDER);
+        return f != null ? "f:" + f : null;
+    }
+
+    private static void flipViews(View decor, List<View> out) {
+        cells(decor, out);
+        for (int type : new int[]{FOLDER_TYPE, CFOLDER_TYPE}) { View f = findFolder(decor, type); if (f != null) out.add(f); }
+    }
+
+    private static void flip(final Activity a, Object moving, Runnable change) {
+        final View decor = a.getWindow().getDecorView();
+        final int[] ld = new int[2]; decor.getLocationInWindow(ld);
+        final Map<String, float[]> old = new HashMap<>();
+        List<View> before = new ArrayList<>(); flipViews(decor, before);
+        for (View v : before) { if (!v.isShown() || v.getWidth() == 0) continue; String k = flipKey(v); if (k != null && !old.containsKey(k)) old.put(k, at(v, ld)); }
+        final String skipTop = moving == null ? null : "a:" + key(comps(moving)) + ":2", skipList = moving == null ? null : "a:" + key(comps(moving)) + ":3";
+        watchSheet(a, 1000);
+        change.run();
+        decor.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override public boolean onPreDraw() {
+                decor.getViewTreeObserver().removeOnPreDrawListener(this);
+                try {
+                    List<View> after = new ArrayList<>(); flipViews(decor, after);
+                    for (View v : after) {
+                        if (Boolean.TRUE.equals(v.getTag(CELL_SETTLE))) v.setTag(CELL_SETTLE, null);
+                        if (v.getParent() instanceof ViewGroup && Boolean.TRUE.equals(((ViewGroup) v.getParent()).getTag(ROW_SETTLE))) clearRow((ViewGroup) v.getParent());
+                        v.animate().cancel(); v.setTranslationX(0f); v.setTranslationY(0f);
+                    }
+                    for (View v : after) {
+                        if (!v.isShown() || v.getWidth() == 0) continue;
+                        String k = flipKey(v);
+                        if (k == null || k.equals(skipTop) || k.equals(skipList)) continue;
+                        float[] o = old.get(k);
+                        if (o == null) { v.setAlpha(0f); v.animate().alpha(1f).setDuration(220).setInterpolator(GLIDE).start(); continue; }
+                        if (v.getAlpha() < 1f && Xp.getAdditionalInstanceField(v, F_DIM) == null) v.setAlpha(1f);
+                        float[] n = at(v, ld);
+                        float dx = o[0] - n[0], dy = o[1] - n[1];
+                        if (Math.abs(dx) < 0.5f && Math.abs(dy) < 0.5f) continue;
+                        if (Math.abs(dy) > 0.5f && v.getParent() instanceof View) ((View) v.getParent()).setTranslationZ(1f);
+                        v.setTranslationX(dx); v.setTranslationY(dy);
+                        v.animate().translationX(0f).translationY(0f).setDuration(340).setInterpolator(GLIDE).start();
+                    }
+                } catch (Throwable ignored) { }
+                return true;
+            }
+        });
+    }
+
+    private static int colsOf(Activity a, View row) {
+        try { Object la = activeAdapter(a); int m = (Integer) Xp.getObjectField(la, "mMaxRankedTargets"); if (m > 0) return m; } catch (Throwable ignored) { }
+        if (row instanceof ViewGroup) {
+            int n = 0; ViewGroup g = (ViewGroup) row;
+            for (int i = 0; i < g.getChildCount(); i++) if (g.getChildAt(i).getVisibility() != View.GONE) n++;
+            return Math.max(1, n);
+        }
+        return 1;
+    }
+
+    private static List<View> folderViews(View decor) {
+        List<View> out = new ArrayList<>();
+        for (int type : new int[]{FOLDER_TYPE, CFOLDER_TYPE}) { View f = findFolder(decor, type); if (f != null) out.add(f); }
+        return out;
+    }
+
+    private static void openGap(List<View> cells, float[] cx, float[] cy, int slot, float step, View rowRef, float dy) {
+        int n = cells.size();
+        for (int k = 0; k < n; k++) {
+            float ox = 0f, oy = 0f;
+            if (slot >= 0 && k >= slot) {
+                if (k + 1 < n) { ox = cx[k + 1] - cx[k]; oy = cy[k + 1] - cy[k]; }
+                else {
+                    View c = cells.get(k);
+                    View row = rowRef != null ? rowRef : c.getParent() instanceof View ? (View) c.getParent() : c;
+                    int[] lr = new int[2], lc = new int[2]; row.getLocationInWindow(lr); c.getLocationInWindow(lc);
+                    float right = lr[0] + row.getWidth();
+                    if (lc[0] + c.getWidth() + step <= right + 1f) ox = step;
+                    else { ox = cx[0] - cx[k]; oy = c.getHeight(); }
+                }
+            }
+            View c = cells.get(k);
+            if (oy != 0f && c.getParent() instanceof View) ((View) c.getParent()).setTranslationZ(1f);
+            slide(c, ox, oy + dy);
+        }
+    }
+
+    private static void settleRows(List<View> cells) {
+        final List<ViewGroup> rows = new ArrayList<>();
+        for (View v : cells) if (v.getParent() instanceof ViewGroup && !rows.contains(v.getParent())) rows.add((ViewGroup) v.getParent());
+        for (ViewGroup r : rows) r.setTag(ROW_SETTLE, Boolean.TRUE);
+        MAIN.postDelayed(() -> { for (ViewGroup r : rows) if (Boolean.TRUE.equals(r.getTag(ROW_SETTLE))) clearRow(r); }, 1500);
+    }
+
+    private static void clearRow(ViewGroup r) {
+        r.setTag(ROW_SETTLE, null);
+        if (Boolean.TRUE.equals(r.getTag(ROW_SETTLE + 2))) { r.setTag(ROW_SETTLE + 2, null); r.setClipChildren(true); }
+        if (Boolean.TRUE.equals(r.getTag(ROW_SETTLE + 3))) { r.setTag(ROW_SETTLE + 3, null); if (r.getParent() instanceof ViewGroup) ((ViewGroup) r.getParent()).setClipChildren(true); }
+        for (int i = 0; i < r.getChildCount(); i++) { View c = r.getChildAt(i); c.animate().cancel(); c.setTranslationX(0f); c.setTranslationY(0f); }
+        r.setTranslationZ(0f);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static boolean pinInPlace(Activity a, Object t, boolean pin, int at, Object before) {
+        Object la = activeAdapter(a);
+        if (la == null) return false;
+        try {
+            List<Object> dl = (List<Object>) Xp.getObjectField(la, "mDisplayList");
+            List<Object> sl = (List<Object>) Xp.getObjectField(la, "mSortedList");
+            final Set<String> set = new HashSet<>(comps(t));
+            if (set.isEmpty()) return false;
+            boolean multi = bool(t, "isMultiDisplayResolveInfo");
+            Object single = null;
+            for (java.util.Iterator<Object> it = dl.iterator(); it.hasNext(); ) {
+                Object o = it.next();
+                if (o == null) continue;
+                boolean hit = false;
+                for (String c : comps(o)) if (set.contains(c)) { hit = true; break; }
+                if (!hit) continue;
+                if (!multi && single == null && !bool(o, "isMultiDisplayResolveInfo")) single = o;
+                it.remove();
+            }
+            Object entry = multi ? t : (single != null ? single : t);
+            try { Xp.setBooleanField(entry, "mPinned", pin); } catch (Throwable ignored) { }
+            if (entry != t) try { Xp.setBooleanField(t, "mPinned", pin); } catch (Throwable ignored) { }
+            int pinned = 0;
+            for (Object o : dl) { boolean pn; try { pn = Xp.getBooleanField(o, "mPinned"); } catch (Throwable e) { pn = bool(o, "isPinned"); } if (pn) pinned++; else break; }
+            if (pin) dl.add(Math.max(0, Math.min(at, pinned)), entry);
+            else if (multi) {
+                int k = pinned;
+                try {
+                    for (Object m : (List<?>) Xp.callMethod(t, "getAllDisplayTargets")) { try { Xp.setBooleanField(m, "mPinned", false); } catch (Throwable ignored) { } dl.add(k++, m); }
+                } catch (Throwable e) { dl.add(k, t); }
+            } else dl.add(pinned, entry);
+            Xp.setAdditionalInstanceField(la, F_PINNED, pin ? pinned + 1 : pinned);
+            for (java.util.Iterator<Object> it = sl.iterator(); it.hasNext(); ) {
+                Object o = it.next();
+                for (String c : comps(o)) if (set.contains(c)) { it.remove(); break; }
+            }
+            if (!pin) {
+                int i = before == null ? -1 : sl.indexOf(before);
+                sl.add(i < 0 ? sl.size() : i, multi ? t : entry);
+            }
+            final Object fla = la;
+            flip(a, t, () -> Xp.callMethod(fla, "notifyDataSetChanged"));
+            return true;
+        } catch (Throwable e) { return false; }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void placeAt(Activity a, Object t, Object before) {
+        try {
+            Object la = activeAdapter(a);
+            if (la == null) return;
+            List<Object> keys = new ArrayList<>((List<Object>) Xp.getObjectField(la, "mSortedList"));
+            String mine = key(comps(t));
+            for (java.util.Iterator<Object> it = keys.iterator(); it.hasNext(); ) if (key(comps(it.next())).equals(mine)) it.remove();
+            int at = before == null ? keys.size() : keys.indexOf(before);
+            if (at < 0) at = keys.size();
+            keys.add(at, t);
+            saveListOrder(a, keys);
+        } catch (Throwable ignored) { }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void placeInList(Activity a, Object t, float x, float y) {
+        try {
+            ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
+            int[] l = new int[2], ld = new int[2]; decor.getLocationInWindow(ld);
+            List<View> all = new ArrayList<>(); cells(decor, all);
+            Object near = null; float best = Float.MAX_VALUE; boolean after = false;
+            for (View v : all) {
+                Object o = Xp.getAdditionalInstanceField(v, F_TARGET);
+                if (o == null || o == t || !v.isShown() || v.getWidth() == 0 || bool(o, "isSelectableTargetInfo") || Fly.posType(v) != 3) continue;
+                v.getLocationInWindow(l);
+                float cx = l[0] - ld[0] + v.getWidth() / 2f, cy = l[1] - ld[1] + v.getHeight() / 2f;
+                float d = (cx - x) * (cx - x) + (cy - y) * (cy - y) * 4f;
+                if (d < best) { best = d; near = o; after = Math.abs(cy - y) < v.getHeight() / 2f ? x > cx : y > cy; }
+            }
+            Object la = activeAdapter(a);
+            if (la == null) return;
+            List<Object> keys = new ArrayList<>((List<Object>) Xp.getObjectField(la, "mSortedList"));
+            String mine = key(comps(t));
+            for (java.util.Iterator<Object> it = keys.iterator(); it.hasNext(); ) if (key(comps(it.next())).equals(mine)) it.remove();
+            int at = near == null ? keys.size() : keys.indexOf(near);
+            if (at < 0) at = keys.size(); else if (after) at++;
+            keys.add(Math.min(at, keys.size()), t);
+            saveListOrder(a, keys);
+        } catch (Throwable ignored) { }
+    }
+
+    private static void intoFolder(final Activity a, final Ghost g, final Runnable then) {
+        ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
+        float[] dest = folderPoint(a, decor);
+        int[] ld = new int[2]; decor.getLocationInWindow(ld);
+        float gx = g.getTranslationX() + g.getWidth() / 2f, gy = g.getTranslationY() + g.getHeight() / 2f;
+        g.lift(false);
+        g.animate().translationXBy(dest[0] - ld[0] - gx).translationYBy(dest[1] - ld[1] - gy).scaleX(0.22f).scaleY(0.22f).alpha(0.15f)
+                .setDuration(320).setInterpolator(new PathInterpolator(0.3f, 0f, 0.15f, 1f))
+                .withEndAction(() -> { ViewGroup p = (ViewGroup) g.getParent(); if (p != null) p.removeView(g); Haptics.tick(a); then.run(); }).start();
+    }
+
+    private static boolean overFolder(Activity a, View folder, float x, float y) {
+        if (folder == null || !folder.isShown()) return false;
+        int[] lf = new int[2], ld = new int[2];
+        folder.getLocationInWindow(lf); a.getWindow().getDecorView().getLocationInWindow(ld);
+        float l = lf[0] - ld[0], t = lf[1] - ld[1];
+        return x >= l && x <= l + folder.getWidth() && y >= t && y <= t + folder.getHeight();
+    }
+
+    private static void hoverFolder(View folder, boolean on) {
+        if (folder == null) return;
+        folder.animate().scaleX(on ? 1.15f : 1f).scaleY(on ? 1.15f : 1f).setDuration(180).setInterpolator(new OvershootInterpolator(2f)).start();
+    }
+
+    private static SharedPreferences pinPrefs(Activity a) {
+        for (Class<?> c = a.getClass(); c != null && c != Activity.class; c = c.getSuperclass()) {
+            for (java.lang.reflect.Method m : c.getDeclaredMethods()) {
+                Class<?>[] ps = m.getParameterTypes();
+                if (!java.lang.reflect.Modifier.isStatic(m.getModifiers()) || m.getReturnType() != SharedPreferences.class || ps.length != 1 || !Context.class.isAssignableFrom(ps[0])) continue;
+                try { m.setAccessible(true); Object sp = m.invoke(null, a); if (sp != null) return (SharedPreferences) sp; } catch (Throwable ignored) { }
+            }
+            for (Field f : c.getDeclaredFields()) {
+                if (!SharedPreferences.class.isAssignableFrom(f.getType()) || !f.getName().toLowerCase(java.util.Locale.ROOT).contains("pin")) continue;
+                try { f.setAccessible(true); Object sp = f.get(a); if (sp != null) return (SharedPreferences) sp; } catch (Throwable ignored) { }
+            }
+        }
+        return a.getSharedPreferences("chooser_pin_settings", Context.MODE_PRIVATE);
+    }
+
+    private static void setPinned(Activity a, String comp, boolean pin) {
+        try {
+            SharedPreferences sp = pinPrefs(a);
+            if (pin) sp.edit().putBoolean(comp, true).commit(); else sp.edit().remove(comp).commit();
+        } catch (Throwable ignored) { }
+    }
+
+    private static void refresh(Activity a) {
+        watchSheet(a, 1500);
+        try { if (!a.isFinishing() && !a.isDestroyed()) { Xp.callMethod(a, "handlePackagesChanged"); return; } } catch (Throwable ignored) { }
+        recreate(a);
+    }
+
+    private static void dropFromOrder(Activity a, String comp) {
+        if (!sOrderList.contains(comp)) return;
+        List<String> order = new ArrayList<>(sOrderList);
+        order.remove(comp);
+        setOrder(order);
+        prefs(a).edit().putString(P_ORDER, TextUtils.join("\n", order)).apply();
+    }
+
+    private static void insertOrder(Activity a, List<String> shown, String comp, int at) {
+        List<String> order = new ArrayList<>(shown);
+        order.remove(comp);
+        order.add(Math.max(0, Math.min(at, order.size())), comp);
+        for (String old : sOrderList) if (!order.contains(old)) order.add(old);
+        setOrder(order);
+        prefs(a).edit().putString(P_ORDER, TextUtils.join("\n", order)).apply();
+    }
+
+    private static final class ListDrag {
+        final Activity act; final View cell, longView; final Object target, la; final String comp; final List<String> cs; final boolean multi;
+        final List<View> tops = new ArrayList<>(); final List<String> topComps = new ArrayList<>();
+        final List<View> lcells = new ArrayList<>(); final List<Object> ltargets = new ArrayList<>();
+        float[] tx, ty, lx, ly; float listTop = Float.MAX_VALUE, step; int slot = -1, lslot, lorigin, zone = ZONE_LIST; View folder;
+        List<View> folders = new ArrayList<>(); boolean addsRow; float rowShift, shiftY;
+        Ghost ghost; float refX, refY, gx0, gy0; boolean started, moved, done; final int slop;
+
+        private ListDrag(Activity a, View cell, View longView, Object target, Object la, String comp) {
+            this.act = a; this.cell = cell; this.longView = longView; this.target = target; this.la = la; this.comp = comp;
+            this.cs = comps(target); this.multi = bool(target, "isMultiDisplayResolveInfo");
+            this.slop = ViewConfiguration.get(a).getScaledTouchSlop();
+        }
+
+        static boolean start(View v) {
+            View cell = v;
+            while (cell != null && Xp.getAdditionalInstanceField(cell, F_TARGET) == null) cell = cell.getParent() instanceof View ? (View) cell.getParent() : null;
+            if (cell == null) return false;
+            Object t = Xp.getAdditionalInstanceField(cell, F_TARGET);
+            if (t == null || bool(t, "isSelectableTargetInfo") || bool(t, "isPinned")) return false;
+            if (!bool(t, "isDisplayResolveInfo") && !bool(t, "isMultiDisplayResolveInfo")) return false;
+            if (Fly.posType(cell) != 3) return false;
+            Activity a = activityOf(cell.getContext());
+            String comp = flat(Xp.callMethod(t, "getResolvedComponentName"));
+            Object la = Xp.getAdditionalInstanceField(cell, F_ADAPTER);
+            if (a == null || comp == null || la == null) return false;
+            ListDrag d = new ListDrag(a, cell, v, t, la, comp);
+            if (!d.lift()) return false;
+            sListDrag = d;
+            return true;
+        }
+
+        private static void sortCells(List<Object[]> found, final int tol, final boolean rtl) {
+            Collections.sort(found, (x, y) -> {
+                float dy = (Float) x[3] - (Float) y[3];
+                if (Math.abs(dy) > tol) return dy < 0 ? -1 : 1;
+                float dx = (Float) x[2] - (Float) y[2];
+                return (rtl ? -dx : dx) < 0 ? -1 : 1;
+            });
+        }
+
+        boolean lift() {
+            ViewGroup decor = (ViewGroup) act.getWindow().getDecorView();
+            int[] l = new int[2], ld = new int[2]; decor.getLocationInWindow(ld);
+            List<View> all = new ArrayList<>(); cells(decor, all);
+            List<Object[]> found = new ArrayList<>(), lfound = new ArrayList<>();
+            for (View v : all) {
+                if (!v.isShown() || v.getWidth() == 0) continue;
+                Object t = Xp.getAdditionalInstanceField(v, F_TARGET);
+                if (t == null || bool(t, "isSelectableTargetInfo")) continue;
+                int type = Fly.posType(v);
+                v.getLocationInWindow(l);
+                Object[] row = new Object[]{v, t, l[0] - ld[0] + v.getWidth() / 2f, l[1] - ld[1] + v.getHeight() / 2f};
+                if (type == 3) { listTop = Math.min(listTop, l[1] - ld[1]); lfound.add(row); continue; }
+                if (type != 2 || !bool(t, "isPinned")) continue;
+                String c = flat(Xp.callMethod(t, "getResolvedComponentName"));
+                if (c == null || topComps.contains(c)) continue;
+                row[1] = c;
+                found.add(row);
+            }
+            final int tol = Math.max(1, cell.getHeight() / 2);
+            final boolean rtl = cell.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+            sortCells(found, tol, rtl); sortCells(lfound, tol, rtl);
+            tx = new float[found.size()]; ty = new float[found.size()];
+            for (int k = 0; k < found.size(); k++) { tops.add((View) found.get(k)[0]); topComps.add((String) found.get(k)[1]); tx[k] = (Float) found.get(k)[2]; ty[k] = (Float) found.get(k)[3]; }
+            lx = new float[lfound.size()]; ly = new float[lfound.size()]; lorigin = -1;
+            for (int k = 0; k < lfound.size(); k++) { View v = (View) lfound.get(k)[0]; lcells.add(v); ltargets.add(lfound.get(k)[1]); lx[k] = (Float) lfound.get(k)[2]; ly[k] = (Float) lfound.get(k)[3]; if (v == cell) lorigin = k; }
+            if (lorigin < 0) return false;
+            lslot = lorigin;
+            step = tops.size() >= 2 && ty[0] == ty[1] ? Math.abs(tx[1] - tx[0]) : lcells.size() >= 2 && ly[0] == ly[1] ? Math.abs(lx[1] - lx[0]) : cell.getWidth();
+            for (View v : lcells) if (v.getParent() instanceof ViewGroup && ((ViewGroup) v.getParent()).getClipChildren()) ((ViewGroup) v.getParent()).setClipChildren(false);
+            folder = findFolder(decor, FOLDER_TYPE);
+            folders = folderViews(decor);
+            if (tops.isEmpty()) { addsRow = false; rowShift = cell.getHeight(); }
+            else {
+                View trow = tops.get(0).getParent() instanceof View ? (View) tops.get(0).getParent() : tops.get(0);
+                int cols = colsOf(act, trow);
+                addsRow = false;
+                rowShift = trow.getHeight();
+            }
+            ghost = Ghost.of(cell, decor);
+            if (ghost == null) return false;
+            gx0 = ghost.getTranslationX(); gy0 = ghost.getTranslationY();
+            cell.setAlpha(0f);
+            ghost.animate().scaleX(1.14f).scaleY(1.14f).setDuration(220).setInterpolator(new OvershootInterpolator(2f)).start();
+            ghost.lift(true);
+            Haptics.tick(act);
+            MAIN.post(() -> {
+                try {
+                    long now = android.os.SystemClock.uptimeMillis();
+                    MotionEvent cancel = MotionEvent.obtain(now, now, MotionEvent.ACTION_CANCEL, 0, 0, 0);
+                    act.getWindow().superDispatchTouchEvent(cancel);
+                    cancel.recycle();
+                } catch (Throwable ignored) { }
+            });
+            return true;
+        }
+
+        void onTouch(MotionEvent e) {
+            if (done) return;
+            int action = e.getActionMasked();
+            if (action == MotionEvent.ACTION_DOWN || (!started && action == MotionEvent.ACTION_MOVE)) { refX = e.getX(); refY = e.getY(); started = true; return; }
+            if (action == MotionEvent.ACTION_MOVE) {
+                float dx = e.getX() - refX, dy = e.getY() - refY;
+                if (Math.abs(dx) > slop || Math.abs(dy) > slop) moved = true;
+                ghost.setTranslationX(gx0 + dx); ghost.setTranslationY(gy0 + dy);
+                float x = gx0 + dx + ghost.getWidth() / 2f, y = gy0 + dy + ghost.getHeight() / 2f;
+                int z = overFolder(act, folder, x, y) ? ZONE_FOLDER : y < listTop - cell.getHeight() * 0.2f ? ZONE_TOP : ZONE_LIST;
+                if (z != zone) {
+                    if (zone == ZONE_FOLDER) hoverFolder(folder, false);
+                    zone = z;
+                    if (z == ZONE_FOLDER) hoverFolder(folder, true);
+                    Haptics.tick(act);
+                }
+                int s = -1;
+                if (z == ZONE_TOP) {
+                    s = tops.size();
+                    int near = -1; float rd = Float.MAX_VALUE;
+                    for (int k = 0; k < ty.length; k++) { float d = Math.abs(ty[k] - y); if (d < rd) { rd = d; near = k; } }
+                    if (near >= 0) for (int k = 0; k < tx.length; k++) if (ty[k] == ty[near] && x < tx[k]) { s = k; break; }
+                    if (near >= 0 && s == tops.size()) { for (int k = tx.length - 1; k >= 0; k--) if (ty[k] == ty[near]) { s = k + 1; break; } }
+                }
+                if (s != slot) { slot = s; nudge(); }
+                int ls = lcells.size() - 1;
+                if (z == ZONE_LIST) {
+                    int nearRow = lorigin; float rd = Float.MAX_VALUE;
+                    for (int k = 0; k < ly.length; k++) { float d = Math.abs(ly[k] - y); if (d < rd) { rd = d; nearRow = k; } }
+                    float bd = Float.MAX_VALUE; ls = lorigin;
+                    for (int k = 0; k < lx.length; k++) { if (ly[k] != ly[nearRow]) continue; float d = Math.abs(lx[k] - x); if (d < bd) { bd = d; ls = k; } }
+                }
+                float sh = z == ZONE_TOP && addsRow ? rowShift : 0f;
+                if (ls != lslot || sh != shiftY) { boolean tick = ls != lslot && z == ZONE_LIST; lslot = ls; shiftY = sh; if (tick) Haptics.tick(act); shuffleList(); }
+            } else if (action == MotionEvent.ACTION_UP) {
+                drop(true);
+            } else if (action == MotionEvent.ACTION_CANCEL) {
+                zone = ZONE_LIST; lslot = lorigin; shiftY = 0f; shuffleList(); drop(false);
+            }
+        }
+
+        void shuffleList() {
+            for (int k = 0; k < lcells.size(); k++) {
+                if (k == lorigin) continue;
+                int to = k;
+                if (lorigin < lslot && k > lorigin && k <= lslot) to = k - 1;
+                else if (lslot < lorigin && k >= lslot && k < lorigin) to = k + 1;
+                slide(lcells.get(k), lx[to] - lx[k], ly[to] - ly[k] + shiftY);
+            }
+            for (View f : folders) slide(f, 0f, shiftY);
+        }
+
+        void nudge() { reflow(act, tops, tx, ty, -1, slot); }
+
+        void drop(boolean released) {
+            done = true;
+            if (zone == ZONE_FOLDER) hoverFolder(folder, false);
+            final int z = released ? zone : ZONE_LIST;
+            final boolean still = released && !moved;
+            if (still || (z == ZONE_LIST && lslot == lorigin)) {
+                ghost.lift(false);
+                ghost.animate().translationX(gx0).translationY(gy0).scaleX(1f).scaleY(1f).setDuration(200)
+                        .setInterpolator(new DecelerateInterpolator(1.6f)).withEndAction(() -> finish(still ? -1 : -2)).start();
+                slot = -1; nudge(); shiftY = 0f; lslot = lorigin; shuffleList();
+                return;
+            }
+            finish(z);
+        }
+
+        @SuppressWarnings("unchecked")
+        void finish(int z) {
+            if (sListDrag == this) sListDrag = null;
+            final Activity a = act;
+            if (z == ZONE_TOP) {
+                settleRows(tops);
+                settleCells(lcells); settleCells(folders);
+                int at = slot < 0 ? topComps.size() : slot;
+                for (int i = cs.size() - 1; i >= 0; i--) { setPinned(a, cs.get(i), true); insertOrder(a, topComps, cs.get(i), at); }
+                Fly.fromGhost(a, ghost, cell, comp, true);
+                if (!pinInPlace(a, target, true, at, null)) refresh(a);
+                return;
+            }
+            if (z == ZONE_FOLDER) {
+                for (View v : tops) { v.animate().cancel(); v.setTranslationX(0f); v.setTranslationY(0f); }
+                final List<View> settle = new ArrayList<>(lcells);
+                intoFolder(a, ghost, () -> { settleCells(settle); cell.setTag(CELL_SETTLE, Boolean.TRUE); hideApps(a, cs, new ArrayList<View>()); });
+                return;
+            }
+            if (z == ZONE_LIST && lslot != lorigin) {
+                try {
+                    List<Object> sl = (List<Object>) Xp.getObjectField(la, "mSortedList");
+                    Object onto = ltargets.get(lslot);
+                    sl.remove(target);
+                    int at = sl.indexOf(onto);
+                    if (at < 0) throw new IllegalStateException();
+                    if (lslot > lorigin) at++;
+                    sl.add(Math.min(at, sl.size()), target);
+                    saveListOrder(a, sl);
+                    Fly.fromGhost(a, ghost, cell, comp, false);
+                    final Object fla = la;
+                    flip(a, target, () -> Xp.callMethod(fla, "notifyDataSetChanged"));
+                    return;
+                } catch (Throwable ignored) { lslot = lorigin; shuffleList(); }
+            }
+            ViewGroup gp = (ViewGroup) ghost.getParent();
+            if (gp != null) gp.removeView(ghost);
+            for (View v : tops) { v.animate().cancel(); v.setTranslationX(0f); v.setTranslationY(0f); if (v.getParent() instanceof View) ((View) v.getParent()).setTranslationZ(0f); }
+            for (View v : lcells) { v.animate().cancel(); v.setTranslationX(0f); v.setTranslationY(0f); }
+            for (View f : folders) { f.animate().cancel(); f.setTranslationY(0f); }
+            cell.setAlpha(1f);
+            if (z == -1) {
+                sBypassLong = true;
+                try { longView.performLongClick(); } catch (Throwable ignored) { } finally { sBypassLong = false; }
+            }
         }
     }
 
@@ -1118,7 +1918,7 @@ final class ShareSheet {
                 if (c == null || c.getLayoutParams() == null) continue;
                 if (c.getLayoutParams().width != want) { c.getLayoutParams().width = want; c.requestLayout(); changed = true; }
             }
-            if (changed || partial) row.post(() -> {
+            if (changed || partial) preDraw(row, () -> {
                 for (View c : cells) {
                     if (c == null || c.getVisibility() != View.VISIBLE) continue;
                     View t1 = c.findViewById(android.R.id.text1);
@@ -1132,12 +1932,13 @@ final class ShareSheet {
                 }
             });
         }
+        if (Boolean.TRUE.equals(row.getTag(ROW_SETTLE))) { clearRow(row); row.setTag(ROW_GLIDE, null); return; }
         Object tag = row.getTag(ROW_GLIDE);
         row.setTag(ROW_GLIDE, null);
         if (!(tag instanceof Object[])) return;
         final int[] lefts = (int[]) ((Object[]) tag)[0];
         int before = (Integer) ((Object[]) tag)[1];
-        if (before == 0 || before == shown || sDrag != null) return;
+        if (before == 0 || before == shown || dragging()) return;
         row.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener() {
             @Override public boolean onPreDraw() {
                 row.getViewTreeObserver().removeOnPreDrawListener(this);
@@ -1207,7 +2008,7 @@ final class ShareSheet {
 
     private static final class Fly {
         final Activity act; final String comp; final boolean toPinned; final ImageView ghost; final ViewGroup decor;
-        final long started = android.os.SystemClock.uptimeMillis(); float lastX = Float.NaN, lastY = Float.NaN; boolean landed;
+        final long started = android.os.SystemClock.uptimeMillis(); float lastX = Float.NaN, lastY = Float.NaN; boolean landed; View hiddenSrc, destCache;
 
         static void start(Activity a, Object target) {
             if (a == null || target == null) return;
@@ -1239,6 +2040,30 @@ final class ShareSheet {
             MAIN.postDelayed(f::poll, 32);
         }
 
+        static void fromGhost(Activity a, Ghost g, View cell, String comp, boolean toPinned) {
+            ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
+            View src = cell.findViewById(android.R.id.icon);
+            ViewGroup gp = (ViewGroup) g.getParent();
+            if (!(src instanceof ImageView) || ((ImageView) src).getDrawable() == null || g.icon.isEmpty()) {
+                if (gp != null) gp.removeView(g);
+                cell.setAlpha(1f);
+                return;
+            }
+            float sc = g.getScaleX(), px = g.getWidth() / 2f, py = g.getHeight() / 2f;
+            float l = g.getTranslationX() + px + (g.icon.left - px) * sc, t = g.getTranslationY() + py + (g.icon.top - py) * sc;
+            int w = Math.max(1, Math.round(g.icon.width() * sc)), h = Math.max(1, Math.round(g.icon.height() * sc));
+            ImageView iv = new ImageView(a);
+            iv.setImageDrawable(copy(a, ((ImageView) src).getDrawable()));
+            iv.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            decor.addView(iv, new FrameLayout.LayoutParams(w, h, Gravity.TOP | Gravity.START));
+            iv.setTranslationX(l); iv.setTranslationY(t);
+            iv.setTranslationZ(dp(a, 24));
+            if (gp != null) gp.removeView(g);
+            Fly f = new Fly(a, decor, comp, toPinned, iv);
+            f.hiddenSrc = cell;
+            MAIN.postDelayed(f::poll, 32);
+        }
+
         private Fly(Activity a, ViewGroup decor, String comp, boolean toPinned, ImageView ghost) {
             this.act = a; this.decor = decor; this.comp = comp; this.toPinned = toPinned; this.ghost = ghost;
         }
@@ -1261,8 +2086,14 @@ final class ShareSheet {
             if (landed) return;
             if (act.isDestroyed() || android.os.SystemClock.uptimeMillis() - started > 1600) { vanish(); return; }
             View dest = null, alt = null;
-            List<View> all = new ArrayList<>(); cells(decor, all);
             Rect vr = new Rect();
+            View dc = destCache;
+            if (dc != null && dc.isAttachedToWindow() && dc.isShown()) {
+                Object t = Xp.getAdditionalInstanceField(dc, F_TARGET);
+                if (t != null && bool(t, "isPinned") == toPinned && comp.equals(flat(Xp.callMethod(t, "getResolvedComponentName")))) dest = dc;
+            }
+            List<View> all = new ArrayList<>();
+            if (dest == null) cells(decor, all);
             for (View v : all) {
                 Object t = Xp.getAdditionalInstanceField(v, F_TARGET);
                 if (t == null || !v.isShown() || v.getWidth() == 0 || bool(t, "isSelectableTargetInfo")) continue;
@@ -1278,16 +2109,12 @@ final class ShareSheet {
                 MAIN.postDelayed(this::poll, 16);
                 return;
             }
+            destCache = dest;
             View iv = dest.findViewById(android.R.id.icon);
             if (iv == null) { vanish(); return; }
             RectF r = iconRect(iv, decor);
             Rect vis = new Rect();
             if (!iv.getGlobalVisibleRect(vis) || vis.height() < iv.getHeight() / 2) { vanish(); return; }
-            if (Float.isNaN(lastX) || Math.abs(lastX - r.left) > 0.5f || Math.abs(lastY - r.top) > 0.5f) {
-                lastX = r.left; lastY = r.top;
-                MAIN.postDelayed(this::poll, 16);
-                return;
-            }
             land(dest, iv, r);
         }
 
@@ -1298,6 +2125,7 @@ final class ShareSheet {
 
         void land(final View cell, final View iv, RectF r) {
             landed = true;
+            if (hiddenSrc != null) { hiddenSrc.setAlpha(1f); hiddenSrc = null; }
             ghost.animate().cancel();
             final View label = cell.findViewById(android.R.id.text1);
             iv.setAlpha(0f);
@@ -1308,15 +2136,18 @@ final class ShareSheet {
             float w = ghost.getWidth(), h = ghost.getHeight();
             fromX -= (fromS - 1f) * w / 2f; fromY -= (fromS - 1f) * h / 2f;
             ghost.setTranslationX(fromX); ghost.setTranslationY(fromY);
-            final float fx = fromX, fy = fromY, fs = fromS, tx = r.left, ty = r.top;
+            final float fx = fromX, fy = fromY, fs = fromS, gw = Math.max(1f, ghost.getWidth());
             ValueAnimator va = ValueAnimator.ofFloat(0f, 1f).setDuration(460);
             va.setInterpolator(new PathInterpolator(0.3f, 0f, 0.1f, 1f));
-            final float arc = (ty > fy ? -1f : 1f) * dp(act, 28);
+            final float arc = (r.top > fy ? -1f : 1f) * dp(act, 28);
             va.addUpdateListener(a -> {
                 float t = (Float) a.getAnimatedValue();
+                RectF live = iv.isAttachedToWindow() ? iconRect(iv, decor) : null;
+                float tx = live != null ? live.left : r.left, ty = live != null ? live.top : r.top;
+                float lsx = live != null ? live.width() / gw : sx;
                 ghost.setTranslationX(fx + (tx - fx) * t);
                 ghost.setTranslationY(fy + (ty - fy) * t + arc * (float) Math.sin(Math.PI * t));
-                float sc = fs + (sx - fs) * t + 0.08f * (float) Math.sin(Math.PI * t);
+                float sc = fs + (lsx - fs) * t + 0.08f * (float) Math.sin(Math.PI * t);
                 ghost.setScaleX(sc); ghost.setScaleY(sc);
             });
             va.addListener(new android.animation.AnimatorListenerAdapter() {
@@ -1334,6 +2165,7 @@ final class ShareSheet {
 
         void vanish() {
             landed = true;
+            if (hiddenSrc != null) { hiddenSrc.setAlpha(1f); hiddenSrc = null; }
             ghost.animate().translationYBy(toPinned ? -dp(act, 24) : dp(act, 48)).alpha(0f).scaleX(0.7f).scaleY(0.7f).setDuration(300)
                     .setInterpolator(new DecelerateInterpolator())
                     .withEndAction(() -> { ViewGroup p = (ViewGroup) ghost.getParent(); if (p != null) p.removeView(ghost); }).start();
@@ -1376,7 +2208,9 @@ final class ShareSheet {
         final boolean newFolder = findFolder(decor, FOLDER_TYPE) == null;
         MAIN.postDelayed(() -> {
             sFolderPop = newFolder ? FOLDER_TYPE : -FOLDER_TYPE;
-            if (!hideAppsInPlace(a, comps)) { sFolderPop = FOLDER_TYPE; recreate(a); }
+            final boolean[] ok = {true};
+            flip(a, null, () -> ok[0] = hideAppsInPlace(a, comps));
+            if (!ok[0]) { sFolderPop = FOLDER_TYPE; recreate(a); }
             for (View v : flown) v.setAlpha(1f);
         }, cellsToFly.isEmpty() ? 0 : 400);
     }
@@ -1501,6 +2335,185 @@ final class ShareSheet {
                 .withEndAction(() -> { then.run(); f.setScaleX(1f); f.setScaleY(1f); f.setAlpha(1f); }).start();
     }
 
+    private static void unhideFromPanel(final Activity a, final int type, final List<Object> go, boolean last, boolean regroup) {
+        if (!regroup) { unhideFromPanel(a, type, go, last); return; }
+        Runnable apply = () -> refresh(a);
+        if (last) deflateFolder(a, type, apply); else apply.run();
+    }
+
+    private static final Map<String, Object> GROUPS = new HashMap<>();
+    private static volatile boolean sRegroup;
+
+    private static void learnGroups(Object la, List<?> az) {
+        boolean wanted = false;
+        Set<String> pinnedPkgs = new HashSet<>();
+        try {
+            Map<String, Integer> count = new HashMap<>();
+            for (Object o : (List<?>) Xp.getObjectField(la, "mDisplayList")) {
+                if (o == null || !bool(o, "isPinned") || bool(o, "isMultiDisplayResolveInfo")) continue;
+                String pkg = pkgOfTarget(o);
+                if (pkg == null) continue;
+                Integer c = count.get(pkg); count.put(pkg, c == null ? 1 : c + 1);
+                if (c != null) pinnedPkgs.add(pkg);
+            }
+        } catch (Throwable ignored) { }
+        for (Object o : az) {
+            if (!bool(o, "isMultiDisplayResolveInfo")) continue;
+            List<String> cs = comps(o);
+            if (cs.isEmpty()) continue;
+            String pkg = ComponentName.unflattenFromString(cs.get(0)).getPackageName();
+            boolean fresh;
+            synchronized (GROUPS) { fresh = !GROUPS.containsKey(pkg); GROUPS.put(pkg, o); }
+            if (fresh && pinnedPkgs.contains(pkg)) wanted = true;
+        }
+        if (wanted && !sRegroup) {
+            sRegroup = true;
+            final Activity a = sAct.get();
+            MAIN.post(() -> { try { if (a != null) refresh(a); } finally { MAIN.postDelayed(() -> sRegroup = false, 1000); } });
+        }
+    }
+
+    private static Object makeGroup(Object first, List<Object> members) {
+        try {
+            Class<?> mc = Xp.findClass("com.android.intentresolver.chooser.MultiDisplayResolveInfo", first.getClass().getClassLoader());
+            if (mc != null) {
+                for (java.lang.reflect.Method m : mc.getDeclaredMethods()) {
+                    Class<?>[] ps = m.getParameterTypes();
+                    if (!java.lang.reflect.Modifier.isStatic(m.getModifiers()) || !mc.isAssignableFrom(m.getReturnType()) || ps.length != 1 || !List.class.isAssignableFrom(ps[0])) continue;
+                    m.setAccessible(true);
+                    return m.invoke(null, new ArrayList<Object>(members));
+                }
+                for (java.lang.reflect.Constructor<?> k : mc.getDeclaredConstructors()) {
+                    Class<?>[] ps = k.getParameterTypes();
+                    if (ps.length == 1 && List.class.isAssignableFrom(ps[0])) { k.setAccessible(true); return k.newInstance(new ArrayList<Object>(members)); }
+                }
+            }
+        } catch (Throwable ignored) { }
+        String pkg = pkgOfTarget(first);
+        synchronized (GROUPS) { return pkg == null ? null : GROUPS.get(pkg); }
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void groupPinned(Object la) {
+        List<Object> dl = (List<Object>) Xp.getObjectField(la, "mDisplayList");
+        Map<String, List<Integer>> at = new LinkedHashMap<>();
+        for (int i = 0; i < dl.size(); i++) {
+            Object o = dl.get(i);
+            if (o == null || !bool(o, "isPinned")) continue;
+            String pkg = pkgOfTarget(o);
+            if (pkg == null) continue;
+            List<Integer> l = at.get(pkg);
+            if (l == null) { l = new ArrayList<>(); at.put(pkg, l); }
+            l.add(i);
+        }
+        List<Integer> drop = new ArrayList<>();
+        for (Map.Entry<String, List<Integer>> e : at.entrySet()) {
+            if (e.getValue().size() < 2) continue;
+            Map<String, Object> unique = new LinkedHashMap<>();
+            for (int i : e.getValue()) {
+                Object item = dl.get(i);
+                List<?> targets;
+                try { targets = (List<?>) Xp.callMethod(item, "getAllDisplayTargets"); }
+                catch (Throwable single) { targets = Collections.singletonList(item); }
+                for (Object member : targets) {
+                    String component = flat(Xp.callMethod(member, "getResolvedComponentName"));
+                    if (component != null && !unique.containsKey(component)) unique.put(component, member);
+                }
+            }
+            List<Object> members = new ArrayList<>(unique.values());
+            if (members.isEmpty()) continue;
+            Object multi = members.size() == 1 ? members.get(0) : makeGroup(members.get(0), members);
+            if (multi == null) continue;
+            try { Xp.setBooleanField(multi, "mPinned", true); } catch (Throwable ignored) { }
+            dl.set(e.getValue().get(0), multi);
+            for (int k = 1; k < e.getValue().size(); k++) drop.add(e.getValue().get(k));
+        }
+        Collections.sort(drop, Collections.reverseOrder());
+        for (int i : drop) dl.remove(i);
+    }
+
+    private static String pkgOfTarget(Object dri) {
+        try { return ((ResolveInfo) Xp.getObjectField(dri, "mResolveInfo")).activityInfo.packageName; }
+        catch (Throwable t) { String c = flat(Xp.callMethod(dri, "getResolvedComponentName")); return c == null ? null : ComponentName.unflattenFromString(c).getPackageName(); }
+    }
+
+    private static Map<Object, List<Object>> groupByApp(List<Object> items) {
+        Map<Object, List<Object>> groups = new HashMap<>();
+        Map<String, Object> rep = new HashMap<>();
+        List<Object> out = new ArrayList<>();
+        for (Object o : items) {
+            String pkg = pkgOfTarget(o);
+            Object r = pkg == null ? null : rep.get(pkg);
+            if (r == null) { if (pkg != null) rep.put(pkg, o); out.add(o); List<Object> m = new ArrayList<>(); m.add(o); groups.put(o, m); }
+            else groups.get(r).add(o);
+        }
+        for (java.util.Iterator<Map.Entry<Object, List<Object>>> it = groups.entrySet().iterator(); it.hasNext(); ) if (it.next().getValue().size() < 2) it.remove();
+        items.clear(); items.addAll(out);
+        return groups;
+    }
+
+    private static List<Object> members(Map<Object, List<Object>> groups, Object rep) {
+        List<Object> m = groups.get(rep);
+        return m != null ? m : Collections.singletonList(rep);
+    }
+
+    private static List<Object> expand(Map<Object, List<Object>> groups, List<Object> reps) {
+        List<Object> out = new ArrayList<>();
+        for (Object r : reps) out.addAll(members(groups, r));
+        return out;
+    }
+
+    private static Drawable appIcon(Context c, Object dri) {
+        try {
+            ResolveInfo ri = (ResolveInfo) Xp.getObjectField(dri, "mResolveInfo");
+            String k = "app:" + ri.activityInfo.packageName;
+            synchronized (ICONS) {
+                Drawable d = ICONS.get(k);
+                if (d == null) { d = ri.activityInfo.applicationInfo.loadIcon(c.getPackageManager()); if (d != null) ICONS.put(k, d); }
+                return d;
+            }
+        } catch (Throwable t) { return icon(c, dri); }
+    }
+
+    private interface Pick { void on(Object member); }
+
+    private static void showChoices(final Activity a, Th th, View anchor, List<Object> members, final Pick pick) {
+        LinearLayout box = new LinearLayout(a);
+        box.setOrientation(LinearLayout.VERTICAL);
+        box.setPadding(dp(a, 8), dp(a, 8), dp(a, 8), dp(a, 8));
+        box.setBackground(new Surface(th, dp(a, 24), th.menu));
+        final PopupWindow pw = new PopupWindow(box, -2, -2, true);
+        for (final Object m : members) {
+            LinearLayout row = new LinearLayout(a);
+            row.setOrientation(LinearLayout.HORIZONTAL);
+            row.setGravity(Gravity.CENTER_VERTICAL);
+            row.setPadding(dp(a, 12), dp(a, 10), dp(a, 20), dp(a, 10));
+            row.setBackground(new RippleDrawable(ColorStateList.valueOf(th.ripple), null, new Surface(th, dp(a, 16), Color.WHITE, false)));
+            ImageView iv = new ImageView(a);
+            Drawable ic = icon(a, m);
+            if (ic != null) iv.setImageDrawable(copy(a, ic));
+            row.addView(iv, new LinearLayout.LayoutParams(dp(a, 28), dp(a, 28)));
+            TextView tv = new TextView(a);
+            tv.setText(shortcutName(a, m)); tv.setTextColor(th.text); tv.setTextSize(15);
+            tv.setPadding(dp(a, 14), 0, 0, 0);
+            row.addView(tv);
+            row.setOnClickListener(x -> { pw.dismiss(); pick.on(m); });
+            box.addView(row, new LinearLayout.LayoutParams(-1, -2));
+        }
+        pw.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        pw.setOutsideTouchable(true);
+        if (!th.superDark) pw.setElevation(dp(a, 6));
+        box.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int[] l = new int[2]; anchor.getLocationOnScreen(l);
+        int sw = a.getResources().getDisplayMetrics().widthPixels, sh = a.getResources().getDisplayMetrics().heightPixels;
+        int x = Math.max(dp(a, 8), Math.min(sw - box.getMeasuredWidth() - dp(a, 8), l[0] + anchor.getWidth() / 2 - box.getMeasuredWidth() / 2));
+        int y = l[1] + anchor.getHeight() + dp(a, 6);
+        if (y + box.getMeasuredHeight() > sh - dp(a, 24)) y = Math.max(dp(a, 24), l[1] - box.getMeasuredHeight() - dp(a, 6));
+        box.setAlpha(0f); box.setScaleX(0.9f); box.setScaleY(0.9f);
+        pw.showAtLocation(anchor, Gravity.NO_GRAVITY, x, y);
+        box.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(160).setInterpolator(new DecelerateInterpolator()).start();
+    }
+
     private static void unhideFromPanel(final Activity a, final int type, final List<Object> go, boolean last) {
         final boolean contacts = type == CFOLDER_TYPE;
         Runnable apply = () -> {
@@ -1554,7 +2567,7 @@ final class ShareSheet {
             View v = (View) Xp.getObjectField(holder, "itemView");
             Xp.setAdditionalInstanceField(v, F_FOLDER, type);
             v.setOnClickListener(x -> {
-                if (sSelecting || sDrag != null) return;
+                if (sSelecting || dragging()) return;
                 Activity a = activityOf(x.getContext());
                 Object g = Xp.getAdditionalInstanceField(x, F_GRID);
                 if (a != null && g != null) openPanel(a, Xp.getObjectField(g, "mChooserListAdapter"), x, type);
@@ -1565,6 +2578,7 @@ final class ShareSheet {
 
     private static void bindFolder(Object grid, Object holder, int type) {
         View v = (View) Xp.getObjectField(holder, "itemView");
+        if (Boolean.TRUE.equals(v.getTag(CELL_SETTLE))) clearCell(v);
         Object vh = v.getTag();
         Xp.setAdditionalInstanceField(v, F_GRID, grid);
         Object la = Xp.getObjectField(grid, "mChooserListAdapter");
@@ -1637,6 +2651,38 @@ final class ShareSheet {
         return d;
     }
 
+    private static CharSequence shortcutName(Context c, Object dri) {
+        try { Object e = Xp.getObjectField(dri, "mExtendedInfo"); if (e instanceof CharSequence && ((CharSequence) e).length() > 0) return (CharSequence) e; } catch (Throwable ignored) { }
+        try {
+            ResolveInfo ri = (ResolveInfo) Xp.getObjectField(dri, "mResolveInfo");
+            CharSequence l = ri.activityInfo.loadLabel(c.getPackageManager());
+            if (l != null && l.length() > 0 && !l.toString().contentEquals(appName(c, dri))) return l;
+            l = ri.loadLabel(c.getPackageManager());
+            if (l != null && l.length() > 0) return l;
+        } catch (Throwable ignored) { }
+        return label(c, dri);
+    }
+
+    private static final class NoTint extends Drawable {
+        final Drawable d;
+        NoTint(Drawable d) { this.d = d; }
+        @Override public void draw(Canvas c) { d.setBounds(getBounds()); d.draw(c); }
+        @Override public void setAlpha(int a) { d.setAlpha(a); }
+        @Override public void setColorFilter(ColorFilter cf) { }
+        @Override public void setTintList(ColorStateList t) { }
+        @Override public void setTintMode(android.graphics.PorterDuff.Mode m) { }
+        @Override public int getOpacity() { return PixelFormat.TRANSLUCENT; }
+        @Override public int getIntrinsicWidth() { return d.getIntrinsicWidth(); }
+        @Override public int getIntrinsicHeight() { return d.getIntrinsicHeight(); }
+    }
+
+    private static CharSequence appName(Context c, Object dri) {
+        try {
+            ResolveInfo ri = (ResolveInfo) Xp.getObjectField(dri, "mResolveInfo");
+            return ri.activityInfo.applicationInfo.loadLabel(c.getPackageManager());
+        } catch (Throwable t) { return label(c, dri); }
+    }
+
     private static CharSequence label(Context c, Object dri) {
         if (bool(dri, "isSelectableTargetInfo")) { Object l = Xp.callMethod(dri, "getDisplayLabel"); return l instanceof CharSequence ? (CharSequence) l : ""; }
         try {
@@ -1676,6 +2722,7 @@ final class ShareSheet {
         final boolean contacts = type == CFOLDER_TYPE;
         final List<Object> items = new ArrayList<>(contacts ? cstash(la) : stash(la));
         if (items.isEmpty()) return;
+        final Map<Object, List<Object>> groups = contacts ? new HashMap<Object, List<Object>>() : groupByApp(items);
         Haptics.tick(a);
         final Th th = theme(a);
         final PanelDialog d = new PanelDialog(a);
@@ -1783,7 +2830,7 @@ final class ShareSheet {
         unhidePill.setOnClickListener(x -> {
             if (picked.isEmpty()) return;
             final List<Object> go = new ArrayList<>(picked);
-            for (Object dri : go) { if (contacts) unhideContact(a, dri); else unhide(a, dri); }
+            for (Object dri : go) { if (contacts) unhideContact(a, dri); else for (Object m : members(groups, dri)) unhide(a, m); }
             items.removeAll(go);
             final boolean last = items.isEmpty();
             selecting[0] = false; picked.clear();
@@ -1799,7 +2846,8 @@ final class ShareSheet {
             grid.postDelayed(() -> {
                 if (last) { quiet[0] = true; d.dismiss(); }
                 else { fill[0].run(); grid.setAlpha(0.4f); grid.animate().alpha(1f).setDuration(160).start(); }
-                unhideFromPanel(a, type, go, last);
+                boolean regroup = false; for (Object g : go) if (groups.containsKey(g)) regroup = true;
+                unhideFromPanel(a, type, expand(groups, go), last, regroup);
             }, 220);
         });
         fill[0] = () -> {
@@ -1816,11 +2864,11 @@ final class ShareSheet {
                 cell.setTag(dri);
                 ImageView iv = new ImageView(a);
                 iv.setId(android.R.id.icon);
-                Drawable ic = icon(a, dri);
+                Drawable ic = groups.containsKey(dri) ? appIcon(a, dri) : icon(a, dri);
                 if (ic != null) iv.setImageDrawable(copy(a, ic));
                 cell.addView(iv, new LinearLayout.LayoutParams(dp(a, 52), dp(a, 52)));
                 TextView lb = new TextView(a);
-                lb.setText(label(a, dri)); lb.setTextColor(th.text); lb.setTextSize(12); lb.setGravity(Gravity.CENTER);
+                lb.setText(groups.containsKey(dri) ? appName(a, dri) : label(a, dri)); lb.setTextColor(th.text); lb.setTextSize(12); lb.setGravity(Gravity.CENTER);
                 lb.setMaxLines(2); lb.setEllipsize(TextUtils.TruncateAt.END);
                 lb.setPadding(0, dp(a, 6), 0, 0);
                 cell.addView(lb, new LinearLayout.LayoutParams(-1, -2));
@@ -1832,19 +2880,20 @@ final class ShareSheet {
                         updatePill.run();
                         return;
                     }
+                    if (!contacts && groups.containsKey(dri)) { showChoices(a, th, cell, groups.get(dri), m -> { quiet[0] = true; d.dismiss(); launch(a, m); }); return; }
                     quiet[0] = true; d.dismiss(); if (contacts) launchContact(a, la, dri); else launch(a, dri);
                 });
                 cell.setOnLongClickListener(x -> {
                     if (selecting[0]) return true;
                     Haptics.tick(a);
                     showUnhide(a, th, cell, contacts ? "Unhide contact" : "Unhide app", () -> {
-                        if (contacts) unhideContact(a, dri); else unhide(a, dri);
+                        if (contacts) unhideContact(a, dri); else for (Object m : members(groups, dri)) unhide(a, m);
                         items.remove(dri);
                         final boolean last = items.isEmpty();
                         cell.animate().scaleX(0.5f).scaleY(0.5f).alpha(0f).setDuration(200).withEndAction(() -> {
                             if (last) { quiet[0] = true; d.dismiss(); }
                             else { fill[0].run(); grid.setAlpha(0.4f); grid.animate().alpha(1f).setDuration(160).start(); }
-                            unhideFromPanel(a, type, Collections.singletonList(dri), last);
+                            unhideFromPanel(a, type, expand(groups, Collections.singletonList(dri)), last, groups.containsKey(dri));
                         }).start();
                     });
                     return true;
@@ -2121,7 +3170,7 @@ final class ShareSheet {
 
     static void setSelecting(Activity a, boolean on) {
         if (sSelecting == on) return;
-        if (on && sDrag != null) return;
+        if (on && dragging()) return;
         sSelecting = on;
         sSel.clear();
         refreshAll(a);

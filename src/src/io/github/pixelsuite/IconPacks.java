@@ -289,10 +289,12 @@ final class IconPacks {
             }
         }
         if (right < 0) return in;
+        if (glass(px, w, left, top, right, bottom)) return in;
         float cx = (left + right + 1) / 2f, cy = (top + bottom + 1) / 2f;
         float side = Math.max(right - left + 1, bottom - top + 1);
-        side *= 0.96f;
         int background = edge(px, w, h, left, top, right, bottom);
+        boolean plateless = background == 0;
+        side *= plateless ? 1.3f : 0.96f;
         Bitmap out = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(out);
         android.graphics.RectF src = new android.graphics.RectF(cx - side / 2f, cy - side / 2f, cx + side / 2f, cy + side / 2f);
@@ -302,11 +304,35 @@ final class IconPacks {
         in.recycle();
         int[] o = new int[w * h];
         out.getPixels(o, 0, w, 0, 0, w, h);
-        if (!extendInside(o, w, h)) {
+        if (!plateless && !extendInside(o, w, h)) {
             for (int i = 0; i < o.length; i++) o[i] = over(o[i], background);
         }
         out.setPixels(o, 0, w, 0, 0, w, h);
         return out;
+    }
+
+    private static boolean glass(int[] px, int w, int l, int t, int r, int b) {
+        long seen = 0, soft = 0;
+        int step = Math.max(1, Math.min(r - l + 1, b - t + 1) / 96);
+        for (int y = t; y <= b; y += step) {
+            int row = y * w;
+            for (int x = l; x <= r; x += step) {
+                int a = px[row + x] >>> 24;
+                if (a <= 24) continue;
+                seen++;
+                if (a < 236) soft++;
+            }
+        }
+        return seen > 0 && soft > seen * 0.22f;
+    }
+
+    static boolean opaqueSquare(Bitmap b) {
+        if (b == null) return true;
+        int w = b.getWidth(), h = b.getHeight(), m = Math.max(1, w / 64);
+        int[][] p = {{m, m}, {w - 1 - m, m}, {m, h - 1 - m}, {w - 1 - m, h - 1 - m}, {w / 2, m}, {w / 2, h - 1 - m}, {m, h / 2}, {w - 1 - m, h / 2}};
+        int solid = 0;
+        for (int[] q : p) if ((b.getPixel(q[0], q[1]) >>> 24) >= 250) solid++;
+        return solid >= 7;
     }
 
     private static boolean extendInside(int[] o, int w, int h) {
@@ -387,7 +413,7 @@ final class IconPacks {
             if ((v >>> 24) < 200) continue;
             sr += (v >> 16) & 255; sg += (v >> 8) & 255; sb += v & 255; n++;
         }
-        if (n == 0) return 0xffffffff;
+        if (n < 8) return 0;
         return 0xff000000 | (int) (sr / n) << 16 | (int) (sg / n) << 8 | (int) (sb / n);
     }
 

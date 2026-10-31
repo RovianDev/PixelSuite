@@ -44,7 +44,32 @@ final class BackdropSurface extends GradientDrawable {
     @Override public void setColor(int color){solid=color;solidSet=true;super.setColor(failed?color|0xff000000:color);}
     @Override public void setColors(int[] colors){solidSet=false;super.setColors(colors);}
 
+    float morph(View view){
+        if(!solidSet||view==null||!isFolder(view)||!DrawerFolders.drawerFolderView(view))return -1f;
+        try{
+            Object clip=LauncherFeatures.get(view,"mClipPath");
+            Path reveal=clip instanceof Path?(Path)clip:clip!=null?(Path)LauncherFeatures.get(clip,"path"):null;
+            float full=view.getWidth();
+            if(full<=0)return -1f;
+            if(reveal==null||reveal.isEmpty())return clip==null?1f:-1f;
+            RectF b=new RectF();reveal.computeBounds(b,true);
+            float disc=0f;
+            try{Object bg=LauncherFeatures.get(LauncherFeatures.get(view,"mFolderIcon"),"mBackground");disc=((Number)LauncherFeatures.get(bg,"previewSize")).floatValue();}catch(Throwable ignored){}
+            if(disc<=0f||disc>=full)disc=full*.25f;
+            float p=(b.width()-disc)/Math.max(1f,full-disc);
+            p=Math.max(0f,Math.min(1f,p/.4f));
+            return p*p*(3f-2f*p);
+        }catch(Throwable error){return -1f;}
+    }
+    private int morphColor;private boolean morphApplied;
+    private static int mix(int from,int to,float t){
+        int out=0;
+        for(int shift=0;shift<32;shift+=8){int a=(from>>>shift)&0xff,b=(to>>>shift)&0xff;out|=(Math.round(a+(b-a)*t)&0xff)<<shift;}
+        return out;
+    }
+
     float strength(View view){
+        float m=morph(view);if(m>=0f)return m;
         if(!solidSet||!isFolder(view))return 1f;
         float dot=0f,len=0f;
         for(int shift=0;shift<32;shift+=8){
@@ -73,6 +98,11 @@ final class BackdropSurface extends GradientDrawable {
     @Override public void draw(Canvas canvas){
         if(night!=mode())refresh();
         View view=host.get();
+        float shape=morph(view);
+        if(shape>=0f){
+            int color=mix(closedColor,openColor,shape);if(failed||!allowed)color|=0xff000000;
+            if(!morphApplied||color!=morphColor){morphColor=color;morphApplied=true;super.setColor(color);}
+        }else morphApplied=false;
         if(view!=null&&allowed&&!failed&&canvas.isHardwareAccelerated()){
             try{drawFrost(canvas,view);}
             catch(Throwable unsupported){

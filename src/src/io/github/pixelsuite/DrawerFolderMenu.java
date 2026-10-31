@@ -76,6 +76,11 @@ final class DrawerFolderMenu {
         }});
         PrivacyFolders.addDrawerRow(card, info, new Runnable() { public void run() { dismiss(); } });
         FolderOptions.row(card, "Remove", 8, false, new Runnable() { public void run() { dismiss(); remove(info); } });
+        if (BadgeClear.has(info)) {
+            FolderOptions.row(card, "Clear badge", 16, false, new Runnable() { public void run() { dismiss(); BadgeClear.clear(info); } });
+            View badge = card.getChildAt(card.getChildCount() - 1);
+            card.removeView(badge); card.addView(badge, 0);
+        }
     }
 
     static void dismiss() {

@@ -212,10 +212,10 @@ final class DrawerFolders {
                 List<Object> visible=new ArrayList<Object>(); String first=LauncherFeatures.identity(source.get(0)); if(first==null)return;
                 long user=Long.parseLong(first.substring(0,first.indexOf('|')));
                 List<LauncherData.Folder> folders=LauncherFeatures.data.folders();
-                List<Object> prepared=new ArrayList<Object>();
+                List<Object> prepared=new ArrayList<Object>();final List<Object[]> placed=new ArrayList<Object[]>();
                 for(LauncherData.Folder f:folders) if(f.user==user){
                     Object ai=Xp.newInstance(type("allapps.BaseAllAppsAdapter$AdapterItem"), BASE|(f.id<<10)|2);
-                    prepared.add(ai);
+                    if(f.pos>=0)placed.add(new Object[]{f.pos,ai});else prepared.add(ai);
                 }
                 java.util.Set<String> present=new java.util.HashSet<String>();
                 for(Object app:source){
@@ -231,8 +231,20 @@ final class DrawerFolders {
                 }
                 if(gone)scheduleRebind();
                 sortStrict(visible);
-                ((List<Object>)get(p.thisObject,"mAdapterItems")).addAll(prepared);
-                p.args[0]=(Integer)p.args[0]+prepared.size(); p.args[1]=visible;
+                if(placed.isEmpty()){
+                    ((List<Object>)get(p.thisObject,"mAdapterItems")).addAll(prepared);
+                    p.args[0]=(Integer)p.args[0]+prepared.size(); p.args[1]=visible;
+                    return;
+                }
+                List<Object> order=new ArrayList<Object>(prepared);order.addAll(visible);
+                Collections.sort(placed,new Comparator<Object[]>(){public int compare(Object[] a,Object[] b){return Integer.compare((Integer)a[0],(Integer)b[0]);}});
+                for(Object[] item:placed)order.add(slotIndex(order,(Integer)item[0]),item[1]);
+                try{p.setResult(interleave(p,order));}
+                catch(Throwable error){
+                    List<Object> all=new ArrayList<Object>(prepared);for(Object[] item:placed)all.add(item[1]);
+                    ((List<Object>)get(p.thisObject,"mAdapterItems")).addAll(all);
+                    p.args[0]=(Integer)p.args[0]+all.size(); p.args[1]=visible;
+                }
             }
         });
         Xp.hookAllMethods(type("folder.Folder"),"updateItemLocationsInDatabaseBatch",new Xp.Callback(){
@@ -324,6 +336,39 @@ final class DrawerFolders {
                 cancelHold();call(p.thisObject,"close",false);if(startDrag(source))allowIntercept(source);p.setResult(true);downs.remove(source);
             }
         });
+    }
+    static boolean slotted(Object entry){
+        if(entry==null)return false;
+        if(type("allapps.BaseAllAppsAdapter$AdapterItem").isInstance(entry))return true;
+        return !LauncherFeatures.privateItem(entry);
+    }
+    static int slotIndex(List<Object> order,int slot){
+        int seen=0;
+        for(int i=0;i<order.size();i++){if(seen>=slot)return i;if(slotted(order.get(i)))seen++;}
+        return order.size();
+    }
+    private static int interleave(Xp.Param p,List<Object> order)throws Throwable{
+        Method method=(Method)p.method;method.setAccessible(true);
+        List<Object> items=(List<Object>)get(p.thisObject,"mAdapterItems");
+        List<?> sections=null;int sectionsBefore=0;
+        try{sections=(List<?>)get(p.thisObject,"mFastScrollerSections");sectionsBefore=sections.size();}catch(Throwable ignored){}
+        Class<?> adapterItem=type("allapps.BaseAllAppsAdapter$AdapterItem");
+        int index=(Integer)p.args[0];List<Object> chunk=new ArrayList<Object>();
+        for(Object entry:order){
+            if(adapterItem.isInstance(entry)){
+                if(!chunk.isEmpty()){index=((Number)method.invoke(p.thisObject,index,chunk)).intValue();chunk=new ArrayList<Object>();}
+                items.add(entry);index++;
+            }else chunk.add(entry);
+        }
+        if(!chunk.isEmpty())index=((Number)method.invoke(p.thisObject,index,chunk)).intValue();
+        if(sections!=null){
+            String last=null;
+            for(int i=sectionsBefore;i<sections.size();i++){
+                String name;try{name=String.valueOf(get(sections.get(i),"sectionName"));}catch(Throwable t){break;}
+                if(name.equals(last)){sections.remove(i);i--;}else last=name;
+            }
+        }
+        return index;
     }
     static void sortStrict(List<Object> list){
         List<Integer> slots=new ArrayList<Integer>();List<Object> apps=new ArrayList<Object>();
@@ -567,6 +612,8 @@ final class DrawerFolders {
         b.append('|').append(ShapeWatch.token(context));
         return b.toString();
     }
+    static void dots(View icon){try{call(icon,"updateDotInfo");icon.invalidate();}catch(Throwable ignored){}}
+    static void refreshDots(){for(Object[] hit:new ArrayList<Object[]>(iconCache.values()))if(hit!=null&&hit[1] instanceof View)dots((View)hit[1]);}
     static void bindFolder(final FrameLayout frame,Context context,int id){
         Object profile=call(context,"getDeviceProfile");
         int height=((Number)get(get(profile,"mAllAppsProfile"),"cellHeightPx")).intValue();
@@ -583,6 +630,7 @@ final class DrawerFolders {
         }else{
             Object[] built=build(frame,context,f);icon=(View)built[0];info=built[1];iconCache.put(id,new Object[]{sig,icon,info});
         }
+        dots(icon);
         DrawerFolderAlignment.seed(icon,frame);
         frame.addView(icon,new FrameLayout.LayoutParams(-1,-1));frame.setTag(info);
         try{styleLabel(icon,frame);}catch(Throwable error){}

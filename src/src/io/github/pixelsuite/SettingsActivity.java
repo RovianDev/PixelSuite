@@ -597,19 +597,21 @@ public class SettingsActivity extends Activity {
 
         new FeaturePage("launcher",LauncherFeatures.GRID,"ic_ps_folder_grid","Folder grid","Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu."),
 
-        new FeaturePage("drawer",LauncherFeatures.DRAWER,"ic_ps_drawer_folder","App drawer folders","Make folders in the app drawer, with their own grids and sorting."),
+        new FeaturePage("drawer",LauncherFeatures.DRAWER,"ic_ps_drawer_folder","App drawer folders","Place folders anywhere among your apps, with their own grids and sorting."),
 
         new FeaturePage("drawer",LauncherFeatures.DRAG_PILL,"ic_ps_home_drop","Drag to home screen","Hold an app in the drawer and drag it onto Add to home screen. Dragging sideways or down keeps you in the drawer."),
 
         new FeaturePage("themes",LauncherFeatures.ICONS,"ic_ps_change_icon","Change icons","Hold an app and choose Change icon. Move and zoom your image, then confirm. It keeps your icon shape."),
 
-        new FeaturePage("gestures",FolderDrag.TWO_FINGER,"ic_ps_two_finger","Two-finger drag","Hold an app with one finger, and swipe with another to turn home or folder pages, or to scroll the app drawer."),
+        new FeaturePage("gestures",FolderDrag.TWO_FINGER,"ic_ps_two_finger","Two-finger drag","Hold a drawer folder with one finger and swipe with another to scroll. For apps, use another finger to turn home or folder pages, or scroll the drawer."),
 
         new FeaturePage("gestures",MultiDrag.KEY,"ic_ps_multi_drag","Move several apps","Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder."),
 
         new FeaturePage("launcher",LauncherFeatures.RENAME,"ic_ps_rename","Rename apps","Hold an app and choose Rename. The new name shows right away on the home screen, in folders, in the drawer and in search."),
 
         new FeaturePage("launcher",LauncherFeatures.LABEL_SIZE,"ic_ps_label_size","Icon label size","Five text sizes for app names on the home screen, in the drawer and on closed folders. Smaller text fits longer names. Icons stay the same size."),
+
+        new FeaturePage("launcher","clear_badge","ic_ps_clear_badge","Clear badge","Hold an app or folder with a notification dot and choose Clear badge."),
 
         new FeaturePage("recents",Feature.CLEAR_ALL,"ic_ps_clearall","Clear all in recents","Clear all is always next to Select and Screenshot in recents, so you don't have to scroll to the far left."),
 
@@ -756,6 +758,12 @@ public class SettingsActivity extends Activity {
         if(NavButtons.KEY.equals(id)){buildNavigationButtons(page);return;}
 
         if(f!=null){
+            if("clear_badge".equals(f.key)){
+                section(page,"How it works");
+                explanation(page,f.summary);
+                explanation(page,"Dismissable notifications are cleared. Notifications that cannot be dismissed remain, but stop showing a dot.");
+                featurePreview(page,f);return;
+            }
 
             LinearLayout controls=group(page);row(controls,f.key,Feature.TAP_CHECK.equals(f.key)?"ic_ps_tapwake_toggle":f.icon,mAccent,(Feature.SCREENSHOT_DOODLES.equals(f.key)||Feature.PHOTOS_DOODLES.equals(f.key)?"Use Doodles":LauncherFeatures.HIDE_SHORTCUTS.equals(f.key)?"Hide app shortcuts":LauncherFeatures.ICONS.equals(f.key)?"Use custom app icons":LauncherFeatures.LABEL_SIZE.equals(f.key)?"Customize icon labels":SuperDark.KEY.equals(f.key)?"Use Super Dark-Mode":"Use "+f.title.toLowerCase(java.util.Locale.ROOT)),"Turn this feature on or off.");if(LauncherFeatures.ICONS.equals(f.key))row(controls,DrawerIconColors.KEY,"ic_ps_drawer",mAccent,"Colorful icons in the app drawer (Stock)","With themed icons on, the app drawer and its folders keep each app's own colors. The home screen stays themed.");finishGroup(controls);
 
@@ -763,8 +771,13 @@ public class SettingsActivity extends Activity {
 
             if(LauncherFeatures.DRAWER.equals(f.key)){
 
-                explanation(page,"Drag an app onto another to make a folder. Use Add apps to pick more. Drag folders to move them.");
+                explanation(page,"Hold a drawer folder and drag it anywhere among your apps. Apps glide aside, and the folder lands with a gentle bounce.");
+                explanation(page,"Touch Move to bottom while holding a folder to start scrolling. Push deeper to scroll faster; use the top edge to scroll up. You can also swipe with a second finger while holding the folder.");
+                explanation(page,"Hold an app or folder with a notification dot and choose Clear badge. Dismissable notifications are cleared; others remain but stop showing a dot.");
+                explanation(page,"Drag an app onto another to make a folder. Use Add apps to pick more.");
 
+                extraPreview(page,"drawer_folder_move","Move folders between apps");
+                extraPreview(page,"drawer_move_bottom","Move to bottom and scroll");
                 featurePreview(page,f);
 
                 section(page,"Sort from the three-dot menu");
@@ -827,7 +840,7 @@ public class SettingsActivity extends Activity {
 
             if(RecentsLock.KEY.equals(f.key))explanation(page,"Locks survive reboots. A recents lock keeps the card; Android can still close the app in the background.");
 
-            if(FolderDrag.TWO_FINGER.equals(f.key))explanation(page,"Touch the drawer to stop it scrolling while you drag.");
+            if(FolderDrag.TWO_FINGER.equals(f.key))explanation(page,"For drawer folders, you can also touch Move to bottom and push deeper to scroll faster, or drag toward the top edge to scroll up.");
 
             if(MultiDrag.KEY.equals(f.key))explanation(page,"Pick apps from the same folder or screen. Removing them from the home screen doesn't uninstall them.");
 
@@ -979,10 +992,10 @@ public class SettingsActivity extends Activity {
 
             LinearLayout controls=group(page);
 
-            row(controls,ShareSheet.KEY,"ic_ps_share_sheet",mAccent,"Share sheet tools","Reorder pinned apps and organize sharing apps and contacts.");finishGroup(controls);
+            row(controls,ShareSheet.KEY,"ic_ps_share_sheet",mAccent,"Share sheet tools","Drag apps to pin and reorder them. Organize sharing apps and contacts.");finishGroup(controls);
 
             section(page,"How it works");
-            explanation(page,"• Pin: hold an app and choose Pin. Drag pinned apps to reorder.\n\n• Hide: hold an app or contact, or use Edit to select several apps.\n\n• Restore: open Hidden apps or Hidden contacts, then hold an item to unhide it. Tap an item to share.\n\n• Contacts row: use Edit, then minus to hide or plus to show.");
+            explanation(page,"• Arrange: drag an app into the top row to pin it, then drag pinned apps to reorder. Apps below keep your chosen order; new apps join at the bottom.\n\n• Hold an app for Pin / Hide. Its shortcuts appear between them; tap the arrow below an app to open its shortcuts directly. Pinning or hiding keeps the app together.\n\n• Hide: hold an app or contact, or use Edit to select several apps. Hidden apps are grouped with their shortcuts and icons.\n\n• Restore: open Hidden apps or Hidden contacts, then hold an item to unhide it. Tap an item to share.\n\n• Contacts row: use Edit, then minus to hide or plus to show.");
 
             extraPreview(page,"209_share_combined","Pin, reorder, hide and restore sharing apps and contacts");
 
@@ -1083,13 +1096,12 @@ public class SettingsActivity extends Activity {
 
         if("changelog".equals(id)){
 
-            explanation(page,"The latest changes, available offline.");
 
             LinearLayout history=group(page);navigation(history,"Full changelog on GitHub","Every feature, fix and release","ic_ps_changelog",new Runnable(){public void run(){startActivity(new Intent(Intent.ACTION_VIEW,android.net.Uri.parse("https://github.com/RovianDev/PixelSuite/releases")));}});finishGroup(history);
 
-            String latest=Changelog.read(this);int next=latest.indexOf("\n## ");if(next>=0)latest=latest.substring(0,next);String[] entries=latest.split("(?m)^## ");
+            String[] entries=Changelog.read(this).split("(?m)^## ");int shown=0;
 
-            for(String entry:entries){if(entry.trim().isEmpty())continue;int end=entry.indexOf('\n');String heading=end<0?entry.trim():entry.substring(0,end).trim();String body=end<0?"":entry.substring(end+1).trim();changelogEntry(page,heading,body);}
+            for(String entry:entries){if(entry.trim().isEmpty())continue;if(shown++>=3)break;int end=entry.indexOf('\n');String heading=end<0?entry.trim():entry.substring(0,end).trim();String body=end<0?"":entry.substring(end+1).trim();int introEnd=body.indexOf("\n\n");if(introEnd>=0&&!body.startsWith("✨")&&!body.startsWith("•")&&!body.startsWith("-"))body=body.substring(introEnd+2).trim();changelogEntry(page,heading,body);}
 
             return;
 

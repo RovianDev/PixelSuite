@@ -78,7 +78,7 @@ final class FolderDrag {
         Activity a = LauncherFeatures.activity.get();
         if (a == null || p.thisObject != a || !(p.args[0] instanceof MotionEvent)) return;
         MotionEvent e = (MotionEvent) p.args[0];
-        boolean paging = LauncherFeatures.on(TWO_FINGER), picking = MultiDrag.on();
+        boolean paging = LauncherFeatures.on(TWO_FINGER) || DrawerDrag.placing(), picking = MultiDrag.on();
         int action = e.getActionMasked();
         if (picking && action == MotionEvent.ACTION_MOVE) MultiDrag.follow();
         if ((!paging && !picking) || !dragging(a)) { second = -1; return; }
@@ -130,7 +130,7 @@ final class FolderDrag {
         VelocityTracker tracker = velocity; velocity = null;
         if (tracker == null) return;
         try {
-            if (!LauncherFeatures.on(TWO_FINGER) || moved < android.view.ViewConfiguration.get(a).getScaledTouchSlop()) return;
+            if ((!LauncherFeatures.on(TWO_FINGER) && !DrawerDrag.placing()) || moved < android.view.ViewConfiguration.get(a).getScaledTouchSlop()) return;
             Object list = drawerList(a); if (list == null) return;
             android.view.ViewConfiguration c = android.view.ViewConfiguration.get(a);
             tracker.computeCurrentVelocity(1000, c.getScaledMaximumFlingVelocity());
@@ -141,6 +141,7 @@ final class FolderDrag {
             android.view.Choreographer.getInstance().postFrameCallback(new android.view.Choreographer.FrameCallback() {
                 public void doFrame(long nanos) {
                     try {
+                        DrawerDrag.listScrolled();
                         DrawerDrag.refreshHover();
                         if (((Number) call(recycler, "getScrollState")).intValue() != 0 && android.os.SystemClock.uptimeMillis() < until && DrawerDrag.active())
                             android.view.Choreographer.getInstance().postFrameCallback(this);
@@ -167,7 +168,7 @@ final class FolderDrag {
             try {
                 Object list = call(call(a, "getAppsView"), "getActiveRecyclerView");
                 int move = Math.round(-dy);
-                if (move != 0) { call(list, "scrollBy", 0, move); anchorX = x; anchorY = y; DrawerDrag.refreshHover(); }
+                if (move != 0) { call(list, "scrollBy", 0, move); anchorX = x; anchorY = y; DrawerDrag.listScrolled(); DrawerDrag.refreshHover(); }
             } catch (Throwable error) { }
             return;
         }

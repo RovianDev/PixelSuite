@@ -339,6 +339,36 @@ final class LauncherIcon {
         try{Activity a=LauncherFeatures.activity.get();if(a==null)return;Object model=get(a,"mModel");call(model,"forceReload","pixelsuite icon reset");}
         catch(Throwable error){}
     }};
+    static void badge(Object info){
+        try{
+            Object bitmap=get(info,"bitmap");if(bitmap==null)return;
+            Object old=get(bitmap,"badgeInfo");if(old==null)return;
+            String pkg=null;try{pkg=(String)call(info,"getTargetPackage");}catch(Throwable ignored){}
+            if(pkg==null){try{android.content.Intent i=(android.content.Intent)get(info,"intent");if(i!=null)pkg=i.getPackage();}catch(Throwable ignored){}}
+            if(pkg==null)return;
+            Object user=get(info,"user");
+            Activity a=LauncherFeatures.activity.get();if(a==null)return;
+            Object store=call(call(a,"getActivityComponent"),"getAppsStore");
+            Object[] apps=(Object[])get(store,"mApps");if(apps==null)return;
+            Object match=null;
+            for(Object app:apps){
+                try{
+                    android.content.ComponentName cn=(android.content.ComponentName)get(app,"componentName");
+                    if(cn==null||!pkg.equals(cn.getPackageName()))continue;
+                    if(user!=null&&!user.equals(get(app,"user")))continue;
+                    match=app;break;
+                }catch(Throwable ignored){}
+            }
+            if(match==null)return;
+            LauncherFeatures.label(match);
+            Object now=get(match,"bitmap");if(now==null||now==old)return;
+            Object nowIcon=get(now,"icon"),oldIcon=get(old,"icon");if(nowIcon!=null&&nowIcon==oldIcon)return;
+            java.lang.reflect.Field f=null;
+            for(Class<?> k=bitmap.getClass();k!=null&&f==null;k=k.getSuperclass())try{f=k.getDeclaredField("badgeInfo");}catch(NoSuchFieldException next){}
+            if(f==null)return;
+            f.setAccessible(true);f.set(bitmap,now);
+        }catch(Throwable ignored){}
+    }
     static void nativeLoaded(Object info){
         String key=LauncherFeatures.identity(info);if(key==null)return;
         Object bitmap=get(info,"bitmap");synchronized(cache){if(ours(bitmap))return;originals.put(info,bitmap);nativeIcons.put(key,bitmap);}
@@ -362,10 +392,12 @@ final class LauncherIcon {
             if(replacement==null&&!missing.contains(key))try{
                 Activity a=LauncherFeatures.activity.get();
                 File f=custom?file(a,key):null;boolean bleed=true;
-                if(f==null||!f.isFile()){f=custom?LauncherIconPack.pickFile(a,key):null;}
-                if(f==null||!f.isFile())f=LauncherIconPack.globalFile(a,key,info);
+                boolean fromPack=false;
+                if(f==null||!f.isFile()){f=custom?LauncherIconPack.pickFile(a,key):null;fromPack=true;}
+                if(f==null||!f.isFile()){f=LauncherIconPack.globalFile(a,key,info);fromPack=true;}
                 if(f==null||!f.isFile()){missing.add(key);}else{
                     Bitmap image=BitmapFactory.decodeFile(f.getPath());if(image==null)throw new IOException("Invalid icon file");
+                    if(fromPack&&!IconPacks.opaqueSquare(image))bleed=false;
                     Object factory=Xp.callStaticMethod(LauncherFeatures.type("icons.LauncherIcons$Companion"),"obtain",a);
                     try{
                         Class<?> optionsType=LauncherFeatures.type("icons.BaseIconFactory$IconOptions");Object options;
@@ -375,6 +407,7 @@ final class LauncherIcon {
                         }
                         LauncherFeatures.set(options,"wrapNonAdaptiveIcon",bleed);LauncherFeatures.set(options,"addShadows",true);
                         LauncherFeatures.set(options,"iconScale",1f);LauncherFeatures.set(options,"isFullBleed",bleed);
+                        if(!bleed)try{LauncherFeatures.set(options,"drawFullBleed",Boolean.FALSE);}catch(Throwable olderLauncher){}
                         LauncherFeatures.set(options,"userHandle",get(info,"user"));
                         replacement=call(factory,"createBadgedIconBitmap",bleed?new Bleed(a.getResources(),image):new BitmapDrawable(a.getResources(),image),options);
                         cache.put(key,replacement);

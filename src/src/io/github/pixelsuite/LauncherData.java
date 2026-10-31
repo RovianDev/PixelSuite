@@ -13,6 +13,7 @@ final class LauncherData {
     static final class Folder {
         int id; String name; int grid; long user;
         int sort;
+        int pos = -1;
         final List<String> apps = new ArrayList<String>();
     }
     synchronized List<Folder> folders() {
@@ -22,7 +23,7 @@ final class LauncherData {
             for (int i = 0; i < array.length(); i++) {
                 JSONObject o = array.getJSONObject(i); Folder f = new Folder();
                 f.id = o.getInt("id"); f.name = o.getString("name");
-                f.grid = grid(o.optInt("grid", 4)); f.user = o.getLong("user"); f.sort = o.optInt("sort", 0) == 1 ? 1 : 0;
+                f.grid = grid(o.optInt("grid", 4)); f.user = o.getLong("user"); f.sort = o.optInt("sort", 0) == 1 ? 1 : 0; f.pos = o.optInt("pos", -1);
                 JSONArray apps = o.getJSONArray("apps");
                 for (int j = 0; j < apps.length(); j++) if (!f.apps.contains(apps.getString(j))) f.apps.add(apps.getString(j));
                 result.add(f);
@@ -36,7 +37,7 @@ final class LauncherData {
             JSONArray array = new JSONArray();
             for (Folder f : folders) {
                 JSONObject o = new JSONObject(); o.put("id", f.id); o.put("name", f.name);
-                o.put("grid", grid(f.grid)); o.put("user", f.user); o.put("sort", f.sort == 1 ? 1 : 0); o.put("apps", new JSONArray(f.apps)); array.put(o);
+                o.put("grid", grid(f.grid)); o.put("user", f.user); o.put("sort", f.sort == 1 ? 1 : 0); if (f.pos >= 0) o.put("pos", f.pos); o.put("apps", new JSONArray(f.apps)); array.put(o);
             }
             boolean ok = prefs.edit().putString("folders", array.toString()).commit();
             if (ok) saves++;
@@ -49,6 +50,7 @@ final class LauncherData {
         if (label.length() == 0) edit.remove("alias:" + identity); else edit.putString("alias:" + identity, label);
         return edit.commit();
     }
+    static final int END = 1 << 24;
     static int grid(int value) { return value == 6 ? 5 : value >= 3 && value <= 5 ? value : 4; }
     int homeGrid(int id, int fallback) { return grid(prefs.getInt("grid:" + id, fallback)); }
 }

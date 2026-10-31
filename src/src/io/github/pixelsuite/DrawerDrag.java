@@ -34,7 +34,7 @@ final class DrawerDrag {
                 s.lastX=x;s.lastY=y;
                 if(s.stay!=null)s.stay.update(x,y);
                 boolean remove=DrawerHomeTarget.updateRemove(x,y,s.layer);
-                if((!remove&&DrawerHomeTarget.update(x,y,s.layer))||(!remove&&y<s.exitY)){s.exitToHome();}
+                if((!remove&&DrawerHomeTarget.update(x,y,s.layer))||(!remove&&s.place==null&&y<s.exitY)){s.exitToHome();}
             }
         });
         try{
@@ -64,6 +64,8 @@ final class DrawerDrag {
         for(android.view.ViewParent p=v.getParent();p!=null;p=p.getParent())if(p==s.stay.folder)return true;
         return false;
     }
+    static boolean placing(){Session s=session;return s!=null&&!s.exited&&s.place!=null;}
+    static void listScrolled(){Session s=session;if(s!=null&&!s.exited&&s.place!=null)s.place.externalScroll();}
     static void refreshHover(){Session s=session;if(s==null||s.exited)return;try{call(s.controller,"handleMoveEvent",s.lastX,s.lastY);}catch(Throwable ignored){}}
     static void pause(){if(session!=null&&!session.exited)cancel();}
     static boolean start(final View source){
@@ -98,7 +100,7 @@ final class DrawerDrag {
     }
     private static void finish(){
         Session s=session;session=null;DrawerHomeTarget.hide();if(s==null)return;
-        if(s.reorder!=null)s.reorder.restore();if(s.push!=null)s.push.restore();s.source.setVisibility(View.VISIBLE);s.clearHover();s.setMember(null);if(s.stay!=null)s.stay.stop();
+        if(s.reorder!=null)s.reorder.restore();if(s.push!=null)s.push.restore();if(s.place!=null)s.place.restore();s.source.setVisibility(View.VISIBLE);s.clearHover();s.setMember(null);if(s.stay!=null)s.stay.stop();
         try{call(s.controller,"removeDropTarget",s.target);}catch(Throwable ignored){}
         if(!s.exited&&LauncherData.saves!=s.savesAtStart&&LauncherFeatures.refreshes==s.refreshesAtStart)LauncherFeatures.refresh();
     }
@@ -107,7 +109,7 @@ final class DrawerDrag {
         final ViewGroup layer;final Object controller;final Object target;final Object dragSource;
         final int exitY;boolean exited,indicating,lifted;View hovered;int localX,localY;
         final int savesAtStart=LauncherData.saves,refreshesAtStart=LauncherFeatures.refreshes;
-        FolderDrag.Stay stay;FolderReorder reorder;FolderPush push;View hoverMember;int lastX,lastY;
+        FolderDrag.Stay stay;FolderReorder reorder;FolderPush push;DrawerPlace place;View hoverMember;int lastX,lastY;
         Session(Activity a,View v,Object i,String k){
             activity=a;source=v;info=i;key=k;layer=(ViewGroup)call(a,"getDragLayer");controller=get(a,"mDragController");
             Object appsView=call(a,"getAppsView");View search=(View)get(appsView,"mSearchContainer");
@@ -115,7 +117,10 @@ final class DrawerDrag {
             exitY=top[1]-origin[1];
             if(exitY<=0)throw new IllegalStateException("Search bar boundary is not laid out");
             if(!k.startsWith("folder:")&&DrawerFolders.isDrawerMember(i)){View open=FolderDrag.openFolder(a);if(open!=null){stay=new FolderDrag.Stay(open,layer);reorder=FolderReorder.start(open,v);}}
-            if(k.startsWith("folder:"))push=new FolderPush(v,layer);
+            if(k.startsWith("folder:")){
+                try{DrawerPlace candidate=new DrawerPlace(v,layer);if(candidate.usable())place=candidate;}catch(Throwable unavailable){}
+                if(place==null)push=new FolderPush(v,layer);
+            }
             target=Proxy.newProxyInstance(LauncherFeatures.loader,new Class<?>[]{type("DropTarget")},this);
             dragSource=Proxy.newProxyInstance(LauncherFeatures.loader,new Class<?>[]{type("DragSource")},new InvocationHandler(){
                 public Object invoke(Object self,Method method,Object[] args){
@@ -132,7 +137,7 @@ final class DrawerDrag {
             String name=method.getName();
             if(name.equals("isDropEnabled"))return !exited;
             if(name.equals("getDropView"))return layer;
-            if(name.equals("getHitRectRelativeToDragLayer")){((Rect)args[0]).set(0,exitY,layer.getWidth(),layer.getHeight());return null;}
+            if(name.equals("getHitRectRelativeToDragLayer")){((Rect)args[0]).set(0,place!=null?0:exitY,layer.getWidth(),layer.getHeight());return null;}
             if(name.equals("onDragOver")||name.equals("onDragEnter")){
                 int x=((Number)get(args[0],"x")).intValue(),y=((Number)get(args[0],"y")).intValue();
                 if(DrawerHomeTarget.overRemove){clearHover();setMember(null);return null;}
@@ -142,6 +147,7 @@ final class DrawerDrag {
                     View m=stay.memberAt(x,y);setMember(m==source?null:m);return null;
                 }
                 if(stay!=null&&reorder!=null)reorder.leave();
+                if(place!=null){clearHover();setMember(null);place.over(x,y);return null;}
                 if(push!=null){clearHover();setMember(null);push.over(x,y);return null;}
                 setMember(null);
                 View candidate=findCell((View)call(activity,"getAppsView"),x,y,layer);
@@ -157,6 +163,7 @@ final class DrawerDrag {
             if(name.equals("onDragExit")){if(!Boolean.TRUE.equals(get(args[0],"dragComplete")))clearHover();return null;}
             if(name.equals("acceptDrop")&&DrawerHomeTarget.overRemove&&stay!=null)return true;
             if(name.equals("acceptDrop")&&stay!=null&&!stay.left)return true;
+            if(name.equals("acceptDrop")&&place!=null){boolean move=place.wouldMove();if(!move)place.restore();return move;}
             if(name.equals("acceptDrop")&&push!=null)return push.active();
             if(name.equals("acceptDrop"))return LauncherFeatures.on(LauncherFeatures.DRAWER)&&hovered!=null && hovered!=source;
             if(name.equals("prepareAccessibilityDrop"))return null;
@@ -168,6 +175,7 @@ final class DrawerDrag {
                 if(reorder!=null){reorder.commit(args[0]);MultiDrag.handledInFolder();return null;}
                 dropInside(m);MultiDrag.drawerDrop();return null;
             }
+            if(name.equals("onDrop")&&place!=null){clearHover();set(args[0],"deferDragViewCleanupPostAnimation",false);if(place.commit(args[0]))MultiDrag.handledInFolder();return null;}
             if(name.equals("onDrop")&&push!=null){clearHover();set(args[0],"deferDragViewCleanupPostAnimation",false);push.commit();return null;}
             if(name.equals("onDrop")){
                 if(reorder!=null)reorder.restore();
@@ -175,9 +183,14 @@ final class DrawerDrag {
                 if(destination==null||destination==source)return null;
                 DrawerFolders.DragSource origin=new DrawerFolders.DragSource(key,info,source);
                 Object targetInfo=destination.getTag();
-                if(!DrawerFolders.isFolder(targetInfo)&&!key.startsWith("folder:")&&!inCenter(destination))DrawerFolders.reorder(origin,targetInfo);
-                else DrawerFolders.drop(origin,targetInfo);
+                int created=DrawerFolders.animateId;String landing=null;
+                if(!DrawerFolders.isFolder(targetInfo)&&!key.startsWith("folder:")&&!inCenter(destination)){if(DrawerFolders.reorder(origin,targetInfo))landing=key;}
+                else if(DrawerFolders.drop(origin,targetInfo)){
+                    if(DrawerFolders.isFolder(targetInfo))landing="folder:"+DrawerFolders.folderIds.get(targetInfo);
+                    else if(DrawerFolders.animateId!=0&&DrawerFolders.animateId!=created)landing="folder:"+DrawerFolders.animateId;
+                }
                 MultiDrag.drawerDrop();
+                DropThud.later(landing,120);
                 return null;
             }
             return objectMethod(self,method,args);
@@ -211,6 +224,7 @@ final class DrawerDrag {
                 if(reorder!=null)reorder.restore();
                 DrawerFolders.closeDrawerFolder(false);
                 MultiDrag.takeOut(key);
+                DropThud.later(key,260);
             }catch(Throwable error){}
         }
         void clearHover(){
@@ -225,6 +239,7 @@ final class DrawerDrag {
             exited=true;DrawerHomeTarget.hide();clearHover();call(controller,"removeDropTarget",target);
             if(reorder!=null)reorder.restore();
             if(push!=null)push.restore();
+            if(place!=null)place.restore();
             if(stay!=null){
                 stay.stop();final View open=stay.folder;
                 open.animate().cancel();

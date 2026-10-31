@@ -335,6 +335,35 @@ final class ComposeFrost {
         return list.get(i);
     }
 
+    private static final Map<Object, List<RecordingSlot>> recordingSlots = new WeakHashMap<Object, List<RecordingSlot>>();
+    private static final class RecordingSlot {
+        java.lang.ref.WeakReference<Object> owner;
+        float l, t, r, b;
+        RecordingSlot(Object node, float left, float top, float right, float bottom) {
+            owner = new java.lang.ref.WeakReference<Object>(node); l = left; t = top; r = right; b = bottom;
+        }
+    }
+    private static Drawable recordingRegion(Frame f, Canvas canvas, float l, float t, float r, float b) {
+        try {
+            Object node = sCanvasNode.get(canvas); if (node == null) return null;
+            synchronized (recordingSlots) {
+                List<RecordingSlot> slots = recordingSlots.get(f.root);
+                if (slots == null) { slots = new ArrayList<RecordingSlot>(); recordingSlots.put(f.root, slots); }
+                int free = -1;
+                for (int i = 0; i < slots.size(); i++) {
+                    RecordingSlot slot = slots.get(i); Object owner = slot.owner.get();
+                    if (owner == node && slot.l == l && slot.t == t && slot.r == r && slot.b == b) return region(f, i);
+                    if (owner == null && free < 0) free = i;
+                }
+                int index = free < 0 ? slots.size() : free;
+                if (index >= 64) return null;
+                RecordingSlot slot = new RecordingSlot(node, l, t, r, b);
+                if (free < 0) slots.add(slot); else slots.set(free, slot);
+                return region(f, index);
+            }
+        } catch (Throwable ignored) { return null; }
+    }
+
     private static final Map<Object, java.lang.ref.WeakReference<Object>> parents = new WeakHashMap<Object, java.lang.ref.WeakReference<Object>>();
     private static final Map<Drawable, Integer> shownAlpha = new WeakHashMap<Drawable, Integer>();
     private static java.lang.reflect.Field sCanvasNode, sBlurNode;
@@ -426,7 +455,7 @@ final class ComposeFrost {
                     Xp.setAdditionalInstanceField(p, "pixelsuite_card", c);
                     return;
                 }
-                Drawable d = region(f, f.regions++); if (d == null) return;
+                Drawable d = "ScreenCaptureUi".equals(titleFilter) ? recordingRegion(f, (Canvas) p.thisObject, l, t, r, b) : region(f, f.regions++); if (d == null) return;
                 colourAlpha(d, 255);
                 d.setBounds(Math.round(l), Math.round(t), Math.round(r), Math.round(b));
                 try { Xp.callMethod(d, "setCornerRadius", rx); } catch (Throwable ignored) { }
