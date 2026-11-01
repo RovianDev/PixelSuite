@@ -410,6 +410,7 @@ public class SettingsActivity extends Activity {
         if(mPrivacyGate!=null){mPrivacyGate.resume();if(!mPrivacyGate.isOpen()){mPrivacyContent.setVisibility(View.INVISIBLE);authenticatePrivacy();return;}}
 
         resumeSettingsContent();
+        if(!GmsScope.checked){GmsScope.checked=true;GmsScope.onRemoved=new Runnable(){public void run(){mMain.post(new Runnable(){public void run(){showGmsScopeDialog(true);}});}};IO.execute(new Runnable(){public void run(){final boolean reboot=GmsScope.needsReboot(SettingsActivity.this);final boolean scoped=!reboot&&GmsScope.scoped(SettingsActivity.this);if(reboot||scoped)mMain.postDelayed(new Runnable(){public void run(){showGmsScopeDialog(reboot);}},1500);}});}
 
     }
 
@@ -565,7 +566,7 @@ public class SettingsActivity extends Activity {
             if(allowed)WatchCell.schedule(this);
         }
     }
-    @Override protected void onDestroy(){if(mSearch!=null)mSearch.dispose();PatronAccess.unwatch(mPatronChanged);if(mIconPackPage!=null)mIconPackPage.dispose();if(mStoreBlockerPage!=null)mStoreBlockerPage.dispose();stopDeveloperGear();if(mPaletteObserver!=null)getContentResolver().unregisterContentObserver(mPaletteObserver);if(mDnaObserver!=null)getContentResolver().unregisterContentObserver(mDnaObserver);if(mPrivacyGate!=null){mPrivacyGate.stop();if(mPrivacyAuthSignal!=null)mPrivacyAuthSignal.cancel();}if(mRestart!=null)mRestart.dispose();for(AlertDialog dialog:new java.util.ArrayList<AlertDialog>(mSettingsDialogs))dialog.dismiss();for(FeaturePreview preview:mPreviews)preview.dispose();super.onDestroy();}
+    @Override protected void onDestroy(){GmsScope.onRemoved=null;if(mSearch!=null)mSearch.dispose();PatronAccess.unwatch(mPatronChanged);if(mIconPackPage!=null)mIconPackPage.dispose();if(mStoreBlockerPage!=null)mStoreBlockerPage.dispose();stopDeveloperGear();if(mPaletteObserver!=null)getContentResolver().unregisterContentObserver(mPaletteObserver);if(mDnaObserver!=null)getContentResolver().unregisterContentObserver(mDnaObserver);if(mPrivacyGate!=null){mPrivacyGate.stop();if(mPrivacyAuthSignal!=null)mPrivacyAuthSignal.cancel();}if(mRestart!=null)mRestart.dispose();for(AlertDialog dialog:new java.util.ArrayList<AlertDialog>(mSettingsDialogs))dialog.dismiss();for(FeaturePreview preview:mPreviews)preview.dispose();super.onDestroy();}
 
     private static boolean sPropChecked;
 
@@ -1440,6 +1441,14 @@ public class SettingsActivity extends Activity {
 
         finishGroup(actions);
 
+    }
+
+    private boolean mGmsScopeShown;
+    private void showGmsScopeDialog(boolean reboot){
+        if(mGmsScopeShown)return;
+        if(isFinishing()||isDestroyed()||!mPageResumed){GmsScope.checked=false;return;}
+        mGmsScopeShown=true;
+        showSettingsDialog(new AlertDialog.Builder(this).setTitle(reboot?GmsScope.REBOOT_TITLE:GmsScope.TITLE).setMessage(reboot?GmsScope.REBOOT_MESSAGE:GmsScope.MESSAGE).setPositiveButton("OK",null).create());
     }
 
     private final java.util.List<AlertDialog> mSettingsDialogs=new java.util.ArrayList<AlertDialog>();

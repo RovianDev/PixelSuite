@@ -1,3 +1,11 @@
+## v3.0.4
+A fix for Play Integrity.
+
+🐞 Bug fixes
+• Play Integrity: Pixel Suite no longer uses Google Play services. It was only used for the soft scrolling edges on a few Google screens opened from Settings (Frosted Glass), and keeping it could cost you Device and Strong integrity, so it wasn't worth it. If you had it ticked in Pixel Suite's LSPosed scope, Pixel Suite now unticks it for you. Just reboot when it asks. Thanks to Ashray V K on Telegram for pointing it out 🙏
+
+Install over your current version and reboot.
+
 ## v3.0.3
 A fix for Patreon sign-in.
 
@@ -33,13 +41,5 @@ A share menu you can arrange by hand, app drawer folders you can place anywhere,
 
 🛠️ Google & Pixel bugs fixed
 • Pixel Launcher: some app icons had clipped corners and rough edges. They're clean now.
-
-Install over your current version and reboot.
-
-## v3.0.1
-A quick fix for the share menu.
-
-🐞 Bug fixes
-• Share menu: pinning an app no longer pushes the suggested apps out of the top row. Your pinned apps come first, and the suggestions fill the rest.
 
 Install over your current version and reboot.

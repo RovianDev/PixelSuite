@@ -121,7 +121,7 @@ for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|secti
         for page in pages:add(page,value(a[2]),' '.join(filter(None,(string(x) for x in re.findall(lit,raw)))),'CHOICE',value(a[1]),icon='ic_ps_toast' if value(a[1])==constants.get('SystemToasts.KEY') else 'ic_ps_info',anchor=value(a[2]) if name=='navChoice' else None)
     elif name=='surfaceStyle':
         style_source=s[s.index('private void surfaceStyle('):s.index('private void labelSize(')]
-        add('themes','Surfaces and blur',' '.join(string(x) for x in re.findall(lit,style_source)),'CHOICE',constants.get('SurfaceStyle.KEY'),anchor='Surfaces and blur')
+        add('themes','Surfaces and blur','play integrity google play services '+ ' '.join(string(x) for x in re.findall(lit,style_source)),'CHOICE',constants.get('SurfaceStyle.KEY'),anchor='Surfaces and blur')
     elif name=='labelSize':
         for page in pages:add(page,'Text size','Icon label size smallest small medium large largest','CHOICE',anchor='Text size')
 def ui_strings(source):

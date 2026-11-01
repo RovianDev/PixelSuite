@@ -9,7 +9,7 @@ import android.widget.*;
 import java.lang.reflect.Method;
 import java.util.*;
 final class SettingsScrollEdges {
- private static final Set<String> PACKAGES=new HashSet<String>(Arrays.asList("com.android.settings","com.google.android.settings.intelligence","com.google.android.gms","com.google.android.apps.wallpaper","com.google.android.permissioncontroller","com.google.android.apps.wellbeing","com.google.android.apps.pixel.support","com.google.android.apps.safetyhub"));
+ private static final Set<String> PACKAGES=new HashSet<String>(Arrays.asList("com.android.settings","com.google.android.settings.intelligence","com.google.android.apps.wallpaper","com.google.android.permissioncontroller","com.google.android.apps.wellbeing","com.google.android.apps.pixel.support","com.google.android.apps.safetyhub"));
  private static final Set<Integer> tasks=new HashSet<Integer>();
  private static final WeakHashMap<Activity,Boolean> allowed=new WeakHashMap<Activity,Boolean>();
  private static final Map<View,Chrome> barOwners=new IdentityHashMap<View,Chrome>();
@@ -18,7 +18,6 @@ final class SettingsScrollEdges {
  static String scopeNote(){return "Settings soft scrolling edges (Frosted Glass only):\n"+
  "\u2022 **Settings** (com.android.settings)\n"+
  "\u2022 **Settings Services** (com.google.android.settings.intelligence)\n"+
- "\u2022 **Google Play services** (com.google.android.gms)\n"+
  "\u2022 **Wallpaper & style** (com.google.android.apps.wallpaper)\n"+
  "\u2022 **Permission Controller** (com.google.android.permissioncontroller)\n"+
  "\u2022 **Digital Wellbeing** (com.google.android.apps.wellbeing)\n"+

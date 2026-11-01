@@ -22,7 +22,6 @@ com.android.intentresolver
 com.android.chrome
 com.android.imsstack
 com.android.phone
-com.google.android.gms
 com.google.android.apps.wallpaper
 com.google.android.permissioncontroller
 com.google.android.apps.wellbeing

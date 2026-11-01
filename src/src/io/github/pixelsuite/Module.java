@@ -8,6 +8,7 @@ public class Module extends XposedModule {
     private static final String SYSTEMUI = "com.android.systemui";
     private static final String LAUNCHER = "com.google.android.apps.nexuslauncher";
     private static final String FILES = "com.google.android.apps.nbu.files";
+    private static final String GMS = "com.google.android.gms";
 
     public Module() {
         super();
@@ -39,6 +40,7 @@ public class Module extends XposedModule {
         if (!param.isFirstPackage()) return;
         ClassLoader cl = param.getClassLoader();
         String pkg = param.getPackageName();
+        if (GMS.equals(pkg)) return;
         Safe.run(() -> SettingsScrollEdges.install(cl, pkg));
         if (SYSTEMUI.equals(pkg) && screenshotProcess()) {
             Safe.run(() -> SuperDark.installSystemUi(cl));

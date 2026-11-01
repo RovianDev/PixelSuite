@@ -1,6 +1,6 @@
 [![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases)
 
-# Pixel Suite 3.0.3
+# Pixel Suite 3.0.4
 
 Your Pixel. Your way.
 
@@ -49,6 +49,8 @@ A share menu you can arrange by hand, app drawer folders you can place anywhere,
 3.0.2 lets you arrange the share menu, place app drawer folders anywhere and clear notification dots, and fixes icon packs. See the [3.0.2 release notes](RELEASE-NOTES-v3.0.2.md).
 
 3.0.3 fixes Patreon sign-in when the browser can't open Pixel Suite. See the [3.0.3 release notes](RELEASE-NOTES-v3.0.3.md).
+
+3.0.4 stops using Google Play services, which could cost Device and Strong integrity. See the [3.0.4 release notes](RELEASE-NOTES-v3.0.4.md).
 
 The biggest Pixel Suite release yet:
 
@@ -263,7 +265,7 @@ Pixel Suite has no ads, analytics or tracking, and the module itself never conne
 
 **Root + LSPosed API 102 required.** Tested on Pixel 11 Pro with Android 17.
 
-1. Install **PixelSuite-v3.0.3.apk** over your current version.
+1. Install **PixelSuite-v3.0.4.apk** over your current version.
 2. Enable Pixel Suite in LSPosed and grant its app root access.
 3. Open Pixel Suite and turn on the features you want. Each feature page has an **LSPosed scope** section listing the apps to select for it.
 4. Select those apps in LSPosed, then reboot.
