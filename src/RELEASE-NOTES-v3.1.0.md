@@ -78,7 +78,7 @@
 
 ### 🌐 VPN
 
-- 🌍 **Browse from another country** on free servers worldwide, with the fastest server first.
+- 🌍 **Browse from another country** on open-source servers worldwide, with the fastest server first.
 - 📱 **For the whole phone or Chrome only.** Chrome's location follows the VPN.
 
 *In Patreon › VPN, or from its Quick Settings tile.*

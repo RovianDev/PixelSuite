@@ -35,7 +35,7 @@ Pixel Suite in 14 languages, Chrome+ and Gboard+, a built-in VPN, Backup & Resto
 
 - 🚀 **Chrome+**: Chrome's controls move to the bottom, with smoother hand-crafted animations for tabs, the tab switcher and new tabs. The orange + in the tab switcher opens an incognito tab. (Patreon › Google apps › Chrome+)
 - 🧩 **Extensions for Chrome**: VPN, Ad Blocker and Dark pages in one sheet, from the puzzle button in Chrome's toolbar. Tap one to use it, or hold it to pin it to the toolbar.
-- 🌐 **VPN**: browse from another country on free servers worldwide, for the whole phone or Chrome only, with the fastest server first. Chrome's location follows the VPN. (Patreon › VPN, or its Quick Settings tile)
+- 🌐 **VPN**: browse from another country on open-source servers worldwide, for the whole phone or Chrome only, with the fastest server first. Chrome's location follows the VPN. (Patreon › VPN, or its Quick Settings tile)
 - ⭐ **Speed dial**: round icons for up to 19 websites on Chrome's new tab page. Drag to move them, or drop one on another to make a folder that follows Super Dark. Give any website your own round picture.
 - 🛡️ **Ad Blocker**: pick a filtering level for each website. Complete also hides cookie banners and pop-ups, and you can remove any part of a page yourself. Its switch in the Extensions sheet turns it off or on for every website. (Chrome+ › Extensions)
 - 🌙 **Dark pages**: websites open dark with no white flash, or pure black with Super Dark: always, with your phone's dark mode, or on a schedule. Pictures and videos keep their colours. (Chrome+ › Extensions)
@@ -287,7 +287,7 @@ Bugs in Google's own apps that Pixel Suite now fixes:
 
 ## 🔒 Privacy
 
-Pixel Suite has no ads, analytics or tracking, and the module itself never connects to the internet. The app goes online only to check for updates (you can turn this off), to download the Ad blocker's lists while it's on, to load the VPN's list of free volunteer servers and connect to the one you pick while the VPN is on, to share your Pixel Stack score when you tap Share, and for Patreon sign-in or the eSIM purchase if you use them. Doodles, screenshots, photos, backups and call recordings stay on your phone.
+Pixel Suite has no ads, analytics or tracking, and the module itself never connects to the internet. The app goes online only to check for updates (you can turn this off), to download the Ad blocker's lists while it's on, to load the VPN's list of open-source volunteer servers and connect to the one you pick while the VPN is on, to share your Pixel Stack score when you tap Share, and for Patreon sign-in or the eSIM purchase if you use them. Doodles, screenshots, photos, backups and call recordings stay on your phone.
 
 ## 📥 Install and scope
 
