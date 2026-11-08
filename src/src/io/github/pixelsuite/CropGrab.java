@@ -12,7 +12,6 @@ final class CropGrab {
 
     private static boolean active, started;
     private static float downX, downY, lastX, lastY;
-    private static long downAt;
     private static final android.os.Handler main = new android.os.Handler(android.os.Looper.getMainLooper());
 
     static boolean wouldTake(View c, float rawX, float rawY) {
@@ -41,7 +40,7 @@ final class CropGrab {
             if (cut == null || !(onMark(c, cut, e.getRawX(), e.getRawY()) || (TextTool.textSelected() && wouldTake(c, e.getRawX(), e.getRawY())))) return false;
             if (TextTool.onSelectedText(e.getRawX(), e.getRawY())) return false;
             active = true;
-            downX = lastX = e.getX(); downY = lastY = e.getY(); downAt = e.getDownTime();
+            downX = lastX = e.getX(); downY = lastY = e.getY();
             toolLabel = "CAPTION".equals(page) ? toolNamed(c, "caption", "text") : selectedTool(c);
             if ("CAPTION".equals(page)) { TextTool.stopEditing(true); TextTool.cropDragFromText(); }
             CropRemember.pressCrop();

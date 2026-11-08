@@ -21,12 +21,15 @@ final class CallRecordingSettings {
     private final View row;
     private final TextView summary;
     private final Presenter presenter;
-    private static String cachedFolder,cachedLabel,cachedMode;
+    private static String cachedFolder,cachedLabel,cachedMode,cachedQuality;
     boolean cached(){return folderLoaded&&modeLoaded;}
     private String folder = DEFAULT;
     private View modeRow;
     private TextView modeSummary;
     private String mode = "auto";
+    private View qualityRow;
+    private TextView qualitySummary;
+    private String quality = CallRecording.QUALITY_HD;
     private boolean masterEnabled,folderLoaded,modeLoaded;
     private Runnable initialLoad;
     void onInitialLoad(Runnable done){initialLoad=done;}
@@ -34,37 +37,59 @@ final class CallRecordingSettings {
 
     CallRecordingSettings(Activity activity, ExecutorService io, View row, TextView summary, Presenter presenter) {
         this.activity=activity;this.io=io;this.row=row;this.summary=summary;this.presenter=presenter;
-        if(cachedFolder!=null){folder=cachedFolder;summary.setText(cachedLabel);folderLoaded=true;}
+        if(cachedFolder!=null){folder=cachedFolder;summary.setText(I18n.cs(cachedLabel));folderLoaded=true;}
         if(cachedMode!=null){mode=cachedMode;modeLoaded=true;}
+        if(cachedQuality!=null)quality=cachedQuality;
     }
     void modeRow(View view,TextView label){modeRow=view;modeSummary=label;if(modeLoaded)showMode();}
+    void qualityRow(View view,TextView label){qualityRow=view;qualitySummary=label;if(modeLoaded)showQuality();updateEnabled();}
     void enabled(boolean enabled) {
         masterEnabled=enabled;updateEnabled();
     }
     private void updateEnabled(){
-        if(!PatronAccess.unlocked()){row.setEnabled(true);row.setClickable(true);row.setAlpha(.4f);if(modeRow!=null){modeRow.setEnabled(true);modeRow.setClickable(true);modeRow.setAlpha(.4f);}return;}
+        if(!PatronAccess.unlocked()){row.setEnabled(true);row.setClickable(true);row.setAlpha(.4f);if(modeRow!=null){modeRow.setEnabled(true);modeRow.setClickable(true);modeRow.setAlpha(.4f);}if(qualityRow!=null){qualityRow.setEnabled(true);qualityRow.setClickable(true);qualityRow.setAlpha(.4f);}return;}
         boolean folderEnabled=masterEnabled&&folderLoaded;
         row.setEnabled(folderEnabled);row.setClickable(folderEnabled);row.setAlpha(folderEnabled?1f:.4f);
         if(modeRow!=null){boolean modeEnabled=masterEnabled&&modeLoaded;modeRow.setEnabled(modeEnabled);modeRow.setClickable(modeEnabled);modeRow.setAlpha(modeEnabled?1f:.4f);}
+        if(qualityRow!=null){boolean qualityEnabled=masterEnabled&&modeLoaded;qualityRow.setEnabled(qualityEnabled);qualityRow.setClickable(qualityEnabled);qualityRow.setAlpha(qualityEnabled?1f:.4f);}
     }
     void reload() {
         io.execute(new Runnable(){public void run(){
-            List<String> snapshot=Root.run("settings get secure "+CallRecording.FOLDER_KEY+"; settings get secure "+CallRecording.MODE_KEY);
+            List<String> snapshot=Root.run("settings get secure "+CallRecording.FOLDER_KEY+"; settings get secure "+CallRecording.MODE_KEY+"; settings get secure "+CallRecording.QUALITY_KEY);
             final boolean modeOk=snapshot!=null&&snapshot.size()>=2;
             final String value=modeOk?(snapshot.get(0).startsWith("tree:")?snapshot.get(0):DEFAULT):null;
             final String selected=modeOk&&"manual".equals(snapshot.get(1))?"manual":"auto";
+            final String level=snapshot!=null&&snapshot.size()>=3&&(CallRecording.QUALITY_STANDARD.equals(snapshot.get(2))||CallRecording.QUALITY_LOSSLESS.equals(snapshot.get(2)))?snapshot.get(2):CallRecording.QUALITY_HD;
             final String folderLabel=value==null?null:label(value);
             activity.runOnUiThread(new Runnable(){public void run(){if(!activity.isFinishing()&&!activity.isDestroyed()){
-                if(value!=null){folder=value;cachedFolder=value;cachedLabel=folderLabel;summary.setText(folderLabel);folderLoaded=true;}else if(!folderLoaded)summary.setText("Couldn't load folder");
-                if(modeOk){mode=selected;cachedMode=selected;showMode();modeLoaded=true;}else if(!modeLoaded&&modeSummary!=null)modeSummary.setText("Couldn't load recording mode");
+                if(value!=null){folder=value;cachedFolder=value;cachedLabel=folderLabel;summary.setText(I18n.cs(folderLabel));folderLoaded=true;}else if(!folderLoaded)summary.setText(I18n.cs("Couldn't load folder"));
+                if(modeOk){mode=selected;cachedMode=selected;showMode();quality=level;cachedQuality=level;showQuality();modeLoaded=true;}else if(!modeLoaded&&modeSummary!=null)modeSummary.setText(I18n.cs("Couldn't load recording mode"));
                 updateEnabled();ready();
             }}});
         }});
     }
-    private void showMode(){if(modeSummary!=null)modeSummary.setText("manual".equals(mode)?"Manual: tap Record during a call":"Automatic: every call is recorded");}
+    private void showMode(){if(modeSummary!=null)modeSummary.setText(I18n.cs("manual".equals(mode)?"Manual: tap Record during a call":"Automatic: every call is recorded"));}
+    private static final String[] QUALITY_VALUES={CallRecording.QUALITY_STANDARD,CallRecording.QUALITY_HD,CallRecording.QUALITY_LOSSLESS};
+    private void showQuality(){if(qualitySummary!=null)qualitySummary.setText(I18n.cs(CallRecording.QUALITY_STANDARD.equals(quality)?"Standard: smaller files":CallRecording.QUALITY_LOSSLESS.equals(quality)?"Lossless: clearest voice, WAV files":"HD: clearer voice (default)"));}
+    void chooseQuality(){
+        int current=CallRecording.QUALITY_STANDARD.equals(quality)?0:CallRecording.QUALITY_LOSSLESS.equals(quality)?2:1;
+        presenter.show(new AlertDialog.Builder(activity).setTitle(I18n.cs("Recording quality"))
+            .setSingleChoiceItems(I18n.all(new String[]{"Standard: phone-call quality, smallest files","HD: twice the detail, clearer voice (default)","Lossless: HD without compression, large WAV files"}),current,new android.content.DialogInterface.OnClickListener(){
+                public void onClick(android.content.DialogInterface dialog,int which){
+                    dialog.dismiss();final String selected=QUALITY_VALUES[which];
+                    io.execute(new Runnable(){public void run(){
+                        final boolean ok=Root.run("settings put secure "+CallRecording.QUALITY_KEY+" "+selected)!=null;
+                        activity.runOnUiThread(new Runnable(){public void run(){
+                            if(activity.isFinishing()||activity.isDestroyed())return;
+                            if(ok){quality=selected;cachedQuality=selected;showQuality();}else message("Couldn't save: root access needed");
+                        }});
+                    }});
+                }
+            }).setNegativeButton(I18n.cs("Cancel"),null).create());
+    }
     void chooseMode(){
-        presenter.show(new AlertDialog.Builder(activity).setTitle("Recording mode")
-            .setSingleChoiceItems(new String[]{"Automatic (default)","Manual"},"manual".equals(mode)?1:0,new android.content.DialogInterface.OnClickListener(){
+        presenter.show(new AlertDialog.Builder(activity).setTitle(I18n.cs("Recording mode"))
+            .setSingleChoiceItems(I18n.all(new String[]{"Automatic (default)","Manual"}),"manual".equals(mode)?1:0,new android.content.DialogInterface.OnClickListener(){
                 public void onClick(android.content.DialogInterface dialog,int which){
                     dialog.dismiss();final String selected=which==1?"manual":"auto";
                     io.execute(new Runnable(){public void run(){
@@ -75,11 +100,11 @@ final class CallRecordingSettings {
                         }});
                     }});
                 }
-            }).setNegativeButton("Cancel",null).create());
+            }).setNegativeButton(I18n.cs("Cancel"),null).create());
     }
     void choose() {
-        presenter.show(new AlertDialog.Builder(activity).setTitle("Recordings folder")
-            .setItems(new String[]{"Recordings/Calls (default)","Choose folder…"},new android.content.DialogInterface.OnClickListener(){
+        presenter.show(new AlertDialog.Builder(activity).setTitle(I18n.cs("Recordings folder"))
+            .setItems(I18n.all(new String[]{"Recordings/Calls (default)","Choose folder…"}),new android.content.DialogInterface.OnClickListener(){
                 public void onClick(android.content.DialogInterface dialog,int which){
                     if(which==0)save(DEFAULT,null,false);
                     else try {
@@ -112,7 +137,7 @@ final class CallRecordingSettings {
             final String folderLabel=ok?label(value):null;
             activity.runOnUiThread(new Runnable(){public void run(){
                 if(activity.isFinishing()||activity.isDestroyed())return;
-                if(ok){folder=value;cachedFolder=value;cachedLabel=folderLabel;folderLoaded=true;summary.setText(folderLabel);updateEnabled();}else message("Couldn't save: root access needed");
+                if(ok){folder=value;cachedFolder=value;cachedLabel=folderLabel;folderLoaded=true;summary.setText(I18n.cs(folderLabel));updateEnabled();}else message("Couldn't save: root access needed");
             }});
         }});
     }
@@ -135,5 +160,5 @@ final class CallRecordingSettings {
             return ("primary".equals(volume)?"Internal storage":"SD card")+(path.isEmpty()?"":"/"+path);
         }catch(Exception unavailable){return DEFAULT+" (folder not available)";}
     }
-    private void message(String value){AppToast.makeText(activity,value,Toast.LENGTH_SHORT).show();}
+    private void message(String value){AppToast.makeText(activity,I18n.cs(value),Toast.LENGTH_SHORT).show();}
 }

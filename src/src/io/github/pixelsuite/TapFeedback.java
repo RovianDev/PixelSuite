@@ -27,7 +27,7 @@ final class TapFeedback {
     }
     private static void scan(View view){
         if(view instanceof PatronIdentity){View photo=((PatronIdentity)view).getChildAt(0);photo.setDuplicateParentStateEnabled(true);apply(photo,true);}
-        else if(view.isClickable()&&"Open Developer options".contentEquals(view.getContentDescription()==null?"":view.getContentDescription())&&view instanceof ViewGroup){View badge=((ViewGroup)view).getChildAt(0);badge.setDuplicateParentStateEnabled(true);apply(badge,true);}
+        else if(view.isClickable()&&("Open Developer options".contentEquals(view.getContentDescription()==null?"":view.getContentDescription())||I18n.t("Open Developer options").contentEquals(view.getContentDescription()==null?"":view.getContentDescription()))&&view instanceof ViewGroup){View badge=((ViewGroup)view).getChildAt(0);badge.setDuplicateParentStateEnabled(true);apply(badge,true);}
         else if(view.isClickable()&&!(view instanceof EditText)&&!(view instanceof CompoundButton)&&!(view instanceof AbsSeekBar)&&!view.getClass().getName().startsWith(AppSearch.class.getName())){
             boolean linkText=view instanceof TextView&&((TextView)view).getMovementMethod()!=null;
             if(!linkText)apply(view,view instanceof ImageView);

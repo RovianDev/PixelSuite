@@ -98,7 +98,8 @@ public final class WatchCell {
     }
 
     private static String failText(String want) {
-        return "Couldn't reach your watch. Its mobile network will be turned " + want + " when it reconnects.";
+        return "on".equals(want) ? "Couldn't reach your watch. Its mobile network will be turned on when it reconnects."
+                : "Couldn't reach your watch. Its mobile network will be turned off when it reconnects.";
     }
 
     private static List<BluetoothDevice> watches(BluetoothAdapter a, String last) {
@@ -148,10 +149,10 @@ public final class WatchCell {
             Notification.Builder.class.getMethod("setChannelId", String.class).invoke(b, CHANNEL);
             int small = c.getResources().getIdentifier("ic_ps_do_not_annoy", "drawable", c.getPackageName());
             b.setSmallIcon(small != 0 ? small : c.getApplicationInfo().icon)
-                    .setContentTitle("Do Not Annoy")
-                    .setContentText(text)
+                    .setContentTitle(I18n.cs("Do Not Annoy"))
+                    .setContentText(I18n.cs(text))
                     .setStyle(new Notification.BigTextStyle().bigText(text))
-                    .setSubText("Watch")
+                    .setSubText(I18n.cs("Watch"))
                     .setAutoCancel(true);
             if (openSettings) {
                 Intent i = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS", Uri.fromParts("package", c.getPackageName(), null)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

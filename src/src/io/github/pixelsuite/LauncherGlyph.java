@@ -47,6 +47,7 @@ final class LauncherGlyph extends Drawable {
             c.drawLine(16.5f,4,16.5f,20,paint);c.drawLine(13.5f,17,16.5f,20,paint);c.drawLine(16.5f,20,19.5f,17,paint);}
         else if(kind==15){c.drawLine(12,3.5f,12,15.5f,paint);c.drawLine(7,10.5f,12,15.5f,paint);c.drawLine(12,15.5f,17,10.5f,paint);c.drawLine(5,20.5f,19,20.5f,paint);}
         else if(kind==16){c.drawLine(9,4.8f,12,3.5f,paint);c.drawLine(12,3.5f,15,4.8f,paint);c.drawLine(15,4.8f,17,8,paint);c.drawLine(17,8,17,13,paint);c.drawLine(17,13,19,17,paint);c.drawLine(19,17,5,17,paint);c.drawLine(5,17,7,13,paint);c.drawLine(7,13,7,8,paint);c.drawLine(7,8,9,4.8f,paint);c.drawLine(10,20,14,20,paint);c.drawLine(4,3,20,21,paint);}
+        else if(kind==17){android.graphics.Path eye=new android.graphics.Path();eye.moveTo(2.5f,12);eye.quadTo(12,3.5f,21.5f,12);eye.quadTo(12,20.5f,2.5f,12);eye.close();c.drawPath(eye,paint);c.drawCircle(12,12,3f,paint);c.drawLine(4,4,20,20,paint);}
         else if(kind==14){
             c.drawRoundRect(3.5f,3.5f,10f,10f,1.8f,1.8f,paint);c.drawRoundRect(14f,3.5f,20.5f,10f,1.8f,1.8f,paint);
             c.drawRoundRect(3.5f,14f,10f,20.5f,1.8f,1.8f,paint);c.drawRoundRect(14f,14f,20.5f,20.5f,1.8f,1.8f,paint);}

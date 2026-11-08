@@ -56,6 +56,8 @@ final class CallRecording {
     static final String FOLDER_KEY = "pixelsuite_call_recording_folder";
     static final String DEFAULT_FOLDER = "Recordings/Calls";
     static final String MODE_KEY = "pixelsuite_call_recording_mode";
+    static final String QUALITY_KEY = "pixelsuite_call_recording_quality";
+    static final String QUALITY_STANDARD = "standard", QUALITY_HD = "hd", QUALITY_LOSSLESS = "lossless";
 
     private static final String[] FLAGS = {"G__enable_call_recording", "G__use_call_recording_geofence_overrides",
             "G__force_within_call_recording_geofence_value"};
@@ -83,6 +85,7 @@ final class CallRecording {
     private static final Map<TextToSpeech, UtteranceProgressListener> sListeners = Collections.synchronizedMap(new WeakHashMap<TextToSpeech, UtteranceProgressListener>());
 
     static void install(ClassLoader cl, ApplicationInfo ai) {
+        installQuality(cl);
         if (!mainProcess()) return;
         installSilence(cl);
         installFlags(cl, ai);
@@ -145,6 +148,49 @@ final class CallRecording {
         try { return Settings.Secure.getString(c.getContentResolver(), key); } catch (Throwable t) { return null; }
     }
     static boolean on() { return "1".equals(setting(KEY)) && PatronGate.ok(app()); }
+    static String quality() {
+        String q = setting(QUALITY_KEY);
+        return QUALITY_STANDARD.equals(q) || QUALITY_LOSSLESS.equals(q) ? q : QUALITY_HD;
+    }
+
+    private static final Set<Object> sNarrow = Collections.synchronizedSet(Collections.newSetFromMap(new java.util.IdentityHashMap<Object, Boolean>()));
+    private static final ThreadLocal<Boolean> sReading = new ThreadLocal<Boolean>();
+
+    private static void installQuality(final ClassLoader cl) {
+        try {
+            Xp.hookAllMethods(android.media.AudioFormat.Builder.class, "build", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    try {
+                        Object f = p.getResult();
+                        if (!(f instanceof android.media.AudioFormat)) return;
+                        android.media.AudioFormat a = (android.media.AudioFormat) f;
+                        if (a.getSampleRate() != 8000 || a.getChannelMask() != android.media.AudioFormat.CHANNEL_IN_MONO || a.getEncoding() != android.media.AudioFormat.ENCODING_PCM_16BIT) return;
+                        if (recorderInit(cl)) sNarrow.add(a);
+                    } catch (Throwable ignored) { }
+                }
+            });
+            Xp.hookAllMethods(android.media.AudioFormat.class, "getSampleRate", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    if (sNarrow.isEmpty() || !sNarrow.contains(p.thisObject) || Boolean.TRUE.equals(sReading.get())) return;
+                    sReading.set(Boolean.TRUE);
+                    try { if (on() && !QUALITY_STANDARD.equals(quality())) p.setResult(16000); }
+                    catch (Throwable ignored) { }
+                    finally { sReading.set(Boolean.FALSE); }
+                }
+            });
+        } catch (Throwable ignored) { }
+    }
+
+    private static boolean recorderInit(ClassLoader cl) {
+        for (StackTraceElement e : Thread.currentThread().getStackTrace()) {
+            if (!"<clinit>".equals(e.getMethodName())) continue;
+            try {
+                Class<?> k = Class.forName(e.getClassName(), false, cl);
+                for (java.lang.reflect.Field f : k.getDeclaredFields()) if (f.getType() == android.media.AudioRecord.class) return true;
+            } catch (Throwable ignored) { }
+        }
+        return false;
+    }
     private static boolean silent() { return on() && !"1".equals(setting(ANNOUNCE_KEY)); }
     private static boolean automatic() { return on() && !"manual".equals(setting(MODE_KEY)); }
 
@@ -563,8 +609,9 @@ final class CallRecording {
                 : "Documents".equals(root) ? MediaStore.Files.getContentUri(VOLUME)
                 : MediaStore.Audio.Media.getContentUri(VOLUME);
         ContentValues v = new ContentValues();
-        v.put(MediaStore.MediaColumns.DISPLAY_NAME, name + ".m4a");
-        v.put(MediaStore.MediaColumns.MIME_TYPE, "audio/mp4");
+        boolean lossless = QUALITY_LOSSLESS.equals(quality());
+        v.put(MediaStore.MediaColumns.DISPLAY_NAME, name + (lossless ? ".wav" : ".m4a"));
+        v.put(MediaStore.MediaColumns.MIME_TYPE, lossless ? "audio/x-wav" : "audio/mp4");
         v.put(RELATIVE_PATH, folder + "/");
         v.put(IS_PENDING, 1);
         Uri uri;
@@ -592,7 +639,7 @@ final class CallRecording {
 
     private static Uri saveThroughPixelSuite(ContentResolver cr, File wav, String name) throws Exception {
         Uri base = Uri.parse("content://" + CallRecordingProvider.AUTHORITY);
-        android.os.Bundle made = cr.call(base, "create", name + ".m4a", null);
+        android.os.Bundle made = cr.call(base, "create", name + (QUALITY_LOSSLESS.equals(quality()) ? ".wav" : ".m4a"), null);
         String doc = made == null ? null : made.getString("doc");
         if (doc == null) throw new IOException("Pixel Suite could not make the file");
         partial(wav, doc, true);
@@ -613,6 +660,13 @@ final class CallRecording {
     }
 
     private static void encode(File wav, ParcelFileDescriptor out) throws Exception {
+        if (QUALITY_LOSSLESS.equals(quality())) {
+            InputStream in = new FileInputStream(wav);
+            OutputStream o = new FileOutputStream(out.getFileDescriptor());
+            try { byte[] b = new byte[65536]; for (int n; (n = in.read(b)) > 0; ) o.write(b, 0, n); o.flush(); }
+            finally { try { in.close(); } catch (Throwable ignored) { } }
+            return;
+        }
         RandomAccessFile in = new RandomAccessFile(wav, "r");
         MediaCodec codec = null; MediaMuxer muxer = null;
         try {
@@ -639,7 +693,8 @@ final class CallRecording {
             in.seek(dataStart);
             MediaFormat fmt = MediaFormat.createAudioFormat(MediaFormat.MIMETYPE_AUDIO_AAC, rate, channels);
             fmt.setInteger(MediaFormat.KEY_AAC_PROFILE, MediaCodecInfo.CodecProfileLevel.AACObjectLC);
-            fmt.setInteger(MediaFormat.KEY_BIT_RATE, rate >= 32000 ? 64000 * channels : 32000 * channels);
+            boolean standard = QUALITY_STANDARD.equals(quality());
+            fmt.setInteger(MediaFormat.KEY_BIT_RATE, (standard ? (rate >= 32000 ? 64000 : 32000) : (rate >= 32000 ? 128000 : rate >= 16000 ? 64000 : 48000)) * channels);
             fmt.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, 16384);
             codec = MediaCodec.createEncoderByType(MediaFormat.MIMETYPE_AUDIO_AAC);
             codec.configure(fmt, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);

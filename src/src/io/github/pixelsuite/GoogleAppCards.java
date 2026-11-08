@@ -29,7 +29,7 @@ final class GoogleAppCards {
         int id=label?labelId:iconId;return id!=0&&view.getId()==id;
     }
     static org.json.JSONObject entry(String text){
-        GoogleAliases.reload();org.json.JSONObject map=GoogleAliases.aliases;if(map.length()==0)return null;
+        GoogleAliases.reloadSoon();org.json.JSONObject map=GoogleAliases.aliases;if(map.length()==0)return null;
         Context c=GoogleAliases.context();if(c==null)return null;
         long serial=GoogleAliases.serial(c,android.os.Process.myUserHandle());
         org.json.JSONObject match=null;Iterator<String> keys=map.keys();
@@ -49,7 +49,7 @@ final class GoogleAppCards {
         org.json.JSONObject entry=entry(card.original);String alias=entry==null?"":entry.optString("alias");String title=alias.isEmpty()?card.original:alias;
         writing.set(true);
         try{
-            if(!title.contentEquals(label.getText()))label.setText(title);
+            if(!title.contentEquals(label.getText()))label.setText(I18n.cs(title));
             if(!(label.getParent() instanceof ViewGroup))return;
             View found=((ViewGroup)label.getParent()).findViewById(iconId);if(!(found instanceof ImageView))return;ImageView icon=(ImageView)found;
             if(card.icon.get()!=icon){card.icon=new WeakReference<ImageView>(icon);card.nativeIcon=icon.getDrawable();card.replaced=false;}
@@ -62,7 +62,7 @@ final class GoogleAppCards {
     }
     static Drawable iconFor(ComponentName component,UserHandle user){
         if(component==null)return null;
-        GoogleAliases.reload();org.json.JSONObject map=GoogleAliases.aliases;if(map.length()==0)return null;
+        GoogleAliases.reloadSoon();org.json.JSONObject map=GoogleAliases.aliases;if(map.length()==0)return null;
         Context c=GoogleAliases.context();if(c==null)return null;
         long serial=GoogleAliases.serial(c,user);if(serial<0)return null;
         org.json.JSONObject e=map.optJSONObject(serial+"|"+component.flattenToString());if(e==null)return null;

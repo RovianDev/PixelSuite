@@ -27,7 +27,7 @@ final class ScatterEffect {
     static void play(final View view) {
         try {
             String skip = view == null ? "no folder view" : !view.isAttachedToWindow() ? "folder view not on screen" : view.getWidth() <= 0 || view.getHeight() <= 0 ? "folder view not laid out" : null;
-            if (skip != null) {  return; }
+            if (skip != null) { return; }
             Activity a = LauncherFeatures.activity.get(); if (a == null) return;
             if (android.provider.Settings.Global.getFloat(a.getContentResolver(), android.provider.Settings.Global.ANIMATOR_DURATION_SCALE, 1f) == 0f) return;
             final ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
@@ -35,7 +35,7 @@ final class ScatterEffect {
             final float left = at[0] - base[0], top = at[1] - base[1], density = view.getContext().getResources().getDisplayMetrics().density;
             Rect source = new Rect(inWindow[0], inWindow[1], inWindow[0] + view.getWidth(), inWindow[1] + view.getHeight());
             if (!source.intersect(0, 0, decor.getWidth(), decor.getHeight())) return;
-            if (source.width() <= 0 || source.height() <= 0) {  return; }
+            if (source.width() <= 0 || source.height() <= 0) { return; }
             final Bitmap picture = Bitmap.createBitmap(source.width(), source.height(), Bitmap.Config.ARGB_8888);
             final float sx = left + (source.left - inWindow[0]), sy = top + (source.top - inWindow[1]);
             float[] round = null;

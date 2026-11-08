@@ -1,0 +1,70 @@
+## v3.1.0
+Pixel Suite in 14 Sprachen, Chrome+ und Gboard+, ein integriertes VPN, Sichern & Wiederherstellen für zurückgehaltene Apps, neue Optionen für Ein-/Aus-Taste, Lautstärke und Sperrbildschirm und ein neues Symbol.
+
+✨ Neu
+• 💾 **Sichern & Wiederherstellen**: zurückgehaltene Apps werden vor dem Update gesichert, mit ihren Daten (Anmeldungen, Chats, Einstellungen und Dateien) oder nur die App. Die 3 neuesten Versionen jeder App bleiben erhalten, auch nach dem Deinstallieren. (Schutz › OTA- & Store-Blocker › Play Store-Blocker)
+• 🌍 **14 Sprachen**: Pixel Suite spricht jetzt Chinesisch, Hindi, Spanisch, Arabisch, Französisch, Portugiesisch, Russisch, Bengalisch, Indonesisch, Deutsch, Japanisch, Türkisch, Persisch und Hebräisch, dieses Änderungsprotokoll eingeschlossen. Es folgt der Sprache deines Smartphones, oder tippe oben rechts auf der Startseite auf die Sprachtaste, um eine zu wählen. (Arabisch, Persisch und Hebräisch werden von rechts nach links gelesen.)
+• 🎮 **Pixel Stack!** ein kleines verstecktes Spiel: Halte das Logo oben auf der Startseite von Pixel Suite gedrückt. Staple die Blöcke so hoch du kannst, setz sie genau für ein (Perfekt!) und teile deine Punktzahl mit unserer Telegram-Community!
+• 🔘 **Ein-/Aus-Taste gedrückt halten**: öffne Gemini oder „Circle to Search“, mache einen Screenshot oder schalte einen Ruhemodus ein und aus: „Stumm“, „Bitte nicht stören“, „Nicht nerven“ oder „Kein Ärger“ für alle drei. (Verknüpfungen › Schaltflächen)
+• 🔒 **Ein-/Aus-Taste im gesperrten Zustand gedrückt halten**: wähle eine eigene Aktion für das gesperrte Smartphone: „Gemini (Original)“, „Stumm“, „Bitte nicht stören“, „Nicht nerven“ oder „Kein Ärger“. Sie funktioniert eigenständig, unabhängig von „Ein-/Aus-Taste gedrückt halten“. (Verknüpfungen › Schaltflächen)
+• 📷 **Ein-/Aus-Taste zweimal drücken**: jetzt kannst du auch „Kamera (Original)“ wählen. (Verknüpfungen › Schaltflächen)
+• 🔦 **Leiser-Taste zweimal drücken**: jetzt kannst du auch die Taschenlampe ein- und ausschalten. (Verknüpfungen › Schaltflächen)
+• 🕒 **Always-on-Display**: lass es beim Laden an, und lass die Ein-/Aus-Taste es beim Ausschalten des Displays ein paar Sekunden zeigen. (Personalisieren › Always-on-Display)
+• 🔢 **4-stellige PIN automatisch bestätigen**: dein Smartphone entsperrt sich, sobald du die 4. Ziffer eingibst, ohne Enter. (Schutz › Datenschutz & Sicherheit › Sperrbildschirm)
+• 🧹 **Suchleiste ausblenden**: halte einfach die Suchleiste gedrückt und wähle Widget ausblenden. Das Dock rückt nach unten, deine Apps nutzen den Platz, und die Suche bleibt in der App-Übersicht. Du kannst sie auch unter Personalisieren › Pixel-Launcher ausblenden.
+• 📋 **Apps sichern**: sichere jede App, nur die App oder mit allen Daten (Anmeldungen, Chats, Einstellungen und Dateien), und stelle sie wieder her, wann du willst. Tippe auf die grüne Taste, um eine gesicherte Version zurückzuholen. (Play Store-Blocker › Apps auswählen)
+• 🔎 **In Chrome suchen**: markiere Text in einer beliebigen App, tippe auf ⋮ und wähle „In Chrome suchen“. Die Wörter öffnen sich direkt in Chrome.
+• 🗑️ **Nur „Alle löschen“**: die letzten Apps zeigen nur „Alle löschen“, in der Mitte, ohne „Auswählen“ und „Screenshot“. (Personalisieren › Pixel-Launcher › Zuletzt verwendete Apps)
+• 🎨 **Neues Pixel Suite-Symbol**: das App-Symbol von Pixel Suite füllt den Kreis jetzt randlos aus, ohne die weiße Fläche, und hat eine Design-Version in den Farben deines Hintergrunds.
+
+💎 Patreon
+• 🚀 **Chrome+**: Chromes Bedienelemente wandern nach unten, mit noch flüssigeren, von Hand gestalteten Animationen für Tabs, Tab-Übersicht und neue Tabs. Das orange + in der Tab-Übersicht öffnet einen Inkognito-Tab. (Patreon › Google-Apps › Chrome+)
+• 🧩 **Erweiterungen für Chrome**: „VPN“, „Werbeblocker“ und „Dunkle Seiten“ in einem Fenster, über die Puzzle-Taste in Chromes Symbolleiste. Tippe zum Verwenden oder halte gedrückt, um sie an die Symbolleiste anzuheften.
+• 🌐 **VPN**: surfe über kostenlose Server weltweit aus einem anderen Land, für das ganze Smartphone oder nur Chrome, der schnellste Server zuerst. Chromes Standort folgt dem VPN. (Patreon › VPN, dazu eine Kachel in den Schnelleinstellungen)
+• ⭐ **Schnellwahl**: runde Symbole für bis zu 19 Websites auf Chromes Neuer-Tab-Seite. Ziehe sie zum Verschieben, oder lass eines auf ein anderes fallen, um einen Ordner zu erstellen, der „Super-Dunkel“ folgt. Gib jeder Website dein eigenes rundes Bild.
+• 🛡️ **Werbeblocker**: wähle für jede Website eine Filterstufe. Vollständig blendet auch Cookie-Banner und Pop-ups aus, und du kannst jeden Teil einer Seite selbst entfernen. Mit seinem Schalter in den Erweiterungen schaltest du ihn für alle Websites aus oder ein. (Chrome+ › Erweiterungen)
+• 🌙 **Dunkle Seiten**: Websites öffnen sich dunkel ohne weißes Aufblitzen, oder tiefschwarz mit „Super-Dunkel“: immer, mit dem dunklen Design des Smartphones oder nach Zeitplan. Bilder und Videos behalten ihre Farben. (Chrome+ › Erweiterungen)
+• 🎙️ **Google Telefon+**: (Aufnahmequalität) Standard für kleinere Dateien, HD für eine klarere Stimme (jetzt Standard) oder Verlustfrei für die klarste. (Patreon › Google-Apps › Google Telefon+)
+• ⌨️ **Gboard+-Symbolleiste**: bis zu 7 eigene Verknüpfungen, etwa „Rückgängig“, „Wiederholen“, „Schnellauswahl“, „Alles auswählen“, „Ausschneiden“, „Kopieren“ und „Einfügen“, in jeder App. „Alles auswählen“ und „Schnellauswahl“ öffnen sofort das Menü zum Kopieren und Einfügen. (Patreon › Google-Apps › Gboard+)
+• 🔤 **Gboard+-Tasten**: abgerundete Tasten mit flüssigen Pop-ups, wische von der Löschtaste nach links, um Buchstabe für Buchstabe zu löschen, und ändere die Größe der Tastatur oder verschiebe sie. Mit eingeschalteter Zahlenreihe in Gboard behält die Symbolseite dieselbe Tastengröße. (Patreon › Google-Apps › Gboard+)
+• ✍️ **Tippen mit Gboard+**: schalte „Autokorrektur“ für die gewünschten Sprachen aus, behalte jeden Eintrag in der Zwischenablage und nutze „Spracheingabe mit Häkchen“: sprich, dann tippe auf das Häkchen, um deine Wörter einzufügen. (Patreon › Google-Apps › Gboard+)
+• 🧊 **Milchglas-Gboard**: der Tastaturhintergrund wird zu Milchglas: Was dahinter liegt, scheint verschwommen durch, mit Glasrändern, in hell, dunkel und Super-Dunkel. Die Tasten bleiben, wie sie sind. (Patreon › Google-Apps › Gboard+)
+
+🪄 Feinschliff
+• 🌑 **Super-Dunkel**: das Menü über markiertem Text („Ausschneiden“, „Kopieren“, „In Chrome suchen“ und mehr) ist jetzt in allen Apps schwarz mit Rand, und Chromes Inkognito bleibt überall tiefschwarz, auch beim Wechseln von Tabs.
+• ⚡ **Optionen gelten sofort**: „Super-Dunkelmodus“ und der Oberflächenstil ändern sich sofort beim Umschalten, andere Optionen starten ihre App selbst neu, und die Taste „Aktualisieren“ erscheint nur bei Optionen für Pixel-Launcher.
+• 🔄 **Neustart-Taste**: manche Funktionen wirken erst nach einem Neustart. Nach einem Update erscheint eine Neustart-Taste, bis das Smartphone neu startet. Tippe darauf, um zu sehen, welche Funktionen den Neustart brauchen, und tippe noch einmal, um neu zu starten.
+• 🌄 **Google-Feed**: wische auf dem Startbildschirm nach rechts, und der Feed gleitet direkt über dein Hintergrundbild, ohne dass vorher ein weißes Feld aufblitzt.
+• 🏠 **Pixel-Launcher**: langes Drücken auf die Suchleiste zeigt jetzt nur noch Widget-Einstellungen und Widget ausblenden.
+
+🐞 Fehlerbehebungen
+• 🧠 **Pixel-Launcher**: nach vielen Wechseln zwischen hell und dunkel (etwa mit einem Zeitplan für das dunkle Design) konnte er langsam werden, nicht mehr reagieren und neu starten. Jetzt bleibt er flüssig.
+• 📱 **Navigationsschaltflächen**: nach dem Drehen des Bildschirms konnte das Wischen nach oben zum Startbildschirm ausfallen, wenn die Taste „Zurück“ an war. Jetzt klappt es jedes Mal. (Verknüpfungen › Gesten › Navigationsschaltflächen)
+• 🧭 **Navigationsschaltflächen**: manche Apps legten ihr unteres Menü unter die Tasten. Jetzt liegt es darüber. (Verknüpfungen › Gesten › Navigationsschaltflächen)
+• 🛟 **Werbeblocker**: Chrome konnte sich von selbst schließen, wenn du eine Seite verlassen oder einen Tab geschlossen hast, während er noch lud. Jetzt bleibt Chrome offen.
+• 🖐️ **Pixel-Launcher**: langes Drücken auf eine App an manchen Stellen des Startbildschirms zeigte nur ein paar kleine Symbole, und ihr Menü verschwand. Menüs öffnen sich jetzt überall vollständig.
+• 📰 **Chrome-Feed**: der Feed konnte springen, während gesponserte Beiträge ausgeblendet wurden. Jetzt bleibt er stehen und scrollt flüssiger.
+• 🔴 **App-Übersicht**: bei manchen Versionen von Pixel-Launcher schwebten die Benachrichtigungspunkte von Ordnern über ihnen. Sie sitzen wieder auf den Ordnern.
+• 🔔 **Super-Dunkel**: einzeilige Benachrichtigungen unten in der Leiste blieben grau. Jetzt sind sie „Super-Dunkel“.
+• #️⃣ **Super-Dunkel**: die Zifferntasten von Gboard (für PINs, Telefonnummern und Beträge) waren schwarz auf schwarz und leuchteten beim Tippen nicht auf. Jetzt sind sie wieder zu sehen und leuchten auf.
+• ➗ **Gboard+**: auf der Zahlenseite sieht die Spalte + - * / jetzt aus wie die anderen Tasten. Leer- und Löschtaste sind wieder richtige Tasten und verschwinden im dunklen Modus nicht mehr.
+• 🪟 **Menüs auf dem Startbildschirm**: mit Milchglas erschien die Symbolreihe oben im Menü einer App vor dem Rest. Jetzt blendet sie sich mit dem Menü ein.
+• ✅ **Apps auswählen**: die Tastatur blieb über der Liste offen, nachdem du eine App aus der Suche angehakt hattest. Jetzt schließt sie sich.
+
+Über die aktuelle Version installieren und neu starten.
+
+## v3.0.4
+Eine Korrektur für Play Integrity.
+
+🐞 Fehlerbehebungen
+• Play Integrity: Pixel Suite nutzt die Google Play-Dienste nicht mehr. Sie dienten nur den weichen Scrollrändern auf einigen Google-Bildschirmen, die aus den Einstellungen geöffnet werden („Milchglas“), und sie zu behalten konnte dich Device- und Strong-Integrität kosten – das war es nicht wert. Wenn du sie im LSPosed-Bereich von Pixel Suite angehakt hattest, entfernt Pixel Suite den Haken jetzt für dich. Starte einfach neu, wenn es dich fragt. Danke an Ashray V K auf Telegram für den Hinweis 🙏
+
+Über die aktuelle Version installieren und neu starten.
+
+## v3.0.3
+Eine Korrektur für die Patreon-Anmeldung.
+
+🐞 Fehlerbehebungen
+• Patreon: Die Anmeldung wird jetzt abgeschlossen, auch wenn dein Browser Pixel Suite nicht öffnen kann (zum Beispiel, wenn er eine Play Store-Seite „Artikel nicht gefunden“ zeigt). Wechsle nach der Anmeldung einfach zurück zu Pixel Suite, es schaltet sich selbst frei.
+
+Über die aktuelle Version installieren.

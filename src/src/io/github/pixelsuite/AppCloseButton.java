@@ -10,6 +10,6 @@ final class AppCloseButton {
   button.setTextSize(24);
   button.setBackground(new ThemeGlass(button.getContext(),24,ThemeGlass.SOCIAL));
   button.setLayerType(View.LAYER_TYPE_SOFTWARE,null);
-  button.setContentDescription("Close");
+  button.setContentDescription(I18n.cs("Close"));
  }
 }

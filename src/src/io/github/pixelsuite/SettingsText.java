@@ -5,6 +5,7 @@ import android.text.style.*;
 final class SettingsText {
  private SettingsText(){}
  static CharSequence format(String raw){
+  raw=I18n.t(raw);
   SpannableStringBuilder out=new SpannableStringBuilder();int at=0;
   while(at<raw.length()){
    int open=raw.indexOf("**",at);if(open<0){out.append(raw.substring(at));break;}

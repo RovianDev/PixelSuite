@@ -7,7 +7,6 @@ import android.net.Uri;
 import android.os.*;
 import java.io.*;
 import java.net.*;
-import java.security.MessageDigest;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 final class UpdateInstaller {
@@ -51,7 +50,6 @@ final class UpdateInstaller {
     private static HttpURLConnection connect(URL first)throws IOException{
         URL url=first;
         for(int attempt=0;attempt<6;attempt++){
-            String host=url.getHost();
             if(!ApkDownloadPolicy.allowed(url))throw new IOException("Unexpected download destination");
             HttpURLConnection connection=(HttpURLConnection)url.openConnection();connection.setInstanceFollowRedirects(false);connection.setConnectTimeout(15000);connection.setReadTimeout(20000);connection.setRequestProperty("User-Agent","PixelSuite-UpdateInstaller");
             int code=connection.getResponseCode();

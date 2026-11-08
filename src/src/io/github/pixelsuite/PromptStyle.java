@@ -60,7 +60,7 @@ final class PromptStyle {
         if (!named && !marked) return false;
         if (!(desc instanceof TextView)) return false;
         CharSequence d = ((TextView) desc).getText();
-        for (String s : OURS) if (s.contentEquals(d)) return true;
+        for (String s : OURS) if (s.contentEquals(d) || I18n.t(s).contentEquals(d)) return true;
         return false;
     }
 
@@ -80,7 +80,7 @@ final class PromptStyle {
             boolean dark = (root.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
             pin = new TextView(root.getContext());
             pin.setTag("pixelsuite_pin");
-            pin.setText("Pin");
+            pin.setText("PIN");
             GradientDrawable pill = new GradientDrawable();
             pill.setCornerRadius(100 * dp);
             pill.setColor(system(root.getContext(), dark ? "system_accent2_700" : "system_accent2_100", dark ? 0xff4a4458 : 0xffe8def8));
@@ -90,7 +90,7 @@ final class PromptStyle {
             pin.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
             try { pin.setTypeface(android.graphics.Typeface.create("google-sans-text-medium", android.graphics.Typeface.NORMAL)); } catch (Throwable ignored) { }
             pin.setGravity(Gravity.CENTER);
-            pin.setContentDescription("Use PIN");
+            pin.setContentDescription(I18n.cs("Use PIN"));
             pin.setClickable(true); pin.setFocusable(true);
             pin.setOnClickListener(new View.OnClickListener() { public void onClick(View v) { original.performClick(); } });
             panel.addView(pin, new ViewGroup.MarginLayoutParams(Math.round(150 * dp), Math.round(44 * dp)));
@@ -104,12 +104,13 @@ final class PromptStyle {
         if (Math.abs(pin.getTranslationY() - ty) > 0.5f) pin.setTranslationY(ty);
         pin.setVisibility(original.getVisibility());
         View desc = find(root, "description");
-        boolean core = desc instanceof TextView && (CORE_UNINSTALL.contentEquals(((TextView) desc).getText()) || CORE_DISABLE.contentEquals(((TextView) desc).getText()));
+        CharSequence said = desc instanceof TextView ? ((TextView) desc).getText() : null;
+        boolean core = said != null && (CORE_UNINSTALL.contentEquals(said) || CORE_DISABLE.contentEquals(said) || I18n.t(CORE_UNINSTALL).contentEquals(said) || I18n.t(CORE_DISABLE).contentEquals(said));
         TextView note = (TextView) panel.findViewWithTag("pixelsuite_core_warning");
         if (core && note == null) {
             note = new TextView(root.getContext());
             note.setTag("pixelsuite_core_warning");
-            note.setText(WARNING);
+            note.setText(I18n.cs(WARNING));
             note.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
             note.setGravity(Gravity.CENTER);
             if (desc instanceof TextView) note.setTextColor(((TextView) desc).getCurrentTextColor());
@@ -164,7 +165,7 @@ final class PromptStyle {
         if (!(app[0] instanceof Drawable)) return;
         icon.setImageDrawable((Drawable) app[0]);
         Xp.setAdditionalInstanceField(name, "pixelsuite_ours", Boolean.TRUE);
-        name.setText(String.valueOf(app[1]));
+        name.setText(I18n.cs(String.valueOf(app[1])));
         Xp.setAdditionalInstanceField(name, "pixelsuite_app", label);
         if (fade) { icon.animate().alpha(1f).setDuration(120).start(); name.animate().alpha(1f).setDuration(120).start(); }
         else { icon.setAlpha(1f); name.setAlpha(1f); }

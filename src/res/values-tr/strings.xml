@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">Hareketler, Pixel Launcher özelleştirme, uygulama ve klasör kilitleri, Süper Karanlık Mod, dosya sıralama, serbest ekran görüntüsü kırpma ve Pixel Studio ile Google Fotoğraflar’da Karalamalar. Her şey Pixel Suite uygulamasında ayarlanır. Kullandığınız düzenleyiciler dahil önerilen LSPosed kapsamlarını etkinleştirin, sonra o uygulamaları veya telefonu yeniden başlatın.</string>
+    <string name="search_in_chrome">Chrome\'da ara</string>
+</resources>

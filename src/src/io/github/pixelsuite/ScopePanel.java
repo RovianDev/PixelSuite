@@ -27,7 +27,6 @@ final class ScopePanel {
     }
    }
   }
-  if("miscellaneous".equals(id))for(String pkg:new String[]{"org.futo.inputmethod.latin","org.futo.inputmethod.latin.playstore","org.futo.inputmethod.latin.unstable"})entries.put(pkg,new Entry("FUTO Keyboard",pkg,"Hides the keyboard globe and moves the dismiss arrow to the right."));
   return new ArrayList<Entry>(entries.values());
  }
  static java.util.List<Entry> installedEntries(Context context,java.util.List<Entry> candidates){
@@ -48,7 +47,7 @@ final class ScopePanel {
   try{context.getPackageManager().getPackageInfo(pkg,0);return true;}catch(android.content.pm.PackageManager.NameNotFoundException absent){return false;}
  }
  private static String purpose(String id,String title,String name){
-  if(NavButtons.KEY.equals(id)&&("Gboard".equals(name)||"FUTO Keyboard".equals(name)))return "Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.";
+  if(NavButtons.KEY.equals(id)&&"Gboard".equals(name))return "Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.";
   if(NavButtons.KEY.equals(id)&&"Pixel Launcher".equals(name))return "Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.";
   if("themes".equals(id)||SuperDark.KEY.equals(id)){
    if("Settings".equals(name)||"Settings Services".equals(name)||"Wallpaper & style".equals(name)||"Permission Controller".equals(name)||"Digital Wellbeing".equals(name)||"Pixel Troubleshooting".equals(name)||"Personal Safety".equals(name))return "Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.";
@@ -61,20 +60,20 @@ final class ScopePanel {
   if("Pixel watch".equals(name))return "Enables QR-code eSIM setup in the Pixel Watch phone app.";
   if("Share sheet".equals(name))return "Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.";
   if("Play Store".equals(name))return "Keeps selected apps on their current version by blocking their Play Store updates.";
-  if("Pixel Launcher".equals(name))return "privacy".equals(id)?"Locks apps and folders, shows padlock badges, and protects locked apps in recents.":"Enables "+title.toLowerCase(java.util.Locale.ROOT)+" in Pixel Launcher.";
+  if("Pixel Launcher".equals(name))return "privacy".equals(id)?"Locks apps and folders, shows padlock badges, and protects locked apps in recents.":"Enables "+(I18n.on()?title:title.toLowerCase(java.util.Locale.ROOT))+" in Pixel Launcher.";
   if("Pixel Studio".equals(name))return "themes".equals(id)||SuperDark.KEY.equals(id)?"Matches screenshot-editor menus and controls to your chosen theme and surface style.":"Adds Doodles and cropping tools to the screenshot editor.";
   if("Google Photos".equals(name))return "themes".equals(id)||SuperDark.KEY.equals(id)?"Matches photo-editor menus and controls to your chosen theme and surface style.":"share_menu".equals(id)?"Matches Photos' share-page colors to the share sheet.":"Adds editable Doodles to the photo editor.";
   if("Settings Services".equals(name))return "Applies Super Dark to Settings search.";
   if("Package installer".equals(name))return "Applies Super Dark to app uninstall dialogs.";
   if("Settings".equals(name))return "miscellaneous".equals(id)?"Adds the refresh-rate slider to Display & touch.":SuperDark.KEY.equals(id)?"Applies Super Dark to Settings.":"Controls Software updates and the factory-reset option in Settings.";
-  if("Gboard".equals(name))return SuperDark.KEY.equals(id)?"Applies Super Dark to Gboard.":"Hides the keyboard globe and moves the dismiss arrow to the right.";
+  if("Gboard".equals(name))return "gboard".equals(id)?"Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.":SuperDark.KEY.equals(id)?"Applies Super Dark to Gboard.":"Hides the keyboard globe and moves the dismiss arrow to the right.";
   if("Files by Google".equals(name))return "Shows newest files first in the file browser.";
   if("Files (system)".equals(name))return "Shows newest files first in the system file picker.";
   if("Chrome".equals(name))return "Removes supported empty ad boxes from web pages opened in Chrome.";
   if("System UI".equals(name)&&"launcher".equals(id))return "Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.";
   if("System UI".equals(name))return "buttons".equals(id)||Feature.VOLDOWN_CAMERA.equals(id)?"Opens the camera from the volume-down shortcut.":"privacy".equals(id)?"Shows fingerprint and PIN prompts for locked apps and folders.":"miscellaneous".equals(id)?"Keeps screenshots ready for faster capture.":"recents".equals(id)?"Fades the status bar while recent apps are viewed in landscape.":"gestures".equals(id)?"Provides cleaner screen-recording controls.":"Matches system menus and messages to your chosen theme and surface style.";
   if("System Framework".equals(name))return "buttons".equals(id)?"Detects power-button and volume-down double presses for the flashlight and camera shortcuts.":Feature.FLASHLIGHT.equals(id)?"Toggles the flashlight with a double press of the power button.":Feature.VOLDOWN_CAMERA.equals(id)?"Detects volume-down double presses while the screen is off.":"privacy".equals(id)?"Requires authentication before opening protected apps or uninstalling, disabling or pausing them.":"google_dialer".equals(id)?"Keeps calls responsive while recordings are saved.":"ota_blocker".equals(id)||"blockers".equals(id)?"Blocks system update installation and protects factory reset.":"miscellaneous".equals(id)?"Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.":"Handles wake, sleep and screenshot gestures in Android's system process.";
-  return "Enables "+title.toLowerCase(java.util.Locale.ROOT)+" in "+name+".";
+  return "Enables "+(I18n.on()?title:title.toLowerCase(java.util.Locale.ROOT))+" in "+name+".";
  }
  static void add(final Activity activity,LinearLayout page,String id,String title,String note,int ink,int muted,int accent){
   LinearLayout panel=new LinearLayout(activity);panel.setOrientation(1);panel.setPadding(dp(activity,8),dp(activity,8),dp(activity,8),dp(activity,8));panel.setBackground(AppSurfaces.card(activity,20));
@@ -88,10 +87,10 @@ final class ScopePanel {
   for(final Entry item:current){
    LinearLayout row=new LinearLayout(activity);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(activity,10),dp(activity,8),0,dp(activity,8));
    LinearLayout words=new LinearLayout(activity);words.setOrientation(1);
-   TextView name=new TextView(activity);name.setText(item.name);name.setTextSize(15);name.setTypeface(Typeface.DEFAULT,Typeface.BOLD);name.setTextColor(ink);words.addView(name);
-   TextView pkg=new TextView(activity);pkg.setText(item.pkg);pkg.setTextSize(12);pkg.setTextColor(muted);pkg.setPadding(0,dp(activity,3),0,0);words.addView(pkg);
+   TextView name=new TextView(activity);name.setText(I18n.cs(item.name));name.setTextSize(15);name.setTypeface(Typeface.DEFAULT,Typeface.BOLD);name.setTextColor(ink);words.addView(name);
+   TextView pkg=new TextView(activity);pkg.setText(I18n.cs(item.pkg));pkg.setTextSize(12);pkg.setTextColor(muted);pkg.setPadding(0,dp(activity,3),0,0);words.addView(pkg);
    row.addView(words,new LinearLayout.LayoutParams(0,-2,1));
-   TextView info=new TextView(activity);info.setText("!");info.setTextSize(17);info.setTypeface(Typeface.DEFAULT,Typeface.BOLD);info.setTextColor(accent);info.setGravity(Gravity.CENTER);info.setBackground(new SoftSurface(activity,true,accent));info.setLayerType(View.LAYER_TYPE_SOFTWARE,null);info.setClickable(true);info.setFocusable(true);info.setContentDescription("What "+item.name+" ("+item.pkg+") is used for");info.setOnClickListener(v->hint.show("**Used for:**\n"+item.detail));
+   TextView info=new TextView(activity);info.setText(I18n.cs("!"));info.setTextSize(17);info.setTypeface(Typeface.DEFAULT,Typeface.BOLD);info.setTextColor(accent);info.setGravity(Gravity.CENTER);info.setBackground(new SoftSurface(activity,true,accent));info.setLayerType(View.LAYER_TYPE_SOFTWARE,null);info.setClickable(true);info.setFocusable(true);info.setContentDescription(I18n.cs("What "+item.name+" ("+item.pkg+") is used for"));info.setOnClickListener(v->hint.show("**Used for:**\n"+item.detail));
    row.addView(info,new LinearLayout.LayoutParams(dp(activity,48),dp(activity,48)));panel.addView(row,new LinearLayout.LayoutParams(-1,-2));
   }
   };
@@ -125,7 +124,7 @@ final class ScopePanel {
   Hint(Activity a,int color){activity=a;accent=color;}
   void show(String message){show(message,null);}
   void show(String message,View anchor){dismiss(false);if(activity.isFinishing()||activity.isDestroyed())return;
-   body=new TextView(activity);body.setText(SettingsText.format(message));body.setTextSize(14);body.setTextColor(AppSurfaces.active(activity)||FrostedSurface.dark(activity)?0xfff2f0f5:0xff25242a);body.setGravity(Gravity.CENTER);body.setPadding(dp(activity,20),dp(activity,17),dp(activity,20),dp(activity,17));body.setBackground(new SoftSurface(activity,false,accent));body.setLayerType(View.LAYER_TYPE_SOFTWARE,null);body.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
+   body=new TextView(activity);body.setText(I18n.cs(SettingsText.format(message)));body.setTextSize(14);body.setTextColor(AppSurfaces.active(activity)||FrostedSurface.dark(activity)?0xfff2f0f5:0xff25242a);body.setGravity(Gravity.CENTER);body.setPadding(dp(activity,20),dp(activity,17),dp(activity,20),dp(activity,17));body.setBackground(new SoftSurface(activity,false,accent));body.setLayerType(View.LAYER_TYPE_SOFTWARE,null);body.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);
    popup=new PopupWindow(body,AppPanelBounds.width(activity),-2,false);popup.setBackgroundDrawable(null);popup.setOutsideTouchable(false);popup.setClippingEnabled(true);popup.setElevation(dp(activity,3));
    popup.showAtLocation(anchor==null?activity.getWindow().getDecorView():anchor,Gravity.CENTER,0,0);body.announceForAccessibility(message.replace("**",""));
    if(AppMotion.enabled(activity)){body.setAlpha(0);body.setScaleX(.94f);body.setScaleY(.94f);body.setTranslationY(-dp(activity,8));body.animate().alpha(1).scaleX(1).scaleY(1).translationY(0).setDuration(260).setInterpolator(new android.view.animation.DecelerateInterpolator()).start();}

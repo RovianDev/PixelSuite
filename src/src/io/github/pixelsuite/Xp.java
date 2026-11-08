@@ -94,9 +94,14 @@ final class Xp {
         if (x == null || executable == null) return null;
         try {
             final Executable exec = executable;
+            final boolean gboardPlus = GboardMain.owns(cb);
             Hooker hooker = new Hooker() {
                 @Override
                 public Object intercept(Chain chain) throws Throwable {
+                    if (gboardPlus && GboardMain.off()) {
+                        List<Object> a0 = chain.getArgs();
+                        return chain.proceed(a0 == null ? new Object[0] : a0.toArray());
+                    }
                     Param p = new Param();
                     p.method = exec;
                     p.thisObject = chain.getThisObject();
@@ -233,20 +238,46 @@ final class Xp {
 
     private static final WeakHashMap<Object, java.util.HashMap<String, Object>> sExtra =
             new WeakHashMap<Object, java.util.HashMap<String, Object>>();
+    private static final int TAG_EXTRAS = 0x7e5c0e01, TAG_SCREEN_EXTRAS = 0x7e5c0e02;
 
-    static Object setAdditionalInstanceField(Object obj, String key, Object value) {
+    @SuppressWarnings("unchecked")
+    private static java.util.HashMap<String, Object> extras(Object obj, boolean make) {
+        android.view.View host = null; int tag = TAG_EXTRAS;
+        if (obj instanceof android.view.View) host = (android.view.View) obj;
+        else if (obj instanceof android.app.Activity) {
+            try { android.view.Window w = ((android.app.Activity) obj).getWindow(); host = w == null ? null : w.peekDecorView(); tag = TAG_SCREEN_EXTRAS; } catch (Throwable ignored) { host = null; }
+        }
+        if (host != null) {
+            try {
+                Object t = host.getTag(tag);
+                if (t instanceof java.util.HashMap) return (java.util.HashMap<String, Object>) t;
+                java.util.HashMap<String, Object> m = null;
+                if (!(obj instanceof android.view.View)) synchronized (sExtra) { m = sExtra.remove(obj); }
+                if (m == null && !make) return null;
+                if (m == null) m = new java.util.HashMap<String, Object>();
+                host.setTag(tag, m);
+                return m;
+            } catch (Throwable ignored) { }
+        }
         synchronized (sExtra) {
             java.util.HashMap<String, Object> m = sExtra.get(obj);
-            if (m == null) { m = new java.util.HashMap<String, Object>(); sExtra.put(obj, m); }
-            return m.put(key, value);
+            if (m == null && make) { m = new java.util.HashMap<String, Object>(); sExtra.put(obj, m); }
+            return m;
         }
     }
 
+    static Object setAdditionalInstanceField(Object obj, String key, Object value) {
+        if (obj == null) return null;
+        java.util.HashMap<String, Object> m = extras(obj, value != null);
+        if (m == null) return null;
+        synchronized (m) { return value == null ? m.remove(key) : m.put(key, value); }
+    }
+
     static Object getAdditionalInstanceField(Object obj, String key) {
-        synchronized (sExtra) {
-            java.util.HashMap<String, Object> m = sExtra.get(obj);
-            return m == null ? null : m.get(key);
-        }
+        if (obj == null) return null;
+        java.util.HashMap<String, Object> m = extras(obj, false);
+        if (m == null) return null;
+        synchronized (m) { return m.get(key); }
     }
 
     private static Class<?> asClass(Object o, Class<?> ctx) {

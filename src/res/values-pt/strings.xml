@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">Gestos, personalização do Pixel Launcher, bloqueio de apps e pastas, Modo Super Escuro, ordenação de arquivos, corte livre de capturas de tela e Rabiscos no Pixel Studio e no Google Fotos. Tudo é configurado no app Pixel Suite. Ative os escopos recomendados do LSPosed, incluindo os editores que você usa, e reinicie esses apps ou o celular.</string>
+    <string name="search_in_chrome">Pesquisar no Chrome</string>
+</resources>

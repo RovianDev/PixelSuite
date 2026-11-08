@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.roviandev.pixelsuite"
-    android:versionCode="565"
-    android:versionName="3.0.4">
+    android:versionCode="566"
+    android:versionName="3.1.0">
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
@@ -46,9 +46,11 @@
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <application
+        android:supportsRtl="true"
         android:label="@string/app_name"
         android:description="@string/description"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@mipmap/ic_ps_app"
+        android:roundIcon="@mipmap/ic_ps_app"
         android:allowBackup="false">
         <service android:name="io.github.pixelsuite.WatchCell$Job" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
         <receiver android:name="io.github.pixelsuite.WatchCell$Receiver" android:exported="true"><intent-filter><action android:name="android.bluetooth.device.action.ACL_CONNECTED" /></intent-filter></receiver>
@@ -103,5 +105,22 @@
 <intent-filter><action android:name="android.intent.action.VIEW" /><category android:name="android.intent.category.DEFAULT" /><category android:name="android.intent.category.BROWSABLE" /><data android:scheme="pixelsuite" android:host="esim" /></intent-filter>
 </activity>
         <provider android:name="io.github.pixelsuite.ScopeProvider" android:authorities="io.github.roviandev.pixelsuite.XposedService" android:exported="true" />
+        <service android:name="io.github.pixelsuite.PixelVpnService" android:exported="false" android:permission="android.permission.BIND_VPN_SERVICE">
+            <intent-filter><action android:name="android.net.VpnService" /></intent-filter>
+        </service>
+        <service android:name="io.github.pixelsuite.VpnTile" android:exported="true" android:label="VPN" android:icon="@drawable/ic_ps_vpn" android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
+            <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
+        </service>
+        <provider android:name="io.github.pixelsuite.KeyboardPreviewProvider" android:authorities="io.github.roviandev.pixelsuite.keyboard" android:exported="true" android:grantUriPermissions="false" />
+        <provider android:name="io.github.pixelsuite.VpnProvider" android:authorities="io.github.roviandev.pixelsuite.vpn" android:exported="true" android:grantUriPermissions="false" />
+        <activity android:name="io.github.pixelsuite.ChromeTextSearch" android:exported="true" android:excludeFromRecents="true" android:noHistory="true" android:label="@string/search_in_chrome" android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.PROCESS_TEXT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+        <activity android:name="io.github.pixelsuite.VpnPermissionActivity" android:exported="true" android:excludeFromRecents="true" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 </application>
 </manifest>

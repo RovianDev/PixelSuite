@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
-import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
@@ -23,7 +22,6 @@ import android.widget.FrameLayout;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
 final class NavButtons {
     private NavButtons() {}
@@ -39,14 +37,21 @@ final class NavButtons {
     private static WeakReference<Bar> bar = new WeakReference<Bar>(null);
 
     static final android.graphics.Rect[] zones = new android.graphics.Rect[2];
+    static volatile int zonesRotation = -1;
 
     static boolean onButton(MotionEvent e, int index) {
         try {
+            Bar b = bar.get();
+            if (b == null || !b.isAttachedToWindow() || b.getDisplay() == null || b.getDisplay().getRotation() != zonesRotation) return false;
             if (index < 0 || index >= e.getPointerCount()) index = 0;
-            float x = e.getX(index), y = e.getY(index), rx = index == 0 ? e.getRawX() : x, ry = index == 0 ? e.getRawY() : y;
+            float rx, ry;
+            if (index == 0) { rx = e.getRawX(); ry = e.getRawY(); }
+            else if (android.os.Build.VERSION.SDK_INT >= 29) {
+                rx = (Float) MotionEvent.class.getMethod("getRawX", int.class).invoke(e, index);
+                ry = (Float) MotionEvent.class.getMethod("getRawY", int.class).invoke(e, index);
+            } else return false;
             for (android.graphics.Rect r : zones) {
-                if (r == null) continue;
-                if (r.contains(Math.round(x), Math.round(y)) || r.contains(Math.round(rx), Math.round(ry))) return true;
+                if (r != null && r.contains(Math.round(rx), Math.round(ry))) return true;
             }
         } catch (Throwable ignored) { }
         return false;
@@ -87,11 +92,39 @@ final class NavButtons {
                         int index = p.args.length > 1 && p.args[1] instanceof Integer ? (Integer) p.args[1] : 0;
                         if (onButton((MotionEvent) p.args[0], index)) {
                             p.setResult(false);
+                            forgetTouch(p.thisObject);
                         }
                     }
                 });
             } catch (Throwable t) { }
         } catch (Throwable t) { }
+    }
+
+    private static volatile Field sTransformerField, sLastRectField;
+    static void forgetTouch(Object helper) {
+        try {
+            if (helper == null) return;
+            if (sTransformerField == null) sTransformerField = field(helper.getClass(), "mOrientationTouchTransformer", "OrientationTouchTransformer");
+            Object t = sTransformerField == null ? null : sTransformerField.get(helper);
+            if (t == null) return;
+            if (sLastRectField == null) sLastRectField = field(t.getClass(), "mLastRectTouched", "OrientationRectF");
+            if (sLastRectField != null) sLastRectField.set(t, null);
+        } catch (Throwable ignored) { }
+    }
+    private static Field field(Class<?> c, String name, String typeEnd) {
+        for (Class<?> k = c; k != null && k != Object.class; k = k.getSuperclass()) {
+            try { Field f = k.getDeclaredField(name); f.setAccessible(true); return f; } catch (Throwable ignored) { }
+        }
+        Field found = null;
+        for (Class<?> k = c; k != null && k != Object.class; k = k.getSuperclass()) {
+            for (Field f : k.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || !f.getType().getName().endsWith(typeEnd)) continue;
+                if (found != null) return null;
+                found = f;
+            }
+        }
+        if (found != null) found.setAccessible(true);
+        return found;
     }
 
     private static void attach(View handle) throws Exception {
@@ -152,6 +185,21 @@ final class NavButtons {
                 f.addAction(android.content.Intent.ACTION_SCREEN_OFF); f.addAction(android.content.Intent.ACTION_SCREEN_ON); f.addAction(android.content.Intent.ACTION_USER_PRESENT);
                 getContext().registerReceiver(lockWatch, f);
             } catch (Throwable t) { }
+        }
+
+        @Override protected void onConfigurationChanged(android.content.res.Configuration c) {
+            super.onConfigurationChanged(c);
+            turned();
+        }
+        private int lastRotation = -1;
+        void turned() {
+            zones[0] = null; zones[1] = null; zonesRotation = -1;
+            if (leftPanel != null) leftPanel.show(false);
+            if (rightPanel != null) rightPanel.show(false);
+            requestLayout(); invalidate();
+            postDelayed(new Runnable() { @Override public void run() { follow.onPreDraw(); } }, 120);
+            postDelayed(new Runnable() { @Override public void run() { follow.onPreDraw(); } }, 450);
+            postDelayed(new Runnable() { @Override public void run() { follow.onPreDraw(); } }, 1000);
         }
 
         @Override protected void onDetachedFromWindow() {
@@ -230,6 +278,9 @@ final class NavButtons {
         final ViewTreeObserver.OnPreDrawListener follow = new ViewTreeObserver.OnPreDrawListener() {
             @Override public boolean onPreDraw() {
                 View hv = handle.get();
+                int rotation = getDisplay() == null ? -1 : getDisplay().getRotation();
+                if (lastRotation != -1 && rotation != lastRotation) { lastRotation = rotation; turned(); return true; }
+                lastRotation = rotation;
                 imeVisible=keyboardUp();left.keyboard(imeVisible);right.keyboard(imeVisible);
                 boolean show = on && hv != null && (imeVisible || (hv.isShown() && hv.getAlpha() > 0.01f)) && (!keyboardOnly || imeVisible) && !locked();
                 float dens = getResources().getDisplayMetrics().density;
@@ -255,7 +306,7 @@ final class NavButtons {
                 float density=getResources().getDisplayMetrics().density;
                 int touchWidth=Math.max(size,Math.round(56*density)),touchHeight=Math.max(size,Math.round(44*density));
                 int x=Math.round(getWidth()*at-touchWidth/2f),y=Math.round(handleScreen[1]+h.getHeight()/2f-touchHeight/2f);
-                panel.place(x,y,touchWidth,touchHeight);b.setVisibility(VISIBLE);b.setAlpha(imeVisible||hv==null?1:hv.getAlpha());panel.show(true);
+                panel.place(x,y,touchWidth,touchHeight);zonesRotation=getDisplay()==null?-1:getDisplay().getRotation();b.setVisibility(VISIBLE);b.setAlpha(imeVisible||hv==null?1:hv.getAlpha());panel.show(true);
             }catch(Throwable error){b.setVisibility(GONE);}
         }
         Context taskbarContext(){Context c=getContext();for(int i=0;i<6&&c!=null;i++){try{Xp.getObjectField(c,"mControllers");return c;}catch(Throwable ignored){}c=c instanceof android.content.ContextWrapper?((android.content.ContextWrapper)c).getBaseContext():null;}return getContext();}
@@ -280,7 +331,11 @@ final class NavButtons {
                 x=px;y=py;width=w;height=h;params.x=x;params.y=y;params.width=w;params.height=h;
                 if(!added){manager.addView(root,params);added=true;}else manager.updateViewLayout(root,params);
             }
-            void show(boolean value){if(!value)zones[slot]=null;int visibility=value?VISIBLE:GONE;if(root.getVisibility()!=visibility)root.setVisibility(visibility);}
+            void show(boolean value){
+                if(!value)zones[slot]=null;int visibility=value?VISIBLE:GONE;if(root.getVisibility()!=visibility)root.setVisibility(visibility);
+                int flags=value?params.flags&~android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE:params.flags|android.view.WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+                if(flags!=params.flags){params.flags=flags;if(added){try{manager.updateViewLayout(root,params);}catch(Throwable ignored){}}}
+            }
             void close(){zones[slot]=null;if(added){added=false;try{manager.removeViewImmediate(root);}catch(Throwable ignored){}}}
         }
 
@@ -363,7 +418,7 @@ final class NavButtons {
         }
 
         @Override public CharSequence getContentDescription() {
-            return kind == BACK ? "Back" : kind == HOME ? "Home" : kind == RECENT ? "Recent apps" : null;
+            return kind == BACK ? I18n.cs("Back") : kind == HOME ? I18n.cs("Home") : kind == RECENT ? I18n.cs("Recent apps") : null;
         }
 
         @Override public boolean onTouchEvent(MotionEvent e) {

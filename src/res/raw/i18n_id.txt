@@ -1,0 +1,1588 @@
+# Pixel Suite id: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	PEMBLOKIRAN IKLAN
+AdAway or Systemless hosts is also on. Use only one blocker.	AdAway atau Systemless hosts juga aktif. Gunakan satu pemblokir saja.
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	Memblokir iklan di Chrome, Google Berita, dan aplikasi lain. Daftar diupdate setiap hari.
+Fewer ads.\nFaster pages.	Lebih sedikit iklan.\nHalaman lebih cepat.
+Preparing ad protection…	Menyiapkan perlindungan iklan…
+Restart the phone once to start blocking.	Mulai ulang ponsel sekali untuk mulai memblokir.
+Unlock with Patreon	Buka dengan Patreon
+Update lists	Update daftar
+Updating…	Mengupdate…
+Works in every app and browser, also with Private DNS.	Berfungsi di semua aplikasi dan browser, juga dengan DNS Pribadi.
+Add	Tambah
+Add website	Tambah situs
+Add website: domain or URL	Tambah situs: domain atau URL
+Ads aren't filtered on these websites. Tap one to remove it.	Iklan tidak difilter di situs ini. Ketuk salah satu untuk menghapusnya.
+All websites use the default level	Semua situs memakai tingkat default
+Allowed websites	Situs yang diizinkan
+Basic	Dasar
+Bring back elements you removed.	Kembalikan elemen yang Anda hapus.
+Cancel	Batal
+Clear every website setting	Hapus semua setelan situs
+Clear every website setting? Your default level stays.	Hapus semua setelan situs? Tingkat default Anda tetap.
+Complete	Lengkap
+Couldn't load site settings. Open Chrome once, then reopen this page.	Tidak dapat memuat setelan situs. Buka Chrome sekali, lalu buka halaman ini lagi.
+Couldn't save site settings. Try again.	Tidak dapat menyimpan setelan situs. Coba lagi.
+Default for all websites	Default untuk semua situs
+Enter a domain or an http/https URL	Masukkan domain atau URL http/https
+Filtering level	Tingkat filter
+Included with your Patreon unlock	Termasuk dalam akses Patreon Anda
+Loading site settings…	Memuat setelan situs…
+No allowed websites	Tidak ada situs yang diizinkan
+No filtering	Tanpa filter
+No filtering · tap to remove	Tanpa filter · ketuk untuk menghapus
+No removed elements	Tidak ada elemen yang dihapus
+Optimal	Optimal
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	Optimal menyembunyikan iklan penelusuran. Lengkap juga menyembunyikan banner cookie dan pop-up. Tingkat milik situs didahulukan.
+Per-site levels	Tingkat per situs
+Removed elements	Elemen yang dihapus
+Reset	Reset
+Reset all site settings	Reset semua setelan situs
+Reset all site settings?	Reset semua setelan situs?
+Saving…	Menyimpan…
+Tap a website to change its level or use the default.	Ketuk situs untuk mengubah tingkatnya atau memakai default.
+Unlock ad blocking with Patreon	Buka pemblokiran iklan dengan Patreon
+\nDefault for all websites	\nDefault untuk semua situs
+Close	Tutup
+Clear search	Hapus penelusuran
+Could not save the folder	Tidak dapat menyimpan folder
+Save	Simpan
+Search apps	Cari aplikasi
+Search	Telusuri
+Search unavailable	Penelusuran tidak tersedia
+Search, button	Telusuri, tombol
+Searching…	Menelusuri…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nPenyiapan Pixel Suite Anda saat ini akan diganti. Peluncur Pixel dimulai ulang sekali.
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• Penyiapan Peluncur Pixel: folder panel aplikasi, pengurutan, nama, dan kunci\n
+• Share menu: pinned order and hidden apps\n	• Menu berbagi: urutan sematan dan aplikasi tersembunyi\n
+App and data	Aplikasi dan data
+App only	Hanya aplikasi
+Back up	Cadangkan
+Just the app. Its data isn't saved.	Hanya aplikasinya. Datanya tidak disimpan.
+Only the app goes back. Its data now stays.	Hanya aplikasinya yang kembali. Datanya yang sekarang tetap.
+Only the app, signed out and empty.	Hanya aplikasinya, belum login dan kosong.
+Puts everything back exactly as it was saved.	Mengembalikan semuanya persis seperti saat disimpan.
+Puts everything back exactly as it was saved. Its data now is replaced.	Mengembalikan semuanya persis seperti saat disimpan. Datanya yang sekarang diganti.
+Restore	Pulihkan
+Working out the size…	Menghitung ukuran…
+Backing up…	Mencadangkan…
+Backup & Restore	Pencadangan & Pemulihan
+Checking…	Memeriksa…
+Couldn't delete it. Check root.	Tidak dapat menghapusnya. Periksa root.
+Delete	Hapus
+Delete?	Hapus?
+Every held-back app is saved at its current version	Setiap aplikasi yang ditahan disimpan di versi saat ini
+Held-back apps	Aplikasi yang ditahan
+Held-back apps are saved here before they update.	Aplikasi yang ditahan disimpan di sini sebelum diupdate.
+Installed apps	Aplikasi terpasang
+Loading saved apps…	Memuat aplikasi tersimpan…
+No installed app has saved versions	Tidak ada aplikasi terpasang yang punya versi tersimpan
+No saved versions yet	Belum ada versi tersimpan
+Not installed	Tidak terpasang
+Nothing saved yet	Belum ada yang disimpan
+Saved	Tersimpan
+Saved in PixelSuite/APK backups on your phone	Disimpan di PixelSuite/APK backups di ponsel Anda
+The 3 newest versions of each app are kept	3 versi terbaru setiap aplikasi disimpan
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	Aplikasi ini sudah di-uninstal. Pulihkan menginstalnya lagi, dalam keadaan login jika disimpan bersama datanya.
+installed now	terpasang sekarang
+Audiobooks	Buku audio
+Documents	Dokumen
+Download	Download
+Music	Musik
+Podcasts	Podcast
+Recordings	Rekaman
+Automatic (default)	Otomatis (default)
+Automatic: every call is recorded	Otomatis: setiap panggilan direkam
+Choose folder…	Pilih folder…
+Couldn't keep access to that folder.	Tidak dapat mempertahankan akses ke folder itu.
+Couldn't load folder	Tidak dapat memuat folder
+Couldn't load recording mode	Tidak dapat memuat mode perekaman
+Couldn't save: root access needed	Tidak dapat menyimpan: perlu akses root
+Folder picker isn't available.	Pemilih folder tidak tersedia.
+HD: clearer voice (default)	HD: suara lebih jernih (default)
+HD: twice the detail, clearer voice (default)	HD: detail dua kali lipat, suara lebih jernih (default)
+Internal storage	Penyimpanan internal
+Lossless: HD without compression, large WAV files	Lossless: HD tanpa kompresi, file WAV besar
+Lossless: clearest voice, WAV files	Lossless: suara paling jernih, file WAV
+Manual	Manual
+Manual: tap Record during a call	Manual: ketuk Rekam saat panggilan
+Recording mode	Mode perekaman
+Recording quality	Kualitas rekaman
+Recordings folder	Folder rekaman
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (default)
+SD card	Kartu SD
+Standard: phone-call quality, smallest files	Standar: kualitas panggilan, file terkecil
+Standard: smaller files	Standar: file lebih kecil
+Release notes are unavailable in this build.	Catatan rilis tidak tersedia di build ini.
+Release notes could not be opened. Please reopen this page.	Catatan rilis tidak dapat dibuka. Buka halaman ini lagi.
+Always	Selalu
+Dark	Gelap
+Dark mode	Mode gelap
+Dark pages	Halaman gelap
+Needs Pixel Suite premium	Memerlukan Pixel Suite premium
+On this website	Di situs ini
+Pictures and videos keep their colors.	Gambar dan video tetap berwarna asli.
+Schedule	Jadwal
+Style	Gaya
+When	Kapan
+Speed Dial	Speed Dial
+Ad Blocker	Pemblokir Iklan
+Extensions	Ekstensi
+Hold an extension to pin it to the toolbar	Tahan ekstensi untuk menyematkannya ke toolbar
+Chrome didn't take the shortcut (limit reached?)	Chrome tidak menerima pintasan (batas tercapai?)
+Couldn't add it to the speed dial	Tidak dapat menambahkannya ke speed dial
+Couldn't make a folder in this Chrome version	Tidak dapat membuat folder di versi Chrome ini
+Couldn't move it into the folder	Tidak dapat memindahkannya ke folder
+Edit	Edit
+Edit website	Edit situs
+Its website goes back to the speed dial.	Situsnya kembali ke speed dial.
+Move to speed dial	Pindahkan ke speed dial
+Name	Nama
+No room on the speed dial	Tidak ada ruang di speed dial
+Open in new tab	Buka di tab baru
+Remove	Hapus
+Remove folder	Hapus folder
+Rename	Ganti nama
+Rename folder	Ganti nama folder
+URL	URL
+Back	Kembali
+Forward	Maju
+Home	Beranda
+Profile	Profil
+Tabs	Tab
+Filtering isn't available on this page.	Filter tidak tersedia di halaman ini.
+Pixel Suite settings	Setelan Pixel Suite
+Remove an element	Hapus elemen
+This page	Halaman ini
+filtering mode	mode filter
+no filtering	tanpa filter
+Couldn't open that picture	Tidak dapat membuka gambar itu
+Tap the picture to change it	Ketuk gambar untuk menggantinya
+Use the website's icon	Gunakan ikon situs
+Country	Negara
+Getting the free server list…	Mengambil daftar server gratis…
+No servers yet. Pixel Suite loads them when you open this.	Belum ada server. Pixel Suite memuatnya saat Anda membuka ini.
+Unavailable · no servers right now	Tidak tersedia · tidak ada server saat ini
+VPN	VPN
+VPN for Chrome	VPN untuk Chrome
+Become a patron	Jadi patron
+Buy me a coffee	Traktir saya kopi
+Coffee	Kopi
+Join the community	Gabung komunitas
+No app is available to open this link	Tidak ada aplikasi untuk membuka link ini
+This link could not be opened	Link ini tidak dapat dibuka
+On a schedule	Sesuai jadwal
+With the phone's dark mode	Dengan mode gelap ponsel
+Call	Telepon
+Incoming call deflected (device reported as switched off)	Panggilan masuk dialihkan (perangkat dilaporkan mati)
+Unknown caller	Penelepon tidak dikenal
+Off	Nonaktif
+On	Aktif
+Arrow	Panah
+Circle	Lingkaran
+Double arrow	Panah ganda
+Line	Garis
+Speech bubble	Balon teks
+Square	Persegi
+Star	Bintang
+Triangle	Segitiga
+Blue	Biru
+Green	Hijau
+Red	Merah
+Yellow	Kuning
+Clear badge	Hapus badge
+Could not save the name	Tidak dapat menyimpan nama
+No	Tidak
+Remove folder?	Hapus folder?
+Sort apps?	Urutkan aplikasi?
+Yes	Ya
+Add apps	Tambah aplikasi
+Create folder	Buat folder
+6-digit code	Kode 6 digit
+Allow root access to save your device ID.	Izinkan akses root untuk menyimpan ID perangkat Anda.
+Allow root access to save your purchase.	Izinkan akses root untuk menyimpan pembelian Anda.
+Allow root access to update your purchase.	Izinkan akses root untuk memperbarui pembelian Anda.
+Change email	Ganti email
+Check your license code and try again.	Periksa kode lisensi Anda lalu coba lagi.
+Contact support	Hubungi dukungan
+Couldn’t confirm the purchase. Your saved pass has been kept.	Tidak dapat mengonfirmasi pembelian. Pass tersimpan Anda tetap ada.
+Couldn’t connect. Check your internet connection and try again.	Tidak dapat terhubung. Periksa koneksi internet lalu coba lagi.
+Couldn’t save the device ID. Check root access.	Tidak dapat menyimpan ID perangkat. Periksa akses root.
+Couldn’t save the purchase. Check root access.	Tidak dapat menyimpan pembelian. Periksa akses root.
+Couldn’t verify the purchase link.	Tidak dapat memverifikasi link pembelian.
+Couldn’t verify this purchase.	Tidak dapat memverifikasi pembelian ini.
+Email used for purchase	Email untuk pembelian
+Enter code	Masukkan kode
+Enter the email you paid with.	Masukkan email yang Anda pakai untuk membayar.
+Enter the six-digit email code.	Masukkan kode enam digit dari email.
+If a purchase matches this email, your recovery code is on its way.	Jika ada pembelian yang cocok dengan email ini, kode pemulihan Anda sedang dikirim.
+Invalid purchase pass.	Pass pembelian tidak valid.
+Invalid signature.	Tanda tangan tidak valid.
+No connection. Your saved purchase has been kept.	Tidak ada koneksi. Pembelian tersimpan Anda tetap ada.
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	Tidak dapat dikembalikan setelah diaktifkan, kecuali diwajibkan oleh hukum atau aturan Buy Me a Coffee.
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	Satu ponsel dalam satu waktu. Memerlukan Pixel Watch yang kompatibel dan paket eSIM.
+Pixel watch eSIM	eSIM Pixel Watch
+Purchase is active.	Pembelian aktif.
+Purchase is no longer active.	Pembelian tidak aktif lagi.
+Purchase restored on this phone.	Pembelian dipulihkan di ponsel ini.
+Purchase unlocked.	Pembelian dibuka.
+Pixel Watch eSIM ✓ (purchased)	eSIM Pixel Watch ✓ (dibeli)
+Refresh purchase	Perbarui pembelian
+Resend code	Kirim ulang kode
+Restore on this phone	Pulihkan di ponsel ini
+Restore purchase	Pulihkan pembelian
+Restore purchase by email	Pulihkan pembelian lewat email
+Restoring…	Memulihkan…
+Send recovery code	Kirim kode pemulihan
+Sending…	Mengirim…
+The device ID needs support. It has not been changed.	ID perangkat memerlukan bantuan dukungan. ID tidak diubah.
+The shop is being set up. Please try again later.	Toko sedang disiapkan. Coba lagi nanti.
+This purchase pass is not valid for this phone.	Pass pembelian ini tidak valid untuk ponsel ini.
+This purchase was revoked or moved to another phone.	Pembelian ini dicabut atau dipindahkan ke ponsel lain.
+Unlock	Buka kunci
+Unlocking…	Membuka kunci…
+Yours to keep on this phone. Patreon is not required.	Milik Anda selamanya di ponsel ini. Patreon tidak diperlukan.
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — Halaman gelap\n\nMulai ulang Chrome setelah menambahkan cakupannya.
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — pembersihan kotak iklan di artikel yang dibuka dengan Chrome\n\nGoogle Berita (com.google.android.apps.magazines) tidak memerlukan cakupan. Pemblokiran domain iklan memakai pemblokir di seluruh sistem.
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — pembersihan kotak iklan kosong\n\nMulai ulang Chrome setelah menambahkan cakupannya. Pemblokiran domain iklan tidak memerlukan cakupan.
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **File dari Google** (com.google.android.apps.nbu.files) — browser file\n• **File (sistem)** (com.google.android.documentsui / com.android.documentsui) — pemilih file sistem
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **Layanan Telepon** (com.android.phone)\n\nPilih keduanya, lalu mulai ulang. Perubahan berikutnya langsung berlaku.
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **Layanan Telepon** (com.android.phone)\n\nPilih, lalu mulai ulang. Perubahan berikutnya langsung berlaku.
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **Telepon** (com.google.android.dialer)\n• **Framework Sistem** (system) — dukungan perekaman\n\nBuka lagi Telepon setelah menambahkan cakupannya.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **Peluncur Pixel** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — ikon, folder, menu, dan tepi lembut panel aplikasi\n• **UI Sistem** (com.android.systemui) — menu dan pesan sistem\n• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **Google Foto** (com.google.android.apps.photos) — menu editor\n\nSuper Gelap mencantumkan cakupan tambahannya di halamannya sendiri.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — fitur launcher\n• **Google** (com.google.android.googlequicksearchbox) — aplikasi kustom di penelusuran Google\n• **UI Sistem** (com.android.systemui) — posisi toast
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — ikon dan nama launcher\n• **Google** (com.google.android.googlequicksearchbox) — penelusuran Google di layar utama
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — tombol navigasi di samping bilah gestur\n• **Framework Sistem** (system) — aplikasi menjaga menu bawahnya di atas tombol\n• **Gboard** (com.google.android.inputmethod.latin) — tombol tutup keyboard
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — aplikasi terbaru\n• **UI Sistem** (com.android.systemui) — status bar lanskap
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) — screenshot\n• **Google Foto** (com.google.android.apps.photos) — foto
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play Store** (com.android.vending) — pemblokiran update aplikasi\n• **Framework Sistem** (system)\n• **Setelan** (com.android.settings) — pemblokiran OTA dan reset ke setelan pabrik
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play Store** (com.android.vending)\n• **Framework Sistem** (system), untuk memulihkan versi yang tersimpan
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **Sheet berbagi** (com.android.intentresolver)\n• **Google Foto** (com.google.android.apps.photos) — warna halaman berbagi Foto yang serasi
+• **System Framework** (system)	• **Framework Sistem** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **Framework Sistem** (system) — perlindungan aplikasi\n• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — kunci aplikasi dan folder\n• **UI Sistem** (com.android.systemui) — permintaan autentikasi\n\nSiapkan kunci layar ponsel, lalu mulai ulang setelah menambahkan cakupan.
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **Framework Sistem** (system) — tombol daya\n• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — Circle to Search
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **Framework Sistem** (system) — pemblokiran update\n• **Setelan** (com.android.settings) — kontrol update dan reset
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **Framework Sistem** (system) — bangun, tidur, dan screenshot\n• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — penarikan aplikasi\n• **UI Sistem** (com.android.systemui) — kontrol perekaman\n• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) — pemangkasan screenshot
+• **System Framework** (system), to restore a saved version (also an older one)	• **Framework Sistem** (system), untuk memulihkan versi yang tersimpan (juga versi lama)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **Framework Sistem** (system)\n• **UI Sistem** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **UI Sistem** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **UI Sistem** (com.android.systemui) — Tampilan Selalu Aktif\n• **Framework Sistem** (system) — memulai Tampilan Selalu Aktif meski opsi tampilan layar kunci lainnya nonaktif
+• **System UI** (com.android.systemui) — the lock screen PIN	• **UI Sistem** (com.android.systemui) — PIN layar kunci
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **UI Sistem** (com.android.systemui)\n• **Peluncur Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Setelan** (com.android.settings)\n• **Layanan Setelan** (com.google.android.settings.intelligence)\n• **Penginstal paket** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nUntuk gaya editor, pilih juga **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) dan **Google Foto** (com.google.android.apps.photos). Mulai ulang setelah menambahkan cakupan.
+Auto (A–Z)	Otomatis (A–Z)
+Custom	Kustom
+Sort	Urutkan
+Sort the apps in this folder from A to Z?	Urutkan aplikasi di folder ini dari A sampai Z?
+Auto-correction	Koreksi otomatis
+Corrects words as you type	Mengoreksi kata saat Anda mengetik
+Gboard's own switch (reading it…)	Tombol bawaan Gboard (membaca…)
+Languages	Bahasa
+On: Gboard corrects words in the languages turned on below	Aktif: Gboard mengoreksi kata dalam bahasa yang diaktifkan di bawah
+Reading Gboard's languages…	Membaca bahasa Gboard…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	Tombol atas adalah koreksi otomatis bawaan Gboard. Nonaktifkan untuk bahasa mana pun di bawah: kata tidak diganti di sana, tetapi saran tetap muncul. Perubahan berlaku saat keyboard dibuka lagi.
+A Gboard shortcut	Pintasan Gboard
+A keyboard you can move anywhere	Keyboard yang bisa Anda pindahkan ke mana saja
+Arrow keys and selection tools	Tombol panah dan alat pemilihan
+Both show at once, in two rows (portrait)	Keduanya tampil bersamaan, dalam dua baris (potret)
+Bring back what you undid	Kembalikan yang Anda urungkan
+Change how Gboard looks	Ubah tampilan Gboard
+Clipboard	Papan klip
+Copy	Salin
+Copy the selected text	Salin teks yang dipilih
+Cut	Potong
+Cut the selected text	Potong teks yang dipilih
+Drag a shortcut to the edge of the list to turn the page.	Tarik pintasan ke tepi daftar untuk membalik halaman.
+Edit toolbar shortcuts	Edit pintasan toolbar
+Emoji	Emoji
+Emoji, emoticons and symbols	Emoji, emotikon, dan simbol
+Fill in saved passwords and details	Isi sandi dan detail yang disimpan
+Floating	Mengambang
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	Toolbar Gboard, pintasan di atas saran: tarik pintasan ke sini
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	Toolbar Gboard, pintasan di bawah saran: tarik pintasan ke sini
+Gboard's toolbar: drag shortcuts here	Toolbar Gboard: tarik pintasan ke sini
+Hello	Halo
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	Tahan pintasan lalu tarik ke toolbar, sepanjang toolbar untuk mengurutkan, atau keluar untuk menghapusnya. Ketuk salah satu untuk melihat fungsinya.
+Make the keyboard bigger or smaller	Perbesar atau perkecil keyboard
+Menu button	Tombol menu
+Next language	Bahasa berikutnya
+Okay	Oke
+One-handed	Satu tangan
+Open Gboard's settings	Buka setelan Gboard
+Paste	Tempel
+Paste what you copied	Tempel yang Anda salin
+Put at least one shortcut on the toolbar	Letakkan setidaknya satu pintasan di toolbar
+Redo	Ulangi
+Resize	Ubah ukuran
+Rewrite or polish what you wrote	Tulis ulang atau perhalus tulisan Anda
+Scan text	Pindai teks
+Search and send GIFs	Cari dan kirim GIF
+Search and send stickers	Cari dan kirim stiker
+Select all	Pilih semua
+Select all the text	Pilih semua teks
+Settings	Setelan
+Share	Bagikan
+Share Gboard with others	Bagikan Gboard
+Shortcuts	Pintasan
+Shortcuts above the suggestions, not below	Pintasan di atas saran, bukan di bawah
+Shortcuts below the suggestions, not above	Pintasan di bawah saran, bukan di atas
+Shortcuts row on bottom	Baris pintasan di bawah
+Shortcuts row on top	Baris pintasan di atas
+Shrink the keyboard to one side	Kecilkan keyboard ke satu sisi
+Stickers	Stiker
+Suggestions and shortcuts together	Saran dan pintasan bersama
+Switch to your next language	Beralih ke bahasa berikutnya
+Tap to select a word, tap again to clear. Hold to select all	Ketuk untuk memilih kata, ketuk lagi untuk menghapus pilihan. Tahan untuk memilih semua
+Text editing	Pengeditan teks
+Thanks	Terima kasih
+Theme	Tema
+Translate	Terjemahkan
+Translate as you type	Terjemahkan saat mengetik
+Type by speaking	Mengetik dengan berbicara
+Type text from your camera	Ketik teks dari kamera
+Undo	Urungkan
+Undo your last change	Urungkan perubahan terakhir
+Voice typing	Ketik dengan suara
+Writing tools	Alat tulis
+Your copied text and pinned clips	Teks yang Anda salin dan klip yang disematkan
+Clear	Hapus
+Clear the clipboard?	Hapus papan klip?
+Every clip is deleted except pinned ones.	Semua klip dihapus kecuali yang disematkan.
+Delete this pinned clip?	Hapus klip yang disematkan ini?
+Apply	Terapkan
+Down	Bawah
+Height	Tinggi
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	Ukuran dan posisi keyboard. Tarik pegangan untuk mengubah ukuran, atau keyboard untuk memindahkannya.
+Try typing here after Apply	Coba mengetik di sini setelah Terapkan
+Up	Atas
+Width	Lebar
+Apps list	Daftar aplikasi
+Pixel Suite isn't available	Pixel Suite tidak tersedia
+Adjust icon	Sesuaikan ikon
+Could not save this icon. Try another image.	Tidak dapat menyimpan ikon ini. Coba gambar lain.
+Icon updated	Ikon diperbarui
+Pinch to zoom, drag to move	Cubit untuk zoom, tarik untuk memindah
+Reset position and zoom	Reset posisi dan zoom
+Large	Besar
+Largest	Terbesar
+Medium	Sedang
+Small	Kecil
+Smallest	Terkecil
+Apps the pack doesn't cover keep their own icons.	Aplikasi yang tidak tercakup paket tetap memakai ikonnya sendiri.
+Close icon packs	Tutup paket ikon
+Get icon packs	Dapatkan paket ikon
+Icon pack	Paket ikon
+Loading icon packs…	Memuat paket ikon…
+Loading icons…	Memuat ikon…
+No icon packs installed yet	Belum ada paket ikon terpasang
+Pixel Launcher's own icons, including themed icons	Ikon Peluncur Pixel sendiri, termasuk ikon bertema
+System default	Default sistem
+Unavailable	Tidak tersedia
+Rename app	Ganti nama aplikasi
+Shows on the home screen, in folders, the drawer and search.	Muncul di layar utama, folder, panel aplikasi, dan penelusuran.
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	Tidak dapat menyembunyikannya di sini. Aktifkan Sembunyikan kotak penelusuran di Pixel Suite.
+Couldn't save Hide search bar	Tidak dapat menyimpan Sembunyikan kotak penelusuran
+Hide search bar isn't supported on this launcher version	Sembunyikan kotak penelusuran tidak didukung di versi launcher ini
+Change icon	Ganti ikon
+Could not read this image. Try another image.	Tidak dapat membaca gambar ini. Coba gambar lain.
+Could not reset the icon	Tidak dapat mereset ikon
+Files	File
+Files is unavailable	File tidak tersedia
+Original icon restored	Ikon asli dipulihkan
+Photos	Foto
+Photos is unavailable. Choose Files instead.	Foto tidak tersedia. Pilih File saja.
+Reset icon	Reset ikon
+Could not read this icon pack	Tidak dapat membaca paket ikon ini
+Could not use this icon	Tidak dapat memakai ikon ini
+Loading…	Memuat…
+No icon packs installed yet.\nInstall one and it shows here.	Belum ada paket ikon terpasang.\nPasang satu dan paket itu muncul di sini.
+Play Store is unavailable	Play Store tidak tersedia
+Search icons	Cari ikon
+All apps	Semua aplikasi
+App picker	Pemilih aplikasi
+Choose apps	Pilih aplikasi
+Couldn't load apps. Check root access and reopen.	Tidak dapat memuat aplikasi. Periksa akses root lalu buka lagi.
+Couldn't save. Check root access and try again.	Tidak dapat menyimpan. Periksa akses root lalu coba lagi.
+Filter installed apps	Filter aplikasi terpasang
+Loading apps…	Memuat aplikasi…
+Root unavailable	Root tidak tersedia
+Saved. Changes apply the next time these apps open.	Tersimpan. Perubahan berlaku saat aplikasi ini dibuka lagi.
+Search installed apps	Cari aplikasi terpasang
+System apps	Aplikasi sistem
+User apps	Aplikasi pengguna
+No room on this page for the other apps	Tidak ada ruang di halaman ini untuk aplikasi lainnya
+A Quest for the Kind-Hearted	Misi untuk Hati yang Baik
+Close account	Tutup akun
+Membership refreshed	Keanggotaan diperbarui
+Pass expires:  ∞	Pass berakhir:  ∞
+Patreon account	Akun Patreon
+Patreon member	Anggota Patreon
+Patron ✓	Patron ✓
+Read the quest	Baca misinya
+Refresh	Perbarui
+Refreshing…	Memperbarui…
+Sign in with Patreon	Masuk dengan Patreon
+Sign out	Keluar
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Dukung Pixel Suite untuk membuka Chrome+, Gboard+, Pemblokir Iklan, VPN, Halaman gelap, perekaman panggilan, dan feed Google bebas iklan.
+A Quest for the\nKind-Hearted	Misi untuk\nHati yang Baik
+Already a patron? Unlock	Sudah jadi patron? Buka kunci
+Checking Patreon membership…	Memeriksa keanggotaan Patreon…
+Join on Patreon	Gabung di Patreon
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	Gabung di Patreon untuk membuka fitur Patreon, dan terima kasih telah menjaga proyek ini tetap hidup. 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	Sudah bergabung? Ketuk Buka kunci untuk mengonfirmasi keanggotaan Patreon berbayar Anda.
+Let's go	Ayo
+No paid membership found. Choose the paid tier to unlock.	Keanggotaan berbayar tidak ditemukan. Pilih tingkat berbayar untuk membuka kunci.
+Open a browser to sign in with Patreon.	Buka browser untuk masuk dengan Patreon.
+Open the Pixel Suite paid tier in your browser.	Buka tingkat berbayar Pixel Suite di browser Anda.
+Patreon sign-in is being set up.	Login Patreon sedang disiapkan.
+Patron verified	Patron terverifikasi
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	Pixel Suite tanpa iklan dan pelacak. Detail akun dan pembayaran hanya dipakai untuk memverifikasi buka kunci Anda.
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite dibuat oleh satu orang, di waktu luang, karena cinta pada ponsel Pixel.
+Quest Complete!	Misi Selesai!
+Ready to check membership	Siap memeriksa keanggotaan
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	Terima kasih telah mendukung Pixel Suite. Fitur Patreon Anda sudah siap.
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patron membuka Chrome+ dan Gboard+, Pemblokir Iklan dan VPN, Halaman gelap di Chrome, perekaman panggilan, serta feed Google bebas iklan. Setiap dukungan kembali ke aplikasi: mengikuti update Android dan aplikasi Google, memperbaiki yang rusak karenanya, dan membuat fitur baru.
+Welcome back!	Selamat datang kembali!
+✨ Quest Complete!	✨ Misi Selesai!
+📜 A Quest for the Kind-Hearted	📜 Misi untuk Hati yang Baik
+Google apps	Aplikasi Google
+Patreon feature	Fitur Patreon
+Unlock this feature with Patreon	Buka fitur ini dengan Patreon
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android tidak mengizinkan VPN. Buka halaman VPN lalu ketuk Hubungkan.
+Another VPN took over	VPN lain mengambil alih
+Checking that websites open…	Memeriksa apakah situs terbuka…
+Checking the connection…	Memeriksa koneksi…
+Chrome isn't installed	Chrome tidak terpasang
+Connection failed	Koneksi gagal
+Connection lost	Koneksi terputus
+Couldn't load the server list. Check your connection.	Tidak dapat memuat daftar server. Periksa koneksi Anda.
+Disconnect	Putuskan
+Disconnected	Terputus
+Finding servers…	Mencari server…
+Free volunteer server	Server relawan gratis
+No server answered	Tidak ada server yang menjawab
+Server stopped answering	Server berhenti menjawab
+Trying the faster UDP connection (up to 30 s)…	Mencoba koneksi UDP yang lebih cepat (hingga 30 dtk)…
+VPN is a Patreon feature	VPN adalah fitur Patreon
+connections refused	koneksi ditolak
+no answer	tidak ada jawaban
+Circle to Search isn't available	Circle to Search tidak tersedia
+Do Not Annoy off	Jangan Ganggu Saya nonaktif
+Do Not Annoy on	Jangan Ganggu Saya aktif
+Do Not Disturb off	Jangan Ganggu nonaktif
+Do Not Disturb on	Jangan Ganggu aktif
+No Annoyance off	Tanpa Gangguan nonaktif
+No Annoyance on	Tanpa Gangguan aktif
+Silence off	Senyap nonaktif
+Silence on	Senyap aktif
+Authenticator	Authenticator
+Calculator	Kalkulator
+Calendar	Kalender
+Camera	Kamera
+Clock	Jam
+Contacts	Kontak
+Maps	Maps
+Messages	Pesan
+Play Store	Play Store
++  Add apps	+  Tambah aplikasi
++ Add to home screen	+ Tambahkan ke layar utama
+A clearer page	Halaman yang lebih bersih
+A website	Sebuah situs
+Ad blocking	Pemblokiran iklan
+Add new	Tambah baru
+Add to home screen	Tambahkan ke layar utama
+Adjust	Sesuaikan
+Advertisement	Iklan
+Alex	Alex
+Another pack	Paket lain
+App info	Info aplikasi
+App is locked	Aplikasi terkunci
+Applied	Diterapkan
+Applied across the launcher	Diterapkan di seluruh launcher
+Applying…	Menerapkan…
+Apps	Aplikasi
+Authenticate to open	Autentikasi untuk membuka
+Back in your share list	Kembali di daftar bagikan Anda
+Block system updates	Blokir update sistem
+Bluetooth	Bluetooth
+Bookmarks	Bookmark
+Bookmarks bar	Bilah bookmark
+Call ended	Panggilan berakhir
+Call log: Alex · Blocked	Log panggilan: Alex · Diblokir
+Call recording	Perekaman panggilan
+Camera (stock)	Kamera (bawaan)
+Centered labels. Clearer view.	Label di tengah. Tampilan lebih jelas.
+Change icon → Icon pack	Ganti ikon → Paket ikon
+Change icons	Ganti ikon
+Choose Icon pack	Pilih paket ikon
+Choose a pack	Pilih paket
+Choose an image	Pilih gambar
+Cleaner articles in Chrome	Artikel lebih bersih di Chrome
+Clear all	Hapus semua
+Collections	Koleksi
+Connected	Terhubung
+Controls within reach	Kontrol dalam jangkauan
+Create	Buat
+Crop	Pangkas
+Crop freely	Pangkas bebas
+Data and Wi-Fi stay on	Data dan Wi-Fi tetap aktif
+Date & time	Tanggal & waktu
+Device audio	Audio perangkat
+Discover	Discover
+Display & touch	Layar & sentuhan
+Do Not Disturb	Jangan Ganggu
+Done	Selesai
+Dot cleared	Titik dihapus
+Downloads	Download
+Drag to make a folder	Tarik untuk membuat folder
+Edit photo	Edit foto
+Empty ad space	Ruang iklan kosong
+Enter PIN	Masukkan PIN
+Entire screen	Seluruh layar
+Erase all data	Hapus semua data
+Every tab in view	Semua tab terlihat
+Example app	Aplikasi contoh
+Example pack	Paket contoh
+Factory reset locked	Reset ke setelan pabrik dikunci
+Father	Ayah
+Fill	Isi
+Flashlight	Senter
+Folder	Folder
+For you	Untuk Anda
+Fri, Oct 16	Jum, 16 Okt
+Friday, Oct 16	Jumat, 16 Okt
+Friend	Teman
+Headlines	Berita utama
+Hidden apps	Aplikasi tersembunyi
+Hidden apps remain available	Aplikasi tersembunyi tetap tersedia
+Hidden contacts	Kontak tersembunyi
+Hide 2 apps	Sembunyikan 2 aplikasi
+Hide contact	Sembunyikan kontak
+Hide several apps	Sembunyikan beberapa aplikasi
+Hold	Tahan
+Hold and drag pinned apps	Tahan dan tarik aplikasi yang disematkan
+Hold to unhide	Tahan untuk menampilkan
+How about this spot?	Bagaimana dengan tempat ini?
+Incoming call declined	Panggilan masuk ditolak
+Incoming call deflected	Panggilan masuk dialihkan
+Incoming calls quiet	Panggilan masuk senyap
+Internet	Internet
+Keep Notes	Keep Notes
+Let's find a new place.	Ayo cari tempat baru.
+Lock	Kunci
+Manage suggested contacts	Kelola kontak yang disarankan
+Message	Pesan
+Minus hides the contacts row	Tanda minus menyembunyikan baris kontak
+Mobile bookmarks	Bookmark seluler
+Mobile network	Jaringan seluler
+More of your feed	Lebih banyak dari feed Anda
+My folder	Folder saya
+New tab	Tab baru
+Newest first	Terbaru dulu
+News article	Artikel berita
+No empty ad boxes	Tanpa kotak iklan kosong
+No recent apps	Tidak ada aplikasi terbaru
+No sponsored gaps	Tanpa celah bersponsor
+Notifications	Notifikasi
+OTA blocker	Pemblokir OTA
+Oct 12, 10:20	12 Okt, 10.20
+Oct 8, 08:10	8 Okt, 08.10
+One app. Your choice.	Satu aplikasi. Pilihan Anda.
+Open. Swipe. Close.	Buka. Geser. Tutup.
+Order saved	Urutan disimpan
+Other bookmarks	Bookmark lainnya
+Packages blocked	Paket diblokir
+Perfect. See you there!	Sempurna. Sampai jumpa di sana!
+Phone	Telepon
+Pin	Sematkan
+Pin moves apps above the divider	Menyematkan memindahkan aplikasi ke atas pembatas
+Pin, then drag to reorder	Sematkan, lalu tarik untuk mengurutkan
+Pinned apps	Aplikasi yang disematkan
+Plus brings the row back	Tanda plus mengembalikan baris
+Private	Pribadi
+Private folder	Folder pribadi
+Read the full story	Baca cerita lengkapnya
+Reading list	Daftar bacaan
+Ready for the weekend?	Siap untuk akhir pekan?
+Ready to activate	Siap diaktifkan
+Record	Rekam
+Record your screen	Rekam layar Anda
+Recorded	Direkam
+Recording	Merekam
+Recording saved	Rekaman disimpan
+Recordings / Calls	Recordings / Calls
+Restricted packages	Paket yang dibatasi
+Scan QR code	Pindai kode QR
+Scan your carrier's code	Pindai kode operator Anda
+Screenshot	Screenshot
+Screenshot saved	Screenshot disimpan
+Scroll to continue	Scroll untuk melanjutkan
+Search the web	Telusuri web
+Select	Pilih
+Select apps	Pilih aplikasi
+Sep 30, 21:00	30 Sep, 21.00
+Share or restore hidden apps	Bagikan atau pulihkan aplikasi tersembunyi
+Show touches	Tampilkan ketukan
+Sites	Situs
+Software updates	Update software
+Sort  ⌄	Urutkan  ⌄
+Sort apps A–Z?	Urutkan aplikasi A–Z?
+Speed Dial in bookmarks	Speed Dial di bookmark
+Split screen	Layar terpisah
+Start	Mulai
+Swipe	Geser
+System settings	Setelan sistem
+Tap to share	Ketuk untuk membagikan
+Themes	Tema
+Themes → Icon pack	Tema → Paket ikon
+Today	Hari ini
+Today 09:15	Hari ini 09.15
+Today 14:42	Hari ini 14.42
+Today's stories	Berita hari ini
+Today's top stories	Berita utama hari ini
+Touch fingerprint sensor	Sentuh sensor sidik jari
+Unhide app	Tampilkan aplikasi
+Unlocked on the 4th digit	Terbuka di digit ke-4
+Use Super Dark-Mode	Gunakan Mode Super Gelap
+Voice note.m4a	Catatan suara.m4a
+Voice search	Penelusuran suara
+Wallpaper & style	Wallpaper & gaya
+Watch eSIM	eSIM Watch
+Weekend plans	Rencana akhir pekan
+Wife	Istri
+Yes! A coffee sounds good.	Ya! Kopi kedengarannya enak.
+Yesterday	Kemarin
+Yesterday 18:30	Kemarin 18.30
+Your Pixel. Your way.	Pixel Anda. Gaya Anda.
+Your tabs	Tab Anda
+‹ Back	‹ Kembali
+↓ Move to bottom	↓ Pindahkan ke bawah
+Lock folder	Kunci folder
+Unlock folder	Buka kunci folder
+Confirm it's you to disable this app	Konfirmasi bahwa ini Anda untuk menonaktifkan aplikasi ini
+Confirm it's you to lock this app	Konfirmasi bahwa ini Anda untuk mengunci aplikasi ini
+Confirm it's you to lock this folder	Konfirmasi bahwa ini Anda untuk mengunci folder ini
+Confirm it's you to pause this app	Konfirmasi bahwa ini Anda untuk menjeda aplikasi ini
+Confirm it's you to remove this app	Konfirmasi bahwa ini Anda untuk menghapus aplikasi ini
+Confirm it's you to remove this folder	Konfirmasi bahwa ini Anda untuk menghapus folder ini
+Confirm it's you to uninstall this app	Konfirmasi bahwa ini Anda untuk meng-uninstal aplikasi ini
+Confirm it's you to unlock this app	Konfirmasi bahwa ini Anda untuk membuka kunci aplikasi ini
+Confirm it's you to unlock this folder	Konfirmasi bahwa ini Anda untuk membuka kunci folder ini
+Could not check your screen lock	Tidak dapat memeriksa kunci layar Anda
+Could not save. Is root allowed for Pixel Suite?	Tidak dapat menyimpan. Apakah root diizinkan untuk Pixel Suite?
+Please authenticate to proceed	Lakukan autentikasi untuk melanjutkan
+Set a screen lock first to lock apps	Siapkan kunci layar dulu untuk mengunci aplikasi
+Use PIN	Gunakan PIN
+App remains locked	Aplikasi tetap terkunci
+Cannot dismiss locked apps	Tidak dapat menutup aplikasi terkunci
+Two apps locked	Dua aplikasi terkunci
+Refresh rate	Kecepatan refresh
+Accept	Terima
+An update check is already running.	Pemeriksaan update sedang berjalan.
+Automatic update checks are off.	Pemeriksaan update otomatis nonaktif.
+Could not verify both release repositories. Try again later.	Tidak dapat memverifikasi kedua repositori rilis. Coba lagi nanti.
+New version ready. Tap to download and install.	Versi baru siap. Ketuk untuk mendownload dan menginstal.
+No newer official release is published with matching APKs on both repositories.	Tidak ada rilis resmi yang lebih baru dengan APK yang cocok di kedua repositori.
+No release check yet.	Belum ada pemeriksaan rilis.
+Apply update blocking choices	Terapkan pilihan pemblokiran update
+Couldn't apply: root access needed	Tidak dapat menerapkan: perlu akses root
+Couldn't restart: root access needed	Tidak dapat memulai ulang: perlu akses root
+Restarting…	Memulai ulang…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	Mode Super Gelap memakai gaya hitamnya sendiri.\nNonaktifkan untuk mengubah gaya.
+**Used for:**\n	**Digunakan untuk:**\n
+Adds Doodles and cropping tools to the screenshot editor.	Menambahkan Coretan dan alat pangkas ke editor screenshot.
+Adds editable Doodles to the photo editor.	Menambahkan Coretan yang dapat diedit ke editor foto.
+Adds the refresh-rate slider to Display & touch.	Menambahkan penggeser kecepatan refresh ke Layar & sentuhan.
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	Mengizinkan screenshot layar aman, menyembunyikan status aksesibilitas dan debugging dari aplikasi, dan menyediakan penghitung FPS.
+Applies Super Dark to Gboard.	Menerapkan Super Gelap ke Gboard.
+Applies Super Dark to Settings search.	Menerapkan Super Gelap ke penelusuran Setelan.
+Applies Super Dark to Settings.	Menerapkan Super Gelap ke Setelan.
+Applies Super Dark to app uninstall dialogs.	Menerapkan Super Gelap ke dialog uninstal aplikasi.
+Applies Super Dark to the Google app and feed.	Menerapkan Super Gelap ke aplikasi Google dan feed.
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	Menerapkan ikon, folder, dan menu launcher, ditambah tepi lembut buram di belakang area penelusuran panel aplikasi. Efek panel hanya aktif dengan Kaca Buram.
+Blocks system update installation and protects factory reset.	Memblokir penginstalan update sistem dan melindungi reset ke setelan pabrik.
+Controls Software updates and the factory-reset option in Settings.	Mengontrol Update software dan opsi reset ke setelan pabrik di Setelan.
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	Menolak panggilan masuk untuk Jangan Ganggu Saya saat jalur stack panggilan Pixel tidak tersedia.
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	Mendeteksi tekan ganda tombol daya dan tombol volume turun untuk pintasan senter dan kamera.
+Detects volume-down double presses while the screen is off.	Mendeteksi tekan ganda tombol volume turun saat layar mati.
+Enables QR-code eSIM setup in the Pixel Watch phone app.	Mengaktifkan penyiapan eSIM dengan kode QR di aplikasi Pixel Watch di ponsel.
+Enables call recording and its controls in the Google Phone app.	Mengaktifkan perekaman panggilan dan kontrolnya di aplikasi Telepon Google.
+Fades the status bar while recent apps are viewed in landscape.	Memudarkan status bar saat aplikasi terbaru dilihat dalam mode lanskap.
+Files (system)	File (sistem)
+Files by Google	File dari Google
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	Tepi scroll lembut Kaca Buram di layar yang dibuka dari Setelan Android, termasuk subhalaman yang didukung. Mengikuti mode terang, gelap, dan Super Gelap. Aktifkan cakupan ini di LSPosed lalu mulai ulang aplikasi atau ponsel.
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	Menangani gestur bangun, tidur, dan screenshot di proses sistem Android.
+Hides the keyboard globe and moves the dismiss arrow to the right.	Menyembunyikan tombol globe keyboard dan memindahkan panah tutup ke kanan.
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	Menjaga panggilan tetap responsif saat rekaman disimpan.
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	Menjaga panggilan masuk tetap senyap melalui stack panggilan Pixel saat Jangan Ganggu Saya aktif.
+Keeps screenshots ready for faster capture.	Menyiapkan screenshot agar pengambilan lebih cepat.
+Keeps selected apps on their current version by blocking their Play Store updates.	Menjaga aplikasi pilihan tetap di versi saat ini dengan memblokir update Play Store-nya.
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	Mengunci aplikasi dan folder, menampilkan badge gembok, dan melindungi aplikasi terkunci di aplikasi terbaru.
+Matches Photos' share-page colors to the share sheet.	Menyesuaikan warna halaman berbagi Foto dengan sheet berbagi.
+Matches photo-editor menus and controls to your chosen theme and surface style.	Menyesuaikan menu dan kontrol editor foto dengan tema dan gaya permukaan pilihan Anda.
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	Menyesuaikan menu dan kontrol editor screenshot dengan tema dan gaya permukaan pilihan Anda.
+Matches system menus and messages to your chosen theme and surface style.	Menyesuaikan menu dan pesan sistem dengan tema dan gaya permukaan pilihan Anda.
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	Memindahkan tombol tutup keyboard ke paling kanan saat tombol navigasi aktif. Mulai ulang keyboard setelah menambahkan cakupan ini.
+Opens the camera from the volume-down shortcut.	Membuka kamera dari pintasan volume turun.
+Package installer	Penginstal paket
+Permission Controller	Pengontrol Izin
+Personal Safety	Keamanan Pribadi
+Phone Services	Layanan Telepon
+Pixel Troubleshooting	Pemecahan Masalah Pixel
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	Menempatkan pesan toast di atas, tengah, atau bawah seperti bawaan. Berlaku untuk toast berikutnya.
+Provides cleaner screen-recording controls.	Menyediakan kontrol perekaman layar yang lebih rapi.
+Removes sponsored cards and their empty space from the Google feed.	Menghapus kartu bersponsor dan ruang kosongnya dari feed Google.
+Removes supported empty ad boxes from web pages opened in Chrome.	Menghapus kotak iklan kosong yang didukung dari halaman web yang dibuka di Chrome.
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	Mengurutkan aplikasi berbagi yang disematkan dan menambahkan folder aplikasi tersembunyi dan kontak ke sheet berbagi Android.
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	Mewajibkan autentikasi sebelum membuka aplikasi yang dilindungi atau meng-uninstal, menonaktifkan, atau menjedanya.
+Settings Services	Layanan Setelan
+Share sheet	Sheet berbagi
+Shows customized app names and icons in home-screen Google search.	Menampilkan nama dan ikon aplikasi kustom di penelusuran Google layar utama.
+Shows fingerprint and PIN prompts for locked apps and folders.	Menampilkan permintaan sidik jari dan PIN untuk aplikasi dan folder terkunci.
+Shows newest files first in the file browser.	Menampilkan file terbaru dulu di browser file.
+Shows newest files first in the system file picker.	Menampilkan file terbaru dulu di pemilih file sistem.
+System Framework	Framework Sistem
+System UI	UI Sistem
+Toggles the flashlight with a double press of the power button.	Menyalakan dan mematikan senter dengan tekan ganda tombol daya.
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	Ruang untuk 7 pintasan di toolbar, pintasan pengeditan teks, tombol membulat, papan klip satu kolom, chip tersembunyi, tombol menu dan emoji/suara, urutan toolbar Anda, saran dengan pintasan dalam dua baris, Ubah ukuran (ukuran dan posisi keyboard), posisi keyboard bebas, ؤ Arab di و, hapus huruf demi huruf dengan geser, koreksi otomatis per bahasa, papan klip tanpa batas, dan gambar keyboard di halaman Ubah ukuran.
+10 seconds	10 detik
+15 seconds	15 detik
+3 seconds	3 detik
+30 seconds	30 detik
+5 seconds	5 detik
+A better starting view for your files.	Tampilan awal yang lebih baik untuk file Anda.
+A feed without sponsored gaps	Feed tanpa celah bersponsor
+A tidier recording sheet. Needs your phone in English.	Sheet perekaman yang lebih rapi. Ponsel Anda harus berbahasa Inggris.
+AOD after screen off	AOD setelah layar mati
+AOD while charging	AOD saat mengisi daya
+About and support	Tentang dan dukungan
+Ad Blocker, VPN, Dark pages and more to come	Pemblokir Iklan, VPN, Halaman gelap, dan lainnya
+Ad blocker	Pemblokir iklan
+Ad blocking for news browsing	Pemblokiran iklan saat membaca berita
+Add-ons for Chrome+.	Add-on untuk Chrome+.
+Adds Scan QR code to Mobile network when your carrier isn't listed	Menambahkan Pindai kode QR ke Jaringan seluler saat operator Anda tidak tercantum
+All of Gboard+ at once. Your choices are kept while it's off	Semua Gboard+ sekaligus. Pilihan Anda tetap tersimpan saat nonaktif
+Allow screenshots of secure screens	Izinkan screenshot layar aman
+Allow update notifications	Izinkan notifikasi update
+Always show Clear all	Selalu tampilkan Hapus semua
+Always-on display	Tampilan Selalu Aktif
+Always-on display while plugged in	Tampilan Selalu Aktif saat terhubung ke daya
+App & folder lock	Kunci aplikasi & folder
+App drawer	Panel aplikasi
+App drawer folders	Folder panel aplikasi
+App name	Nama aplikasi
+Applies right away. Open folders and search keep the usual size.	Langsung berlaku. Folder yang terbuka dan penelusuran tetap berukuran biasa.
+Apply matching icons across your apps	Terapkan ikon serasi di semua aplikasi
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	Aplikasi yang mengunci login ke ponsel, seperti banyak aplikasi bank, mungkin meminta Anda login lagi setelah uninstal.
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	Aplikasi yang menolak terbuka saat opsi developer aktif, seperti beberapa aplikasi bank, berfungsi normal.\nKetuk ikon roda gigi untuk membuka Opsi developer.
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	Aplikasi dengan versi lebih baru di Play Store ditampilkan merah. Ketuk ! untuk mengupdate, mencadangkan, atau memulihkan.
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	Aplikasi pilihan Anda tidak dapat melihat layanan aksesibilitas Anda.\nNonaktifkan dulu modul lain yang melakukan hal ini.
+Asks before a locked app is uninstalled or paused	Bertanya sebelum aplikasi terkunci di-uninstal atau dijeda
+Auto-confirm 4-digit PIN	Konfirmasi otomatis PIN 4 digit
+Auto-confirm works with a 4-digit PIN, from your next unlock.	Konfirmasi otomatis berfungsi dengan PIN 4 digit, mulai dari buka kunci berikutnya.
+Backspace swipe deletes letters	Geser Backspace menghapus huruf
+Backup	Cadangan
+Backup & Restore keeps every saved version, also of uninstalled apps.	Pencadangan & Pemulihan menyimpan setiap versi, juga dari aplikasi yang di-uninstal.
+Backup restored	Cadangan dipulihkan
+Backup saved	Cadangan disimpan
+Battery saver can still turn it off.	Penghemat baterai tetap dapat menonaktifkannya.
+Block ads, with filtering per site	Blokir iklan, dengan filter per situs
+Blocks ads while you read the news.	Memblokir iklan saat Anda membaca berita.
+Blur Off	Tanpa Blur
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	Tanpa Blur\nTanpa blur, permukaan solid.\n\nBawaan\nTampilan bawaan sistem.\n\nKaca Buram (Default)\nMemburamkan apa yang ada di belakang folder, menu, dan pesan.
+Blurred and tinted	Buram dan berwarna
+Bottom (Stock)	Bawah (Bawaan)
+Bring everything back from a backup file	Kembalikan semuanya dari file cadangan
+Browse from another country	Jelajahi dari negara lain
+Browse from another country, in Chrome or every app	Jelajahi dari negara lain, di Chrome atau semua aplikasi
+Browse from another country.	Jelajahi dari negara lain.
+Browse without empty ad boxes	Jelajahi tanpa kotak iklan kosong
+Buttons	Tombol
+Buttons beside the gesture bar	Tombol di samping bilah gestur
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	Perekaman panggilan mungkin dibatasi oleh hukum di negara Anda. Dapatkan persetujuan yang diperlukan sebelum merekam. Anda bertanggung jawab atas penggunaan yang sah. RovianDev tidak bertanggung jawab atas penggunaan ilegal.
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	Penelepon mendengar bahwa Anda tidak dapat dihubungi. Anda mendapat notifikasi dengan tombol Telepon untuk setiap panggilan tak terjawab. Panggilan darurat selalu masuk.
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	Panggilan ditolak sebelum ponsel berdering. Anda mendapat notifikasi dengan tombol Telepon untuk setiap panggilan tak terjawab. Panggilan darurat selalu masuk.
+Capture, sleep, wake and app dragging.	Pengambilan, tidur, bangun, dan menarik aplikasi.
+Changelog	Log perubahan
+Changes apply the next time the chosen apps open.	Perubahan berlaku saat aplikasi pilihan dibuka lagi.
+Changes only the text under icons.\nIcon size and shape stay the same.	Hanya mengubah teks di bawah ikon.\nUkuran dan bentuk ikon tetap sama.
+Changing this option restarts Pixel Launcher.	Mengubah opsi ini akan memulai ulang Peluncur Pixel.
+Check for updates	Periksa update
+Check for updates automatically	Periksa update secara otomatis
+Check for updates now	Periksa update sekarang
+Check now	Periksa sekarang
+Checking for updates…	Memeriksa update…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	Pilih Kembali, Beranda, atau Terbaru di samping bilah gestur. Tahan Beranda untuk Circle to Search atau Gemini.
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	Pilih Kembali, Beranda, atau Terbaru untuk tiap sisi. Tahan Beranda untuk Circle to Search atau Gemini.
+Choose Lock from an app's recents menu to keep its card when you clear apps.	Pilih Kunci dari menu aplikasi di aplikasi terbaru agar kartunya tetap ada saat Anda menghapus aplikasi.
+Choose a filtering level per site from the ad blocker button in Chrome.	Pilih tingkat filter per situs dari tombol pemblokir iklan di Chrome.
+Choose the languages Gboard corrects.	Pilih bahasa yang dikoreksi Gboard.
+Choose which apps can't see your accessibility services	Pilih aplikasi mana yang tidak dapat melihat layanan aksesibilitas Anda
+Choose which apps stay on their current version.	Pilih aplikasi mana yang tetap di versi saat ini.
+Circle to Search	Circle to Search
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	Circle to Search bekerja seperti menahan handle navigasi. Screenshot bekerja seperti tombol daya + volume turun.
+Cleaner news articles	Artikel berita lebih bersih
+Cleaner news browsing.	Membaca berita lebih bersih.
+Clear all in recents	Hapus semua di aplikasi terbaru
+Clear all is always there in recents, no scrolling.	Hapus semua selalu ada di aplikasi terbaru, tanpa scroll.
+Clear all, locked cards and landscape view	Hapus semua, kartu terkunci, dan tampilan lanskap
+Clipboard history	Histori papan klip
+Clipboard in one column	Papan klip satu kolom
+Colorful icons in the app drawer (Stock)	Ikon berwarna di panel aplikasi (Bawaan)
+Community and support	Komunitas dan dukungan
+Confirm it's you to change privacy settings	Konfirmasi bahwa ini Anda untuk mengubah setelan privasi
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	Kontrol pindah ke bawah, dengan animasi tab yang mulus. Di pengalih tab, + oranye membuka tab samaran.
+Could not save text size	Tidak dapat menyimpan ukuran teks
+Could not save the surface style	Tidak dapat menyimpan gaya permukaan
+Could not save this option	Tidak dapat menyimpan opsi ini
+Couldn't back up: root access needed	Tidak dapat mencadangkan: perlu akses root
+Couldn't load apps	Tidak dapat memuat aplikasi
+Couldn't restore: root access needed	Tidak dapat memulihkan: perlu akses root
+Couldn't save (root)	Tidak dapat menyimpan (root)
+Crop screenshots to any size, even a single line.	Pangkas screenshot ke ukuran apa pun, bahkan satu baris.
+Customize icon labels	Sesuaikan label ikon
+Dark theme and schedules	Tema gelap dan jadwal
+Dark websites in Chrome	Situs gelap di Chrome
+Dark websites in Chrome.	Situs gelap di Chrome.
+Dark websites, always, with dark mode or on a schedule	Situs gelap, selalu, dengan mode gelap, atau sesuai jadwal
+Developer options aren't available on this device.	Opsi developer tidak tersedia di perangkat ini.
+Double tap	Ketuk dua kali
+Double tap to sleep	Ketuk dua kali untuk mengunci
+Double-press power button	Tekan dua kali tombol daya
+Double-press volume down	Tekan dua kali volume turun
+Double-tap an empty spot on the home screen to lock your phone.	Ketuk dua kali area kosong di layar utama untuk mengunci ponsel.
+Download and install	Download dan instal
+Download and install the update in Pixel Suite	Download dan instal update di Pixel Suite
+Drag an app onto another to make a folder. Use Add apps to pick more.	Tarik aplikasi ke aplikasi lain untuk membuat folder. Gunakan Tambah aplikasi untuk memilih lainnya.
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	Tarik pegangan untuk mengubah ukuran, atau bagian tengah untuk memindahkan keyboard. Reset kembali ke ukuran Gboard.
+Drag to home screen	Tarik ke layar utama
+Draw on screenshots and photos.	Gambar di screenshot dan foto.
+Draw shapes and arrows on screenshots.	Gambar bentuk dan panah di screenshot.
+Draw shapes on photos: Edit → Doodles. They stay editable.	Gambar bentuk di foto: Edit → Coretan. Tetap dapat diedit.
+Ends	Berakhir
+Erase all data is greyed out in Settings while OTA blocker is on.	Hapus semua data menjadi abu-abu di Setelan saat pemblokir OTA aktif.
+Every feature, fix and release	Setiap fitur, perbaikan, dan rilis
+Feature preview	Pratinjau fitur
+Features preview	Pratinjau fitur
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	Filter iklan per situs, dari dasar hingga lengkap. Lengkap juga menyembunyikan banner cookie dan pop-up. Anda juga dapat menghapus elemen apa pun.
+Filtering levels and website exceptions.	Tingkat filter dan pengecualian situs.
+Fingerprint or PIN before locked apps and folders open	Sidik jari atau PIN sebelum aplikasi dan folder terkunci terbuka
+Five text sizes for app names. Icons stay the same size.	Lima ukuran teks untuk nama aplikasi. Ukuran ikon tetap sama.
+Flashlight and camera shortcuts	Pintasan senter dan kamera
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	Senter: tekan dua kali tombol daya untuk menyalakan atau mematikan, juga saat terkunci. Kamera (bawaan) membuka kamera.
+Folder grid	Petak folder
+Folder sorting	Pengurutan folder
+Folders	Folder
+Folders first, then your newest files.	Folder dulu, lalu file terbaru Anda.
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	Folder membesar sesuai jumlah aplikasi di dalamnya. Pilih petak dari menu titik tiga setiap folder.
+Folders, dragging and app shortcuts	Folder, penarikan, dan pintasan aplikasi
+Folders, dragging and app shortcuts.	Folder, penarikan, dan pintasan aplikasi.
+Folders, drawer, names, search bar and recents	Folder, panel, nama, kotak penelusuran, dan aplikasi terbaru
+Folders, names, search bar and recents.	Folder, nama, kotak penelusuran, dan aplikasi terbaru.
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	Mengikuti jadwal tema gelap Anda. Di tema terang, warna normal dan blur kembali.
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	Untuk Pixel Watch dengan paket selulernya sendiri: jaringannya juga dimatikan. Memerlukan aplikasi Pixel Suite untuk jam tangan.
+For fingerprint or PIN protection, use Privacy & Security.	Untuk perlindungan sidik jari atau PIN, gunakan Privasi & Keamanan.
+Free screenshot crop	Pangkas screenshot bebas
+From Chrome to Chrome+	Dari Chrome ke Chrome+
+Full changelog on GitHub	Log perubahan lengkap di GitHub
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard menyimpan setiap klip sampai Anda menghapusnya. Klip yang disematkan berkartu biru, dan X di atas menghapus semuanya kecuali yang disematkan. Papan klip satu kolom menampilkan satu klip per baris.
+Gboard restarts when you change any of these.	Gboard dimulai ulang saat Anda mengubah salah satunya.
+Gemini (stock)	Gemini (bawaan)
+Gemini when locked	Gemini saat terkunci
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini, Circle to Search, screenshot, atau mode senyap.
+Gestures	Gestur
+Get the Pixel Suite watch app from the developer on Telegram.	Dapatkan aplikasi Pixel Suite untuk jam tangan dari developer di Telegram.
+Google Photos setup	Penyiapan Google Foto
+Google app	Aplikasi Google
+Google news	Google Berita
+Google's own look	Tampilan khas Google
+Held-back apps are saved automatically before they update.	Aplikasi yang ditahan disimpan otomatis sebelum diupdate.
+Hide	Sembunyikan
+Hide Developer Options	Sembunyikan Opsi Developer
+Hide accessibility from apps	Sembunyikan aksesibilitas dari aplikasi
+Hide ads in Google feed	Sembunyikan iklan di feed Google
+Hide app shortcuts	Sembunyikan pintasan aplikasi
+Hide search bar	Sembunyikan kotak penelusuran
+Hide suggestion chips	Sembunyikan chip saran
+Hides app shortcuts like View orders from the drawer menu.	Menyembunyikan pintasan aplikasi seperti Lihat pesanan dari menu panel aplikasi.
+Hides the globe under your keyboard and moves the arrow to the right	Menyembunyikan globe di bawah keyboard dan memindahkan panah ke kanan
+Hold Home for	Tahan Beranda untuk
+Hold a folder and drag it anywhere among your apps.	Tahan folder lalu tarik ke mana saja di antara aplikasi Anda.
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	Tahan folder untuk mengganti nama, mengurutkan, atau menghapusnya. Menghapus folder tidak meng-uninstal aplikasinya.
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	Tahan pintasan lalu tarik ke toolbar, sepanjang toolbar untuk mengurutkan, atau keluar untuk menghapusnya. Ketuk salah satu untuk melihat fungsinya. Sembunyikan tombol samping agar pintasan punya lebih banyak ruang.
+Hold an app and choose Change icon to use your own image.	Tahan aplikasi lalu pilih Ganti ikon untuk memakai gambar Anda sendiri.
+Hold an app and choose Rename.	Tahan aplikasi lalu pilih Ganti nama.
+Hold an app and choose Rename. It shows right away everywhere.	Tahan aplikasi lalu pilih Ganti nama. Langsung tampil di mana-mana.
+Hold an app in the drawer and drag it onto Add to home screen.	Tahan aplikasi di panel lalu tarik ke Tambahkan ke layar utama.
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	Tahan aplikasi atau folder lalu pilih Kunci atau Buka kunci.\n\nMengunci folder tidak mengunci aplikasi di dalamnya.
+Hold an app or folder with a dot and choose Clear badge.	Tahan aplikasi atau folder dengan titik lalu pilih Hapus badge.
+Hold an app or folder with a notification dot and choose Clear badge.	Tahan aplikasi atau folder dengan titik notifikasi lalu pilih Hapus badge.
+Hold back app updates	Tahan update aplikasi
+Hold power button	Tahan tombol daya
+How it works	Cara kerjanya
+Icon label size	Ukuran label ikon
+Icon label size, five levels	Ukuran label ikon, lima tingkat
+Icons, Super Dark-Mode and blur	Ikon, Mode Super Gelap, dan blur
+If a double tap doesn't register, tap once more within three seconds.	Jika ketuk dua kali tidak terdeteksi, ketuk sekali lagi dalam tiga detik.
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	Di Chrome, buka Ekstensi lalu ketuk Halaman gelap untuk menonaktifkannya di satu situs. Gambar dan video tetap berwarna asli.
+Installation permission was not enabled. Tap Download and install when ready.	Izin penginstalan belum diaktifkan. Ketuk Download dan instal saat siap.
+Keep calls quiet and stay connected	Panggilan senyap, tetap terhubung
+Keep incoming calls quiet and stay connected	Panggilan masuk senyap, tetap terhubung
+Keep unlocked for 1 minute	Tetap tidak terkunci selama 1 menit
+Keep what matters. Clear the rest.	Simpan yang penting. Hapus sisanya.
+Keeps Clear all next to Screenshot and Select.	Menjaga Hapus semua di samping Screenshot dan Pilih.
+Keeps chips like Screenshot off the toolbar	Menjauhkan chip seperti Screenshot dari toolbar
+Keyboard bar tweak	Penyesuaian bilah keyboard
+Keys	Tombol
+Keys and backspace	Tombol dan backspace
+LSPosed scope	Cakupan LSPosed
+Landscape recent apps	Aplikasi terbaru mode lanskap
+Landscape view	Tampilan lanskap
+Left button	Tombol kiri
+Live frame counter at the top right	Penghitung frame langsung di kanan atas
+Lock a card from its menu to keep it when you clear apps.	Kunci kartu dari menunya agar tetap ada saat Anda menghapus aplikasi.
+Lock an app's card so Clear all keeps it.	Kunci kartu aplikasi agar Hapus semua tidak menghapusnya.
+Lock apps and folders	Kunci aplikasi dan folder
+Lock apps in recents	Kunci aplikasi di aplikasi terbaru
+Lock factory reset	Kunci reset ke setelan pabrik
+Lock screen	Layar kunci
+Lock-screen behavior	Perilaku layar kunci
+Lock-screen taps	Ketukan di layar kunci
+Locking recent apps	Mengunci aplikasi terbaru
+Locks stay after a restart.	Kunci tetap ada setelah mulai ulang.
+Made by RovianDev	Dibuat oleh RovianDev
+Make it work your way.	Sesuaikan dengan gaya Anda.
+Middle	Tengah
+Miscellaneous	Lain-lain
+More	Lainnya
+More to come.	Masih ada lagi.
+Move and resize the keyboard	Pindahkan dan ubah ukuran keyboard
+Move folders between apps	Pindahkan folder di antara aplikasi
+Move several apps	Pindahkan beberapa aplikasi
+Move to bottom and scroll	Pindahkan ke bawah dan scroll
+Navigation buttons	Tombol navigasi
+Newest files first, in Files and the file picker	File terbaru dulu, di File dan pemilih file
+No LTE Pixel Watch? Leave this off.	Tidak punya Pixel Watch LTE? Biarkan nonaktif.
+No blur anywhere	Tanpa blur di mana pun
+No file picker available	Tidak ada pemilih file yang tersedia
+Nothing	Tidak ada
+Notifications that can be dismissed are cleared, and the dot goes away.	Notifikasi yang dapat ditutup akan dihapus, dan titiknya hilang.
+OTA & Store blocker	Pemblokir OTA & Store
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	Nonaktif, kata muncul saat Anda berbicara. Dengan Ketik dengan suara dengan tanda centang aktif, bicaralah lalu ketuk tanda centang untuk menambahkan kata atau X untuk membatalkan. Memerlukan Rambler sebagai jenis dikte di setelan suara Gboard.
+On the lock screen, holding power opens Gemini	Di layar kunci, menahan tombol daya membuka Gemini
+One clip per row, exactly as you copied it	Satu klip per baris, persis seperti yang Anda salin
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	Satu tombol untuk semua di sini. Saat nonaktif, Gboard berfungsi seperti bawaan dan pilihan Anda tetap tersimpan.
+Only Clear all	Hanya Hapus semua
+Only Clear all, in the middle	Hanya Hapus semua, di tengah
+Open Developer options	Buka Opsi developer
+Open locked apps and folders with your fingerprint or PIN	Buka aplikasi dan folder terkunci dengan sidik jari atau PIN
+Per language	Per bahasa
+Personalize	Personalisasi
+Phone, Chrome, Gboard, Google, News and watch	Telepon, Chrome, Gboard, Google, Berita, dan jam tangan
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	Pilih 3×3, 4×4, atau 5×5 dari menu titik tiga folder. Petak yang lebih besar muncul saat folder makin penuh.
+Pin, reorder and hide sharing apps	Sematkan, urutkan, dan sembunyikan aplikasi berbagi
+Pin, reorder, hide and restore sharing apps and contacts	Sematkan, urutkan, sembunyikan, dan pulihkan aplikasi berbagi dan kontak
+Pinned and hidden sharing apps.	Aplikasi berbagi yang disematkan dan disembunyikan.
+Pixel Studio setup	Penyiapan Studio Pixel
+Pixel Suite checks for updates and installs them right here.	Pixel Suite memeriksa update dan menginstalnya langsung di sini.
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite memerlukan root. Izinkan di pengelola root Anda, lalu buka layar ini lagi.
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite: ketuk dua kali kartu di layar kunci untuk mematikan layar tanpa membukanya.
+Pixel Watch with LTE	Pixel Watch dengan LTE
+Place folders anywhere among your apps, with their own grids and sorting.	Letakkan folder di mana saja di antara aplikasi, dengan petak dan urutannya sendiri.
+Play Store blocker	Pemblokir Play Store
+Play Store updates and system updates	Update Play Store dan update sistem
+Preview of the chosen surface style on a folder over a wallpaper	Pratinjau gaya permukaan yang dipilih pada folder di atas wallpaper
+Privacy & Security	Privasi & Keamanan
+Protect locked apps	Lindungi aplikasi terkunci
+Protected with your fingerprint or PIN.	Dilindungi dengan sidik jari atau PIN Anda.
+Protection	Perlindungan
+Pure black backgrounds and darker menus in dark theme.	Latar belakang hitam pekat dan menu lebih gelap di tema gelap.
+Quick actions from your phone's buttons.	Tindakan cepat dari tombol ponsel Anda.
+Recent	Terbaru
+Recent Apps	Aplikasi Terbaru
+Record and save calls	Rekam dan simpan panggilan
+Record calls in the Phone app, in any country, without the announcement	Rekam panggilan di aplikasi Telepon, di negara mana pun, tanpa pengumuman
+Reduce screenshot delay	Kurangi jeda screenshot
+Refresh rate slider	Penggeser kecepatan refresh
+Removes sponsored cards from your feed, with no gaps left	Menghapus kartu bersponsor dari feed Anda, tanpa celah tersisa
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	Menghapus kotak penelusuran dari bagian bawah layar utama. Dock turun dan aplikasi memakai ruangnya.
+Removing apps from the home screen doesn't uninstall them.	Menghapus aplikasi dari layar utama tidak meng-uninstalnya.
+Rename apps	Ganti nama aplikasi
+Reopen Settings to see the change.	Buka Setelan lagi untuk melihat perubahannya.
+Reopen apps that were already open.	Buka lagi aplikasi yang sudah terbuka.
+Reorder pinned apps and hide sharing apps	Urutkan aplikasi yang disematkan dan sembunyikan aplikasi berbagi
+Reset brings back the original name.	Reset mengembalikan nama asli.
+Reset restores the original name. Work-profile and Private Space apps keep their names.	Reset mengembalikan nama asli. Aplikasi profil kerja dan Ruang Privasi tetap memakai namanya.
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	Pulihkan mengembalikannya di sini. Versi yang disimpan dengan datanya akan bertanya apakah data juga dipulihkan.
+Restore this backup?	Pulihkan cadangan ini?
+Right button	Tombol kanan
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	Ikon bulat untuk hingga 19 situs dan folder. Tahan dan tarik untuk memindahkan, atau letakkan di atas yang lain untuk membuat folder. Edit situs untuk memberinya gambar Anda sendiri.
+Rounded keys	Tombol membulat
+Rounded keys and corners, with smooth key pop-ups	Tombol dan sudut membulat, dengan pop-up tombol yang mulus
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	Tombol membulat dengan pop-up mulus, di mode terang, gelap, dan Super Gelap. Geser ke kiri dari tombol hapus untuk menghapus huruf demi huruf.
+Save your settings, folders and icons to a file	Simpan setelan, folder, dan ikon Anda ke file
+Saved versions of your apps, ready to put back.	Versi tersimpan aplikasi Anda, siap dikembalikan.
+Saved. Gboard restarts with the new size	Tersimpan. Gboard dimulai ulang dengan ukuran baru
+Saved. Gboard restarts with your toolbar	Tersimpan. Gboard dimulai ulang dengan toolbar Anda
+Screen recording sheet	Sheet perekaman layar
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	Screenshot dan rekaman di aplikasi yang memblokirnya.\nNonaktifkan dulu modul lain yang melakukan hal ini.
+Screenshots appear instantly. Uses a little extra memory.	Screenshot langsung muncul. Memakai sedikit memori tambahan.
+Screenshots, accessibility, keyboard and developer options	Screenshot, aksesibilitas, keyboard, dan opsi developer
+Screenshots, sleep, wake and dragging	Screenshot, tidur, bangun, dan menarik
+Search stays in the app drawer.	Penelusuran tetap ada di panel aplikasi.
+Set	Setel
+Set a phone screen lock first	Siapkan kunci layar ponsel dulu
+Set up eSIM with a QR code	Siapkan eSIM dengan kode QR
+Setup, community and support	Penyiapan, komunitas, dan dukungan
+Shapes in Pixel Studio and Google Photos	Bentuk di Studio Pixel dan Google Foto
+Share menu	Menu berbagi
+Share sheet tools	Alat sheet berbagi
+Sharing	Berbagi
+Show FPS	Tampilkan FPS
+Show toasts	Tampilkan toast
+Shows right away everywhere. Tap the reset arrow for the original icon.	Langsung tampil di mana-mana. Ketuk panah reset untuk ikon asli.
+Shows right away everywhere. Work profile and Private Space apps keep their names.	Langsung tampil di mana-mana. Aplikasi profil kerja dan Ruang Privasi tetap memakai namanya.
+Silence	Senyap
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	Senyap, Jangan Ganggu, dan Jangan Ganggu Saya aktif dengan menahan dan nonaktif dengan tahan berikutnya. Tanpa Gangguan melakukan ketiganya sekaligus.
+Silences calls and keeps you connected. Add its Quick Settings tile.	Menyenyapkan panggilan dan menjaga Anda tetap terhubung. Tambahkan kartunya di Setelan Cepat.
+Single tap	Ketuk sekali
+Small fixes, simple controls.	Perbaikan kecil, kontrol sederhana.
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	Animasi buatan tangan yang lebih mulus, ekstensi bawaan, kontrol di bawah, dan speed dial kustom.
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	Animasi buatan tangan yang lebih mulus, ekstensi bawaan, kontrol di bawah, speed dial kustom
+Sort from the three-dot menu	Urutkan dari menu titik tiga
+Sorting and custom order	Pengurutan dan urutan kustom
+Speak, then tap the checkmark to add your words	Bicaralah, lalu ketuk tanda centang untuk menambahkan kata
+Speed dial	Speed dial
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	Mulai tarik aplikasi, lalu ketuk aplikasi lain dengan jari lain. Lepaskan semuanya di layar utama atau di folder.
+Starts	Mulai
+Stay connected. Keep incoming calls quiet.	Tetap terhubung. Jaga panggilan masuk tetap senyap.
+Stays unlocked for a minute after you leave it	Tetap tidak terkunci selama satu menit setelah Anda meninggalkannya
+Stock	Bawaan
+Stops system updates and hides Software updates in Settings.	Menghentikan update sistem dan menyembunyikan Update software di Setelan.
+Surface style, three options	Gaya permukaan, tiga opsi
+Surfaces and blur	Permukaan dan blur
+Swipe down with three fingers to take a screenshot.	Geser ke bawah dengan tiga jari untuk mengambil screenshot.
+Swipe gestures still work.	Gestur geser tetap berfungsi.
+Swipe left from delete to remove letter by letter	Geser ke kiri dari tombol hapus untuk menghapus huruf demi huruf
+System colors, your way.	Warna sistem, sesuai gaya Anda.
+System update controls.	Kontrol update sistem.
+System updates and factory reset	Update sistem dan reset ke setelan pabrik
+Take a screenshot	Ambil screenshot
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Ketuk Ekstensi di halaman tab baru Chrome untuk menggunakannya. Ketuk salah satu untuk setelannya, atau tahan untuk menyematkannya ke toolbar.
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Ketuk Ekstensi di halaman tab baru untuk menggunakannya. Tahan salah satu untuk menyematkannya ke toolbar.
+Tap an app to see its saved versions.	Ketuk aplikasi untuk melihat versi yang tersimpan.
+Tap to wake	Ketuk untuk membangunkan
+Text size	Ukuran teks
+That isn't a Pixel Suite backup	Itu bukan cadangan Pixel Suite
+The 3 newest versions of each app are kept.	3 versi terbaru setiap aplikasi disimpan.
+The clock and info while charging, and after the power button.	Jam dan info saat mengisi daya, dan setelah tombol daya ditekan.
+The green button puts a saved version back, with its data and sign-ins.	Tombol hijau mengembalikan versi tersimpan, dengan data dan login-nya.
+The power button shows the always-on display for a few seconds	Tombol daya menampilkan Tampilan Selalu Aktif selama beberapa detik
+The three styles	Tiga gaya
+The toolbar	Toolbar
+Three-finger screenshot	Screenshot tiga jari
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Untuk kembali ke sini, tekan lama layar utama lalu pilih Setelan Pixel Suite. Memerlukan root dan LSPosed.
+To protect an app with your fingerprint or PIN, use Privacy & Security.	Untuk melindungi aplikasi dengan sidik jari atau PIN, gunakan Privasi & Keamanan.
+Toasts	Toast
+Toolbar	Toolbar
+Toolbar, keys, resize, auto-correction, clipboard	Toolbar, tombol, ukuran, koreksi otomatis, papan klip
+Tools for your Google apps.	Alat untuk aplikasi Google Anda.
+Top	Atas
+Turn auto-correction off for the languages you choose. Suggestions still show.	Nonaktifkan koreksi otomatis untuk bahasa pilihan Anda. Saran tetap muncul.
+Turn off after	Matikan setelah
+Turn on notifications in Android settings	Aktifkan notifikasi di setelan Android
+Turn the flashlight on or off, open the camera (stock), or do nothing.	Nyalakan atau matikan senter, buka kamera (bawaan), atau tidak melakukan apa-apa.
+Turn this feature on or off.	Aktifkan atau nonaktifkan fitur ini.
+Turn your phone sideways in recents for a cleaner view.	Miringkan ponsel di aplikasi terbaru untuk tampilan yang lebih rapi.
+Turns on	Aktif
+Two-finger drag	Tarik dengan dua jari
+Typing and clipboard	Mengetik dan papan klip
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	Urungkan, Ulangi, Pilih Cepat, Pilih semua, Potong, Salin, dan Tempel berfungsi di semua aplikasi. Pilih Cepat: ketuk untuk kata, ketuk lagi untuk menghapus pilihan, tahan untuk memilih semua.
+Unlock OEM apps	Buka kunci aplikasi OEM
+Unlock on the 4th digit	Buka kunci di digit ke-4
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	Membuka kunci segera setelah Anda mengetik digit ke-4 PIN, tanpa Enter
+Up to 7 shortcuts, in the same order in every language.	Hingga 7 pintasan, dalam urutan yang sama di setiap bahasa.
+Up to 7 shortcuts, their order, the side buttons and two rows	Hingga 7 pintasan, urutannya, tombol samping, dan dua baris
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	Update menyimpan versi saat ini dulu, lalu membuka halaman Play Store-nya. Aplikasi ditahan lagi setelah diupdate.
+Updates	Update
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	Mengupdate aplikasi inti ini dari Play Store dapat merusak fitur Pixel Suite. Pixel Suite mengupdatenya untuk Anda di setiap rilis.
+Use Doodles	Gunakan Coretan
+Use Gboard+	Gunakan Gboard+
+Use custom app icons	Gunakan ikon aplikasi kustom
+Use your own image for an app icon	Gunakan gambar Anda sendiri untuk ikon aplikasi
+Voice typing with checkmark	Ketik dengan suara dengan tanda centang
+Wake gesture	Gestur bangun
+Wake the screen	Bangunkan layar
+Wake your phone with a tap, with pocket protection.	Bangunkan ponsel dengan ketukan, dengan perlindungan saku.
+Websites open dark, with no white flash. Super Dark uses pure black.	Situs terbuka gelap, tanpa kilatan putih. Super Gelap memakai hitam pekat.
+What's new	Yang baru
+When you untick apps, Back up saves their current versions first.	Saat Anda menghapus centang aplikasi, Cadangkan menyimpan versi saat ini dulu.
+While charging and after the power button	Saat mengisi daya dan setelah tombol daya ditekan
+While holding an app or folder, swipe with another finger to scroll or turn pages.	Sambil menahan aplikasi atau folder, geser dengan jari lain untuk scroll atau membalik halaman.
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	Saat Tampilan Selalu Aktif nonaktif, tombol daya mematikan layar ke Tampilan Selalu Aktif. Tampilan mati setelah waktu yang Anda pilih.
+With Super Dark-Mode, panels stay black.	Dengan Mode Super Gelap, panel tetap hitam.
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	Saat layar mati dan Tampilan Selalu Aktif aktif, tekan dua kali volume turun. Tidak saat panggilan atau saat media diputar.
+With the screen off, open the camera or turn the flashlight on or off.	Saat layar mati, buka kamera atau nyalakan/matikan senter.
+With themed icons on, the app drawer keeps each app's own colors.	Dengan ikon bertema aktif, panel aplikasi mempertahankan warna asli setiap aplikasi.
+You can also hold the search bar and choose Hide widget. It hides right away.	Anda juga dapat menahan kotak penelusuran lalu memilih Sembunyikan widget. Langsung tersembunyi.
+Your own Always-on display setting isn't changed.	Setelan Tampilan Selalu Aktif Anda sendiri tidak berubah.
+eSIM setup with a QR code	Penyiapan eSIM dengan kode QR
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• Tarik aplikasi ke baris atas untuk menyematkannya, lalu tarik untuk mengurutkan.\n\n• Tahan aplikasi atau kontak untuk menyematkan atau menyembunyikannya.\n\n• Item tersembunyi ada di Aplikasi tersembunyi dan Kontak tersembunyi. Tahan salah satu untuk menampilkannya.
+Hide 1 app	Sembunyikan 1 aplikasi
+Tap to share. Long-press to unhide.	Ketuk untuk membagikan. Tekan lama untuk menampilkan.
+Tick apps to unhide.	Centang aplikasi untuk ditampilkan.
+Tick contacts to unhide.	Centang kontak untuk ditampilkan.
+Unknown app	Aplikasi tidak dikenal
+Back up and update	Cadangkan dan update
+Back up now	Cadangkan sekarang
+Check root access and reopen this page.	Periksa akses root lalu buka halaman ini lagi.
+Close app selection	Tutup pemilihan aplikasi
+Collapse blocked updates	Ciutkan update yang diblokir
+Couldn't open Play Store	Tidak dapat membuka Play Store
+Discard	Buang
+Discard changes?	Buang perubahan?
+Expand blocked updates	Luaskan update yang diblokir
+Keep editing	Lanjutkan mengedit
+Opening Play Store…	Membuka Play Store…
+Reopen this page to refresh installed apps	Buka halaman ini lagi untuk memperbarui aplikasi terpasang
+Save them first, then apply	Simpan dulu, lalu terapkan
+Tick Play Store in LSPosed for Pixel Suite.	Centang Play Store di LSPosed untuk Pixel Suite.
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	Aktifkan Buka kunci aplikasi OEM untuk menghapus centang aplikasi ini. Mengupdatenya dapat merusak dukungan Pixel Suite.
+Unknown	Tidak diketahui
+Unticked apps can get updates	Aplikasi yang tidak dicentang bisa mendapat update
+Update	Update
+Update blocker	Pemblokir update
+Updating this core app may break Pixel Suite support.	Mengupdate aplikasi inti ini dapat merusak dukungan Pixel Suite.
+Wait for your changes to finish applying	Tunggu hingga perubahan selesai diterapkan
+Your app selections haven't been applied.	Pilihan aplikasi Anda belum diterapkan.
+\n\nTick it and apply to hold it back.	\n\nCentang dan terapkan untuk menahannya.
+stroke weight	ketebalan garis
+APK exceeds download limit	APK melebihi batas download
+APK verification failed	Verifikasi APK gagal
+An update download is already running.	Download update sedang berjalan.
+Cannot prepare APK	Tidak dapat menyiapkan APK
+Checking APK hash and signing certificate…	Memeriksa hash APK dan sertifikat penandatanganan…
+Could not open Android installer. Try Download and install again.	Tidak dapat membuka penginstal Android. Coba Download dan instal lagi.
+Download complete. Open Updates and tap Download and install to continue.	Download selesai. Buka Update lalu ketuk Download dan instal untuk melanjutkan.
+Download unavailable	Download tidak tersedia
+Incomplete APK	APK tidak lengkap
+No newer verified release is available on both repositories.	Tidak ada rilis terverifikasi yang lebih baru di kedua repositori.
+Pixel Suite update	Update Pixel Suite
+Unexpected APK size	Ukuran APK tidak terduga
+Update could not be downloaded or verified. Check your connection and try again.	Update tidak dapat didownload atau diverifikasi. Periksa koneksi lalu coba lagi.
+Verified. Opening Android installer…	Terverifikasi. Membuka penginstal Android…
+Verifying the official releases…	Memverifikasi rilis resmi…
+Add the VPN tile to Quick Settings to connect with one tap.	Tambahkan kartu VPN ke Setelan Cepat untuk terhubung dengan satu ketukan.
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	Hanya Chrome: aktifkan VPN dari Ekstensi Chrome. Hanya Chrome yang memakainya, dan situs melihat negara itu.
+Connect	Hubungkan
+Couldn't connect	Tidak dapat terhubung
+Couldn't load servers. Tap to try again.	Tidak dapat memuat server. Ketuk untuk mencoba lagi.
+Couldn't refresh. Showing the last list.	Tidak dapat memperbarui. Menampilkan daftar terakhir.
+Couldn't start the VPN	Tidak dapat memulai VPN
+Countries without servers right now show as Unavailable.	Negara yang sedang tidak punya server ditampilkan Tidak tersedia.
+Fastest server	Server tercepat
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Server gratis yang dijalankan relawan di seluruh dunia. Pixel Suite terhubung ke yang tercepat.
+Getting the free server list	Mengambil daftar server gratis
+Loading servers…	Memuat server…
+No servers yet	Belum ada server
+Not connected	Tidak terhubung
+Open-source servers change during the day	Server open source berubah sepanjang hari
+Pick a country, then tap Connect	Pilih negara, lalu ketuk Hubungkan
+Refresh servers	Perbarui server
+Tap Refresh servers	Ketuk Perbarui server
+Turn off	Nonaktifkan
+Use for all apps	Gunakan untuk semua aplikasi
+VPN is part of Patreon premium	VPN adalah bagian dari Patreon premium
+Couldn't ask for VPN permission	Tidak dapat meminta izin VPN
+VPN permission is needed to connect	Izin VPN diperlukan untuk terhubung
+Russia	Rusia
+Server list was empty	Daftar server kosong
+South Korea	Korea Selatan
+United Kingdom	Inggris Raya
+United States	Amerika Serikat
+Chrome only	Hanya Chrome
+Connecting…	Menghubungkan…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	Izinkan Perangkat di sekitar untuk Pixel Suite agar Jangan Ganggu Saya dapat mengalihkan jaringan seluler jam tangan Anda.
+Do Not Annoy: watch	Jangan Ganggu Saya: jam tangan
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Pixel Suite di jam tangan Anda memerlukan izin satu kali (perintah adb) untuk mengalihkan jaringan seluler.
+Watch	Jam tangan
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	Menambahkan penggeser 60 / 120 Hz di bawah Smooth Display (Setelan > Layar & sentuhan)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	Aplikasi dan data menyimpan semuanya (login, chat, setelan, dan file) dan memulihkannya persis seperti semula. Hanya aplikasi menyimpan aplikasinya saja.
+Auto sorts A to Z; Custom lets you arrange them.	Otomatis mengurutkan A sampai Z; Kustom memungkinkan Anda mengaturnya.
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	Tarik folder ke Pindahkan ke bawah untuk scroll; dorong lebih dalam agar lebih cepat.
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	Folder panel aplikasi: tahan satu di Pindahkan ke bawah untuk scroll; dorong lebih dalam agar lebih cepat.
+Hold an app or folder and choose Lock or Unlock.	Tahan aplikasi atau folder lalu pilih Kunci atau Buka kunci.
+Pixel watch eSIM purchase	Pembelian eSIM Pixel Watch
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	Ketuk untuk membuka; tahan untuk mengganti nama atau menghapus. Tahan situs di dalamnya untuk mengedit, memindahkan, atau menghapusnya.
+• Drag an app into the top row to pin it, then drag to reorder.	• Tarik aplikasi ke baris atas untuk menyematkannya, lalu tarik untuk mengurutkan.
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	Tidak dapat menjangkau jam tangan Anda. Jaringan selulernya akan diaktifkan saat terhubung kembali.
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	Tidak dapat menjangkau jam tangan Anda. Jaringan selulernya akan dinonaktifkan saat terhubung kembali.
+Language	Bahasa
+Automatic	Otomatis
+Follows the phone	Mengikuti ponsel
+Couldn't save the language	Tidak dapat menyimpan bahasa
+‹  Back	‹  Kembali
+just now	baru saja
+1 minute ago	1 menit lalu
+1 hour ago	1 jam lalu
+1 day ago	1 hari lalu
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	Daftar iklan: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pemblokir milik Pixel Suite sendiri.
+The Ad blocker is part of Pixel Suite's Patreon features	Pemblokir iklan termasuk fitur Patreon Pixel Suite
+Root access is needed	Perlu akses root
+Off: ads are no longer blocked	Mati: iklan tidak diblokir lagi
+Couldn't download the ad lists (no connection?). The current list stays.	Tidak bisa mengunduh daftar iklan (tidak ada koneksi?). Daftar saat ini tetap dipakai.
+Ready: restart the phone once to start blocking	Siap: mulai ulang ponsel sekali untuk mulai memblokir
+Couldn't prepare the list	Tidak bisa menyiapkan daftar
+Couldn't prepare the module	Tidak bisa menyiapkan modul
+Getting the ad lists…	Mengambil daftar iklan…
+No answer over UDP	Tidak ada jawaban lewat UDP
+TLS handshake timed out	Waktu handshake TLS habis
+Key exchange timed out	Waktu pertukaran kunci habis
+Server sent no address	Server tidak mengirim alamat
+Server rejected the sign-in	Server menolak proses masuk
+Server gave no address	Server tidak memberi alamat
+Connection closed	Koneksi ditutup
+Server didn't answer	Server tidak menjawab
+Server refused the call	Server menolak panggilan
+Server closed the connection	Server menutup koneksi
+1 server	1 server
+Unhide 1 app	Tampilkan 1 aplikasi
+Unhide 1 contact	Tampilkan 1 kontak
+Unhide contact	Tampilkan kontak
+1 app saved · 1 version	Disimpan: 1 aplikasi · 1 versi
+1 app · 1 version	1 aplikasi · 1 versi
+Doodles	Coretan
+Super Dark-Mode	Mode Super Gelap
+Super Dark	Super Gelap
+Frosted Glass	Kaca Buram
+Do Not Annoy	Jangan Ganggu Saya
+No Annoyance	Tanpa Gangguan
+Quick Select	Pilih Cepat
+Google Photos	Google Foto
+Pixel watch	Jam Pixel
+Google dialer+	Telepon Google+
+Keep	Keep Catatan
+Drive	Drive
+Sponsored	Bersponsor
+Recent apps	Aplikasi terbaru
+3×3 (Stock)	3×3 (bawaan)
+Ag	Ag
+Aa	Aa
+1 website with custom settings	1 situs dengan setelan khusus
+1 app isn't saved at the version installed now	1 aplikasi belum disimpan di versi yang terpasang
+Words are never replaced; suggestions still show	Kata tidak pernah diganti; saran tetap muncul
+Off: Gboard corrects nothing; turn it on to choose languages	Mati: Gboard tidak mengoreksi apa pun; aktifkan untuk memilih bahasa
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	Seret pegangan untuk mengubah ukuran, atau bagian tengah untuk memindahkan. Terapkan menyimpan; Reset kembali ke ukuran Gboard. Hanya potret.
+Unlock Watch eSIM · $10 one-time purchase	Buka eSIM jam · pembelian sekali $10
+$10 one-time eSIM purchase	Pembelian eSIM sekali $10
+One-time purchase, $10, yours to keep.	Pembelian sekali, $10, milik Anda selamanya.
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	Temukan kode pembelian di email dari purchases@roviandev.com. Periksa juga Spam.
+Pixel Suite logo	Logo Pixel Suite
+Open Android app settings to manage notifications.	Buka setelan aplikasi Android untuk mengatur notifikasi.
+OK	OK
+Opens this sheet from the toolbar	Membuka panel ini dari toolbar
+Needs Pixel Suite premium and the ad blocker on	Perlu Pixel Suite premium dan pemblokir iklan aktif
+Manage extensions	Kelola ekstensi
+Enter an address	Masukkan alamat
+That isn't a web address	Itu bukan alamat web
+Off in Chrome · on for other apps	Mati di Chrome · aktif untuk aplikasi lain
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	VPN aktif untuk seluruh ponsel. Menonaktifkan di sini hanya mengeluarkan Chrome.
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	Aplikasi lain memakai VPN; Chrome tidak ikut. Aktifkan untuk menambahkan Chrome.
+Only Chrome uses this VPN. Other apps keep their own connection.	Hanya Chrome yang memakai VPN ini. Aplikasi lain tetap memakai koneksinya sendiri.
+All apps except Chrome	Semua aplikasi kecuali Chrome
+• 1 setting	• 1 setelan
+• 1 custom icon	• 1 ikon khusus
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• Penyiapan Peluncur Pixel: folder laci, urutan, nama, dan kunci
+• Share menu: pinned order and hidden apps	• Menu bagikan: urutan sematan dan aplikasi tersembunyi
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	Penyiapan Pixel Suite saat ini akan diganti. Peluncur Pixel dimulai ulang sekali.
+Two rows, shortcuts on top	Dua baris, pintasan di atas
+Two rows	Dua baris
+Side buttons hidden	Tombol samping disembunyikan
+Menu button hidden	Tombol menu disembunyikan
+Emoji/voice hidden	Emoji/suara disembunyikan
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	Menambahkan tombol navigasi di samping bilah gestur. Setelah update modul, mulai ulang Peluncur Pixel sekali; lalu pilihan tombol langsung berlaku.
+Sign-in timed out	Waktu masuk habis
+Address setup timed out	Waktu penyiapan alamat habis
+Server renewed its keys	Server memperbarui kuncinya
+Stopped	Berhenti
+Couldn't finish the backup	Tidak bisa menyelesaikan cadangan
+Root isn't available, or it took too long	Root tidak tersedia, atau terlalu lama
+It didn't finish	Tidak selesai
+Pixel Suite could not make the file	Pixel Suite tidak bisa membuat file
+Pixel Suite is unavailable	Pixel Suite tidak tersedia
+Pixel Suite gave no file	Pixel Suite tidak memberi file
+the picked folder	folder yang dipilih
+Use a name between 1 and 80 characters	Gunakan nama 1 sampai 80 karakter
+Folder limit reached	Batas folder tercapai
+Drag here to add to home screen	Seret ke sini untuk menambahkan ke layar utama
+Drag a folder here to move it to the end of the list	Seret folder ke sini untuk memindahkannya ke akhir daftar
+Drag here to take out of the folder	Seret ke sini untuk mengeluarkan dari folder
+More shapes	Bentuk lainnya
+More colours	Warna lainnya
+Thickness	Ketebalan
+Fill shape	Isi bentuk
+Delete shape	Hapus bentuk
+Make Doodles menu smaller	Perkecil menu Coretan
+Move Doodles menu	Pindahkan menu Coretan
+Make text menu smaller	Perkecil menu teks
+Move text menu	Pindahkan menu teks
+More fonts	Font lainnya
+Clear clipboard	Hapus papan klip
+Stop voice typing	Hentikan ketik suara
+Save icon	Simpan ikon
+Reset to original icon	Kembalikan ikon asli
+Folder options	Opsi folder
+Doodles tab	Tab Coretan
+Edit: select hidden contacts to unhide	Edit: pilih kontak tersembunyi untuk ditampilkan
+Edit: select hidden apps to unhide	Edit: pilih aplikasi tersembunyi untuk ditampilkan
+Edit: select apps to hide	Edit: pilih aplikasi untuk disembunyikan
+Hide the contacts row	Sembunyikan baris kontak
+Show the contacts row	Tampilkan baris kontak
+Locked	Terkunci
+Filtering mode	Mode penyaringan
+Change the picture	Ganti gambar
+Open a website to choose its filtering	Buka situs untuk memilih penyaringannya
+Highest refresh rate. The screen still slows down when nothing moves.	Kecepatan refresh tertinggi. Layar tetap melambat saat tidak ada gerakan.
+Cancelled: the app is locked by Pixel Suite	Dibatalkan: aplikasi dikunci oleh Pixel Suite
+Incoming call declined by Do Not Annoy	Panggilan masuk ditolak oleh Jangan Ganggu Saya
+Confirm it's you to uninstall this core app	Konfirmasi bahwa ini Anda untuk mencopot aplikasi inti ini
+Confirm it's you to disable this core app	Konfirmasi bahwa ini Anda untuk menonaktifkan aplikasi inti ini
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	Peringatan: menonaktifkan atau mencopot aplikasi sistem ini dapat mengganggu Pixel Suite dan kestabilan sistem.
+Files · date modified	File · tanggal diubah
+Site settings unavailable	Setelan situs tidak tersedia
+Could not save site settings	Tidak bisa menyimpan setelan situs
+Couldn't read existing Chrome site settings	Tidak bisa membaca setelan situs Chrome
+Cannot create icon storage	Tidak bisa membuat penyimpanan ikon
+Unsupported dimensions	Ukuran tidak didukung
+Cannot encode image	Tidak bisa mengodekan gambar
+Response too large	Respons terlalu besar
+Orange	Oranye
+Dark red	Merah tua
+Turquoise	Pirus
+Dark blue	Biru tua
+Purple	Ungu
+Pink	Merah muda
+White	Putih
+Black	Hitam
+Move to bottom	Pindah ke bawah
+Lock app	Kunci aplikasi
+Unlock app	Buka kunci aplikasi
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	Semuanya: aplikasi, info masuk, chat, setelan, dan file. Dipulihkan persis seperti semula.
+$5/month	$5/bulan
+Settings soft scrolling edges (Frosted Glass only):	Tepi gulir lembut di Setelan (hanya Kaca Buram):
+Digital Wellbeing	Digital Wellbeing
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	Aktifkan cakupan ini di LSPosed lalu mulai ulang. Hanya layar dari Setelan yang terverifikasi dan area gulir yang dikenali dengan aman yang diberi gaya. Area yang tidak didukung dilewati.
+Telegram	Telegram
+Patreon	Patreon
+Pixel Launcher	Peluncur Pixel
+Pixel Studio	Studio Pixel
+Hold power button when locked	Tahan tombol daya saat terkunci
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	Saat ponsel terkunci, menahan tombol daya menjalankan pilihan Anda di "Tahan tombol daya saat terkunci". Setiap pilihan bekerja sendiri-sendiri.
+Reboot	Mulai ulang
+Tap again to reboot	Ketuk lagi untuk memulai ulang
+Rebooting…	Memulai ulang…
+These run inside Android, so they update after a reboot:	Fitur ini berjalan di dalam Android, jadi diperbarui setelah dimulai ulang:
+Reboot to finish updating. Long-press to hide.	Mulai ulang untuk menyelesaikan pembaruan. Tahan untuk menyembunyikan.
+Couldn't reboot: root access needed	Tidak bisa memulai ulang: perlu akses root
+Search in Chrome	Telusuri di Chrome
+Couldn't refresh: root access needed	Tidak bisa menyegarkan: perlu akses root
+See-through keyboard background, with rims	Latar keyboard tembus pandang, dengan tepian
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	Latar keyboard menjadi kaca buram: yang ada di belakangnya terlihat samar, dengan tepian. Tombolnya tetap seperti semula.
+Frosted Gboard	Gboard Buram
+Follows the phone language	Mengikuti bahasa ponsel
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	Di beberapa aplikasi, seperti Chrome, sudut atas keyboard terlihat putih. Aplikasi itu mengakhiri halamannya tepat di tempat keyboard dimulai, jadi tidak ada yang bisa ditampilkan di balik sudutnya.
+Pixel Stack	Pixel Stack
+Tap to start	Ketuk untuk mulai
+Tap to drop	Ketuk untuk menjatuhkan
+Perfect!	Sempurna!
+Best	Terbaik
+New best!	Rekor baru!
+Tap to play again	Ketuk untuk main lagi
+Share score	Bagikan skor
+Sharing…	Membagikan…
+Shared!	Dibagikan!
+Couldn't share. Try again.	Tidak bisa membagikan. Coba lagi.
+Your name	Nama Anda
+Optional	Opsional
+Game Over	Permainan selesai
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **UI Sistem** (com.android.systemui)\n• **Peluncur Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Setelan** (com.android.settings)\n• **Layanan Setelan** (com.google.android.settings.intelligence)\n• **Penginstal paket** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nUntuk gaya editor, pilih juga **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) dan **Google Foto** (com.google.android.apps.photos). Mulai ulang setelah menambahkan cakupan.
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **Peluncur Pixel** (com.google.android.apps.nexuslauncher) — ikon, folder, menu, dan tepi lembut panel aplikasi\n• **UI Sistem** (com.android.systemui) — menu dan pesan sistem\n• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **Google Foto** (com.google.android.apps.photos) — menu editor\n\nSuper Gelap mencantumkan cakupan tambahannya di halamannya sendiri.
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} kembali ke versi ini. Datanya tetap seperti sekarang. Jika tidak bisa dibuka setelahnya, hapus penyimpanannya di Setelan.
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	Tidak ada ruang di panggilan cepat untuk {0} situsnya, jadi akan dihapus bersama folder.
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} disimpan. Ketuk Update di Play Store. {1} akan ditahan lagi setelah diperbarui.
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	Hapus “{0}”? Aplikasinya kembali ke panel aplikasi. Tidak ada aplikasi yang di-uninstal.
+Couldn't save {0}, so it wasn't updated. Check root and free space.	Tidak dapat menyimpan {0}, jadi tidak diupdate. Periksa root dan ruang kosong.
+Tap Update in Play Store. {0} is held back again once it's updated.	Ketuk Update di Play Store. {0} ditahan lagi setelah diupdate.
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nVersi {1}\nBuild {2}\n{3}\n\nCentang dan terapkan untuk menahannya.
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	Hingga 7 pintasan, urutannya, tombol samping, dan dua baris{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}, {1}, update diblokir, aplikasi inti terkunci. Ketuk untuk tahu alasannya
+{0}. A looping demo. It doesn't change your settings.	{0}. Demo berulang. Tidak mengubah setelan Anda.
+Restore {0} (its saved version is the one installed)	Pulihkan {0} (versi tersimpan adalah yang terpasang)
+{0} of {1} on the toolbar · {2} more · swipe left or right	{0} dari {1} di toolbar · {2} lagi · geser ke kiri atau kanan
+Couldn't back up {0} of {1}. Check root and free space.	Tidak bisa mencadangkan {0} dari {1}. Periksa root dan ruang kosong.
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} tersedia di GitHub dan Xposed.
+{0} apps aren't saved at the version installed now	{0} aplikasi belum disimpan di versi yang terpasang
+{0}, off, needs Suggestions and shortcuts together	{0}, nonaktif, perlu Saran dan pintasan bersama
+The saved version of {0} is the one installed now	Versi tersimpan {0} adalah yang terpasang sekarang
+{0}, on, needs Suggestions and shortcuts together	{0}, aktif, perlu Saran dan pintasan bersama
+{0}. Applies your changes. Long-press to hide.	{0}. Menerapkan perubahan Anda. Tekan lama untuk menyembunyikan.
+There's no room on the speed dial for its {0}	Tidak ada ruang di speed dial untuk {0}-nya
+Couldn't save {0}. Check root and free space.	Tidak dapat menyimpan {0}. Periksa root dan ruang kosong.
+{0}: the saved version is the one installed	{0}: versi tersimpan adalah yang terpasang
+Its {0} websites go back to the speed dial.	{0} situsnya kembali ke panggilan cepat.
+{0} is back to {1}, with everything as it was	{0} kembali ke {1}, semuanya seperti semula
+{0} apps protected from updates · {1} shown	{0} aplikasi dilindungi dari update · {1} ditampilkan
+{0}, {1}, core app locked. Tap to learn why	{0}, {1}, aplikasi inti terkunci. Ketuk untuk tahu alasannya
+Select at least {0} apps for a folder	Pilih setidaknya {0} aplikasi untuk folder
+Sort the apps in “{0}” from A to Z?	Urutkan aplikasi di “{0}” dari A sampai Z?
+This folder is full ({0} websites)	Folder ini penuh ({0} situs)
+Blocking {0} ad domains · updated {1}	Memblokir {0} domain iklan · diperbarui {1}
+{0} apps did not fit on this page	{0} aplikasi tidak muat di halaman ini
+{0} open-source servers available	{0} server open source tersedia
+{0} websites with custom settings	{0} situs dengan setelan khusus
+{0}, {1}. Tap to hide saved versions	{0}, {1}. Ketuk untuk menyembunyikan versi tersimpan
+{0}, {1}. Tap to show saved versions	{0}, {1}. Ketuk untuk menampilkan versi tersimpan
+{0} removed element(s) · Restore	{0} elemen dihapus · Pulihkan
+Couldn't reach any server in {0}	Tidak dapat menjangkau server mana pun di {0}
+{0}. Check root and free space.	{0}. Periksa root dan ruang kosong.
+{0} apps protected from updates	{0} aplikasi dilindungi dari update
+Downloading Pixel Suite {0} — {1}%	Mendownload Pixel Suite {0} — {1}%
+Restore removed elements ({0})	Pulihkan elemen yang dihapus ({0})
+{0} of {1} on the toolbar · {2} more	{0} dari {1} di toolbar · {2} lagi
+Update, back up or restore {0}	Perbarui, cadangkan, atau pulihkan {0}
+{0}\nDefault for all websites	{0}\nDefault untuk semua situs
+{0} needs Pixel Suite premium	{0} memerlukan Pixel Suite premium
+No open-source servers in {0}	Tidak ada server open source di {0}
+Server list unavailable ({0})	Daftar server tidak tersedia ({0})
+Connecting to server {0} of {1}…	Menghubungkan ke server {0} dari {1}…
+{0}% wide · {1}% tall · {2} dp down	Lebar {0}% · tinggi {1}% · turun {2} dp
+Restore a saved version ({0})	Pulihkan versi tersimpan ({0})
+Pixel Suite {0} is available	Pixel Suite {0} tersedia
+Saved {0} with Pixel Suite {1}.	Disimpan {0} dengan Pixel Suite {1}.
+{0}. Opens an external app.	{0}. Membuka aplikasi eksternal.
+{0}% wide · {1}% tall · {2} dp up	Lebar {0}% · tinggi {1}% · naik {2} dp
+Waiting for dark mode · {0}	Menunggu mode gelap · {0}
+{0} (folder not available)	{0} (folder tidak tersedia)
+{0} apps saved · {1} versions	Disimpan: {0} aplikasi · {1} versi
+1 app saved · {0} versions	Disimpan: 1 aplikasi · {0} versi
+{0} apps saved · 1 version	Disimpan: {0} aplikasi · 1 versi
+Delete saved version {0}	Hapus versi tersimpan {0}
+Installed version of {0}	Versi {0} yang terpasang
+What {0} ({1}) is used for	Kegunaan {0} ({1})
+Any country · up to {0}	Negara mana saja · hingga {0}
+{0} apps · {1} versions · {2}	{0} aplikasi · {1} versi · {2}
+1 app · {0} versions · {1}	1 aplikasi · {0} versi · {1}
+{0} apps · 1 version · {1}	{0} aplikasi · 1 versi · {1}
+1 app · 1 version · {0}	1 aplikasi · 1 versi · {0}
+Couldn't restore {0}: {1}	Tidak bisa memulihkan {0}: {1}
+About {0} · only {1} free	Sekitar {0} · hanya {1} tersisa
+Level {0} · {1} (Default)	Level {0} · {1} (default)
+{0}, {1}, updates blocked	{0}, {1}, update diblokir
+On · {0} · whole phone	Aktif · {0} · seluruh ponsel
+On · {0} · Chrome only	Aktif · {0} · hanya Chrome
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	Memeriksa {0} server…
+{0} selected · {1} shown	{0} dipilih · {1} ditampilkan
+No results for "{0}"	Tidak ada hasil untuk "{0}"
+{0} apps · {1} versions	{0} aplikasi · {1} versi
+1 app · {0} versions	1 aplikasi · {0} versi
+{0} apps · 1 version	{0} aplikasi · 1 versi
+Purchase email: {0}	Email pembelian: {0}
+No icons match “{0}	Tidak ada ikon yang cocok dengan “{0}
+Reconnecting… ({0})	Menghubungkan ulang… ({0})
+Unhide {0} contacts	Tampilkan {0} kontak
+No apps match “{0}	Tidak ada aplikasi yang cocok dengan “{0}
+Resend code ({0}s)	Kirim ulang kode ({0} dtk)
+Connecting to {0}…	Menghubungkan ke {0}…
+**Used for:**\n{0}	**Digunakan untuk:**\n{0}
+{0}, {1}, switch, off	{0}, {1}, tombol, nonaktif
+Restore {0} build {1}	Pulihkan {0} build {1}
+Turns on at {0} · {1}	Aktif pukul {0} · {1}
+Pin {0} to toolbar	Sematkan {0} ke toolbar
+• {0} custom icons	• {0} ikon khusus
+Saving {0} · {1} of {2}	Menyimpan {0} · {1} dari {2}
+{0}  ·  {1} selected	{0}  ·  {1} dipilih
+{0}, {1}, switch, on	{0}, {1}, tombol, aktif
+{0}, not selected	{0}, tidak dipilih
+{0} · Chrome only	{0} · hanya Chrome
+Use default ({0})	Gunakan default ({0})
+Pass expires {0}	Pass berakhir {0}
+{0}, unavailable	{0}, tidak tersedia
+Enables {0} in {1}.	Mengaktifkan {0} di {1}.
+{0} · not Chrome	{0} · tanpa Chrome
+{0} is unlocked	{0} tidak terkunci
+Connected · {0}	Terhubung · {0}
+{0} is selected	{0} dipilih
+{0} minutes ago	{0} menit lalu
+{0} is back to {1}	{0} kembali ke {1}
+Unhide {0} apps	Tampilkan {0} aplikasi
+On until {0} · {1}	Aktif sampai {0} · {1}
+{0} icon packs	{0} paket ikon
+• {0} settings	• {0} setelan
+Remove "{0}"?	Hapus "{0}"?
+{0}, selected	{0}, dipilih
+{0} right now	{0} saat ini
+{0} is locked	{0} terkunci
+Hide {0} apps	Sembunyikan {0} aplikasi
+{0} hours ago	{0} jam lalu
+Checking {0}	Memeriksa {0}
+Saving {0} {1}…	Menyimpan {0} {1}…
+{0} days ago	{0} hari lalu
+{0} · up to {1}	{0} · hingga {1}
+Level {0} · {1}	Level {0} · {1}
+Restore {0} {1}	Pulihkan {0} {1}
+On now · {0}	Aktif sekarang · {0}
+Back up {0}	Cadangkan {0}
+Restart {0}	Mulai ulang {0}
+Enables {0}	Mengaktifkan {0}
+{0} dp down	{0} dp ke bawah
+Restore {0}	Pulihkan {0}
+{0} servers	{0} server
+{0}, hidden	{0}, disembunyikan
+Level {0}, {1}	Level {0}, {1}
+Refresh {0}	Segarkan {0}
+{0}, shown	{0}, ditampilkan
+Saved {0}.	Disimpan {0}.
+**{0}** ({1})	**{0}** ({1})
+About {0}	Sekitar {0}
+Build {0}	Build {0}
+From  {0}	Dari  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} ikon
+Unpin {0}	Lepas sematan {0}
+{0}, off	{0}, nonaktif
+To  {0}	Sampai  {0}
+Pin {0}	Sematkan {0}
+Its {0}	{0}-nya
+Use {0}	Gunakan {0}
+{0}, on	{0}, aktif
+You’re a free member. Choose the paid tier to unlock	Anda anggota gratis. Pilih tingkat berbayar untuk membuka kunci.
+Root access is needed to save membership changes.	Perlu akses root untuk menyimpan perubahan keanggotaan.
+Sign-in expired. Sign in with Patreon again.	Login kedaluwarsa. Login lagi dengan Patreon.
+Couldn’t check membership. Try again shortly.	Tidak dapat memeriksa keanggotaan. Coba lagi sebentar lagi.
+Sign-in expired. Tap Unlock to try again.	Login kedaluwarsa. Ketuk Buka kunci untuk mencoba lagi.
+No active membership found. Join, then tap Unlock again.	Keanggotaan aktif tidak ditemukan. Gabung, lalu ketuk Buka kunci lagi.
+Sign-in wasn't completed. You can try again.	Login belum selesai. Anda dapat mencoba lagi.
+Couldn't verify this sign-in. Tap Unlock to try again.	Login ini tidak dapat diverifikasi. Ketuk Buka kunci untuk mencoba lagi.
+Couldn't confirm membership. Try again.	Tidak dapat mengonfirmasi keanggotaan. Coba lagi.
+Confirming Patreon membership…	Mengonfirmasi keanggotaan Patreon…
+Log in	Login
+Patreon profile photo	Foto profil Patreon
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	Setelah pembayaran, kode pembelian dikirim ke email yang Anda gunakan untuk membayar. Periksa kotak masuk dan folder Spam untuk email dari purchases@roviandev.com.
+Buy	Beli
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	Periksa kotak masuk dan folder Spam untuk email dari purchases@roviandev.com. Gunakan kode terbaru; kode berlaku 10 menit.
+Hide app	Sembunyikan aplikasi
+Hide widget	Sembunyikan widget
+Remove Google Play services from the scope	Hapus Layanan Google Play dari cakupan
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite tidak lagi menggunakan Layanan Google Play, dan membiarkannya di cakupan LSPosed Pixel Suite bisa membuat Anda kehilangan integritas Device dan Strong.
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	Buka LSPosed (atau Vector), hapus centang Layanan Google Play untuk Pixel Suite, lalu mulai ulang.
+Reboot to restore Play Integrity	Mulai ulang untuk memulihkan Play Integrity
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite menghapus Layanan Google Play dari cakupan LSPosed-nya, karena bisa membuat Anda kehilangan integritas Device dan Strong dan tidak dipakai lagi. Mulai ulang ponsel untuk menyelesaikan.
+Server connected but passes no traffic	Server terhubung tetapi tidak meneruskan lalu lintas
+Server connected but websites don't open ({0})	Server terhubung tetapi situs web tidak terbuka ({0})

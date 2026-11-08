@@ -20,7 +20,7 @@ final class CommunityLinks {
             catch(ActivityNotFoundException unavailable){}catch(SecurityException denied){}
         }
         try { context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(URLS[index]))); }
-        catch (ActivityNotFoundException unavailable) { AppToast.makeText(context,"No app is available to open this link",Toast.LENGTH_SHORT).show(); }
-        catch (SecurityException denied) { AppToast.makeText(context,"This link could not be opened",Toast.LENGTH_SHORT).show(); }
+        catch (ActivityNotFoundException unavailable) { AppToast.makeText(context,I18n.cs("No app is available to open this link"),Toast.LENGTH_SHORT).show(); }
+        catch (SecurityException denied) { AppToast.makeText(context,I18n.cs("This link could not be opened"),Toast.LENGTH_SHORT).show(); }
     }
 }

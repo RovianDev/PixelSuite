@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">Gestos, personalización de Pixel Launcher, bloqueo de apps y carpetas, Modo Súper Oscuro, orden de archivos, recorte libre de capturas y Garabatos en Pixel Studio y Google Fotos. Todo se configura en la app Pixel Suite. Activa los ámbitos de LSPosed recomendados, incluidos los editores que uses, y reinicia esas apps o el teléfono.</string>
+    <string name="search_in_chrome">Buscar en Chrome</string>
+</resources>

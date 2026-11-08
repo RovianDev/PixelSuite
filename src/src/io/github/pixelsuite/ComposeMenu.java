@@ -18,7 +18,6 @@ final class ComposeMenu {
     private ComposeMenu() {}
 
     static volatile boolean active;
-    private static void log(String m) { }
 
     private static final int BASE_ID = 0x7ffe0100;
     private static final Map<Integer, String> labels = new java.util.concurrent.ConcurrentHashMap<Integer, String>();
@@ -51,7 +50,7 @@ final class ComposeMenu {
             });
             Xp.hookMethod(show, new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
-                    try { add(p); } catch (Throwable error) { log("Compose app menu rows unavailable: " + error); }
+                    try { add(p); } catch (Throwable error) { }
                 }
             });
             try {
@@ -60,14 +59,13 @@ final class ComposeMenu {
                     if (!m.getName().equals("loadAppShortcuts") || m.getParameterTypes().length != 1) continue;
                     Xp.hookMethod(m, new Xp.Callback() {
                         @Override protected void beforeHookedMethod(Xp.Param p) {
-                            try { if (hidesShortcuts(p.args[0])) { p.setResult(null); log("App shortcuts hidden in the Compose app menu"); } } catch (Throwable ignored) { }
+                            try { if (hidesShortcuts(p.args[0])) { p.setResult(null);  } } catch (Throwable ignored) { }
                         }
                     });
                 }
-            } catch (Throwable error) { log("Compose app menu shortcuts hook unavailable: " + error); }
+            } catch (Throwable error) { }
             active = true;
-            log("Compose app menu: Pixel Suite rows added to it");
-        } catch (Throwable error) { log("Compose app menu unavailable: " + error); }
+        } catch (Throwable error) { }
     }
 
     private static void add(Xp.Param p) throws Exception {
@@ -76,11 +74,18 @@ final class ComposeMenu {
         if (info == null) return;
         if (hidesShortcuts(info)) p.args[0] = 0;
         if (LauncherFeatures.type("model.data.FolderInfo").isInstance(info)) return;
-        if (LauncherFeatures.identity(info) == null || LauncherFeatures.privateItem(info)) return;
         Context context = ((View) popup).getContext();
         LinearLayout rows = new LinearLayout(context);
         rows.setOrientation(LinearLayout.VERTICAL);
-        LauncherFeatures.appRows(popup, info, rows);
+        if (LauncherFeatures.searchWidget(popup)) {
+            final View bar = (View) LauncherFeatures.get(popup, "originalView");
+            LauncherFeatures.addFolderRow(rows, "Hide widget", "pixelsuite_hide_search", 17, 0, new View.OnClickListener() {
+                public void onClick(View v) { try { LauncherFeatures.call(popup, "close", true); } catch (Throwable ignored) { } LauncherHideSearch.hideFromMenu(bar); }
+            });
+        } else {
+            if (LauncherFeatures.identity(info) == null || LauncherFeatures.privateItem(info)) return;
+            LauncherFeatures.appRows(popup, info, rows);
+        }
         if (rows.getChildCount() == 0) return;
         List<Object> items = new ArrayList<Object>((List<?>) p.args[1]);
         int fallbackIcon = items.isEmpty() ? 0 : ((Integer) field(items.get(0), "iconResId"));
@@ -99,7 +104,7 @@ final class ComposeMenu {
                         if (m.getName().equals("hashCode")) return System.identityHashCode(proxy);
                         return "PixelSuiteMenuAction";
                     }
-                    try { row.performClick(); } catch (Throwable error) { log("Menu action failed: " + error); }
+                    try { row.performClick(); } catch (Throwable error) { }
                     return unit();
                 }
             });
@@ -133,7 +138,8 @@ final class ComposeMenu {
 
     private static int icon(Context c, String tag, int fallback) {
         String name = tag.equals("pixelsuite_create") ? "ic_create_new_folder" : tag.equals("pixelsuite_icon") ? "ic_palette"
-                : tag.equals("pixelsuite_rename") ? "ic_create" : tag.equals("pixelsuite_privacy") ? "ic_lock" : tag.equals("pixelsuite_badge") ? "ic_notification_off" : null;
+                : tag.equals("pixelsuite_rename") ? "ic_create" : tag.equals("pixelsuite_privacy") ? "ic_lock" : tag.equals("pixelsuite_badge") ? "ic_notification_off"
+                : tag.equals("pixelsuite_hide_search") ? "design_ic_visibility_off" : null;
         int id = name == null ? 0 : c.getResources().getIdentifier(name, "drawable", c.getPackageName());
         return id != 0 ? id : fallback;
     }

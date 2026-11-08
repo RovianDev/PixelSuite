@@ -14,6 +14,7 @@ final class FeedBackdrop {
         Xp.Callback black = new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
                 if (!watching) watchGoogleUpdates();
+                try { if (panel(p)) return; } catch (Throwable ignored) { }
                 try {
                     if (p.args.length != 1 || !SuperDark.inEffectNow()) return;
                     int c;
@@ -69,6 +70,49 @@ final class FeedBackdrop {
     private static void restart() {
         stale = false;
         android.os.Process.killProcess(android.os.Process.myPid());
+    }
+
+    private static volatile Class<?> sPanel;
+    private static int sDepth, sLooks;
+    private static boolean panel(Xp.Param p) throws Throwable {
+        if (p.args.length != 1) return false;
+        int c;
+        if (p.args[0] instanceof Integer) c = (Integer) p.args[0];
+        else if (p.args[0] instanceof Long) c = (Integer) android.graphics.Color.class.getMethod("toArgb", long.class).invoke(null, p.args[0]);
+        else return false;
+        if ((c >>> 24) != 0xff) return false;
+        if (sPanel != null) {
+            if (sDepth <= 0) return false;
+        } else {
+            if (c != 0xffffffff && !panelGrey(c)) return false;
+            if (++sLooks > 3000) return false;
+            String k = drawingClass();
+            if (k == null) return false;
+            synchronized (FeedBackdrop.class) {
+                if (sPanel == null) {
+                    Object app = Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+                    Class<?> cls = Class.forName(k, false, ((android.content.Context) app).getClassLoader());
+                    Xp.hookAllMethods(cls, "onDraw", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param q) { sDepth++; }
+                        @Override protected void afterHookedMethod(Xp.Param q) { sDepth--; }
+                    });
+                    sPanel = cls;
+                }
+            }
+        }
+        if (p.args[0] instanceof Integer) p.args[0] = 0; else p.args[0] = 0L;
+        return true;
+    }
+    private static String drawingClass() {
+        StackTraceElement[] s = new Throwable().getStackTrace();
+        for (int i = 1; i < s.length && i < 14; i++) {
+            if (!"onDraw".equals(s[i].getMethodName())) continue;
+            String k = s[i].getClassName();
+            if (k.startsWith("android.") || k.startsWith("com.android.") || k.startsWith("androidx.") || k.startsWith("io.github.pixelsuite")
+                    || k.startsWith("com.google.android.material.") || k.startsWith("java.")) return null;
+            return k;
+        }
+        return null;
     }
 
     static boolean panelGrey(int c) {

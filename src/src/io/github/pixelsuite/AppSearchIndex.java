@@ -12,13 +12,24 @@ final class AppSearchIndex {
         final String[] fields;
         final String[][] words;
         Entry(JSONObject o) {
-            id=o.optString("id");page=o.optString("page");title=o.optString("title");description=o.optString("description");
-            kind=o.optString("kind");key=o.optString("key");icon=o.optString("icon");breadcrumb=o.optString("breadcrumb");anchor=o.optString("anchor");
-            fields=new String[]{normal(title),normal(o.optString("keywords")),normal(breadcrumb),normal(description)};
+            String enTitle=o.optString("title"),enDescription=o.optString("description"),enCrumb=o.optString("breadcrumb");
+            id=o.optString("id");page=o.optString("page");title=title(enTitle,enDescription,o.optString("kind"));description=I18n.phrases(enDescription);
+            kind=o.optString("kind");key=o.optString("key");icon=o.optString("icon");breadcrumb=crumb(enCrumb);anchor=o.optString("anchor");
+            String english=I18n.on()?" "+enTitle+" "+enCrumb+" "+enDescription:"";
+            fields=new String[]{normal(title),normal(o.optString("keywords")+english),normal(breadcrumb),normal(description)};
             words=new String[fields.length][];for(int i=0;i<fields.length;i++)words[i]=fields[i].split(" +");
         }
     }
+    static String title(String enTitle,String enDescription,String kind){
+        String t=I18n.t(enTitle);
+        if(!I18n.on()||!"TEXT".equals(kind)||!t.equals(enTitle)||enDescription==null||enDescription.length()<=enTitle.length()||!enDescription.startsWith(enTitle))return t;
+        String full=I18n.t(enDescription);if(full.equals(enDescription))return t;int nl=full.indexOf('\n');if(nl>=0)full=full.substring(0,nl);
+        int n=Math.max(24,enTitle.length());if(full.length()<=n)return full;
+        int cut=full.lastIndexOf(' ',n);if(cut<n/2)cut=n;return full.substring(0,cut).trim()+"\u2026";
+    }
+    static String crumb(String en){if(!I18n.on()||en==null)return en;String[] parts=en.split(" › ",-1);StringBuilder b=new StringBuilder();for(int i=0;i<parts.length;i++){if(i>0)b.append(" › ");b.append(I18n.t(parts[i]));}return b.toString();}
     private static volatile AppSearchIndex cached;
+    static void forget(){cached=null;}
     final List<Entry> entries;
     private AppSearchIndex(List<Entry> e){entries=Collections.unmodifiableList(e);}
     AppSearchIndex including(List<Entry> live){List<Entry> merged=new ArrayList<Entry>(entries);merged.addAll(live);return new AppSearchIndex(merged);}
@@ -37,6 +48,7 @@ final class AppSearchIndex {
     static String normal(String s){return Normalizer.normalize(s,Normalizer.Form.NFD).replaceAll("\\p{M}+","").toLowerCase(Locale.ROOT).replaceAll("[^\\p{L}\\p{N}]+"," ").trim();}
     static boolean near(String q,String word){
         if(word.startsWith(q))return true;
+        if(!q.isEmpty()&&q.codePointAt(0)>=0x2E80&&word.contains(q))return true;
         if(q.length()<5)return false;
         for(int n=Math.max(0,q.length()-1);n<=Math.min(word.length(),q.length()+1);n++){
             String w=word.substring(0,n);int i=0,j=0,edits=0;

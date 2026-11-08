@@ -82,9 +82,9 @@ final class DrawerHomeTarget {
         ((BackdropSurface)pillBackground).bind(view);
         int iconSize=FrostedSurface.dp(a,compact?22:24);
         ImageView icon=new ImageView(a);icon.setImageDrawable(new LauncherGlyph(a,glyph));LinearLayout.LayoutParams ip=new LinearLayout.LayoutParams(iconSize,iconSize);ip.rightMargin=FrostedSurface.dp(a,compact?7:10);view.addView(icon,ip);
-        TextView label=new TextView(a);label.setText(text);label.setTextSize(compact?14.5f:16);label.setTypeface(android.graphics.Typeface.create("sans-serif-medium",0));
-        label.setTextColor(LauncherFeatures.surface(a,FrostedSurface.dark(a)?"system_on_surface_dark":"system_on_surface_light",FrostedSurface.dark(a)?0xffeee9f1:0xff202027));label.setSingleLine(true);view.addView(label);
-        view.setContentDescription(description);view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
+        TextView label=new TextView(a);label.setText(I18n.cs(text));label.setTextSize(compact?14.5f:16);label.setTypeface(I18n.medium());
+        label.setTextColor(LauncherFeatures.surface(a,FrostedSurface.dark(a)?"system_on_surface_dark":"system_on_surface_light",FrostedSurface.dark(a)?0xffeee9f1:0xff202027));label.setSingleLine(true);I18n.fitLine(label);view.addView(label);
+        view.setContentDescription(I18n.cs(description));view.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);
         return view;
     }
     private static void addPill(ViewGroup layer,View view,int width,int height,int x,int y)throws Exception{

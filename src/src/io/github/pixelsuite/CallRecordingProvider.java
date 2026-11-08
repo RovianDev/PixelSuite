@@ -49,7 +49,7 @@ public final class CallRecordingProvider extends ContentProvider {
             if ("create".equals(method)) {
                 String name = arg.replaceAll("[\\\\/:*?\"<>|\\p{Cntrl}]", "_");
                 Uri parent = DocumentsContract.buildDocumentUriUsingTree(tree, DocumentsContract.getTreeDocumentId(tree));
-                Uri doc = DocumentsContract.createDocument(cr, parent, "audio/mp4", name);
+                Uri doc = DocumentsContract.createDocument(cr, parent, name.toLowerCase(java.util.Locale.ROOT).endsWith(".wav") ? "audio/x-wav" : "audio/mp4", name);
                 if (doc == null) return null;
                 Bundle out = new Bundle();
                 out.putString("doc", doc.toString());

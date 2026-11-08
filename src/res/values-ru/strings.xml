@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">Жесты, настройка Pixel Launcher, блокировка приложений и папок, Сверхтёмный режим, сортировка файлов, свободная обрезка скриншотов и Рисунки в Pixel Studio и Google Фото. Всё настраивается в приложении Pixel Suite. Включите рекомендуемые области LSPosed, в том числе для используемых редакторов, затем перезапустите эти приложения или телефон.</string>
+    <string name="search_in_chrome">Искать в Chrome</string>
+</resources>

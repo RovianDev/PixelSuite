@@ -25,6 +25,10 @@ final class ClearAll {
     private static final String ACTIONS_VIEW = "com.android.quickstep.views.OverviewActionsView";
     private static final String STOCK_CLEAR_ALL = "com.android.quickstep.views.ClearAllButton";
     private static final String KEY_BUTTON = "clearallfix.button";
+    static final String KEY_ONLY = "pixelsuite_clear_all_only";
+    private static final String KEY_ONLY_HID = "clearallfix.onlyhid";
+    private static final Feature.Cached sOnly = new Feature.Cached(KEY_ONLY);
+    private static final Set<View> sOnlyHidden = Collections.newSetFromMap(new WeakHashMap<View, Boolean>());
     private static final int MAX_INSTALL_TRIES = 5;
 
     private static final Set<View> sRecentsViews =
@@ -125,6 +129,23 @@ final class ClearAll {
                     protected void beforeHookedMethod(Xp.Param param) {
                         if (param.args.length == 1 && Boolean.FALSE.equals(param.args[0])
                                 && Boolean.TRUE.equals(Xp.getAdditionalInstanceField(param.thisObject, KEY_KEEP_ON))) param.args[0] = Boolean.TRUE;
+                    }
+                });
+            } catch (Throwable t) { }
+
+            try {
+                Xp.hookAllMethods(View.class, "setVisibility", new Xp.Callback() {
+                    @Override
+                    protected void beforeHookedMethod(Xp.Param param) {
+                        if (param.args.length != 1 || !(param.args[0] instanceof Integer) || ((Integer) param.args[0]).intValue() == View.GONE) return;
+                        View v = (View) param.thisObject;
+                        boolean hidden;
+                        synchronized (sOnlyHidden) { hidden = sOnlyHidden.contains(v); }
+                        if (!hidden) return;
+                        boolean only;
+                        try { only = sOnly.on(v.getContext()); } catch (Throwable t) { only = true; }
+                        if (only) param.args[0] = Integer.valueOf(View.GONE);
+                        else synchronized (sOnlyHidden) { sOnlyHidden.remove(v); }
                     }
                 });
             } catch (Throwable t) { }
@@ -231,7 +252,7 @@ final class ClearAll {
             final Button mine = new Button(stock.getContext(), null, 0);
             mine.setId(View.generateViewId());
             String label = label(host);
-            mine.setText(label);
+            mine.setText(I18n.cs(label));
             mine.setContentDescription(label);
             Look.apply(stock, mine);
 
@@ -245,6 +266,7 @@ final class ClearAll {
             addToRow(row, mine, stock, host);
             Xp.setAdditionalInstanceField(host, KEY_BUTTON, mine);
             lower(host, row);
+            alone(host, row, mine);
 
             row.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
                 @Override
@@ -273,8 +295,31 @@ final class ClearAll {
         } catch (Throwable ignored) { }
     }
 
+    private static void alone(ViewGroup host, LinearLayout row, View mine) {
+        boolean only;
+        try { only = sOnly.on(host.getContext()); } catch (Throwable t) { only = false; }
+        for (int i = 0; i < row.getChildCount(); i++) {
+            View c = row.getChildAt(i);
+            if (c == mine) continue;
+            boolean hid = Boolean.TRUE.equals(Xp.getAdditionalInstanceField(c, KEY_ONLY_HID));
+            if (only) {
+                synchronized (sOnlyHidden) { sOnlyHidden.add(c); }
+                if (c.getVisibility() != View.GONE) { c.setVisibility(View.GONE); Xp.setAdditionalInstanceField(c, KEY_ONLY_HID, Boolean.TRUE); }
+            } else {
+                synchronized (sOnlyHidden) { sOnlyHidden.remove(c); }
+                if (hid) { Xp.setAdditionalInstanceField(c, KEY_ONLY_HID, null); c.setVisibility(View.VISIBLE); }
+            }
+        }
+        ViewGroup.LayoutParams lp = mine.getLayoutParams();
+        if (lp instanceof ViewGroup.MarginLayoutParams) {
+            int want = only ? 0 : spacing(host, row);
+            if (((ViewGroup.MarginLayoutParams) lp).getMarginStart() != want) { ((ViewGroup.MarginLayoutParams) lp).setMarginStart(want); mine.setLayoutParams(lp); }
+        }
+    }
+
     private static void heal(ViewGroup host, LinearLayout row, Button mine) {
         lower(host, row);
+        try { alone(host, row, mine); } catch (Throwable ignored) { }
         try {
             TextView stock = styleSource(row, host);
             if (stock == null) return;
@@ -334,6 +379,7 @@ final class ClearAll {
             textFade((TextView) c, pair ? DIMMED : 1f);
         }
         try { TextView stock = styleSource(row, host); if (stock != null) Look.applyIfChanged(stock, (TextView) mine); } catch (Throwable ignored) { }
+        try { alone(host, row, (View) mine); } catch (Throwable ignored) { }
     }
 
     private static void textFade(final TextView t, final float to) {

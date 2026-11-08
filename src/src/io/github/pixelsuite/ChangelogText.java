@@ -15,6 +15,7 @@ final class ChangelogText {
 
     static CharSequence item(String source) {
         int colon = source.indexOf(": ");
+        if (colon < 0) colon = source.indexOf("\uff1a");
         if (colon <= 0 || colon > 48 || source.indexOf("**") >= 0 || source.substring(0, colon).indexOf(". ") >= 0) return format(source);
         android.text.SpannableStringBuilder text = new android.text.SpannableStringBuilder();
         text.append(source.substring(0, colon + 1));

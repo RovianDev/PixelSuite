@@ -6,7 +6,7 @@ import java.util.TreeSet;
 final class MiscOptions {
     private MiscOptions() {}
     static boolean defaultOff(String key) {
-        return "pixelsuite_dna_watch".equals(key) || DoNotAnnoy.KEY.equals(key) || RefreshRate90.KEY.equals(key) || ShowFps.KEY.equals(key) || StoreBlocker.UNLOCK_KEY.equals(key) || OtaBlocker.KEY.equals(key) || OtaBlocker.RESET_KEY.equals(key) || CallRecording.KEY.equals(key) || MiscSystem.SECURE_KEY.equals(key) || MiscSystem.A11Y_KEY.equals(key) || KeyboardBarTweak.KEY.equals(key) || MiscSystem.DEV_KEY.equals(key);
+        return "pixelsuite_dna_watch".equals(key) || GboardToolbar.KEY.equals(key) || GboardPlus.KEY_SHORTCUTS.equals(key) || GboardPlus.KEY_KEYS.equals(key) || GboardFrost.KEY.equals(key) || GboardPlus.KEY_AR_NO_AUTOCORRECT.equals(key) || GboardPlus.KEY_CLIP.equals(key) || GboardPlus.KEY_HIDE_CHIPS.equals(key) || GboardPlus.KEY_HIDE_MENU.equals(key) || GboardPlus.KEY_HIDE_RIGHT.equals(key) || GboardPlus.KEY_ROWS.equals(key) || GboardPlus.KEY_ROWS_TOP.equals(key) || GboardPlus.KEY_FREE.equals(key) || GboardPlus.KEY_DEL_LETTERS.equals(key) || DoNotAnnoy.KEY.equals(key) || RefreshRate90.KEY.equals(key) || ShowFps.KEY.equals(key) || StoreBlocker.UNLOCK_KEY.equals(key) || OtaBlocker.KEY.equals(key) || OtaBlocker.RESET_KEY.equals(key) || CallRecording.KEY.equals(key) || MiscSystem.SECURE_KEY.equals(key) || MiscSystem.A11Y_KEY.equals(key) || KeyboardBarTweak.KEY.equals(key) || MiscSystem.DEV_KEY.equals(key);
     }
     static boolean packageName(String value) {
         return value != null && value.matches("[A-Za-z0-9_]+(?:\\.[A-Za-z0-9_]+)*");

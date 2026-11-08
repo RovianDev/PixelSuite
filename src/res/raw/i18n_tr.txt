@@ -1,0 +1,1588 @@
+# Pixel Suite tr: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	REKLAM ENGELLEME
+AdAway or Systemless hosts is also on. Use only one blocker.	AdAway veya Systemless hosts da açık. Yalnızca bir engelleyici kullanın.
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	Chrome, Google Haberler ve diğer uygulamalardaki reklamları engeller. Listeler her gün güncellenir.
+Fewer ads.\nFaster pages.	Daha az reklam.\nDaha hızlı sayfalar.
+Preparing ad protection…	Reklam koruması hazırlanıyor…
+Restart the phone once to start blocking.	Engellemeyi başlatmak için telefonu bir kez yeniden başlatın.
+Unlock with Patreon	Patreon ile kilidi aç
+Update lists	Listeleri güncelle
+Updating…	Güncelleniyor…
+Works in every app and browser, also with Private DNS.	Her uygulamada ve tarayıcıda, Özel DNS ile de çalışır.
+Add	Ekle
+Add website	Web sitesi ekle
+Add website: domain or URL	Web sitesi ekle: alan adı veya URL
+Ads aren't filtered on these websites. Tap one to remove it.	Bu web sitelerinde reklamlar filtrelenmez. Kaldırmak için birine dokunun.
+All websites use the default level	Tüm web siteleri varsayılan seviyeyi kullanır
+Allowed websites	İzin verilen web siteleri
+Basic	Temel
+Bring back elements you removed.	Kaldırdığınız öğeleri geri getirin.
+Cancel	İptal
+Clear every website setting	Tüm web sitesi ayarlarını temizle
+Clear every website setting? Your default level stays.	Tüm web sitesi ayarları temizlensin mi? Varsayılan seviyeniz kalır.
+Complete	Tam
+Couldn't load site settings. Open Chrome once, then reopen this page.	Site ayarları yüklenemedi. Chrome'u bir kez açın, sonra bu sayfayı yeniden açın.
+Couldn't save site settings. Try again.	Site ayarları kaydedilemedi. Tekrar deneyin.
+Default for all websites	Tüm web siteleri için varsayılan
+Enter a domain or an http/https URL	Bir alan adı veya http/https URL'si girin
+Filtering level	Filtreleme seviyesi
+Included with your Patreon unlock	Patreon kilit açmanıza dahil
+Loading site settings…	Site ayarları yükleniyor…
+No allowed websites	İzin verilen web sitesi yok
+No filtering	Filtreleme yok
+No filtering · tap to remove	Filtreleme yok · kaldırmak için dokunun
+No removed elements	Kaldırılan öğe yok
+Optimal	Optimum
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	Optimum, arama reklamlarını gizler. Tam, çerez bildirimlerini ve açılır pencereleri de gizler. Sitenin kendi seviyesi önceliklidir.
+Per-site levels	Site bazında seviyeler
+Removed elements	Kaldırılan öğeler
+Reset	Sıfırla
+Reset all site settings	Tüm site ayarlarını sıfırla
+Reset all site settings?	Tüm site ayarları sıfırlansın mı?
+Saving…	Kaydediliyor…
+Tap a website to change its level or use the default.	Seviyesini değiştirmek veya varsayılanı kullanmak için bir web sitesine dokunun.
+Unlock ad blocking with Patreon	Reklam engellemenin kilidini Patreon ile açın
+\nDefault for all websites	\nTüm web siteleri için varsayılan
+Close	Kapat
+Clear search	Aramayı temizle
+Could not save the folder	Klasör kaydedilemedi
+Save	Kaydet
+Search apps	Uygulama ara
+Search	Ara
+Search unavailable	Arama kullanılamıyor
+Search, button	Ara, düğme
+Searching…	Aranıyor…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nMevcut Pixel Suite kurulumunuz değiştirilecek. Pixel Başlatıcı bir kez yeniden başlar.
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• Pixel Başlatıcı kurulumu: çekmece klasörleri, sıralama, yeniden adlandırmalar ve kilitler\n
+• Share menu: pinned order and hidden apps\n	• Paylaşım menüsü: sabitlenmiş sıra ve gizli uygulamalar\n
+App and data	Uygulama ve veriler
+App only	Yalnızca uygulama
+Back up	Yedekle
+Just the app. Its data isn't saved.	Yalnızca uygulama. Verileri kaydedilmez.
+Only the app goes back. Its data now stays.	Yalnızca uygulama geri döner. Şu anki verileri kalır.
+Only the app, signed out and empty.	Yalnızca uygulama, oturum kapalı ve boş.
+Puts everything back exactly as it was saved.	Her şeyi kaydedildiği gibi geri koyar.
+Puts everything back exactly as it was saved. Its data now is replaced.	Her şeyi kaydedildiği gibi geri koyar. Şu anki verileri değiştirilir.
+Restore	Geri yükle
+Working out the size…	Boyut hesaplanıyor…
+Backing up…	Yedekleniyor…
+Backup & Restore	Yedekle ve Geri Yükle
+Checking…	Kontrol ediliyor…
+Couldn't delete it. Check root.	Silinemedi. Root'u kontrol edin.
+Delete	Sil
+Delete?	Silinsin mi?
+Every held-back app is saved at its current version	Bekletilen her uygulama mevcut sürümüyle kaydedilir
+Held-back apps	Bekletilen uygulamalar
+Held-back apps are saved here before they update.	Bekletilen uygulamalar güncellenmeden önce buraya kaydedilir.
+Installed apps	Yüklü uygulamalar
+Loading saved apps…	Kayıtlı uygulamalar yükleniyor…
+No installed app has saved versions	Kayıtlı sürümü olan yüklü uygulama yok
+No saved versions yet	Henüz kayıtlı sürüm yok
+Not installed	Yüklü değil
+Nothing saved yet	Henüz bir şey kaydedilmedi
+Saved	Kaydedildi
+Saved in PixelSuite/APK backups on your phone	Telefonunuzda PixelSuite/APK backups içine kaydedildi
+The 3 newest versions of each app are kept	Her uygulamanın en yeni 3 sürümü saklanır
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	Bu uygulamalar kaldırıldı. Geri yükle, uygulamayı yeniden yükler; verileriyle kaydedildiyse oturum açık olur.
+installed now	şu an yüklü
+Audiobooks	Sesli kitaplar
+Documents	Belgeler
+Download	İndirilenler
+Music	Müzik
+Podcasts	Podcast'ler
+Recordings	Kayıtlar
+Automatic (default)	Otomatik (varsayılan)
+Automatic: every call is recorded	Otomatik: her arama kaydedilir
+Choose folder…	Klasör seç…
+Couldn't keep access to that folder.	O klasöre erişim korunamadı.
+Couldn't load folder	Klasör yüklenemedi
+Couldn't load recording mode	Kayıt modu yüklenemedi
+Couldn't save: root access needed	Kaydedilemedi: root erişimi gerekli
+Folder picker isn't available.	Klasör seçici kullanılamıyor.
+HD: clearer voice (default)	HD: daha net ses (varsayılan)
+HD: twice the detail, clearer voice (default)	HD: iki kat ayrıntı, daha net ses (varsayılan)
+Internal storage	Dahili depolama
+Lossless: HD without compression, large WAV files	Kayıpsız: sıkıştırmasız HD, büyük WAV dosyaları
+Lossless: clearest voice, WAV files	Kayıpsız: en net ses, WAV dosyaları
+Manual	Manuel
+Manual: tap Record during a call	Manuel: arama sırasında Kaydet'e dokunun
+Recording mode	Kayıt modu
+Recording quality	Kayıt kalitesi
+Recordings folder	Kayıt klasörü
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (varsayılan)
+SD card	SD kart
+Standard: phone-call quality, smallest files	Standart: telefon görüşmesi kalitesi, en küçük dosyalar
+Standard: smaller files	Standart: daha küçük dosyalar
+Release notes are unavailable in this build.	Sürüm notları bu derlemede kullanılamıyor.
+Release notes could not be opened. Please reopen this page.	Sürüm notları açılamadı. Lütfen bu sayfayı yeniden açın.
+Always	Her zaman
+Dark	Koyu
+Dark mode	Koyu mod
+Dark pages	Koyu sayfalar
+Needs Pixel Suite premium	Pixel Suite premium gerekir
+On this website	Bu web sitesinde
+Pictures and videos keep their colors.	Resimler ve videolar renklerini korur.
+Schedule	Program
+Style	Stil
+When	Ne zaman
+Speed Dial	Hızlı Arama
+Ad Blocker	Reklam Engelleyici
+Extensions	Uzantılar
+Hold an extension to pin it to the toolbar	Araç çubuğuna sabitlemek için bir uzantıyı basılı tutun
+Chrome didn't take the shortcut (limit reached?)	Chrome kısayolu almadı (sınıra ulaşıldı mı?)
+Couldn't add it to the speed dial	Hızlı aramaya eklenemedi
+Couldn't make a folder in this Chrome version	Bu Chrome sürümünde klasör oluşturulamıyor
+Couldn't move it into the folder	Klasöre taşınamadı
+Edit	Düzenle
+Edit website	Web sitesini düzenle
+Its website goes back to the speed dial.	Web sitesi hızlı aramaya geri döner.
+Move to speed dial	Hızlı aramaya taşı
+Name	Ad
+No room on the speed dial	Hızlı aramada yer yok
+Open in new tab	Yeni sekmede aç
+Remove	Kaldır
+Remove folder	Klasörü kaldır
+Rename	Yeniden adlandır
+Rename folder	Klasörü yeniden adlandır
+URL	URL
+Back	Geri
+Forward	İleri
+Home	Ana sayfa
+Profile	Profil
+Tabs	Sekmeler
+Filtering isn't available on this page.	Bu sayfada filtreleme kullanılamıyor.
+Pixel Suite settings	Pixel Suite ayarları
+Remove an element	Bir öğeyi kaldır
+This page	Bu sayfa
+filtering mode	filtreleme modu
+no filtering	filtreleme yok
+Couldn't open that picture	O resim açılamadı
+Tap the picture to change it	Değiştirmek için resme dokunun
+Use the website's icon	Web sitesinin simgesini kullan
+Country	Ülke
+Getting the free server list…	Ücretsiz sunucu listesi alınıyor…
+No servers yet. Pixel Suite loads them when you open this.	Henüz sunucu yok. Pixel Suite bunu açtığınızda yükler.
+Unavailable · no servers right now	Kullanılamıyor · şu an sunucu yok
+VPN	VPN
+VPN for Chrome	Chrome için VPN
+Become a patron	Patron olun
+Buy me a coffee	Bana bir kahve ısmarla
+Coffee	Kahve
+Join the community	Topluluğa katıl
+No app is available to open this link	Bu bağlantıyı açabilecek uygulama yok
+This link could not be opened	Bu bağlantı açılamadı
+On a schedule	Programa göre
+With the phone's dark mode	Telefonun koyu moduyla
+Call	Ara
+Incoming call deflected (device reported as switched off)	Gelen arama yönlendirildi (cihaz kapalı olarak bildirildi)
+Unknown caller	Bilinmeyen arayan
+Off	Kapalı
+On	Açık
+Arrow	Ok
+Circle	Daire
+Double arrow	Çift ok
+Line	Çizgi
+Speech bubble	Konuşma balonu
+Square	Kare
+Star	Yıldız
+Triangle	Üçgen
+Blue	Mavi
+Green	Yeşil
+Red	Kırmızı
+Yellow	Sarı
+Clear badge	Rozeti temizle
+Could not save the name	Ad kaydedilemedi
+No	Hayır
+Remove folder?	Klasör kaldırılsın mı?
+Sort apps?	Uygulamalar sıralansın mı?
+Yes	Evet
+Add apps	Uygulama ekle
+Create folder	Klasör oluştur
+6-digit code	6 haneli kod
+Allow root access to save your device ID.	Cihaz kimliğinizi kaydetmek için root erişimine izin verin.
+Allow root access to save your purchase.	Satın alımınızı kaydetmek için root erişimine izin verin.
+Allow root access to update your purchase.	Satın alımınızı güncellemek için root erişimine izin verin.
+Change email	E-postayı değiştir
+Check your license code and try again.	Lisans kodunuzu kontrol edip tekrar deneyin.
+Contact support	Destekle iletişime geç
+Couldn’t confirm the purchase. Your saved pass has been kept.	Satın alım onaylanamadı. Kayıtlı geçişiniz korundu.
+Couldn’t connect. Check your internet connection and try again.	Bağlanılamadı. İnternet bağlantınızı kontrol edip tekrar deneyin.
+Couldn’t save the device ID. Check root access.	Cihaz kimliği kaydedilemedi. Root erişimini kontrol edin.
+Couldn’t save the purchase. Check root access.	Satın alım kaydedilemedi. Root erişimini kontrol edin.
+Couldn’t verify the purchase link.	Satın alma bağlantısı doğrulanamadı.
+Couldn’t verify this purchase.	Bu satın alım doğrulanamadı.
+Email used for purchase	Satın alımda kullanılan e-posta
+Enter code	Kodu girin
+Enter the email you paid with.	Ödeme yaptığınız e-postayı girin.
+Enter the six-digit email code.	E-postadaki altı haneli kodu girin.
+If a purchase matches this email, your recovery code is on its way.	Bu e-postayla eşleşen bir satın alım varsa kurtarma kodunuz yolda.
+Invalid purchase pass.	Geçersiz satın alma geçişi.
+Invalid signature.	Geçersiz imza.
+No connection. Your saved purchase has been kept.	Bağlantı yok. Kayıtlı satın alımınız korundu.
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	Etkinleştirildikten sonra iade edilmez; yasaların veya Buy Me a Coffee kurallarının gerektirdiği durumlar hariç.
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	Aynı anda tek telefon. Uyumlu bir Pixel Watch ve eSIM planı gerekir.
+Pixel watch eSIM	Pixel Watch eSIM
+Purchase is active.	Satın alım etkin.
+Purchase is no longer active.	Satın alım artık etkin değil.
+Purchase restored on this phone.	Satın alım bu telefonda geri yüklendi.
+Purchase unlocked.	Satın alımın kilidi açıldı.
+Pixel Watch eSIM ✓ (purchased)	Pixel Watch eSIM ✓ (satın alındı)
+Refresh purchase	Satın alımı yenile
+Resend code	Kodu yeniden gönder
+Restore on this phone	Bu telefonda geri yükle
+Restore purchase	Satın alımı geri yükle
+Restore purchase by email	Satın alımı e-postayla geri yükle
+Restoring…	Geri yükleniyor…
+Send recovery code	Kurtarma kodu gönder
+Sending…	Gönderiliyor…
+The device ID needs support. It has not been changed.	Cihaz kimliği için destek gerekiyor. Değiştirilmedi.
+The shop is being set up. Please try again later.	Mağaza kuruluyor. Lütfen daha sonra tekrar deneyin.
+This purchase pass is not valid for this phone.	Bu satın alma geçişi bu telefon için geçerli değil.
+This purchase was revoked or moved to another phone.	Bu satın alım iptal edildi veya başka bir telefona taşındı.
+Unlock	Kilidi aç
+Unlocking…	Kilit açılıyor…
+Yours to keep on this phone. Patreon is not required.	Bu telefonda sizin. Patreon gerekmez.
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — Koyu sayfalar\n\nKapsamını ekledikten sonra Chrome'u yeniden başlatın.
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — Chrome ile açılan makalelerde reklam kutusu temizliği\n\nGoogle Haberler (com.google.android.apps.magazines) kapsam gerektirmez. Reklam alan adı engelleme sistem genelindeki engelleyiciyi kullanır.
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — boş reklam kutusu temizliği\n\nKapsamını ekledikten sonra Chrome'u yeniden başlatın. Reklam alan adı engelleme kapsam gerektirmez.
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **Google Dosyalar** (com.google.android.apps.nbu.files) — dosya tarayıcısı\n• **Dosyalar (sistem)** (com.google.android.documentsui / com.android.documentsui) — sistem dosya seçicisi
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **Telefon Hizmetleri** (com.android.phone)\n\nİkisini de seçin, sonra yeniden başlatın. Sonraki anahtar değişiklikleri hemen uygulanır.
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **Telefon Hizmetleri** (com.android.phone)\n\nSeçin, sonra yeniden başlatın. Sonraki anahtar değişiklikleri hemen uygulanır.
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **Telefon** (com.google.android.dialer)\n• **Sistem Çerçevesi** (system) — kayıt desteği\n\nKapsamını ekledikten sonra Telefon'u yeniden açın.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — simgeler, klasörler, menüler ve çekmecenin yumuşak kenarı\n• **Sistem Arayüzü** (com.android.systemui) — sistem menüleri ve mesajları\n• **Pixel Stüdyo** (com.google.android.apps.pixel.creativeassistant)\n• **Google Fotoğraflar** (com.google.android.apps.photos) — düzenleyici menüleri\n\nSüper Karanlık ek kapsamlarını kendi sayfasında listeler.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — başlatıcı özellikleri\n• **Google** (com.google.android.googlequicksearchbox) — Google aramasında özelleştirilmiş uygulamalar\n• **Sistem Arayüzü** (com.android.systemui) — bildirim mesajı konumu
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — başlatıcı simgeleri ve adları\n• **Google** (com.google.android.googlequicksearchbox) — ana ekran Google araması
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — hareket çubuğunun yanındaki gezinme düğmeleri\n• **Sistem Çerçevesi** (system) — uygulamalar alt menülerini düğmelerin üstünde tutar\n• **Gboard** (com.google.android.inputmethod.latin) — klavye kapatma düğmesi
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — son kullanılan uygulamalar\n• **Sistem Arayüzü** (com.android.systemui) — yatay durum çubuğu
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **Pixel Stüdyo** (com.google.android.apps.pixel.creativeassistant) — ekran görüntüleri\n• **Google Fotoğraflar** (com.google.android.apps.photos) — fotoğraflar
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play Store** (com.android.vending) — uygulama güncelleme engelleme\n• **Sistem Çerçevesi** (system)\n• **Ayarlar** (com.android.settings) — OTA ve fabrika ayarlarına sıfırlama engelleme
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play Store** (com.android.vending)\n• **Sistem Çerçevesi** (system), kayıtlı bir sürümü geri yüklemek için
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **Paylaşım sayfası** (com.android.intentresolver)\n• **Google Fotoğraflar** (com.google.android.apps.photos) — Fotoğraflar paylaşım sayfasının uyumlu renkleri
+• **System Framework** (system)	• **Sistem Çerçevesi** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **Sistem Çerçevesi** (system) — uygulama koruması\n• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — uygulama ve klasör kilitleri\n• **Sistem Arayüzü** (com.android.systemui) — kimlik doğrulama istemleri\n\nTelefonunuzun ekran kilidini ayarlayın, sonra kapsamları ekledikten sonra yeniden başlatın.
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **Sistem Çerçevesi** (system) — güç düğmesi\n• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — Circle to Search
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **Sistem Çerçevesi** (system) — güncelleme engelleme\n• **Ayarlar** (com.android.settings) — güncelleme ve sıfırlama kontrolleri
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **Sistem Çerçevesi** (system) — uyandırma, uyku ve ekran görüntüleri\n• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — uygulama sürükleme\n• **Sistem Arayüzü** (com.android.systemui) — kayıt kontrolleri\n• **Pixel Stüdyo** (com.google.android.apps.pixel.creativeassistant) — ekran görüntüsü kırpma
+• **System Framework** (system), to restore a saved version (also an older one)	• **Sistem Çerçevesi** (system), kayıtlı bir sürümü geri yüklemek için (eski bir sürüm de olabilir)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **Sistem Çerçevesi** (system)\n• **Sistem Arayüzü** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **Sistem Arayüzü** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **Sistem Arayüzü** (com.android.systemui) — her zaman açık ekran\n• **Sistem Çerçevesi** (system) — diğer kilit ekranı gösterim seçenekleri kapalıyken bile her zaman açık ekranı başlatır
+• **System UI** (com.android.systemui) — the lock screen PIN	• **Sistem Arayüzü** (com.android.systemui) — kilit ekranı PIN'i
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **Sistem Arayüzü** (com.android.systemui)\n• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Ayarlar** (com.android.settings)\n• **Ayarlar Hizmetleri** (com.google.android.settings.intelligence)\n• **Paket yükleyici** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nDüzenleyici stili için **Pixel Stüdyo** (com.google.android.apps.pixel.creativeassistant) ve **Google Fotoğraflar** (com.google.android.apps.photos) öğelerini de seçin. Kapsamları ekledikten sonra yeniden başlatın.
+Auto (A–Z)	Otomatik (A–Z)
+Custom	Özel
+Sort	Sırala
+Sort the apps in this folder from A to Z?	Bu klasördeki uygulamalar A'dan Z'ye sıralansın mı?
+Auto-correction	Otomatik düzeltme
+Corrects words as you type	Yazarken kelimeleri düzeltir
+Gboard's own switch (reading it…)	Gboard'un kendi anahtarı (okunuyor…)
+Languages	Diller
+On: Gboard corrects words in the languages turned on below	Açık: Gboard aşağıda açık olan dillerde kelimeleri düzeltir
+Reading Gboard's languages…	Gboard dilleri okunuyor…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	Üstteki anahtar Gboard'un kendi otomatik düzeltmesidir. Aşağıda herhangi bir dil için kapatın: orada kelimeler değiştirilmez ama öneriler görünmeye devam eder. Değişiklikler klavye bir sonraki açılışta geçerli olur.
+A Gboard shortcut	Bir Gboard kısayolu
+A keyboard you can move anywhere	İstediğiniz yere taşıyabileceğiniz bir klavye
+Arrow keys and selection tools	Ok tuşları ve seçim araçları
+Both show at once, in two rows (portrait)	İkisi birlikte, iki satırda (dikey)
+Bring back what you undid	Geri aldığınızı geri getirin
+Change how Gboard looks	Gboard'un görünümünü değiştirin
+Clipboard	Pano
+Copy	Kopyala
+Copy the selected text	Seçili metni kopyalayın
+Cut	Kes
+Cut the selected text	Seçili metni kesin
+Drag a shortcut to the edge of the list to turn the page.	Sayfa çevirmek için bir kısayolu listenin kenarına sürükleyin.
+Edit toolbar shortcuts	Araç çubuğu kısayollarını düzenle
+Emoji	Emoji
+Emoji, emoticons and symbols	Emojiler, ifadeler ve semboller
+Fill in saved passwords and details	Kayıtlı şifreleri ve bilgileri doldurun
+Floating	Kayan
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	Gboard araç çubuğu, kısayollar önerilerin üstünde: kısayolları buraya sürükleyin
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	Gboard araç çubuğu, kısayollar önerilerin altında: kısayolları buraya sürükleyin
+Gboard's toolbar: drag shortcuts here	Gboard araç çubuğu: kısayolları buraya sürükleyin
+Hello	Merhaba
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	Bir kısayolu basılı tutup araç çubuğuna sürükleyin; sıralamak için çubuk boyunca, kaldırmak için dışarı sürükleyin. Ne yaptığını görmek için birine dokunun.
+Make the keyboard bigger or smaller	Klavyeyi büyütün veya küçültün
+Menu button	Menü düğmesi
+Next language	Sonraki dil
+Okay	Tamam
+One-handed	Tek el
+Open Gboard's settings	Gboard ayarlarını aç
+Paste	Yapıştır
+Paste what you copied	Kopyaladığınızı yapıştırın
+Put at least one shortcut on the toolbar	Araç çubuğuna en az bir kısayol koyun
+Redo	Yinele
+Resize	Yeniden boyutlandır
+Rewrite or polish what you wrote	Yazdığınızı yeniden yazın veya iyileştirin
+Scan text	Metin tara
+Search and send GIFs	GIF arayın ve gönderin
+Search and send stickers	Çıkartma arayın ve gönderin
+Select all	Tümünü seç
+Select all the text	Tüm metni seçin
+Settings	Ayarlar
+Share	Paylaş
+Share Gboard with others	Gboard'u başkalarıyla paylaşın
+Shortcuts	Kısayollar
+Shortcuts above the suggestions, not below	Kısayollar önerilerin üstünde, altında değil
+Shortcuts below the suggestions, not above	Kısayollar önerilerin altında, üstünde değil
+Shortcuts row on bottom	Kısayol satırı altta
+Shortcuts row on top	Kısayol satırı üstte
+Shrink the keyboard to one side	Klavyeyi bir kenara küçültün
+Stickers	Çıkartmalar
+Suggestions and shortcuts together	Öneriler ve kısayollar bir arada
+Switch to your next language	Sonraki dilinize geçin
+Tap to select a word, tap again to clear. Hold to select all	Bir kelimeyi seçmek için dokunun, kaldırmak için tekrar dokunun. Tümünü seçmek için basılı tutun
+Text editing	Metin düzenleme
+Thanks	Teşekkürler
+Theme	Tema
+Translate	Çevir
+Translate as you type	Yazarken çevirin
+Type by speaking	Konuşarak yazın
+Type text from your camera	Kameradan metin yazın
+Undo	Geri al
+Undo your last change	Son değişikliğinizi geri alın
+Voice typing	Sesle yazma
+Writing tools	Yazma araçları
+Your copied text and pinned clips	Kopyaladığınız metin ve sabitlenmiş klipler
+Clear	Temizle
+Clear the clipboard?	Pano temizlensin mi?
+Every clip is deleted except pinned ones.	Sabitlenmiş olanlar hariç tüm klipler silinir.
+Delete this pinned clip?	Bu sabitlenmiş klip silinsin mi?
+Apply	Uygula
+Down	Aşağı
+Height	Yükseklik
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	Klavye boyutu ve yeri. Boyutlandırmak için tutamaçları, taşımak için klavyeyi sürükleyin.
+Try typing here after Apply	Uygula'dan sonra buraya yazmayı deneyin
+Up	Yukarı
+Width	Genişlik
+Apps list	Uygulama listesi
+Pixel Suite isn't available	Pixel Suite kullanılamıyor
+Adjust icon	Simgeyi ayarla
+Could not save this icon. Try another image.	Bu simge kaydedilemedi. Başka bir resim deneyin.
+Icon updated	Simge güncellendi
+Pinch to zoom, drag to move	Yakınlaştırmak için iki parmakla sıkıştırın, taşımak için sürükleyin
+Reset position and zoom	Konumu ve yakınlaştırmayı sıfırla
+Large	Büyük
+Largest	En büyük
+Medium	Orta
+Small	Küçük
+Smallest	En küçük
+Apps the pack doesn't cover keep their own icons.	Paketin kapsamadığı uygulamalar kendi simgelerini korur.
+Close icon packs	Simge paketlerini kapat
+Get icon packs	Simge paketi edinin
+Icon pack	Simge paketi
+Loading icon packs…	Simge paketleri yükleniyor…
+Loading icons…	Simgeler yükleniyor…
+No icon packs installed yet	Henüz yüklü simge paketi yok
+Pixel Launcher's own icons, including themed icons	Pixel Başlatıcı'ın kendi simgeleri, temalı simgeler dahil
+System default	Sistem varsayılanı
+Unavailable	Kullanılamıyor
+Rename app	Uygulamayı yeniden adlandır
+Shows on the home screen, in folders, the drawer and search.	Ana ekranda, klasörlerde, uygulama çekmecesinde ve aramada görünür.
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	Burada gizlenemedi. Pixel Suite'te Arama çubuğunu gizle'yi açın.
+Couldn't save Hide search bar	Arama çubuğunu gizle kaydedilemedi
+Hide search bar isn't supported on this launcher version	Arama çubuğunu gizle bu başlatıcı sürümünde desteklenmiyor
+Change icon	Simgeyi değiştir
+Could not read this image. Try another image.	Bu resim okunamadı. Başka bir resim deneyin.
+Could not reset the icon	Simge sıfırlanamadı
+Files	Dosyalar
+Files is unavailable	Dosyalar kullanılamıyor
+Original icon restored	Orijinal simge geri yüklendi
+Photos	Fotoğraflar
+Photos is unavailable. Choose Files instead.	Fotoğraflar kullanılamıyor. Bunun yerine Dosyalar'ı seçin.
+Reset icon	Simgeyi sıfırla
+Could not read this icon pack	Bu simge paketi okunamadı
+Could not use this icon	Bu simge kullanılamadı
+Loading…	Yükleniyor…
+No icon packs installed yet.\nInstall one and it shows here.	Henüz yüklü simge paketi yok.\nBir tane yükleyin, burada görünür.
+Play Store is unavailable	Play Store kullanılamıyor
+Search icons	Simge ara
+All apps	Tüm uygulamalar
+App picker	Uygulama seçici
+Choose apps	Uygulama seçin
+Couldn't load apps. Check root access and reopen.	Uygulamalar yüklenemedi. Root erişimini kontrol edip yeniden açın.
+Couldn't save. Check root access and try again.	Kaydedilemedi. Root erişimini kontrol edip tekrar deneyin.
+Filter installed apps	Yüklü uygulamaları filtrele
+Loading apps…	Uygulamalar yükleniyor…
+Root unavailable	Root kullanılamıyor
+Saved. Changes apply the next time these apps open.	Kaydedildi. Değişiklikler bu uygulamalar bir sonraki açılışta geçerli olur.
+Search installed apps	Yüklü uygulamalarda ara
+System apps	Sistem uygulamaları
+User apps	Kullanıcı uygulamaları
+No room on this page for the other apps	Bu sayfada diğer uygulamalar için yer yok
+A Quest for the Kind-Hearted	İyi Kalpliler İçin Bir Görev
+Close account	Hesabı kapat
+Membership refreshed	Üyelik yenilendi
+Pass expires:  ∞	Geçişin bitişi:  ∞
+Patreon account	Patreon hesabı
+Patreon member	Patreon üyesi
+Patron ✓	Patron ✓
+Read the quest	Görevi oku
+Refresh	Yenile
+Refreshing…	Yenileniyor…
+Sign in with Patreon	Patreon ile oturum açın
+Sign out	Oturumu kapat
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Chrome+, Gboard+, Reklam Engelleyici, VPN, Koyu sayfalar, arama kaydı ve reklamsız Google akışının kilidini açmak için Pixel Suite'i destekleyin.
+A Quest for the\nKind-Hearted	İyi Kalpliler İçin\nBir Görev
+Already a patron? Unlock	Zaten patron musunuz? Kilidi aç
+Checking Patreon membership…	Patreon üyeliği kontrol ediliyor…
+Join on Patreon	Patreon'a katıl
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	Patreon özelliklerini açmak için Patreon'a katılın; projeyi yaşattığınız için teşekkürler. 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	Katıldınız mı? Ücretli Patreon üyeliğinizi onaylamak için Kilidi aç'a dokunun.
+Let's go	Haydi
+No paid membership found. Choose the paid tier to unlock.	Ücretli üyelik bulunamadı. Kilidi açmak için ücretli seviyeyi seçin.
+Open a browser to sign in with Patreon.	Patreon ile oturum açmak için bir tarayıcı açın.
+Open the Pixel Suite paid tier in your browser.	Pixel Suite ücretli seviyesini tarayıcınızda açın.
+Patreon sign-in is being set up.	Patreon ile oturum açma ayarlanıyor.
+Patron verified	Patron doğrulandı
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	Pixel Suite'te reklam ve izleyici yoktur. Hesap ve ödeme bilgileri yalnızca kilit açmanızı doğrulamak için kullanılır.
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite, boş zamanlarında, Pixel telefonlara olan sevgisiyle tek bir kişi tarafından geliştiriliyor.
+Quest Complete!	Görev Tamamlandı!
+Ready to check membership	Üyelik kontrolüne hazır
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	Pixel Suite'i desteklediğiniz için teşekkürler. Patreon özellikleriniz hazır.
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patronlar Chrome+ ve Gboard+, Reklam Engelleyici ve VPN, Chrome'da Koyu sayfalar, arama kaydı ve reklamsız Google akışının kilidini açar. Her destek doğrudan uygulamaya geri döner: Android ve Google uygulama güncellemelerine ayak uydurmak, bozdukları şeyleri düzeltmek ve yeni özellikler geliştirmek.
+Welcome back!	Tekrar hoş geldiniz!
+✨ Quest Complete!	✨ Görev Tamamlandı!
+📜 A Quest for the Kind-Hearted	📜 İyi Kalpliler İçin Bir Görev
+Google apps	Google uygulamaları
+Patreon feature	Patreon özelliği
+Unlock this feature with Patreon	Bu özelliğin kilidini Patreon ile açın
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android VPN'e izin vermedi. VPN sayfasını açıp Bağlan'a dokunun.
+Another VPN took over	Başka bir VPN devraldı
+Checking that websites open…	Web sitelerinin açıldığı kontrol ediliyor…
+Checking the connection…	Bağlantı kontrol ediliyor…
+Chrome isn't installed	Chrome yüklü değil
+Connection failed	Bağlantı başarısız
+Connection lost	Bağlantı kesildi
+Couldn't load the server list. Check your connection.	Sunucu listesi yüklenemedi. Bağlantınızı kontrol edin.
+Disconnect	Bağlantıyı kes
+Disconnected	Bağlantı kesildi
+Finding servers…	Sunucular aranıyor…
+Free volunteer server	Ücretsiz gönüllü sunucusu
+No server answered	Hiçbir sunucu yanıt vermedi
+Server stopped answering	Sunucu yanıt vermeyi bıraktı
+Trying the faster UDP connection (up to 30 s)…	Daha hızlı UDP bağlantısı deneniyor (30 sn'ye kadar)…
+VPN is a Patreon feature	VPN bir Patreon özelliğidir
+connections refused	bağlantılar reddedildi
+no answer	yanıt yok
+Circle to Search isn't available	Circle to Search kullanılamıyor
+Do Not Annoy off	Beni Rahatsız Etme kapalı
+Do Not Annoy on	Beni Rahatsız Etme açık
+Do Not Disturb off	Rahatsız Etmeyin kapalı
+Do Not Disturb on	Rahatsız Etmeyin açık
+No Annoyance off	Rahatsızlık Yok kapalı
+No Annoyance on	Rahatsızlık Yok açık
+Silence off	Sessiz kapalı
+Silence on	Sessiz açık
+Authenticator	Authenticator
+Calculator	Hesap Makinesi
+Calendar	Takvim
+Camera	Kamera
+Clock	Saat
+Contacts	Kişiler
+Maps	Haritalar
+Messages	Mesajlar
+Play Store	Play Store
++  Add apps	+  Uygulama ekle
++ Add to home screen	+ Ana ekrana ekle
+A clearer page	Daha temiz bir sayfa
+A website	Bir web sitesi
+Ad blocking	Reklam engelleme
+Add new	Yeni ekle
+Add to home screen	Ana ekrana ekle
+Adjust	Ayarla
+Advertisement	Reklam
+Alex	Alex
+Another pack	Başka bir paket
+App info	Uygulama bilgileri
+App is locked	Uygulama kilitli
+Applied	Uygulandı
+Applied across the launcher	Başlatıcının tamamında uygulandı
+Applying…	Uygulanıyor…
+Apps	Uygulamalar
+Authenticate to open	Açmak için kimliğinizi doğrulayın
+Back in your share list	Paylaşım listenize geri döndü
+Block system updates	Sistem güncellemelerini engelle
+Bluetooth	Bluetooth
+Bookmarks	Yer işaretleri
+Bookmarks bar	Yer işareti çubuğu
+Call ended	Arama sona erdi
+Call log: Alex · Blocked	Arama geçmişi: Alex · Engellendi
+Call recording	Arama kaydı
+Camera (stock)	Kamera (stok)
+Centered labels. Clearer view.	Ortalanmış adlar. Daha net görünüm.
+Change icon → Icon pack	Simgeyi değiştir → Simge paketi
+Change icons	Simgeleri değiştir
+Choose Icon pack	Simge paketi seçin
+Choose a pack	Bir paket seçin
+Choose an image	Bir resim seçin
+Cleaner articles in Chrome	Chrome'da daha temiz makaleler
+Clear all	Tümünü temizle
+Collections	Koleksiyonlar
+Connected	Bağlı
+Controls within reach	Kontroller elinizin altında
+Create	Oluştur
+Crop	Kırp
+Crop freely	Serbest kırp
+Data and Wi-Fi stay on	Veri ve Kablosuz açık kalır
+Date & time	Tarih ve saat
+Device audio	Cihaz sesi
+Discover	Discover
+Display & touch	Ekran ve dokunma
+Do Not Disturb	Rahatsız Etmeyin
+Done	Bitti
+Dot cleared	Nokta kaldırıldı
+Downloads	İndirilenler
+Drag to make a folder	Klasör oluşturmak için sürükleyin
+Edit photo	Fotoğrafı düzenle
+Empty ad space	Boş reklam alanı
+Enter PIN	PIN girin
+Entire screen	Tüm ekran
+Erase all data	Tüm verileri sil
+Every tab in view	Tüm sekmeler görünür
+Example app	Örnek uygulama
+Example pack	Örnek paket
+Factory reset locked	Fabrika ayarlarına sıfırlama kilitli
+Father	Baba
+Fill	Doldur
+Flashlight	El feneri
+Folder	Klasör
+For you	Sizin için
+Fri, Oct 16	16 Eki Cum
+Friday, Oct 16	16 Ekim Cuma
+Friend	Arkadaş
+Headlines	Manşetler
+Hidden apps	Gizli uygulamalar
+Hidden apps remain available	Gizli uygulamalar kullanılabilir kalır
+Hidden contacts	Gizli kişiler
+Hide 2 apps	2 uygulamayı gizle
+Hide contact	Kişiyi gizle
+Hide several apps	Birden fazla uygulamayı gizle
+Hold	Basılı tut
+Hold and drag pinned apps	Sabitlenmiş uygulamaları basılı tutup sürükleyin
+Hold to unhide	Göstermek için basılı tutun
+How about this spot?	Bu yere ne dersiniz?
+Incoming call declined	Gelen arama reddedildi
+Incoming call deflected	Gelen arama yönlendirildi
+Incoming calls quiet	Gelen aramalar sessiz
+Internet	İnternet
+Keep Notes	Keep Notlar
+Let's find a new place.	Yeni bir yer bulalım.
+Lock	Kilitle
+Manage suggested contacts	Önerilen kişileri yönet
+Message	Mesaj
+Minus hides the contacts row	Eksi işareti kişiler satırını gizler
+Mobile bookmarks	Mobil yer işaretleri
+Mobile network	Mobil ağ
+More of your feed	Akışınızdan daha fazlası
+My folder	Klasörüm
+New tab	Yeni sekme
+Newest first	Önce en yeni
+News article	Haber makalesi
+No empty ad boxes	Boş reklam kutusu yok
+No recent apps	Son kullanılan uygulama yok
+No sponsored gaps	Sponsorlu boşluk yok
+Notifications	Bildirimler
+OTA blocker	OTA engelleyici
+Oct 12, 10:20	12 Eki, 10:20
+Oct 8, 08:10	8 Eki, 08:10
+One app. Your choice.	Tek uygulama. Sizin seçiminiz.
+Open. Swipe. Close.	Aç. Kaydır. Kapat.
+Order saved	Sıralama kaydedildi
+Other bookmarks	Diğer yer işaretleri
+Packages blocked	Paketler engellendi
+Perfect. See you there!	Harika. Orada görüşürüz!
+Phone	Telefon
+Pin	Sabitle
+Pin moves apps above the divider	Sabitleme, uygulamaları ayırıcının üstüne taşır
+Pin, then drag to reorder	Sabitleyin, sonra sıralamak için sürükleyin
+Pinned apps	Sabitlenmiş uygulamalar
+Plus brings the row back	Artı işareti satırı geri getirir
+Private	Özel
+Private folder	Özel klasör
+Read the full story	Haberin tamamını okuyun
+Reading list	Okuma listesi
+Ready for the weekend?	Hafta sonuna hazır mısın?
+Ready to activate	Etkinleştirmeye hazır
+Record	Kaydet
+Record your screen	Ekranınızı kaydedin
+Recorded	Kaydedildi
+Recording	Kaydediliyor
+Recording saved	Kayıt kaydedildi
+Recordings / Calls	Recordings / Calls
+Restricted packages	Kısıtlanmış paketler
+Scan QR code	QR kodu tara
+Scan your carrier's code	Operatörünüzün kodunu tarayın
+Screenshot	Ekran görüntüsü
+Screenshot saved	Ekran görüntüsü kaydedildi
+Scroll to continue	Devam etmek için kaydırın
+Search the web	Web'de ara
+Select	Seç
+Select apps	Uygulama seçin
+Sep 30, 21:00	30 Eyl, 21:00
+Share or restore hidden apps	Gizli uygulamaları paylaşın veya geri yükleyin
+Show touches	Dokunmaları göster
+Sites	Siteler
+Software updates	Yazılım güncellemeleri
+Sort  ⌄	Sırala  ⌄
+Sort apps A–Z?	Uygulamalar A–Z sıralansın mı?
+Speed Dial in bookmarks	Yer işaretlerinde Hızlı Arama
+Split screen	Bölünmüş ekran
+Start	Başlat
+Swipe	Kaydır
+System settings	Sistem ayarları
+Tap to share	Paylaşmak için dokunun
+Themes	Temalar
+Themes → Icon pack	Temalar → Simge paketi
+Today	Bugün
+Today 09:15	Bugün 09:15
+Today 14:42	Bugün 14:42
+Today's stories	Bugünün haberleri
+Today's top stories	Bugünün öne çıkan haberleri
+Touch fingerprint sensor	Parmak izi sensörüne dokunun
+Unhide app	Uygulamayı göster
+Unlocked on the 4th digit	4. rakamda kilit açıldı
+Use Super Dark-Mode	Süper Karanlık Mod'u kullan
+Voice note.m4a	Sesli not.m4a
+Voice search	Sesli arama
+Wallpaper & style	Duvar kağıdı ve stil
+Watch eSIM	Saat eSIM'i
+Weekend plans	Hafta sonu planları
+Wife	Eşim
+Yes! A coffee sounds good.	Evet! Kahve iyi olur.
+Yesterday	Dün
+Yesterday 18:30	Dün 18:30
+Your Pixel. Your way.	Pixel'iniz. Sizin tarzınız.
+Your tabs	Sekmeleriniz
+‹ Back	‹ Geri
+↓ Move to bottom	↓ En alta taşı
+Lock folder	Klasörü kilitle
+Unlock folder	Klasörün kilidini aç
+Confirm it's you to disable this app	Bu uygulamayı devre dışı bırakmak için siz olduğunuzu doğrulayın
+Confirm it's you to lock this app	Bu uygulamayı kilitlemek için siz olduğunuzu doğrulayın
+Confirm it's you to lock this folder	Bu klasörü kilitlemek için siz olduğunuzu doğrulayın
+Confirm it's you to pause this app	Bu uygulamayı duraklatmak için siz olduğunuzu doğrulayın
+Confirm it's you to remove this app	Bu uygulamayı kaldırmak için siz olduğunuzu doğrulayın
+Confirm it's you to remove this folder	Bu klasörü kaldırmak için siz olduğunuzu doğrulayın
+Confirm it's you to uninstall this app	Bu uygulamanın yüklemesini kaldırmak için siz olduğunuzu doğrulayın
+Confirm it's you to unlock this app	Bu uygulamanın kilidini açmak için siz olduğunuzu doğrulayın
+Confirm it's you to unlock this folder	Bu klasörün kilidini açmak için siz olduğunuzu doğrulayın
+Could not check your screen lock	Ekran kilidiniz kontrol edilemedi
+Could not save. Is root allowed for Pixel Suite?	Kaydedilemedi. Pixel Suite için root izni verildi mi?
+Please authenticate to proceed	Devam etmek için kimliğinizi doğrulayın
+Set a screen lock first to lock apps	Uygulama kilitlemek için önce bir ekran kilidi ayarlayın
+Use PIN	PIN kullan
+App remains locked	Uygulama kilitli kalır
+Cannot dismiss locked apps	Kilitli uygulamalar kapatılamaz
+Two apps locked	İki uygulama kilitli
+Refresh rate	Yenileme hızı
+Accept	Kabul et
+An update check is already running.	Bir güncelleme kontrolü zaten çalışıyor.
+Automatic update checks are off.	Otomatik güncelleme kontrolleri kapalı.
+Could not verify both release repositories. Try again later.	İki sürüm deposu da doğrulanamadı. Daha sonra tekrar deneyin.
+New version ready. Tap to download and install.	Yeni sürüm hazır. İndirip yüklemek için dokunun.
+No newer official release is published with matching APKs on both repositories.	İki depoda da eşleşen APK'lara sahip daha yeni bir resmi sürüm yayınlanmadı.
+No release check yet.	Henüz sürüm kontrolü yapılmadı.
+Apply update blocking choices	Güncelleme engelleme seçimlerini uygula
+Couldn't apply: root access needed	Uygulanamadı: root erişimi gerekli
+Couldn't restart: root access needed	Yeniden başlatılamadı: root erişimi gerekli
+Restarting…	Yeniden başlatılıyor…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	Süper Karanlık Mod kendi siyah stilini kullanır.\nStili değiştirmek için kapatın.
+**Used for:**\n	**Şunun için kullanılır:**\n
+Adds Doodles and cropping tools to the screenshot editor.	Ekran görüntüsü düzenleyicisine Karalamalar ve kırpma araçları ekler.
+Adds editable Doodles to the photo editor.	Fotoğraf düzenleyicisine düzenlenebilir Karalamalar ekler.
+Adds the refresh-rate slider to Display & touch.	Ekran ve dokunma bölümüne yenileme hızı kaydırıcısı ekler.
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	Güvenli ekranların görüntüsünü almaya izin verir, erişilebilirlik ve hata ayıklama durumunu uygulamalardan gizler ve FPS sayacını sağlar.
+Applies Super Dark to Gboard.	Süper Karanlık'ı Gboard'a uygular.
+Applies Super Dark to Settings search.	Süper Karanlık'ı Ayarlar aramasına uygular.
+Applies Super Dark to Settings.	Süper Karanlık'ı Ayarlar'a uygular.
+Applies Super Dark to app uninstall dialogs.	Süper Karanlık'ı uygulama kaldırma iletişim kutularına uygular.
+Applies Super Dark to the Google app and feed.	Süper Karanlık'ı Google uygulamasına ve akışa uygular.
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	Başlatıcı simgelerini, klasörlerini ve menülerini, ayrıca uygulama çekmecesi arama alanının arkasındaki buzlu yumuşak kenarı uygular. Çekmece efekti yalnızca Buzlu Cam ile etkindir.
+Blocks system update installation and protects factory reset.	Sistem güncellemelerinin yüklenmesini engeller ve fabrika ayarlarına sıfırlamayı korur.
+Controls Software updates and the factory-reset option in Settings.	Ayarlar'daki Yazılım güncellemeleri ve fabrika ayarlarına sıfırlama seçeneğini kontrol eder.
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	Pixel arama yığını yolu kullanılamadığında Beni Rahatsız Etme için gelen aramaları reddeder.
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	El feneri ve kamera kısayolları için güç ve ses kısma düğmelerine çift basmayı algılar.
+Detects volume-down double presses while the screen is off.	Ekran kapalıyken ses kısma düğmesine çift basmayı algılar.
+Enables QR-code eSIM setup in the Pixel Watch phone app.	Telefondaki Pixel Watch uygulamasında QR kodlu eSIM kurulumunu etkinleştirir.
+Enables call recording and its controls in the Google Phone app.	Google Telefon uygulamasında arama kaydını ve kontrollerini etkinleştirir.
+Fades the status bar while recent apps are viewed in landscape.	Son kullanılan uygulamalar yatay görüntülenirken durum çubuğunu soldurur.
+Files (system)	Dosyalar (sistem)
+Files by Google	Google Dosyalar
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	Android Ayarlar'dan açılan ekranlarda, desteklenen alt sayfalar dahil, Buzlu Cam yumuşak kaydırma kenarları. Açık, koyu ve Süper Karanlık'a uyar. Bu kapsamı LSPosed'da etkinleştirin ve uygulamayı veya telefonu yeniden başlatın.
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	Android sistem işleminde uyandırma, uyku ve ekran görüntüsü hareketlerini yönetir.
+Hides the keyboard globe and moves the dismiss arrow to the right.	Klavyedeki küre düğmesini gizler ve kapatma okunu sağa taşır.
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	Kayıtlar kaydedilirken aramaların hızlı yanıt vermesini sağlar.
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	Beni Rahatsız Etme açıkken gelen aramaları Pixel arama yığını üzerinden sessiz tutar.
+Keeps screenshots ready for faster capture.	Daha hızlı yakalama için ekran görüntülerini hazır tutar.
+Keeps selected apps on their current version by blocking their Play Store updates.	Play Store güncellemelerini engelleyerek seçilen uygulamaları mevcut sürümlerinde tutar.
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	Uygulamaları ve klasörleri kilitler, asma kilit rozetleri gösterir ve kilitli uygulamaları son kullanılanlarda korur.
+Matches Photos' share-page colors to the share sheet.	Fotoğraflar'ın paylaşım sayfası renklerini paylaşım sayfasına uydurur.
+Matches photo-editor menus and controls to your chosen theme and surface style.	Fotoğraf düzenleyici menülerini ve kontrollerini seçtiğiniz tema ve yüzey stiline uydurur.
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	Ekran görüntüsü düzenleyici menülerini ve kontrollerini seçtiğiniz tema ve yüzey stiline uydurur.
+Matches system menus and messages to your chosen theme and surface style.	Sistem menülerini ve mesajlarını seçtiğiniz tema ve yüzey stiline uydurur.
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	Gezinme düğmeleri etkinken klavye kapatma düğmesini en sağa taşır. Bu kapsamı ekledikten sonra klavyenizi yeniden başlatın.
+Opens the camera from the volume-down shortcut.	Ses kısma kısayoluyla kamerayı açar.
+Package installer	Paket yükleyici
+Permission Controller	İzin Denetleyicisi
+Personal Safety	Kişisel Güvenlik
+Phone Services	Telefon Hizmetleri
+Pixel Troubleshooting	Pixel Sorun Giderme
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	Bildirim mesajlarını üste, ortaya veya stok alt konuma yerleştirir. Değişiklikler sonraki mesajda geçerli olur.
+Provides cleaner screen-recording controls.	Daha sade ekran kaydı kontrolleri sağlar.
+Removes sponsored cards and their empty space from the Google feed.	Sponsorlu kartları ve bıraktıkları boşluğu Google akışından kaldırır.
+Removes supported empty ad boxes from web pages opened in Chrome.	Chrome'da açılan web sayfalarındaki desteklenen boş reklam kutularını kaldırır.
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	Sabitlenmiş paylaşım uygulamalarını sıralar ve Android'in paylaşım sayfasına gizli uygulama ve kişi klasörleri ekler.
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	Korunan uygulamaları açmadan, kaldırmadan, devre dışı bırakmadan veya duraklatmadan önce kimlik doğrulama ister.
+Settings Services	Ayarlar Hizmetleri
+Share sheet	Paylaşım sayfası
+Shows customized app names and icons in home-screen Google search.	Ana ekrandaki Google aramasında özelleştirilmiş uygulama adlarını ve simgelerini gösterir.
+Shows fingerprint and PIN prompts for locked apps and folders.	Kilitli uygulama ve klasörler için parmak izi ve PIN istemlerini gösterir.
+Shows newest files first in the file browser.	Dosya tarayıcısında önce en yeni dosyaları gösterir.
+Shows newest files first in the system file picker.	Sistem dosya seçicisinde önce en yeni dosyaları gösterir.
+System Framework	Sistem Çerçevesi
+System UI	Sistem Arayüzü
+Toggles the flashlight with a double press of the power button.	Güç düğmesine çift basarak el fenerini açıp kapatır.
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	Araç çubuğunda 7 kısayol yeri, metin düzenleme kısayolları, yuvarlatılmış tuşlar, tek sütunlu pano, gizli çipler, menü ve emoji/ses düğmeleri, araç çubuğu sıralamanız, iki satırda kısayollu öneriler, Yeniden boyutlandır (klavye boyutu ve yeri), serbest klavye konumu, و tuşunda Arapça ؤ, kaydırarak harf harf silme, dile göre otomatik düzeltme, sınırsız pano ve Yeniden boyutlandır sayfasındaki klavye resmi.
+10 seconds	10 saniye
+15 seconds	15 saniye
+3 seconds	3 saniye
+30 seconds	30 saniye
+5 seconds	5 saniye
+A better starting view for your files.	Dosyalarınız için daha iyi bir başlangıç görünümü.
+A feed without sponsored gaps	Sponsorlu boşluk olmayan bir akış
+A tidier recording sheet. Needs your phone in English.	Daha düzenli bir kayıt sayfası. Telefonunuzun İngilizce olması gerekir.
+AOD after screen off	Ekran kapandıktan sonra AOD
+AOD while charging	Şarj olurken AOD
+About and support	Hakkında ve destek
+Ad Blocker, VPN, Dark pages and more to come	Reklam Engelleyici, VPN, Koyu sayfalar ve dahası
+Ad blocker	Reklam engelleyici
+Ad blocking for news browsing	Haber okurken reklam engelleme
+Add-ons for Chrome+.	Chrome+ için eklentiler.
+Adds Scan QR code to Mobile network when your carrier isn't listed	Operatörünüz listede yoksa Mobil ağ'a QR kodu tara seçeneğini ekler
+All of Gboard+ at once. Your choices are kept while it's off	Tüm Gboard+ tek seferde. Kapalıyken seçimleriniz korunur
+Allow screenshots of secure screens	Güvenli ekranların ekran görüntüsüne izin ver
+Allow update notifications	Güncelleme bildirimlerine izin ver
+Always show Clear all	Tümünü temizle'yi her zaman göster
+Always-on display	Her zaman açık ekran
+Always-on display while plugged in	Şarjdayken her zaman açık ekran
+App & folder lock	Uygulama ve klasör kilidi
+App drawer	Uygulama çekmecesi
+App drawer folders	Uygulama çekmecesi klasörleri
+App name	Uygulama adı
+Applies right away. Open folders and search keep the usual size.	Hemen uygulanır. Açık klasörler ve arama normal boyutunu korur.
+Apply matching icons across your apps	Tüm uygulamalarınızda uyumlu simgeler kullanın
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	Girişini telefona bağlayan uygulamalar, örneğin birçok banka uygulaması, kaldırıldıktan sonra tekrar giriş yapmanızı isteyebilir.
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	Geliştirici seçenekleri açıkken açılmayan uygulamalar, örneğin bazı banka uygulamaları, normal çalışır.\nGeliştirici seçeneklerini açmak için dişliye dokunun.
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	Play Store'da daha yeni sürümü olan uygulamalar kırmızı görünür. Güncellemek, yedeklemek veya geri yüklemek için !'e dokunun.
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	Seçtiğiniz uygulamalar erişilebilirlik hizmetlerinizi göremez.\nÖnce bunu yapan diğer modülleri kapatın.
+Asks before a locked app is uninstalled or paused	Kilitli bir uygulama kaldırılmadan veya duraklatılmadan önce sorar
+Auto-confirm 4-digit PIN	4 haneli PIN'i otomatik onayla
+Auto-confirm works with a 4-digit PIN, from your next unlock.	Otomatik onay, bir sonraki kilit açmadan itibaren 4 haneli PIN ile çalışır.
+Backspace swipe deletes letters	Geri tuşunda kaydırma harfleri siler
+Backup	Yedekleme
+Backup & Restore keeps every saved version, also of uninstalled apps.	Yedekle ve Geri Yükle, kaldırılan uygulamalarınki dahil kaydedilen her sürümü saklar.
+Backup restored	Yedek geri yüklendi
+Backup saved	Yedek kaydedildi
+Battery saver can still turn it off.	Pil tasarrufu yine de kapatabilir.
+Block ads, with filtering per site	Site bazında filtrelemeyle reklamları engelleyin
+Blocks ads while you read the news.	Haber okurken reklamları engeller.
+Blur Off	Bulanıklık Kapalı
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	Bulanıklık Kapalı\nBulanıklık yok, düz yüzeyler.\n\nVarsayılan\nSistemin kendi görünümü.\n\nBuzlu Cam (Varsayılan)\nKlasörlerin, menülerin ve mesajların arkasını bulanıklaştırır.
+Blurred and tinted	Bulanık ve renkli
+Bottom (Stock)	Alt (Stok)
+Bring everything back from a backup file	Her şeyi bir yedek dosyasından geri getirin
+Browse from another country	Başka bir ülkeden gezinin
+Browse from another country, in Chrome or every app	Chrome'da veya tüm uygulamalarda başka bir ülkeden gezinin
+Browse from another country.	Başka bir ülkeden gezinin.
+Browse without empty ad boxes	Boş reklam kutuları olmadan gezinin
+Buttons	Düğmeler
+Buttons beside the gesture bar	Hareket çubuğunun yanındaki düğmeler
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	Arama kaydı ülkenizin yasalarıyla kısıtlanmış olabilir. Kaydetmeden önce gerekli tüm onayları alın. Yasal kullanımdan siz sorumlusunuz. RovianDev yasa dışı kullanımdan sorumlu değildir.
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	Arayanlar müsait olmadığınızı duyar. Her cevapsız arama için Ara düğmeli bir bildirim alırsınız. Acil aramalar her zaman ulaşır.
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	Aramalar telefonunuz çalmadan reddedilir. Her cevapsız arama için Ara düğmeli bir bildirim alırsınız. Acil aramalar her zaman ulaşır.
+Capture, sleep, wake and app dragging.	Yakalama, uyku, uyandırma ve uygulama sürükleme.
+Changelog	Değişiklik günlüğü
+Changes apply the next time the chosen apps open.	Değişiklikler, seçilen uygulamalar bir sonraki açılışta geçerli olur.
+Changes only the text under icons.\nIcon size and shape stay the same.	Yalnızca simgelerin altındaki metni değiştirir.\nSimge boyutu ve şekli aynı kalır.
+Changing this option restarts Pixel Launcher.	Bu seçeneği değiştirmek Pixel Başlatıcı'ı yeniden başlatır.
+Check for updates	Güncellemeleri kontrol et
+Check for updates automatically	Güncellemeleri otomatik kontrol et
+Check for updates now	Güncellemeleri şimdi kontrol et
+Check now	Şimdi kontrol et
+Checking for updates…	Güncellemeler kontrol ediliyor…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	Hareket çubuğunun yanına Geri, Ana sayfa veya Son kullanılanlar'ı seçin. Circle to Search veya Gemini için Ana sayfa'yı basılı tutun.
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	Her taraf için Geri, Ana sayfa veya Son kullanılanlar'ı seçin. Circle to Search veya Gemini için Ana sayfa'yı basılı tutun.
+Choose Lock from an app's recents menu to keep its card when you clear apps.	Uygulamaları temizlerken kartını korumak için son kullanılanlarda uygulamanın menüsünden Kilitle'yi seçin.
+Choose a filtering level per site from the ad blocker button in Chrome.	Chrome'daki reklam engelleyici düğmesinden site bazında filtreleme seviyesi seçin.
+Choose the languages Gboard corrects.	Gboard'un düzelttiği dilleri seçin.
+Choose which apps can't see your accessibility services	Hangi uygulamaların erişilebilirlik hizmetlerinizi göremeyeceğini seçin
+Choose which apps stay on their current version.	Hangi uygulamaların mevcut sürümünde kalacağını seçin.
+Circle to Search	Circle to Search
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	Circle to Search, gezinme tutamacını basılı tutmak gibi çalışır. Ekran görüntüsü, güç + ses kısma gibi çalışır.
+Cleaner news articles	Daha temiz haber makaleleri
+Cleaner news browsing.	Daha temiz haber okuma.
+Clear all in recents	Son kullanılanlarda Tümünü temizle
+Clear all is always there in recents, no scrolling.	Tümünü temizle, son kullanılanlarda kaydırmadan hep orada.
+Clear all, locked cards and landscape view	Tümünü temizle, kilitli kartlar ve yatay görünüm
+Clipboard history	Pano geçmişi
+Clipboard in one column	Tek sütunlu pano
+Colorful icons in the app drawer (Stock)	Uygulama çekmecesinde renkli simgeler (Stok)
+Community and support	Topluluk ve destek
+Confirm it's you to change privacy settings	Gizlilik ayarlarını değiştirmek için siz olduğunuzu doğrulayın
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	Kontroller akıcı sekme animasyonlarıyla alta taşınır. Sekme değiştiricide turuncu +, gizli sekme açar.
+Could not save text size	Metin boyutu kaydedilemedi
+Could not save the surface style	Yüzey stili kaydedilemedi
+Could not save this option	Bu seçenek kaydedilemedi
+Couldn't back up: root access needed	Yedeklenemedi: root erişimi gerekli
+Couldn't load apps	Uygulamalar yüklenemedi
+Couldn't restore: root access needed	Geri yüklenemedi: root erişimi gerekli
+Couldn't save (root)	Kaydedilemedi (root)
+Crop screenshots to any size, even a single line.	Ekran görüntülerini herhangi bir boyuta, tek bir satıra bile kırpın.
+Customize icon labels	Simge adlarını özelleştir
+Dark theme and schedules	Koyu tema ve programlar
+Dark websites in Chrome	Chrome'da koyu web siteleri
+Dark websites in Chrome.	Chrome'da koyu web siteleri.
+Dark websites, always, with dark mode or on a schedule	Koyu web siteleri: her zaman, koyu modla veya programa göre
+Developer options aren't available on this device.	Geliştirici seçenekleri bu cihazda kullanılamıyor.
+Double tap	Çift dokunma
+Double tap to sleep	Kilitlemek için çift dokunun
+Double-press power button	Güç düğmesine iki kez basma
+Double-press volume down	Ses kısma düğmesine iki kez basma
+Double-tap an empty spot on the home screen to lock your phone.	Telefonunuzu kilitlemek için ana ekrandaki boş bir yere iki kez dokunun.
+Download and install	İndir ve yükle
+Download and install the update in Pixel Suite	Güncellemeyi Pixel Suite'te indirip yükleyin
+Drag an app onto another to make a folder. Use Add apps to pick more.	Klasör oluşturmak için bir uygulamayı diğerinin üzerine sürükleyin. Daha fazlasını seçmek için Uygulama ekle'yi kullanın.
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	Boyutu değiştirmek için tutamaçları, klavyeyi taşımak için ortayı sürükleyin. Sıfırla, Gboard'un boyutuna döner.
+Drag to home screen	Ana ekrana sürükle
+Draw on screenshots and photos.	Ekran görüntülerine ve fotoğraflara çizin.
+Draw shapes and arrows on screenshots.	Ekran görüntülerine şekil ve ok çizin.
+Draw shapes on photos: Edit → Doodles. They stay editable.	Fotoğraflara şekil çizin: Düzenle → Karalamalar. Düzenlenebilir kalırlar.
+Ends	Bitiş
+Erase all data is greyed out in Settings while OTA blocker is on.	OTA engelleyici açıkken Ayarlar'da Tüm verileri sil soluk görünür.
+Every feature, fix and release	Her özellik, düzeltme ve sürüm
+Feature preview	Özellik önizlemesi
+Features preview	Özellik önizlemesi
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	Reklamları site bazında, temelden tama kadar filtreleyin. Tam, çerez bildirimlerini ve açılır pencereleri de gizler. İstediğiniz öğeyi de kaldırabilirsiniz.
+Filtering levels and website exceptions.	Filtreleme seviyeleri ve site istisnaları.
+Fingerprint or PIN before locked apps and folders open	Kilitli uygulama ve klasörler açılmadan önce parmak izi veya PIN
+Five text sizes for app names. Icons stay the same size.	Uygulama adları için beş metin boyutu. Simgeler aynı boyutta kalır.
+Flashlight and camera shortcuts	El feneri ve kamera kısayolları
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	El feneri: kilitliyken de açıp kapatmak için güç düğmesine iki kez basın. Kamera (stok) kamerayı açar.
+Folder grid	Klasör ızgarası
+Folder sorting	Klasör sıralaması
+Folders	Klasörler
+Folders first, then your newest files.	Önce klasörler, sonra en yeni dosyalarınız.
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	Klasörler içindeki uygulama sayısıyla büyür. Her klasörün üç nokta menüsünden bir ızgara seçin.
+Folders, dragging and app shortcuts	Klasörler, sürükleme ve uygulama kısayolları
+Folders, dragging and app shortcuts.	Klasörler, sürükleme ve uygulama kısayolları.
+Folders, drawer, names, search bar and recents	Klasörler, çekmece, adlar, arama çubuğu ve son kullanılanlar
+Folders, names, search bar and recents.	Klasörler, adlar, arama çubuğu ve son kullanılanlar.
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	Koyu tema programınıza uyar. Açık temada normal renkler ve bulanıklık geri gelir.
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	Kendi mobil planı olan bir Pixel Watch için: onun ağı da kapanır. Pixel Suite saat uygulaması gerekir.
+For fingerprint or PIN protection, use Privacy & Security.	Parmak izi veya PIN koruması için Gizlilik ve Güvenlik'i kullanın.
+Free screenshot crop	Serbest ekran görüntüsü kırpma
+From Chrome to Chrome+	Chrome'dan Chrome+'a
+Full changelog on GitHub	GitHub'da tam değişiklik günlüğü
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard her klibi siz silene kadar saklar. Sabitlenmiş klipler mavi kartlardadır ve üstteki X, sabitlenmişler hariç hepsini siler. Tek sütunlu pano her satırda bir klip gösterir.
+Gboard restarts when you change any of these.	Bunlardan birini değiştirdiğinizde Gboard yeniden başlar.
+Gemini (stock)	Gemini (stok)
+Gemini when locked	Kilitliyken Gemini
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini, Circle to Search, ekran görüntüsü veya sessiz mod.
+Gestures	Hareketler
+Get the Pixel Suite watch app from the developer on Telegram.	Pixel Suite saat uygulamasını geliştiriciden Telegram'da edinin.
+Google Photos setup	Google Fotoğraflar kurulumu
+Google app	Google uygulaması
+Google news	Google Haberler
+Google's own look	Google'ın kendi görünümü
+Held-back apps are saved automatically before they update.	Bekletilen uygulamalar güncellenmeden önce otomatik kaydedilir.
+Hide	Gizle
+Hide Developer Options	Geliştirici Seçeneklerini gizle
+Hide accessibility from apps	Erişilebilirliği uygulamalardan gizle
+Hide ads in Google feed	Google akışındaki reklamları gizle
+Hide app shortcuts	Uygulama kısayollarını gizle
+Hide search bar	Arama çubuğunu gizle
+Hide suggestion chips	Öneri çiplerini gizle
+Hides app shortcuts like View orders from the drawer menu.	Siparişleri görüntüle gibi uygulama kısayollarını çekmece menüsünden gizler.
+Hides the globe under your keyboard and moves the arrow to the right	Klavyenizin altındaki küreyi gizler ve oku sağa taşır
+Hold Home for	Ana sayfayı basılı tutunca
+Hold a folder and drag it anywhere among your apps.	Bir klasörü basılı tutup uygulamalarınızın arasında istediğiniz yere sürükleyin.
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	Yeniden adlandırmak, sıralamak veya kaldırmak için bir klasörü basılı tutun. Kaldırmak, içindeki uygulamaları kaldırmaz.
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	Bir kısayolu basılı tutup araç çubuğuna sürükleyin; sıralamak için çubuk boyunca, kaldırmak için dışarı sürükleyin. Ne yaptığını görmek için birine dokunun. Kısayollara daha fazla yer açmak için yan düğmeleri gizleyin.
+Hold an app and choose Change icon to use your own image.	Kendi resminizi kullanmak için bir uygulamayı basılı tutup Simgeyi değiştir'i seçin.
+Hold an app and choose Rename.	Bir uygulamayı basılı tutup Yeniden adlandır'ı seçin.
+Hold an app and choose Rename. It shows right away everywhere.	Bir uygulamayı basılı tutup Yeniden adlandır'ı seçin. Her yerde hemen görünür.
+Hold an app in the drawer and drag it onto Add to home screen.	Çekmecede bir uygulamayı basılı tutup Ana ekrana ekle'nin üzerine sürükleyin.
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	Bir uygulamayı veya klasörü basılı tutup Kilitle ya da Kilidi aç'ı seçin.\n\nKlasörü kilitlemek içindeki uygulamaları kilitlemez.
+Hold an app or folder with a dot and choose Clear badge.	Noktalı bir uygulamayı veya klasörü basılı tutup Rozeti temizle'yi seçin.
+Hold an app or folder with a notification dot and choose Clear badge.	Bildirim noktası olan bir uygulamayı veya klasörü basılı tutup Rozeti temizle'yi seçin.
+Hold back app updates	Uygulama güncellemelerini beklet
+Hold power button	Güç düğmesini basılı tutma
+How it works	Nasıl çalışır?
+Icon label size	Simge adı boyutu
+Icon label size, five levels	Simge adı boyutu, beş seviye
+Icons, Super Dark-Mode and blur	Simgeler, Süper Karanlık Mod ve bulanıklık
+If a double tap doesn't register, tap once more within three seconds.	Çift dokunma algılanmazsa üç saniye içinde bir kez daha dokunun.
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	Chrome'da Uzantılar'ı açın ve bir web sitesinde kapatmak için Koyu sayfalar'a dokunun. Resimler ve videolar renklerini korur.
+Installation permission was not enabled. Tap Download and install when ready.	Yükleme izni etkinleştirilmedi. Hazır olduğunuzda İndir ve yükle'ye dokunun.
+Keep calls quiet and stay connected	Aramaları sessiz tutun, bağlı kalın
+Keep incoming calls quiet and stay connected	Gelen aramaları sessiz tutun, bağlı kalın
+Keep unlocked for 1 minute	1 dakika kilitsiz tut
+Keep what matters. Clear the rest.	Önemli olanı tutun. Gerisini temizleyin.
+Keeps Clear all next to Screenshot and Select.	Tümünü temizle'yi Ekran görüntüsü ve Seç'in yanında tutar.
+Keeps chips like Screenshot off the toolbar	Ekran görüntüsü gibi çipleri araç çubuğundan uzak tutar
+Keyboard bar tweak	Klavye çubuğu ayarı
+Keys	Tuşlar
+Keys and backspace	Tuşlar ve geri tuşu
+LSPosed scope	LSPosed kapsamı
+Landscape recent apps	Yatay son kullanılan uygulamalar
+Landscape view	Yatay görünüm
+Left button	Sol düğme
+Live frame counter at the top right	Sağ üstte canlı kare sayacı
+Lock a card from its menu to keep it when you clear apps.	Uygulamaları temizlerken korumak için bir kartı menüsünden kilitleyin.
+Lock an app's card so Clear all keeps it.	Tümünü temizle'nin koruması için bir uygulamanın kartını kilitleyin.
+Lock apps and folders	Uygulama ve klasörleri kilitle
+Lock apps in recents	Son kullanılanlarda uygulamaları kilitle
+Lock factory reset	Fabrika ayarlarına sıfırlamayı kilitle
+Lock screen	Kilit ekranı
+Lock-screen behavior	Kilit ekranı davranışı
+Lock-screen taps	Kilit ekranı dokunmaları
+Locking recent apps	Son kullanılan uygulamaları kilitleme
+Locks stay after a restart.	Kilitler yeniden başlatmadan sonra da kalır.
+Made by RovianDev	RovianDev tarafından yapıldı
+Make it work your way.	Kendi tarzınızla kullanın.
+Middle	Orta
+Miscellaneous	Çeşitli
+More	Daha fazla
+More to come.	Daha fazlası yolda.
+Move and resize the keyboard	Klavyeyi taşıyın ve boyutlandırın
+Move folders between apps	Klasörleri uygulamalar arasında taşıyın
+Move several apps	Birden fazla uygulamayı taşıyın
+Move to bottom and scroll	En alta taşı ve kaydır
+Navigation buttons	Gezinme düğmeleri
+Newest files first, in Files and the file picker	Önce en yeni dosyalar, Dosyalar'ta ve dosya seçicide
+No LTE Pixel Watch? Leave this off.	LTE'li Pixel Watch yok mu? Kapalı bırakın.
+No blur anywhere	Hiçbir yerde bulanıklık yok
+No file picker available	Kullanılabilir dosya seçici yok
+Nothing	Hiçbir şey
+Notifications that can be dismissed are cleared, and the dot goes away.	Kapatılabilen bildirimler temizlenir ve nokta kaybolur.
+OTA & Store blocker	OTA ve Store engelleyici
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	Kapalıyken kelimeler siz konuşurken görünür. Onay işaretli sesle yazma açıkken konuşun, sonra kelimelerinizi eklemek için onay işaretine veya iptal için X'e dokunun. Gboard ses ayarlarında dikte türü olarak Rambler gerekir.
+On the lock screen, holding power opens Gemini	Kilit ekranında güç düğmesini basılı tutmak Gemini'yi açar
+One clip per row, exactly as you copied it	Her satırda bir klip, tam kopyaladığınız gibi
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	Buradaki her şey için tek anahtar. Kapalıyken Gboard olduğu gibi çalışır ve seçimleriniz korunur.
+Only Clear all	Yalnızca Tümünü temizle
+Only Clear all, in the middle	Yalnızca Tümünü temizle, ortada
+Open Developer options	Geliştirici seçeneklerini aç
+Open locked apps and folders with your fingerprint or PIN	Kilitli uygulama ve klasörleri parmak izi veya PIN ile açın
+Per language	Dile göre
+Personalize	Kişiselleştir
+Phone, Chrome, Gboard, Google, News and watch	Telefon, Chrome, Gboard, Google, Haberler ve saat
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	Bir klasörün üç nokta menüsünden 3×3, 4×4 veya 5×5 seçin. Klasör doldukça daha büyük ızgaralar görünür.
+Pin, reorder and hide sharing apps	Paylaşım uygulamalarını sabitleyin, sıralayın ve gizleyin
+Pin, reorder, hide and restore sharing apps and contacts	Paylaşım uygulamalarını ve kişileri sabitleyin, sıralayın, gizleyin ve geri yükleyin
+Pinned and hidden sharing apps.	Sabitlenmiş ve gizli paylaşım uygulamaları.
+Pixel Studio setup	Pixel Stüdyo kurulumu
+Pixel Suite checks for updates and installs them right here.	Pixel Suite güncellemeleri kontrol eder ve burada yükler.
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite root gerektirir. Root yöneticinizde izin verip bu ekranı yeniden açın.
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite: kilit ekranındaki bir karta çift dokunmak, kartı açmadan ekranı kapatır.
+Pixel Watch with LTE	LTE'li Pixel Watch
+Place folders anywhere among your apps, with their own grids and sorting.	Klasörleri uygulamalarınız arasında istediğiniz yere, kendi ızgarası ve sıralamasıyla yerleştirin.
+Play Store blocker	Play Store engelleyici
+Play Store updates and system updates	Play Store güncellemeleri ve sistem güncellemeleri
+Preview of the chosen surface style on a folder over a wallpaper	Seçilen yüzey stilinin bir duvar kağıdı üzerindeki klasörde önizlemesi
+Privacy & Security	Gizlilik ve Güvenlik
+Protect locked apps	Kilitli uygulamaları koru
+Protected with your fingerprint or PIN.	Parmak iziniz veya PIN'inizle korunur.
+Protection	Koruma
+Pure black backgrounds and darker menus in dark theme.	Koyu temada saf siyah arka planlar ve daha koyu menüler.
+Quick actions from your phone's buttons.	Telefonunuzun düğmelerinden hızlı işlemler.
+Recent	Son kullanılanlar
+Recent Apps	Son Kullanılan Uygulamalar
+Record and save calls	Aramaları kaydedin ve saklayın
+Record calls in the Phone app, in any country, without the announcement	Telefon uygulamasında aramaları her ülkede, anons olmadan kaydedin
+Reduce screenshot delay	Ekran görüntüsü gecikmesini azalt
+Refresh rate slider	Yenileme hızı kaydırıcısı
+Removes sponsored cards from your feed, with no gaps left	Sponsorlu kartları akışınızdan boşluk bırakmadan kaldırır
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	Arama çubuğunu ana ekranın altından kaldırır. Dock aşağı iner ve uygulamalar alanı kullanır.
+Removing apps from the home screen doesn't uninstall them.	Uygulamaları ana ekrandan kaldırmak onları kaldırmaz.
+Rename apps	Uygulamaları yeniden adlandır
+Reopen Settings to see the change.	Değişikliği görmek için Ayarlar'ı yeniden açın.
+Reopen apps that were already open.	Zaten açık olan uygulamaları yeniden açın.
+Reorder pinned apps and hide sharing apps	Sabitlenmiş uygulamaları sıralayın ve paylaşım uygulamalarını gizleyin
+Reset brings back the original name.	Sıfırla, orijinal adı geri getirir.
+Reset restores the original name. Work-profile and Private Space apps keep their names.	Sıfırla, orijinal adı geri getirir. İş profili ve Özel Alan uygulamaları adlarını korur.
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	Geri yükle, onu buraya geri koyar. Verileriyle kaydedilmiş bir sürüm, verilerin de geri yüklenip yüklenmeyeceğini sorar.
+Restore this backup?	Bu yedek geri yüklensin mi?
+Right button	Sağ düğme
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	En fazla 19 web sitesi ve klasör için yuvarlak simgeler. Taşımak için basılı tutup sürükleyin veya klasör oluşturmak için başka birinin üzerine bırakın. Kendi resminizi vermek için bir web sitesini düzenleyin.
+Rounded keys	Yuvarlatılmış tuşlar
+Rounded keys and corners, with smooth key pop-ups	Akıcı tuş açılır pencereleriyle yuvarlatılmış tuşlar ve köşeler
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	Açık, koyu ve Süper Karanlık'ta akıcı açılır pencereli yuvarlatılmış tuşlar. Harf harf silmek için sil tuşundan sola kaydırın.
+Save your settings, folders and icons to a file	Ayarlarınızı, klasörlerinizi ve simgelerinizi bir dosyaya kaydedin
+Saved versions of your apps, ready to put back.	Uygulamalarınızın geri koymaya hazır kayıtlı sürümleri.
+Saved. Gboard restarts with the new size	Kaydedildi. Gboard yeni boyutla yeniden başlar
+Saved. Gboard restarts with your toolbar	Kaydedildi. Gboard araç çubuğunuzla yeniden başlar
+Screen recording sheet	Ekran kaydı sayfası
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	Bunları engelleyen uygulamalarda ekran görüntüsü ve kayıt.\nÖnce bunu yapan diğer modülleri kapatın.
+Screenshots appear instantly. Uses a little extra memory.	Ekran görüntüleri anında görünür. Biraz daha fazla bellek kullanır.
+Screenshots, accessibility, keyboard and developer options	Ekran görüntüleri, erişilebilirlik, klavye ve geliştirici seçenekleri
+Screenshots, sleep, wake and dragging	Ekran görüntüleri, uyku, uyandırma ve sürükleme
+Search stays in the app drawer.	Arama uygulama çekmecesinde kalır.
+Set	Ayarla
+Set a phone screen lock first	Önce bir telefon ekran kilidi ayarlayın
+Set up eSIM with a QR code	QR koduyla eSIM kurun
+Setup, community and support	Kurulum, topluluk ve destek
+Shapes in Pixel Studio and Google Photos	Pixel Stüdyo ve Google Fotoğraflar'da şekiller
+Share menu	Paylaşım menüsü
+Share sheet tools	Paylaşım sayfası araçları
+Sharing	Paylaşım
+Show FPS	FPS'yi göster
+Show toasts	Bildirim mesajlarını göster
+Shows right away everywhere. Tap the reset arrow for the original icon.	Her yerde hemen görünür. Orijinal simge için sıfırlama okuna dokunun.
+Shows right away everywhere. Work profile and Private Space apps keep their names.	Her yerde hemen görünür. İş profili ve Özel Alan uygulamaları adlarını korur.
+Silence	Sessiz
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	Sessiz, Rahatsız Etmeyin ve Beni Rahatsız Etme basılı tutunca açılır, sonrakinde kapanır. Rahatsızlık Yok üçünü birlikte yapar.
+Silences calls and keeps you connected. Add its Quick Settings tile.	Aramaları sessize alır ve bağlı kalmanızı sağlar. Hızlı Ayarlar kutusunu ekleyin.
+Single tap	Tek dokunma
+Small fixes, simple controls.	Küçük düzeltmeler, basit kontroller.
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	Daha akıcı el yapımı animasyonlar, yerleşik uzantılar, alt kontroller ve özel hızlı arama.
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	Daha akıcı el yapımı animasyonlar, yerleşik uzantılar, alt kontroller, özel hızlı arama
+Sort from the three-dot menu	Üç nokta menüsünden sıralayın
+Sorting and custom order	Sıralama ve özel düzen
+Speak, then tap the checkmark to add your words	Konuşun, sonra kelimelerinizi eklemek için onay işaretine dokunun
+Speed dial	Hızlı arama
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	Bir uygulamayı sürüklemeye başlayın, sonra başka bir parmakla diğer uygulamalara dokunun. Hepsini ana ekrana veya bir klasöre bırakın.
+Starts	Başlangıç
+Stay connected. Keep incoming calls quiet.	Bağlı kalın. Gelen aramaları sessiz tutun.
+Stays unlocked for a minute after you leave it	Ayrıldıktan sonra bir dakika kilitsiz kalır
+Stock	Varsayılan
+Stops system updates and hides Software updates in Settings.	Sistem güncellemelerini durdurur ve Ayarlar'da Yazılım güncellemelerini gizler.
+Surface style, three options	Yüzey stili, üç seçenek
+Surfaces and blur	Yüzeyler ve bulanıklık
+Swipe down with three fingers to take a screenshot.	Ekran görüntüsü almak için üç parmakla aşağı kaydırın.
+Swipe gestures still work.	Kaydırma hareketleri çalışmaya devam eder.
+Swipe left from delete to remove letter by letter	Harf harf silmek için sil tuşundan sola kaydırın
+System colors, your way.	Sistem renkleri, sizin tarzınızla.
+System update controls.	Sistem güncelleme kontrolleri.
+System updates and factory reset	Sistem güncellemeleri ve fabrika ayarlarına sıfırlama
+Take a screenshot	Ekran görüntüsü al
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Kullanmak için Chrome'un yeni sekme sayfasında Uzantılar'a dokunun. Ayarları için birine dokunun veya araç çubuğuna sabitlemek için basılı tutun.
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Kullanmak için yeni sekme sayfasında Uzantılar'a dokunun. Araç çubuğuna sabitlemek için birini basılı tutun.
+Tap an app to see its saved versions.	Kayıtlı sürümlerini görmek için bir uygulamaya dokunun.
+Tap to wake	Uyandırmak için dokunun
+Text size	Metin boyutu
+That isn't a Pixel Suite backup	Bu bir Pixel Suite yedeği değil
+The 3 newest versions of each app are kept.	Her uygulamanın en yeni 3 sürümü saklanır.
+The clock and info while charging, and after the power button.	Şarj olurken ve güç düğmesinden sonra saat ve bilgiler.
+The green button puts a saved version back, with its data and sign-ins.	Yeşil düğme, kayıtlı bir sürümü verileri ve oturumlarıyla geri koyar.
+The power button shows the always-on display for a few seconds	Güç düğmesi her zaman açık ekranı birkaç saniye gösterir
+The three styles	Üç stil
+The toolbar	Araç çubuğu
+Three-finger screenshot	Üç parmakla ekran görüntüsü
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Buraya dönmek için ana ekrana uzun basın ve Pixel Suite ayarları'nı seçin. Root ve LSPosed gerekir.
+To protect an app with your fingerprint or PIN, use Privacy & Security.	Bir uygulamayı parmak izi veya PIN ile korumak için Gizlilik ve Güvenlik'i kullanın.
+Toasts	Bildirim mesajları
+Toolbar	Araç çubuğu
+Toolbar, keys, resize, auto-correction, clipboard	Araç çubuğu, tuşlar, boyut, otomatik düzeltme, pano
+Tools for your Google apps.	Google uygulamalarınız için araçlar.
+Top	Üst
+Turn auto-correction off for the languages you choose. Suggestions still show.	Seçtiğiniz diller için otomatik düzeltmeyi kapatın. Öneriler görünmeye devam eder.
+Turn off after	Şu süreden sonra kapat
+Turn on notifications in Android settings	Android ayarlarında bildirimleri açın
+Turn the flashlight on or off, open the camera (stock), or do nothing.	El fenerini açın veya kapatın, kamerayı (stok) açın ya da hiçbir şey yapmayın.
+Turn this feature on or off.	Bu özelliği açın veya kapatın.
+Turn your phone sideways in recents for a cleaner view.	Daha temiz bir görünüm için son kullanılanlarda telefonunuzu yan çevirin.
+Turns on	Açılış
+Two-finger drag	İki parmakla sürükleme
+Typing and clipboard	Yazma ve pano
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	Geri al, Yinele, Hızlı Seçim, Tümünü seç, Kes, Kopyala ve Yapıştır her uygulamada çalışır. Hızlı Seçim: kelime için dokunun, kaldırmak için tekrar dokunun, tümünü seçmek için basılı tutun.
+Unlock OEM apps	OEM uygulamalarının kilidini aç
+Unlock on the 4th digit	4. rakamda kilidi aç
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	PIN'inizin 4. rakamını yazdığınız anda, Enter olmadan kilidi açar
+Up to 7 shortcuts, in the same order in every language.	Her dilde aynı sırada, en fazla 7 kısayol.
+Up to 7 shortcuts, their order, the side buttons and two rows	En fazla 7 kısayol, sıraları, yan düğmeler ve iki satır
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	Güncelle önce mevcut sürümü kaydeder, sonra Play Store sayfasını açar. Güncellendikten sonra yeniden bekletilir.
+Updates	Güncellemeler
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	Bu temel uygulamaları Play Store'dan güncellemek Pixel Suite özelliklerini bozabilir. Pixel Suite bunları her sürümde sizin için günceller.
+Use Doodles	Karalamalar'ı kullan
+Use Gboard+	Gboard+'ı kullan
+Use custom app icons	Özel uygulama simgeleri kullan
+Use your own image for an app icon	Uygulama simgesi için kendi resminizi kullanın
+Voice typing with checkmark	Onay işaretli sesle yazma
+Wake gesture	Uyandırma hareketi
+Wake the screen	Ekranı uyandır
+Wake your phone with a tap, with pocket protection.	Telefonunuzu cep korumasıyla, bir dokunuşla uyandırın.
+Websites open dark, with no white flash. Super Dark uses pure black.	Web siteleri beyaz parlama olmadan koyu açılır. Süper Karanlık saf siyah kullanır.
+What's new	Yenilikler
+When you untick apps, Back up saves their current versions first.	Uygulamaların işaretini kaldırdığınızda, Yedekle önce mevcut sürümlerini kaydeder.
+While charging and after the power button	Şarj olurken ve güç düğmesinden sonra
+While holding an app or folder, swipe with another finger to scroll or turn pages.	Bir uygulamayı veya klasörü tutarken kaydırmak ya da sayfa çevirmek için başka bir parmakla kaydırın.
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	Her zaman açık ekran kapalıyken güç düğmesi ekranı her zaman açık ekrana geçirir. Seçtiğiniz süreden sonra kapanır.
+With Super Dark-Mode, panels stay black.	Süper Karanlık Mod ile paneller siyah kalır.
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	Ekran kapalı ve her zaman açık ekran açıkken ses kısma düğmesine iki kez basın. Aramalarda veya medya oynatılırken çalışmaz.
+With the screen off, open the camera or turn the flashlight on or off.	Ekran kapalıyken kamerayı açın veya el fenerini açıp kapatın.
+With themed icons on, the app drawer keeps each app's own colors.	Temalı simgeler açıkken uygulama çekmecesi her uygulamanın kendi renklerini korur.
+You can also hold the search bar and choose Hide widget. It hides right away.	Arama çubuğunu basılı tutup Widget'ı gizle'yi de seçebilirsiniz. Hemen gizlenir.
+Your own Always-on display setting isn't changed.	Kendi her zaman açık ekran ayarınız değişmez.
+eSIM setup with a QR code	QR koduyla eSIM kurulumu
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• Sabitlemek için bir uygulamayı üst satıra sürükleyin, sonra sıralamak için sürükleyin.\n\n• Sabitlemek veya gizlemek için bir uygulamayı ya da kişiyi basılı tutun.\n\n• Gizli öğeler Gizli uygulamalar ve Gizli kişiler altındadır. Göstermek için birini basılı tutun.
+Hide 1 app	1 uygulamayı gizle
+Tap to share. Long-press to unhide.	Paylaşmak için dokunun. Göstermek için uzun basın.
+Tick apps to unhide.	Göstermek istediğiniz uygulamaları işaretleyin.
+Tick contacts to unhide.	Göstermek istediğiniz kişileri işaretleyin.
+Unknown app	Bilinmeyen uygulama
+Back up and update	Yedekle ve güncelle
+Back up now	Şimdi yedekle
+Check root access and reopen this page.	Root erişimini kontrol edip bu sayfayı yeniden açın.
+Close app selection	Uygulama seçimini kapat
+Collapse blocked updates	Engellenen güncellemeleri daralt
+Couldn't open Play Store	Play Store açılamadı
+Discard	Sil
+Discard changes?	Değişiklikler silinsin mi?
+Expand blocked updates	Engellenen güncellemeleri genişlet
+Keep editing	Düzenlemeye devam et
+Opening Play Store…	Play Store açılıyor…
+Reopen this page to refresh installed apps	Yüklü uygulamaları yenilemek için bu sayfayı yeniden açın
+Save them first, then apply	Önce kaydedin, sonra uygulayın
+Tick Play Store in LSPosed for Pixel Suite.	LSPosed'da Pixel Suite için Play Store'u işaretleyin.
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	Bu uygulamanın işaretini kaldırmak için OEM uygulamalarının kilidini aç'ı açın. Güncellemek Pixel Suite desteğini bozabilir.
+Unknown	Bilinmiyor
+Unticked apps can get updates	İşareti kaldırılan uygulamalar güncelleme alabilir
+Update	Güncelle
+Update blocker	Güncelleme engelleyici
+Updating this core app may break Pixel Suite support.	Bu temel uygulamayı güncellemek Pixel Suite desteğini bozabilir.
+Wait for your changes to finish applying	Değişikliklerinizin uygulanmasını bekleyin
+Your app selections haven't been applied.	Uygulama seçimleriniz uygulanmadı.
+\n\nTick it and apply to hold it back.	\n\nBekletmek için işaretleyip uygulayın.
+stroke weight	çizgi kalınlığı
+APK exceeds download limit	APK indirme sınırını aşıyor
+APK verification failed	APK doğrulaması başarısız
+An update download is already running.	Bir güncelleme indirmesi zaten çalışıyor.
+Cannot prepare APK	APK hazırlanamıyor
+Checking APK hash and signing certificate…	APK karması ve imza sertifikası kontrol ediliyor…
+Could not open Android installer. Try Download and install again.	Android yükleyici açılamadı. İndir ve yükle'yi tekrar deneyin.
+Download complete. Open Updates and tap Download and install to continue.	İndirme tamamlandı. Devam etmek için Güncellemeler'i açıp İndir ve yükle'ye dokunun.
+Download unavailable	İndirme kullanılamıyor
+Incomplete APK	Eksik APK
+No newer verified release is available on both repositories.	İki depoda da daha yeni doğrulanmış sürüm yok.
+Pixel Suite update	Pixel Suite güncellemesi
+Unexpected APK size	Beklenmeyen APK boyutu
+Update could not be downloaded or verified. Check your connection and try again.	Güncelleme indirilemedi veya doğrulanamadı. Bağlantınızı kontrol edip tekrar deneyin.
+Verified. Opening Android installer…	Doğrulandı. Android yükleyici açılıyor…
+Verifying the official releases…	Resmi sürümler doğrulanıyor…
+Add the VPN tile to Quick Settings to connect with one tap.	Tek dokunuşla bağlanmak için VPN kutusunu Hızlı Ayarlar'a ekleyin.
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	Yalnızca Chrome: VPN'i Chrome Uzantıları'ndan açın. Yalnızca Chrome kullanır ve web siteleri o ülkeyi görür.
+Connect	Bağlan
+Couldn't connect	Bağlanılamadı
+Couldn't load servers. Tap to try again.	Sunucular yüklenemedi. Tekrar denemek için dokunun.
+Couldn't refresh. Showing the last list.	Yenilenemedi. Son liste gösteriliyor.
+Couldn't start the VPN	VPN başlatılamadı
+Countries without servers right now show as Unavailable.	Şu an sunucusu olmayan ülkeler Kullanılamıyor olarak gösterilir.
+Fastest server	En hızlı sunucu
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Dünya genelinde gönüllülerin çalıştırdığı ücretsiz sunucular. Pixel Suite en hızlısına bağlanır.
+Getting the free server list	Ücretsiz sunucu listesi alınıyor
+Loading servers…	Sunucular yükleniyor…
+No servers yet	Henüz sunucu yok
+Not connected	Bağlı değil
+Open-source servers change during the day	Açık kaynak sunucular gün içinde değişir
+Pick a country, then tap Connect	Bir ülke seçin, sonra Bağlan'a dokunun
+Refresh servers	Sunucuları yenile
+Tap Refresh servers	Sunucuları yenile'ye dokunun
+Turn off	Kapat
+Use for all apps	Tüm uygulamalar için kullan
+VPN is part of Patreon premium	VPN, Patreon premium'un bir parçasıdır
+Couldn't ask for VPN permission	VPN izni istenemedi
+VPN permission is needed to connect	Bağlanmak için VPN izni gerekir
+Russia	Rusya
+Server list was empty	Sunucu listesi boştu
+South Korea	Güney Kore
+United Kingdom	Birleşik Krallık
+United States	Amerika Birleşik Devletleri
+Chrome only	Yalnızca Chrome
+Connecting…	Bağlanılıyor…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	Beni Rahatsız Etme'un saatinizin mobil ağını değiştirebilmesi için Pixel Suite'e Yakındaki cihazlar iznini verin.
+Do Not Annoy: watch	Beni Rahatsız Etme: saat
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Saatinizdeki Pixel Suite'in mobil ağı değiştirmek için tek seferlik izne (adb komutu) ihtiyacı var.
+Watch	Saat
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	Smooth Display altına 60 / 120 Hz kaydırıcısı ekler (Ayarlar > Ekran ve dokunma)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	Uygulama ve veriler her şeyi (oturumlar, sohbetler, ayarlar ve dosyalar) kaydeder ve tam olduğu gibi geri yükler. Yalnızca uygulama sadece uygulamayı kaydeder.
+Auto sorts A to Z; Custom lets you arrange them.	Otomatik A'dan Z'ye sıralar; Özel, düzeni size bırakır.
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	Kaydırmak için bir klasörü En alta taşı'nın üzerine sürükleyin; daha hızlı gitmek için daha derine itin.
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	Çekmece klasörleri: kaydırmak için birini En alta taşı üzerinde tutun; daha hızlı gitmek için daha derine itin.
+Hold an app or folder and choose Lock or Unlock.	Bir uygulamayı veya klasörü basılı tutup Kilitle ya da Kilidi aç'ı seçin.
+Pixel watch eSIM purchase	Pixel Watch eSIM satın alma
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	Açmak için dokunun; yeniden adlandırmak veya kaldırmak için basılı tutun. Düzenlemek, taşımak veya kaldırmak için içindeki bir web sitesini basılı tutun.
+• Drag an app into the top row to pin it, then drag to reorder.	• Sabitlemek için bir uygulamayı üst satıra sürükleyin, sonra sıralamak için sürükleyin.
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	Saatinize ulaşılamadı. Yeniden bağlandığında mobil ağı açılacak.
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	Saatinize ulaşılamadı. Yeniden bağlandığında mobil ağı kapatılacak.
+Language	Dil
+Automatic	Otomatik
+Follows the phone	Telefonla aynı
+Couldn't save the language	Dil kaydedilemedi
+‹  Back	‹  Geri
+just now	az önce
+1 minute ago	1 dakika önce
+1 hour ago	1 saat önce
+1 day ago	1 gün önce
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	Reklam listeleri: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite'in kendi engelleyicisi.
+The Ad blocker is part of Pixel Suite's Patreon features	Reklam engelleyici, Pixel Suite'in Patreon özelliklerinden biridir
+Root access is needed	Root erişimi gerekli
+Off: ads are no longer blocked	Kapalı: reklamlar artık engellenmiyor
+Couldn't download the ad lists (no connection?). The current list stays.	Reklam listeleri indirilemedi (bağlantı yok mu?). Mevcut liste kalır.
+Ready: restart the phone once to start blocking	Hazır: engellemeyi başlatmak için telefonu bir kez yeniden başlatın
+Couldn't prepare the list	Liste hazırlanamadı
+Couldn't prepare the module	Modül hazırlanamadı
+Getting the ad lists…	Reklam listeleri alınıyor…
+No answer over UDP	UDP üzerinden yanıt yok
+TLS handshake timed out	TLS el sıkışması zaman aşımına uğradı
+Key exchange timed out	Anahtar değişimi zaman aşımına uğradı
+Server sent no address	Sunucu adres göndermedi
+Server rejected the sign-in	Sunucu oturum açmayı reddetti
+Server gave no address	Sunucu adres vermedi
+Connection closed	Bağlantı kapandı
+Server didn't answer	Sunucu yanıt vermedi
+Server refused the call	Sunucu çağrıyı reddetti
+Server closed the connection	Sunucu bağlantıyı kapattı
+1 server	1 sunucu
+Unhide 1 app	1 uygulamayı göster
+Unhide 1 contact	1 kişiyi göster
+Unhide contact	Kişiyi göster
+1 app saved · 1 version	Kaydedilen: 1 uygulama · 1 sürüm
+1 app · 1 version	1 uygulama · 1 sürüm
+Doodles	Karalamalar
+Super Dark-Mode	Süper Karanlık Mod
+Super Dark	Süper Karanlık
+Frosted Glass	Buzlu Cam
+Do Not Annoy	Beni Rahatsız Etme
+No Annoyance	Rahatsızlık Yok
+Quick Select	Hızlı Seçim
+Google Photos	Google Fotoğraflar
+Pixel watch	Pixel Saat
+Google dialer+	Google Telefon+
+Keep	Keep Notlar
+Drive	Drive
+Sponsored	Sponsorlu
+Recent apps	Son uygulamalar
+3×3 (Stock)	3×3 (varsayılan)
+Ag	Ag
+Aa	Aa
+1 website with custom settings	1 web sitesi özel ayarlı
+1 app isn't saved at the version installed now	1 uygulama şu anki sürümüyle kaydedilmedi
+Words are never replaced; suggestions still show	Kelimeler asla değiştirilmez; öneriler görünmeye devam eder
+Off: Gboard corrects nothing; turn it on to choose languages	Kapalı: Gboard hiçbir şeyi düzeltmez; dil seçmek için açın
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	Boyutlandırmak için tutamaçları, taşımak için ortayı sürükleyin. Uygula kaydeder; Sıfırla Gboard boyutuna döner. Yalnızca dikey.
+Unlock Watch eSIM · $10 one-time purchase	Saat eSIM kilidini aç · tek seferlik $10
+$10 one-time eSIM purchase	Tek seferlik $10 eSIM
+One-time purchase, $10, yours to keep.	Tek seferlik, $10, sonsuza dek sizin.
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	Satın alma kodunuz purchases@roviandev.com e-postasında. Gereksiz/Spam klasörüne de bakın.
+Pixel Suite logo	Pixel Suite logosu
+Open Android app settings to manage notifications.	Bildirimleri yönetmek için Android uygulama ayarlarını açın.
+OK	Tamam
+Opens this sheet from the toolbar	Bu paneli araç çubuğundan açar
+Needs Pixel Suite premium and the ad blocker on	Pixel Suite premium ve açık reklam engelleyici gerekir
+Manage extensions	Uzantıları yönet
+Enter an address	Bir adres girin
+That isn't a web address	Bu bir web adresi değil
+Off in Chrome · on for other apps	Chrome'da kapalı · diğer uygulamalarda açık
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	VPN tüm telefon için açık. Burada kapatmak yalnızca Chrome'u çıkarır.
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	Diğer uygulamalar VPN kullanıyor; Chrome dışarıda. Chrome'u eklemek için açın.
+Only Chrome uses this VPN. Other apps keep their own connection.	Bu VPN'i yalnızca Chrome kullanır. Diğer uygulamalar kendi bağlantısını korur.
+All apps except Chrome	Chrome hariç tüm uygulamalar
+• 1 setting	• 1 ayar
+• 1 custom icon	• 1 özel simge
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• Pixel Başlatıcı kurulumu: çekmece klasörleri, sıralama, adlar ve kilitler
+• Share menu: pinned order and hidden apps	• Paylaşım menüsü: sabit sıra ve gizli uygulamalar
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	Mevcut Pixel Suite kurulumunuz değiştirilecek. Pixel Başlatıcı bir kez yeniden başlar.
+Two rows, shortcuts on top	İki sıra, kısayollar üstte
+Two rows	İki sıra
+Side buttons hidden	Yan düğmeler gizli
+Menu button hidden	Menü düğmesi gizli
+Emoji/voice hidden	Emoji/ses gizli
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	Hareket çubuğunun yanına gezinme düğmeleri ekler. Modül güncellemesinden sonra Pixel Başlatıcı'ı bir kez yeniden başlatın; sonra düğme seçimleri anında uygulanır.
+Sign-in timed out	Oturum açma zaman aşımına uğradı
+Address setup timed out	Adres kurulumu zaman aşımına uğradı
+Server renewed its keys	Sunucu anahtarlarını yeniledi
+Stopped	Durduruldu
+Couldn't finish the backup	Yedekleme tamamlanamadı
+Root isn't available, or it took too long	Root yok veya çok uzun sürdü
+It didn't finish	Tamamlanmadı
+Pixel Suite could not make the file	Pixel Suite dosyayı oluşturamadı
+Pixel Suite is unavailable	Pixel Suite kullanılamıyor
+Pixel Suite gave no file	Pixel Suite dosya vermedi
+the picked folder	seçilen klasör
+Use a name between 1 and 80 characters	1 ile 80 karakter arası bir ad kullanın
+Folder limit reached	Klasör sınırına ulaşıldı
+Drag here to add to home screen	Ana ekrana eklemek için buraya sürükleyin
+Drag a folder here to move it to the end of the list	Bir klasörü listenin sonuna taşımak için buraya sürükleyin
+Drag here to take out of the folder	Klasörden çıkarmak için buraya sürükleyin
+More shapes	Daha fazla şekil
+More colours	Daha fazla renk
+Thickness	Kalınlık
+Fill shape	Şekli doldur
+Delete shape	Şekli sil
+Make Doodles menu smaller	Karalama menüsünü küçült
+Move Doodles menu	Karalama menüsünü taşı
+Make text menu smaller	Metin menüsünü küçült
+Move text menu	Metin menüsünü taşı
+More fonts	Daha fazla yazı tipi
+Clear clipboard	Panoyu temizle
+Stop voice typing	Sesle yazmayı durdur
+Save icon	Simgeyi kaydet
+Reset to original icon	Orijinal simgeye dön
+Folder options	Klasör seçenekleri
+Doodles tab	Karalamalar sekmesi
+Edit: select hidden contacts to unhide	Düzenle: göstermek için gizli kişileri seçin
+Edit: select hidden apps to unhide	Düzenle: göstermek için gizli uygulamaları seçin
+Edit: select apps to hide	Düzenle: gizlenecek uygulamaları seçin
+Hide the contacts row	Kişiler sırasını gizle
+Show the contacts row	Kişiler sırasını göster
+Locked	Kilitli
+Filtering mode	Filtreleme modu
+Change the picture	Resmi değiştir
+Open a website to choose its filtering	Filtrelemesini seçmek için bir web sitesi açın
+Highest refresh rate. The screen still slows down when nothing moves.	En yüksek yenileme hızı. Hiçbir şey hareket etmediğinde ekran yine yavaşlar.
+Cancelled: the app is locked by Pixel Suite	İptal edildi: uygulama Pixel Suite ile kilitli
+Incoming call declined by Do Not Annoy	Gelen arama Beni Rahatsız Etme tarafından reddedildi
+Confirm it's you to uninstall this core app	Bu temel uygulamayı kaldırmak için siz olduğunuzu doğrulayın
+Confirm it's you to disable this core app	Bu temel uygulamayı devre dışı bırakmak için siz olduğunuzu doğrulayın
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	Uyarı: Sisteme entegre bu uygulamayı devre dışı bırakmak veya kaldırmak Pixel Suite'i ve sistem kararlılığını bozabilir.
+Files · date modified	Dosyalar · değiştirilme tarihi
+Site settings unavailable	Site ayarları kullanılamıyor
+Could not save site settings	Site ayarları kaydedilemedi
+Couldn't read existing Chrome site settings	Mevcut Chrome site ayarları okunamadı
+Cannot create icon storage	Simge deposu oluşturulamadı
+Unsupported dimensions	Desteklenmeyen boyut
+Cannot encode image	Resim kodlanamadı
+Response too large	Yanıt çok büyük
+Orange	Turuncu
+Dark red	Koyu kırmızı
+Turquoise	Turkuaz
+Dark blue	Koyu mavi
+Purple	Mor
+Pink	Pembe
+White	Beyaz
+Black	Siyah
+Move to bottom	En alta taşı
+Lock app	Uygulamayı kilitle
+Unlock app	Uygulamanın kilidini aç
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	Her şey: uygulama, oturumları, sohbetleri, ayarları ve dosyaları. Tam olarak eskisi gibi geri yüklenir.
+$5/month	$5/ay
+Settings soft scrolling edges (Frosted Glass only):	Ayarlar'da yumuşak kaydırma kenarları (yalnızca Buzlu Cam):
+Digital Wellbeing	Dijital Denge
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	Bu kapsamları LSPosed'da açın ve yeniden başlatın. Yalnızca doğrulanmış, Ayarlar'dan açılan ekranlar ve güvenle tanınan kaydırma alanları biçimlenir. Desteklenmeyen alanlar atlanır.
+Telegram	Telegram
+Patreon	Patreon
+Pixel Launcher	Pixel Başlatıcı
+Pixel Studio	Pixel Stüdyo
+Hold power button when locked	Kilitliyken güç düğmesini basılı tutma
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	Telefonunuz kilitliyken basılı tutmak, "Kilitliyken güç düğmesini basılı tutma" bölümünde seçtiğiniz işlemi yapar. Her seçim kendi başına çalışır.
+Reboot	Yeniden başlat
+Tap again to reboot	Yeniden başlatmak için tekrar dokunun
+Rebooting…	Yeniden başlatılıyor…
+These run inside Android, so they update after a reboot:	Bunlar Android'in içinde çalışır, bu yüzden yeniden başlatmadan sonra güncellenir:
+Reboot to finish updating. Long-press to hide.	Güncellemeyi bitirmek için yeniden başlatın. Gizlemek için basılı tutun.
+Couldn't reboot: root access needed	Yeniden başlatılamadı: root erişimi gerekli
+Search in Chrome	Chrome'da ara
+Couldn't refresh: root access needed	Yenilenemedi: root erişimi gerekli
+See-through keyboard background, with rims	Kenarlı, saydam klavye arka planı
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	Klavyenin arka planı buzlu cama dönüşür: arkasındakiler bulanık olarak görünür, kenarlarıyla. Tuşlar olduğu gibi kalır.
+Frosted Gboard	Buzlu Gboard
+Follows the phone language	Telefonun diliyle aynı
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	Chrome gibi bazı uygulamalarda klavyenin üst köşeleri beyaz görünür. Bu uygulamalar sayfalarını klavyenin başladığı yerde bitirir, bu yüzden köşelerin arkasında gösterilecek bir şey olmaz.
+Pixel Stack	Pixel Stack
+Tap to start	Başlamak için dokunun
+Tap to drop	Bırakmak için dokunun
+Perfect!	Mükemmel!
+Best	En iyi
+New best!	Yeni rekor!
+Tap to play again	Tekrar oynamak için dokunun
+Share score	Skoru paylaş
+Sharing…	Paylaşılıyor…
+Shared!	Paylaşıldı!
+Couldn't share. Try again.	Paylaşılamadı. Tekrar deneyin.
+Your name	Adınız
+Optional	İsteğe bağlı
+Game Over	Oyun bitti
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **Sistem Arayüzü** (com.android.systemui)\n• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Ayarlar** (com.android.settings)\n• **Ayarlar Hizmetleri** (com.google.android.settings.intelligence)\n• **Paket yükleyici** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nDüzenleyici stili için **Pixel Stüdyo** (com.google.android.apps.pixel.creativeassistant) ve **Google Fotoğraflar** (com.google.android.apps.photos) öğelerini de seçin. Kapsamları ekledikten sonra yeniden başlatın.
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **Pixel Başlatıcı** (com.google.android.apps.nexuslauncher) — simgeler, klasörler, menüler ve çekmecenin yumuşak kenarı\n• **Sistem Arayüzü** (com.android.systemui) — sistem menüleri ve mesajları\n• **Pixel Stüdyo** (com.google.android.apps.pixel.creativeassistant)\n• **Google Fotoğraflar** (com.google.android.apps.photos) — düzenleyici menüleri\n\nSüper Karanlık ek kapsamlarını kendi sayfasında listeler.
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} bu sürüme döner. Verileri şu anki gibi kalır. Sonrasında açılmazsa Ayarlar'dan depolama alanını temizleyin.
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	Hızlı aramada {0} web sitesi için yer yok, bu yüzden klasörle birlikte silinecek.
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} kaydedildi. Play Store'da Güncelle'ye dokunun. {1} güncellendikten sonra yeniden bekletilir.
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	“{0}” kaldırılsın mı? Uygulamaları uygulama çekmecesine döner. Hiçbir uygulama kaldırılmaz.
+Couldn't save {0}, so it wasn't updated. Check root and free space.	{0} kaydedilemedi, bu yüzden güncellenmedi. Root'u ve boş alanı kontrol edin.
+Tap Update in Play Store. {0} is held back again once it's updated.	Play Store'da Güncelle'ye dokunun. {0} güncellendikten sonra yeniden bekletilir.
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nSürüm {1}\nDerleme {2}\n{3}\n\nBekletmek için işaretleyip uygulayın.
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	En fazla 7 kısayol, sıraları, yan düğmeler ve iki satır{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}, {1}, güncellemeler engelli, temel uygulama kilitli. Nedenini öğrenmek için dokunun
+{0}. A looping demo. It doesn't change your settings.	{0}. Döngüdeki bir demo. Ayarlarınızı değiştirmez.
+Restore {0} (its saved version is the one installed)	{0} geri yükle (kayıtlı sürümü yüklü olandır)
+{0} of {1} on the toolbar · {2} more · swipe left or right	Araç çubuğunda {0}/{1} · {2} tane daha · sola veya sağa kaydırın
+Couldn't back up {0} of {1}. Check root and free space.	{1} uygulamadan {0} tanesi yedeklenemedi. Root'u ve boş alanı kontrol edin.
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0}, GitHub ve Xposed'da kullanılabilir.
+{0} apps aren't saved at the version installed now	{0} uygulama şu anki sürümüyle kaydedilmedi
+{0}, off, needs Suggestions and shortcuts together	{0}, kapalı, Öneriler ve kısayollar birlikte gerekir
+The saved version of {0} is the one installed now	{0} uygulamasının kayıtlı sürümü şu an yüklü olandır
+{0}, on, needs Suggestions and shortcuts together	{0}, açık, Öneriler ve kısayollar birlikte gerekir
+{0}. Applies your changes. Long-press to hide.	{0}. Değişikliklerinizi uygular. Gizlemek için uzun basın.
+There's no room on the speed dial for its {0}	Hızlı aramada onun {0} için yer yok
+Couldn't save {0}. Check root and free space.	{0} kaydedilemedi. Root'u ve boş alanı kontrol edin.
+{0}: the saved version is the one installed	{0}: kayıtlı sürüm yüklü olandır
+Its {0} websites go back to the speed dial.	{0} web sitesi hızlı aramaya geri döner.
+{0} is back to {1}, with everything as it was	{0} yeniden {1} sürümünde, her şey eskisi gibi
+{0} apps protected from updates · {1} shown	{0} uygulama güncellemelerden korunuyor · {1} gösteriliyor
+{0}, {1}, core app locked. Tap to learn why	{0}, {1}, temel uygulama kilitli. Nedenini öğrenmek için dokunun
+Select at least {0} apps for a folder	Klasör için en az {0} uygulama seçin
+Sort the apps in “{0}” from A to Z?	“{0}” içindeki uygulamalar A'dan Z'ye sıralansın mı?
+This folder is full ({0} websites)	Bu klasör dolu ({0} web sitesi)
+Blocking {0} ad domains · updated {1}	{0} reklam alan adı engelleniyor · {1} güncellendi
+{0} apps did not fit on this page	{0} uygulama bu sayfaya sığmadı
+{0} open-source servers available	{0} açık kaynak sunucu kullanılabilir
+{0} websites with custom settings	{0} web sitesi özel ayarlı
+{0}, {1}. Tap to hide saved versions	{0}, {1}. Kayıtlı sürümleri gizlemek için dokunun
+{0}, {1}. Tap to show saved versions	{0}, {1}. Kayıtlı sürümleri göstermek için dokunun
+{0} removed element(s) · Restore	{0} kaldırılan öğe · Geri yükle
+Couldn't reach any server in {0}	{0} içinde hiçbir sunucuya ulaşılamadı
+{0}. Check root and free space.	{0}. Root'u ve boş alanı kontrol edin.
+{0} apps protected from updates	{0} uygulama güncellemelerden korunuyor
+Downloading Pixel Suite {0} — {1}%	Pixel Suite {0} indiriliyor — %{1}
+Restore removed elements ({0})	Kaldırılan öğeleri geri yükle ({0})
+{0} of {1} on the toolbar · {2} more	Araç çubuğunda {0}/{1} · {2} tane daha
+Update, back up or restore {0}	{0} güncelle, yedekle veya geri yükle
+{0}\nDefault for all websites	{0}\nTüm web siteleri için varsayılan
+{0} needs Pixel Suite premium	{0} için Pixel Suite premium gerekir
+No open-source servers in {0}	{0} içinde açık kaynak sunucu yok
+Server list unavailable ({0})	Sunucu listesi alınamadı ({0})
+Connecting to server {0} of {1}…	{1} sunucudan {0}. sunucuya bağlanılıyor…
+{0}% wide · {1}% tall · {2} dp down	%{0} geniş · %{1} uzun · {2} dp aşağı
+Restore a saved version ({0})	Kayıtlı sürümü geri yükle ({0})
+Pixel Suite {0} is available	Pixel Suite {0} kullanılabilir
+Saved {0} with Pixel Suite {1}.	{0} tarihinde Pixel Suite {1} ile kaydedildi.
+{0}. Opens an external app.	{0}. Harici bir uygulamayı açar.
+{0}% wide · {1}% tall · {2} dp up	%{0} geniş · %{1} uzun · {2} dp yukarı
+Waiting for dark mode · {0}	Karanlık mod bekleniyor · {0}
+{0} (folder not available)	{0} (klasör kullanılamıyor)
+{0} apps saved · {1} versions	Kaydedilen: {0} uygulama · {1} sürüm
+1 app saved · {0} versions	Kaydedilen: 1 uygulama · {0} sürüm
+{0} apps saved · 1 version	Kaydedilen: {0} uygulama · 1 sürüm
+Delete saved version {0}	{0} kayıtlı sürümünü sil
+Installed version of {0}	{0} yüklü sürümü
+What {0} ({1}) is used for	{0} ({1}) ne için kullanılır
+Any country · up to {0}	Herhangi bir ülke · en fazla {0}
+{0} apps · {1} versions · {2}	{0} uygulama · {1} sürüm · {2}
+1 app · {0} versions · {1}	1 uygulama · {0} sürüm · {1}
+{0} apps · 1 version · {1}	{0} uygulama · 1 sürüm · {1}
+1 app · 1 version · {0}	1 uygulama · 1 sürüm · {0}
+Couldn't restore {0}: {1}	{0} geri yüklenemedi: {1}
+About {0} · only {1} free	Yaklaşık {0} · yalnızca {1} boş
+Level {0} · {1} (Default)	Seviye {0} · {1} (varsayılan)
+{0}, {1}, updates blocked	{0}, {1}, güncellemeler engelli
+On · {0} · whole phone	Açık · {0} · tüm telefon
+On · {0} · Chrome only	Açık · {0} · yalnızca Chrome
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	{0} sunucu kontrol ediliyor…
+{0} selected · {1} shown	{0} seçili · {1} gösteriliyor
+No results for "{0}"	"{0}" için sonuç yok
+{0} apps · {1} versions	{0} uygulama · {1} sürüm
+1 app · {0} versions	1 uygulama · {0} sürüm
+{0} apps · 1 version	{0} uygulama · 1 sürüm
+Purchase email: {0}	Satın alma e-postası: {0}
+No icons match “{0}	“{0} ile eşleşen simge yok
+Reconnecting… ({0})	Yeniden bağlanılıyor… ({0})
+Unhide {0} contacts	{0} kişiyi göster
+No apps match “{0}	“{0} ile eşleşen uygulama yok
+Resend code ({0}s)	Kodu yeniden gönder ({0} sn)
+Connecting to {0}…	Bağlanılıyor: {0}…
+**Used for:**\n{0}	**Şunun için kullanılır:**\n{0}
+{0}, {1}, switch, off	{0}, {1}, anahtar, kapalı
+Restore {0} build {1}	{0} derleme {1} geri yükle
+Turns on at {0} · {1}	{0} saatinde açılır · {1}
+Pin {0} to toolbar	{0} öğesini araç çubuğuna sabitle
+• {0} custom icons	• {0} özel simge
+Saving {0} · {1} of {2}	{0} kaydediliyor · {1}/{2}
+{0}  ·  {1} selected	{0}  ·  {1} seçili
+{0}, {1}, switch, on	{0}, {1}, anahtar, açık
+{0}, not selected	{0}, seçili değil
+{0} · Chrome only	{0} · yalnızca Chrome
+Use default ({0})	Varsayılanı kullan ({0})
+Pass expires {0}	Geçişin bitişi: {0}
+{0}, unavailable	{0}, kullanılamıyor
+Enables {0} in {1}.	{1} içinde {0} özelliğini açar.
+{0} · not Chrome	{0} · Chrome hariç
+{0} is unlocked	{0} kilidi açık
+Connected · {0}	Bağlı · {0}
+{0} is selected	{0} seçildi
+{0} minutes ago	{0} dakika önce
+{0} is back to {1}	{0} yeniden {1} sürümünde
+Unhide {0} apps	{0} uygulamayı göster
+On until {0} · {1}	{0} saatine kadar açık · {1}
+{0} icon packs	{0} simge paketi
+• {0} settings	• {0} ayar
+Remove "{0}"?	"{0}" kaldırılsın mı?
+{0}, selected	{0}, seçildi
+{0} right now	Şu an {0}
+{0} is locked	{0} kilitli
+Hide {0} apps	{0} uygulamayı gizle
+{0} hours ago	{0} saat önce
+Checking {0}	{0} kontrol ediliyor
+Saving {0} {1}…	{0} {1} kaydediliyor…
+{0} days ago	{0} gün önce
+{0} · up to {1}	{0} · {1}'a kadar
+Level {0} · {1}	Seviye {0} · {1}
+Restore {0} {1}	{0} {1} geri yükle
+On now · {0}	Şu an açık · {0}
+Back up {0}	{0} yedekle
+Restart {0}	Yeniden başlat: {0}
+Enables {0}	Etkinleştirir: {0}
+{0} dp down	{0} dp aşağı
+Restore {0}	{0} geri yükle
+{0} servers	{0} sunucu
+{0}, hidden	{0}, gizli
+Level {0}, {1}	Seviye {0}, {1}
+Refresh {0}	{0} yenile
+{0}, shown	{0}, gösteriliyor
+Saved {0}.	{0} tarihinde kaydedildi.
+**{0}** ({1})	**{0}** ({1})
+About {0}	Yaklaşık {0}
+Build {0}	Derleme {0}
+From  {0}	Başlangıç  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} simge
+Unpin {0}	{0} sabitlemesini kaldır
+{0}, off	{0}, kapalı
+To  {0}	Bitiş  {0}
+Pin {0}	{0} sabitle
+Its {0}	Onun {0}
+Use {0}	{0} kullan
+{0}, on	{0}, açık
+You’re a free member. Choose the paid tier to unlock	Ücretsiz üyesiniz. Kilidi açmak için ücretli seviyeyi seçin.
+Root access is needed to save membership changes.	Üyelik değişikliklerini kaydetmek için root erişimi gerekli.
+Sign-in expired. Sign in with Patreon again.	Oturum açmanın süresi doldu. Patreon ile tekrar oturum açın.
+Couldn’t check membership. Try again shortly.	Üyelik kontrol edilemedi. Birazdan tekrar deneyin.
+Sign-in expired. Tap Unlock to try again.	Oturum açmanın süresi doldu. Tekrar denemek için Kilidi aç'a dokunun.
+No active membership found. Join, then tap Unlock again.	Etkin üyelik bulunamadı. Katılın, sonra tekrar Kilidi aç'a dokunun.
+Sign-in wasn't completed. You can try again.	Oturum açma tamamlanmadı. Tekrar deneyebilirsiniz.
+Couldn't verify this sign-in. Tap Unlock to try again.	Bu oturum açma doğrulanamadı. Tekrar denemek için Kilidi aç'a dokunun.
+Couldn't confirm membership. Try again.	Üyelik onaylanamadı. Tekrar deneyin.
+Confirming Patreon membership…	Patreon üyeliği onaylanıyor…
+Log in	Oturum aç
+Patreon profile photo	Patreon profil fotoğrafı
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	Ödemeden sonra satın alma kodunuz ödeme yaptığınız e-postaya gelir. purchases@roviandev.com için gelen kutusuna ve Gereksiz/Spam klasörüne bakın.
+Buy	Satın al
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	purchases@roviandev.com için gelen kutusuna ve Gereksiz/Spam klasörüne bakın. En yeni kodu kullanın; 10 dakika içinde süresi dolar.
+Hide app	Uygulamayı gizle
+Hide widget	Widget'ı gizle
+Remove Google Play services from the scope	Google Play Hizmetleri'ni kapsamdan kaldırın
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite artık Google Play Hizmetleri'ni kullanmıyor ve onu Pixel Suite'in LSPosed kapsamında tutmak Device ve Strong bütünlüğünü kaybettirebilir.
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	LSPosed'ı (veya Vector'ü) açın, Pixel Suite için Google Play Hizmetleri'nin işaretini kaldırın, sonra yeniden başlatın.
+Reboot to restore Play Integrity	Play Integrity'yi geri getirmek için yeniden başlatın
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite, Google Play Hizmetleri'ni LSPosed kapsamından kaldırdı; çünkü Device ve Strong bütünlüğünü kaybettirebilir ve artık kullanılmıyor. Bitirmek için telefonunuzu yeniden başlatın.
+Server connected but passes no traffic	Sunucuya bağlanıldı ancak trafik geçmiyor
+Server connected but websites don't open ({0})	Sunucuya bağlanıldı ancak web siteleri açılmıyor ({0})

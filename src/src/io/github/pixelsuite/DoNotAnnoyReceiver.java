@@ -6,7 +6,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.provider.CallLog;
 import android.widget.RemoteViews;
@@ -43,9 +42,9 @@ public final class DoNotAnnoyReceiver extends BroadcastReceiver {
             int small = c.getResources().getIdentifier("ic_ps_do_not_annoy", "drawable", c.getPackageName());
             if (small == 0) small = c.getApplicationInfo().icon;
             b.setSmallIcon(small)
-                    .setContentTitle(title)
-                    .setContentText(body)
-                    .setSubText("Do Not Annoy")
+                    .setContentTitle(I18n.cs(title))
+                    .setContentText(I18n.cs(body))
+                    .setSubText(I18n.cs("Do Not Annoy"))
                     .setCategory("missed_call")
                     .setWhen(when)
                     .setShowWhen(true)

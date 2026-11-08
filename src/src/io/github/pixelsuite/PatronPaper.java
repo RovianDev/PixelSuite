@@ -22,7 +22,7 @@ final class PatronPaper {
         final float d=activity.getResources().getDisplayMetrics().density;
         final ScrollDialog dialog=new ScrollDialog(activity);
         SinglePage paper=new SinglePage(activity);paper.setOrientation(1);
-        TextView close=text(activity,"×",26,muted,false);close.setGravity(Gravity.CENTER);AppCloseButton.style(close);close.setContentDescription("Close");close.setOnClickListener(v->dialog.dismiss());
+        TextView close=text(activity,"×",26,muted,false);close.setGravity(Gravity.CENTER);AppCloseButton.style(close);close.setContentDescription(I18n.cs("Close"));close.setOnClickListener(v->dialog.dismiss());
         final WaxSeal seal=new WaxSeal(activity,state==2);LinearLayout.LayoutParams sealSize=new LinearLayout.LayoutParams(dp(d,56),dp(d,56));sealSize.gravity=Gravity.CENTER;paper.addView(seal,sealSize);
         String heading=state==2?"✨ Quest Complete!":state==1?"Welcome back!":"📜 A Quest for the Kind-Hearted";
         TextView title=state==0?new QuestTitle(activity,ink):state==2?new CompleteTitle(activity,ink):text(activity,heading,24,ink,true);title.setTypeface(Typeface.create("serif",Typeface.BOLD));title.setGravity(Gravity.CENTER);title.setMaxLines(2);paper.addView(title);paper.title=title;
@@ -32,7 +32,7 @@ final class PatronPaper {
         LinearLayout paragraphs=new LinearLayout(activity);paragraphs.setOrientation(1);paper.paragraphs=paragraphs;
         String[] copy=state==2?new String[]{"Thank you for supporting Pixel Suite. Your Patreon features are ready."}:state==1?new String[]{"Joined? Tap Unlock to confirm your paid Patreon membership."}:new String[]{
             "Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.",
-            "The Google apps tools (call recording, an ad-free Google feed and the system-wide ad blocker) are unlocked for patrons. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.",
+            "Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.",
             "Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.",
             "Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙"};
         for(String paragraph:copy){TextView body=text(activity,paragraph,15,muted,false);body.setLineSpacing(0,1.3f);body.setGravity(state==0?Gravity.START:Gravity.CENTER);paragraphs.addView(body,new LinearLayout.LayoutParams(-1,-2));}
@@ -40,7 +40,7 @@ final class PatronPaper {
         LinearLayout main=new LinearLayout(activity);main.setGravity(Gravity.CENTER);main.setMinimumHeight(dp(d,52));main.setPadding(dp(d,18),0,dp(d,18),0);
         int buttonInk=dark?0xff302016:0xfffff1d5;GradientDrawable button=new GradientDrawable();button.setCornerRadius(dp(d,28));button.setColor(dark?0xffdec18c:0xff70482f);main.setBackground(button);
         if(state==0){int id=activity.getResources().getIdentifier("brand_patreon","drawable",activity.getPackageName());if(id!=0){ImageView mark=new ImageView(activity);android.graphics.drawable.Drawable logo=activity.getResources().getDrawable(id,activity.getTheme()).mutate();logo.setTint(buttonInk);mark.setImageDrawable(logo);mark.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);LinearLayout.LayoutParams iconSize=new LinearLayout.LayoutParams(dp(d,22),dp(d,24));iconSize.rightMargin=dp(d,10);main.addView(mark,iconSize);}}
-        String label=state==2?"Let's go":state==1?"Unlock":"Join on Patreon";main.addView(text(activity,label,17,buttonInk,true));main.setContentDescription(label);main.setClickable(true);main.setFocusable(true);
+        String label=state==2?"Let's go":state==1?"Unlock":"Join on Patreon";main.addView(text(activity,label,17,buttonInk,true));main.setContentDescription(I18n.cs(label));main.setClickable(true);main.setFocusable(true);
         LinearLayout.LayoutParams buttonSize=new LinearLayout.LayoutParams(-1,dp(d,52));buttonSize.topMargin=dp(d,20);paper.addView(main,buttonSize);paper.main=main;
         main.setOnClickListener(new View.OnClickListener(){public void onClick(View v){dialog.closeWith(new Runnable(){public void run(){if(state==2)return;if(state==1){login(activity);return;}PatronAccess.prefs(activity).edit().putBoolean("join_return",true).apply();join(activity);}});}});
         if(state==0){TextView unlock=text(activity,"Already a patron? Unlock",14,ink,true);unlock.setGravity(Gravity.CENTER);unlock.setMinHeight(dp(d,48));paper.addView(unlock,new LinearLayout.LayoutParams(-1,-2));paper.unlock=unlock;unlock.setOnClickListener(new View.OnClickListener(){public void onClick(View v){dialog.closeWith(new Runnable(){public void run(){login(activity);}});}});}
@@ -60,27 +60,27 @@ final class PatronPaper {
         Intent generic=new Intent(Intent.ACTION_VIEW,Uri.parse("https://example.com")).addCategory(Intent.CATEGORY_BROWSABLE);
         android.content.pm.ResolveInfo browser=activity.getPackageManager().resolveActivity(generic,android.content.pm.PackageManager.MATCH_DEFAULT_ONLY);
         if(browser!=null&&browser.activityInfo!=null&&!"android".equals(browser.activityInfo.packageName))open.setPackage(browser.activityInfo.packageName);
-        try{activity.startActivity(open);}catch(Exception unavailable){AppToast.makeText(activity,"Open the Pixel Suite paid tier in your browser.",0).show();}
+        try{activity.startActivity(open);}catch(Exception unavailable){AppToast.makeText(activity,I18n.cs("Open the Pixel Suite paid tier in your browser."),0).show();}
     }
     static void login(final Activity activity){
         if(PatronAccess.hasSession(activity)){
-            AppToast.makeText(activity,"Checking Patreon membership…",0).show();
+            AppToast.makeText(activity,I18n.cs("Checking Patreon membership…"),0).show();
             PatronAccess.refresh(activity,new Runnable(){public void run(){if(activity.isFinishing()||activity.isDestroyed())return;String error=PatronAccess.prefs(activity).getString("refresh_error",null);if(error!=null){open(activity,0,error);return;}if(PatronAccess.unlocked())open(activity,2,null);else open(activity,0,PatronAccess.membershipMessage(activity));}});return;
         }
         authorize(activity);
     }
     private static void authorize(Activity activity){
-        if(!PatronAccess.configured()){AppToast.makeText(activity,"Patreon sign-in is being set up.",Toast.LENGTH_LONG).show();return;}
+        if(!PatronAccess.configured()){AppToast.makeText(activity,I18n.cs("Patreon sign-in is being set up."),Toast.LENGTH_LONG).show();return;}
         String state=PatronAccess.random();PatronAccess.prefs(activity).edit().putString("nonce",state).putLong("login_at",System.currentTimeMillis()).commit();
         Uri login=Uri.parse(PatronConfig.SERVER+"/login").buildUpon().appendQueryParameter("state",state).appendQueryParameter("device",PatronAccess.device(activity)).build();
-        try{activity.startActivity(new Intent(Intent.ACTION_VIEW,login));}catch(Exception unavailable){AppToast.makeText(activity,"Open a browser to sign in with Patreon.",0).show();}
+        try{activity.startActivity(new Intent(Intent.ACTION_VIEW,login));}catch(Exception unavailable){AppToast.makeText(activity,I18n.cs("Open a browser to sign in with Patreon."),0).show();}
     }
     private static int dp(float d,float n){return Math.round(d*n);}
-    private static TextView text(Activity a,String s,int size,int color,boolean bold){TextView t=new TextView(a);t.setText(s);t.setTextSize(size);t.setTextColor(color);t.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));return t;}
+    private static TextView text(Activity a,String s,int size,int color,boolean bold){TextView t=new TextView(a);t.setText(I18n.cs(s));t.setTextSize(size);t.setTextColor(color);t.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));return t;}
 
     private static final class CompleteTitle extends TextView {
         final Paint star=new Paint(Paint.ANTI_ALIAS_FLAG);
-        CompleteTitle(Activity activity,int ink){super(activity);setText("Quest Complete!");setTextSize(24);setTextColor(ink);setContentDescription("✨ Quest Complete!");star.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));star.setColor(ink);}
+        CompleteTitle(Activity activity,int ink){super(activity);setText(I18n.cs("Quest Complete!"));setTextSize(24);setTextColor(ink);setContentDescription(I18n.cs("✨ Quest Complete!"));star.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));star.setColor(ink);}
         @Override protected void onDraw(Canvas canvas){
             super.onDraw(canvas);
             android.text.Layout lines=getLayout();if(lines==null||lines.getLineCount()==0)return;
@@ -92,7 +92,7 @@ final class PatronPaper {
 
     private static final class QuestTitle extends TextView {
         final Paint symbol=new Paint(Paint.ANTI_ALIAS_FLAG);
-        QuestTitle(Activity activity,int ink){super(activity);setText("A Quest for the\nKind-Hearted");setTextSize(24);setTextColor(ink);setContentDescription(getText());symbol.setColor(ink);symbol.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));}
+        QuestTitle(Activity activity,int ink){super(activity);setText(I18n.cs("A Quest for the\nKind-Hearted"));setTextSize(24);setTextColor(ink);setContentDescription(I18n.cs(getText()));symbol.setColor(ink);symbol.setTypeface(Typeface.create("sans-serif",Typeface.NORMAL));}
         @Override protected void onDraw(Canvas canvas){android.text.Layout lines=getLayout();if(lines==null||lines.getLineCount()==0)return;
             float density=getResources().getDisplayMetrics().density;getPaint().setColor(getCurrentTextColor());
             for(int i=0;i<lines.getLineCount();i++){String line=getText().subSequence(lines.getLineStart(i),lines.getLineEnd(i)).toString().replace("\n","");canvas.drawText(line,getCompoundPaddingLeft()+lines.getLineLeft(i)+(i==0?2*density:0),getExtendedPaddingTop()+lines.getLineBaseline(i),getPaint());}

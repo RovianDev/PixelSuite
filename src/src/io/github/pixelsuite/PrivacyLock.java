@@ -266,7 +266,7 @@ final class PrivacyLock {
         if (observer == null) return;
         try {
             for (java.lang.reflect.Method m : observer.getClass().getMethods())
-                if (m.getName().equals("onPackageDeleted") && m.getParameterTypes().length == 3) { m.invoke(observer, pkg, code, "Cancelled: the app is locked by Pixel Suite"); return; }
+                if (m.getName().equals("onPackageDeleted") && m.getParameterTypes().length == 3) { m.invoke(observer, pkg, code, I18n.t("Cancelled: the app is locked by Pixel Suite")); return; }
         } catch (Throwable error) { }
     }
 
@@ -276,7 +276,7 @@ final class PrivacyLock {
             Intent fill = new Intent();
             fill.putExtra("android.content.pm.extra.PACKAGE_NAME", pkg);
             fill.putExtra("android.content.pm.extra.STATUS", 3);
-            fill.putExtra("android.content.pm.extra.STATUS_MESSAGE", "Cancelled: the app is locked by Pixel Suite");
+            fill.putExtra("android.content.pm.extra.STATUS_MESSAGE", I18n.t("Cancelled: the app is locked by Pixel Suite"));
             to.sendIntent(system, 0, fill, null, null);
         } catch (Throwable error) { }
     }

@@ -84,7 +84,7 @@ final class ReleaseUpdates {
             if(Build.VERSION.SDK_INT>=26){Class<?> channel=Class.forName("android.app.NotificationChannel");Object ch=channel.getConstructor(String.class,CharSequence.class,int.class).newInstance(CHANNEL,"Pixel Suite updates",3);manager.getClass().getMethod("createNotificationChannel",channel).invoke(manager,ch);Object existing=manager.getClass().getMethod("getNotificationChannel",String.class).invoke(manager,CHANNEL);if(existing!=null&&((Number)channel.getMethod("getImportance").invoke(existing)).intValue()==0)return false;}
             Intent intent=new Intent(c,SettingsActivity.class).putExtra("page","updates");
             PendingIntent open=PendingIntent.getActivity(c,NOTICE,intent,PendingIntent.FLAG_UPDATE_CURRENT|0x04000000);
-            Notification.Builder builder=new Notification.Builder(c).setSmallIcon(c.getResources().getIdentifier("ic_ps_update","drawable",c.getPackageName())).setContentTitle("Pixel Suite "+version+" is available").setContentText("Official release verified on GitHub and Xposed. Tap to download and install in Pixel Suite.").setContentIntent(open).setAutoCancel(true);
+            Notification.Builder builder=new Notification.Builder(c).setSmallIcon(c.getResources().getIdentifier("ic_ps_update","drawable",c.getPackageName())).setContentTitle(I18n.cs("Pixel Suite "+version+" is available")).setContentText(I18n.cs("New version ready. Tap to download and install.")).setContentIntent(open).setAutoCancel(true);
             if(Build.VERSION.SDK_INT>=26)builder.getClass().getMethod("setChannelId",String.class).invoke(builder,CHANNEL);
             manager.notify(NOTICE,builder.build());return true;
         }catch(Exception denied){return false;}

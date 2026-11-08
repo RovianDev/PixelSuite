@@ -2,7 +2,6 @@ package io.github.pixelsuite;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Looper;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.animation.PathInterpolator;
-import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.HashMap;

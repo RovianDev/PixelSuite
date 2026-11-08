@@ -111,7 +111,7 @@ final class DrawerFolders {
                 protected void beforeHookedMethod(Xp.Param p){wrapBack(p,1);}
             });
             Xp.hookAllMethods(dispatcher,"unregisterOnBackInvokedCallback",new Xp.Callback(){
-                protected void beforeHookedMethod(Xp.Param p){if(p.args.length>0){Object w=wrappedBack.get(p.args[0]);if(w!=null)p.args[0]=w;}}
+                protected void beforeHookedMethod(Xp.Param p){if(p.args.length>0&&p.args[0]!=null){java.lang.ref.WeakReference<Object> r;synchronized(wrappedBack){r=wrappedBack.remove(p.args[0]);}Object w=r==null?null:r.get();if(w!=null)p.args[0]=w;}}
             });
         }catch(Throwable missing){}
         try{
@@ -385,13 +385,13 @@ final class DrawerFolders {
     static boolean isDrawerMember(Object info){try{return ((Number)get(info,"container")).intValue()<=CONTAINER;}catch(Throwable t){return false;}}
     static volatile long folderClosedAt;
 
-    private static final java.util.Map<Object,Object> wrappedBack=java.util.Collections.synchronizedMap(new java.util.IdentityHashMap<Object,Object>());
+    private static final java.util.Map<Object,java.lang.ref.WeakReference<Object>> wrappedBack=new java.util.WeakHashMap<Object,java.lang.ref.WeakReference<Object>>();
 
     private static void wrapBack(Xp.Param p,int at){
         if(p.args.length<=at||p.args[at]==null)return;
         final Object original=p.args[at];
         if(original.getClass().getClassLoader()!=LauncherFeatures.loader)return;
-        if(wrappedBack.containsKey(original)){p.args[at]=wrappedBack.get(original);return;}
+        synchronized(wrappedBack){java.lang.ref.WeakReference<Object> had=wrappedBack.get(original);Object w=had==null?null:had.get();if(w!=null){p.args[at]=w;return;}}
         java.util.List<Class<?>> faces=new java.util.ArrayList<Class<?>>();
         for(Class<?> k=original.getClass();k!=null;k=k.getSuperclass())for(Class<?> f:k.getInterfaces())if(f.getName().startsWith("android.window.")&&!faces.contains(f))faces.add(f);
         if(faces.isEmpty())return;
@@ -416,7 +416,7 @@ final class DrawerFolders {
                 try{return m.invoke(original,args);}catch(java.lang.reflect.InvocationTargetException e){throw e.getCause();}
             }
         });
-        wrappedBack.put(original,wrapper);p.args[at]=wrapper;
+        synchronized(wrappedBack){wrappedBack.put(original,new java.lang.ref.WeakReference<Object>(wrapper));}p.args[at]=wrapper;
     }
 
     private static java.lang.ref.WeakReference<View> openFolder=new java.lang.ref.WeakReference<View>(null);

@@ -27,7 +27,6 @@ final class BackdropSurface extends GradientDrawable {
     final Context context;
     boolean failed;
     boolean allowed;
-    boolean parentBlur;
     int night,radiusPx;
     WeakReference<View> host=new WeakReference<View>(null);
     Object node;
@@ -82,12 +81,11 @@ final class BackdropSurface extends GradientDrawable {
     private void colors(){openColor=FrostedSurface.colors(context)[0];closedColor=FrostedSurface.closedFolderColor(context);}
 
     void bind(final View view){
-        parentBlur=true;
         if(!allowed)setColor(FrostedSurface.tone(context)|0xff000000);
         if(host.get()==view)return;
         unwatch();
         host=new WeakReference<View>(view);
-        synchronized(hosts){hosts.put(view,this);}
+        synchronized(hosts){hosts.put(view,new WeakReference<BackdropSurface>(this));}
         if(view.isAttachedToWindow())watch(view);
         view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener(){
             public void onViewAttachedToWindow(View v){if(host.get()==v)watch(v);}
@@ -320,15 +318,15 @@ final class BackdropSurface extends GradientDrawable {
         return null;
     }
 
-    static final Map<View,BackdropSurface> hosts=new WeakHashMap<View,BackdropSurface>();
+    static final Map<View,WeakReference<BackdropSurface>> hosts=new WeakHashMap<View,WeakReference<BackdropSurface>>();
     private static final ArrayDeque<Integer> saves=new ArrayDeque<Integer>();
 
     static Map<View,View> active(ViewGroup layer){
         Map<View,View> out=new java.util.HashMap<View,View>();
-        ArrayList<Map.Entry<View,BackdropSurface>> list;
-        synchronized(hosts){list=new ArrayList<Map.Entry<View,BackdropSurface>>(hosts.entrySet());}
-        for(Map.Entry<View,BackdropSurface> entry:list){
-            View view=entry.getKey();BackdropSurface surface=entry.getValue();
+        ArrayList<Map.Entry<View,WeakReference<BackdropSurface>>> list;
+        synchronized(hosts){list=new ArrayList<Map.Entry<View,WeakReference<BackdropSurface>>>(hosts.entrySet());}
+        for(Map.Entry<View,WeakReference<BackdropSurface>> entry:list){
+            View view=entry.getKey();BackdropSurface surface=entry.getValue()==null?null:entry.getValue().get();
             if(view==null||surface==null||surface.host.get()!=view||!surface.allowed||surface.failed)continue;
             if(!view.isAttachedToWindow()||!view.isShown()||dragLayerOf(view)!=layer||!surface.owns(view))continue;
             Matrix toLayer=new Matrix();View top=mapToLayer(view,layer,toLayer);
@@ -346,7 +344,7 @@ final class BackdropSurface extends GradientDrawable {
                 for(Map.Entry<View,View> entry:panels.entrySet()){
                     View view=entry.getKey(),top=entry.getValue();
                     if(top==child)continue;
-                    BackdropSurface surface;synchronized(hosts){surface=hosts.get(view);}
+                    BackdropSurface surface;synchronized(hosts){WeakReference<BackdropSurface> r=hosts.get(view);surface=r==null?null:r.get();}
                     if(surface==null)continue;
                     if(!drawnUnder(layer,child,top))continue;
                     if(effectiveAlpha(view,layer)<.99f)continue;

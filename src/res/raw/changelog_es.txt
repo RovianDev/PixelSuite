@@ -1,0 +1,70 @@
+## v3.1.0
+Pixel Suite en 14 idiomas, Chrome+ y Gboard+, una VPN integrada, Copia y restauración para las apps retenidas, nuevas opciones para el botón de encendido, el volumen y la pantalla de bloqueo, y un icono nuevo.
+
+✨ Novedades
+• 💾 **Copia y restauración**: las apps retenidas se guardan antes de actualizarse, con sus datos (sesiones, chats, ajustes y archivos) o solo la app. Se guardan las 3 versiones más recientes de cada app, incluso después de desinstalarla. (Protección › Bloqueador OTA y de Store › Bloqueador de Play Store)
+• 🌍 **14 idiomas**: Pixel Suite ahora habla chino, hindi, español, árabe, francés, portugués, ruso, bengalí, indonesio, alemán, japonés, turco, persa y hebreo, este registro de cambios incluido. Sigue el idioma de tu teléfono, o toca el botón de idioma arriba a la derecha de la página de inicio para elegir uno. (El árabe, el persa y el hebreo se leen de derecha a izquierda.)
+• 🎮 **Pixel Stack!** un pequeño juego oculto: mantén pulsado el logo en la parte superior de la página de inicio de Pixel Suite. Apila los bloques lo más alto que puedas, colócalos justo para un (¡Perfecto!) y comparte tu puntuación con nuestra comunidad de Telegram!
+• 🔘 **Mantener pulsado el botón de encendido**: abre Gemini o Circle to Search, haz una captura de pantalla o activa y desactiva un modo silencioso: Silencio, No molestar, No me molestes, o Sin molestias para los tres. (Atajos › Botones)
+• 🔒 **Mantener pulsado el botón de encendido con el teléfono bloqueado**: elige otra acción para cuando el teléfono está bloqueado: Gemini (original), Silencio, No molestar, No me molestes o Sin molestias. Funciona por su cuenta, aparte de Mantener pulsado el botón de encendido. (Atajos › Botones)
+• 📷 **Pulsar dos veces el botón de encendido**: ahora también puedes elegir «Cámara (original)». (Atajos › Botones)
+• 🔦 **Pulsar dos veces bajar volumen**: ahora también puedes encender o apagar la linterna. (Atajos › Botones)
+• 🕒 **Pantalla siempre activa**: mantenla encendida mientras se carga, y deja que el botón de encendido la muestre unos segundos al apagar la pantalla. (Personalizar › Pantalla siempre activa)
+• 🔢 **Confirmar automáticamente un PIN de 4 dígitos**: el teléfono se desbloquea en cuanto escribes el 4.º dígito, sin pulsar Intro. (Protección › Privacidad y seguridad › Pantalla de bloqueo)
+• 🧹 **Ocultar barra de búsqueda**: simplemente mantén pulsada la barra de búsqueda y elige Ocultar widget. El dock baja, tus apps usan el espacio y la búsqueda sigue en el cajón de apps. También puedes ocultarla desde Personalizar › Lanzador Pixel.
+• 📋 **Copia de tus apps**: haz una copia de cualquier app, solo la app o la app con todos sus datos (sesiones, chats, ajustes y archivos), y restáurala cuando quieras. Toca el botón verde para volver a una versión guardada. (Bloqueador de Play Store › Seleccionar apps)
+• 🔎 **Buscar en Chrome**: selecciona texto en cualquier app, toca ⋮ y elige Buscar en Chrome. Las palabras se abren directamente en Chrome.
+• 🗑️ **Solo Borrar todo**: recientes muestra solo Borrar todo, en el centro, sin Seleccionar ni Captura de pantalla. (Personalizar › Lanzador Pixel › Apps recientes)
+• 🎨 **Nuevo icono de Pixel Suite**: el icono de la app Pixel Suite ahora llena el círculo de borde a borde, sin la placa blanca, y tiene una versión temática que sigue los colores de tu fondo.
+
+💎 Patreon
+• 🚀 **Chrome+**: los controles de Chrome pasan abajo, con animaciones más fluidas y hechas a mano para las pestañas, el selector de pestañas y las pestañas nuevas. El + naranja del selector abre una pestaña de incógnito. (Patreon › Apps de Google › Chrome+)
+• 🧩 **Extensiones para Chrome**: VPN, Bloqueador de anuncios y Páginas oscuras en un mismo panel, desde el botón de pieza de puzle de la barra de Chrome. Toca una para usarla, o mantenla pulsada para fijarla en la barra.
+• 🌐 **VPN**: navega desde otro país con servidores gratuitos de todo el mundo, para todo el teléfono o solo Chrome, con el servidor más rápido primero. La ubicación de Chrome sigue a la VPN. (Patreon › VPN, además de un recuadro en Ajustes rápidos)
+• ⭐ **Marcación rápida**: iconos redondos para hasta 19 sitios web en la página de nueva pestaña de Chrome. Arrástralos para moverlos, o suelta uno sobre otro para crear una carpeta que sigue Súper Oscuro. Pon tu propia imagen redonda a cualquier sitio.
+• 🛡️ **Bloqueador de anuncios**: elige un nivel de filtrado para cada sitio web. Completo también oculta los avisos de cookies y las ventanas emergentes, y puedes quitar tú mismo cualquier parte de una página. Su interruptor en Complementos lo activa o desactiva en todos los sitios web. (Chrome+ › Complementos)
+• 🌙 **Páginas oscuras**: los sitios web se abren oscuros sin destellos blancos, o en negro puro con Súper Oscuro: siempre, con el modo oscuro del teléfono o con horario. Las fotos y los vídeos mantienen sus colores. (Chrome+ › Complementos)
+• 🎙️ **Teléfono de Google+**: (Calidad de grabación) Estándar para archivos más pequeños, HD para una voz más clara (ahora la opción predeterminada) o Sin pérdida para la más clara. (Patreon › Apps de Google › Teléfono de Google+)
+• ⌨️ **Barra de Gboard+**: hasta 7 accesos directos propios, como Deshacer, Rehacer, Selección rápida, Seleccionar todo, Cortar, Copiar y Pegar, en todas las apps. Seleccionar todo y Selección rápida abren al momento el menú de copiar y pegar. (Patreon › Apps de Google › Gboard+)
+• 🔤 **Teclas de Gboard+**: teclas redondeadas con ventanas emergentes fluidas, desliza a la izquierda desde borrar para eliminar letra por letra, y cambia el tamaño del teclado o muévelo. Con la fila de números de Gboard activada, la página de símbolos mantiene el mismo tamaño de teclas. (Patreon › Apps de Google › Gboard+)
+• ✍️ **Escritura con Gboard+**: desactiva Autocorrección en los idiomas que elijas, guarda cada recorte en el portapapeles y usa Dictado con marca de verificación: habla y toca la marca para añadir tus palabras. (Patreon › Apps de Google › Gboard+)
+• 🧊 **Gboard esmerilado**: el fondo del teclado se vuelve cristal esmerilado: lo que hay detrás se ve difuminado, con los bordes de cristal, en claro, oscuro y Súper Oscuro. Las teclas no cambian. (Patreon › Apps de Google › Gboard+)
+
+🪄 Pulido
+• 🌑 **Súper Oscuro**: el menú sobre el texto seleccionado (Cortar, Copiar, Buscar en Chrome y más) ahora es negro con borde en todas las apps, y el modo incógnito de Chrome sigue en negro puro en todas partes, también al cambiar de pestaña.
+• ⚡ **Las opciones se aplican solas**: Modo Súper Oscuro y el estilo de superficie cambian al momento, otras opciones reinician su propia app, y el botón Refrescar solo aparece para las opciones de Lanzador Pixel.
+• 🔄 **Botón Reiniciar**: algunas funciones solo empiezan a funcionar después de reiniciar. Después de actualizar, aparece un botón Reiniciar hasta que el teléfono se reinicia. Tócalo para ver qué funciones necesitan el reinicio y vuelve a tocar para reiniciar.
+• 🌄 **Feed de Google**: desliza a la derecha en la pantalla de inicio y el feed entra sobre tu fondo de pantalla, sin que antes destelle un panel blanco.
+• 🏠 **Lanzador Pixel**: mantener pulsada la barra de búsqueda ahora muestra solo Ajustes del widget y Ocultar widget.
+
+🐞 Correcciones
+• 🧠 **Lanzador Pixel**: tras muchos cambios entre claro y oscuro (con el modo oscuro programado, por ejemplo), podía ir lento, dejar de responder y reiniciarse. Ahora sigue fluido.
+• 📱 **Botones de navegación**: después de girar la pantalla, deslizar hacia arriba para ir al inicio podía dejar de funcionar con el botón Atrás activado. Ahora funciona siempre. (Atajos › Gestos › Botones de navegación)
+• 🧭 **Botones de navegación**: algunas apps ponían su menú inferior bajo los botones. Ahora queda encima de ellos. (Atajos › Gestos › Botones de navegación)
+• 🛟 **Bloqueador de anuncios**: Chrome podía cerrarse solo si salías de una página o cerrabas una pestaña mientras aún cargaba. Ahora sigue abierto.
+• 🖐️ **Lanzador Pixel**: al mantener pulsada una app en algunos puntos de la pantalla de inicio solo aparecían unos iconos pequeños y su menú desaparecía. Ahora los menús se abren completos en todas partes.
+• 📰 **Feed de Chrome**: el feed podía saltar mientras se ocultaban las historias patrocinadas. Ahora se queda quieto y se desplaza con más fluidez.
+• 🔴 **Cajón de apps**: en algunas versiones de Lanzador Pixel, los puntos de notificación de las carpetas flotaban sobre ellas. Vuelven a estar sobre las carpetas.
+• 🔔 **Súper Oscuro**: las notificaciones de una línea al final del panel seguían grises. Ahora son Súper Oscuro.
+• #️⃣ **Súper Oscuro**: las teclas numéricas de Gboard (para PIN, números de teléfono e importes) eran negras sobre negro y no se iluminaban al tocarlas. Ahora vuelven a verse y se iluminan.
+• ➗ **Gboard+**: en la página de números, la columna + - * / ahora es igual que las demás teclas. Las teclas de espacio y borrar vuelven a verse como teclas y ya no desaparecen en el modo oscuro.
+• 🪟 **Menús de la pantalla de inicio**: con Vidrio esmerilado, la fila de iconos de arriba del menú de una app aparecía antes que el resto. Ahora aparece junto con el menú.
+• ✅ **Seleccionar apps**: el teclado seguía abierto sobre la lista después de marcar una app desde la búsqueda. Ahora se cierra.
+
+Instala sobre tu versión actual y reinicia.
+
+## v3.0.4
+Una corrección para Play Integrity.
+
+🐞 Correcciones
+• Play Integrity: Pixel Suite ya no usa los servicios de Google Play. Solo se usaba para los bordes de desplazamiento suaves en algunas pantallas de Google abiertas desde Ajustes (Cristal esmerilado), y mantenerlo podía costarte la integridad Device y Strong, así que no valía la pena. Si lo tenías marcado en el ámbito de LSPosed de Pixel Suite, Pixel Suite ahora lo desmarca por ti. Reinicia cuando te lo pida. Gracias a Ashray V K en Telegram por avisar 🙏
+
+Instala sobre tu versión actual y reinicia.
+
+## v3.0.3
+Una corrección para el inicio de sesión de Patreon.
+
+🐞 Correcciones
+• Patreon: el inicio de sesión ahora se completa aunque tu navegador no pueda abrir Pixel Suite (por ejemplo, cuando muestra una página de Play Store de "no se encontró el elemento"). Tras iniciar sesión, vuelve a Pixel Suite y se desbloquea solo.
+
+Instala sobre tu versión actual.

@@ -121,7 +121,7 @@ final class PhotosShareColors {
                 else if (a0 instanceof android.graphics.Rect) { w = ((android.graphics.Rect) a0).width(); top = ((android.graphics.Rect) a0).top; }
                 else { w = (Float) p.args[2] - (Float) a0; top = (Float) p.args[1]; }
                 if (w < 0.9f * android.content.res.Resources.getSystem().getDisplayMetrics().widthPixels) return;
-                if ((color >>> 24) < 0xE0 || !pageColour(color)) { note(p.method.getName(), color, w, top); return; }
+                if ((color >>> 24) < 0xE0 || !pageColour(color)) { return; }
                 paint.setColor((target & 0x00FFFFFF) | (color & 0xFF000000));
                 saved.set(new Object[]{paint, color});
             } catch (Throwable ignored) { }

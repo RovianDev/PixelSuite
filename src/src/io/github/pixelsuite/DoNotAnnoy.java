@@ -22,55 +22,11 @@ final class DoNotAnnoy {
     static final String KEY = "pixelsuite_dna";
     private static final String CHANNEL = "pixelsuite_dna";
 
-    private static final String RELIABLE_RINGING = "imsvoice.require_prack_for_alert_bool";
 
-    private static void installReliableRinging(ClassLoader cl) {
-        try {
-            Class<?> cc = Xp.findClass("com.android.imsstack.core.config.CarrierConfig", cl);
-            Xp.hookAllMethods(cc, "writeToParcel", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) {
-                    try {
-                        if (!on()) return;
-                        android.os.PersistableBundle b = (android.os.PersistableBundle) Xp.getObjectField(p.thisObject, "mConfig");
-                        Object[] saved = {b.containsKey(RELIABLE_RINGING), b.getBoolean(RELIABLE_RINGING, false)};
-                        Xp.setAdditionalInstanceField(p.thisObject, "ps_saved", saved);
-                        b.putBoolean(RELIABLE_RINGING, true);
-                    } catch (Throwable ignored) { }
-                }
-                @Override protected void afterHookedMethod(Xp.Param p) {
-                    try {
-                        Object[] saved = (Object[]) Xp.getAdditionalInstanceField(p.thisObject, "ps_saved");
-                        if (saved == null) return;
-                        Xp.setAdditionalInstanceField(p.thisObject, "ps_saved", null);
-                        android.os.PersistableBundle b = (android.os.PersistableBundle) Xp.getObjectField(p.thisObject, "mConfig");
-                        if ((Boolean) saved[0]) b.putBoolean(RELIABLE_RINGING, (Boolean) saved[1]); else b.remove(RELIABLE_RINGING);
-                    } catch (Throwable ignored) { }
-                }
-            });
-            Xp.hookAllMethods(cc, "getBoolean", new Xp.Callback() {
-                @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (p.args.length >= 1 && RELIABLE_RINGING.equals(p.args[0]) && on()) p.setResult(Boolean.TRUE);
-                }
-            });
-        } catch (Throwable ignored) { }
-    }
 
-    private static void refreshConfig(ClassLoader cl) {
-        try {
-            Class<?> factory = Xp.findClass("com.android.imsstack.core.agents.AgentFactory", cl);
-            Class<?> ci = Xp.findClass("com.android.imsstack.core.agents.ConfigInterface", cl);
-            Object f = Xp.callStaticMethod(factory, "getInstance");
-            for (int slot = 0; slot < 2; slot++) {
-                Object agent = Xp.callMethod(f, "getAgent", ci, slot);
-                if (agent != null) Xp.callMethod(agent, "notifyCarrierConfigChangedForNative");
-            }
-        } catch (Throwable ignored) { }
-    }
 
-    private static ClassLoader sLoader;
 
     static void install(ClassLoader cl) {
-        sLoader = cl;
         try {
             Xp.hookAllMethods(android.app.Application.class, "onCreate", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
@@ -299,10 +255,10 @@ final class DoNotAnnoy {
             Notification.Builder b = new Notification.Builder(c);
             Notification.Builder.class.getMethod("setChannelId", String.class).invoke(b, CHANNEL);
             b.setSmallIcon(android.R.drawable.stat_notify_missed_call)
-                    .setContentTitle(title)
-                    .setContentText(body)
-                    .setStyle(new Notification.BigTextStyle().bigText(body))
-                    .setSubText("Do Not Annoy")
+                    .setContentTitle(I18n.cs(title))
+                    .setContentText(I18n.cs(body))
+                    .setStyle(new Notification.BigTextStyle().bigText(I18n.cs(body)))
+                    .setSubText(I18n.cs("Do Not Annoy"))
                     .setCategory("missed_call")
                     .setWhen(System.currentTimeMillis())
                     .setShowWhen(true)

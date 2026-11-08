@@ -36,7 +36,7 @@ final class AppSurfaces {
         final SuperDarkPalette.Rim exactRim=new SuperDarkPalette.Rim();final Paint rim=new Paint(Paint.ANTI_ALIAS_FLAG);int last;final RectF frame=new RectF();
         Surface(Context c,float radius,int black,int normal,boolean floating){context=c;this.radius=radius*c.getResources().getDisplayMetrics().density;this.black=black;this.normal=normal;this.floating=floating;watch(this);last=active(c)?black:normal;setColor(last);setCornerRadius(this.radius);float d=c.getResources().getDisplayMetrics().density;rim.setStyle(Paint.Style.STROKE);rim.setStrokeWidth(2.4f*d);rim.setMaskFilter(new BlurMaskFilter(2*d,BlurMaskFilter.Blur.NORMAL));}
         @Override protected void onBoundsChange(Rect bounds){super.onBoundsChange(bounds);frame.set(bounds);float inset=2.4f*context.getResources().getDisplayMetrics().density;frame.inset(inset,inset);rim.setShader(new LinearGradient(0,frame.top,0,Math.max(frame.top+1,frame.bottom),new int[]{0x30ffffff,0x12ffffff,0x0cffffff,0x16ffffff},new float[]{0,.35f,.75f,1},Shader.TileMode.CLAMP));}
-        @Override public void draw(Canvas canvas){boolean on=active(context);int color=on?black:normal;if(last!=color){last=color;super.setColor(color);}super.draw(canvas);if(on&&floating){float inset=2.4f*context.getResources().getDisplayMetrics().density;exactRim.draw(canvas,getBounds(),radius,context.getResources().getDisplayMetrics().density);}}
+        @Override public void draw(Canvas canvas){boolean on=active(context);int color=on?black:normal;if(last!=color){last=color;super.setColor(color);}super.draw(canvas);if(on&&floating){exactRim.draw(canvas,getBounds(),radius,context.getResources().getDisplayMetrics().density);}}
 
     }
     private static final class SwitchSurface extends Drawable {

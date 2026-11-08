@@ -3,7 +3,6 @@ package io.github.pixelsuite;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.UserHandle;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -65,7 +65,7 @@ final class ChromeFeedAds {
             @Override public void onGlobalLayout() {
                 try {
                     View feed = sFeed.get();
-                    if (feed != null && feed.isAttachedToWindow() && feed.getRootView() == decor.getRootView()) return;
+                    if (feed != null && feed.isAttachedToWindow() && feed.getRootView() == decor.getRootView() && feed.isShown()) return;
                     if (!on(a)) return;
                     if (sFeedId == -1) sFeedId = a.getResources().getIdentifier("feed_stream_recycler_view", "id", a.getPackageName());
                     View found = sFeedId == 0 ? null : decor.findViewById(sFeedId);
@@ -88,30 +88,131 @@ final class ChromeFeedAds {
         };
         Xp.setAdditionalInstanceField(feed, "pixelsuite_feed_cards", l);
         feed.getViewTreeObserver().addOnPreDrawListener(l);
+        try {
+            feed.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override public void onScrollChange(View v, int x, int y, int ox, int oy) {
+                    if (sSelf) return;
+                    sScrolled += y - oy;
+                }
+            });
+        } catch (Throwable ignored) { }
+    }
+
+    private static WeakReference<View> sRef = new WeakReference<View>(null);
+    private static int sRefTop, sScrolled;
+    private static boolean sSelf;
+    private static long sChangedAt;
+    private static final Map<View, Boolean> sChanged = new WeakHashMap<View, Boolean>();
+
+    private static void changed(View card) {
+        sChangedAt = android.os.SystemClock.uptimeMillis();
+        sChanged.put(card, Boolean.TRUE);
+    }
+
+    private static void stabilize(ViewGroup feed) {
+        long now = android.os.SystemClock.uptimeMillis();
+        View r = sRef.get();
+        int off = 0;
+        boolean event = false;
+        if (r != null && r.getParent() == feed && !sChanged.containsKey(r)) {
+            off = r.getTop() - (sRefTop - sScrolled);
+            String line = frame(feed, off);
+            if (off != 0) {
+                if (now - sChangedAt < 400 && Math.abs(off) < feed.getHeight()) {
+                    sSelf = true;
+                    try { feed.scrollBy(0, off); } catch (Throwable ignored) { } finally { sSelf = false; }
+                    event = true;
+                } else if (Math.abs(off) > 220) {  event = true; }
+                else if (Math.abs(off) > 48) event = true;
+            }
+            remember(line, event);
+        } else remember(frame(feed, 0) + " (no reference card)", false);
+        sMoved = sScrolled;
+        if (sMoved != 0) sMovedAt = android.os.SystemClock.uptimeMillis();
+        sScrolled = 0;
+        if (now - sChangedAt > 400) sChanged.clear();
+        View pick = null;
+        int mid = feed.getHeight() / 2, best = Integer.MAX_VALUE;
+        for (int i = 0; i < feed.getChildCount(); i++) {
+            View c = feed.getChildAt(i);
+            if (c.getHeight() <= 0 || sChanged.containsKey(c) || sFolded.containsKey(c)) continue;
+            int d = Math.abs((c.getTop() + c.getBottom()) / 2 - mid);
+            if (d < best) { best = d; pick = c; }
+        }
+        sRef = new WeakReference<View>(pick);
+        if (pick != null) sRefTop = pick.getTop();
+    }
+
+    private static final String[] sFrames = new String[4];
+    private static int sFrameIndex, sAfter, sDumps;
+    private static long sDumpWindow;
+
+    private static String frame(ViewGroup feed, int off) {
+        StringBuilder b = new StringBuilder();
+        b.append(android.os.SystemClock.uptimeMillis()).append(" user scroll ").append(sScrolled).append(" off ").append(off).append(" |");
+        for (int i = 0; i < feed.getChildCount(); i++) {
+            View c = feed.getChildAt(i);
+            int[] st = sState.get(c);
+            char k = st == null ? '?' : st[0] == AD ? 'A' : st[0] == PLAIN ? 'P' : 'U';
+            b.append(' ').append(Integer.toHexString(System.identityHashCode(c) & 0xfff)).append(':').append(c.getTop()).append('+').append(c.getHeight()).append(k);
+            if (sFolded.containsKey(c)) b.append('F');
+            if (sChanged.containsKey(c)) b.append('*');
+            if (c == sRef.get()) b.append('R');
+        }
+        return b.toString();
+    }
+
+    private static void remember(String line, boolean event) {
+        if (sAfter > 0) { sAfter--; }
+        if (event) {
+            long now = android.os.SystemClock.uptimeMillis();
+            if (now - sDumpWindow > 10000) { sDumpWindow = now; sDumps = 0; }
+            if (sDumps++ < 8) {
+                for (int i = 0; i < sFrames.length; i++) {
+                }
+                sAfter = 3;
+            }
+        }
+        sFrames[sFrameIndex] = line;
+        sFrameIndex = (sFrameIndex + 1) % sFrames.length;
+    }
+
+
+    private static int sMoved;
+    private static long sMovedAt;
+
+    private static int[] state(View card) {
+        int[] st = sState.get(card);
+        if (st != null) return st;
+        st = new int[]{UNKNOWN, 0, 0, 0};
+        sState.put(card, st);
+        final int[] state = st;
+        card.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override public void onViewAttachedToWindow(View v) { state[0] = UNKNOWN; state[1] = 0; state[2] = 0; state[3] = 0; }
+            @Override public void onViewDetachedFromWindow(View v) { }
+        });
+        card.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
+            @Override public void onLayoutChange(View v, int l, int t, int r, int b, int ol, int ot, int or, int ob) {
+                if (state[0] == PLAIN && (r - l != or - ol || b - t != ob - ot)) { state[0] = UNKNOWN; state[1] = 0; }
+            }
+        });
+        return st;
     }
 
     private static void cards(ViewGroup feed) {
+        stabilize(feed);
         boolean enabled = !sUnsafe && on(feed.getContext());
+        Session session = enabled ? session(feed) : null;
         for (int i = 0; i < feed.getChildCount(); i++) {
             final View card = feed.getChildAt(i);
-            int[] st = sState.get(card);
-            if (st == null) {
-                st = new int[]{UNKNOWN, 0, 0};
-                sState.put(card, st);
-                final int[] state = st;
-                card.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-                    @Override public void onViewAttachedToWindow(View v) { state[0] = UNKNOWN; state[1] = 0; state[2] = 0; }
-                    @Override public void onViewDetachedFromWindow(View v) { }
-                });
-                card.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
-                    @Override public void onLayoutChange(View v, int l, int t, int r, int b, int ol, int ot, int or, int ob) {
-                        if (state[0] == PLAIN && (r - l != or - ol || b - t != ob - ot)) { state[0] = UNKNOWN; state[1] = 0; }
-                    }
-                });
-            }
+            int[] st = state(card);
             if (!enabled) { if (sFolded.containsKey(card)) unfold(card); if (sTrimmed.containsKey(card)) untrim(card); continue; }
+            if (st[0] == AD && st[3] == 1) verify(session, card, st);
+            else if (st[0] == AD && session != null) fill(session, card);
+            squash(card.getClass());
             long now = android.os.SystemClock.uptimeMillis();
             boolean again = st[0] == PLAIN && st[1] < 12 && (int) now - st[2] >= 400;
+            if (again && (sMoved != 0 || android.os.SystemClock.uptimeMillis() - sMovedAt < 250)) again = false;
             if ((st[0] == UNKNOWN || again) && st[1] < 12 && card.getWidth() > 0) {
                 st[1]++; st[2] = (int) now;
                 boolean first = st[0] == UNKNOWN;
@@ -122,10 +223,15 @@ final class ChromeFeedAds {
                     if (first) sChecked++;
                     if (verdict == AD) sAds++;
                     if (sChecked >= 6 && sAds * 2 > sChecked) { sUnsafe = true; unfoldAll(); return; }
+                    if (verdict == AD) keep(session, feed, card);
                 }
             }
             if (st[0] == AD) fold(card); else if (sFolded.containsKey(card)) unfold(card);
         }
+    }
+
+    private static void note(View card) {
+        changed(card);
     }
 
     private static View feedback(View card) {
@@ -147,6 +253,7 @@ final class ChromeFeedAds {
         if (box == was) return;
         if (was != null) untrim(card);
         if (box == null) return;
+        note(card);
         squash(card.getClass());
         sTrimmed.put(card, box);
         box.setVisibility(View.INVISIBLE);
@@ -154,6 +261,7 @@ final class ChromeFeedAds {
     }
 
     private static void untrim(final View card) {
+        if (sTrimmed.containsKey(card)) note(card);
         View box = sTrimmed.remove(card);
         if (box != null && box.getVisibility() == View.INVISIBLE) box.setVisibility(View.VISIBLE);
         card.post(new Runnable() { public void run() { card.requestLayout(); } });
@@ -175,15 +283,18 @@ final class ChromeFeedAds {
         int texts = 0;
         ArrayList<View> views = new ArrayList<View>();
         collect(card, views);
+        ArrayList<View> trees = null;
         for (View v : views) {
             if (v.getVisibility() != View.VISIBLE) continue;
             if (described(v.getContentDescription())) return AD;
-            if (provided(v)) return AD;
-            if (!(v instanceof TextView)) continue;
-            CharSequence t = ((TextView) v).getText();
-            if (t == null || t.length() == 0) continue;
-            texts++;
-            if (label(t)) return AD;
+            if (v instanceof TextView) {
+                CharSequence t = ((TextView) v).getText();
+                if (t != null && t.length() > 0) {
+                    texts++;
+                    if (label(t)) return AD;
+                }
+            }
+            try { if (v.getAccessibilityNodeProvider() != null) { if (trees == null) trees = new ArrayList<View>(); trees.add(v); } } catch (Throwable ignored) { }
         }
         TextSpy spy = spy();
         int runs = 0;
@@ -194,6 +305,7 @@ final class ChromeFeedAds {
             if (spy.ad) return AD;
             runs = spy.runs;
         }
+        if (trees != null) for (View v : trees) if (provided(v)) return AD;
         return texts + runs > 0 ? PLAIN : UNKNOWN;
     }
 
@@ -334,6 +446,9 @@ final class ChromeFeedAds {
             if (k != type && !sMeasureHooked.add(k)) return;
             try {
                 Xp.hookMethod(m, new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        try { judgeOnMeasure((View) p.thisObject, p.args); } catch (Throwable ignored) { }
+                    }
                     @Override protected void afterHookedMethod(Xp.Param p) {
                         try {
                             View v = (View) p.thisObject;
@@ -355,13 +470,238 @@ final class ChromeFeedAds {
         }
     }
 
+    private static void judgeOnMeasure(View v, Object[] args) {
+        View feed = sFeed.get();
+        if (feed == null || v.getParent() != feed || args == null || args.length != 2) return;
+        if (sUnsafe || !on(v.getContext())) return;
+        int[] st = state(v);
+        if (st[0] != UNKNOWN) return;
+        ViewGroup.LayoutParams lp0 = v.getLayoutParams();
+        if (lp0 == null) return;
+        Session session = session(feed);
+        String key = session == null ? null : key(feed, v);
+        if (key != null) sKeys.put(v, key); else sKeys.remove(v);
+        if (key != null && session.ads.containsKey(key)) {
+            st[0] = AD;
+            st[3] = 1;
+            foldNow(v, lp0, args);
+            return;
+        }
+        if (key != null && sFolded.containsKey(v)) {
+            unfoldNow(v, lp0, args);
+        }
+        if (st[1] >= 12) return;
+        int verdict = check(v);
+        if (verdict == UNKNOWN) return;
+        st[1]++;
+        st[2] = (int) android.os.SystemClock.uptimeMillis();
+        st[0] = verdict;
+        sChecked++;
+        if (verdict == AD) sAds++;
+        if (sChecked >= 6 && sAds * 2 > sChecked) { sUnsafe = true; unfoldAll(); return; }
+        ViewGroup.LayoutParams lp = v.getLayoutParams();
+        if (lp == null) return;
+        if (verdict == AD) {
+            foldNow(v, lp, args);
+            keep(session, (ViewGroup) feed, v);
+        } else if (sFolded.containsKey(v)) {
+            unfoldNow(v, lp, args);
+        }
+    }
+
+    private static void foldNow(View v, ViewGroup.LayoutParams lp, Object[] args) {
+        boolean margins = lp instanceof ViewGroup.MarginLayoutParams;
+        if (!sFolded.containsKey(v)) {
+            int top = 0, bottom = 0;
+            if (margins) { top = ((ViewGroup.MarginLayoutParams) lp).topMargin; bottom = ((ViewGroup.MarginLayoutParams) lp).bottomMargin; }
+            sFolded.put(v, new int[]{lp.height, top, bottom});
+        }
+        lp.height = 0;
+        if (margins) { ((ViewGroup.MarginLayoutParams) lp).topMargin = 0; ((ViewGroup.MarginLayoutParams) lp).bottomMargin = 0; }
+        args[1] = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.EXACTLY);
+        changed(v);
+    }
+
+    private static void unfoldNow(View v, ViewGroup.LayoutParams lp, Object[] args) {
+        int[] was = sFolded.remove(v);
+        if (was == null) return;
+        lp.height = was[0];
+        if (lp instanceof ViewGroup.MarginLayoutParams) { ((ViewGroup.MarginLayoutParams) lp).topMargin = was[1]; ((ViewGroup.MarginLayoutParams) lp).bottomMargin = was[2]; }
+        if (lp.height < 0) args[1] = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        else args[1] = View.MeasureSpec.makeMeasureSpec(lp.height, View.MeasureSpec.EXACTLY);
+        changed(v);
+    }
+
+    private static final class Session {
+        final WeakReference<Object> adapter;
+        final java.util.HashMap<String, String> ads = new java.util.HashMap<String, String>();
+        int count = -1;
+        Session(Object a) { adapter = new WeakReference<Object>(a); }
+    }
+
+    private static Session sSession;
+    private static final Map<View, String> sKeys = new WeakHashMap<View, String>();
+    private static java.lang.reflect.Field sAdapterField, sHolderField, sIdField;
+    private static java.lang.reflect.Method sCountMethod, sPositionMethod;
+    private static boolean sNoMemory;
+
+    private static Session session(View feed) {
+        if (sNoMemory) return null;
+        try {
+            Object a = adapter(feed);
+            if (a == null) return null;
+            Session s = sSession;
+            if (s == null || s.adapter.get() != a) { s = new Session(a); sSession = s; }
+            int n = sCountMethod == null ? -1 : (Integer) sCountMethod.invoke(a);
+            if (n >= 0) {
+                if (s.count >= 0 && n < s.count - 2 && !s.ads.isEmpty()) s.ads.clear();
+                s.count = n;
+            }
+            return s;
+        } catch (Throwable t) {
+            sNoMemory = true;
+            return null;
+        }
+    }
+
+    private static Object adapter(View feed) throws Exception {
+        if (sAdapterField == null) {
+            for (Class<?> k = feed.getClass(); k != null && k != ViewGroup.class && sAdapterField == null; k = k.getSuperclass()) {
+                for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                    Class<?> t = f.getType();
+                    if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || t.isPrimitive() || t.getName().startsWith("java.") || t.getName().startsWith("android.")) continue;
+                    boolean observable = false;
+                    for (java.lang.reflect.Field g : t.getDeclaredFields()) if (android.database.Observable.class.isAssignableFrom(g.getType())) { observable = true; break; }
+                    if (!observable) continue;
+                    f.setAccessible(true);
+                    sAdapterField = f;
+                    for (java.lang.reflect.Method m : t.getDeclaredMethods())
+                        if (java.lang.reflect.Modifier.isAbstract(m.getModifiers()) && m.getReturnType() == int.class && m.getParameterTypes().length == 0) { m.setAccessible(true); sCountMethod = m; break; }
+                    java.lang.reflect.Method pos = null;
+                    int found = 0;
+                    for (java.lang.reflect.Method m : k.getDeclaredMethods()) {
+                        Class<?>[] p = m.getParameterTypes();
+                        if (java.lang.reflect.Modifier.isStatic(m.getModifiers()) && m.getReturnType() == int.class && p.length == 1 && p[0] == View.class) { pos = m; found++; }
+                    }
+                    if (found == 1) { pos.setAccessible(true); sPositionMethod = pos; }
+                    break;
+                }
+            }
+            if (sAdapterField == null) throw new IllegalStateException("no adapter field");
+        }
+        return sAdapterField.get(feed);
+    }
+
+    private static String key(View feed, View card) {
+        try {
+            Object holder = holder(card);
+            if (holder != null && sIdField != null) {
+                long id = sIdField.getLong(holder);
+                if (id != -1) return "i" + id;
+            }
+            if (sPositionMethod == null) return null;
+            int pos = (Integer) sPositionMethod.invoke(null, card);
+            return pos < 0 ? null : "p" + pos;
+        } catch (Throwable t) { return null; }
+    }
+
+    private static Object holder(View card) throws Exception {
+        ViewGroup.LayoutParams lp = card.getLayoutParams();
+        if (lp == null) return null;
+        if (sHolderField != null && sHolderField.getDeclaringClass().isInstance(lp)) return sHolderField.get(lp);
+        for (Class<?> k = lp.getClass(); k != null && k != ViewGroup.MarginLayoutParams.class && k != ViewGroup.LayoutParams.class; k = k.getSuperclass()) {
+            for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+                f.setAccessible(true);
+                Object h = f.get(lp);
+                if (h == null || !holds(h, card)) continue;
+                sHolderField = f;
+                java.lang.reflect.Field id = null;
+                int longs = 0;
+                for (Class<?> c = h.getClass(); c != null && c != Object.class; c = c.getSuperclass())
+                    for (java.lang.reflect.Field g : c.getDeclaredFields())
+                        if (!java.lang.reflect.Modifier.isStatic(g.getModifiers()) && g.getType() == long.class) { id = g; longs++; }
+                if (longs == 1) { id.setAccessible(true); sIdField = id; }
+                return h;
+            }
+        }
+        return null;
+    }
+
+    private static boolean holds(Object h, View card) {
+        for (Class<?> c = h.getClass(); c != null && c != Object.class; c = c.getSuperclass()) {
+            for (java.lang.reflect.Field g : c.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(g.getModifiers()) || g.getType() != View.class) continue;
+                try { g.setAccessible(true); if (g.get(h) == card) return true; } catch (Throwable ignored) { }
+            }
+        }
+        return false;
+    }
+
+    private static String fingerprint(View card) {
+        ArrayList<View> views = new ArrayList<View>();
+        collect(card, views);
+        StringBuilder b = new StringBuilder();
+        for (View v : views) {
+            CharSequence t = v instanceof TextView ? ((TextView) v).getText() : null;
+            if (t != null && t.length() > 0) b.append(t).append('|');
+            CharSequence d = v.getContentDescription();
+            if (d != null && d.length() > 0) b.append(d).append('|');
+            if (b.length() > 400) break;
+        }
+        return b.length() > 400 ? b.substring(0, 400) : b.toString();
+    }
+
+    private static void fill(Session s, View card) {
+        String key = sKeys.get(card);
+        String was = key == null ? null : s.ads.get(key);
+        if (was == null || was.length() > 0) return;
+        String now = fingerprint(card);
+        if (now.length() > 0) s.ads.put(key, now);
+    }
+
+    private static boolean labelled(View card) {
+        ArrayList<View> views = new ArrayList<View>();
+        collect(card, views);
+        for (View v : views) {
+            if (described(v.getContentDescription())) return true;
+            if (v instanceof TextView && label(((TextView) v).getText())) return true;
+        }
+        return false;
+    }
+
+    private static void keep(Session s, ViewGroup feed, View card) {
+        if (s == null) return;
+        String key = key(feed, card);
+        if (key == null) return;
+        sKeys.put(card, key);
+        if (!s.ads.containsKey(key) || s.ads.get(key).length() == 0) s.ads.put(key, fingerprint(card));
+    }
+
+    private static void verify(Session s, View card, int[] st) {
+        String key = sKeys.get(card);
+        if (s == null || key == null) { st[3] = 2; return; }
+        String now = fingerprint(card);
+        if (now.length() == 0) return;
+        st[3] = 2;
+        String was = s.ads.get(key);
+        if (was == null || was.length() == 0) { s.ads.put(key, now); return; }
+        if (was.equals(now)) return;
+        if (labelled(card)) { s.ads.put(key, now); return; }
+        s.ads.clear();
+        st[0] = UNKNOWN;
+        st[1] = 0;
+    }
+
     private static void fold(final View card) {
         ViewGroup.LayoutParams lp = card.getLayoutParams();
         if (lp == null) return;
         boolean margins = lp instanceof ViewGroup.MarginLayoutParams;
         if (sFolded.containsKey(card)) {
             if (card.getHeight() == 0) return;
+            note(card);
         } else {
+            note(card);
             squash(card.getClass());
             int top = 0, bottom = 0;
             if (margins) { top = ((ViewGroup.MarginLayoutParams) lp).topMargin; bottom = ((ViewGroup.MarginLayoutParams) lp).bottomMargin; }
@@ -373,6 +713,7 @@ final class ChromeFeedAds {
     }
 
     private static void unfold(final View card) {
+        if (sFolded.containsKey(card)) note(card);
         int[] was = sFolded.remove(card);
         ViewGroup.LayoutParams lp = card.getLayoutParams();
         if (was == null || lp == null) return;

@@ -19,6 +19,7 @@ import java.lang.reflect.Modifier;
 final class VolumeCamera {
 
     static final String KEY_LAUNCH_AT = "voldowncam_launch_at";
+    static final String KEY_ACTION = "pixelsuite_voldown_action";
 
     private VolumeCamera() {}
 
@@ -30,7 +31,7 @@ final class VolumeCamera {
 
     private static ClassLoader sClassLoader;
     private static volatile boolean sInitDone;
-    private static volatile boolean sEnabled = true;
+    private static volatile boolean sEnabled = true, sTorch;
 
     private static long sLastDown;
     private static boolean sConsumingPress;
@@ -74,7 +75,7 @@ final class VolumeCamera {
             long t = ev.getEventTime();
             if (sLastDown != 0 && t - sLastDown <= DOUBLE_PRESS_MS) {
                 sLastDown = 0;
-                launchCamera(pwm, ctx);
+                if (sTorch) toggleTorch(ctx); else launchCamera(pwm, ctx);
             } else {
                 sLastDown = t;
             }
@@ -120,6 +121,15 @@ final class VolumeCamera {
         } catch (Throwable t) {
             return true;
         }
+    }
+
+    private static void toggleTorch(final Context ctx) {
+        Torch.toggle(ctx, new Runnable() {
+            @Override
+            public void run() {
+                Haptics.click(ctx);
+            }
+        });
     }
 
     private static void launchCamera(Object pwm, final Context ctx) {
@@ -183,15 +193,15 @@ final class VolumeCamera {
         synchronized (VolumeCamera.class) {
             if (sInitDone) return;
             try {
-                sEnabled = isEnabled(ctx);
-                ctx.getContentResolver().registerContentObserver(
-                        Settings.Secure.getUriFor(Feature.VOLDOWN_CAMERA), false,
-                        new ContentObserver(Bg.handler()) {
-                            @Override
-                            public void onChange(boolean selfChange) {
-                                sEnabled = isEnabled(ctx);
-                            }
-                        });
+                read(ctx);
+                ContentObserver o = new ContentObserver(Bg.handler()) {
+                    @Override
+                    public void onChange(boolean selfChange) {
+                        read(ctx);
+                    }
+                };
+                ctx.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(Feature.VOLDOWN_CAMERA), false, o);
+                ctx.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(KEY_ACTION), false, o);
                 sInitDone = true;
             } catch (Throwable t) {
             }
@@ -199,7 +209,21 @@ final class VolumeCamera {
     }
 
     static boolean isEnabled(Context ctx) {
-        return Feature.on(ctx, Feature.VOLDOWN_CAMERA);
+        return !"off".equals(action(ctx));
+    }
+
+    private static void read(Context ctx) {
+        String a = action(ctx);
+        sEnabled = !"off".equals(a);
+        sTorch = "flashlight".equals(a);
+    }
+
+    static String action(Context ctx) {
+        String a = null;
+        try { a = Settings.Secure.getString(ctx.getContentResolver(), KEY_ACTION); } catch (Throwable ignored) { }
+        boolean on = Feature.on(ctx, Feature.VOLDOWN_CAMERA);
+        if (!on) return "off";
+        return "flashlight".equals(a) ? "flashlight" : "camera";
     }
 
     private static Context context(Object pwm) {

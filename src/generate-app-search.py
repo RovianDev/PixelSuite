@@ -102,7 +102,7 @@ for m in re.finditer(r'if\s*\(([^\n;{}]*)\)\s*(?!\{)(explanation|section|choice)
 def pages_at(pos):
     hits=[r for r in ranges if r[0]<pos<r[1]]
     return min(hits,key=lambda r:r[1]-r[0])[2] if hits else ['']
-for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|section|choice|navChoice|labelSize|surfaceStyle'):
+for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|section|choice|navChoice|labelSize|surfaceStyle|chromeGuidePart'):
     pages=pages_at(pos)
     if name=='row' and len(a)>=6:
         key,icon,title,desc=value(a[1]),value(a[2]),value(a[4]),value(a[5])
@@ -114,6 +114,9 @@ for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|secti
         for page in ([string(target[1])] if target else pages):add(page,title,desc,'ACTION',icon=icon)
     elif name=='appNavigation' and len(a)>=7:
         page=value(a[6]);parents[page]=pages[0];add(page,value(a[1]),value(a[2]),'PAGE',icon=value(a[5]))
+    elif name=='chromeGuidePart' and len(a)>2 and value(a[1]) and value(a[2]):
+        # r262: the "How it works" parts (Chrome+, Gboard+) are found by their title and text
+        for page in pages:add(page,value(a[1]),value(a[2]),anchor=value(a[1]))
     elif name in ('explanation','section') and len(a)>1 and value(a[1]):
         text=value(a[1])
         for page in pages:add(page,text if name=='section' else text.split('\n')[0][:90],text,anchor=text)
@@ -157,6 +160,16 @@ out=root/'res/raw/app_search.json';out.parent.mkdir(parents=True,exist_ok=True)
 for entry in entries:
     if entry.get('anchor') == '@PatronAccount':
         entry['keywords'] = (entry.get('keywords', '') + ' patreon sign in unlock').strip()
+    if entry.get('page') == 'chrome':
+        entry['keywords'] = (entry.get('keywords', '') + ' filtering level per site remove element chrome ad blocker button bottom bar opera navigation bar address bar chrome layout speed dial shortcuts new tab page extensions extension menu pin to toolbar animation transition smooth motion animated icons reorder drag move shortcut add shortcut folder folders speed dial folder group shortcuts rename folder speed dial bookmarks bookmark folder round icons circle icons no suggestions suggested sites most visited super dark chrome+ chrome plus vpn extension vpn for chrome country pin extension pinned extension dark pages dark websites').strip()
+    if entry.get('page') == 'ad_blocker':
+        entry['keywords'] = (entry.get('keywords', '') + ' Ad Blocker allowed websites whitelist filtering level default basic optimal complete per-site levels removed elements restore reset site settings').strip()
+    if entry.get('page') == 'dark_pages':
+        entry['keywords'] = (entry.get('keywords', '') + ' dark mode dark theme night mode dark websites dark web pages black pages super dark pure black schedule timer sunset night automatic chrome extension').strip()
+    if entry.get('page') == 'vpn':
+        entry['keywords'] = (entry.get('keywords', '') + ' vpn proxy change country location ip address united states usa united kingdom uk britain japan korea germany vpn gate free servers open source open-source softether quick settings tile patreon chrome only vpn for chrome location gps geolocation google location time zone timezone travel').strip()
+    if entry.get('page') == 'google_dialer':
+        entry['keywords'] = (entry.get('keywords', '') + ' recording quality hd recording lossless wav call quality').strip()
     page=entry['page'];trail=[];visited=set()
     while page and page not in visited:
         visited.add(page);trail.insert(0,titles.get(page,page));page=parents.get(page,'')

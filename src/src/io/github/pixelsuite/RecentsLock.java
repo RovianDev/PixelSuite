@@ -550,7 +550,7 @@ final class RecentsLock {
                         boolean isOn = isLocked(container);
                         Lock glyph = new Lock(text.getCurrentTextColor(), isOn ? 1f : 0f);
                         icon.setBackground(glyph);
-                        text.setText(isOn ? "Unlock" : "Lock");
+                        text.setText(I18n.cs(isOn ? "Unlock" : "Lock"));
                         Xp.setAdditionalInstanceField(p.thisObject, "pixelsuite_glyph", glyph);
                         Xp.setAdditionalInstanceField(p.thisObject, "pixelsuite_text", text);
                         p.setResult(null);
@@ -569,7 +569,7 @@ final class RecentsLock {
                         final boolean locking = !isLocked(container);
                         Object g = Xp.getAdditionalInstanceField(item, "pixelsuite_glyph");
                         Object t = Xp.getAdditionalInstanceField(item, "pixelsuite_text");
-                        if (t instanceof TextView) ((TextView) t).setText(locking ? "Unlock" : "Lock");
+                        if (t instanceof TextView) ((TextView) t).setText(I18n.cs(locking ? "Unlock" : "Lock"));
                         long close = 0;
                         if (g instanceof Lock) { ((Lock) g).animateTo(locking ? 1f : 0f); close = 300; }
                         Haptics.tick(taskView.getContext());
@@ -1029,7 +1029,7 @@ final class RecentsLock {
             glyph.setCallback(this);
             setElevation(3 * d);
             setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);
-            setContentDescription("Locked");
+            setContentDescription(I18n.cs("Locked"));
         }
         @Override protected boolean verifyDrawable(Drawable who) { return who == glyph || super.verifyDrawable(who); }
         @Override protected void onDraw(Canvas canvas) {
@@ -1168,9 +1168,10 @@ final class RecentsLock {
             Context c = layer.getContext();
             float d = c.getResources().getDisplayMetrics().density;
             final TextView pill = new TextView(c);
-            pill.setText(message);
+            pill.setText(I18n.cs(message));
             pill.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
             pill.setSingleLine(true);
+            I18n.fitLine(pill);
             pill.setGravity(Gravity.CENTER);
             pill.setPaddingRelative(Math.round(16 * d), Math.round(10 * d), Math.round(16 * d), Math.round(10 * d));
             try { pill.setTypeface(android.graphics.Typeface.create("google-sans-text-medium", android.graphics.Typeface.NORMAL)); } catch (Throwable ignored) { }

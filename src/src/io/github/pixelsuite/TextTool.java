@@ -479,7 +479,7 @@ final class TextTool {
         }
         String text = (String) ivlText.get(ivl);
         typing = true;
-        input.setText(text);
+        input.setText(I18n.cs(text));
         input.setSelection(text.length());
         typing = false;
         showKeyboard();
@@ -791,7 +791,6 @@ final class TextTool {
         if (m.invert(inv)) { p[0] += cv.getLeft(); p[1] += cv.getTop(); inv.mapPoints(p); }
         return p;
     }
-    private static String lastHit = "?";
 
     private static boolean isOwner(Object hit, Object ivl) {
         try {
@@ -836,7 +835,6 @@ final class TextTool {
                     Object hit = StudioItems.itemAt(cv, d), sel = editing() != null ? editing() : selected();
                     boolean self = hit != null && sel != null && (hit == sel || hit == ivlItem.get(sel) || isOwner(hit, sel));
                     if (self) onSelf = true; else other = hit != null;
-                    lastHit = hit == null ? "nothing" : hit.getClass().getSimpleName();
                 } catch (Throwable ignored) { }
                 if (between && am == MotionEvent.ACTION_UP && (onSelf || !other)) {
                     if (heldDown != null) { heldDown.recycle(); heldDown = null; }
@@ -998,7 +996,7 @@ final class TextTool {
         if (marks && Math.hypot(pt[0] - plain.centerX(), pt[1] - (plain.top - CHECK_RISE * drawDp)) <= hit) return 4;
         boolean inside = inner.contains(pt[0], pt[1]);
         if (!marks) return inside || box.contains(pt[0], pt[1]) ? 1 : 0;
-        if (inside) {  }
+        if (inside) { }
         else if (near(pt, box.right, box.centerY(), reach)) drag = 1;
         else if (near(pt, box.left, box.centerY(), reach)) drag = -1;
         else if (near(pt, box.right, box.top, reach) || near(pt, box.right, box.bottom, reach) || near(pt, box.left, box.bottom, reach)) drag = 2;
@@ -1196,7 +1194,7 @@ final class TextTool {
                 canvas.drawPath(arrow, p);
             }
         };
-        g.setContentDescription("Make text menu smaller");
+        g.setContentDescription(I18n.cs("Make text menu smaller"));
         g.setOnTouchListener(new View.OnTouchListener() {
             float startX, startP; android.view.VelocityTracker vt; boolean moved;
             @Override public boolean onTouch(View v, MotionEvent e) {
@@ -1277,13 +1275,13 @@ final class TextTool {
         for (int i = 0; i < fonts.size(); i++) {
             if (i == SHOWN) {
                 moreFonts = new MoreFonts(a, ink);
-                moreFonts.setContentDescription("More fonts");
+                moreFonts.setContentDescription(I18n.cs("More fonts"));
                 moreFonts.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { setExpanded(true, true); } });
                 fontRowV.addView(moreFonts, new LinearLayout.LayoutParams(dp(52), rowH()));
             }
             final Object font = fonts.get(i);
             TextView t = new TextView(a);
-            t.setText("Aa"); t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18); t.setTextColor(ink); t.setGravity(Gravity.CENTER);
+            t.setText(I18n.cs("Aa")); t.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18); t.setTextColor(ink); t.setGravity(Gravity.CENTER);
             try { Typeface tf = (Typeface) ikaFace.get(font); if (tf != null) t.setTypeface(tf); t.setContentDescription((String) ikaName.get(font)); } catch (Throwable ignored) { }
             t.setTag(font);
             t.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { style(null, font); } });
@@ -1299,7 +1297,7 @@ final class TextTool {
             if (i == SHOWN) {
                 moreColours = new View(a);
                 moreColours.setBackground(new DoodleOverlay.RainbowIcon(dens));
-                moreColours.setContentDescription("More colours");
+                moreColours.setContentDescription(I18n.cs("More colours"));
                 moreColours.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { setExpanded(true, true); } });
                 colourRowV.addView(moreColours, new LinearLayout.LayoutParams(dp(52), rowH()));
             }
@@ -1318,11 +1316,11 @@ final class TextTool {
         doneView = null;
         if (typingNow) {
             TextView done = new TextView(a);
-            done.setText("✓"); done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20); done.setGravity(Gravity.CENTER);
+            done.setText(I18n.cs("✓")); done.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20); done.setGravity(Gravity.CENTER);
             GradientDrawable g = new GradientDrawable(); g.setShape(GradientDrawable.OVAL); g.setColor(ink);
             done.setBackground(g);
             done.setTextColor(StudioToolbar.darkMenu() ? 0xff1d1b20 : 0xffffffff);
-            done.setContentDescription("Done");
+            done.setContentDescription(I18n.cs("Done"));
             done.setOnClickListener(new View.OnClickListener() { @Override public void onClick(View v) { stopEditing(true); } });
             LinearLayout.LayoutParams dlp = new LinearLayout.LayoutParams(dp(40), dp(40));
             dlp.leftMargin = dp(8);
@@ -1484,7 +1482,7 @@ final class TextTool {
                 canvas.drawRoundRect(cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2, h / 2, h / 2, p);
             }
         };
-        pill.setContentDescription("Move text menu");
+        pill.setContentDescription(I18n.cs("Move text menu"));
         pill.setOnTouchListener(new View.OnTouchListener() {
             @Override public boolean onTouch(View v, MotionEvent e) {
                 if (e.getActionMasked() == MotionEvent.ACTION_DOWN && Math.abs(e.getX() - v.getWidth() / 2f) > 110 * dens) return false;
@@ -1602,7 +1600,7 @@ final class TextTool {
                 if (DoodleOverlay.active()) { hideMenu(); return; }
                 if (menuFor != null && !fingerDown) syncFaceAndLayout(menuFor);
                 FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) v.getLayoutParams();
-                if (grabbing || fingerDown || (flingAnim != null && flingAnim.isRunning())) {  }
+                if (grabbing || fingerDown || (flingAnim != null && flingAnim.isRunning())) { }
                 else if (!Float.isNaN(userTop)) {
                     int t = Math.round(clampTop(a, v, userTop));
                     if (lp.gravity != TOP_G || lp.bottomMargin != 0 || Math.abs(lp.topMargin - t) > 1) { lp.gravity = TOP_G; lp.bottomMargin = 0; lp.topMargin = t; v.setLayoutParams(lp); }

@@ -58,8 +58,25 @@ final class SuperDark {
         hookPanel(android.graphics.drawable.ColorDrawable.class, "setColor");
         hookPanel(android.graphics.drawable.GradientDrawable.class, "setColor");
         hookPanel(android.view.View.class, "setBackgroundColor");
+        notificationTints(cl);
         backdropHooks();
         splashHooks(cl);
+    }
+
+    private static void notificationTints(ClassLoader cl) {
+        try {
+            Class<?> bg = Class.forName("com.android.systemui.statusbar.notification.row.NotificationBackgroundView", false, cl);
+            Xp.hookAllMethods(bg, "setTint", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        if (p.args.length != 1 || !(p.args[0] instanceof Integer) || !effectiveCached()) return;
+                        int c = (Integer) p.args[0];
+                        if ((c >>> 24) != 0xff || (c & 0xffffff) == (SuperDarkPalette.CARD & 0xffffff) || !darkGrey(c)) return;
+                        p.args[0] = SuperDarkPalette.CARD;
+                                            } catch (Throwable ignored) { }
+                }
+            });
+        } catch (Throwable t) { }
     }
 
     private static int backdropHooks() {

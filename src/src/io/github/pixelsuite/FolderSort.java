@@ -112,23 +112,23 @@ final class FolderSort {
     static void homeRename(final Object info) {
         final Activity a = LauncherFeatures.activity.get(); if (a == null) return;
         final android.widget.EditText edit = new android.widget.EditText(a); edit.setSingleLine(true);
-        try { edit.setText((CharSequence) LauncherFeatures.get(info, "title")); } catch (Throwable ignored) { }
+        try { edit.setText(I18n.cs((CharSequence) LauncherFeatures.get(info, "title"))); } catch (Throwable ignored) { }
         edit.selectAll();
         edit.setPadding(FrostedSurface.dp(a, 20), FrostedSurface.dp(a, 10), FrostedSurface.dp(a, 20), FrostedSurface.dp(a, 10)); edit.setTextSize(16);
-        final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(a).setTitle("Rename folder").setView(edit)
-                .setNegativeButton("Cancel", null).setPositiveButton("Save", null).create();
+        final android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(a).setTitle(I18n.cs("Rename folder")).setView(edit)
+                .setNegativeButton(I18n.cs("Cancel"), null).setPositiveButton(I18n.cs("Save"), null).create();
         FrostedSurface.show(dialog);
         dialog.getButton(android.app.AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             public void onClick(View button) {
                 String name = edit.getText().toString().trim();
-                if (name.length() == 0 || name.length() > 80) { edit.setError("Use a name between 1 and 80 characters"); return; }
+                if (name.length() == 0 || name.length() > 80) { edit.setError(I18n.cs("Use a name between 1 and 80 characters")); return; }
                 try {
                     LauncherFeatures.call(info, "setTitle", name, LauncherFeatures.call(a, "getModelWriter"));
                     View icon = findFolderIcon(info);
-                    if (icon != null) try { ((android.widget.TextView) LauncherFeatures.get(icon, "mFolderName")).setText(name); } catch (Throwable ignored) { }
+                    if (icon != null) try { ((android.widget.TextView) LauncherFeatures.get(icon, "mFolderName")).setText(I18n.cs(name)); } catch (Throwable ignored) { }
                     dialog.dismiss();
                 } catch (Throwable error) {
-                    android.widget.Toast.makeText(a, "Could not save the name", android.widget.Toast.LENGTH_SHORT).show();
+                    android.widget.Toast.makeText(a, I18n.cs("Could not save the name"), android.widget.Toast.LENGTH_SHORT).show();
                 }
             }
         });

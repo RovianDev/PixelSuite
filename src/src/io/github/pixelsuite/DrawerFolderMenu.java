@@ -91,17 +91,17 @@ final class DrawerFolderMenu {
     static void rename(final Object info) {
         final LauncherData.Folder f = DrawerFolders.record(info); final Activity a = LauncherFeatures.activity.get();
         if (f == null || a == null) return;
-        final EditText edit = new EditText(a); edit.setSingleLine(true); edit.setText(f.name); edit.selectAll();
+        final EditText edit = new EditText(a); edit.setSingleLine(true); edit.setText(I18n.cs(f.name)); edit.selectAll();
         edit.setPadding(FrostedSurface.dp(a, 20), FrostedSurface.dp(a, 10), FrostedSurface.dp(a, 20), FrostedSurface.dp(a, 10)); edit.setTextSize(16);
-        final AlertDialog dialog = new AlertDialog.Builder(a).setTitle("Rename folder").setView(edit)
-                .setNegativeButton("Cancel", null).setPositiveButton("Save", null).create();
+        final AlertDialog dialog = new AlertDialog.Builder(a).setTitle(I18n.cs("Rename folder")).setView(edit)
+                .setNegativeButton(I18n.cs("Cancel"), null).setPositiveButton(I18n.cs("Save"), null).create();
         FrostedSurface.show(dialog);
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             public void onClick(View button) {
                 String name = edit.getText().toString().trim();
-                if (name.length() == 0 || name.length() > 80) { edit.setError("Use a name between 1 and 80 characters"); return; }
+                if (name.length() == 0 || name.length() > 80) { edit.setError(I18n.cs("Use a name between 1 and 80 characters")); return; }
                 if (DrawerFolders.renameTo(f.id, name)) dialog.dismiss();
-                else Toast.makeText(a, "Could not save the name", Toast.LENGTH_SHORT).show();
+                else Toast.makeText(a, I18n.cs("Could not save the name"), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -127,9 +127,9 @@ final class DrawerFolderMenu {
 
     static void confirm(String title, String message, final Runnable yes) {
         Activity a = LauncherFeatures.activity.get(); if (a == null) return;
-        FrostedSurface.show(new AlertDialog.Builder(a).setTitle(title).setMessage(message)
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() { public void onClick(DialogInterface d, int which) { yes.run(); } })
+        FrostedSurface.show(new AlertDialog.Builder(a).setTitle(I18n.cs(title)).setMessage(I18n.cs(message))
+                .setNegativeButton(I18n.cs("No"), null)
+                .setPositiveButton(I18n.cs("Yes"), new DialogInterface.OnClickListener() { public void onClick(DialogInterface d, int which) { yes.run(); } })
                 .create());
     }
 }

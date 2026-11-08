@@ -1,0 +1,70 @@
+## v3.1.0
+Pixel Suite en 14 langues, Chrome+ et Gboard+, un VPN intégré, Sauvegarde et restauration pour les applis retenues, de nouvelles options pour le bouton Marche/Arrêt, le volume et l'écran de verrouillage, et une nouvelle icône.
+
+✨ Nouveautés
+• 💾 **Sauvegarde et restauration** : les applis bloquées sont enregistrées avant leur mise à jour, avec leurs données (connexions, discussions, réglages et fichiers) ou l'appli seule. Les 3 versions les plus récentes de chaque appli sont gardées, même après la désinstallation. (Protection › Bloqueur OTA et Store › Bloqueur du Play Store)
+• 🌍 **14 langues** : Pixel Suite parle désormais chinois, hindi, espagnol, arabe, français, portugais, russe, bengali, indonésien, allemand, japonais, turc, persan et hébreu, ce journal des modifications compris. Il suit la langue de votre téléphone, ou appuyez sur le bouton de langue en haut à droite de la page d'accueil pour en choisir une. (L'arabe, le persan et l'hébreu se lisent de droite à gauche.)
+• 🎮 **Pixel Stack!** un petit jeu caché : maintenez le logo en haut de la page d'accueil de Pixel Suite. Empilez les blocs aussi haut que possible, posez-les pile pour un (Parfait !) et partagez votre score avec notre communauté Telegram!
+• 🔘 **Maintenir le bouton Marche/Arrêt** : ouvrez Gemini ou Circle to Search, faites une capture d'écran, ou activez et désactivez un mode calme : Silence, Ne pas déranger, Ne me dérange pas, ou Sans dérangement pour les trois. (Raccourcis › Boutons)
+• 🔒 **Maintenir le bouton Marche/Arrêt quand verrouillé** : choisissez une autre action quand votre téléphone est verrouillé : Gemini (d'origine), Silence, Ne pas déranger, Ne me dérange pas ou Sans dérangement. Elle fonctionne séparément de Maintenir le bouton Marche/Arrêt. (Raccourcis › Boutons)
+• 📷 **Appuyer deux fois sur Marche/Arrêt** : vous pouvez maintenant aussi choisir « Appareil photo (d'origine) ». (Raccourcis › Boutons)
+• 🔦 **Appuyer deux fois sur Volume -** : vous pouvez maintenant aussi allumer ou éteindre la lampe torche. (Raccourcis › Boutons)
+• 🕒 **Écran toujours allumé** : gardez-le allumé pendant la charge, et laissez le bouton Marche/Arrêt l'afficher quelques secondes quand vous éteignez l'écran. (Personnaliser › Écran toujours allumé)
+• 🔢 **Confirmer automatiquement un code à 4 chiffres** : votre téléphone se déverrouille dès le 4e chiffre, sans appuyer sur Entrée. (Protection › Confidentialité et sécurité › Écran de verrouillage)
+• 🧹 **Masquer la barre de recherche** : maintenez simplement la barre de recherche et choisissez Masquer le widget. Le dock descend, vos applis profitent de la place, et la recherche reste dans le tiroir d'applis. Vous pouvez aussi la masquer dans Personnaliser › Lanceur Pixel.
+• 📋 **Sauvegardez vos applis** : sauvegardez n'importe quelle appli, l'appli seule ou avec toutes ses données (connexions, discussions, réglages et fichiers), et restaurez-la quand vous voulez. Appuyez sur le bouton vert pour remettre une version enregistrée. (Bloqueur du Play Store › Sélectionner des applis)
+• 🔎 **Rechercher dans Chrome** : sélectionnez du texte dans n'importe quelle appli, appuyez sur ⋮ et choisissez Rechercher dans Chrome. Les mots s'ouvrent directement dans Chrome.
+• 🗑️ **Seulement Tout effacer** : les applis récentes n'affichent que Tout effacer, au centre, sans Sélectionner ni Capture d'écran. (Personnaliser › Lanceur Pixel › Applis récentes)
+• 🎨 **Nouvelle icône de Pixel Suite** : l'icône de l'appli Pixel Suite remplit maintenant le cercle bord à bord, sans le fond blanc, et a une version à thème qui suit les couleurs de votre fond d'écran.
+
+💎 Patreon
+• 🚀 **Chrome+** : les commandes de Chrome passent en bas, avec des animations plus fluides, faites main, pour les onglets, le sélecteur d'onglets et les nouveaux onglets. Le + orange du sélecteur ouvre un onglet de navigation privée. (Patreon › Applis Google › Chrome+)
+• 🧩 **Extensions pour Chrome** : VPN, Bloqueur de pubs et Pages sombres dans un même volet, depuis le bouton en forme de pièce de puzzle de la barre de Chrome. Appuyez sur une extension pour l'utiliser, ou maintenez-la pour l'épingler à la barre.
+• 🌐 **VPN** : naviguez depuis un autre pays grâce à des serveurs gratuits dans le monde entier, pour tout le téléphone ou Chrome seul, le plus rapide en premier. La position de Chrome suit le VPN. (Patreon › VPN, plus un bloc dans les Réglages rapides)
+• ⭐ **Accès rapide** : des icônes rondes pour 19 sites web au maximum sur la page Nouvel onglet de Chrome. Faites-les glisser pour les déplacer, ou déposez-en une sur une autre pour créer un dossier qui suit Super Sombre. Donnez à n'importe quel site votre propre image ronde.
+• 🛡️ **Bloqueur de pubs** : choisissez un niveau de filtrage pour chaque site. Complet masque aussi les bannières de cookies et les pop-ups, et vous pouvez retirer vous-même n'importe quelle partie d'une page. Son interrupteur dans Modules l'active ou le désactive sur tous les sites. (Chrome+ › Modules)
+• 🌙 **Pages sombres** : les sites s'ouvrent en sombre sans flash blanc, ou en noir pur avec Super Sombre : toujours, avec le mode sombre du téléphone, ou selon un horaire. Les photos et vidéos gardent leurs couleurs. (Chrome+ › Modules)
+• 🎙️ **Téléphone Google+** : (Qualité d'enregistrement) Standard pour des fichiers plus petits, HD pour une voix plus nette (désormais par défaut), ou Sans perte pour la plus nette. (Patreon › Applis Google › Téléphone Google+)
+• ⌨️ **Barre de Gboard+** : jusqu'à 7 raccourcis à vous, comme Annuler, Rétablir, Sélection rapide, Tout sélectionner, Couper, Copier et Coller, dans toutes les applis. Tout sélectionner et Sélection rapide ouvrent tout de suite le menu Copier-Coller. (Patreon › Applis Google › Gboard+)
+• 🔤 **Touches de Gboard+** : des touches arrondies avec des pop-ups fluides, glissez vers la gauche depuis Supprimer pour effacer lettre par lettre, et redimensionnez ou déplacez le clavier. Avec la rangée de chiffres de Gboard activée, la page des symboles garde la même taille de touches. (Patreon › Applis Google › Gboard+)
+• ✍️ **Saisie avec Gboard+** : désactivez Correction automatique pour les langues de votre choix, gardez chaque élément dans le presse-papiers, et utilisez Saisie vocale avec coche : parlez, puis appuyez sur la coche pour ajouter vos mots. (Patreon › Applis Google › Gboard+)
+• 🧊 **Gboard dépoli** : le fond du clavier devient du verre dépoli : ce qui est derrière transparaît, flouté, avec les contours de verre, en clair, en sombre et en Super Sombre. Les touches ne changent pas. (Patreon › Applis Google › Gboard+)
+
+🪄 Finitions
+• 🌑 **Super Sombre** : le menu au-dessus du texte sélectionné (Couper, Copier, Rechercher dans Chrome et plus) est désormais noir avec un contour dans toutes les applis, et la navigation privée de Chrome reste noir pur partout, même en changeant d'onglet.
+• ⚡ **Les options s'appliquent seules** : Mode Super Sombre et le style de surface changent dès que vous les modifiez, les autres options redémarrent leur propre appli, et le bouton Actualiser n'apparaît que pour les options de Lanceur Pixel.
+• 🔄 **Bouton Redémarrer** : certaines fonctions ne marchent qu'après un redémarrage. Après une mise à jour, un bouton Redémarrer s'affiche jusqu'au redémarrage du téléphone. Appuyez dessus pour voir quelles fonctions en ont besoin, puis appuyez à nouveau pour redémarrer.
+• 🌄 **Flux Google** : balayez vers la droite sur l'écran d'accueil et le flux glisse par-dessus votre fond d'écran, sans panneau blanc qui clignote d'abord.
+• 🏠 **Lanceur Pixel** : maintenir la barre de recherche n'affiche plus que Paramètres du widget et Masquer le widget.
+
+🐞 Corrections
+• 🧠 **Lanceur Pixel** : après de nombreux passages entre clair et sombre (avec le mode sombre programmé, par exemple), il pouvait ralentir, ne plus répondre et redémarrer. Il reste fluide maintenant.
+• 📱 **Boutons de navigation** : après avoir tourné l'écran, balayer vers le haut pour revenir à l'accueil pouvait ne plus marcher avec le bouton Retour activé. Ça marche à chaque fois maintenant. (Raccourcis › Gestes › Boutons de navigation)
+• 🧭 **Boutons de navigation** : certaines applis plaçaient leur menu du bas sous les boutons. Il se place maintenant au-dessus. (Raccourcis › Gestes › Boutons de navigation)
+• 🛟 **Bloqueur de pubs** : Chrome pouvait se fermer tout seul si vous quittiez une page ou fermiez un onglet pendant son chargement. Il reste ouvert maintenant.
+• 🖐️ **Lanceur Pixel** : maintenir une appli à certains endroits de l'écran d'accueil n'affichait que quelques petites icônes, et son menu disparaissait. Les menus s'ouvrent entièrement partout maintenant.
+• 📰 **Flux de Chrome** : le flux pouvait sauter pendant le masquage des contenus sponsorisés. Il reste en place maintenant et défile plus fluidement.
+• 🔴 **Panneau des applis** : sur certaines versions de Lanceur Pixel, les pastilles de notification des dossiers flottaient au-dessus d'eux. Elles sont de nouveau sur les dossiers.
+• 🔔 **Super Sombre** : les notifications d'une ligne en bas du volet restaient grises. Elles sont Super Sombre maintenant.
+• #️⃣ **Super Sombre** : les touches numériques de Gboard (pour les codes PIN, les numéros de téléphone et les montants) étaient noires sur noir et ne s'allumaient pas au toucher. Elles s'affichent et s'allument de nouveau.
+• ➗ **Gboard+** : sur la page des chiffres, la colonne + - * / ressemble maintenant aux autres touches. Les touches espace et effacer redeviennent des touches et ne disparaissent plus en mode sombre.
+• 🪟 **Menus de l'écran d'accueil** : avec le Verre dépoli, la rangée d'icônes en haut du menu d'une appli s'affichait avant le reste. Elle apparaît maintenant en fondu avec le menu.
+• ✅ **Sélectionner des applis** : le clavier restait ouvert sur la liste après avoir coché une appli depuis la recherche. Il se ferme maintenant.
+
+Installez par-dessus votre version actuelle et redémarrez.
+
+## v3.0.4
+Un correctif pour Play Integrity.
+
+🐞 Corrections
+• Play Integrity : Pixel Suite n'utilise plus les services Google Play. Ils ne servaient qu'aux bords de défilement doux de quelques écrans Google ouverts depuis Paramètres (Verre dépoli), et les garder pouvait vous coûter l'intégrité Device et Strong : ça n'en valait pas la peine. Si vous les aviez cochés dans la portée LSPosed de Pixel Suite, Pixel Suite les décoche maintenant pour vous. Redémarrez simplement quand il le demande. Merci à Ashray V K sur Telegram de l'avoir signalé 🙏
+
+Installez par-dessus votre version actuelle et redémarrez.
+
+## v3.0.3
+Un correctif pour la connexion Patreon.
+
+🐞 Corrections
+• Patreon : la connexion aboutit maintenant même si votre navigateur ne peut pas ouvrir Pixel Suite (par exemple quand il affiche une page Play Store "élément introuvable"). Après la connexion, revenez simplement dans Pixel Suite : il se débloque tout seul.
+
+Installez par-dessus votre version actuelle.

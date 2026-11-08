@@ -40,6 +40,7 @@ final class LauncherFeatures {
     static final String DRAG_PILL = "pixelsuite_drawer_home_target";
     static final String HIDE_SHORTCUTS = "pixelsuite_drawer_hide_shortcuts";
     static final String LABEL_SIZE = "pixelsuite_icon_label_size";
+    static final String HIDE_SEARCH = "pixelsuite_hide_search_bar";
     static final String LABEL_LEVEL = "pixelsuite_icon_label_level";
     static volatile int labelLevel=2;
     static final String GRID_SIZE = "pixelsuite_folder_grid_size";
@@ -71,6 +72,7 @@ final class LauncherFeatures {
     static boolean frosted(){return restyle&&(on(GRID)||on(DRAWER)||on(RENAME)||on(ICONS)||on(DRAG_PILL));}
     static void install(ClassLoader cl) {
         loader = cl;
+        LauncherHideSearch.install(cl);
         Safe.run(() -> {
             Xp.hookAllMethods(type("Launcher"), "onCreate", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
@@ -97,6 +99,7 @@ final class LauncherFeatures {
                 protected void afterHookedMethod(Xp.Param p) {
                     Object observer=Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_settings_observer");
                     if(observer instanceof ContentObserver)((Activity)p.thisObject).getContentResolver().unregisterContentObserver((ContentObserver)observer);
+                    Xp.setAdditionalInstanceField(p.thisObject,"pixelsuite_settings_observer",null);
                     if (activity.get() == p.thisObject) {
                         MultiDrag.cancel(); DrawerDrag.cancel(); DrawerFolders.clearIconCache();
                         activity.clear(); DrawerFolders.known.clear(); DrawerFolders.cells.clear(); DrawerFolders.downs.clear();
@@ -242,7 +245,7 @@ final class LauncherFeatures {
         if (info != null && type("model.data.ItemInfoWithIcon").isInstance(info)) {
             label(info);
             if(type("BubbleTextView").isInstance(v))call(v,"applyIconAndLabel",info);
-            if (v instanceof TextView) ((TextView) v).setText((CharSequence) get(info, "title"));
+            if (v instanceof TextView) ((TextView) v).setText(I18n.cs((CharSequence) get(info, "title")));
         }
         if (v instanceof ViewGroup) {
             ViewGroup group = (ViewGroup) v;
@@ -268,7 +271,11 @@ final class LauncherFeatures {
             }
         });
         LauncherSearchAliases.install();
-        Xp.hookAllMethods(type("allapps.AllAppsStore"),"setApps",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){GoogleAliases.publish();}});
+        if(Xp.hookAllMethods(type("allapps.AllAppsStore"),"setApps",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){GoogleAliases.publish();}}).isEmpty()){
+            final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
+            final Runnable publish=new Runnable(){public void run(){try{GoogleAliases.publish();}catch(Throwable ignored){}}};
+            Xp.hookAllMethods(type("allapps.AllAppsStore"),"notifyUpdate",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){main.removeCallbacks(publish);main.postDelayed(publish,1500);}});
+        }
     }
     static String searchText(String text){
         return java.text.Normalizer.normalize(text,java.text.Normalizer.Form.NFKD).replaceAll("\\p{M}+", "").toLowerCase(Locale.ROOT);
@@ -788,14 +795,38 @@ final class LauncherFeatures {
         if (gridFor(info) == 0) return;
         final LinearLayout footer = (LinearLayout) get(folder, "mFooter");
         if (footer.findViewWithTag("pixelsuite_folder_menu") != null) return;
-        final TextView menu = new TextView(footer.getContext()); menu.setText("\u22ee"); menu.setTextSize(24);
-        menu.setGravity(17); menu.setContentDescription("Folder options"); menu.setTag("pixelsuite_folder_menu");
+        final TextView menu = new TextView(footer.getContext()); menu.setText(I18n.cs("\u22ee")); menu.setTextSize(24);
+        menu.setGravity(17); menu.setContentDescription(I18n.cs("Folder options")); menu.setTag("pixelsuite_folder_menu");
         footer.addView(menu, new LinearLayout.LayoutParams(dp(footer.getContext(),48), -1));
         menu.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 FolderOptions.show(folder,v);
             }
         });
+    }
+    @SuppressWarnings("unchecked")
+    static java.util.List<View> iconRows(ViewGroup popup) {
+        Object kept = Xp.getAdditionalInstanceField(popup, "pixelsuite_icon_rows");
+        if (kept instanceof java.util.List && !((java.util.List<View>) kept).isEmpty()) return (java.util.List<View>) kept;
+        java.util.List<View> out = new java.util.ArrayList<View>();
+        findIconRows(popup, out, 0);
+        if (!out.isEmpty()) Xp.setAdditionalInstanceField(popup, "pixelsuite_icon_rows", out);
+        return out;
+    }
+    private static void findIconRows(ViewGroup g, java.util.List<View> out, int depth) {
+        for (int i = 0; i < g.getChildCount(); i++) {
+            View c = g.getChildAt(i);
+            if (!(c instanceof ViewGroup)) continue;
+            ViewGroup v = (ViewGroup) c;
+            if (v instanceof LinearLayout && ((LinearLayout) v).getOrientation() == LinearLayout.HORIZONTAL && v.getChildCount() >= 2 && !hasText(v, 0)) { out.add(v); continue; }
+            if (depth < 2) findIconRows(v, out, depth + 1);
+        }
+    }
+    private static boolean hasText(View v, int depth) {
+        if (v instanceof TextView) { CharSequence t = ((TextView) v).getText(); return t != null && t.length() > 0 && v.getVisibility() == View.VISIBLE; }
+        if (!(v instanceof ViewGroup) || depth > 3) return false;
+        for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) if (hasText(((ViewGroup) v).getChildAt(i), depth + 1)) return true;
+        return false;
     }
     static final Map<Object,Long> openingUntil = java.util.Collections.synchronizedMap(new java.util.WeakHashMap<Object,Long>());
     private static void installMenus() {
@@ -806,7 +837,9 @@ final class LauncherFeatures {
                     Long until = openingUntil.get(p.thisObject);
                     if (until == null) return;
                     if (android.os.SystemClock.uptimeMillis() > until) { openingUntil.remove(p.thisObject); return; }
-                    if (((Float) p.args[0]).floatValue() < 1f) p.args[0] = Float.valueOf(1f);
+                    float v = ((Float) p.args[0]).floatValue();
+                    try { for (View h : iconRows((ViewGroup) p.thisObject)) h.setAlpha(v); } catch (Throwable ignored) { }
+                    if (v < 1f) p.args[0] = Float.valueOf(1f);
                 }
             });
         } catch (Throwable error) { }
@@ -824,6 +857,9 @@ final class LauncherFeatures {
                 FrostedSurface.popup((ViewGroup)p.thisObject);
                 try{if(Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_compact_menu")==null)PopupAbove.place((ViewGroup)p.thisObject);}catch(Throwable error){}
             }
+        }});
+        Xp.hookAllMethods(type("popup.ArrowPopup"),"orientAboutObject",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
+            try{PopupAbove.clearOtherMargin((ViewGroup)p.thisObject);}catch(Throwable ignored){}
         }});
         Xp.hookAllMethods(type("popup.ArrowPopup"),"onLayout",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             if(Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_compact_menu")!=null)DrawerPopupLayout.place((ViewGroup)p.thisObject);
@@ -843,6 +879,7 @@ final class LauncherFeatures {
                 final Object popup = p.thisObject; final Object info = get(popup, "itemInfo");
                 if (frosted() && !privateItem(info)) openingUntil.put(popup, android.os.SystemClock.uptimeMillis() + 450);
                 if (info != null && type("model.data.FolderInfo").isInstance(info) && !DrawerFolders.isFolder(info)) { try { addHomeFolderRows(popup, info); } catch (Throwable error) { } return; }
+                if (searchWidget(popup)) { try { searchRows(popup); } catch (Throwable error) { } return; }
                 if (identity(info) == null || privateItem(info)) return;
                 if (ComposeMenu.active && get(popup, "systemShortcutContainer") == null) return;
                 ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
@@ -857,6 +894,27 @@ final class LauncherFeatures {
         });
         Safe.run(() -> ComposeMenu.install());
         Safe.run(() -> NavButtons.install(loader));
+    }
+    static boolean searchWidget(Object popup) {
+        try {
+            View v = (View) get(popup, "originalView");
+            if (v == null) return false;
+            if (v.getClass().getName().startsWith(ROOT + "qsb.")) return true;
+            Object tag = v.getTag();
+            if (tag == null) return false;
+            if (tag.getClass().getName().endsWith("QsbItemInfo")) return true;
+            Context c = v.getContext();
+            int id = c.getResources().getIdentifier("search_container_hotseat", "id", c.getPackageName());
+            return id != 0 && ((Number) get(tag, "id")).intValue() == id && ((Number) get(tag, "container")).intValue() == -101;
+        } catch (Throwable t) { return false; }
+    }
+    static void searchRows(final Object popup) {
+        ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
+        if (rows == null || rows.findViewWithTag("pixelsuite_hide_search") != null) return;
+        final View bar = (View) get(popup, "originalView");
+        addFolderRow(rows, "Hide widget", "pixelsuite_hide_search", 17, rows.getChildCount(), new View.OnClickListener() {
+            public void onClick(View v) { call(popup, "close", true); LauncherHideSearch.hideFromMenu(bar); }
+        });
     }
     static void appRows(final Object popup, final Object info, ViewGroup rows) {
         boolean drawer = type("model.data.AppInfo").isInstance(info);
@@ -910,7 +968,7 @@ final class LauncherFeatures {
             for (View r : new View[] {auto, custom}) {
                 boolean checked = (r == auto) == (mode == FolderSort.AUTO);
                 TextView label = (TextView) get(r, "mBubbleText");
-                if (checked) { label.setText(label.getText() + "   \u2713"); r.setContentDescription(label.getText() + ", selected"); }
+                if (checked) { label.setText(I18n.cs(label.getText() + "   \u2713")); r.setContentDescription(label.getText() + ", selected"); }
                 r.setPadding(r.getPaddingLeft() + FrostedSurface.dp(c, 14), r.getPaddingTop(), r.getPaddingRight(), r.getPaddingBottom());
                 r.getLayoutParams().height = 0; r.setAlpha(0f);
                 if (Xp.getAdditionalInstanceField(popup, "pixelsuite_panel") != null) FrostedSurface.clearRow(r);
@@ -952,9 +1010,9 @@ final class LauncherFeatures {
         Context context = rows.getContext();
         int layout = context.getResources().getIdentifier("system_shortcut", "layout", context.getPackageName());
         View row = LayoutInflater.from(context).inflate(layout, rows, false);
-        ((TextView)get(row,"mBubbleText")).setText(title);
+        ((TextView)get(row,"mBubbleText")).setText(I18n.cs(title));
         ((View)get(row,"mIconView")).setBackground(new LauncherGlyph(context, glyph));
-        row.setTag(tag); row.setContentDescription(title); row.setOnClickListener(listener);
+        row.setTag(tag); row.setContentDescription(I18n.cs(title)); row.setOnClickListener(listener);
         rows.addView(row, Math.min(index, rows.getChildCount()));
     }
     static void moveBubbleAboveHome(ViewGroup rows){
@@ -975,10 +1033,10 @@ final class LauncherFeatures {
         Context context = rows.getContext();
         int layout = context.getResources().getIdentifier("system_shortcut", "layout", context.getPackageName());
         View row = LayoutInflater.from(context).inflate(layout, rows, false);
-        ((TextView)get(row,"mBubbleText")).setText(title);
+        ((TextView)get(row,"mBubbleText")).setText(I18n.cs(title));
         View icon = (View)get(row,"mIconView");
         icon.setBackground(new LauncherGlyph(context, belowHome ? 0 : (tag.equals("pixelsuite_icon") ? 2 : 1)));
-        row.setTag(tag); row.setContentDescription(title); row.setOnClickListener(listener);
+        row.setTag(tag); row.setContentDescription(I18n.cs(title)); row.setOnClickListener(listener);
         int index = rows.getChildCount();
         if (belowHome) {
             for (int i = 0; i < rows.getChildCount(); i++) {
@@ -996,17 +1054,17 @@ final class LauncherFeatures {
     }
     static void rename(final Object info) {
         final Activity a = activity.get(); final String key = identity(info); if (a == null || key == null) return;
-        final EditText edit = new EditText(a); edit.setSingleLine(true); edit.setText((CharSequence)get(info,"title")); edit.selectAll();
+        final EditText edit = new EditText(a); edit.setSingleLine(true); edit.setText(I18n.cs((CharSequence)get(info,"title"))); edit.selectAll();
         edit.setPadding(dp(a,24),dp(a,16),dp(a,24),dp(a,16));
-        final AlertDialog dialog=new AlertDialog.Builder(a).setTitle("Rename app").setView(edit).setMessage("This name appears on the home screen, in folders, the app drawer and launcher search.")
-            .setNegativeButton("Cancel",null).setNeutralButton("Reset",new DialogInterface.OnClickListener() {
+        final AlertDialog dialog=new AlertDialog.Builder(a).setTitle(I18n.cs("Rename app")).setView(edit).setMessage(I18n.cs("Shows on the home screen, in folders, the drawer and search."))
+            .setNegativeButton(I18n.cs("Cancel"),null).setNeutralButton(I18n.cs("Reset"),new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface d,int which) { data.rename(key,""); refresh(); }
-            }).setPositiveButton("Save",null).create();
+            }).setPositiveButton(I18n.cs("Save"),null).create();
         FrostedSurface.show(dialog);dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener(){
                 public void onClick(View button) {
                     String value = edit.getText().toString().trim();
-                    if (value.length() == 0 || value.length() > 80) { edit.setError("Use a name between 1 and 80 characters"); return; }
-                    if (data.rename(key,value)) { dialog.dismiss();refresh(); } else Toast.makeText(a,"Could not save the name",0).show();
+                    if (value.length() == 0 || value.length() > 80) { edit.setError(I18n.cs("Use a name between 1 and 80 characters")); return; }
+                    if (data.rename(key,value)) { dialog.dismiss();refresh(); } else Toast.makeText(a,I18n.cs("Could not save the name"),0).show();
                 }
         });
     }

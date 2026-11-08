@@ -6,7 +6,7 @@ import android.os.*;
 import java.util.*;
 final class GoogleAliases {
     static volatile org.json.JSONObject aliases=new org.json.JSONObject();
-    static long loaded;static boolean listening;static String published;
+    static volatile long loaded;static boolean listening;static String published;
     static final Set<String> exportedIcons=new HashSet<String>();
     static final Map<String,String[]> iconHashes=new HashMap<String,String[]>();
     static void publish(){
@@ -81,6 +81,13 @@ final class GoogleAliases {
         long serial=((UserManager)c.getSystemService(Context.USER_SERVICE)).getSerialNumberForUser(user);
         if(serial>=0)serials.put(user,serial);return serial;
     }
+    private static final java.util.concurrent.ExecutorService BG=java.util.concurrent.Executors.newSingleThreadExecutor(r->{Thread t=new Thread(r,"PixelSuiteAliases");t.setDaemon(true);return t;});
+    private static volatile boolean pending;
+    static void reloadSoon(){
+        if(pending||SystemClock.uptimeMillis()-loaded<2000)return;
+        pending=true;
+        try{BG.execute(()->{try{reload();}finally{pending=false;}});}catch(Throwable t){pending=false;}
+    }
     static synchronized void reload(){
         long now=SystemClock.uptimeMillis();if(now-loaded<2000)return;Context c=context();if(c==null)return;
         try{
@@ -96,7 +103,7 @@ final class GoogleAliases {
         }catch(Throwable ignored){loaded=now;}
     }
     static String alias(ComponentName component,String pkg,Object user){
-        reload();org.json.JSONObject map=aliases;if(map.length()==0)return null;
+        reloadSoon();org.json.JSONObject map=aliases;if(map.length()==0)return null;
         Context c=context();if(c==null)return null;
         try{
             if(user==null)user=android.os.Process.myUserHandle();
@@ -132,6 +139,6 @@ final class GoogleAliases {
         }};
         Xp.hookAllMethods(LauncherActivityInfo.class,"getIcon",icon);
         Xp.hookAllMethods(LauncherActivityInfo.class,"getBadgedIcon",icon);
-        Xp.hookAllMethods(Instrumentation.class,"callActivityOnResume",new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){loaded=0;reload();}});
+        Xp.hookAllMethods(Instrumentation.class,"callActivityOnResume",new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){loaded=0;reloadSoon();}});
     }
 }

@@ -38,7 +38,7 @@ final class LauncherSearchAliases {
             android.view.View view=(android.view.View)p.thisObject;Object info=view.getTag();
             if(info!=null&&LauncherFeatures.type("model.data.ItemInfoWithIcon").isInstance(info)){
                 LauncherFeatures.label(info);
-                if(((Number)LauncherFeatures.get(info,"itemType")).intValue()==0){LauncherFeatures.call(view,"applyIconAndLabel",info);((android.widget.TextView)view).setText((CharSequence)LauncherFeatures.get(info,"title"));}
+                if(((Number)LauncherFeatures.get(info,"itemType")).intValue()==0){LauncherFeatures.call(view,"applyIconAndLabel",info);((android.widget.TextView)view).setText(I18n.cs((CharSequence)LauncherFeatures.get(info,"title")));}
             }
         }});
     }

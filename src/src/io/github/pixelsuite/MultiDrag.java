@@ -559,7 +559,7 @@ final class MultiDrag {
         return null;
     }
 
-    private static void toast(Context c, String text) { try { android.widget.Toast.makeText(c, text, android.widget.Toast.LENGTH_SHORT).show(); } catch (Throwable ignored) { } }
+    private static void toast(Context c, String text) { try { android.widget.Toast.makeText(c, I18n.cs(text), android.widget.Toast.LENGTH_SHORT).show(); } catch (Throwable ignored) { } }
 
     private static void restoreViews() {
         for (Pick p : picks) {

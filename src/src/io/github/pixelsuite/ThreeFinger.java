@@ -331,6 +331,11 @@ final class ThreeFinger {
         }
     }
 
+    static void screenshot(Context ctx) {
+        init(ctx);
+        takeScreenshot();
+    }
+
     private static void takeScreenshot() {
         final Object helper = sScreenshotHelper;
         final Handler h = sWorker;

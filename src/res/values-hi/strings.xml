@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">जेस्चर, Pixel Launcher को मनमुताबिक बनाना, ऐप्लिकेशन और फ़ोल्डर लॉक, सुपर डार्क मोड, फ़ाइलों का क्रम, स्क्रीनशॉट को अपने हिसाब से काटना, और Pixel Studio व Google फ़ोटो में डूडल. सब कुछ Pixel Suite ऐप्लिकेशन में सेट होता है। सुझाए गए LSPosed स्कोप चालू करें, जिनमें आपके इस्तेमाल वाले एडिटर भी हों, फिर उन ऐप्लिकेशन को रीस्टार्ट करें या फ़ोन रीबूट करें।</string>
+    <string name="search_in_chrome">Chrome में खोजें</string>
+</resources>

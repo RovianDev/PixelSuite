@@ -1,6 +1,5 @@
 package io.github.pixelsuite;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.graphics.*;
 import android.view.*;
 import android.widget.*;
@@ -14,7 +13,7 @@ final class PatronIdentity extends LinearLayout {
   setClickable(true);setFocusable(true);setOnClickListener(v->PatronAccount.open(activity));render();
  }
  private int dp(int v){return Math.round(v*getResources().getDisplayMetrics().density);}
- private void render(){boolean connected=PatronAccess.loggedIn(activity);String label=connected?PatronAccess.prefs(activity).getString("name","Patreon account"):"Log in";name.setText(label);photo.setContentDescription(connected?"Patreon profile photo":"Sign in with Patreon");photo.load(connected,label);}
+ private void render(){boolean connected=PatronAccess.loggedIn(activity);String label=connected?PatronAccess.prefs(activity).getString("name","Patreon account"):"Log in";name.setText(connected?label:I18n.cs(label));photo.setContentDescription(I18n.cs(connected?"Patreon profile photo":"Sign in with Patreon"));photo.load(connected,label);}
  @Override protected void onAttachedToWindow(){super.onAttachedToWindow();PatronAccess.watch(refresh);render();PatronAccess.ensureProfile(activity);}
  @Override protected void onDetachedFromWindow(){PatronAccess.unwatch(refresh);super.onDetachedFromWindow();}
  private static final class Portrait extends View {

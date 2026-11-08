@@ -92,7 +92,7 @@ final class MenuFont {
             String family = id == 0 ? null : c.getResources().getString(id);
             if (family != null && family.length() > 0) result = Typeface.create(family, Typeface.NORMAL);
         } catch (Throwable ignored) { }
-        if (result == null || result.equals(Typeface.DEFAULT)) result = Typeface.create("sans-serif-medium", Typeface.NORMAL);
+        if (result == null || result.equals(Typeface.DEFAULT)) result = I18n.medium();
         return result;
     }
 }

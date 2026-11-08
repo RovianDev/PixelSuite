@@ -4,8 +4,11 @@ final class FeatureScopes {
  static String doNotAnnoy(boolean pixelStack){return pixelStack?"• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.":"• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.";}
 
  static String get(String id){
-  if(NavButtons.KEY.equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button\n• **FUTO Keyboard** (org.futo.inputmethod.latin / org.futo.inputmethod.latin.playstore / org.futo.inputmethod.latin.unstable) — keyboard dismiss button";
+  if(NavButtons.KEY.equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button";
   if(id==null||"home".equals(id))return null;
+  if(PowerHold.KEY.equals(id))return "• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search";
+  if(PinAuto.KEY.equals(id))return "• **System UI** (com.android.systemui) — the lock screen PIN";
+  if("aod".equals(id)||AodPlus.KEY_CHARGING.equals(id)||AodPlus.KEY_AFTER.equals(id))return "• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off";
   if(Feature.DOUBLE_TAP_SLEEP.equals(id)||Feature.TAP_CHECK.equals(id)||Feature.FLASHLIGHT.equals(id)||Feature.THREE_FINGER.equals(id))return "• **System Framework** (system)";
   if(Feature.VOLDOWN_CAMERA.equals(id)||"buttons".equals(id))return "• **System Framework** (system)\n• **System UI** (com.android.systemui)";
   if(ScreenRecordTidy.KEY.equals(id))return "• **System UI** (com.android.systemui)";
@@ -23,16 +26,19 @@ final class FeatureScopes {
   if("share_menu".equals(id))return "• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors";
   if("privacy".equals(id))return "• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.";
   if("do_not_annoy".equals(id))return doNotAnnoy(false);
-  if("store_blocker".equals(id))return "• **Play Store** (com.android.vending)";
+  if("store_blocker".equals(id))return "• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version";
+  if("store_backups".equals(id))return "• **System Framework** (system), to restore a saved version (also an older one)";
   if("ota_blocker".equals(id))return "• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls";
   if("blockers".equals(id))return "• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking";
   if("google_dialer".equals(id))return "• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.";
   if("google_app".equals(id))return "• **Google** (com.google.android.googlequicksearchbox)";
+  if("gboard".equals(id))return "• **Gboard** (com.google.android.inputmethod.latin)";
   if("pixel_watch".equals(id))return "• **Pixel watch** (com.google.android.apps.wear.companion)";
-  if("chrome".equals(id))return "• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.";
+  if("dark_pages".equals(id))return "• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.";
+  if("chrome".equals(id)||"ad_blocker".equals(id))return "• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.";
   if("google_news".equals(id))return "• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.";
   if("google_apps".equals(id))return null;
-  if("miscellaneous".equals(id))return "• **System Framework** (system) — secure screenshots, accessibility hiding, Hide Developer Options and FPS\n• **System UI** (com.android.systemui) — faster screenshots\n• **Settings** (com.android.settings) — refresh rate slider\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard bar\n• **FUTO Keyboard** — select your installed version:\n  org.futo.inputmethod.latin\n  org.futo.inputmethod.latin.playstore\n  org.futo.inputmethod.latin.unstable\n\nHide Developer Options works globally; no individual app scopes needed.";
+  if("miscellaneous".equals(id))return "• **System Framework** (system) — secure screenshots, accessibility hiding, Hide Developer Options and FPS\n• **System UI** (com.android.systemui) — faster screenshots\n• **Settings** (com.android.settings) — refresh rate slider\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard bar\n\nHide Developer Options works globally; no individual app scopes needed.";
   return null;
  }
 }

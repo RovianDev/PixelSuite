@@ -72,5 +72,5 @@ final class FeaturePreview extends View implements ViewTreeObserver.OnPreDrawLis
         });animator.start();
     }
     private void stop(){removeCallbacks(continuation);waiting=false;ValueAnimator running=animator;animator=null;if(running!=null)running.cancel();}
-    @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);scenes.rimMode(GlassRim.mode(getContext()));scenes.surfaceColor(AppSurfaces.active(getContext())?0xff0b0b0b:normalSurface);scenes.draw(canvas,getWidth(),getHeight(),progress,phase==RESET?reset:0);}
+    @Override protected void onDraw(Canvas canvas){super.onDraw(canvas);boolean blackStage=AppSurfaces.active(getContext());scenes.blackStage(blackStage);if(blackStage)canvas.drawColor(0xff000000);scenes.rimMode(GlassRim.mode(getContext()));scenes.surfaceColor(AppSurfaces.active(getContext())?0xff0b0b0b:normalSurface);scenes.draw(canvas,getWidth(),getHeight(),!allowed&&scenes.stillFinalFrame()?1:progress,!allowed&&scenes.stillFinalFrame()?0:phase==RESET?reset:0);}
 }

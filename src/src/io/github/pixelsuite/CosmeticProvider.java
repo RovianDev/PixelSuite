@@ -23,6 +23,9 @@ public final class CosmeticProvider extends ContentProvider {
     @Override public Bundle call(String method, String arg, Bundle extras) {
         if (!allowed()) throw new SecurityException("Caller not allowed");
         final android.content.Context c = getContext();
+        if ("shield".equals(method)) return ChromeSiteSettings.serve(c, arg, extras);
+        if ("dark".equals(method)) return DarkPages.serve(c, arg, extras);
+        if ("adblock".equals(method)) return AdBlock.serveChrome(c, arg, extras);
         if (!Cosmetic.present(c)) fetch(c);
         if ("generic".equals(method)) return Cosmetic.generic(c, arg);
         if ("host".equals(method)) return Cosmetic.host(c, arg);

@@ -49,6 +49,14 @@ final class AdBlock {
         return !"0".equals(out.get(0).trim());
     }
 
+    static android.os.Bundle serveChrome(Context c, String key, android.os.Bundle extras) {
+        int v = extras == null ? -1 : extras.getInt("value", -1);
+        if (!ChromeShield.KEY_ON.equals(key) || (v != 0 && v != 1)) throw new IllegalArgumentException("Invalid Ad Blocker setting");
+        android.os.Bundle out = new android.os.Bundle();
+        out.putBoolean("ok", Root.run("settings put secure " + key + " " + v) != null);
+        return out;
+    }
+
     static boolean entitled(Context c) {
         try {
             List<String> out = Root.run("settings get secure " + PatronGate.KEY);
@@ -247,9 +255,13 @@ final class AdBlock {
         long t = p.getLong("updated", 0);
         if (n == 0) return err != null ? err : "Getting the ad lists…";
         long now = System.currentTimeMillis();
-        String when = now - t < 60000 ? "just now" : android.text.format.DateUtils.getRelativeTimeSpanString(t, now,
+        String when;
+        if (I18n.on()) {
+            long m = Math.max(0, (now - t) / 60000), h = m / 60, d = h / 24;
+            when = m < 1 ? "just now" : m < 60 ? (m == 1 ? "1 minute ago" : m + " minutes ago") : h < 24 ? (h == 1 ? "1 hour ago" : h + " hours ago") : (d == 1 ? "1 day ago" : d + " days ago");
+        } else when = now - t < 60000 ? "just now" : android.text.format.DateUtils.getRelativeTimeSpanString(t, now,
                 android.text.format.DateUtils.MINUTE_IN_MILLIS).toString();
-        String s = String.format(Locale.getDefault(), "Blocking %,d ad domains · updated %s", n, when);
+        String s = "Blocking " + String.format(Locale.US, "%,d", n) + " ad domains · updated " + when;
         return err != null ? s + "\n" + err : s;
     }
 

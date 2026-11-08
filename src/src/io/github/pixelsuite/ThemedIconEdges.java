@@ -50,7 +50,7 @@ final class ThemedIconEdges {
                             } finally { canvas.restoreToCount(layer); }
                         } finally { canvas.restoreToCount(save); }
                         p.setResult(null);
-                    } catch (Throwable stock) {  }
+                    } catch (Throwable stock) { }
                 }
             });
         } catch (Throwable ignored) { }

@@ -1,0 +1,1588 @@
+# Pixel Suite fr: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	BLOCAGE DES PUBS
+AdAway or Systemless hosts is also on. Use only one blocker.	AdAway ou Systemless hosts est aussi activé. N'utilisez qu'un seul bloqueur.
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	Bloque les pubs dans Chrome, Google Actualités et d'autres applis. Les listes se mettent à jour chaque jour.
+Fewer ads.\nFaster pages.	Moins de pubs.\nDes pages plus rapides.
+Preparing ad protection…	Préparation de la protection contre les pubs…
+Restart the phone once to start blocking.	Redémarrez le téléphone une fois pour commencer le blocage.
+Unlock with Patreon	Débloquer avec Patreon
+Update lists	Mettre à jour les listes
+Updating…	Mise à jour…
+Works in every app and browser, also with Private DNS.	Fonctionne dans toutes les applis et tous les navigateurs, même avec le DNS privé.
+Add	Ajouter
+Add website	Ajouter un site
+Add website: domain or URL	Ajouter un site : domaine ou URL
+Ads aren't filtered on these websites. Tap one to remove it.	Les pubs ne sont pas filtrées sur ces sites. Appuyez sur un site pour le retirer.
+All websites use the default level	Tous les sites utilisent le niveau par défaut
+Allowed websites	Sites autorisés
+Basic	Basique
+Bring back elements you removed.	Récupérez les éléments que vous avez retirés.
+Cancel	Annuler
+Clear every website setting	Effacer tous les paramètres des sites
+Clear every website setting? Your default level stays.	Effacer tous les paramètres des sites ? Votre niveau par défaut est conservé.
+Complete	Complet
+Couldn't load site settings. Open Chrome once, then reopen this page.	Impossible de charger les paramètres des sites. Ouvrez Chrome une fois, puis rouvrez cette page.
+Couldn't save site settings. Try again.	Impossible d'enregistrer les paramètres des sites. Réessayez.
+Default for all websites	Par défaut pour tous les sites
+Enter a domain or an http/https URL	Saisissez un domaine ou une URL http/https
+Filtering level	Niveau de filtrage
+Included with your Patreon unlock	Inclus avec votre déblocage Patreon
+Loading site settings…	Chargement des paramètres des sites…
+No allowed websites	Aucun site autorisé
+No filtering	Aucun filtrage
+No filtering · tap to remove	Aucun filtrage · appuyez pour retirer
+No removed elements	Aucun élément retiré
+Optimal	Optimal
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	Optimal masque les pubs de recherche. Complet masque aussi les bannières de cookies et les pop-ups. Le niveau propre à un site passe en premier.
+Per-site levels	Niveaux par site
+Removed elements	Éléments retirés
+Reset	Réinitialiser
+Reset all site settings	Réinitialiser tous les paramètres des sites
+Reset all site settings?	Réinitialiser tous les paramètres des sites ?
+Saving…	Enregistrement…
+Tap a website to change its level or use the default.	Appuyez sur un site pour changer son niveau ou utiliser celui par défaut.
+Unlock ad blocking with Patreon	Débloquer le blocage des pubs avec Patreon
+\nDefault for all websites	\nPar défaut pour tous les sites
+Close	Fermer
+Clear search	Effacer la recherche
+Could not save the folder	Impossible d'enregistrer le dossier
+Save	Enregistrer
+Search apps	Rechercher des applis
+Search	Rechercher
+Search unavailable	Recherche indisponible
+Search, button	Rechercher, bouton
+Searching…	Recherche…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nVotre configuration actuelle de Pixel Suite sera remplacée. Lanceur Pixel redémarre une fois.
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• Configuration de Lanceur Pixel : dossiers du panneau, tri, noms et verrous\n
+• Share menu: pinned order and hidden apps\n	• Menu de partage : ordre épinglé et applis masquées\n
+App and data	Appli et données
+App only	Appli seulement
+Back up	Sauvegarder
+Just the app. Its data isn't saved.	Juste l'appli. Ses données ne sont pas enregistrées.
+Only the app goes back. Its data now stays.	Seule l'appli revient. Ses données actuelles restent.
+Only the app, signed out and empty.	Seulement l'appli, déconnectée et vide.
+Puts everything back exactly as it was saved.	Remet tout exactement comme au moment de l'enregistrement.
+Puts everything back exactly as it was saved. Its data now is replaced.	Remet tout exactement comme au moment de l'enregistrement. Ses données actuelles sont remplacées.
+Restore	Restaurer
+Working out the size…	Calcul de la taille…
+Backing up…	Sauvegarde…
+Backup & Restore	Sauvegarde et restauration
+Checking…	Vérification…
+Couldn't delete it. Check root.	Impossible de la supprimer. Vérifiez le root.
+Delete	Supprimer
+Delete?	Supprimer ?
+Every held-back app is saved at its current version	Chaque appli retenue est enregistrée dans sa version actuelle
+Held-back apps	Applis retenues
+Held-back apps are saved here before they update.	Les applis retenues sont enregistrées ici avant leur mise à jour.
+Installed apps	Applis installées
+Loading saved apps…	Chargement des applis enregistrées…
+No installed app has saved versions	Aucune appli installée n'a de versions enregistrées
+No saved versions yet	Aucune version enregistrée pour le moment
+Not installed	Non installée
+Nothing saved yet	Rien d'enregistré pour le moment
+Saved	Enregistré
+Saved in PixelSuite/APK backups on your phone	Enregistré dans PixelSuite/APK backups sur votre téléphone
+The 3 newest versions of each app are kept	Les 3 versions les plus récentes de chaque appli sont conservées
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	Ces applis ont été désinstallées. Restaurer en réinstalle une, connectée si elle a été enregistrée avec ses données.
+installed now	installée maintenant
+Audiobooks	Livres audio
+Documents	Documents
+Download	Téléchargements
+Music	Musique
+Podcasts	Podcasts
+Recordings	Enregistrements
+Automatic (default)	Automatique (par défaut)
+Automatic: every call is recorded	Automatique : chaque appel est enregistré
+Choose folder…	Choisir un dossier…
+Couldn't keep access to that folder.	Impossible de garder l'accès à ce dossier.
+Couldn't load folder	Impossible de charger le dossier
+Couldn't load recording mode	Impossible de charger le mode d'enregistrement
+Couldn't save: root access needed	Impossible d'enregistrer : accès root requis
+Folder picker isn't available.	Le sélecteur de dossier n'est pas disponible.
+HD: clearer voice (default)	HD : voix plus claire (par défaut)
+HD: twice the detail, clearer voice (default)	HD : deux fois plus de détails, voix plus claire (par défaut)
+Internal storage	Mémoire interne
+Lossless: HD without compression, large WAV files	Sans perte : HD sans compression, gros fichiers WAV
+Lossless: clearest voice, WAV files	Sans perte : voix la plus claire, fichiers WAV
+Manual	Manuel
+Manual: tap Record during a call	Manuel : appuyez sur Enregistrer pendant un appel
+Recording mode	Mode d'enregistrement
+Recording quality	Qualité d'enregistrement
+Recordings folder	Dossier des enregistrements
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (par défaut)
+SD card	Carte SD
+Standard: phone-call quality, smallest files	Standard : qualité téléphonique, fichiers les plus petits
+Standard: smaller files	Standard : fichiers plus petits
+Release notes are unavailable in this build.	Les notes de version ne sont pas disponibles dans ce build.
+Release notes could not be opened. Please reopen this page.	Impossible d'ouvrir les notes de version. Rouvrez cette page.
+Always	Toujours
+Dark	Sombre
+Dark mode	Mode sombre
+Dark pages	Pages sombres
+Needs Pixel Suite premium	Nécessite Pixel Suite premium
+On this website	Sur ce site
+Pictures and videos keep their colors.	Les images et vidéos gardent leurs couleurs.
+Schedule	Programme
+Style	Style
+When	Quand
+Speed Dial	Accès rapide
+Ad Blocker	Bloqueur de pubs
+Extensions	Modules
+Hold an extension to pin it to the toolbar	Maintenez un module pour l'épingler à la barre d'outils
+Chrome didn't take the shortcut (limit reached?)	Chrome n'a pas pris le raccourci (limite atteinte ?)
+Couldn't add it to the speed dial	Impossible de l'ajouter à l'accès rapide
+Couldn't make a folder in this Chrome version	Impossible de créer un dossier dans cette version de Chrome
+Couldn't move it into the folder	Impossible de le déplacer dans le dossier
+Edit	Modifier
+Edit website	Modifier le site
+Its website goes back to the speed dial.	Son site revient dans l'accès rapide.
+Move to speed dial	Placer dans l'accès rapide
+Name	Nom
+No room on the speed dial	Plus de place dans l'accès rapide
+Open in new tab	Ouvrir dans un nouvel onglet
+Remove	Retirer
+Remove folder	Retirer le dossier
+Rename	Renommer
+Rename folder	Renommer le dossier
+URL	URL
+Back	Retour
+Forward	Suivant
+Home	Accueil
+Profile	Profil
+Tabs	Onglets
+Filtering isn't available on this page.	Le filtrage n'est pas disponible sur cette page.
+Pixel Suite settings	Paramètres Pixel Suite
+Remove an element	Retirer un élément
+This page	Cette page
+filtering mode	mode de filtrage
+no filtering	aucun filtrage
+Couldn't open that picture	Impossible d'ouvrir cette image
+Tap the picture to change it	Appuyez sur l'image pour la changer
+Use the website's icon	Utiliser l'icône du site
+Country	Pays
+Getting the free server list…	Récupération de la liste de serveurs gratuits…
+No servers yet. Pixel Suite loads them when you open this.	Pas encore de serveurs. Pixel Suite les charge quand vous ouvrez ceci.
+Unavailable · no servers right now	Indisponible · aucun serveur pour le moment
+VPN	VPN
+VPN for Chrome	VPN pour Chrome
+Become a patron	Devenir patron
+Buy me a coffee	Offrez-moi un café
+Coffee	Café
+Join the community	Rejoindre la communauté
+No app is available to open this link	Aucune appli ne peut ouvrir ce lien
+This link could not be opened	Impossible d'ouvrir ce lien
+On a schedule	Selon un horaire
+With the phone's dark mode	Avec le mode sombre du téléphone
+Call	Appeler
+Incoming call deflected (device reported as switched off)	Appel entrant redirigé (appareil signalé comme éteint)
+Unknown caller	Appelant inconnu
+Off	Désactivé
+On	Activé
+Arrow	Flèche
+Circle	Cercle
+Double arrow	Double flèche
+Line	Ligne
+Speech bubble	Bulle
+Square	Carré
+Star	Étoile
+Triangle	Triangle
+Blue	Bleu
+Green	Vert
+Red	Rouge
+Yellow	Jaune
+Clear badge	Effacer le badge
+Could not save the name	Impossible d'enregistrer le nom
+No	Non
+Remove folder?	Retirer le dossier ?
+Sort apps?	Trier les applis ?
+Yes	Oui
+Add apps	Ajouter des applis
+Create folder	Créer un dossier
+6-digit code	Code à 6 chiffres
+Allow root access to save your device ID.	Autorisez l'accès root pour enregistrer l'ID de votre appareil.
+Allow root access to save your purchase.	Autorisez l'accès root pour enregistrer votre achat.
+Allow root access to update your purchase.	Autorisez l'accès root pour mettre à jour votre achat.
+Change email	Changer d'e-mail
+Check your license code and try again.	Vérifiez votre code de licence et réessayez.
+Contact support	Contacter l'assistance
+Couldn’t confirm the purchase. Your saved pass has been kept.	Impossible de confirmer l'achat. Votre pass enregistré a été conservé.
+Couldn’t connect. Check your internet connection and try again.	Connexion impossible. Vérifiez votre connexion Internet et réessayez.
+Couldn’t save the device ID. Check root access.	Impossible d'enregistrer l'ID de l'appareil. Vérifiez l'accès root.
+Couldn’t save the purchase. Check root access.	Impossible d'enregistrer l'achat. Vérifiez l'accès root.
+Couldn’t verify the purchase link.	Impossible de vérifier le lien d'achat.
+Couldn’t verify this purchase.	Impossible de vérifier cet achat.
+Email used for purchase	E-mail utilisé pour l'achat
+Enter code	Saisir le code
+Enter the email you paid with.	Saisissez l'e-mail avec lequel vous avez payé.
+Enter the six-digit email code.	Saisissez le code à six chiffres reçu par e-mail.
+If a purchase matches this email, your recovery code is on its way.	Si un achat correspond à cet e-mail, votre code de récupération est en route.
+Invalid purchase pass.	Pass d'achat non valide.
+Invalid signature.	Signature non valide.
+No connection. Your saved purchase has been kept.	Pas de connexion. Votre achat enregistré a été conservé.
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	Non remboursable une fois activé, sauf si la loi ou les règles de Buy Me a Coffee l'exigent.
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	Un téléphone à la fois. Nécessite une Pixel Watch compatible et un forfait eSIM.
+Pixel watch eSIM	eSIM Pixel Watch
+Purchase is active.	L'achat est actif.
+Purchase is no longer active.	L'achat n'est plus actif.
+Purchase restored on this phone.	Achat restauré sur ce téléphone.
+Purchase unlocked.	Achat débloqué.
+Pixel Watch eSIM ✓ (purchased)	eSIM Pixel Watch ✓ (achetée)
+Refresh purchase	Actualiser l'achat
+Resend code	Renvoyer le code
+Restore on this phone	Restaurer sur ce téléphone
+Restore purchase	Restaurer l'achat
+Restore purchase by email	Restaurer l'achat par e-mail
+Restoring…	Restauration…
+Send recovery code	Envoyer le code de récupération
+Sending…	Envoi…
+The device ID needs support. It has not been changed.	L'ID de l'appareil nécessite l'assistance. Il n'a pas été modifié.
+The shop is being set up. Please try again later.	La boutique est en cours de configuration. Réessayez plus tard.
+This purchase pass is not valid for this phone.	Ce pass d'achat n'est pas valide pour ce téléphone.
+This purchase was revoked or moved to another phone.	Cet achat a été révoqué ou transféré sur un autre téléphone.
+Unlock	Débloquer
+Unlocking…	Déblocage…
+Yours to keep on this phone. Patreon is not required.	À vous pour de bon sur ce téléphone. Patreon n'est pas nécessaire.
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — Pages sombres\n\nRedémarrez Chrome après avoir ajouté son champ d'application.
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — nettoyage des encarts pub dans les articles ouverts avec Chrome\n\nGoogle Actualités (com.google.android.apps.magazines) n'a pas besoin de champ d'application. Le blocage des domaines publicitaires utilise le bloqueur système.
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — nettoyage des encarts pub vides\n\nRedémarrez Chrome après avoir ajouté son champ d'application. Le blocage des domaines publicitaires n'en a pas besoin.
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **Fichiers de Google** (com.google.android.apps.nbu.files) — gestionnaire de fichiers\n• **Fichiers (système)** (com.google.android.documentsui / com.android.documentsui) — sélecteur de fichiers du système
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **Services du téléphone** (com.android.phone)\n\nSélectionnez les deux, puis redémarrez. Les changements suivants s'appliquent tout de suite.
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **Services du téléphone** (com.android.phone)\n\nSélectionnez-le, puis redémarrez. Les changements suivants s'appliquent tout de suite.
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **Téléphone** (com.google.android.dialer)\n• **Framework système** (system) — prise en charge de l'enregistrement\n\nRouvrez Téléphone après avoir ajouté son champ d'application.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **Lanceur Pixel** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — icônes, dossiers, menus et le bord doux du panneau des applis\n• **Interface système** (com.android.systemui) — menus et messages du système\n• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — menus de l'éditeur\n\nSuper Sombre liste ses champs d'application supplémentaires sur sa propre page.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — fonctionnalités du lanceur\n• **Google** (com.google.android.googlequicksearchbox) — applis personnalisées dans la recherche Google\n• **Interface système** (com.android.systemui) — position des messages toast
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — icônes et noms du lanceur\n• **Google** (com.google.android.googlequicksearchbox) — recherche Google de l'écran d'accueil
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — boutons de navigation à côté de la barre de gestes\n• **Framework système** (system) — les applis gardent leurs menus du bas au-dessus des boutons\n• **Gboard** (com.google.android.inputmethod.latin) — bouton de fermeture du clavier
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — applis récentes\n• **Interface système** (com.android.systemui) — barre d'état en paysage
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) — captures d'écran\n• **Google Photos** (com.google.android.apps.photos) — photos
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play Store** (com.android.vending) — blocage des mises à jour d'applis\n• **Framework système** (system)\n• **Paramètres** (com.android.settings) — blocage des OTA et de la réinitialisation
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play Store** (com.android.vending)\n• **Framework système** (system), pour restaurer une version enregistrée
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **Menu de partage** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — couleurs assorties de la page de partage de Photos
+• **System Framework** (system)	• **Framework système** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **Framework système** (system) — protection des applis\n• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — verrouillage des applis et dossiers\n• **Interface système** (com.android.systemui) — demandes d'authentification\n\nConfigurez le verrouillage de l'écran, puis redémarrez après avoir ajouté les champs d'application.
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **Framework système** (system) — le bouton Marche/Arrêt\n• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — Circle to Search
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **Framework système** (system) — blocage des mises à jour\n• **Paramètres** (com.android.settings) — commandes de mise à jour et de réinitialisation
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **Framework système** (system) — réveil, veille et captures d'écran\n• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — glisser-déposer des applis\n• **Interface système** (com.android.systemui) — commandes d'enregistrement\n• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) — recadrage des captures d'écran
+• **System Framework** (system), to restore a saved version (also an older one)	• **Framework système** (system), pour restaurer une version enregistrée (même plus ancienne)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **Framework système** (system)\n• **Interface système** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **Interface système** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **Interface système** (com.android.systemui) — écran toujours allumé\n• **Framework système** (system) — lance l'écran toujours allumé même quand les autres options d'affichage de l'écran de verrouillage sont désactivées
+• **System UI** (com.android.systemui) — the lock screen PIN	• **Interface système** (com.android.systemui) — le code de l'écran de verrouillage
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **Interface système** (com.android.systemui)\n• **Lanceur Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Paramètres** (com.android.settings)\n• **Services des paramètres** (com.google.android.settings.intelligence)\n• **Programme d'installation de paquets** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nPour le style de l'éditeur, sélectionnez aussi **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) et **Google Photos** (com.google.android.apps.photos). Redémarrez après avoir ajouté les champs d'application.
+Auto (A–Z)	Auto (A–Z)
+Custom	Personnalisé
+Sort	Trier
+Sort the apps in this folder from A to Z?	Trier les applis de ce dossier de A à Z ?
+Auto-correction	Correction automatique
+Corrects words as you type	Corrige les mots pendant la saisie
+Gboard's own switch (reading it…)	Réglage propre à Gboard (lecture…)
+Languages	Langues
+On: Gboard corrects words in the languages turned on below	Activé : Gboard corrige les mots dans les langues activées ci-dessous
+Reading Gboard's languages…	Lecture des langues de Gboard…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	Le bouton du haut est la correction automatique de Gboard. Désactivez-la pour une langue ci-dessous : les mots n'y sont pas remplacés, mais les suggestions restent affichées. Les changements s'appliquent à la prochaine ouverture du clavier.
+A Gboard shortcut	Un raccourci Gboard
+A keyboard you can move anywhere	Un clavier à placer où vous voulez
+Arrow keys and selection tools	Touches fléchées et outils de sélection
+Both show at once, in two rows (portrait)	Les deux en même temps, sur deux lignes (portrait)
+Bring back what you undid	Rétablir ce que vous avez annulé
+Change how Gboard looks	Changer l'apparence de Gboard
+Clipboard	Presse-papiers
+Copy	Copier
+Copy the selected text	Copier le texte sélectionné
+Cut	Couper
+Cut the selected text	Couper le texte sélectionné
+Drag a shortcut to the edge of the list to turn the page.	Faites glisser un raccourci au bord de la liste pour changer de page.
+Edit toolbar shortcuts	Modifier les raccourcis de la barre d'outils
+Emoji	Emoji
+Emoji, emoticons and symbols	Emoji, émoticônes et symboles
+Fill in saved passwords and details	Remplir les mots de passe et informations enregistrés
+Floating	Flottant
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	Barre d'outils de Gboard, raccourcis au-dessus des suggestions : faites glisser les raccourcis ici
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	Barre d'outils de Gboard, raccourcis sous les suggestions : faites glisser les raccourcis ici
+Gboard's toolbar: drag shortcuts here	Barre d'outils de Gboard : faites glisser les raccourcis ici
+Hello	Bonjour
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	Maintenez un raccourci et faites-le glisser sur la barre d'outils, le long pour le déplacer, ou hors de la barre pour le retirer. Appuyez dessus pour voir ce qu'il fait.
+Make the keyboard bigger or smaller	Agrandir ou réduire le clavier
+Menu button	Bouton de menu
+Next language	Langue suivante
+Okay	OK
+One-handed	Mode une main
+Open Gboard's settings	Ouvrir les paramètres de Gboard
+Paste	Coller
+Paste what you copied	Coller ce que vous avez copié
+Put at least one shortcut on the toolbar	Placez au moins un raccourci sur la barre d'outils
+Redo	Rétablir
+Resize	Redimensionner
+Rewrite or polish what you wrote	Réécrire ou peaufiner votre texte
+Scan text	Scanner du texte
+Search and send GIFs	Rechercher et envoyer des GIF
+Search and send stickers	Rechercher et envoyer des autocollants
+Select all	Tout sélectionner
+Select all the text	Sélectionner tout le texte
+Settings	Paramètres
+Share	Partager
+Share Gboard with others	Partager Gboard
+Shortcuts	Raccourcis
+Shortcuts above the suggestions, not below	Raccourcis au-dessus des suggestions, pas en dessous
+Shortcuts below the suggestions, not above	Raccourcis sous les suggestions, pas au-dessus
+Shortcuts row on bottom	Ligne de raccourcis en bas
+Shortcuts row on top	Ligne de raccourcis en haut
+Shrink the keyboard to one side	Réduire le clavier d'un côté
+Stickers	Autocollants
+Suggestions and shortcuts together	Suggestions et raccourcis ensemble
+Switch to your next language	Passer à votre langue suivante
+Tap to select a word, tap again to clear. Hold to select all	Appuyez pour sélectionner un mot, à nouveau pour désélectionner. Maintenez pour tout sélectionner
+Text editing	Modification du texte
+Thanks	Merci
+Theme	Thème
+Translate	Traduire
+Translate as you type	Traduire pendant la saisie
+Type by speaking	Saisir en parlant
+Type text from your camera	Saisir du texte avec l'appareil photo
+Undo	Annuler
+Undo your last change	Annuler la dernière modification
+Voice typing	Saisie vocale
+Writing tools	Outils d'écriture
+Your copied text and pinned clips	Votre texte copié et vos extraits épinglés
+Clear	Effacer
+Clear the clipboard?	Effacer le presse-papiers ?
+Every clip is deleted except pinned ones.	Tous les extraits sont supprimés, sauf ceux épinglés.
+Delete this pinned clip?	Supprimer cet extrait épinglé ?
+Apply	Appliquer
+Down	Bas
+Height	Hauteur
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	Taille et position du clavier. Faites glisser les poignées pour redimensionner, ou le clavier pour le déplacer.
+Try typing here after Apply	Essayez de taper ici après Appliquer
+Up	Haut
+Width	Largeur
+Apps list	Liste des applis
+Pixel Suite isn't available	Pixel Suite n'est pas disponible
+Adjust icon	Ajuster l'icône
+Could not save this icon. Try another image.	Impossible d'enregistrer cette icône. Essayez une autre image.
+Icon updated	Icône mise à jour
+Pinch to zoom, drag to move	Pincez pour zoomer, faites glisser pour déplacer
+Reset position and zoom	Réinitialiser la position et le zoom
+Large	Grande
+Largest	Très grande
+Medium	Moyenne
+Small	Petite
+Smallest	Très petite
+Apps the pack doesn't cover keep their own icons.	Les applis que le pack ne couvre pas gardent leurs propres icônes.
+Close icon packs	Fermer les packs d'icônes
+Get icon packs	Obtenir des packs d'icônes
+Icon pack	Pack d'icônes
+Loading icon packs…	Chargement des packs d'icônes…
+Loading icons…	Chargement des icônes…
+No icon packs installed yet	Aucun pack d'icônes installé
+Pixel Launcher's own icons, including themed icons	Les icônes de Lanceur Pixel, y compris les icônes à thème
+System default	Valeur par défaut du système
+Unavailable	Indisponible
+Rename app	Renommer l'appli
+Shows on the home screen, in folders, the drawer and search.	Affiché sur l'écran d'accueil, dans les dossiers, le panneau des applis et la recherche.
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	Impossible de la masquer ici. Activez Masquer la barre de recherche dans Pixel Suite.
+Couldn't save Hide search bar	Impossible d'enregistrer Masquer la barre de recherche
+Hide search bar isn't supported on this launcher version	Masquer la barre de recherche n'est pas pris en charge par cette version du lanceur
+Change icon	Changer l'icône
+Could not read this image. Try another image.	Impossible de lire cette image. Essayez une autre image.
+Could not reset the icon	Impossible de réinitialiser l'icône
+Files	Fichiers
+Files is unavailable	Fichiers n'est pas disponible
+Original icon restored	Icône d'origine restaurée
+Photos	Photos
+Photos is unavailable. Choose Files instead.	Photos n'est pas disponible. Choisissez plutôt Fichiers.
+Reset icon	Réinitialiser l'icône
+Could not read this icon pack	Impossible de lire ce pack d'icônes
+Could not use this icon	Impossible d'utiliser cette icône
+Loading…	Chargement…
+No icon packs installed yet.\nInstall one and it shows here.	Aucun pack d'icônes installé.\nInstallez-en un et il apparaîtra ici.
+Play Store is unavailable	Le Play Store n'est pas disponible
+Search icons	Rechercher des icônes
+All apps	Toutes les applis
+App picker	Sélecteur d'applis
+Choose apps	Choisir des applis
+Couldn't load apps. Check root access and reopen.	Impossible de charger les applis. Vérifiez l'accès root et rouvrez.
+Couldn't save. Check root access and try again.	Impossible d'enregistrer. Vérifiez l'accès root et réessayez.
+Filter installed apps	Filtrer les applis installées
+Loading apps…	Chargement des applis…
+Root unavailable	Root indisponible
+Saved. Changes apply the next time these apps open.	Enregistré. Les changements s'appliquent à la prochaine ouverture de ces applis.
+Search installed apps	Rechercher des applis installées
+System apps	Applis système
+User apps	Applis utilisateur
+No room on this page for the other apps	Pas de place sur cette page pour les autres applis
+A Quest for the Kind-Hearted	Une quête pour les cœurs généreux
+Close account	Fermer le compte
+Membership refreshed	Abonnement actualisé
+Pass expires:  ∞	Le pass expire :  ∞
+Patreon account	Compte Patreon
+Patreon member	Membre Patreon
+Patron ✓	Patron ✓
+Read the quest	Lire la quête
+Refresh	Actualiser
+Refreshing…	Actualisation…
+Sign in with Patreon	Se connecter avec Patreon
+Sign out	Se déconnecter
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Soutenez Pixel Suite pour débloquer Chrome+, Gboard+, le Bloqueur de pubs, le VPN, Pages sombres, l'enregistrement des appels et un flux Google sans pub.
+A Quest for the\nKind-Hearted	Une quête pour les\ncœurs généreux
+Already a patron? Unlock	Déjà patron ? Débloquer
+Checking Patreon membership…	Vérification de l'abonnement Patreon…
+Join on Patreon	Rejoindre sur Patreon
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	Rejoignez-nous sur Patreon pour débloquer les fonctionnalités Patreon, et merci de faire vivre le projet. 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	Inscrit ? Appuyez sur Débloquer pour confirmer votre abonnement Patreon payant.
+Let's go	C'est parti
+No paid membership found. Choose the paid tier to unlock.	Aucun abonnement payant trouvé. Choisissez le niveau payant pour débloquer.
+Open a browser to sign in with Patreon.	Ouvrez un navigateur pour vous connecter avec Patreon.
+Open the Pixel Suite paid tier in your browser.	Ouvrez le niveau payant de Pixel Suite dans votre navigateur.
+Patreon sign-in is being set up.	La connexion Patreon est en cours de configuration.
+Patron verified	Patron vérifié
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	Pixel Suite n'a ni pub ni traceur. Les informations de compte et de paiement servent uniquement à vérifier votre déblocage.
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite est créé par une seule personne, sur son temps libre, par amour des téléphones Pixel.
+Quest Complete!	Quête terminée !
+Ready to check membership	Prêt à vérifier l'abonnement
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	Merci de soutenir Pixel Suite. Vos fonctionnalités Patreon sont prêtes.
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Les patrons débloquent Chrome+ et Gboard+, le Bloqueur de pubs et le VPN, Pages sombres dans Chrome, l'enregistrement des appels et un flux Google sans pub. Chaque soutien est réinvesti dans l'appli : suivre les mises à jour d'Android et des applis Google, réparer ce qu'elles cassent et créer de nouvelles fonctionnalités.
+Welcome back!	Bon retour !
+✨ Quest Complete!	✨ Quête terminée !
+📜 A Quest for the Kind-Hearted	📜 Une quête pour les cœurs généreux
+Google apps	Applis Google
+Patreon feature	Fonctionnalité Patreon
+Unlock this feature with Patreon	Débloquer cette fonctionnalité avec Patreon
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android n'a pas autorisé le VPN. Ouvrez la page VPN et appuyez sur Se connecter.
+Another VPN took over	Un autre VPN a pris le relais
+Checking that websites open…	Vérification de l'ouverture des sites…
+Checking the connection…	Vérification de la connexion…
+Chrome isn't installed	Chrome n'est pas installé
+Connection failed	Échec de la connexion
+Connection lost	Connexion perdue
+Couldn't load the server list. Check your connection.	Impossible de charger la liste des serveurs. Vérifiez votre connexion.
+Disconnect	Se déconnecter
+Disconnected	Déconnecté
+Finding servers…	Recherche de serveurs…
+Free volunteer server	Serveur bénévole gratuit
+No server answered	Aucun serveur n'a répondu
+Server stopped answering	Le serveur ne répond plus
+Trying the faster UDP connection (up to 30 s)…	Essai de la connexion UDP plus rapide (jusqu'à 30 s)…
+VPN is a Patreon feature	Le VPN est une fonctionnalité Patreon
+connections refused	connexions refusées
+no answer	pas de réponse
+Circle to Search isn't available	Circle to Search n'est pas disponible
+Do Not Annoy off	Ne me dérange pas désactivé
+Do Not Annoy on	Ne me dérange pas activé
+Do Not Disturb off	Ne pas déranger désactivé
+Do Not Disturb on	Ne pas déranger activé
+No Annoyance off	Sans dérangement désactivé
+No Annoyance on	Sans dérangement activé
+Silence off	Silence désactivé
+Silence on	Silence activé
+Authenticator	Authenticator
+Calculator	Calculatrice
+Calendar	Agenda
+Camera	Appareil photo
+Clock	Horloge
+Contacts	Contacts
+Maps	Maps
+Messages	Messages
+Play Store	Play Store
++  Add apps	+  Ajouter des applis
++ Add to home screen	+ Ajouter à l'écran d'accueil
+A clearer page	Une page plus claire
+A website	Un site Web
+Ad blocking	Blocage des pubs
+Add new	Ajouter
+Add to home screen	Ajouter à l'écran d'accueil
+Adjust	Ajuster
+Advertisement	Publicité
+Alex	Alex
+Another pack	Un autre pack
+App info	Infos sur l'appli
+App is locked	L'appli est verrouillée
+Applied	Appliqué
+Applied across the launcher	Appliqué dans tout le lanceur
+Applying…	Application…
+Apps	Applis
+Authenticate to open	Authentifiez-vous pour ouvrir
+Back in your share list	De retour dans votre liste de partage
+Block system updates	Bloquer les mises à jour du système
+Bluetooth	Bluetooth
+Bookmarks	Favoris
+Bookmarks bar	Barre de favoris
+Call ended	Appel terminé
+Call log: Alex · Blocked	Journal d'appels : Alex · Bloqué
+Call recording	Enregistrement des appels
+Camera (stock)	Appareil photo (d'origine)
+Centered labels. Clearer view.	Libellés centrés. Vue plus claire.
+Change icon → Icon pack	Changer l'icône → Pack d'icônes
+Change icons	Changer les icônes
+Choose Icon pack	Choisir un pack d'icônes
+Choose a pack	Choisir un pack
+Choose an image	Choisir une image
+Cleaner articles in Chrome	Des articles plus clairs dans Chrome
+Clear all	Tout effacer
+Collections	Collections
+Connected	Connecté
+Controls within reach	Commandes à portée de main
+Create	Créer
+Crop	Recadrer
+Crop freely	Recadrage libre
+Data and Wi-Fi stay on	Les données et le Wi-Fi restent activés
+Date & time	Date et heure
+Device audio	Audio de l'appareil
+Discover	Discover
+Display & touch	Affichage et écran tactile
+Do Not Disturb	Ne pas déranger
+Done	OK
+Dot cleared	Point effacé
+Downloads	Téléchargements
+Drag to make a folder	Faites glisser pour créer un dossier
+Edit photo	Modifier la photo
+Empty ad space	Espace publicitaire vide
+Enter PIN	Saisir le code
+Entire screen	Tout l'écran
+Erase all data	Effacer toutes les données
+Every tab in view	Tous les onglets en vue
+Example app	Appli exemple
+Example pack	Pack exemple
+Factory reset locked	Réinitialisation verrouillée
+Father	Père
+Fill	Remplir
+Flashlight	Lampe de poche
+Folder	Dossier
+For you	Pour vous
+Fri, Oct 16	ven. 16 oct.
+Friday, Oct 16	vendredi 16 oct.
+Friend	Ami
+Headlines	À la une
+Hidden apps	Applis masquées
+Hidden apps remain available	Les applis masquées restent disponibles
+Hidden contacts	Contacts masqués
+Hide 2 apps	Masquer 2 applis
+Hide contact	Masquer le contact
+Hide several apps	Masquer plusieurs applis
+Hold	Maintenir
+Hold and drag pinned apps	Maintenir et faire glisser les applis épinglées
+Hold to unhide	Maintenez pour afficher
+How about this spot?	Et cet emplacement ?
+Incoming call declined	Appel entrant refusé
+Incoming call deflected	Appel entrant redirigé
+Incoming calls quiet	Appels entrants silencieux
+Internet	Internet
+Keep Notes	Keep Notes
+Let's find a new place.	Trouvons un nouvel emplacement.
+Lock	Verrouiller
+Manage suggested contacts	Gérer les contacts suggérés
+Message	Message
+Minus hides the contacts row	Le moins masque la ligne des contacts
+Mobile bookmarks	Favoris sur mobile
+Mobile network	Réseau mobile
+More of your feed	Plus de votre flux
+My folder	Mon dossier
+New tab	Nouvel onglet
+Newest first	Plus récents d'abord
+News article	Article d'actualité
+No empty ad boxes	Plus d'encarts pub vides
+No recent apps	Aucune appli récente
+No sponsored gaps	Plus de trous sponsorisés
+Notifications	Notifications
+OTA blocker	Bloqueur OTA
+Oct 12, 10:20	12 oct., 10:20
+Oct 8, 08:10	8 oct., 08:10
+One app. Your choice.	Une appli. Votre choix.
+Open. Swipe. Close.	Ouvrir. Balayer. Fermer.
+Order saved	Ordre enregistré
+Other bookmarks	Autres favoris
+Packages blocked	Paquets bloqués
+Perfect. See you there!	Parfait. À tout à l'heure !
+Phone	Téléphone
+Pin	Épingler
+Pin moves apps above the divider	Épingler place les applis au-dessus du séparateur
+Pin, then drag to reorder	Épinglez, puis faites glisser pour réorganiser
+Pinned apps	Applis épinglées
+Plus brings the row back	Le plus fait revenir la ligne
+Private	Privé
+Private folder	Dossier privé
+Read the full story	Lire l'article complet
+Reading list	Liste de lecture
+Ready for the weekend?	Prêt pour le week-end ?
+Ready to activate	Prêt à activer
+Record	Enregistrer
+Record your screen	Enregistrer l'écran
+Recorded	Enregistré
+Recording	Enregistrement
+Recording saved	Enregistrement sauvegardé
+Recordings / Calls	Recordings / Calls
+Restricted packages	Paquets restreints
+Scan QR code	Scanner un code QR
+Scan your carrier's code	Scanner le code de votre opérateur
+Screenshot	Capture d'écran
+Screenshot saved	Capture d'écran enregistrée
+Scroll to continue	Faites défiler pour continuer
+Search the web	Rechercher sur le Web
+Select	Sélectionner
+Select apps	Sélectionner des applis
+Sep 30, 21:00	30 sept., 21:00
+Share or restore hidden apps	Partager ou restaurer les applis masquées
+Show touches	Afficher les appuis
+Sites	Sites
+Software updates	Mises à jour logicielles
+Sort  ⌄	Trier  ⌄
+Sort apps A–Z?	Trier les applis de A à Z ?
+Speed Dial in bookmarks	Accès rapide dans les favoris
+Split screen	Écran partagé
+Start	Démarrer
+Swipe	Balayer
+System settings	Paramètres système
+Tap to share	Appuyez pour partager
+Themes	Thèmes
+Themes → Icon pack	Thèmes → Pack d'icônes
+Today	Aujourd'hui
+Today 09:15	Aujourd'hui 09:15
+Today 14:42	Aujourd'hui 14:42
+Today's stories	Les articles du jour
+Today's top stories	Les principaux articles du jour
+Touch fingerprint sensor	Touchez le lecteur d'empreinte
+Unhide app	Afficher l'appli
+Unlocked on the 4th digit	Déverrouillé au 4e chiffre
+Use Super Dark-Mode	Utiliser Mode Super Sombre
+Voice note.m4a	Note vocale.m4a
+Voice search	Recherche vocale
+Wallpaper & style	Fond d'écran et style
+Watch eSIM	eSIM de la montre
+Weekend plans	Projets du week-end
+Wife	Épouse
+Yes! A coffee sounds good.	Oui ! Un café, bonne idée.
+Yesterday	Hier
+Yesterday 18:30	Hier 18:30
+Your Pixel. Your way.	Votre Pixel. À votre façon.
+Your tabs	Vos onglets
+‹ Back	‹ Retour
+↓ Move to bottom	↓ Placer en bas
+Lock folder	Verrouiller le dossier
+Unlock folder	Déverrouiller le dossier
+Confirm it's you to disable this app	Confirmez votre identité pour désactiver cette appli
+Confirm it's you to lock this app	Confirmez votre identité pour verrouiller cette appli
+Confirm it's you to lock this folder	Confirmez votre identité pour verrouiller ce dossier
+Confirm it's you to pause this app	Confirmez votre identité pour suspendre cette appli
+Confirm it's you to remove this app	Confirmez votre identité pour retirer cette appli
+Confirm it's you to remove this folder	Confirmez votre identité pour retirer ce dossier
+Confirm it's you to uninstall this app	Confirmez votre identité pour désinstaller cette appli
+Confirm it's you to unlock this app	Confirmez votre identité pour déverrouiller cette appli
+Confirm it's you to unlock this folder	Confirmez votre identité pour déverrouiller ce dossier
+Could not check your screen lock	Impossible de vérifier le verrouillage de l'écran
+Could not save. Is root allowed for Pixel Suite?	Impossible d'enregistrer. Le root est-il autorisé pour Pixel Suite ?
+Please authenticate to proceed	Veuillez vous authentifier pour continuer
+Set a screen lock first to lock apps	Définissez d'abord un verrouillage de l'écran pour verrouiller des applis
+Use PIN	Utiliser le code
+App remains locked	L'appli reste verrouillée
+Cannot dismiss locked apps	Impossible de fermer les applis verrouillées
+Two apps locked	Deux applis verrouillées
+Refresh rate	Fréquence d'actualisation
+Accept	Accepter
+An update check is already running.	Une recherche de mise à jour est déjà en cours.
+Automatic update checks are off.	Les recherches automatiques de mises à jour sont désactivées.
+Could not verify both release repositories. Try again later.	Impossible de vérifier les deux dépôts de versions. Réessayez plus tard.
+New version ready. Tap to download and install.	Nouvelle version prête. Appuyez pour la télécharger et l'installer.
+No newer official release is published with matching APKs on both repositories.	Aucune version officielle plus récente n'est publiée avec des APK correspondants sur les deux dépôts.
+No release check yet.	Aucune vérification de version pour le moment.
+Apply update blocking choices	Appliquer les choix de blocage des mises à jour
+Couldn't apply: root access needed	Impossible d'appliquer : accès root requis
+Couldn't restart: root access needed	Impossible de redémarrer : accès root requis
+Restarting…	Redémarrage…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	Mode Super Sombre utilise son propre style noir.\nDésactivez-le pour changer de style.
+**Used for:**\n	**Utilisé pour :**\n
+Adds Doodles and cropping tools to the screenshot editor.	Ajoute les Griffonnages et les outils de recadrage à l'éditeur de captures d'écran.
+Adds editable Doodles to the photo editor.	Ajoute des Griffonnages modifiables à l'éditeur de photos.
+Adds the refresh-rate slider to Display & touch.	Ajoute le curseur de fréquence d'actualisation à Affichage et écran tactile.
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	Autorise la capture des écrans sécurisés, masque l'état de l'accessibilité et du débogage aux applis, et fournit le compteur de FPS.
+Applies Super Dark to Gboard.	Applique Super Sombre à Gboard.
+Applies Super Dark to Settings search.	Applique Super Sombre à la recherche dans les paramètres.
+Applies Super Dark to Settings.	Applique Super Sombre aux paramètres.
+Applies Super Dark to app uninstall dialogs.	Applique Super Sombre aux boîtes de dialogue de désinstallation.
+Applies Super Dark to the Google app and feed.	Applique Super Sombre à l'appli Google et au flux.
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	Applique les icônes, dossiers et menus du lanceur, ainsi que le bord doux givré derrière la zone de recherche du panneau des applis. L'effet du panneau n'est actif qu'avec Verre dépoli.
+Blocks system update installation and protects factory reset.	Bloque l'installation des mises à jour du système et protège la réinitialisation.
+Controls Software updates and the factory-reset option in Settings.	Contrôle Mises à jour logicielles et l'option de réinitialisation dans les paramètres.
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	Refuse les appels entrants pour Ne me dérange pas quand la voie de la pile d'appel Pixel n'est pas disponible.
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	Détecte les doubles pressions sur le bouton Marche/Arrêt et Volume - pour les raccourcis lampe de poche et appareil photo.
+Detects volume-down double presses while the screen is off.	Détecte les doubles pressions sur Volume - quand l'écran est éteint.
+Enables QR-code eSIM setup in the Pixel Watch phone app.	Active la configuration eSIM par code QR dans l'appli Pixel Watch du téléphone.
+Enables call recording and its controls in the Google Phone app.	Active l'enregistrement des appels et ses commandes dans l'appli Téléphone de Google.
+Fades the status bar while recent apps are viewed in landscape.	Estompe la barre d'état quand les applis récentes sont affichées en paysage.
+Files (system)	Fichiers (système)
+Files by Google	Fichiers de Google
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	Bords de défilement doux Verre dépoli sur les écrans ouverts depuis les paramètres Android, y compris leurs sous-pages prises en charge. Suit le thème clair, sombre et Super Sombre. Activez ce champ d'application dans LSPosed et redémarrez l'appli ou le téléphone.
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	Gère les gestes de réveil, de veille et de capture d'écran dans le processus système d'Android.
+Hides the keyboard globe and moves the dismiss arrow to the right.	Masque le globe du clavier et déplace la flèche de fermeture à droite.
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	Garde les appels réactifs pendant l'enregistrement des fichiers.
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	Garde les appels entrants silencieux via la pile d'appel Pixel quand Ne me dérange pas est activé.
+Keeps screenshots ready for faster capture.	Garde les captures d'écran prêtes pour une capture plus rapide.
+Keeps selected apps on their current version by blocking their Play Store updates.	Garde les applis choisies sur leur version actuelle en bloquant leurs mises à jour du Play Store.
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	Verrouille les applis et dossiers, affiche des badges de cadenas et protège les applis verrouillées dans les applis récentes.
+Matches Photos' share-page colors to the share sheet.	Aligne les couleurs de la page de partage de Photos sur le menu de partage.
+Matches photo-editor menus and controls to your chosen theme and surface style.	Aligne les menus et commandes de l'éditeur de photos sur votre thème et votre style de surface.
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	Aligne les menus et commandes de l'éditeur de captures d'écran sur votre thème et votre style de surface.
+Matches system menus and messages to your chosen theme and surface style.	Aligne les menus et messages du système sur votre thème et votre style de surface.
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	Place le bouton de fermeture du clavier tout à droite quand les boutons de navigation sont activés. Redémarrez le clavier après avoir ajouté ce champ d'application.
+Opens the camera from the volume-down shortcut.	Ouvre l'appareil photo depuis le raccourci Volume -.
+Package installer	Programme d'installation de paquets
+Permission Controller	Contrôleur des autorisations
+Personal Safety	Sécurité personnelle
+Phone Services	Services du téléphone
+Pixel Troubleshooting	Dépannage Pixel
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	Place les messages toast en haut, au milieu ou en bas comme d'origine. S'applique au prochain message.
+Provides cleaner screen-recording controls.	Fournit des commandes d'enregistrement d'écran plus épurées.
+Removes sponsored cards and their empty space from the Google feed.	Retire les fiches sponsorisées et leur espace vide du flux Google.
+Removes supported empty ad boxes from web pages opened in Chrome.	Retire les encarts pub vides pris en charge des pages ouvertes dans Chrome.
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	Réorganise les applis de partage épinglées et ajoute des dossiers d'applis masquées et de contacts au menu de partage d'Android.
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	Demande une authentification avant d'ouvrir des applis protégées ou de les désinstaller, désactiver ou suspendre.
+Settings Services	Services des paramètres
+Share sheet	Menu de partage
+Shows customized app names and icons in home-screen Google search.	Affiche les noms et icônes d'applis personnalisés dans la recherche Google de l'écran d'accueil.
+Shows fingerprint and PIN prompts for locked apps and folders.	Affiche les demandes d'empreinte et de code pour les applis et dossiers verrouillés.
+Shows newest files first in the file browser.	Affiche les fichiers les plus récents d'abord dans le gestionnaire de fichiers.
+Shows newest files first in the system file picker.	Affiche les fichiers les plus récents d'abord dans le sélecteur de fichiers du système.
+System Framework	Framework système
+System UI	Interface système
+Toggles the flashlight with a double press of the power button.	Allume ou éteint la lampe de poche d'une double pression sur le bouton Marche/Arrêt.
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	Place pour 7 raccourcis dans la barre d'outils, raccourcis de modification du texte, touches arrondies, presse-papiers sur une colonne, suggestions masquées, boutons menu et emoji/voix, ordre de votre barre d'outils, suggestions avec raccourcis sur deux lignes, Redimensionner (taille et position du clavier), position libre du clavier, ؤ arabe sur و, suppression lettre par lettre par balayage, correction automatique par langue, presse-papiers illimité et l'image du clavier sur la page Redimensionner.
+10 seconds	10 secondes
+15 seconds	15 secondes
+3 seconds	3 secondes
+30 seconds	30 secondes
+5 seconds	5 secondes
+A better starting view for your files.	Une meilleure vue de départ pour vos fichiers.
+A feed without sponsored gaps	Un flux sans trous sponsorisés
+A tidier recording sheet. Needs your phone in English.	Une fenêtre d'enregistrement plus nette. Votre téléphone doit être en anglais.
+AOD after screen off	AOD après l'extinction de l'écran
+AOD while charging	AOD pendant la charge
+About and support	À propos et assistance
+Ad Blocker, VPN, Dark pages and more to come	Bloqueur de pubs, VPN, pages sombres et plus encore
+Ad blocker	Bloqueur de pubs
+Ad blocking for news browsing	Blocage des pubs pour la lecture des actus
+Add-ons for Chrome+.	Modules pour Chrome+.
+Adds Scan QR code to Mobile network when your carrier isn't listed	Ajoute Scanner un code QR à Réseau mobile quand votre opérateur n'est pas listé
+All of Gboard+ at once. Your choices are kept while it's off	Tout Gboard+ d'un coup. Vos choix sont conservés quand il est désactivé
+Allow screenshots of secure screens	Autoriser les captures des écrans sécurisés
+Allow update notifications	Autoriser les notifications de mise à jour
+Always show Clear all	Toujours afficher Tout effacer
+Always-on display	Écran toujours allumé
+Always-on display while plugged in	Écran toujours allumé pendant la charge
+App & folder lock	Verrouillage des applis et dossiers
+App drawer	Panneau des applis
+App drawer folders	Dossiers du panneau des applis
+App name	Nom de l'appli
+Applies right away. Open folders and search keep the usual size.	S'applique tout de suite. Les dossiers ouverts et la recherche gardent la taille habituelle.
+Apply matching icons across your apps	Appliquer des icônes assorties à vos applis
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	Les applis qui lient leur connexion au téléphone, comme beaucoup d'applis bancaires, peuvent redemander une connexion après une désinstallation.
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	Les applis qui refusent de s'ouvrir avec les options pour les développeurs activées, comme certaines applis bancaires, fonctionnent normalement.\nAppuyez sur l'engrenage pour ouvrir les options pour les développeurs.
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	Les applis ayant une version plus récente sur le Play Store l'affichent en rouge. Appuyez sur ! pour mettre à jour, sauvegarder ou restaurer.
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	Les applis choisies ne voient pas vos services d'accessibilité.\nDésactivez d'abord les autres modules qui le font.
+Asks before a locked app is uninstalled or paused	Demande avant la désinstallation ou la suspension d'une appli verrouillée
+Auto-confirm 4-digit PIN	Confirmer automatiquement un code à 4 chiffres
+Auto-confirm works with a 4-digit PIN, from your next unlock.	La confirmation automatique fonctionne avec un code à 4 chiffres, dès le prochain déverrouillage.
+Backspace swipe deletes letters	Balayer sur Retour arrière efface des lettres
+Backup	Sauvegarde
+Backup & Restore keeps every saved version, also of uninstalled apps.	Sauvegarde et restauration garde chaque version enregistrée, même des applis désinstallées.
+Backup restored	Sauvegarde restaurée
+Backup saved	Sauvegarde enregistrée
+Battery saver can still turn it off.	L'économiseur de batterie peut toujours le désactiver.
+Block ads, with filtering per site	Bloquer les pubs, avec filtrage par site
+Blocks ads while you read the news.	Bloque les pubs pendant la lecture des actus.
+Blur Off	Sans flou
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	Sans flou\nPas de flou, surfaces opaques.\n\nD'origine\nL'apparence du système.\n\nVerre dépoli (par défaut)\nFloute ce qui est derrière les dossiers, menus et messages.
+Blurred and tinted	Flouté et teinté
+Bottom (Stock)	En bas (d'origine)
+Bring everything back from a backup file	Tout récupérer depuis un fichier de sauvegarde
+Browse from another country	Naviguer depuis un autre pays
+Browse from another country, in Chrome or every app	Naviguer depuis un autre pays, dans Chrome ou toutes les applis
+Browse from another country.	Naviguer depuis un autre pays.
+Browse without empty ad boxes	Naviguer sans encarts pub vides
+Buttons	Boutons
+Buttons beside the gesture bar	Boutons à côté de la barre de gestes
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	L'enregistrement des appels peut être limité par les lois de votre pays. Obtenez tout consentement nécessaire avant d'enregistrer. Vous êtes responsable d'un usage légal. RovianDev n'est pas responsable d'un usage illégal.
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	Les appelants entendent que vous êtes indisponible. Vous recevez une notification avec un bouton Appeler pour chaque appel manqué. Les appels d'urgence passent toujours.
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	Les appels sont refusés avant que le téléphone sonne. Vous recevez une notification avec un bouton Appeler pour chaque appel manqué. Les appels d'urgence passent toujours.
+Capture, sleep, wake and app dragging.	Capture, veille, réveil et déplacement des applis.
+Changelog	Journal des modifications
+Changes apply the next time the chosen apps open.	Les changements s'appliquent à la prochaine ouverture des applis choisies.
+Changes only the text under icons.\nIcon size and shape stay the same.	Change seulement le texte sous les icônes.\nLa taille et la forme des icônes restent les mêmes.
+Changing this option restarts Pixel Launcher.	Modifier cette option redémarre Lanceur Pixel.
+Check for updates	Rechercher des mises à jour
+Check for updates automatically	Rechercher automatiquement les mises à jour
+Check for updates now	Rechercher des mises à jour maintenant
+Check now	Vérifier
+Checking for updates…	Recherche de mises à jour…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	Choisissez Retour, Accueil ou Récents à côté de la barre de gestes. Maintenez Accueil pour Circle to Search ou Gemini.
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	Choisissez Retour, Accueil ou Récents pour chaque côté. Maintenez Accueil pour Circle to Search ou Gemini.
+Choose Lock from an app's recents menu to keep its card when you clear apps.	Choisissez Verrouiller dans le menu d'une appli des applis récentes pour garder sa fiche quand vous effacez les applis.
+Choose a filtering level per site from the ad blocker button in Chrome.	Choisissez un niveau de filtrage par site avec le bouton du bloqueur de pubs dans Chrome.
+Choose the languages Gboard corrects.	Choisissez les langues que Gboard corrige.
+Choose which apps can't see your accessibility services	Choisir les applis qui ne voient pas vos services d'accessibilité
+Choose which apps stay on their current version.	Choisissez les applis qui restent sur leur version actuelle.
+Circle to Search	Circle to Search
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	Circle to Search fonctionne comme un appui long sur la barre de navigation. Capture d'écran fonctionne comme Marche/Arrêt + Volume -.
+Cleaner news articles	Des articles d'actu plus épurés
+Cleaner news browsing.	Une lecture des actus plus épurée.
+Clear all in recents	Tout effacer dans les applis récentes
+Clear all is always there in recents, no scrolling.	Tout effacer est toujours là dans les applis récentes, sans défiler.
+Clear all, locked cards and landscape view	Tout effacer, fiches verrouillées et mode paysage
+Clipboard history	Historique du presse-papiers
+Clipboard in one column	Presse-papiers sur une colonne
+Colorful icons in the app drawer (Stock)	Icônes colorées dans le panneau des applis (d'origine)
+Community and support	Communauté et assistance
+Confirm it's you to change privacy settings	Confirmez votre identité pour modifier les paramètres de confidentialité
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	Les commandes passent en bas, avec des animations d'onglets fluides. Dans la vue des onglets, le + orange ouvre un onglet de navigation privée.
+Could not save text size	Impossible d'enregistrer la taille du texte
+Could not save the surface style	Impossible d'enregistrer le style de surface
+Could not save this option	Impossible d'enregistrer cette option
+Couldn't back up: root access needed	Impossible de sauvegarder : accès root requis
+Couldn't load apps	Impossible de charger les applis
+Couldn't restore: root access needed	Impossible de restaurer : accès root requis
+Couldn't save (root)	Impossible d'enregistrer (root)
+Crop screenshots to any size, even a single line.	Recadrez les captures d'écran à n'importe quelle taille, même une seule ligne.
+Customize icon labels	Personnaliser les noms des icônes
+Dark theme and schedules	Thème sombre et programmation
+Dark websites in Chrome	Sites sombres dans Chrome
+Dark websites in Chrome.	Sites sombres dans Chrome.
+Dark websites, always, with dark mode or on a schedule	Sites sombres, toujours, avec le mode sombre ou selon un horaire
+Developer options aren't available on this device.	Les options pour les développeurs ne sont pas disponibles sur cet appareil.
+Double tap	Appuyer deux fois
+Double tap to sleep	Appuyer deux fois pour verrouiller
+Double-press power button	Appuyer deux fois sur Marche/Arrêt
+Double-press volume down	Appuyer deux fois sur Volume -
+Double-tap an empty spot on the home screen to lock your phone.	Appuyez deux fois sur un espace vide de l'écran d'accueil pour verrouiller votre téléphone.
+Download and install	Télécharger et installer
+Download and install the update in Pixel Suite	Télécharger et installer la mise à jour dans Pixel Suite
+Drag an app onto another to make a folder. Use Add apps to pick more.	Faites glisser une appli sur une autre pour créer un dossier. Utilisez Ajouter des applis pour en choisir d'autres.
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	Faites glisser les poignées pour changer la taille, ou le milieu pour déplacer le clavier. Réinitialiser revient à la taille de Gboard.
+Drag to home screen	Faire glisser sur l'écran d'accueil
+Draw on screenshots and photos.	Dessinez sur les captures d'écran et les photos.
+Draw shapes and arrows on screenshots.	Dessinez des formes et des flèches sur les captures d'écran.
+Draw shapes on photos: Edit → Doodles. They stay editable.	Dessinez des formes sur vos photos : Modifier → Griffonnages. Elles restent modifiables.
+Ends	Fin
+Erase all data is greyed out in Settings while OTA blocker is on.	Effacer toutes les données est grisé dans les paramètres quand le bloqueur OTA est activé.
+Every feature, fix and release	Chaque fonctionnalité, correction et version
+Feature preview	Aperçu de la fonctionnalité
+Features preview	Aperçu des fonctionnalités
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	Filtrez les pubs par site, de basique à complet. Complet masque aussi les bannières de cookies et les pop-ups. Vous pouvez aussi retirer n'importe quel élément.
+Filtering levels and website exceptions.	Niveaux de filtrage et exceptions par site.
+Fingerprint or PIN before locked apps and folders open	Empreinte ou code avant l'ouverture des applis et dossiers verrouillés
+Five text sizes for app names. Icons stay the same size.	Cinq tailles de texte pour les noms d'applis. Les icônes gardent leur taille.
+Flashlight and camera shortcuts	Raccourcis lampe de poche et appareil photo
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	Lampe de poche : appuyez deux fois sur Marche/Arrêt pour l'allumer ou l'éteindre, même verrouillé. Appareil photo (d'origine) ouvre l'appareil photo.
+Folder grid	Grille des dossiers
+Folder sorting	Tri des dossiers
+Folders	Dossiers
+Folders first, then your newest files.	Les dossiers d'abord, puis vos fichiers les plus récents.
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	Les dossiers s'agrandissent selon le nombre d'applis. Choisissez une grille dans le menu à trois points de chaque dossier.
+Folders, dragging and app shortcuts	Dossiers, glisser-déposer et raccourcis d'applis
+Folders, dragging and app shortcuts.	Dossiers, glisser-déposer et raccourcis d'applis.
+Folders, drawer, names, search bar and recents	Dossiers, panneau, noms, barre de recherche et applis récentes
+Folders, names, search bar and recents.	Dossiers, noms, barre de recherche et applis récentes.
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	Suit la programmation de votre thème sombre. En thème clair, les couleurs normales et le flou reviennent.
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	Pour une Pixel Watch avec son propre forfait mobile : son réseau se coupe aussi. Nécessite l'appli Pixel Suite pour montre.
+For fingerprint or PIN protection, use Privacy & Security.	Pour une protection par empreinte ou code, utilisez Confidentialité et sécurité.
+Free screenshot crop	Recadrage libre des captures d'écran
+From Chrome to Chrome+	De Chrome à Chrome+
+Full changelog on GitHub	Journal complet sur GitHub
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard garde chaque extrait jusqu'à ce que vous le supprimiez. Les extraits épinglés ont des cartes bleues, et le X en haut supprime tout sauf ceux-ci. Presse-papiers sur une colonne affiche un extrait par ligne.
+Gboard restarts when you change any of these.	Gboard redémarre quand vous modifiez l'un de ces réglages.
+Gemini (stock)	Gemini (d'origine)
+Gemini when locked	Gemini quand verrouillé
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini, Circle to Search, une capture d'écran ou un mode silencieux.
+Gestures	Gestes
+Get the Pixel Suite watch app from the developer on Telegram.	Obtenez l'appli Pixel Suite pour montre auprès du développeur sur Telegram.
+Google Photos setup	Configuration de Google Photos
+Google app	Appli Google
+Google news	Google Actualités
+Google's own look	L'apparence de Google
+Held-back apps are saved automatically before they update.	Les applis retenues sont enregistrées automatiquement avant leur mise à jour.
+Hide	Masquer
+Hide Developer Options	Masquer les options pour les développeurs
+Hide accessibility from apps	Masquer l'accessibilité aux applis
+Hide ads in Google feed	Masquer les pubs dans le flux Google
+Hide app shortcuts	Masquer les raccourcis d'applis
+Hide search bar	Masquer la barre de recherche
+Hide suggestion chips	Masquer les suggestions
+Hides app shortcuts like View orders from the drawer menu.	Masque les raccourcis d'applis comme Voir les commandes dans le menu du panneau des applis.
+Hides the globe under your keyboard and moves the arrow to the right	Masque le globe sous votre clavier et déplace la flèche à droite
+Hold Home for	Maintenir Accueil pour
+Hold a folder and drag it anywhere among your apps.	Maintenez un dossier et faites-le glisser n'importe où parmi vos applis.
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	Maintenez un dossier pour le renommer, le trier ou le retirer. Le retirer ne désinstalle pas ses applis.
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	Maintenez un raccourci et faites-le glisser sur la barre d'outils, le long pour le déplacer, ou hors de la barre pour le retirer. Appuyez dessus pour voir ce qu'il fait. Masquez les boutons latéraux pour laisser plus de place aux raccourcis.
+Hold an app and choose Change icon to use your own image.	Maintenez une appli et choisissez Changer l'icône pour utiliser votre propre image.
+Hold an app and choose Rename.	Maintenez une appli et choisissez Renommer.
+Hold an app and choose Rename. It shows right away everywhere.	Maintenez une appli et choisissez Renommer. Le nom s'affiche tout de suite partout.
+Hold an app in the drawer and drag it onto Add to home screen.	Maintenez une appli dans le panneau et faites-la glisser sur Ajouter à l'écran d'accueil.
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	Maintenez une appli ou un dossier et choisissez Verrouiller ou Déverrouiller.\n\nVerrouiller un dossier ne verrouille pas ses applis.
+Hold an app or folder with a dot and choose Clear badge.	Maintenez une appli ou un dossier avec un point et choisissez Effacer le badge.
+Hold an app or folder with a notification dot and choose Clear badge.	Maintenez une appli ou un dossier avec un point de notification et choisissez Effacer le badge.
+Hold back app updates	Retenir les mises à jour d'applis
+Hold power button	Maintenir le bouton Marche/Arrêt
+How it works	Fonctionnement
+Icon label size	Taille des noms d'icônes
+Icon label size, five levels	Taille des noms d'icônes, cinq niveaux
+Icons, Super Dark-Mode and blur	Icônes, Mode Super Sombre et flou
+If a double tap doesn't register, tap once more within three seconds.	Si un double appui n'est pas détecté, appuyez encore une fois dans les trois secondes.
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	Dans Chrome, ouvrez Modules et appuyez sur Pages sombres pour le désactiver sur un site. Les images et vidéos gardent leurs couleurs.
+Installation permission was not enabled. Tap Download and install when ready.	L'autorisation d'installation n'a pas été activée. Appuyez sur Télécharger et installer quand vous êtes prêt.
+Keep calls quiet and stay connected	Appels silencieux, toujours connecté
+Keep incoming calls quiet and stay connected	Appels entrants silencieux, toujours connecté
+Keep unlocked for 1 minute	Garder déverrouillé 1 minute
+Keep what matters. Clear the rest.	Gardez l'essentiel. Effacez le reste.
+Keeps Clear all next to Screenshot and Select.	Garde Tout effacer à côté de Capture d'écran et Sélectionner.
+Keeps chips like Screenshot off the toolbar	Garde les suggestions comme Capture d'écran hors de la barre d'outils
+Keyboard bar tweak	Ajustement de la barre du clavier
+Keys	Touches
+Keys and backspace	Touches et retour arrière
+LSPosed scope	Champ d'application LSPosed
+Landscape recent apps	Applis récentes en paysage
+Landscape view	Mode paysage
+Left button	Bouton gauche
+Live frame counter at the top right	Compteur d'images en direct en haut à droite
+Lock a card from its menu to keep it when you clear apps.	Verrouillez une fiche depuis son menu pour la garder quand vous effacez les applis.
+Lock an app's card so Clear all keeps it.	Verrouillez la fiche d'une appli pour que Tout effacer la garde.
+Lock apps and folders	Verrouiller des applis et dossiers
+Lock apps in recents	Verrouiller des applis dans les récentes
+Lock factory reset	Verrouiller la réinitialisation
+Lock screen	Écran de verrouillage
+Lock-screen behavior	Comportement de l'écran de verrouillage
+Lock-screen taps	Appuis sur l'écran de verrouillage
+Locking recent apps	Verrouillage des applis récentes
+Locks stay after a restart.	Les verrous restent après un redémarrage.
+Made by RovianDev	Créé par RovianDev
+Make it work your way.	À votre façon.
+Middle	Milieu
+Miscellaneous	Divers
+More	Plus
+More to come.	D'autres à venir.
+Move and resize the keyboard	Déplacer et redimensionner le clavier
+Move folders between apps	Déplacer les dossiers parmi les applis
+Move several apps	Déplacer plusieurs applis
+Move to bottom and scroll	Placer en bas et faire défiler
+Navigation buttons	Boutons de navigation
+Newest files first, in Files and the file picker	Fichiers récents d'abord, dans Fichiers et le sélecteur de fichiers
+No LTE Pixel Watch? Leave this off.	Pas de Pixel Watch LTE ? Laissez désactivé.
+No blur anywhere	Aucun flou nulle part
+No file picker available	Aucun sélecteur de fichiers disponible
+Nothing	Rien
+Notifications that can be dismissed are cleared, and the dot goes away.	Les notifications qui peuvent être ignorées sont effacées, et le point disparaît.
+OTA & Store blocker	Bloqueur OTA et Store
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	Désactivé, les mots apparaissent pendant que vous parlez. Avec Saisie vocale avec coche activée, parlez puis appuyez sur la coche pour ajouter vos mots, ou sur X pour annuler. Rambler doit être le type de dictée dans les paramètres vocaux de Gboard.
+On the lock screen, holding power opens Gemini	Sur l'écran de verrouillage, maintenir Marche/Arrêt ouvre Gemini
+One clip per row, exactly as you copied it	Un extrait par ligne, exactement comme copié
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	Un seul bouton pour tout ici. Désactivé, Gboard fonctionne comme d'origine et vos choix sont conservés.
+Only Clear all	Seulement Tout effacer
+Only Clear all, in the middle	Seulement Tout effacer, au milieu
+Open Developer options	Ouvrir les options pour les développeurs
+Open locked apps and folders with your fingerprint or PIN	Ouvrir les applis et dossiers verrouillés avec votre empreinte ou votre code
+Per language	Par langue
+Personalize	Personnaliser
+Phone, Chrome, Gboard, Google, News and watch	Téléphone, Chrome, Gboard, Google, Actualités et montre
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	Choisissez 3×3, 4×4 ou 5×5 dans le menu à trois points d'un dossier. Les grilles plus grandes apparaissent quand le dossier se remplit.
+Pin, reorder and hide sharing apps	Épingler, réorganiser et masquer les applis de partage
+Pin, reorder, hide and restore sharing apps and contacts	Épingler, réorganiser, masquer et restaurer les applis de partage et les contacts
+Pinned and hidden sharing apps.	Applis de partage épinglées et masquées.
+Pixel Studio setup	Configuration de Studio Pixel
+Pixel Suite checks for updates and installs them right here.	Pixel Suite recherche les mises à jour et les installe directement ici.
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite a besoin du root. Autorisez-le dans votre gestionnaire root, puis rouvrez cet écran.
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite : un double appui sur une fiche de l'écran de verrouillage éteint l'écran sans l'ouvrir.
+Pixel Watch with LTE	Pixel Watch avec LTE
+Place folders anywhere among your apps, with their own grids and sorting.	Placez des dossiers n'importe où parmi vos applis, avec leur propre grille et leur propre tri.
+Play Store blocker	Bloqueur du Play Store
+Play Store updates and system updates	Mises à jour du Play Store et du système
+Preview of the chosen surface style on a folder over a wallpaper	Aperçu du style de surface choisi sur un dossier au-dessus d'un fond d'écran
+Privacy & Security	Confidentialité et sécurité
+Protect locked apps	Protéger les applis verrouillées
+Protected with your fingerprint or PIN.	Protégé par votre empreinte ou votre code.
+Protection	Protection
+Pure black backgrounds and darker menus in dark theme.	Arrière-plans noir pur et menus plus sombres en thème sombre.
+Quick actions from your phone's buttons.	Actions rapides depuis les boutons de votre téléphone.
+Recent	Récents
+Recent Apps	Applis récentes
+Record and save calls	Enregistrer et sauvegarder les appels
+Record calls in the Phone app, in any country, without the announcement	Enregistrez les appels dans l'appli Téléphone, dans tous les pays, sans l'annonce
+Reduce screenshot delay	Réduire le délai des captures d'écran
+Refresh rate slider	Curseur de fréquence d'actualisation
+Removes sponsored cards from your feed, with no gaps left	Retire les fiches sponsorisées de votre flux, sans laisser de trous
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	Retire la barre de recherche en bas de l'écran d'accueil. Le dock descend et les applis profitent de la place.
+Removing apps from the home screen doesn't uninstall them.	Retirer des applis de l'écran d'accueil ne les désinstalle pas.
+Rename apps	Renommer les applis
+Reopen Settings to see the change.	Rouvrez les paramètres pour voir le changement.
+Reopen apps that were already open.	Rouvrez les applis déjà ouvertes.
+Reorder pinned apps and hide sharing apps	Réorganiser les applis épinglées et masquer des applis de partage
+Reset brings back the original name.	Réinitialiser rétablit le nom d'origine.
+Reset restores the original name. Work-profile and Private Space apps keep their names.	Réinitialiser rétablit le nom d'origine. Les applis du profil professionnel et de l'Espace privé gardent leur nom.
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	Restaurer la remet ici. Une version enregistrée avec ses données demande s'il faut aussi restaurer les données.
+Restore this backup?	Restaurer cette sauvegarde ?
+Right button	Bouton droit
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	Icônes rondes pour 19 sites et dossiers maximum. Maintenez et faites glisser pour en déplacer un, ou déposez-le sur un autre pour créer un dossier. Modifiez un site pour lui donner votre propre image.
+Rounded keys	Touches arrondies
+Rounded keys and corners, with smooth key pop-ups	Touches et coins arrondis, avec des pop-ups de touches fluides
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	Touches arrondies avec pop-ups fluides, en clair, sombre et Super Sombre. Balayez vers la gauche depuis Supprimer pour effacer lettre par lettre.
+Save your settings, folders and icons to a file	Enregistrer vos paramètres, dossiers et icônes dans un fichier
+Saved versions of your apps, ready to put back.	Les versions enregistrées de vos applis, prêtes à être remises.
+Saved. Gboard restarts with the new size	Enregistré. Gboard redémarre avec la nouvelle taille
+Saved. Gboard restarts with your toolbar	Enregistré. Gboard redémarre avec votre barre d'outils
+Screen recording sheet	Fenêtre d'enregistrement d'écran
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	Captures et enregistrements dans les applis qui les bloquent.\nDésactivez d'abord les autres modules qui le font.
+Screenshots appear instantly. Uses a little extra memory.	Les captures d'écran s'affichent instantanément. Utilise un peu plus de mémoire.
+Screenshots, accessibility, keyboard and developer options	Captures d'écran, accessibilité, clavier et options pour les développeurs
+Screenshots, sleep, wake and dragging	Captures d'écran, veille, réveil et glisser-déposer
+Search stays in the app drawer.	La recherche reste dans le panneau des applis.
+Set	Définir
+Set a phone screen lock first	Définissez d'abord un verrouillage de l'écran
+Set up eSIM with a QR code	Configurer une eSIM avec un code QR
+Setup, community and support	Configuration, communauté et assistance
+Shapes in Pixel Studio and Google Photos	Formes dans Studio Pixel et Google Photos
+Share menu	Menu de partage
+Share sheet tools	Outils du menu de partage
+Sharing	Partage
+Show FPS	Afficher les FPS
+Show toasts	Afficher les messages toast
+Shows right away everywhere. Tap the reset arrow for the original icon.	S'affiche tout de suite partout. Appuyez sur la flèche de réinitialisation pour l'icône d'origine.
+Shows right away everywhere. Work profile and Private Space apps keep their names.	S'affiche tout de suite partout. Les applis du profil professionnel et de l'Espace privé gardent leur nom.
+Silence	Silence
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	Silence, Ne pas déranger et Ne me dérange pas s'activent par un appui long et se désactivent au suivant. Sans dérangement fait les trois ensemble.
+Silences calls and keeps you connected. Add its Quick Settings tile.	Rend les appels silencieux et vous garde connecté. Ajoutez sa tuile dans les Réglages rapides.
+Single tap	Appui simple
+Small fixes, simple controls.	Petits correctifs, commandes simples.
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	Des animations faites main plus fluides, des modules intégrés, des commandes en bas et un accès rapide personnalisé.
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	Animations faites main plus fluides, modules intégrés, commandes en bas, accès rapide personnalisé
+Sort from the three-dot menu	Trier depuis le menu à trois points
+Sorting and custom order	Tri et ordre personnalisé
+Speak, then tap the checkmark to add your words	Parlez, puis appuyez sur la coche pour ajouter vos mots
+Speed dial	Accès rapide
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	Commencez à faire glisser une appli, puis appuyez sur d'autres applis avec un autre doigt. Déposez-les toutes sur l'écran d'accueil ou dans un dossier.
+Starts	Début
+Stay connected. Keep incoming calls quiet.	Restez connecté. Gardez les appels entrants silencieux.
+Stays unlocked for a minute after you leave it	Reste déverrouillé une minute après l'avoir quitté
+Stock	D'origine
+Stops system updates and hides Software updates in Settings.	Arrête les mises à jour du système et masque Mises à jour logicielles dans les paramètres.
+Surface style, three options	Style de surface, trois options
+Surfaces and blur	Surfaces et flou
+Swipe down with three fingers to take a screenshot.	Balayez vers le bas avec trois doigts pour faire une capture d'écran.
+Swipe gestures still work.	Les gestes de balayage fonctionnent toujours.
+Swipe left from delete to remove letter by letter	Balayez vers la gauche depuis Supprimer pour effacer lettre par lettre
+System colors, your way.	Les couleurs du système, à votre façon.
+System update controls.	Commandes des mises à jour du système.
+System updates and factory reset	Mises à jour du système et réinitialisation
+Take a screenshot	Faire une capture d'écran
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Appuyez sur Modules sur la page Nouvel onglet de Chrome pour les utiliser. Appuyez sur un module pour ses paramètres, ou maintenez-le pour l'épingler à la barre d'outils.
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Appuyez sur Modules sur la page Nouvel onglet pour les utiliser. Maintenez-en un pour l'épingler à la barre d'outils.
+Tap an app to see its saved versions.	Appuyez sur une appli pour voir ses versions enregistrées.
+Tap to wake	Appuyer pour activer l'écran
+Text size	Taille du texte
+That isn't a Pixel Suite backup	Ce n'est pas une sauvegarde Pixel Suite
+The 3 newest versions of each app are kept.	Les 3 versions les plus récentes de chaque appli sont conservées.
+The clock and info while charging, and after the power button.	L'horloge et les infos pendant la charge, et après le bouton Marche/Arrêt.
+The green button puts a saved version back, with its data and sign-ins.	Le bouton vert remet une version enregistrée, avec ses données et connexions.
+The power button shows the always-on display for a few seconds	Le bouton Marche/Arrêt affiche l'écran toujours allumé quelques secondes
+The three styles	Les trois styles
+The toolbar	La barre d'outils
+Three-finger screenshot	Capture d'écran à trois doigts
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Pour revenir ici, appuyez de manière prolongée sur l'écran d'accueil et choisissez Paramètres Pixel Suite. Nécessite le root et LSPosed.
+To protect an app with your fingerprint or PIN, use Privacy & Security.	Pour protéger une appli par empreinte ou code, utilisez Confidentialité et sécurité.
+Toasts	Messages toast
+Toolbar	Barre d'outils
+Toolbar, keys, resize, auto-correction, clipboard	Barre d'outils, touches, taille, correction automatique, presse-papiers
+Tools for your Google apps.	Des outils pour vos applis Google.
+Top	En haut
+Turn auto-correction off for the languages you choose. Suggestions still show.	Désactivez la correction automatique pour les langues de votre choix. Les suggestions restent affichées.
+Turn off after	Éteindre après
+Turn on notifications in Android settings	Activez les notifications dans les paramètres Android
+Turn the flashlight on or off, open the camera (stock), or do nothing.	Allumer ou éteindre la lampe de poche, ouvrir l'appareil photo (d'origine), ou ne rien faire.
+Turn this feature on or off.	Activer ou désactiver cette fonctionnalité.
+Turn your phone sideways in recents for a cleaner view.	Tournez votre téléphone dans les applis récentes pour une vue plus épurée.
+Turns on	Activation
+Two-finger drag	Glisser à deux doigts
+Typing and clipboard	Saisie et presse-papiers
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	Annuler, Rétablir, Sélection rapide, Tout sélectionner, Couper, Copier et Coller fonctionnent dans toutes les applis. Sélection rapide : appuyez pour un mot, à nouveau pour désélectionner, maintenez pour tout sélectionner.
+Unlock OEM apps	Déverrouiller les applis OEM
+Unlock on the 4th digit	Déverrouiller au 4e chiffre
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	Déverrouille dès que vous tapez le 4e chiffre de votre code, sans Entrée
+Up to 7 shortcuts, in the same order in every language.	Jusqu'à 7 raccourcis, dans le même ordre dans toutes les langues.
+Up to 7 shortcuts, their order, the side buttons and two rows	Jusqu'à 7 raccourcis, leur ordre, les boutons latéraux et deux lignes
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	Mettre à jour enregistre d'abord la version actuelle, puis ouvre sa page Play Store. Elle est de nouveau retenue après la mise à jour.
+Updates	Mises à jour
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	Mettre à jour ces applis essentielles depuis le Play Store peut casser des fonctionnalités de Pixel Suite. Pixel Suite les met à jour pour vous à chaque version.
+Use Doodles	Utiliser les Griffonnages
+Use Gboard+	Utiliser Gboard+
+Use custom app icons	Utiliser des icônes d'applis personnalisées
+Use your own image for an app icon	Utiliser votre propre image comme icône d'appli
+Voice typing with checkmark	Saisie vocale avec coche
+Wake gesture	Geste de réveil
+Wake the screen	Activer l'écran
+Wake your phone with a tap, with pocket protection.	Réveillez votre téléphone d'un appui, avec protection en poche.
+Websites open dark, with no white flash. Super Dark uses pure black.	Les sites s'ouvrent en sombre, sans flash blanc. Super Sombre utilise du noir pur.
+What's new	Nouveautés
+When you untick apps, Back up saves their current versions first.	Quand vous décochez des applis, Sauvegarder enregistre d'abord leurs versions actuelles.
+While charging and after the power button	Pendant la charge et après le bouton Marche/Arrêt
+While holding an app or folder, swipe with another finger to scroll or turn pages.	En maintenant une appli ou un dossier, balayez avec un autre doigt pour faire défiler ou changer de page.
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	Quand l'écran toujours allumé est désactivé, le bouton Marche/Arrêt éteint l'écran vers l'écran toujours allumé. Il s'éteint après la durée choisie.
+With Super Dark-Mode, panels stay black.	Avec Mode Super Sombre, les panneaux restent noirs.
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	Écran éteint et écran toujours allumé activé, appuyez deux fois sur Volume -. Pas pendant un appel ni pendant la lecture de médias.
+With the screen off, open the camera or turn the flashlight on or off.	Écran éteint, ouvrez l'appareil photo ou allumez/éteignez la lampe de poche.
+With themed icons on, the app drawer keeps each app's own colors.	Avec les icônes à thème, le panneau des applis garde les couleurs propres à chaque appli.
+You can also hold the search bar and choose Hide widget. It hides right away.	Vous pouvez aussi maintenir la barre de recherche et choisir Masquer le widget. Elle disparaît tout de suite.
+Your own Always-on display setting isn't changed.	Votre propre réglage d'écran toujours allumé n'est pas modifié.
+eSIM setup with a QR code	Configuration eSIM avec un code QR
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• Faites glisser une appli dans la ligne du haut pour l'épingler, puis faites-la glisser pour réorganiser.\n\n• Maintenez une appli ou un contact pour l'épingler ou le masquer.\n\n• Les éléments masqués sont dans Applis masquées et Contacts masqués. Maintenez-en un pour l'afficher.
+Hide 1 app	Masquer 1 appli
+Tap to share. Long-press to unhide.	Appuyez pour partager. Appui long pour afficher.
+Tick apps to unhide.	Cochez les applis à afficher.
+Tick contacts to unhide.	Cochez les contacts à afficher.
+Unknown app	Appli inconnue
+Back up and update	Sauvegarder et mettre à jour
+Back up now	Sauvegarder maintenant
+Check root access and reopen this page.	Vérifiez l'accès root et rouvrez cette page.
+Close app selection	Fermer la sélection d'applis
+Collapse blocked updates	Réduire les mises à jour bloquées
+Couldn't open Play Store	Impossible d'ouvrir le Play Store
+Discard	Supprimer
+Discard changes?	Supprimer les modifications ?
+Expand blocked updates	Développer les mises à jour bloquées
+Keep editing	Continuer
+Opening Play Store…	Ouverture du Play Store…
+Reopen this page to refresh installed apps	Rouvrez cette page pour actualiser les applis installées
+Save them first, then apply	Enregistrez-les d'abord, puis appliquez
+Tick Play Store in LSPosed for Pixel Suite.	Cochez Play Store dans LSPosed pour Pixel Suite.
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	Activez Déverrouiller les applis OEM pour décocher cette appli. La mettre à jour peut casser la prise en charge de Pixel Suite.
+Unknown	Inconnu
+Unticked apps can get updates	Les applis décochées peuvent recevoir des mises à jour
+Update	Mettre à jour
+Update blocker	Bloqueur de mises à jour
+Updating this core app may break Pixel Suite support.	Mettre à jour cette appli essentielle peut casser la prise en charge de Pixel Suite.
+Wait for your changes to finish applying	Attendez que vos changements soient appliqués
+Your app selections haven't been applied.	Votre sélection d'applis n'a pas été appliquée.
+\n\nTick it and apply to hold it back.	\n\nCochez-la et appliquez pour la retenir.
+stroke weight	épaisseur du trait
+APK exceeds download limit	L'APK dépasse la limite de téléchargement
+APK verification failed	Échec de la vérification de l'APK
+An update download is already running.	Un téléchargement de mise à jour est déjà en cours.
+Cannot prepare APK	Impossible de préparer l'APK
+Checking APK hash and signing certificate…	Vérification du hachage de l'APK et du certificat de signature…
+Could not open Android installer. Try Download and install again.	Impossible d'ouvrir le programme d'installation d'Android. Réessayez Télécharger et installer.
+Download complete. Open Updates and tap Download and install to continue.	Téléchargement terminé. Ouvrez Mises à jour et appuyez sur Télécharger et installer pour continuer.
+Download unavailable	Téléchargement indisponible
+Incomplete APK	APK incomplet
+No newer verified release is available on both repositories.	Aucune version vérifiée plus récente n'est disponible sur les deux dépôts.
+Pixel Suite update	Mise à jour de Pixel Suite
+Unexpected APK size	Taille d'APK inattendue
+Update could not be downloaded or verified. Check your connection and try again.	Impossible de télécharger ou de vérifier la mise à jour. Vérifiez votre connexion et réessayez.
+Verified. Opening Android installer…	Vérifié. Ouverture du programme d'installation d'Android…
+Verifying the official releases…	Vérification des versions officielles…
+Add the VPN tile to Quick Settings to connect with one tap.	Ajoutez la tuile VPN aux Réglages rapides pour vous connecter d'un appui.
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	Chrome uniquement : activez le VPN depuis les Modules de Chrome. Seul Chrome l'utilise, et les sites voient ce pays.
+Connect	Se connecter
+Couldn't connect	Connexion impossible
+Couldn't load servers. Tap to try again.	Impossible de charger les serveurs. Appuyez pour réessayer.
+Couldn't refresh. Showing the last list.	Actualisation impossible. Affichage de la dernière liste.
+Couldn't start the VPN	Impossible de démarrer le VPN
+Countries without servers right now show as Unavailable.	Les pays sans serveur pour le moment s'affichent comme Indisponible.
+Fastest server	Serveur le plus rapide
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Des serveurs gratuits gérés par des bénévoles du monde entier. Pixel Suite se connecte au plus rapide.
+Getting the free server list	Récupération de la liste de serveurs gratuits
+Loading servers…	Chargement des serveurs…
+No servers yet	Pas encore de serveurs
+Not connected	Non connecté
+Open-source servers change during the day	Les serveurs open source changent au cours de la journée
+Pick a country, then tap Connect	Choisissez un pays, puis appuyez sur Se connecter
+Refresh servers	Actualiser les serveurs
+Tap Refresh servers	Appuyez sur Actualiser les serveurs
+Turn off	Désactiver
+Use for all apps	Utiliser pour toutes les applis
+VPN is part of Patreon premium	Le VPN fait partie de Patreon premium
+Couldn't ask for VPN permission	Impossible de demander l'autorisation VPN
+VPN permission is needed to connect	L'autorisation VPN est nécessaire pour se connecter
+Russia	Russie
+Server list was empty	La liste des serveurs était vide
+South Korea	Corée du Sud
+United Kingdom	Royaume-Uni
+United States	États-Unis
+Chrome only	Chrome uniquement
+Connecting…	Connexion…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	Autorisez Appareils à proximité pour Pixel Suite afin que Ne me dérange pas puisse changer le réseau mobile de votre montre.
+Do Not Annoy: watch	Ne me dérange pas : montre
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Pixel Suite sur votre montre a besoin d'une autorisation unique (la commande adb) pour changer le réseau mobile.
+Watch	Montre
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	Ajoute un curseur 60 / 120 Hz sous Smooth Display (Paramètres > Affichage et écran tactile)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	Appli et données enregistre tout (connexions, discussions, paramètres et fichiers) et le restaure exactement à l'identique. Appli seulement enregistre juste l'appli.
+Auto sorts A to Z; Custom lets you arrange them.	Auto trie de A à Z ; Personnalisé vous laisse les organiser.
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	Faites glisser un dossier sur Placer en bas pour faire défiler ; poussez plus loin pour aller plus vite.
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	Dossiers du panneau : maintenez-en un sur Placer en bas pour faire défiler ; poussez plus loin pour aller plus vite.
+Hold an app or folder and choose Lock or Unlock.	Maintenez une appli ou un dossier et choisissez Verrouiller ou Déverrouiller.
+Pixel watch eSIM purchase	Achat de l'eSIM Pixel Watch
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	Appuyez pour ouvrir ; maintenez pour renommer ou retirer. Maintenez un site à l'intérieur pour le modifier, le déplacer ou le retirer.
+• Drag an app into the top row to pin it, then drag to reorder.	• Faites glisser une appli dans la ligne du haut pour l'épingler, puis faites-la glisser pour réorganiser.
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	Impossible de joindre votre montre. Son réseau mobile sera activé dès qu'elle se reconnectera.
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	Impossible de joindre votre montre. Son réseau mobile sera désactivé dès qu'elle se reconnectera.
+Language	Langue
+Automatic	Automatique
+Follows the phone	Comme le téléphone
+Couldn't save the language	Impossible d'enregistrer la langue
+‹  Back	‹  Retour
+just now	à l'instant
+1 minute ago	il y a 1 minute
+1 hour ago	il y a 1 heure
+1 day ago	il y a 1 jour
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	Listes de pubs : <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Le bloqueur de Pixel Suite.
+The Ad blocker is part of Pixel Suite's Patreon features	Le bloqueur de pubs fait partie des fonctions Patreon de Pixel Suite
+Root access is needed	L'accès root est nécessaire
+Off: ads are no longer blocked	Désactivé : les pubs ne sont plus bloquées
+Couldn't download the ad lists (no connection?). The current list stays.	Impossible de télécharger les listes (pas de connexion ?). La liste actuelle reste.
+Ready: restart the phone once to start blocking	Prêt : redémarrez le téléphone une fois pour bloquer
+Couldn't prepare the list	Impossible de préparer la liste
+Couldn't prepare the module	Impossible de préparer le module
+Getting the ad lists…	Récupération des listes de pubs…
+No answer over UDP	Pas de réponse en UDP
+TLS handshake timed out	Délai de la négociation TLS dépassé
+Key exchange timed out	Délai de l'échange de clés dépassé
+Server sent no address	Le serveur n'a envoyé aucune adresse
+Server rejected the sign-in	Le serveur a refusé la connexion
+Server gave no address	Le serveur n'a donné aucune adresse
+Connection closed	Connexion fermée
+Server didn't answer	Le serveur n'a pas répondu
+Server refused the call	Le serveur a refusé l'appel
+Server closed the connection	Le serveur a fermé la connexion
+1 server	1 serveur
+Unhide 1 app	Afficher 1 appli
+Unhide 1 contact	Afficher 1 contact
+Unhide contact	Afficher le contact
+1 app saved · 1 version	Sauvegardé : 1 appli · 1 version
+1 app · 1 version	1 appli · 1 version
+Doodles	Griffonnages
+Super Dark-Mode	Mode Super Sombre
+Super Dark	Super Sombre
+Frosted Glass	Verre dépoli
+Do Not Annoy	Ne me dérange pas
+No Annoyance	Sans dérangement
+Quick Select	Sélection rapide
+Google Photos	Google Photos
+Pixel watch	Montre Pixel
+Google dialer+	Téléphone Google+
+Keep	Keep
+Drive	Drive
+Sponsored	Sponsorisé
+Recent apps	Applis récentes
+3×3 (Stock)	3×3 (d'origine)
+Ag	Ag
+Aa	Aa
+1 website with custom settings	1 site avec des réglages personnalisés
+1 app isn't saved at the version installed now	1 appli n'est pas sauvegardée dans la version installée
+Words are never replaced; suggestions still show	Aucun mot n'est remplacé ; les suggestions restent
+Off: Gboard corrects nothing; turn it on to choose languages	Désactivé : Gboard ne corrige rien ; activez-le pour choisir les langues
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	Faites glisser les poignées pour redimensionner, ou le centre pour déplacer. Appliquer enregistre ; Réinitialiser revient à la taille de Gboard. Portrait uniquement.
+Unlock Watch eSIM · $10 one-time purchase	Débloquer l'eSIM de la montre · achat unique de $10
+$10 one-time eSIM purchase	Achat unique d'eSIM pour $10
+One-time purchase, $10, yours to keep.	Achat unique, $10, à vous pour toujours.
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	Trouvez votre code d'achat dans l'e-mail de purchases@roviandev.com. Vérifiez aussi les spams.
+Pixel Suite logo	Logo Pixel Suite
+Open Android app settings to manage notifications.	Ouvrez les paramètres d'appli Android pour gérer les notifications.
+OK	OK
+Opens this sheet from the toolbar	Ouvre ce panneau depuis la barre
+Needs Pixel Suite premium and the ad blocker on	Nécessite Pixel Suite premium et le bloqueur de pubs activé
+Manage extensions	Gérer les extensions
+Enter an address	Saisissez une adresse
+That isn't a web address	Ce n'est pas une adresse web
+Off in Chrome · on for other apps	Désactivé dans Chrome · activé pour les autres applis
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	Le VPN est activé pour tout le téléphone. Le désactiver ici ne retire que Chrome.
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	Les autres applis utilisent le VPN ; Chrome est exclu. Activez-le pour ajouter Chrome.
+Only Chrome uses this VPN. Other apps keep their own connection.	Seul Chrome utilise ce VPN. Les autres applis gardent leur connexion.
+All apps except Chrome	Toutes les applis sauf Chrome
+• 1 setting	• 1 réglage
+• 1 custom icon	• 1 icône personnalisée
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• Configuration de Lanceur Pixel : dossiers du tiroir, tri, noms et verrous
+• Share menu: pinned order and hidden apps	• Menu de partage : ordre épinglé et applis masquées
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	Votre configuration actuelle de Pixel Suite sera remplacée. Lanceur Pixel redémarre une fois.
+Two rows, shortcuts on top	Deux rangées, raccourcis en haut
+Two rows	Deux rangées
+Side buttons hidden	Boutons latéraux masqués
+Menu button hidden	Bouton de menu masqué
+Emoji/voice hidden	Emoji/voix masqués
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	Ajoute des boutons de navigation à côté de la barre de gestes. Après la mise à jour du module, redémarrez Lanceur Pixel une fois ; les boutons s'appliquent ensuite en direct.
+Sign-in timed out	Délai de connexion dépassé
+Address setup timed out	Délai de configuration de l'adresse dépassé
+Server renewed its keys	Le serveur a renouvelé ses clés
+Stopped	Arrêté
+Couldn't finish the backup	Impossible de terminer la sauvegarde
+Root isn't available, or it took too long	Le root n'est pas disponible, ou c'était trop long
+It didn't finish	Ça n'a pas abouti
+Pixel Suite could not make the file	Pixel Suite n'a pas pu créer le fichier
+Pixel Suite is unavailable	Pixel Suite n'est pas disponible
+Pixel Suite gave no file	Pixel Suite n'a fourni aucun fichier
+the picked folder	le dossier choisi
+Use a name between 1 and 80 characters	Utilisez un nom de 1 à 80 caractères
+Folder limit reached	Limite de dossiers atteinte
+Drag here to add to home screen	Faites glisser ici pour ajouter à l'écran d'accueil
+Drag a folder here to move it to the end of the list	Faites glisser un dossier ici pour le mettre en fin de liste
+Drag here to take out of the folder	Faites glisser ici pour sortir du dossier
+More shapes	Plus de formes
+More colours	Plus de couleurs
+Thickness	Épaisseur
+Fill shape	Remplir la forme
+Delete shape	Supprimer la forme
+Make Doodles menu smaller	Réduire le menu Griffonnages
+Move Doodles menu	Déplacer le menu Griffonnages
+Make text menu smaller	Réduire le menu du texte
+Move text menu	Déplacer le menu du texte
+More fonts	Plus de polices
+Clear clipboard	Effacer le presse-papiers
+Stop voice typing	Arrêter la saisie vocale
+Save icon	Enregistrer l'icône
+Reset to original icon	Rétablir l'icône d'origine
+Folder options	Options du dossier
+Doodles tab	Onglet Griffonnages
+Edit: select hidden contacts to unhide	Modifier : choisissez les contacts masqués à afficher
+Edit: select hidden apps to unhide	Modifier : choisissez les applis masquées à afficher
+Edit: select apps to hide	Modifier : choisissez les applis à masquer
+Hide the contacts row	Masquer la rangée de contacts
+Show the contacts row	Afficher la rangée de contacts
+Locked	Verrouillée
+Filtering mode	Mode de filtrage
+Change the picture	Changer l'image
+Open a website to choose its filtering	Ouvrez un site pour choisir son filtrage
+Highest refresh rate. The screen still slows down when nothing moves.	Fréquence maximale. L'écran ralentit toujours quand rien ne bouge.
+Cancelled: the app is locked by Pixel Suite	Annulé : l'appli est verrouillée par Pixel Suite
+Incoming call declined by Do Not Annoy	Appel entrant refusé par Ne me dérange pas
+Confirm it's you to uninstall this core app	Confirmez votre identité pour désinstaller cette appli essentielle
+Confirm it's you to disable this core app	Confirmez votre identité pour désactiver cette appli essentielle
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	Attention : désactiver ou désinstaller cette appli intégrée au système peut nuire à Pixel Suite et à la stabilité du système.
+Files · date modified	Fichiers · date de modification
+Site settings unavailable	Paramètres du site indisponibles
+Could not save site settings	Impossible d'enregistrer les paramètres du site
+Couldn't read existing Chrome site settings	Impossible de lire les paramètres de site de Chrome
+Cannot create icon storage	Impossible de créer le stockage des icônes
+Unsupported dimensions	Dimensions non prises en charge
+Cannot encode image	Impossible d'encoder l'image
+Response too large	Réponse trop volumineuse
+Orange	Orange
+Dark red	Rouge foncé
+Turquoise	Turquoise
+Dark blue	Bleu foncé
+Purple	Violet
+Pink	Rose
+White	Blanc
+Black	Noir
+Move to bottom	Déplacer en bas
+Lock app	Verrouiller l'appli
+Unlock app	Déverrouiller l'appli
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	Tout : l'appli, ses connexions, discussions, réglages et fichiers. Restauré exactement comme avant.
+$5/month	$5/mois
+Settings soft scrolling edges (Frosted Glass only):	Bords de défilement doux dans Paramètres (Verre dépoli uniquement) :
+Digital Wellbeing	Bien-être numérique
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	Activez ces portées dans LSPosed et redémarrez. Seuls les écrans ouverts depuis Paramètres vérifiés et les zones de défilement sûrement identifiées sont stylés. Les zones non prises en charge sont ignorées.
+Telegram	Telegram
+Patreon	Patreon
+Pixel Launcher	Lanceur Pixel
+Pixel Studio	Studio Pixel
+Hold power button when locked	Maintenir le bouton Marche/Arrêt quand verrouillé
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	Quand votre téléphone est verrouillé, un appui long fait ce que vous choisissez dans « Maintenir le bouton Marche/Arrêt quand verrouillé ». Chaque choix fonctionne séparément.
+Reboot	Redémarrer
+Tap again to reboot	Appuyez encore pour redémarrer
+Rebooting…	Redémarrage…
+These run inside Android, so they update after a reboot:	Ils fonctionnent dans Android, ils se mettent donc à jour après un redémarrage :
+Reboot to finish updating. Long-press to hide.	Redémarrez pour terminer la mise à jour. Appui prolongé pour masquer.
+Couldn't reboot: root access needed	Impossible de redémarrer : accès root nécessaire
+Search in Chrome	Rechercher dans Chrome
+Couldn't refresh: root access needed	Impossible d'actualiser : accès root nécessaire
+See-through keyboard background, with rims	Fond du clavier translucide, avec contours
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	Le fond du clavier devient du verre dépoli : ce qui se trouve derrière transparaît, flouté, avec des contours. Les touches ne changent pas.
+Frosted Gboard	Gboard dépoli
+Follows the phone language	Comme la langue du téléphone
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	Dans certaines applis, comme Chrome, les coins supérieurs du clavier paraissent blancs. Ces applis arrêtent leur page là où le clavier commence : il n'y a donc rien à montrer derrière les coins.
+Pixel Stack	Pixel Stack
+Tap to start	Touchez pour commencer
+Tap to drop	Touchez pour lâcher
+Perfect!	Parfait !
+Best	Record
+New best!	Nouveau record !
+Tap to play again	Touchez pour rejouer
+Share score	Partager le score
+Sharing…	Partage…
+Shared!	Partagé !
+Couldn't share. Try again.	Impossible de partager. Réessayez.
+Your name	Votre nom
+Optional	Facultatif
+Game Over	Partie terminée
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **Interface système** (com.android.systemui)\n• **Lanceur Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Paramètres** (com.android.settings)\n• **Services des paramètres** (com.google.android.settings.intelligence)\n• **Programme d'installation de paquets** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nPour le style de l'éditeur, sélectionnez aussi **Studio Pixel** (com.google.android.apps.pixel.creativeassistant) et **Google Photos** (com.google.android.apps.photos). Redémarrez après avoir ajouté les champs d'application.
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **Lanceur Pixel** (com.google.android.apps.nexuslauncher) — icônes, dossiers, menus et le bord doux du panneau des applis\n• **Interface système** (com.android.systemui) — menus et messages du système\n• **Studio Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — menus de l'éditeur\n\nSuper Sombre liste ses champs d'application supplémentaires sur sa propre page.
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} revient à cette version. Ses données restent telles quelles. Si elle ne s'ouvre plus ensuite, videz son stockage dans les paramètres.
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	Il n'y a pas de place dans les raccourcis pour ses {0} sites ; ils seront supprimés avec le dossier.
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} sauvegardée. Touchez Mettre à jour dans le Play Store. {1} sera de nouveau retenue une fois à jour.
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	Retirer « {0} » ? Ses applis reviennent dans le panneau des applis. Aucune appli n'est désinstallée.
+Couldn't save {0}, so it wasn't updated. Check root and free space.	Impossible d'enregistrer {0}, donc pas de mise à jour. Vérifiez le root et l'espace libre.
+Tap Update in Play Store. {0} is held back again once it's updated.	Appuyez sur Mettre à jour dans le Play Store. {0} est de nouveau retenue après la mise à jour.
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nCochez-la et appliquez pour la retenir.
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	Jusqu'à 7 raccourcis, leur ordre, les boutons latéraux et deux lignes{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}, {1}, mises à jour bloquées, appli essentielle verrouillée. Touchez pour savoir pourquoi
+{0}. A looping demo. It doesn't change your settings.	{0}. Une démo en boucle. Elle ne change pas vos paramètres.
+Restore {0} (its saved version is the one installed)	Restaurer {0} (sa version enregistrée est celle installée)
+{0} of {1} on the toolbar · {2} more · swipe left or right	{0} sur {1} dans la barre · {2} de plus · balayez à gauche ou à droite
+Couldn't back up {0} of {1}. Check root and free space.	Impossible de sauvegarder {0} sur {1}. Vérifiez le root et l'espace libre.
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} est disponible sur GitHub et Xposed.
+{0} apps aren't saved at the version installed now	{0} applis ne sont pas sauvegardées dans la version installée
+{0}, off, needs Suggestions and shortcuts together	{0}, désactivé, nécessite Suggestions et raccourcis ensemble
+The saved version of {0} is the one installed now	La version enregistrée de {0} est celle installée maintenant
+{0}, on, needs Suggestions and shortcuts together	{0}, activé, nécessite Suggestions et raccourcis ensemble
+{0}. Applies your changes. Long-press to hide.	{0}. Applique vos changements. Appui long pour masquer.
+There's no room on the speed dial for its {0}	Pas de place dans l'accès rapide pour ses {0}
+Couldn't save {0}. Check root and free space.	Impossible d'enregistrer {0}. Vérifiez le root et l'espace libre.
+{0}: the saved version is the one installed	{0} : la version enregistrée est celle installée
+Its {0} websites go back to the speed dial.	Ses {0} sites retournent dans les raccourcis.
+{0} is back to {1}, with everything as it was	{0} est revenu à {1}, avec tout comme avant
+{0} apps protected from updates · {1} shown	{0} applis protégées des mises à jour · {1} affichées
+{0}, {1}, core app locked. Tap to learn why	{0}, {1}, appli essentielle verrouillée. Touchez pour savoir pourquoi
+Select at least {0} apps for a folder	Sélectionnez au moins {0} applis pour un dossier
+Sort the apps in “{0}” from A to Z?	Trier les applis de « {0} » de A à Z ?
+This folder is full ({0} websites)	Ce dossier est plein ({0} sites)
+Blocking {0} ad domains · updated {1}	{0} domaines publicitaires bloqués · mis à jour {1}
+{0} apps did not fit on this page	{0} applis ne tenaient pas sur cette page
+{0} open-source servers available	{0} serveurs open source disponibles
+{0} websites with custom settings	{0} sites avec des réglages personnalisés
+{0}, {1}. Tap to hide saved versions	{0}, {1}. Touchez pour masquer les versions sauvegardées
+{0}, {1}. Tap to show saved versions	{0}, {1}. Touchez pour afficher les versions sauvegardées
+{0} removed element(s) · Restore	{0} élément(s) retiré(s) · Restaurer
+Couldn't reach any server in {0}	Aucun serveur joignable en {0}
+{0}. Check root and free space.	{0}. Vérifiez le root et l'espace libre.
+{0} apps protected from updates	{0} applis protégées des mises à jour
+Downloading Pixel Suite {0} — {1}%	Téléchargement de Pixel Suite {0} — {1} %
+Restore removed elements ({0})	Restaurer les éléments retirés ({0})
+{0} of {1} on the toolbar · {2} more	{0} sur {1} dans la barre · {2} de plus
+Update, back up or restore {0}	Mettre à jour, sauvegarder ou restaurer {0}
+{0}\nDefault for all websites	{0}\nPar défaut pour tous les sites
+{0} needs Pixel Suite premium	{0} nécessite Pixel Suite premium
+No open-source servers in {0}	Aucun serveur open source en {0}
+Server list unavailable ({0})	Liste des serveurs indisponible ({0})
+Connecting to server {0} of {1}…	Connexion au serveur {0} sur {1}…
+{0}% wide · {1}% tall · {2} dp down	{0} % de large · {1} % de haut · {2} dp plus bas
+Restore a saved version ({0})	Restaurer une version sauvegardée ({0})
+Pixel Suite {0} is available	Pixel Suite {0} est disponible
+Saved {0} with Pixel Suite {1}.	Sauvegardé le {0} avec Pixel Suite {1}.
+{0}. Opens an external app.	{0}. Ouvre une appli externe.
+{0}% wide · {1}% tall · {2} dp up	{0} % de large · {1} % de haut · {2} dp plus haut
+Waiting for dark mode · {0}	En attente du mode sombre · {0}
+{0} (folder not available)	{0} (dossier indisponible)
+{0} apps saved · {1} versions	Sauvegardé : {0} applis · {1} versions
+1 app saved · {0} versions	Sauvegardé : 1 appli · {0} versions
+{0} apps saved · 1 version	Sauvegardé : {0} applis · 1 version
+Delete saved version {0}	Supprimer la version enregistrée {0}
+Installed version of {0}	Version installée de {0}
+What {0} ({1}) is used for	À quoi sert {0} ({1})
+Any country · up to {0}	N'importe quel pays · jusqu'à {0}
+{0} apps · {1} versions · {2}	{0} applis · {1} versions · {2}
+1 app · {0} versions · {1}	1 appli · {0} versions · {1}
+{0} apps · 1 version · {1}	{0} applis · 1 version · {1}
+1 app · 1 version · {0}	1 appli · 1 version · {0}
+Couldn't restore {0}: {1}	Impossible de restaurer {0} : {1}
+About {0} · only {1} free	Environ {0} · seulement {1} libres
+Level {0} · {1} (Default)	Niveau {0} · {1} (par défaut)
+{0}, {1}, updates blocked	{0}, {1}, mises à jour bloquées
+On · {0} · whole phone	Activé · {0} · tout le téléphone
+On · {0} · Chrome only	Activé · {0} · Chrome uniquement
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	Vérification de {0} serveurs…
+{0} selected · {1} shown	{0} sélectionnés · {1} affichés
+No results for "{0}"	Aucun résultat pour « {0} »
+{0} apps · {1} versions	{0} applis · {1} versions
+1 app · {0} versions	1 appli · {0} versions
+{0} apps · 1 version	{0} applis · 1 version
+Purchase email: {0}	E-mail d'achat : {0}
+No icons match “{0}	Aucune icône ne correspond à « {0}
+Reconnecting… ({0})	Reconnexion… ({0})
+Unhide {0} contacts	Afficher {0} contacts
+No apps match “{0}	Aucune appli ne correspond à « {0}
+Resend code ({0}s)	Renvoyer le code ({0} s)
+Connecting to {0}…	Connexion à {0}…
+**Used for:**\n{0}	**Utilisé pour :**\n{0}
+{0}, {1}, switch, off	{0}, {1}, interrupteur, désactivé
+Restore {0} build {1}	Restaurer {0} build {1}
+Turns on at {0} · {1}	S'active à {0} · {1}
+Pin {0} to toolbar	Épingler {0} à la barre
+• {0} custom icons	• {0} icônes personnalisées
+Saving {0} · {1} of {2}	Sauvegarde de {0} · {1} sur {2}
+{0}  ·  {1} selected	{0}  ·  {1} sélectionnées
+{0}, {1}, switch, on	{0}, {1}, interrupteur, activé
+{0}, not selected	{0}, non sélectionné
+{0} · Chrome only	{0} · Chrome uniquement
+Use default ({0})	Utiliser la valeur par défaut ({0})
+Pass expires {0}	Le pass expire le {0}
+{0}, unavailable	{0}, indisponible
+Enables {0} in {1}.	Active {0} dans {1}.
+{0} · not Chrome	{0} · sans Chrome
+{0} is unlocked	{0} est déverrouillée
+Connected · {0}	Connecté · {0}
+{0} is selected	{0} est sélectionné
+{0} minutes ago	il y a {0} minutes
+{0} is back to {1}	{0} est revenu à {1}
+Unhide {0} apps	Afficher {0} applis
+On until {0} · {1}	Activé jusqu'à {0} · {1}
+{0} icon packs	{0} packs d'icônes
+• {0} settings	• {0} réglages
+Remove "{0}"?	Retirer « {0} » ?
+{0}, selected	{0}, sélectionné
+{0} right now	{0} actuellement
+{0} is locked	{0} est verrouillée
+Hide {0} apps	Masquer {0} applis
+{0} hours ago	il y a {0} heures
+Checking {0}	Vérification de {0}
+Saving {0} {1}…	Enregistrement de {0} {1}…
+{0} days ago	il y a {0} jours
+{0} · up to {1}	{0} · jusqu'à {1}
+Level {0} · {1}	Niveau {0} · {1}
+Restore {0} {1}	Restaurer {0} {1}
+On now · {0}	Activé maintenant · {0}
+Back up {0}	Sauvegarder {0}
+Restart {0}	Redémarrer {0}
+Enables {0}	Active {0}
+{0} dp down	{0} dp vers le bas
+Restore {0}	Restaurer {0}
+{0} servers	{0} serveurs
+{0}, hidden	{0}, masqué
+Level {0}, {1}	Niveau {0}, {1}
+Refresh {0}	Actualiser {0}
+{0}, shown	{0}, affiché
+Saved {0}.	Sauvegardé le {0}.
+**{0}** ({1})	**{0}** ({1})
+About {0}	Environ {0}
+Build {0}	Build {0}
+From  {0}	De  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} icônes
+Unpin {0}	Désépingler {0}
+{0}, off	{0}, désactivé
+To  {0}	À  {0}
+Pin {0}	Épingler {0}
+Its {0}	Ses {0}
+Use {0}	Utiliser {0}
+{0}, on	{0}, activé
+You’re a free member. Choose the paid tier to unlock	Vous êtes membre gratuit. Choisissez le niveau payant pour débloquer.
+Root access is needed to save membership changes.	L'accès root est nécessaire pour enregistrer les changements d'abonnement.
+Sign-in expired. Sign in with Patreon again.	La connexion a expiré. Reconnectez-vous avec Patreon.
+Couldn’t check membership. Try again shortly.	Impossible de vérifier l'abonnement. Réessayez dans un instant.
+Sign-in expired. Tap Unlock to try again.	La connexion a expiré. Touchez Débloquer pour réessayer.
+No active membership found. Join, then tap Unlock again.	Aucun abonnement actif trouvé. Rejoignez, puis touchez à nouveau Débloquer.
+Sign-in wasn't completed. You can try again.	La connexion n'a pas abouti. Vous pouvez réessayer.
+Couldn't verify this sign-in. Tap Unlock to try again.	Impossible de vérifier cette connexion. Touchez Débloquer pour réessayer.
+Couldn't confirm membership. Try again.	Impossible de confirmer l'abonnement. Réessayez.
+Confirming Patreon membership…	Confirmation de l'abonnement Patreon…
+Log in	Se connecter
+Patreon profile photo	Photo de profil Patreon
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	Après le paiement, votre code d'achat est envoyé à l'adresse e-mail avec laquelle vous payez. Cherchez purchases@roviandev.com dans la boîte de réception et les spams.
+Buy	Acheter
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	Cherchez purchases@roviandev.com dans la boîte de réception et les spams. Utilisez le code le plus récent ; il expire au bout de 10 minutes.
+Hide app	Masquer l'appli
+Hide widget	Masquer le widget
+Remove Google Play services from the scope	Retirer les services Google Play du champ d'application
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite n'utilise plus les services Google Play, et les laisser dans le champ d'application LSPosed de Pixel Suite peut vous faire perdre l'intégrité Device et Strong.
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	Ouvrez LSPosed (ou Vector), décochez les services Google Play pour Pixel Suite, puis redémarrez.
+Reboot to restore Play Integrity	Redémarrez pour rétablir Play Integrity
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite a retiré les services Google Play de son champ d'application LSPosed, car ils peuvent vous faire perdre l'intégrité Device et Strong et ne sont plus utilisés. Redémarrez votre téléphone pour terminer.
+Server connected but passes no traffic	Serveur connecté, mais aucun trafic ne passe
+Server connected but websites don't open ({0})	Serveur connecté, mais les sites ne s'ouvrent pas ({0})

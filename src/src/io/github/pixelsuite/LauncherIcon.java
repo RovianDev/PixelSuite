@@ -127,7 +127,7 @@ final class LauncherIcon {
             receiver.runOnUiThread(new Runnable(){public void run(){
                 Activity host=proxy?LauncherFeatures.activity.get():receiver;
                 if(loaded==null){
-                    if(!receiver.isDestroyed())Toast.makeText(receiver,"Could not read this image. Try another image.",Toast.LENGTH_SHORT).show();
+                    if(!receiver.isDestroyed())Toast.makeText(receiver,I18n.cs("Could not read this image. Try another image."),Toast.LENGTH_SHORT).show();
                     finishReceiver(receiver,proxy);return;
                 }
                 if(host==null||host.isDestroyed()||host.isFinishing()){
@@ -141,7 +141,7 @@ final class LauncherIcon {
                         final boolean ok=success;
                         main.post(new Runnable(){public void run(){
                             if(ok){synchronized(cache){retire(key);}LauncherFeatures.refresh();}
-                            if(!receiver.isDestroyed())Toast.makeText(receiver,ok?"Icon updated":"Could not read this image. Try another image.",Toast.LENGTH_SHORT).show();
+                            if(!receiver.isDestroyed())Toast.makeText(receiver,I18n.cs(ok?"Icon updated":"Could not read this image. Try another image."),Toast.LENGTH_SHORT).show();
                             finishReceiver(receiver,proxy);
                         }});
                     }});
@@ -188,26 +188,26 @@ final class LauncherIcon {
         pick(a,key);
     }
     static void pick(final Activity a,final String key){
-        AlertDialog.Builder chooser=new AlertDialog.Builder(a).setTitle("Change icon")
-            .setItems(new String[]{"Photos","Files","Icon pack"},new DialogInterface.OnClickListener(){
+        AlertDialog.Builder chooser=new AlertDialog.Builder(a).setTitle(I18n.cs("Change icon"))
+            .setItems(I18n.all(new String[]{"Photos","Files","Icon pack"}),new DialogInterface.OnClickListener(){
                 public void onClick(DialogInterface dialog,int which){if(which==2)LauncherIconPack.openPicker(a,key);else openPicker(a,key,which==0);}
-            }).setNegativeButton("Cancel",null);
-        try{if(file(a,key).isFile()||LauncherIconPack.pickFile(a,key).isFile())chooser.setNeutralButton("Reset icon",new DialogInterface.OnClickListener(){public void onClick(DialogInterface dialog,int which){reset(a,key);}});}catch(Exception ignored){}
+            }).setNegativeButton(I18n.cs("Cancel"),null);
+        try{if(file(a,key).isFile()||LauncherIconPack.pickFile(a,key).isFile())chooser.setNeutralButton(I18n.cs("Reset icon"),new DialogInterface.OnClickListener(){public void onClick(DialogInterface dialog,int which){reset(a,key);}});}catch(Exception ignored){}
         AlertDialog dialog=FrostedSurface.show(chooser.create());
         android.widget.Button button=dialog.getButton(DialogInterface.BUTTON_NEUTRAL);
         if(button!=null&&button.getVisibility()==android.view.View.VISIBLE){
             int size=LauncherFeatures.dp(a,24);LauncherGlyph arrow=new LauncherGlyph(a,4);arrow.setBounds(0,0,size,size);
-            button.setText("");button.setContentDescription("Reset icon");button.setCompoundDrawablesRelative(arrow,null,null,null);button.setCompoundDrawablePadding(0);
+            button.setText("");button.setContentDescription(I18n.cs("Reset icon"));button.setCompoundDrawablesRelative(arrow,null,null,null);button.setCompoundDrawablePadding(0);
             button.setPadding(LauncherFeatures.dp(a,12),LauncherFeatures.dp(a,12),LauncherFeatures.dp(a,12),LauncherFeatures.dp(a,12));button.setMinimumWidth(LauncherFeatures.dp(a,48));button.setMinimumHeight(LauncherFeatures.dp(a,48));
             android.view.ViewGroup.LayoutParams params=button.getLayoutParams();params.width=LauncherFeatures.dp(a,48);button.setLayoutParams(params);
-            try{call(button,"setTooltipText","Reset to original icon");}catch(Throwable older){}
+            try{call(button,"setTooltipText",I18n.cs("Reset to original icon"));}catch(Throwable older){}
         }
     }
     static void reset(final Activity a,final String key){IO.execute(new Runnable(){public void run(){
         boolean success=false;try{File f=file(a,key);success=!f.exists()||f.delete();File pk=LauncherIconPack.pickFile(a,key);if(pk.exists()&&!pk.delete())success=false;}catch(Exception ignored){}
         final boolean ok=success;a.runOnUiThread(new Runnable(){public void run(){
             if(ok)synchronized(cache){retire(key);}
-            LauncherFeatures.refresh();Toast.makeText(a,ok?"Original icon restored":"Could not reset the icon",0).show();
+            LauncherFeatures.refresh();Toast.makeText(a,I18n.cs(ok?"Original icon restored":"Could not reset the icon"),0).show();
         }});
     }});}
     static void openPicker(Activity a,String key,boolean photos){
@@ -215,7 +215,7 @@ final class LauncherIcon {
         if(photos)intent.setPackage("com.google.android.apps.photos");else intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         Xp.setAdditionalInstanceField(a,PENDING,key);
-        try{a.startActivityForResult(intent,REQUEST);}catch(Exception error){Xp.setAdditionalInstanceField(a,PENDING,null);Toast.makeText(a,photos?"Photos is unavailable. Choose Files instead.":"Files is unavailable",0).show();}
+        try{a.startActivityForResult(intent,REQUEST);}catch(Exception error){Xp.setAdditionalInstanceField(a,PENDING,null);Toast.makeText(a,I18n.cs(photos?"Photos is unavailable. Choose Files instead.":"Files is unavailable"),0).show();}
     }
     static Bitmap load(Context c,Uri uri)throws Exception{
         File dir=new File(c.getFilesDir(),"pixelsuite-icons");if(!dir.isDirectory()&&!dir.mkdirs())throw new IOException("Cannot create icon storage");

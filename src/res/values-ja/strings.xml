@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">ジェスチャー、Pixel Launcher のカスタマイズ、アプリとフォルダのロック、スーパーダークモード、ファイルの並べ替え、スクリーンショットの自由な切り抜き、Pixel Studio と Google フォトの 落書き。設定はすべて Pixel Suite アプリで行います。使用するエディタを含め、推奨の LSPosed スコープを有効にしてから、それらのアプリまたはスマートフォンを再起動してください。</string>
+    <string name="search_in_chrome">Chrome で検索</string>
+</resources>

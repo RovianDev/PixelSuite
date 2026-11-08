@@ -8,7 +8,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
@@ -21,7 +20,6 @@ import android.view.ViewParent;
 import android.view.animation.OvershootInterpolator;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 final class RefreshRate90 {
     private RefreshRate90() {}
@@ -58,7 +56,7 @@ final class RefreshRate90 {
                     Xp.setAdditionalInstanceField(smooth, F_ROW, row);
                     Xp.callMethod(row, "setKey", ROW);
                     Xp.callMethod(row, "setTitle", (CharSequence) "Refresh rate");
-                    Xp.callMethod(row, "setSummary", (CharSequence) "Highest refresh rate. The screen still slows down when nothing moves.");
+                    Xp.callMethod(row, "setSummary", (CharSequence) I18n.cs("Highest refresh rate. The screen still slows down when nothing moves."));
                     Xp.callMethod(row, "setPersistent", false);
                     Xp.callMethod(row, "setSelectable", false);
                     try { Xp.callMethod(row, "setIconSpaceReserved", (Boolean) Xp.callMethod(smooth, "isIconSpaceReserved")); } catch (Throwable ignored) { }
@@ -146,13 +144,13 @@ final class RefreshRate90 {
             cOff = dark ? sys(c, "system_neutral2_200", 0xFFC6C5D0) : sys(c, "system_neutral2_700", 0xFF46464F);
             track.setColor(cTrack); thumb.setColor(cThumb);
             ink.setTextSize(14 * c.getResources().getDisplayMetrics().scaledDensity);
-            ink.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+            ink.setTypeface(I18n.medium());
             ink.setTextAlign(Paint.Align.CENTER);
             stop = stopOf(peak(c)); pos = stop;
             obs = new ContentObserver(new Handler(Looper.getMainLooper())) {
                 @Override public void onChange(boolean self) { sync(true); }
             };
-            setContentDescription("Refresh rate");
+            setContentDescription(I18n.cs("Refresh rate"));
         }
 
         @Override protected void onAttachedToWindow() {

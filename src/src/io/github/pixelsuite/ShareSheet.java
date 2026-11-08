@@ -481,12 +481,12 @@ final class ShareSheet {
                             CharSequence name = appName(c, t.get(0));
                             Object pinIcon = old != null && !old.isEmpty() && old.get(0) instanceof Pair ? ((Pair<?, ?>) old.get(0)).first : null;
                             List<Object> items = new ArrayList<>();
-                            items.add(new Pair<Object, Object>(pinIcon, (pinned ? "Unpin " : "Pin ") + name));
+                            items.add(new Pair<Object, Object>(pinIcon, I18n.t((pinned ? "Unpin " : "Pin ") + name)));
                             for (Object o : t) {
                                 Drawable ic = icon(c, o);
                                 items.add(new Pair<Object, Object>(ic == null ? null : new NoTint(copy(c, ic)), shortcutName(c, o)));
                             }
-                            items.add(new Pair<Object, Object>(new Glyph(Glyph.EYE_OFF, Color.BLACK, ((View) p.getResult()).getResources()), "Hide app"));
+                            items.add(new Pair<Object, Object>(new Glyph(Glyph.EYE_OFF, Color.BLACK, ((View) p.getResult()).getResources()), I18n.t("Hide app")));
                             Xp.setObjectField(ad0, "mItems", items);
                             Xp.setAdditionalInstanceField(p.thisObject, F_MULTI, Boolean.TRUE);
                             try { Xp.callMethod(ad0, "notifyDataSetChanged"); } catch (Throwable ignored) { }
@@ -505,7 +505,7 @@ final class ShareSheet {
                     Object ad = Xp.getObjectField(rv, "mAdapter");
                     if (ad == null) return;
                     List<Object> items = new ArrayList<>((List<?>) Xp.getObjectField(ad, "mItems"));
-                    items.add(new Pair<Object, Object>(new Glyph(Glyph.EYE_OFF, Color.BLACK, ((View) p.getResult()).getResources()), contact ? "Hide contact" : "Hide app"));
+                    items.add(new Pair<Object, Object>(new Glyph(Glyph.EYE_OFF, Color.BLACK, ((View) p.getResult()).getResources()), I18n.t(contact ? "Hide contact" : "Hide app")));
                     Xp.setObjectField(ad, "mItems", items);
                 }
             });
@@ -1087,7 +1087,6 @@ final class ShareSheet {
                 lstep = lcells.size() >= 2 && ly[0] == ly[1] ? Math.abs(lx[1] - lx[0]) : cell.getWidth();
                 folders = folderViews(decor);
                 View prow = cell.getParent() instanceof View ? (View) cell.getParent() : cell;
-                int cols = colsOf(act, prow);
                 emptiesRow = false;
                 rowShift = prow.getHeight();
                 for (View v : lcells) if (v.getParent() instanceof ViewGroup && ((ViewGroup) v.getParent()).getClipChildren() && !unclipped.contains(v.getParent())) { ((ViewGroup) v.getParent()).setClipChildren(false); unclipped.add((ViewGroup) v.getParent()); }
@@ -1564,31 +1563,6 @@ final class ShareSheet {
     }
 
     @SuppressWarnings("unchecked")
-    private static void placeInList(Activity a, Object t, float x, float y) {
-        try {
-            ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
-            int[] l = new int[2], ld = new int[2]; decor.getLocationInWindow(ld);
-            List<View> all = new ArrayList<>(); cells(decor, all);
-            Object near = null; float best = Float.MAX_VALUE; boolean after = false;
-            for (View v : all) {
-                Object o = Xp.getAdditionalInstanceField(v, F_TARGET);
-                if (o == null || o == t || !v.isShown() || v.getWidth() == 0 || bool(o, "isSelectableTargetInfo") || Fly.posType(v) != 3) continue;
-                v.getLocationInWindow(l);
-                float cx = l[0] - ld[0] + v.getWidth() / 2f, cy = l[1] - ld[1] + v.getHeight() / 2f;
-                float d = (cx - x) * (cx - x) + (cy - y) * (cy - y) * 4f;
-                if (d < best) { best = d; near = o; after = Math.abs(cy - y) < v.getHeight() / 2f ? x > cx : y > cy; }
-            }
-            Object la = activeAdapter(a);
-            if (la == null) return;
-            List<Object> keys = new ArrayList<>((List<Object>) Xp.getObjectField(la, "mSortedList"));
-            String mine = key(comps(t));
-            for (java.util.Iterator<Object> it = keys.iterator(); it.hasNext(); ) if (key(comps(it.next())).equals(mine)) it.remove();
-            int at = near == null ? keys.size() : keys.indexOf(near);
-            if (at < 0) at = keys.size(); else if (after) at++;
-            keys.add(Math.min(at, keys.size()), t);
-            saveListOrder(a, keys);
-        } catch (Throwable ignored) { }
-    }
 
     private static void intoFolder(final Activity a, final Ghost g, final Runnable then) {
         ViewGroup decor = (ViewGroup) a.getWindow().getDecorView();
@@ -1735,7 +1709,6 @@ final class ShareSheet {
             if (tops.isEmpty()) { addsRow = false; rowShift = cell.getHeight(); }
             else {
                 View trow = tops.get(0).getParent() instanceof View ? (View) tops.get(0).getParent() : tops.get(0);
-                int cols = colsOf(act, trow);
                 addsRow = false;
                 rowShift = trow.getHeight();
             }
@@ -2494,7 +2467,7 @@ final class ShareSheet {
             if (ic != null) iv.setImageDrawable(copy(a, ic));
             row.addView(iv, new LinearLayout.LayoutParams(dp(a, 28), dp(a, 28)));
             TextView tv = new TextView(a);
-            tv.setText(shortcutName(a, m)); tv.setTextColor(th.text); tv.setTextSize(15);
+            tv.setText(I18n.cs(shortcutName(a, m))); tv.setTextColor(th.text); tv.setTextSize(15);
             tv.setPadding(dp(a, 14), 0, 0, 0);
             row.addView(tv);
             row.setOnClickListener(x -> { pw.dismiss(); pick.on(m); });
@@ -2592,7 +2565,7 @@ final class ShareSheet {
         for (int i = 0; i < hidden.size() && minis.size() < 4; i++) { Drawable d = icon(c, hidden.get(i)); if (d != null) minis.add(d); }
         icon.setColorFilter((ColorFilter) null);
         icon.setImageDrawable(new FolderIcon(minis, theme(c).folder));
-        text.setText(name);
+        text.setText(I18n.cs(name));
         text.setMaxLines(2);
         text.setBackground(null);
         text.setPaddingRelative(0, 0, 0, 0);
@@ -2727,7 +2700,7 @@ final class ShareSheet {
         final Th th = theme(a);
         final PanelDialog d = new PanelDialog(a);
         d.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        final boolean[] changed = {false}, quiet = {false};
+        final boolean[] quiet = {false};
 
         FrameLayout root = new FrameLayout(a);
         root.setPadding(dp(a, 20), dp(a, 24), dp(a, 20), dp(a, 24));
@@ -2742,10 +2715,10 @@ final class ShareSheet {
         LinearLayout texts = new LinearLayout(a);
         texts.setOrientation(LinearLayout.VERTICAL);
         TextView title = new TextView(a);
-        title.setText(contacts ? "Hidden contacts" : "Hidden apps"); title.setTextColor(th.text); title.setTextSize(20); title.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+        title.setText(I18n.cs(contacts ? "Hidden contacts" : "Hidden apps")); title.setTextColor(th.text); title.setTextSize(20); title.setTypeface(I18n.medium());
         texts.addView(title);
         final TextView sub = new TextView(a);
-        sub.setText("Tap to share. Long-press to unhide."); sub.setTextColor(th.text2); sub.setTextSize(13);
+        sub.setText(I18n.cs("Tap to share. Long-press to unhide.")); sub.setTextColor(th.text2); sub.setTextSize(13);
         sub.setPadding(0, dp(a, 2), 0, dp(a, 14));
         texts.addView(sub);
         header.addView(texts, new LinearLayout.LayoutParams(0, -2, 1f));
@@ -2770,7 +2743,7 @@ final class ShareSheet {
         final List<Object> picked = new ArrayList<>();
         final TextView unhidePill = new TextView(a);
         unhidePill.setTextColor(th.onAccent); unhidePill.setTextSize(15); unhidePill.setGravity(Gravity.CENTER);
-        unhidePill.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+        unhidePill.setTypeface(I18n.medium());
         unhidePill.setPadding(dp(a, 24), dp(a, 14), dp(a, 24), dp(a, 14));
         unhidePill.setBackground(new RippleDrawable(ColorStateList.valueOf(0x33FFFFFF), new Surface(th, dp(a, 28), th.accent, false), null));
         unhidePill.setCompoundDrawablePadding(dp(a, 10));
@@ -2784,7 +2757,7 @@ final class ShareSheet {
             int n = picked.size();
             boolean show = selecting[0] && n > 0;
             String what = contacts ? (n == 1 ? "contact" : "contacts") : (n == 1 ? "app" : "apps");
-            if (n > 0) unhidePill.setText("Unhide " + n + " " + what);
+            if (n > 0) unhidePill.setText(I18n.cs("Unhide " + n + " " + what));
             if (show && unhidePill.getVisibility() != View.VISIBLE) {
                 unhidePill.setVisibility(View.VISIBLE); unhidePill.setAlpha(0f); unhidePill.setScaleX(0.9f); unhidePill.setScaleY(0.9f);
                 unhidePill.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(220).setInterpolator(new OvershootInterpolator(1.4f)).start();
@@ -2816,7 +2789,7 @@ final class ShareSheet {
             }
         };
         final Runnable setMode = () -> {
-            sub.setText(selecting[0] ? (contacts ? "Tick contacts to unhide." : "Tick apps to unhide.") : "Tap to share. Long-press to unhide.");
+            sub.setText(I18n.cs(selecting[0] ? (contacts ? "Tick contacts to unhide." : "Tick apps to unhide.") : "Tap to share. Long-press to unhide."));
             refreshChecks.run();
             updatePill.run();
         };
@@ -2868,7 +2841,7 @@ final class ShareSheet {
                 if (ic != null) iv.setImageDrawable(copy(a, ic));
                 cell.addView(iv, new LinearLayout.LayoutParams(dp(a, 52), dp(a, 52)));
                 TextView lb = new TextView(a);
-                lb.setText(groups.containsKey(dri) ? appName(a, dri) : label(a, dri)); lb.setTextColor(th.text); lb.setTextSize(12); lb.setGravity(Gravity.CENTER);
+                lb.setText(I18n.cs(groups.containsKey(dri) ? appName(a, dri) : label(a, dri))); lb.setTextColor(th.text); lb.setTextSize(12); lb.setGravity(Gravity.CENTER);
                 lb.setMaxLines(2); lb.setEllipsize(TextUtils.TruncateAt.END);
                 lb.setPadding(0, dp(a, 6), 0, 0);
                 cell.addView(lb, new LinearLayout.LayoutParams(-1, -2));
@@ -2910,8 +2883,6 @@ final class ShareSheet {
         d.setContentView(root, new ViewGroup.LayoutParams(-1, -2));
         d.setCanceledOnTouchOutside(true);
         final Window w = d.getWindow();
-        final float dimTo = 0f;
-        final int blurTo = 0;
         if (w != null) {
             w.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             w.setLayout(-1, -2);
@@ -2922,18 +2893,7 @@ final class ShareSheet {
             lp.windowAnimations = 0;
             w.setAttributes(lp);
         }
-        sScrim = new java.lang.ref.WeakReference<View>(null);
         if (!th.superDark) card.setElevation(dp(a, 8));
-        final int[] from = new int[2];
-        if (folder != null && folder.isAttachedToWindow()) { folder.getLocationOnScreen(from); from[0] += folder.getWidth() / 2; from[1] += folder.getHeight() / 2; }
-        else { from[0] = a.getResources().getDisplayMetrics().widthPixels / 2; from[1] = a.getResources().getDisplayMetrics().heightPixels / 2; }
-        final float startScale = folder != null && folder.getWidth() > 0 ? Math.max(0.12f, Math.min(0.4f, folder.getWidth() / (float) (a.getResources().getDisplayMetrics().widthPixels - dp(a, 40)))) : 0.6f;
-        final PathInterpolator emphasized = new PathInterpolator(0.05f, 0.7f, 0.1f, 1f), accelerate = new PathInterpolator(0.3f, 0f, 0.8f, 0.15f);
-        final Runnable aim = () -> {
-            int[] at = new int[2]; card.getLocationOnScreen(at);
-            card.setPivotX(Math.max(0, Math.min(card.getWidth(), from[0] - at[0])));
-            card.setPivotY(Math.max(0, Math.min(card.getHeight(), from[1] - at[1])));
-        };
         d.closer = done -> {
             card.animate().cancel();
             card.setPivotX(card.getWidth() / 2f); card.setPivotY(card.getHeight() / 2f);
@@ -2960,32 +2920,8 @@ final class ShareSheet {
         }
     }
 
-    private static java.lang.ref.WeakReference<View> sScrim = new java.lang.ref.WeakReference<View>(null);
 
-    private static void backdrop(final Window w, float from, float to, final float dimTo, final int blurTo, long ms, android.animation.TimeInterpolator curve) {
-        if (w == null) return;
-        final View scrim = sScrim.get();
-        android.animation.ValueAnimator va = android.animation.ValueAnimator.ofFloat(from, to).setDuration(ms);
-        va.setInterpolator(curve);
-        va.addUpdateListener(x -> {
-            try {
-                float f = (Float) x.getAnimatedValue();
-                WindowManager.LayoutParams lp = w.getAttributes();
-                if (scrim != null) scrim.setAlpha(dimTo * f);
-                if (blurTo > 0) { WindowManager.LayoutParams.class.getMethod("setBlurBehindRadius", int.class).invoke(lp, Math.round(blurTo * f)); w.setAttributes(lp); }
-            } catch (Throwable ignored) { }
-        });
-        va.start();
-    }
 
-    private static void blurBehind(Window w, int radius) {
-        try {
-            w.addFlags(4 );
-            WindowManager.LayoutParams lp = w.getAttributes();
-            WindowManager.LayoutParams.class.getMethod("setBlurBehindRadius", int.class).invoke(lp, radius);
-            w.setAttributes(lp);
-        } catch (Throwable ignored) { }
-    }
 
     private static void showUnhide(Activity a, Th th, View anchor, final Runnable action) { showUnhide(a, th, anchor, "Unhide app", action); }
 
@@ -2999,7 +2935,7 @@ final class ShareSheet {
         iv.setImageDrawable(new Glyph(Glyph.EYE, th.text, a.getResources()));
         pill.addView(iv, new LinearLayout.LayoutParams(dp(a, 20), dp(a, 20)));
         TextView tv = new TextView(a);
-        tv.setText(unhideLabel); tv.setTextColor(th.text); tv.setTextSize(15);
+        tv.setText(I18n.cs(unhideLabel)); tv.setTextColor(th.text); tv.setTextSize(15);
         tv.setPadding(dp(a, 12), 0, 0, 0);
         pill.addView(tv);
         final PopupWindow pw = new PopupWindow(pill, -2, -2, true);
@@ -3017,12 +2953,6 @@ final class ShareSheet {
         pill.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(160).setInterpolator(new DecelerateInterpolator()).start();
     }
 
-    private static void fadeFolderThenRecreate(final Activity a, int type) {
-        View f = findFolder(a.getWindow().getDecorView(), type);
-        if (f == null) { recreate(a); return; }
-        f.animate().alpha(0f).scaleX(0.6f).scaleY(0.6f).setDuration(260).setInterpolator(new DecelerateInterpolator())
-                .withEndAction(() -> recreate(a)).start();
-    }
 
     private static void launchContact(Activity a, Object la, Object t) {
         try {
@@ -3321,14 +3251,14 @@ final class ShareSheet {
             decor.addView(layer, new FrameLayout.LayoutParams(-1, -1));
             layer.setTranslationZ(dp(a, 16));
             pin = eb;
-            pin.setContentDescription("Edit: select apps to hide");
+            pin.setContentDescription(I18n.cs("Edit: select apps to hide"));
             pin.setOnClickListener(v -> setSelecting(act, !sSelecting));
             FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(size, bh, Gravity.TOP | Gravity.START);
             layer.addView(pin, lp);
             pin.setVisibility(View.INVISIBLE);
             pill = new TextView(a);
             pill.setTextColor(th.onAccent); pill.setTextSize(15); pill.setGravity(Gravity.CENTER);
-            pill.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+            pill.setTypeface(I18n.medium());
             pill.setPadding(dp(a, 24), dp(a, 14), dp(a, 24), dp(a, 14));
             pill.setBackground(new RippleDrawable(ColorStateList.valueOf(0x33FFFFFF), new Surface(th, dp(a, 28), th.accent, false), null));
             pill.setCompoundDrawablePadding(dp(a, 10));
@@ -3341,10 +3271,10 @@ final class ShareSheet {
             pill.setVisibility(View.INVISIBLE);
             rs = dp(a, 30);
             minus = new EditBubble(a, th, 1);
-            minus.setContentDescription("Hide the contacts row");
+            minus.setContentDescription(I18n.cs("Hide the contacts row"));
             minus.setOnClickListener(v -> { if (!busy) collapseContacts(this); });
             plus = new EditBubble(a, th, 2);
-            plus.setContentDescription("Show the contacts row");
+            plus.setContentDescription(I18n.cs("Show the contacts row"));
             plus.setOnClickListener(v -> { if (!busy) expandContacts(this); });
             for (EditBubble b : new EditBubble[]{minus, plus}) {
                 if (!th.superDark && !th.blur) b.setElevation(dp(a, 1));
@@ -3387,7 +3317,7 @@ final class ShareSheet {
         void update() {
             int n = sSel.size();
             boolean show = sSelecting && n > 0;
-            if (n > 0) pill.setText(n == 1 ? "Hide 1 app" : "Hide " + n + " apps");
+            if (n > 0) pill.setText(I18n.cs(n == 1 ? "Hide 1 app" : "Hide " + n + " apps"));
             if (show != pillShown) {
                 pillShown = show;
                 pill.animate().cancel();
@@ -3414,7 +3344,6 @@ final class ShareSheet {
             decor.getLocationInWindow(ld);
             float x, y;
             float panelTop = Float.NaN;
-            float panelRight = 0;
             if (row != null && row.isShown() && row.getHeight() > 0) {
                 row.getLocationInWindow(l);
                 x = l[0] + row.getWidth() - row.getPaddingEnd() - size;
@@ -3443,7 +3372,7 @@ final class ShareSheet {
                 try { android.view.WindowInsets wi = decor.getRootWindowInsets(); if (wi != null) topInset = wi.getSystemWindowInsetTop(); } catch (Throwable ignored) { }
                 float above = l[1] - dp(act, 8) - bh;
                 if (above >= ld[1] + topInset + dp(act, 4)) {
-                    y = above + 8f * act.getResources().getDisplayMetrics().density; panelTop = l[1]; panelRight = l[0] + top.getWidth();
+                    y = above + 8f * act.getResources().getDisplayMetrics().density; panelTop = l[1];
                     x = l[0] + (top.getWidth() - size) / 2f;
                 }
                 else y = l[1] + dp(act, 12);
@@ -3502,7 +3431,7 @@ final class ShareSheet {
             this.th = th;
             d = c.getResources().getDisplayMetrics().density;
             ink.setTextSize(14 * c.getResources().getDisplayMetrics().scaledDensity);
-            ink.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+            ink.setTypeface(I18n.medium());
             rim.setStyle(Paint.Style.STROKE);
             rim.setStrokeWidth(th.superDark ? 2.4f * d : 1.2f * d);
             if (th.superDark && th.rims) { try { rim.setMaskFilter(new android.graphics.BlurMaskFilter(1.2f * d, android.graphics.BlurMaskFilter.Blur.NORMAL)); } catch (Throwable ignored) { } }
@@ -3511,7 +3440,7 @@ final class ShareSheet {
             setBackground(new RippleDrawable(ColorStateList.valueOf(th.ripple), null, new Surface(th, 10000, Color.WHITE, false)));
             if (th.superDark && th.rims) setLayerType(LAYER_TYPE_SOFTWARE, null);
         }
-        int wantWidth() { return Math.round(12 * d + 4 * d + 8 * d + Math.max(ink.measureText("Edit"), ink.measureText("Done")) + 14 * d); }
+        int wantWidth() { return Math.round(12 * d + 4 * d + 8 * d + Math.max(ink.measureText(I18n.t("Edit")), ink.measureText(I18n.t("Done"))) + 14 * d); }
         static int wantHeight(Context c) { return dp(c, 34); }
         void setActive(boolean on) {
             ValueAnimator va = ValueAnimator.ofFloat(act, on ? 1f : 0f).setDuration(220);
@@ -3556,8 +3485,8 @@ final class ShareSheet {
             float dx = 12 * d + 2 * d, dr = 1.9f * d, gap = 5.2f * d, cy = h / 2f;
             for (int i = -1; i <= 1; i++) c.drawCircle(dx, cy + i * gap, dr, ink);
             float tx = dx + 2 * d + 8 * d, ty = cy - (ink.descent() + ink.ascent()) / 2f;
-            ink.setAlpha((int) (255 * (1f - act))); c.drawText("Edit", tx, ty, ink);
-            ink.setAlpha((int) (255 * act)); c.drawText("Done", tx, ty, ink);
+            ink.setAlpha((int) (255 * (1f - act))); c.drawText(I18n.t("Edit"), tx, ty, ink);
+            ink.setAlpha((int) (255 * act)); c.drawText(I18n.t("Done"), tx, ty, ink);
             ink.setAlpha(255);
         }
     }

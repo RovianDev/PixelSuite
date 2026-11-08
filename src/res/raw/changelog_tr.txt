@@ -1,0 +1,70 @@
+## v3.1.0
+Pixel Suite 14 dilde; Chrome+ ve Gboard+, yerleşik VPN, bekletilen uygulamalar için Yedekleme ve Geri Yükleme, güç düğmesi, ses ve kilit ekranı için yeni seçenekler ve yeni bir simge.
+
+✨ Yeni
+• 💾 **Yedekle ve Geri Yükle**: bekletilen uygulamalar güncellenmeden önce verileriyle (oturumlar, sohbetler, ayarlar ve dosyalar) ya da yalnızca uygulama olarak kaydedilir. Her uygulamanın en yeni 3 sürümü, kaldırıldıktan sonra da saklanır. (Koruma › OTA ve Store engelleyici › Play Store engelleyici)
+• 🌍 **14 dil**: Pixel Suite artık Çince, Hintçe, İspanyolca, Arapça, Fransızca, Portekizce, Rusça, Bengalce, Endonezce, Almanca, Japonca, Türkçe, Farsça ve İbranice konuşuyor; bu değişiklik günlüğü de dahil. Telefonunuzun dilini izler ya da ana sayfanın sağ üstündeki dil düğmesine dokunup bir dil seçebilirsiniz. (Arapça, Farsça ve İbranice sağdan sola okunur.)
+• 🎮 **Pixel Stack!** küçük bir gizli oyun: Pixel Suite ana sayfasının üstündeki logoya basılı tutun. Blokları olabildiğince yükseğe dizin, tam isabetle (Mükemmel!) alın ve skorunuzu Telegram topluluğumuzla paylaşın!
+• 🔘 **Güç düğmesini basılı tutma**: Gemini'yi ya da Circle to Search'ü açın, ekran görüntüsü alın veya bir sessiz modu açıp kapatın: Sessiz, Rahatsız Etmeyin, Beni Rahatsız Etme ya da üçü birden için Rahatsızlık Yok. (Kısayollar › Düğmeler)
+• 🔒 **Kilitliyken güç düğmesini basılı tutma**: telefon kilitliyken başka bir işlem seçin: Gemini (stok), Sessiz, Rahatsız Etmeyin, Beni Rahatsız Etme ya da Rahatsızlık Yok. Güç düğmesini basılı tutma seçeneğinden ayrı, kendi başına çalışır. (Kısayollar › Düğmeler)
+• 📷 **Güç düğmesine iki kez basma**: artık “Kamera (stok)” seçeneğini de seçebilirsiniz. (Kısayollar › Düğmeler)
+• 🔦 **Ses kısma düğmesine iki kez basma**: artık feneri de açıp kapatabilirsiniz. (Kısayollar › Düğmeler)
+• 🕒 **Her zaman açık ekran**: şarj olurken açık tutun ve ekranı kapattığınızda güç düğmesi birkaç saniye göstersin. (Kişiselleştir › Her zaman açık ekran)
+• 🔢 **4 haneli PIN'i otomatik onayla**: 4. rakamı yazdığınız anda telefonun kilidi açılır, Enter gerekmez. (Koruma › Gizlilik ve Güvenlik › Kilit ekranı)
+• 🧹 **Arama çubuğunu gizle**: arama çubuğunu basılı tutup Widget'ı gizle'yi seçmeniz yeterli. Dock aşağı iner, uygulamalarınız boşluğu kullanır ve arama uygulama çekmecesinde kalır. Kişiselleştir › Pixel Başlatıcı bölümünden de gizleyebilirsiniz.
+• 📋 **Uygulamalarınızı yedekleyin**: herhangi bir uygulamayı yalnızca uygulama olarak ya da tüm verileriyle (oturumlar, sohbetler, ayarlar ve dosyalar) yedekleyin ve istediğiniz zaman geri yükleyin. Kaydedilmiş bir sürüme dönmek için yeşil düğmeye dokunun. (Play Store engelleyici › Uygulama seçin)
+• 🔎 **Chrome'da ara**: herhangi bir uygulamada metin seçin, ⋮'e dokunun ve Chrome'da ara'u seçin. Kelimeler doğrudan Chrome'da açılır.
+• 🗑️ **Yalnızca Tümünü temizle**: son uygulamalarda ortada yalnızca Tümünü temizle görünür, Seç ve Ekran görüntüsü olmadan. (Kişiselleştir › Pixel Başlatıcı › Son Kullanılan Uygulamalar)
+• 🎨 **Yeni Pixel Suite simgesi**: Pixel Suite'in kendi uygulama simgesi artık beyaz plaka olmadan daireyi kenardan kenara dolduruyor ve duvar kağıdı renklerinizi izleyen temalı bir sürümü var.
+
+💎 Patreon
+• 🚀 **Chrome+**: Chrome'un kontrolleri aşağı iner; sekmeler, sekme değiştirici ve yeni sekmeler için daha akıcı, elde hazırlanmış animasyonlarla. Sekme değiştiricideki turuncu + gizli sekme açar. (Patreon › Google uygulamaları › Chrome+)
+• 🧩 **Chrome için uzantılar**: VPN, Reklam Engelleyici ve Koyu sayfalar tek bir sayfada, Chrome'un araç çubuğundaki yapboz düğmesinden. Kullanmak için dokunun, araç çubuğuna sabitlemek için basılı tutun.
+• 🌐 **VPN**: dünyanın dört bir yanındaki ücretsiz sunucularla başka bir ülkeden gezinin, tüm telefon için ya da yalnızca Chrome için, en hızlı sunucu önce. Chrome'un konumu VPN'i izler. (Patreon › VPN, ayrıca bir Hızlı Ayarlar kutusu)
+• ⭐ **Hızlı arama**: Chrome'un yeni sekme sayfasında en fazla 19 web sitesi için yuvarlak simgeler. Taşımak için sürükleyin ya da Süper Karanlık temasını izleyen bir klasör yapmak için birini diğerinin üstüne bırakın. Herhangi bir siteye kendi yuvarlak resminizi verin.
+• 🛡️ **Reklam Engelleyici**: her web sitesi için bir filtreleme düzeyi seçin. Tam düzey çerez bildirimlerini ve açılır pencereleri de gizler, sayfanın herhangi bir bölümünü kendiniz de kaldırabilirsiniz. Uzantılar'daki anahtarıyla tüm web sitelerinde kapatıp açabilirsiniz. (Chrome+ › Uzantılar)
+• 🌙 **Koyu sayfalar**: siteler beyaz parlama olmadan koyu açılır ya da Süper Karanlık ile simsiyah: her zaman, telefonun koyu moduyla ya da bir programla. Fotoğraflar ve videolar renklerini korur. (Chrome+ › Uzantılar)
+• 🎙️ **Google Telefon+**: (Kayıt kalitesi) daha küçük dosyalar için Standart, daha net bir ses için HD (artık varsayılan) ya da en net ses için Kayıpsız. (Patreon › Google uygulamaları › Google Telefon+)
+• ⌨️ **Gboard+ araç çubuğu**: Geri al, Yinele, Hızlı Seçim, Tümünü seç, Kes, Kopyala ve Yapıştır gibi en fazla 7 kendi kısayolunuz, her uygulamada. Tümünü seç ve Hızlı Seçim kopyala-yapıştır menüsünü hemen açar. (Patreon › Google uygulamaları › Gboard+)
+• 🔤 **Gboard+ tuşları**: akıcı açılır pencereli yuvarlak tuşlar, harf harf silmek için silme tuşundan sola kaydırın, klavyeyi yeniden boyutlandırın ya da taşıyın. Gboard'un sayı satırı açıkken semboller sayfası aynı tuş boyutunu korur. (Patreon › Google uygulamaları › Gboard+)
+• ✍️ **Gboard+ ile yazma**: seçtiğiniz diller için Otomatik düzeltme'u kapatın, her kırpıntıyı panoda tutun ve Onay işaretli sesle yazma'ı kullanın: konuşun, sonra sözlerinizi eklemek için onay işaretine dokunun. (Patreon › Google uygulamaları › Gboard+)
+• 🧊 **Buzlu Gboard**: klavyenin arka planı buzlu cama dönüşür: arkasındakiler bulanık görünür, cam kenarlarıyla, açık, koyu ve Süper Karanlık temada. Tuşlar olduğu gibi kalır. (Patreon › Google uygulamaları › Gboard+)
+
+🪄 İnce ayarlar
+• 🌑 **Süper Karanlık**: seçili metnin üstündeki menü (Kes, Kopyala, Chrome'da ara ve daha fazlası) artık her uygulamada kenarlıklı ve siyah, Chrome'un gizli modu da sekme değiştirirken dahil her yerde simsiyah kalır.
+• ⚡ **Seçenekler kendiliğinden uygulanır**: Süper Karanlık Mod ve yüzey stili değiştirdiğiniz anda değişir, diğer seçenekler kendi uygulamasını kendisi yeniden başlatır ve Yenile düğmesi yalnızca Pixel Başlatıcı seçeneklerinde görünür.
+• 🔄 **Yeniden başlat düğmesi**: bazı özellikler ancak yeniden başlatmadan sonra çalışmaya başlar. Güncellemeden sonra, telefon yeniden başlayana kadar bir Yeniden başlat düğmesi görünür. Hangi özelliklerin yeniden başlatma gerektirdiğini görmek için dokunun, yeniden başlatmak için tekrar dokunun.
+• 🌄 **Google akışı**: ana ekranda sağa kaydırın, akış duvar kâğıdınızın üzerine doğrudan kayar; önce beyaz bir panel yanıp sönmez.
+• 🏠 **Pixel Başlatıcı**: arama çubuğunu basılı tutunca artık yalnızca Widget ayarları ve Widget'ı gizle görünür.
+
+🐞 Hata düzeltmeleri
+• 🧠 **Pixel Başlatıcı**: açık ve koyu tema arasında birçok kez geçiş yaptıktan sonra (örneğin koyu mod zamanlamasıyla) yavaşlayabiliyor, yanıt vermeyi bırakıp yeniden başlayabiliyordu. Artık akıcı kalıyor.
+• 📱 **Gezinme düğmeleri**: ekranı döndürdükten sonra, Geri düğmesi açıkken yukarı kaydırarak ana ekrana dönmek çalışmayabiliyordu. Artık her seferinde çalışıyor. (Kısayollar › Hareketler › Gezinme düğmeleri)
+• 🧭 **Gezinme düğmeleri**: bazı uygulamalar alt menüsünü düğmelerin altına koyuyordu. Artık düğmelerin üstünde duruyor. (Kısayollar › Hareketler › Gezinme düğmeleri)
+• 🛟 **Reklam Engelleyici**: bir sayfa hâlâ yüklenirken ondan ayrıldığınızda veya sekmeyi kapattığınızda Chrome kendi kendine kapanabiliyordu. Artık açık kalıyor.
+• 🖐️ **Pixel Başlatıcı**: ana ekranın bazı yerlerinde bir uygulamayı basılı tutunca yalnızca birkaç küçük simge çıkıyor ve menüsü kayboluyordu. Artık menüler her yerde tamamen açılıyor.
+• 📰 **Chrome akışı**: sponsorlu içerikler gizlenirken akış zıplayabiliyordu. Artık yerinde duruyor ve daha akıcı kayıyor.
+• 🔴 **Uygulama çekmecesi**: bazı Pixel Başlatıcı sürümlerinde klasör bildirim noktaları klasörlerin üstünde süzülüyordu. Artık yeniden klasörlerin üzerinde.
+• 🔔 **Süper Karanlık**: bildirim panelinin altındaki tek satırlık bildirimler gri kalıyordu. Artık Süper Karanlık.
+• #️⃣ **Süper Karanlık**: Gboard'un sayı tuşları (PIN, telefon numarası ve tutarlar için) siyah üstüne siyahtı ve dokununca yanmıyordu. Artık yeniden görünüyor ve dokununca yanıyor.
+• ➗ **Gboard+**: sayı sayfasında + - * / sütunu artık diğer tuşlarla aynı görünüyor. Boşluk ve silme tuşları yeniden tuş gibi görünüyor ve koyu modda artık kaybolmuyor.
+• 🪟 **Ana ekran menüleri**: Buzlu cam açıkken bir uygulama menüsünün üstündeki simge satırı menünün geri kalanından önce görünüyordu. Artık menüyle birlikte beliriyor.
+• ✅ **Uygulama seçin**: aramadan bir uygulamayı işaretledikten sonra klavye listenin üstünde açık kalıyordu. Artık kapanıyor.
+
+Mevcut sürümün üzerine kurun ve yeniden başlatın.
+
+## v3.0.4
+Play Integrity için bir düzeltme.
+
+🐞 Hata düzeltmeleri
+• Play Integrity: Pixel Suite artık Google Play hizmetlerini kullanmıyor. Yalnızca Ayarlar'dan açılan birkaç Google ekranındaki yumuşak kaydırma kenarları (Buzlu Cam) için kullanılıyordu ve tutmak Device ile Strong bütünlüğünü kaybettirebiliyordu, bu yüzden değmezdi. Pixel Suite'in LSPosed kapsamında işaretliyse Pixel Suite artık işareti sizin yerinize kaldırır. Sorduğunda yeniden başlatmanız yeterli. Fark edip bildirdiği için Telegram'daki Ashray V K'ye teşekkürler 🙏
+
+Mevcut sürümün üzerine kurun ve yeniden başlatın.
+
+## v3.0.3
+Patreon girişi için bir düzeltme.
+
+🐞 Hata düzeltmeleri
+• Patreon: tarayıcınız Pixel Suite'i açamasa bile (örneğin Play Store'un "öğe bulunamadı" sayfasını gösterdiğinde) giriş artık tamamlanıyor. Giriş yaptıktan sonra Pixel Suite'e dönmeniz yeterli, kilidi kendiliğinden açılır.
+
+Mevcut sürümün üzerine kurun.

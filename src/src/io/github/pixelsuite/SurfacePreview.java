@@ -28,7 +28,7 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
         frost = FrostedSurface.composite(FrostedSurface.resourceColor(c, "blur_shade_panel_fg", dark ? 0x522c303d : 0x66dedee8), FrostedSurface.resourceColor(c, "blur_shade_panel_bg", dark ? 0x520e0e0f : 0x66f9f9fe));
         off = dark ? FrostedSurface.offDark(c) : Color.WHITE;
         stock = LauncherFeatures.surface(c, dark ? "system_surface_container_high_dark" : "system_surface_container_high_light", dark ? 0xff2f3036 : 0xfff3edf7) | 0xff000000;
-        textPaint.setColor(text); textPaint.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL));
+        textPaint.setColor(text); textPaint.setTypeface(I18n.medium());
     }
 
     private android.animation.ValueAnimator animator;
@@ -151,7 +151,7 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
         c.restoreToCount(inner);
         textPaint.setTextSize(13 * d);
         textPaint.setColor(style == SurfaceStyle.OFF && !dark ? 0xff1f1f1f : text);
-        c.drawText("Folder", card.left + 18 * d, card.top + 26 * d, textPaint);
+        c.drawText(I18n.t("Folder"), card.left + 18 * d, card.top + 26 * d, textPaint);
         int[] dots = dark ? DOTS_DARK : DOTS_LIGHT;
         float cy = card.centerY() + 8 * d, step = (card.width() - 36 * d) / 4f, radius = Math.min(14 * d, step * 0.32f);
         for (int i = 0; i < 4; i++) { fill.setColor(dots[i]); c.drawCircle(card.left + 18 * d + step * (i + 0.5f), cy, radius, fill); }
@@ -168,7 +168,7 @@ final class SurfacePreview extends View implements android.view.ViewTreeObserver
         for(int i=0;i<3;i++){float dotX=layout.position(i);if(Math.abs(dotX-thumbX)>10*d)c.drawCircle(dotX,y,3*d,fill);}
         fill.setColor(accent);c.drawCircle(thumbX,y,7*d,fill);
         textPaint.setTextAlign(Paint.Align.CENTER);textPaint.setTextSize(12*d);textPaint.setColor(text);
-        String label=SurfaceStyle.NAMES[Math.max(0,Math.min(2,Math.round(displayedPosition)))];
+        String label=I18n.t(SurfaceStyle.NAMES[Math.max(0,Math.min(2,Math.round(displayedPosition)))]);
         c.drawText(label,meter.centerX(),layout.barBottom-12*d-captionMetrics.descent,textPaint);textPaint.setTextAlign(Paint.Align.LEFT);
         c.restoreToCount(save);
     }

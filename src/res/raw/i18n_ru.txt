@@ -1,0 +1,1588 @@
+# Pixel Suite ru: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	БЛОКИРОВКА РЕКЛАМЫ
+AdAway or Systemless hosts is also on. Use only one blocker.	Также включён AdAway или Systemless hosts. Используйте только один блокировщик.
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	Блокирует рекламу в Chrome, Google Новостях и других приложениях. Списки обновляются ежедневно.
+Fewer ads.\nFaster pages.	Меньше рекламы.\nБыстрее страницы.
+Preparing ad protection…	Подготовка защиты от рекламы…
+Restart the phone once to start blocking.	Перезагрузите телефон один раз, чтобы начать блокировку.
+Unlock with Patreon	Разблокировать с «Патреон»
+Update lists	Обновить списки
+Updating…	Обновление…
+Works in every app and browser, also with Private DNS.	Работает во всех приложениях и браузерах, в том числе с частным DNS.
+Add	Добавить
+Add website	Добавить сайт
+Add website: domain or URL	Добавить сайт: домен или URL
+Ads aren't filtered on these websites. Tap one to remove it.	На этих сайтах реклама не фильтруется. Нажмите на сайт, чтобы убрать его.
+All websites use the default level	Все сайты используют уровень по умолчанию
+Allowed websites	Разрешённые сайты
+Basic	Базовый
+Bring back elements you removed.	Вернуть убранные элементы.
+Cancel	Отмена
+Clear every website setting	Удалить все настройки сайтов
+Clear every website setting? Your default level stays.	Удалить все настройки сайтов? Уровень по умолчанию сохранится.
+Complete	Полный
+Couldn't load site settings. Open Chrome once, then reopen this page.	Не удалось загрузить настройки сайтов. Откройте Chrome один раз, затем снова откройте эту страницу.
+Couldn't save site settings. Try again.	Не удалось сохранить настройки сайтов. Повторите попытку.
+Default for all websites	По умолчанию для всех сайтов
+Enter a domain or an http/https URL	Введите домен или URL http/https
+Filtering level	Уровень фильтрации
+Included with your Patreon unlock	Входит в разблокировку «Патреон»
+Loading site settings…	Загрузка настроек сайтов…
+No allowed websites	Нет разрешённых сайтов
+No filtering	Без фильтрации
+No filtering · tap to remove	Без фильтрации · нажмите, чтобы убрать
+No removed elements	Нет убранных элементов
+Optimal	Оптимальный
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	Оптимальный скрывает рекламу в поиске. Полный также скрывает баннеры cookie и всплывающие окна. Уровень сайта важнее.
+Per-site levels	Уровни для сайтов
+Removed elements	Убранные элементы
+Reset	Сбросить
+Reset all site settings	Сбросить все настройки сайтов
+Reset all site settings?	Сбросить все настройки сайтов?
+Saving…	Сохранение…
+Tap a website to change its level or use the default.	Нажмите на сайт, чтобы изменить его уровень или выбрать уровень по умолчанию.
+Unlock ad blocking with Patreon	Разблокировать блокировку рекламы с «Патреон»
+\nDefault for all websites	\nПо умолчанию для всех сайтов
+Close	Закрыть
+Clear search	Очистить поиск
+Could not save the folder	Не удалось сохранить папку
+Save	Сохранить
+Search apps	Поиск приложений
+Search	Поиск
+Search unavailable	Поиск недоступен
+Search, button	Поиск, кнопка
+Searching…	Поиск…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nТекущая настройка Pixel Suite будет заменена. «Лаунчер Pixel» перезапустится один раз.
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• Настройка «Лаунчер Pixel»: папки в меню приложений, сортировка, названия и блокировки\n
+• Share menu: pinned order and hidden apps\n	• Меню «Поделиться»: закреплённый порядок и скрытые приложения\n
+App and data	Приложение и данные
+App only	Только приложение
+Back up	Создать копию
+Just the app. Its data isn't saved.	Только приложение. Его данные не сохраняются.
+Only the app goes back. Its data now stays.	Возвращается только приложение. Текущие данные остаются.
+Only the app, signed out and empty.	Только приложение, без входа и пустое.
+Puts everything back exactly as it was saved.	Возвращает всё точно так, как было сохранено.
+Puts everything back exactly as it was saved. Its data now is replaced.	Возвращает всё точно так, как было сохранено. Текущие данные заменяются.
+Restore	Восстановить
+Working out the size…	Подсчёт размера…
+Backing up…	Создание копии…
+Backup & Restore	Резервное копирование и восстановление
+Checking…	Проверка…
+Couldn't delete it. Check root.	Не удалось удалить. Проверьте root.
+Delete	Удалить
+Delete?	Удалить?
+Every held-back app is saved at its current version	Каждое удержанное приложение сохраняется в текущей версии
+Held-back apps	Удержанные приложения
+Held-back apps are saved here before they update.	Удержанные приложения сохраняются здесь перед обновлением.
+Installed apps	Установленные приложения
+Loading saved apps…	Загрузка сохранённых приложений…
+No installed app has saved versions	Нет установленных приложений с сохранёнными версиями
+No saved versions yet	Сохранённых версий пока нет
+Not installed	Не установлено
+Nothing saved yet	Пока ничего не сохранено
+Saved	Сохранено
+Saved in PixelSuite/APK backups on your phone	Сохранено в PixelSuite/APK backups на телефоне
+The 3 newest versions of each app are kept	Хранятся 3 самые новые версии каждого приложения
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	Эти приложения удалены. «Восстановить» снова установит приложение, с входом в аккаунт, если оно сохранено с данными.
+installed now	установлена сейчас
+Audiobooks	Аудиокниги
+Documents	Документы
+Download	Загрузки
+Music	Музыка
+Podcasts	Подкасты
+Recordings	Записи
+Automatic (default)	Автоматически (по умолчанию)
+Automatic: every call is recorded	Автоматически: записывается каждый звонок
+Choose folder…	Выбрать папку…
+Couldn't keep access to that folder.	Не удалось сохранить доступ к этой папке.
+Couldn't load folder	Не удалось загрузить папку
+Couldn't load recording mode	Не удалось загрузить режим записи
+Couldn't save: root access needed	Не удалось сохранить: нужен root-доступ
+Folder picker isn't available.	Выбор папки недоступен.
+HD: clearer voice (default)	HD: более чёткий голос (по умолчанию)
+HD: twice the detail, clearer voice (default)	HD: вдвое больше деталей, более чёткий голос (по умолчанию)
+Internal storage	Внутренняя память
+Lossless: HD without compression, large WAV files	Без потерь: HD без сжатия, большие WAV-файлы
+Lossless: clearest voice, WAV files	Без потерь: самый чёткий голос, WAV-файлы
+Manual	Вручную
+Manual: tap Record during a call	Вручную: нажмите «Записать» во время звонка
+Recording mode	Режим записи
+Recording quality	Качество записи
+Recordings folder	Папка записей
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (по умолчанию)
+SD card	SD-карта
+Standard: phone-call quality, smallest files	Стандартное: качество телефонной связи, самые маленькие файлы
+Standard: smaller files	Стандартное: файлы меньше
+Release notes are unavailable in this build.	Список изменений недоступен в этой сборке.
+Release notes could not be opened. Please reopen this page.	Не удалось открыть список изменений. Откройте эту страницу снова.
+Always	Всегда
+Dark	Тёмный
+Dark mode	Тёмный режим
+Dark pages	Тёмные страницы
+Needs Pixel Suite premium	Нужен Pixel Suite премиум
+On this website	На этом сайте
+Pictures and videos keep their colors.	Изображения и видео сохраняют свои цвета.
+Schedule	Расписание
+Style	Стиль
+When	Когда
+Speed Dial	Быстрый доступ
+Ad Blocker	Блокировщик рекламы
+Extensions	Дополнения
+Hold an extension to pin it to the toolbar	Удерживайте дополнение, чтобы закрепить его на панели
+Chrome didn't take the shortcut (limit reached?)	Chrome не принял ярлык (достигнут лимит?)
+Couldn't add it to the speed dial	Не удалось добавить на панель быстрого доступа
+Couldn't make a folder in this Chrome version	В этой версии Chrome нельзя создать папку
+Couldn't move it into the folder	Не удалось переместить в папку
+Edit	Изменить
+Edit website	Изменить сайт
+Its website goes back to the speed dial.	Его сайт вернётся на панель быстрого доступа.
+Move to speed dial	Переместить на панель быстрого доступа
+Name	Название
+No room on the speed dial	На панели быстрого доступа нет места
+Open in new tab	Открыть в новой вкладке
+Remove	Убрать
+Remove folder	Убрать папку
+Rename	Переименовать
+Rename folder	Переименовать папку
+URL	URL
+Back	Назад
+Forward	Вперёд
+Home	Главная
+Profile	Профиль
+Tabs	Вкладки
+Filtering isn't available on this page.	На этой странице фильтрация недоступна.
+Pixel Suite settings	Настройки Pixel Suite
+Remove an element	Убрать элемент
+This page	Эта страница
+filtering mode	режим фильтрации
+no filtering	без фильтрации
+Couldn't open that picture	Не удалось открыть изображение
+Tap the picture to change it	Нажмите на изображение, чтобы изменить его
+Use the website's icon	Использовать значок сайта
+Country	Страна
+Getting the free server list…	Получение списка бесплатных серверов…
+No servers yet. Pixel Suite loads them when you open this.	Серверов пока нет. Pixel Suite загрузит их, когда вы откроете это.
+Unavailable · no servers right now	Недоступно · сейчас нет серверов
+VPN	VPN
+VPN for Chrome	VPN для Chrome
+Become a patron	Стать патроном
+Buy me a coffee	Угостить меня кофе
+Coffee	Кофе
+Join the community	Присоединиться к сообществу
+No app is available to open this link	Нет приложения, чтобы открыть эту ссылку
+This link could not be opened	Не удалось открыть ссылку
+On a schedule	По расписанию
+With the phone's dark mode	С тёмным режимом телефона
+Call	Позвонить
+Incoming call deflected (device reported as switched off)	Входящий вызов переадресован (устройство указано как выключенное)
+Unknown caller	Неизвестный абонент
+Off	Выкл.
+On	Вкл.
+Arrow	Стрелка
+Circle	Круг
+Double arrow	Двойная стрелка
+Line	Линия
+Speech bubble	Облачко
+Square	Квадрат
+Star	Звезда
+Triangle	Треугольник
+Blue	Синий
+Green	Зелёный
+Red	Красный
+Yellow	Жёлтый
+Clear badge	Убрать значок
+Could not save the name	Не удалось сохранить название
+No	Нет
+Remove folder?	Убрать папку?
+Sort apps?	Отсортировать приложения?
+Yes	Да
+Add apps	Добавить приложения
+Create folder	Создать папку
+6-digit code	6-значный код
+Allow root access to save your device ID.	Разрешите root-доступ, чтобы сохранить ID устройства.
+Allow root access to save your purchase.	Разрешите root-доступ, чтобы сохранить покупку.
+Allow root access to update your purchase.	Разрешите root-доступ, чтобы обновить покупку.
+Change email	Изменить email
+Check your license code and try again.	Проверьте лицензионный код и повторите попытку.
+Contact support	Написать в поддержку
+Couldn’t confirm the purchase. Your saved pass has been kept.	Не удалось подтвердить покупку. Сохранённый пропуск оставлен.
+Couldn’t connect. Check your internet connection and try again.	Не удалось подключиться. Проверьте интернет-соединение и повторите попытку.
+Couldn’t save the device ID. Check root access.	Не удалось сохранить ID устройства. Проверьте root-доступ.
+Couldn’t save the purchase. Check root access.	Не удалось сохранить покупку. Проверьте root-доступ.
+Couldn’t verify the purchase link.	Не удалось проверить ссылку на покупку.
+Couldn’t verify this purchase.	Не удалось проверить эту покупку.
+Email used for purchase	Email, указанный при покупке
+Enter code	Введите код
+Enter the email you paid with.	Введите email, с которым вы платили.
+Enter the six-digit email code.	Введите шестизначный код из письма.
+If a purchase matches this email, your recovery code is on its way.	Если покупка связана с этим email, код восстановления уже в пути.
+Invalid purchase pass.	Недействительный пропуск покупки.
+Invalid signature.	Недействительная подпись.
+No connection. Your saved purchase has been kept.	Нет соединения. Сохранённая покупка оставлена.
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	Без возврата после активации, кроме случаев, предусмотренных законом или правилами Buy Me a Coffee.
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	Один телефон одновременно. Нужны совместимые Pixel Watch и тариф eSIM.
+Pixel watch eSIM	eSIM для Pixel Watch
+Purchase is active.	Покупка активна.
+Purchase is no longer active.	Покупка больше не активна.
+Purchase restored on this phone.	Покупка восстановлена на этом телефоне.
+Purchase unlocked.	Покупка разблокирована.
+Pixel Watch eSIM ✓ (purchased)	eSIM для Pixel Watch ✓ (куплено)
+Refresh purchase	Обновить покупку
+Resend code	Отправить код снова
+Restore on this phone	Восстановить на этом телефоне
+Restore purchase	Восстановить покупку
+Restore purchase by email	Восстановить покупку по email
+Restoring…	Восстановление…
+Send recovery code	Отправить код восстановления
+Sending…	Отправка…
+The device ID needs support. It has not been changed.	ID устройства требует поддержки. Он не изменён.
+The shop is being set up. Please try again later.	Магазин настраивается. Повторите попытку позже.
+This purchase pass is not valid for this phone.	Этот пропуск покупки недействителен для этого телефона.
+This purchase was revoked or moved to another phone.	Покупка отозвана или перенесена на другой телефон.
+Unlock	Разблокировать
+Unlocking…	Разблокировка…
+Yours to keep on this phone. Patreon is not required.	Навсегда ваше на этом телефоне. «Патреон» не нужен.
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — Тёмные страницы\n\nПерезапустите Chrome после добавления его области.
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — очистка рекламных блоков в статьях, открытых в Chrome\n\nGoogle Новостям (com.google.android.apps.magazines) область не нужна. Блокировка рекламных доменов использует общесистемный блокировщик.
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — очистка пустых рекламных блоков\n\nПерезапустите Chrome после добавления его области. Блокировке рекламных доменов область не нужна.
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **Файлы от Google** (com.google.android.apps.nbu.files) — файловый менеджер\n• **Файлы (система)** (com.google.android.documentsui / com.android.documentsui) — системное окно выбора файлов
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **Телефонные службы** (com.android.phone)\n\nВыберите оба, затем перезагрузитесь. Дальнейшие переключения применяются сразу.
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **Телефонные службы** (com.android.phone)\n\nВыберите его, затем перезагрузитесь. Дальнейшие переключения применяются сразу.
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **Телефон** (com.google.android.dialer)\n• **Системный фреймворк** (system) — поддержка записи\n\nСнова откройте «Телефон» после добавления его области.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — значки, папки, меню и мягкий край меню приложений\n• **Системный интерфейс** (com.android.systemui) — системные меню и сообщения\n• **Студия Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **Google Фото** (com.google.android.apps.photos) — меню редактора\n\n«Сверхтёмный» перечисляет свои дополнительные области на своей странице.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — функции лаунчера\n• **Google** (com.google.android.googlequicksearchbox) — изменённые приложения в поиске Google\n• **Системный интерфейс** (com.android.systemui) — положение всплывающих сообщений
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — значки и названия в лаунчере\n• **Google** (com.google.android.googlequicksearchbox) — поиск Google на главном экране
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — кнопки навигации рядом с панелью жестов\n• **Системный фреймворк** (system) — приложения держат нижние меню над кнопками\n• **Gboard** (com.google.android.inputmethod.latin) — кнопка скрытия клавиатуры
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — недавние приложения\n• **Системный интерфейс** (com.android.systemui) — строка состояния в горизонтальной ориентации
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **Студия Pixel** (com.google.android.apps.pixel.creativeassistant) — скриншоты\n• **Google Фото** (com.google.android.apps.photos) — фото
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play Маркет** (com.android.vending) — блокировка обновлений приложений\n• **Системный фреймворк** (system)\n• **Настройки** (com.android.settings) — блокировка OTA и сброса настроек
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play Маркет** (com.android.vending)\n• **Системный фреймворк** (system), чтобы восстановить сохранённую версию
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **Меню «Поделиться»** (com.android.intentresolver)\n• **Google Фото** (com.google.android.apps.photos) — подходящие цвета страницы отправки в Google Фото
+• **System Framework** (system)	• **Системный фреймворк** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **Системный фреймворк** (system) — защита приложений\n• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — блокировка приложений и папок\n• **Системный интерфейс** (com.android.systemui) — запросы проверки\n\nНастройте блокировку экрана, затем перезагрузитесь после добавления областей.
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **Системный фреймворк** (system) — кнопка питания\n• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — Circle to Search
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **Системный фреймворк** (system) — блокировка обновлений\n• **Настройки** (com.android.settings) — управление обновлениями и сбросом
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **Системный фреймворк** (system) — пробуждение, сон и скриншоты\n• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — перетаскивание приложений\n• **Системный интерфейс** (com.android.systemui) — управление записью\n• **Студия Pixel** (com.google.android.apps.pixel.creativeassistant) — обрезка скриншотов
+• **System Framework** (system), to restore a saved version (also an older one)	• **Системный фреймворк** (system), чтобы восстановить сохранённую версию (в том числе более старую)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **Системный фреймворк** (system)\n• **Системный интерфейс** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **Системный интерфейс** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **Системный интерфейс** (com.android.systemui) — всегда включённый экран\n• **Системный фреймворк** (system) — запускает всегда включённый экран, даже если другие параметры заблокированного экрана отключены
+• **System UI** (com.android.systemui) — the lock screen PIN	• **Системный интерфейс** (com.android.systemui) — PIN-код заблокированного экрана
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **Системный интерфейс** (com.android.systemui)\n• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Настройки** (com.android.settings)\n• **Сервисы настроек** (com.google.android.settings.intelligence)\n• **Установщик пакетов** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nДля оформления редакторов выберите также **Студия Pixel** (com.google.android.apps.pixel.creativeassistant) и **Google Фото** (com.google.android.apps.photos). Перезагрузитесь после добавления областей.
+Auto (A–Z)	Авто (А–Я)
+Custom	Свой порядок
+Sort	Сортировка
+Sort the apps in this folder from A to Z?	Отсортировать приложения в этой папке от А до Я?
+Auto-correction	Автозамена
+Corrects words as you type	Исправляет слова во время ввода
+Gboard's own switch (reading it…)	Собственный переключатель Gboard (чтение…)
+Languages	Языки
+On: Gboard corrects words in the languages turned on below	Вкл.: Gboard исправляет слова в языках, включённых ниже
+Reading Gboard's languages…	Чтение языков Gboard…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	Верхний переключатель — это автозамена самого Gboard. Отключите её ниже для любого языка: слова там не заменяются, но подсказки появляются. Изменения применятся при следующем открытии клавиатуры.
+A Gboard shortcut	Ярлык Gboard
+A keyboard you can move anywhere	Клавиатура, которую можно переместить куда угодно
+Arrow keys and selection tools	Клавиши со стрелками и инструменты выделения
+Both show at once, in two rows (portrait)	Оба сразу, в два ряда (вертикально)
+Bring back what you undid	Вернуть отменённое
+Change how Gboard looks	Изменить вид Gboard
+Clipboard	Буфер обмена
+Copy	Копировать
+Copy the selected text	Копировать выделенный текст
+Cut	Вырезать
+Cut the selected text	Вырезать выделенный текст
+Drag a shortcut to the edge of the list to turn the page.	Перетащите ярлык к краю списка, чтобы перелистнуть страницу.
+Edit toolbar shortcuts	Изменить ярлыки панели
+Emoji	Эмодзи
+Emoji, emoticons and symbols	Эмодзи, смайлики и символы
+Fill in saved passwords and details	Заполнять сохранённые пароли и данные
+Floating	Плавающая
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	Панель инструментов Gboard, ярлыки над подсказками: перетащите ярлыки сюда
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	Панель инструментов Gboard, ярлыки под подсказками: перетащите ярлыки сюда
+Gboard's toolbar: drag shortcuts here	Панель инструментов Gboard: перетащите ярлыки сюда
+Hello	Привет
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	Удерживайте ярлык и перетащите его на панель, вдоль неё, чтобы изменить порядок, или за её пределы, чтобы убрать. Нажмите на ярлык, чтобы узнать, что он делает.
+Make the keyboard bigger or smaller	Увеличить или уменьшить клавиатуру
+Menu button	Кнопка меню
+Next language	Следующий язык
+Okay	ОК
+One-handed	Для одной руки
+Open Gboard's settings	Открыть настройки Gboard
+Paste	Вставить
+Paste what you copied	Вставить скопированное
+Put at least one shortcut on the toolbar	Добавьте на панель хотя бы один ярлык
+Redo	Повторить
+Resize	Размер
+Rewrite or polish what you wrote	Переписать или улучшить текст
+Scan text	Сканировать текст
+Search and send GIFs	Искать и отправлять GIF
+Search and send stickers	Искать и отправлять стикеры
+Select all	Выбрать все
+Select all the text	Выделить весь текст
+Settings	Настройки
+Share	Поделиться
+Share Gboard with others	Поделиться Gboard
+Shortcuts	Ярлыки
+Shortcuts above the suggestions, not below	Ярлыки над подсказками, а не под ними
+Shortcuts below the suggestions, not above	Ярлыки под подсказками, а не над ними
+Shortcuts row on bottom	Ряд ярлыков снизу
+Shortcuts row on top	Ряд ярлыков сверху
+Shrink the keyboard to one side	Сдвинуть клавиатуру в одну сторону
+Stickers	Стикеры
+Suggestions and shortcuts together	Подсказки и ярлыки вместе
+Switch to your next language	Переключиться на следующий язык
+Tap to select a word, tap again to clear. Hold to select all	Нажмите, чтобы выделить слово, ещё раз — чтобы снять выделение. Удерживайте, чтобы выделить все
+Text editing	Редактирование текста
+Thanks	Спасибо
+Theme	Тема
+Translate	Перевести
+Translate as you type	Перевод при вводе
+Type by speaking	Ввод голосом
+Type text from your camera	Ввод текста с камеры
+Undo	Отменить
+Undo your last change	Отменить последнее изменение
+Voice typing	Голосовой ввод
+Writing tools	Инструменты для письма
+Your copied text and pinned clips	Скопированный текст и закреплённые фрагменты
+Clear	Очистить
+Clear the clipboard?	Очистить буфер обмена?
+Every clip is deleted except pinned ones.	Будут удалены все фрагменты, кроме закреплённых.
+Delete this pinned clip?	Удалить этот закреплённый фрагмент?
+Apply	Применить
+Down	Вниз
+Height	Высота
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	Размер и положение клавиатуры. Перетащите маркеры, чтобы изменить размер, или саму клавиатуру, чтобы переместить её.
+Try typing here after Apply	Попробуйте ввести текст здесь после «Применить»
+Up	Вверх
+Width	Ширина
+Apps list	Список приложений
+Pixel Suite isn't available	Pixel Suite недоступен
+Adjust icon	Настроить значок
+Could not save this icon. Try another image.	Не удалось сохранить значок. Попробуйте другое изображение.
+Icon updated	Значок обновлён
+Pinch to zoom, drag to move	Сведите пальцы для масштаба, перетащите для перемещения
+Reset position and zoom	Сбросить положение и масштаб
+Large	Крупный
+Largest	Очень крупный
+Medium	Средний
+Small	Мелкий
+Smallest	Очень мелкий
+Apps the pack doesn't cover keep their own icons.	Приложения, которых нет в наборе, сохраняют свои значки.
+Close icon packs	Закрыть наборы значков
+Get icon packs	Найти наборы значков
+Icon pack	Набор значков
+Loading icon packs…	Загрузка наборов значков…
+Loading icons…	Загрузка значков…
+No icon packs installed yet	Наборы значков ещё не установлены
+Pixel Launcher's own icons, including themed icons	Собственные значки «Лаунчер Pixel», включая тематические
+System default	Системные по умолчанию
+Unavailable	Недоступно
+Rename app	Переименовать приложение
+Shows on the home screen, in folders, the drawer and search.	Отображается на главном экране, в папках, в меню приложений и в поиске.
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	Не удалось скрыть здесь. Включите «Скрыть строку поиска» в Pixel Suite.
+Couldn't save Hide search bar	Не удалось сохранить «Скрыть строку поиска»
+Hide search bar isn't supported on this launcher version	«Скрыть строку поиска» не поддерживается этой версией лаунчера
+Change icon	Изменить значок
+Could not read this image. Try another image.	Не удалось прочитать изображение. Попробуйте другое.
+Could not reset the icon	Не удалось сбросить значок
+Files	Файлы
+Files is unavailable	«Файлы» недоступно
+Original icon restored	Исходный значок восстановлен
+Photos	Google Фото
+Photos is unavailable. Choose Files instead.	Google Фото недоступно. Выберите «Файлы».
+Reset icon	Сбросить значок
+Could not read this icon pack	Не удалось прочитать этот набор значков
+Could not use this icon	Не удалось использовать этот значок
+Loading…	Загрузка…
+No icon packs installed yet.\nInstall one and it shows here.	Наборы значков ещё не установлены.\nУстановите набор, и он появится здесь.
+Play Store is unavailable	Play Маркет недоступен
+Search icons	Поиск значков
+All apps	Все приложения
+App picker	Выбор приложений
+Choose apps	Выбрать приложения
+Couldn't load apps. Check root access and reopen.	Не удалось загрузить приложения. Проверьте root-доступ и откройте снова.
+Couldn't save. Check root access and try again.	Не удалось сохранить. Проверьте root-доступ и повторите попытку.
+Filter installed apps	Фильтр установленных приложений
+Loading apps…	Загрузка приложений…
+Root unavailable	Root недоступен
+Saved. Changes apply the next time these apps open.	Сохранено. Изменения вступят в силу при следующем открытии этих приложений.
+Search installed apps	Поиск установленных приложений
+System apps	Системные приложения
+User apps	Пользовательские приложения
+No room on this page for the other apps	На этой странице нет места для других приложений
+A Quest for the Kind-Hearted	Квест для добрых сердцем
+Close account	Закрыть аккаунт
+Membership refreshed	Подписка обновлена
+Pass expires:  ∞	Пропуск действует до:  ∞
+Patreon account	Аккаунт «Патреон»
+Patreon member	Участник «Патреон»
+Patron ✓	Патрон ✓
+Read the quest	Прочитать квест
+Refresh	Обновить
+Refreshing…	Обновление…
+Sign in with Patreon	Войти через «Патреон»
+Sign out	Выйти
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Поддержите Pixel Suite, чтобы разблокировать Chrome+, Gboard+, блокировщик рекламы, VPN, «Тёмные страницы», запись звонков и ленту Google без рекламы.
+A Quest for the\nKind-Hearted	Квест для\nдобрых сердцем
+Already a patron? Unlock	Уже патрон? Разблокировать
+Checking Patreon membership…	Проверка подписки «Патреон»…
+Join on Patreon	Присоединиться на «Патреон»
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	Присоединяйтесь на «Патреон», чтобы разблокировать функции «Патреон», — и спасибо, что поддерживаете проект. 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	Уже присоединились? Нажмите «Разблокировать», чтобы подтвердить платную подписку «Патреон».
+Let's go	Поехали
+No paid membership found. Choose the paid tier to unlock.	Платная подписка не найдена. Выберите платный уровень для разблокировки.
+Open a browser to sign in with Patreon.	Откройте браузер, чтобы войти через «Патреон».
+Open the Pixel Suite paid tier in your browser.	Откройте платный уровень Pixel Suite в браузере.
+Patreon sign-in is being set up.	Вход через «Патреон» настраивается.
+Patron verified	Патрон подтверждён
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	В Pixel Suite нет рекламы и трекеров. Данные аккаунта и оплаты используются только для проверки разблокировки.
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite создаёт один человек в свободное время из любви к телефонам Pixel.
+Quest Complete!	Квест выполнен!
+Ready to check membership	Можно проверить подписку
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	Спасибо за поддержку Pixel Suite. Функции «Патреон» готовы.
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Патроны получают Chrome+ и Gboard+, блокировщик рекламы и VPN, «Тёмные страницы» в Chrome, запись звонков и ленту Google без рекламы. Вся поддержка идёт обратно в приложение: успевать за обновлениями Android и приложений Google, чинить то, что они ломают, и создавать новые функции.
+Welcome back!	С возвращением!
+✨ Quest Complete!	✨ Квест выполнен!
+📜 A Quest for the Kind-Hearted	📜 Квест для добрых сердцем
+Google apps	Приложения Google
+Patreon feature	Функция «Патреон»
+Unlock this feature with Patreon	Разблокируйте эту функцию с «Патреон»
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android не разрешил VPN. Откройте страницу VPN и нажмите «Подключить».
+Another VPN took over	Другой VPN перехватил подключение
+Checking that websites open…	Проверка открытия сайтов…
+Checking the connection…	Проверка подключения…
+Chrome isn't installed	Chrome не установлен
+Connection failed	Не удалось подключиться
+Connection lost	Подключение потеряно
+Couldn't load the server list. Check your connection.	Не удалось загрузить список серверов. Проверьте подключение.
+Disconnect	Отключить
+Disconnected	Отключено
+Finding servers…	Поиск серверов…
+Free volunteer server	Бесплатный волонтёрский сервер
+No server answered	Ни один сервер не ответил
+Server stopped answering	Сервер перестал отвечать
+Trying the faster UDP connection (up to 30 s)…	Пробуем более быстрое UDP-подключение (до 30 с)…
+VPN is a Patreon feature	VPN — функция «Патреон»
+connections refused	в подключении отказано
+no answer	нет ответа
+Circle to Search isn't available	Circle to Search недоступен
+Do Not Annoy off	«Не надоедать» выкл.
+Do Not Annoy on	«Не надоедать» вкл.
+Do Not Disturb off	Не беспокоить выкл.
+Do Not Disturb on	Не беспокоить вкл.
+No Annoyance off	«Без помех» выкл.
+No Annoyance on	«Без помех» вкл.
+Silence off	Без звука выкл.
+Silence on	Без звука вкл.
+Authenticator	Authenticator
+Calculator	Калькулятор
+Calendar	Календарь
+Camera	Камера
+Clock	Часы
+Contacts	Контакты
+Maps	Карты
+Messages	Сообщения
+Play Store	Play Маркет
++  Add apps	+  Добавить приложения
++ Add to home screen	+ Добавить на главный экран
+A clearer page	Страница чище
+A website	Сайт
+Ad blocking	Блокировка рекламы
+Add new	Добавить
+Add to home screen	Добавить на главный экран
+Adjust	Настроить
+Advertisement	Реклама
+Alex	Алекс
+Another pack	Другой набор
+App info	О приложении
+App is locked	Приложение заблокировано
+Applied	Применено
+Applied across the launcher	Применено во всём лаунчере
+Applying…	Применение…
+Apps	Приложения
+Authenticate to open	Пройдите проверку, чтобы открыть
+Back in your share list	Снова в списке «Поделиться»
+Block system updates	Блокировать обновления системы
+Bluetooth	Bluetooth
+Bookmarks	Закладки
+Bookmarks bar	Панель закладок
+Call ended	Вызов завершён
+Call log: Alex · Blocked	Журнал звонков: Алекс · Заблокирован
+Call recording	Запись звонков
+Camera (stock)	Камера (стандартная)
+Centered labels. Clearer view.	Подписи по центру. Чище вид.
+Change icon → Icon pack	Изменить значок → Набор значков
+Change icons	Изменить значки
+Choose Icon pack	Выбрать набор значков
+Choose a pack	Выберите набор
+Choose an image	Выберите изображение
+Cleaner articles in Chrome	Статьи в Chrome чище
+Clear all	Очистить все
+Collections	Коллекции
+Connected	Подключено
+Controls within reach	Управление под рукой
+Create	Создать
+Crop	Обрезать
+Crop freely	Свободная обрезка
+Data and Wi-Fi stay on	Мобильный интернет и Wi-Fi остаются включены
+Date & time	Дата и время
+Device audio	Звук устройства
+Discover	Рекомендации
+Display & touch	Экран и касания
+Do Not Disturb	Не беспокоить
+Done	Готово
+Dot cleared	Точка убрана
+Downloads	Загрузки
+Drag to make a folder	Перетащите, чтобы создать папку
+Edit photo	Изменить фото
+Empty ad space	Пустое место для рекламы
+Enter PIN	Введите PIN-код
+Entire screen	Весь экран
+Erase all data	Удалить все данные
+Every tab in view	Все вкладки на виду
+Example app	Пример приложения
+Example pack	Пример набора
+Factory reset locked	Сброс настроек заблокирован
+Father	Отец
+Fill	Заполнить
+Flashlight	Фонарик
+Folder	Папка
+For you	Для вас
+Fri, Oct 16	пт, 16 окт.
+Friday, Oct 16	пятница, 16 окт.
+Friend	Друг
+Headlines	Главное
+Hidden apps	Скрытые приложения
+Hidden apps remain available	Скрытые приложения остаются доступны
+Hidden contacts	Скрытые контакты
+Hide 2 apps	Скрыть 2 приложения
+Hide contact	Скрыть контакт
+Hide several apps	Скрыть несколько приложений
+Hold	Удерживать
+Hold and drag pinned apps	Удерживайте и перетаскивайте закреплённые приложения
+Hold to unhide	Удерживайте, чтобы показать
+How about this spot?	Как насчёт этого места?
+Incoming call declined	Входящий вызов отклонён
+Incoming call deflected	Входящий вызов переадресован
+Incoming calls quiet	Входящие звонки без звука
+Internet	Интернет
+Keep Notes	Google Keep
+Let's find a new place.	Найдём новое место.
+Lock	Заблокировать
+Manage suggested contacts	Управлять предложенными контактами
+Message	Сообщение
+Minus hides the contacts row	Минус скрывает ряд контактов
+Mobile bookmarks	Мобильные закладки
+Mobile network	Мобильная сеть
+More of your feed	Больше из вашей ленты
+My folder	Моя папка
+New tab	Новая вкладка
+Newest first	Сначала новые
+News article	Новостная статья
+No empty ad boxes	Без пустых рекламных блоков
+No recent apps	Нет недавних приложений
+No sponsored gaps	Без спонсорских пробелов
+Notifications	Уведомления
+OTA blocker	Блокировщик OTA
+Oct 12, 10:20	12 окт., 10:20
+Oct 8, 08:10	8 окт., 08:10
+One app. Your choice.	Одно приложение. Ваш выбор.
+Open. Swipe. Close.	Открыть. Смахнуть. Закрыть.
+Order saved	Порядок сохранён
+Other bookmarks	Другие закладки
+Packages blocked	Пакеты заблокированы
+Perfect. See you there!	Отлично. До встречи!
+Phone	Телефон
+Pin	Закрепить
+Pin moves apps above the divider	Закреплённые приложения переходят выше разделителя
+Pin, then drag to reorder	Закрепите, затем перетащите для сортировки
+Pinned apps	Закреплённые приложения
+Plus brings the row back	Плюс возвращает ряд
+Private	Личное
+Private folder	Личная папка
+Read the full story	Читать полностью
+Reading list	Список для чтения
+Ready for the weekend?	Готовы к выходным?
+Ready to activate	Готово к активации
+Record	Записать
+Record your screen	Записать экран
+Recorded	Записано
+Recording	Запись
+Recording saved	Запись сохранена
+Recordings / Calls	Recordings / Calls
+Restricted packages	Ограниченные пакеты
+Scan QR code	Сканировать QR-код
+Scan your carrier's code	Отсканируйте код оператора
+Screenshot	Скриншот
+Screenshot saved	Скриншот сохранён
+Scroll to continue	Прокрутите, чтобы продолжить
+Search the web	Искать в интернете
+Select	Выбрать
+Select apps	Выбрать приложения
+Sep 30, 21:00	30 сент., 21:00
+Share or restore hidden apps	Поделиться скрытыми приложениями или восстановить их
+Show touches	Показывать нажатия
+Sites	Сайты
+Software updates	Обновления ПО
+Sort  ⌄	Сортировка  ⌄
+Sort apps A–Z?	Отсортировать приложения от А до Я?
+Speed Dial in bookmarks	Быстрый доступ в закладках
+Split screen	Разделённый экран
+Start	Начать
+Swipe	Смахнуть
+System settings	Системные настройки
+Tap to share	Нажмите, чтобы поделиться
+Themes	Темы
+Themes → Icon pack	Темы → Набор значков
+Today	Сегодня
+Today 09:15	Сегодня 09:15
+Today 14:42	Сегодня 14:42
+Today's stories	Новости дня
+Today's top stories	Главные новости дня
+Touch fingerprint sensor	Коснитесь сканера отпечатков
+Unhide app	Показать приложение
+Unlocked on the 4th digit	Разблокировано на 4-й цифре
+Use Super Dark-Mode	Включить «Сверхтёмный режим»
+Voice note.m4a	Голосовая заметка.m4a
+Voice search	Голосовой поиск
+Wallpaper & style	Обои и стиль
+Watch eSIM	eSIM для часов
+Weekend plans	Планы на выходные
+Wife	Жена
+Yes! A coffee sounds good.	Да! Кофе — отличная идея.
+Yesterday	Вчера
+Yesterday 18:30	Вчера 18:30
+Your Pixel. Your way.	Ваш Pixel. Ваш стиль.
+Your tabs	Ваши вкладки
+‹ Back	‹ Назад
+↓ Move to bottom	↓ Переместить вниз
+Lock folder	Заблокировать папку
+Unlock folder	Разблокировать папку
+Confirm it's you to disable this app	Подтвердите личность, чтобы отключить это приложение
+Confirm it's you to lock this app	Подтвердите личность, чтобы заблокировать это приложение
+Confirm it's you to lock this folder	Подтвердите личность, чтобы заблокировать эту папку
+Confirm it's you to pause this app	Подтвердите личность, чтобы приостановить это приложение
+Confirm it's you to remove this app	Подтвердите личность, чтобы убрать это приложение
+Confirm it's you to remove this folder	Подтвердите личность, чтобы убрать эту папку
+Confirm it's you to uninstall this app	Подтвердите личность, чтобы удалить это приложение
+Confirm it's you to unlock this app	Подтвердите личность, чтобы разблокировать это приложение
+Confirm it's you to unlock this folder	Подтвердите личность, чтобы разблокировать эту папку
+Could not check your screen lock	Не удалось проверить блокировку экрана
+Could not save. Is root allowed for Pixel Suite?	Не удалось сохранить. Разрешён ли root для Pixel Suite?
+Please authenticate to proceed	Пройдите проверку, чтобы продолжить
+Set a screen lock first to lock apps	Сначала настройте блокировку экрана, чтобы блокировать приложения
+Use PIN	Ввести PIN-код
+App remains locked	Приложение остаётся заблокированным
+Cannot dismiss locked apps	Нельзя закрыть заблокированные приложения
+Two apps locked	Два приложения заблокированы
+Refresh rate	Частота обновления
+Accept	Принять
+An update check is already running.	Проверка обновлений уже выполняется.
+Automatic update checks are off.	Автоматическая проверка обновлений отключена.
+Could not verify both release repositories. Try again later.	Не удалось проверить оба репозитория с релизами. Повторите попытку позже.
+New version ready. Tap to download and install.	Новая версия готова. Нажмите, чтобы скачать и установить.
+No newer official release is published with matching APKs on both repositories.	Нет более нового официального релиза с подходящими APK в обоих репозиториях.
+No release check yet.	Релизы ещё не проверялись.
+Apply update blocking choices	Применить выбор блокировки обновлений
+Couldn't apply: root access needed	Не удалось применить: нужен root-доступ
+Couldn't restart: root access needed	Не удалось перезапустить: нужен root-доступ
+Restarting…	Перезапуск…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	«Сверхтёмный режим» использует свой чёрный стиль.\nОтключите его, чтобы сменить стиль.
+**Used for:**\n	**Используется для:**\n
+Adds Doodles and cropping tools to the screenshot editor.	Добавляет «Рисунки» и инструменты обрезки в редактор скриншотов.
+Adds editable Doodles to the photo editor.	Добавляет редактируемые «Рисунки» в фоторедактор.
+Adds the refresh-rate slider to Display & touch.	Добавляет ползунок частоты обновления в раздел «Экран и касания».
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	Разрешает снимки защищённых экранов, скрывает от приложений статус спецвозможностей и отладки, добавляет счётчик FPS.
+Applies Super Dark to Gboard.	Применяет «Сверхтёмный» к Gboard.
+Applies Super Dark to Settings search.	Применяет «Сверхтёмный» к поиску в настройках.
+Applies Super Dark to Settings.	Применяет «Сверхтёмный» к настройкам.
+Applies Super Dark to app uninstall dialogs.	Применяет «Сверхтёмный» к окнам удаления приложений.
+Applies Super Dark to the Google app and feed.	Применяет «Сверхтёмный» к приложению Google и ленте.
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	Применяет значки, папки и меню лаунчера, а также мягкий матовый край за полем поиска в меню приложений. Эффект в меню приложений работает только с «Матовое стекло».
+Blocks system update installation and protects factory reset.	Блокирует установку обновлений системы и защищает сброс настроек.
+Controls Software updates and the factory-reset option in Settings.	Управляет разделом «Обновления ПО» и сбросом настроек в приложении «Настройки».
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	Отклоняет входящие звонки для «Не надоедать», когда путь через стек вызовов Pixel недоступен.
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	Распознаёт двойные нажатия кнопки питания и уменьшения громкости для фонарика и камеры.
+Detects volume-down double presses while the screen is off.	Распознаёт двойное нажатие кнопки уменьшения громкости при выключенном экране.
+Enables QR-code eSIM setup in the Pixel Watch phone app.	Включает настройку eSIM по QR-коду в приложении Pixel Watch на телефоне.
+Enables call recording and its controls in the Google Phone app.	Включает запись звонков и её элементы управления в приложении «Телефон» от Google.
+Fades the status bar while recent apps are viewed in landscape.	Скрывает строку состояния при просмотре недавних приложений в горизонтальной ориентации.
+Files (system)	Файлы (система)
+Files by Google	Файлы от Google
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	Мягкие матовые края прокрутки «Матовое стекло» на экранах, открытых из настроек Android, включая поддерживаемые подстраницы. Следует светлой, тёмной теме и «Сверхтёмный». Включите эту область в LSPosed и перезапустите приложение или телефон.
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	Обрабатывает жесты пробуждения, сна и скриншота в системном процессе Android.
+Hides the keyboard globe and moves the dismiss arrow to the right.	Скрывает кнопку с глобусом и переносит стрелку скрытия клавиатуры вправо.
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	Сохраняет отзывчивость звонков во время сохранения записей.
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	Глушит входящие звонки через стек вызовов Pixel, пока включён «Не надоедать».
+Keeps screenshots ready for faster capture.	Держит скриншоты наготове для более быстрой съёмки.
+Keeps selected apps on their current version by blocking their Play Store updates.	Оставляет выбранные приложения на текущей версии, блокируя их обновления из Play Маркета.
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	Блокирует приложения и папки, показывает значки замка и защищает заблокированные приложения в недавних.
+Matches Photos' share-page colors to the share sheet.	Подгоняет цвета страницы отправки в Google Фото под меню «Поделиться».
+Matches photo-editor menus and controls to your chosen theme and surface style.	Подгоняет меню и элементы управления фоторедактора под вашу тему и стиль поверхностей.
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	Подгоняет меню и элементы управления редактора скриншотов под вашу тему и стиль поверхностей.
+Matches system menus and messages to your chosen theme and surface style.	Подгоняет системные меню и сообщения под вашу тему и стиль поверхностей.
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	Переносит кнопку скрытия клавиатуры в крайнее правое положение, когда включены кнопки навигации. Перезапустите клавиатуру после добавления этой области.
+Opens the camera from the volume-down shortcut.	Открывает камеру по нажатию кнопки уменьшения громкости.
+Package installer	Установщик пакетов
+Permission Controller	Контроллер разрешений
+Personal Safety	Личная безопасность
+Phone Services	Телефонные службы
+Pixel Troubleshooting	Диагностика Pixel
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	Размещает всплывающие сообщения вверху, посередине или внизу, как в оригинале. Применяется к следующему сообщению.
+Provides cleaner screen-recording controls.	Делает элементы управления записью экрана аккуратнее.
+Removes sponsored cards and their empty space from the Google feed.	Убирает спонсорские карточки и пустое место после них из ленты Google.
+Removes supported empty ad boxes from web pages opened in Chrome.	Убирает поддерживаемые пустые рекламные блоки со страниц, открытых в Chrome.
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	Упорядочивает закреплённые приложения в меню «Поделиться» и добавляет в него папки скрытых приложений и контактов.
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	Запрашивает проверку перед открытием защищённых приложений, а также их удалением, отключением или приостановкой.
+Settings Services	Сервисы настроек
+Share sheet	Меню «Поделиться»
+Shows customized app names and icons in home-screen Google search.	Показывает изменённые названия и значки приложений в поиске Google на главном экране.
+Shows fingerprint and PIN prompts for locked apps and folders.	Показывает запрос отпечатка и PIN-кода для заблокированных приложений и папок.
+Shows newest files first in the file browser.	Показывает новые файлы первыми в файловом менеджере.
+Shows newest files first in the system file picker.	Показывает новые файлы первыми в системном окне выбора файлов.
+System Framework	Системный фреймворк
+System UI	Системный интерфейс
+Toggles the flashlight with a double press of the power button.	Включает и выключает фонарик двойным нажатием кнопки питания.
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	Место для 7 ярлыков на панели, ярлыки для редактирования текста, скруглённые клавиши, буфер обмена в одну колонку, скрытые чипы, кнопки меню и эмодзи/голоса, ваш порядок на панели, подсказки с ярлыками в два ряда, «Размер» (размер и положение клавиатуры), свободное положение клавиатуры, арабская ؤ на و, удаление по буквам свайпом, автозамена для каждого языка, безлимитный буфер обмена и изображение клавиатуры на странице «Размер».
+10 seconds	10 секунд
+15 seconds	15 секунд
+3 seconds	3 секунды
+30 seconds	30 секунд
+5 seconds	5 секунд
+A better starting view for your files.	Удобный стартовый вид для ваших файлов.
+A feed without sponsored gaps	Лента без спонсорских пробелов
+A tidier recording sheet. Needs your phone in English.	Аккуратнее панель записи. Телефон должен быть на английском.
+AOD after screen off	AOD после выключения экрана
+AOD while charging	AOD во время зарядки
+About and support	О приложении и поддержка
+Ad Blocker, VPN, Dark pages and more to come	Блокировщик рекламы, VPN, тёмные страницы и не только
+Ad blocker	Блокировщик рекламы
+Ad blocking for news browsing	Блокировка рекламы при чтении новостей
+Add-ons for Chrome+.	Дополнения для Chrome+.
+Adds Scan QR code to Mobile network when your carrier isn't listed	Добавляет «Сканировать QR-код» в «Мобильная сеть», если вашего оператора нет в списке
+All of Gboard+ at once. Your choices are kept while it's off	Весь Gboard+ сразу. Ваш выбор сохраняется, пока он выключен
+Allow screenshots of secure screens	Разрешить скриншоты защищённых экранов
+Allow update notifications	Разрешить уведомления об обновлениях
+Always show Clear all	Всегда показывать «Очистить все»
+Always-on display	Всегда включённый экран
+Always-on display while plugged in	Всегда включённый экран при зарядке
+App & folder lock	Блокировка приложений и папок
+App drawer	Меню приложений
+App drawer folders	Папки в меню приложений
+App name	Название приложения
+Applies right away. Open folders and search keep the usual size.	Применяется сразу. Открытые папки и поиск сохраняют обычный размер.
+Apply matching icons across your apps	Применить подходящие значки во всех приложениях
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	Приложения, которые привязывают вход к телефону, например многие банковские, могут снова попросить войти после удаления.
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	Приложения, которые не открываются при включённых параметрах разработчика, например некоторые банковские, работают нормально.\nНажмите на шестерёнку, чтобы открыть «Для разработчиков».
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	Приложения с более новой версией в Play Маркете выделены красным. Нажмите !, чтобы обновить, сделать резервную копию или восстановить.
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	Выбранные приложения не видят ваши спецвозможности.\nСначала отключите другие модули, которые делают то же самое.
+Asks before a locked app is uninstalled or paused	Спрашивает перед удалением или приостановкой заблокированного приложения
+Auto-confirm 4-digit PIN	Автоподтверждение 4-значного PIN-кода
+Auto-confirm works with a 4-digit PIN, from your next unlock.	Автоподтверждение работает с 4-значным PIN-кодом начиная со следующей разблокировки.
+Backspace swipe deletes letters	Свайп по Backspace удаляет буквы
+Backup	Резервная копия
+Backup & Restore keeps every saved version, also of uninstalled apps.	«Резервное копирование и восстановление» хранит все сохранённые версии, в том числе удалённых приложений.
+Backup restored	Резервная копия восстановлена
+Backup saved	Резервная копия сохранена
+Battery saver can still turn it off.	Режим энергосбережения всё ещё может его отключить.
+Block ads, with filtering per site	Блокировка рекламы с фильтрацией для каждого сайта
+Blocks ads while you read the news.	Блокирует рекламу, пока вы читаете новости.
+Blur Off	Без размытия
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	«Без размытия»\nБез размытия, сплошные поверхности.\n\n«Стандарт»\nСобственный вид системы.\n\n«Матовое стекло» (по умолчанию)\nРазмывает то, что за папками, меню и сообщениями.
+Blurred and tinted	Размытие с оттенком
+Bottom (Stock)	Внизу (стандартно)
+Bring everything back from a backup file	Вернуть всё из файла резервной копии
+Browse from another country	Сёрфинг из другой страны
+Browse from another country, in Chrome or every app	Сёрфинг из другой страны в Chrome или во всех приложениях
+Browse from another country.	Сёрфинг из другой страны.
+Browse without empty ad boxes	Сёрфинг без пустых рекламных блоков
+Buttons	Кнопки
+Buttons beside the gesture bar	Кнопки рядом с панелью жестов
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	Запись звонков может быть ограничена законами вашей страны. Перед записью получите необходимое согласие. Вы несёте ответственность за законное использование. RovianDev не отвечает за незаконное использование.
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	Звонящие слышат, что вы недоступны. О каждом пропущенном звонке приходит уведомление с кнопкой «Позвонить». Экстренные вызовы проходят всегда.
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	Звонки отклоняются ещё до того, как телефон зазвонит. О каждом пропущенном звонке приходит уведомление с кнопкой «Позвонить». Экстренные вызовы проходят всегда.
+Capture, sleep, wake and app dragging.	Снимки, сон, пробуждение и перетаскивание приложений.
+Changelog	Список изменений
+Changes apply the next time the chosen apps open.	Изменения вступят в силу при следующем открытии выбранных приложений.
+Changes only the text under icons.\nIcon size and shape stay the same.	Меняется только текст под значками.\nРазмер и форма значков не меняются.
+Changing this option restarts Pixel Launcher.	При изменении этого параметра «Лаунчер Pixel» перезапустится.
+Check for updates	Проверить обновления
+Check for updates automatically	Проверять обновления автоматически
+Check for updates now	Проверить обновления сейчас
+Check now	Проверить
+Checking for updates…	Проверка обновлений…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	Выберите «Назад», «Главный экран» или «Недавние» рядом с панелью жестов. Удерживайте «Главный экран» для Circle to Search или Gemini.
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	Выберите «Назад», «Главный экран» или «Недавние» для каждой стороны. Удерживайте «Главный экран» для Circle to Search или Gemini.
+Choose Lock from an app's recents menu to keep its card when you clear apps.	Выберите «Заблокировать» в меню приложения в недавних, чтобы его карточка оставалась при очистке.
+Choose a filtering level per site from the ad blocker button in Chrome.	Выберите уровень фильтрации для каждого сайта кнопкой блокировщика рекламы в Chrome.
+Choose the languages Gboard corrects.	Выберите языки, которые исправляет Gboard.
+Choose which apps can't see your accessibility services	Выберите, какие приложения не видят ваши спецвозможности
+Choose which apps stay on their current version.	Выберите, какие приложения остаются на текущей версии.
+Circle to Search	Circle to Search
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	Circle to Search работает как удержание панели навигации. Скриншот работает как кнопка питания + уменьшение громкости.
+Cleaner news articles	Статьи новостей чище
+Cleaner news browsing.	Чтение новостей без лишнего.
+Clear all in recents	«Очистить все» в недавних
+Clear all is always there in recents, no scrolling.	Кнопка «Очистить все» всегда видна в недавних, без прокрутки.
+Clear all, locked cards and landscape view	«Очистить все», заблокированные карточки и горизонтальный вид
+Clipboard history	История буфера обмена
+Clipboard in one column	Буфер обмена в одну колонку
+Colorful icons in the app drawer (Stock)	Цветные значки в меню приложений (стандартно)
+Community and support	Сообщество и поддержка
+Confirm it's you to change privacy settings	Подтвердите личность, чтобы изменить настройки конфиденциальности
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	Элементы управления переходят вниз, с плавной анимацией вкладок. В переключателе вкладок оранжевый + открывает вкладку инкогнито.
+Could not save text size	Не удалось сохранить размер текста
+Could not save the surface style	Не удалось сохранить стиль поверхностей
+Could not save this option	Не удалось сохранить этот параметр
+Couldn't back up: root access needed	Не удалось создать резервную копию: нужен root-доступ
+Couldn't load apps	Не удалось загрузить приложения
+Couldn't restore: root access needed	Не удалось восстановить: нужен root-доступ
+Couldn't save (root)	Не удалось сохранить (root)
+Crop screenshots to any size, even a single line.	Обрезайте скриншоты до любого размера, даже до одной строки.
+Customize icon labels	Настроить подписи значков
+Dark theme and schedules	Тёмная тема и расписание
+Dark websites in Chrome	Тёмные сайты в Chrome
+Dark websites in Chrome.	Тёмные сайты в Chrome.
+Dark websites, always, with dark mode or on a schedule	Тёмные сайты: всегда, вместе с тёмной темой или по расписанию
+Developer options aren't available on this device.	Параметры разработчика недоступны на этом устройстве.
+Double tap	Двойное нажатие
+Double tap to sleep	Двойное нажатие для блокировки
+Double-press power button	Двойное нажатие кнопки питания
+Double-press volume down	Двойное нажатие уменьшения громкости
+Double-tap an empty spot on the home screen to lock your phone.	Дважды нажмите на пустое место главного экрана, чтобы заблокировать телефон.
+Download and install	Скачать и установить
+Download and install the update in Pixel Suite	Скачать и установить обновление в Pixel Suite
+Drag an app onto another to make a folder. Use Add apps to pick more.	Перетащите приложение на другое, чтобы создать папку. Через «Добавить приложения» можно выбрать ещё.
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	Перетащите маркеры, чтобы изменить размер, или середину, чтобы переместить клавиатуру. «Сбросить» вернёт размер Gboard.
+Drag to home screen	Перетащить на главный экран
+Draw on screenshots and photos.	Рисуйте на скриншотах и фото.
+Draw shapes and arrows on screenshots.	Рисуйте фигуры и стрелки на скриншотах.
+Draw shapes on photos: Edit → Doodles. They stay editable.	Рисуйте фигуры на фото: Изменить → «Рисунки». Их можно править позже.
+Ends	До
+Erase all data is greyed out in Settings while OTA blocker is on.	Пока включён блокировщик OTA, «Удалить все данные» в настройках неактивно.
+Every feature, fix and release	Каждая функция, исправление и релиз
+Feature preview	Предпросмотр функции
+Features preview	Предпросмотр функций
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	Фильтрация рекламы для каждого сайта, от базовой до полной. Полная также скрывает баннеры cookie и всплывающие окна. Можно убрать и любой элемент.
+Filtering levels and website exceptions.	Уровни фильтрации и исключения для сайтов.
+Fingerprint or PIN before locked apps and folders open	Отпечаток или PIN-код перед открытием заблокированных приложений и папок
+Five text sizes for app names. Icons stay the same size.	Пять размеров текста для названий приложений. Размер значков не меняется.
+Flashlight and camera shortcuts	Ярлыки для фонарика и камеры
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	Фонарик: дважды нажмите кнопку питания, чтобы включить или выключить его, даже на заблокированном экране. «Камера (стандартная)» открывает камеру.
+Folder grid	Сетка папки
+Folder sorting	Сортировка папки
+Folders	Папки
+Folders first, then your newest files.	Сначала папки, потом самые новые файлы.
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	Папки растут вместе с числом приложений. Выберите сетку в меню с тремя точками каждой папки.
+Folders, dragging and app shortcuts	Папки, перетаскивание и ярлыки приложений
+Folders, dragging and app shortcuts.	Папки, перетаскивание и ярлыки приложений.
+Folders, drawer, names, search bar and recents	Папки, меню приложений, названия, строка поиска и недавние
+Folders, names, search bar and recents.	Папки, названия, строка поиска и недавние.
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	Следует расписанию тёмной темы. В светлой теме возвращаются обычные цвета и размытие.
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	Для Pixel Watch со своим мобильным тарифом: её сеть тоже отключается. Нужно приложение Pixel Suite для часов.
+For fingerprint or PIN protection, use Privacy & Security.	Для защиты отпечатком или PIN-кодом используйте «Конфиденциальность и безопасность».
+Free screenshot crop	Свободная обрезка скриншотов
+From Chrome to Chrome+	От Chrome к Chrome+
+Full changelog on GitHub	Полный список изменений на GitHub
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard хранит каждый фрагмент, пока вы его не удалите. У закреплённых фрагментов синие карточки, а крестик вверху удаляет все, кроме них. «Буфер обмена в одну колонку» показывает по одному фрагменту в строке.
+Gboard restarts when you change any of these.	Gboard перезапускается при изменении любого из этих параметров.
+Gemini (stock)	Gemini (стандартно)
+Gemini when locked	Gemini на заблокированном экране
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini, Circle to Search, скриншот или тихий режим.
+Gestures	Жесты
+Get the Pixel Suite watch app from the developer on Telegram.	Получите приложение Pixel Suite для часов у разработчика в «Телеграм».
+Google Photos setup	Настройка Google Фото
+Google app	Приложение Google
+Google news	Google Новости
+Google's own look	Фирменный вид Google
+Held-back apps are saved automatically before they update.	Удержанные приложения сохраняются автоматически перед обновлением.
+Hide	Скрыть
+Hide Developer Options	Скрыть параметры разработчика
+Hide accessibility from apps	Скрыть спецвозможности от приложений
+Hide ads in Google feed	Скрыть рекламу в ленте Google
+Hide app shortcuts	Скрыть ярлыки приложений
+Hide search bar	Скрыть строку поиска
+Hide suggestion chips	Скрыть чипы подсказок
+Hides app shortcuts like View orders from the drawer menu.	Скрывает ярлыки приложений вроде «Посмотреть заказы» из меню приложений.
+Hides the globe under your keyboard and moves the arrow to the right	Скрывает глобус под клавиатурой и переносит стрелку вправо
+Hold Home for	Удерживать «Главный экран» для
+Hold a folder and drag it anywhere among your apps.	Удерживайте папку и перетащите её в любое место среди приложений.
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	Удерживайте папку, чтобы переименовать, отсортировать или убрать её. При удалении папки её приложения не удаляются.
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	Удерживайте ярлык и перетащите его на панель, вдоль неё, чтобы изменить порядок, или за её пределы, чтобы убрать. Нажмите на ярлык, чтобы узнать, что он делает. Скройте боковые кнопки, чтобы освободить место для ярлыков.
+Hold an app and choose Change icon to use your own image.	Удерживайте приложение и выберите «Изменить значок», чтобы поставить своё изображение.
+Hold an app and choose Rename.	Удерживайте приложение и выберите «Переименовать».
+Hold an app and choose Rename. It shows right away everywhere.	Удерживайте приложение и выберите «Переименовать». Новое название сразу видно везде.
+Hold an app in the drawer and drag it onto Add to home screen.	Удерживайте приложение в меню приложений и перетащите его на «Добавить на главный экран».
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	Удерживайте приложение или папку и выберите «Заблокировать» или «Разблокировать».\n\nБлокировка папки не блокирует приложения внутри.
+Hold an app or folder with a dot and choose Clear badge.	Удерживайте приложение или папку с точкой и выберите «Убрать значок».
+Hold an app or folder with a notification dot and choose Clear badge.	Удерживайте приложение или папку с точкой уведомления и выберите «Убрать значок».
+Hold back app updates	Удерживать обновления приложений
+Hold power button	Удерживать кнопку питания
+How it works	Как это работает
+Icon label size	Размер подписей значков
+Icon label size, five levels	Размер подписей значков, пять уровней
+Icons, Super Dark-Mode and blur	Значки, «Сверхтёмный режим» и размытие
+If a double tap doesn't register, tap once more within three seconds.	Если двойное нажатие не сработало, нажмите ещё раз в течение трёх секунд.
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	В Chrome откройте «Дополнения» и нажмите «Тёмные страницы», чтобы отключить их для одного сайта. Изображения и видео сохраняют свои цвета.
+Installation permission was not enabled. Tap Download and install when ready.	Разрешение на установку не было включено. Нажмите «Скачать и установить», когда будете готовы.
+Keep calls quiet and stay connected	Тишина при звонках без потери связи
+Keep incoming calls quiet and stay connected	Тишина при входящих звонках без потери связи
+Keep unlocked for 1 minute	Не блокировать 1 минуту
+Keep what matters. Clear the rest.	Оставьте главное. Очистите остальное.
+Keeps Clear all next to Screenshot and Select.	Держит «Очистить все» рядом со «Скриншотом» и «Выбрать».
+Keeps chips like Screenshot off the toolbar	Убирает чипы вроде «Скриншот» с панели
+Keyboard bar tweak	Настройка панели клавиатуры
+Keys	Клавиши
+Keys and backspace	Клавиши и Backspace
+LSPosed scope	Область LSPosed
+Landscape recent apps	Недавние приложения в горизонтальной ориентации
+Landscape view	Горизонтальный вид
+Left button	Левая кнопка
+Live frame counter at the top right	Счётчик кадров вверху справа
+Lock a card from its menu to keep it when you clear apps.	Заблокируйте карточку через её меню, чтобы она оставалась при очистке.
+Lock an app's card so Clear all keeps it.	Заблокируйте карточку приложения, чтобы «Очистить все» её не трогало.
+Lock apps and folders	Блокировка приложений и папок
+Lock apps in recents	Блокировка приложений в недавних
+Lock factory reset	Заблокировать сброс настроек
+Lock screen	Заблокированный экран
+Lock-screen behavior	Поведение заблокированного экрана
+Lock-screen taps	Нажатия на заблокированном экране
+Locking recent apps	Блокировка недавних приложений
+Locks stay after a restart.	Блокировки сохраняются после перезапуска.
+Made by RovianDev	Создано RovianDev
+Make it work your way.	Настройте под себя.
+Middle	Посередине
+Miscellaneous	Разное
+More	Ещё
+More to come.	Будет больше.
+Move and resize the keyboard	Перемещение и размер клавиатуры
+Move folders between apps	Перемещение папок между приложениями
+Move several apps	Перемещение нескольких приложений
+Move to bottom and scroll	Переместить вниз и прокрутить
+Navigation buttons	Кнопки навигации
+Newest files first, in Files and the file picker	Сначала новые файлы, в «Файлы» и окне выбора файлов
+No LTE Pixel Watch? Leave this off.	Нет Pixel Watch с LTE? Не включайте.
+No blur anywhere	Без размытия везде
+No file picker available	Нет доступного окна выбора файлов
+Nothing	Ничего
+Notifications that can be dismissed are cleared, and the dot goes away.	Уведомления, которые можно смахнуть, убираются, и точка исчезает.
+OTA & Store blocker	Блокировщик OTA и Маркета
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	Выкл.: слова появляются по мере речи. С «Голосовым вводом с галочкой» говорите, затем нажмите галочку, чтобы добавить слова, или X для отмены. В голосовых настройках Gboard тип диктовки должен быть Rambler.
+On the lock screen, holding power opens Gemini	На заблокированном экране удержание кнопки питания открывает Gemini
+One clip per row, exactly as you copied it	По одному фрагменту в строке, точно как скопировано
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	Один переключатель для всего здесь. Пока он выключен, Gboard работает как обычно, а ваш выбор сохраняется.
+Only Clear all	Только «Очистить все»
+Only Clear all, in the middle	Только «Очистить все», посередине
+Open Developer options	Открыть параметры разработчика
+Open locked apps and folders with your fingerprint or PIN	Открывайте заблокированные приложения и папки отпечатком или PIN-кодом
+Per language	Для каждого языка
+Personalize	Персонализация
+Phone, Chrome, Gboard, Google, News and watch	Телефон, Chrome, Gboard, Google, Новости и часы
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	Выберите 3×3, 4×4 или 5×5 в меню с тремя точками папки. Сетки крупнее появляются по мере заполнения папки.
+Pin, reorder and hide sharing apps	Закреплять, упорядочивать и скрывать приложения в меню «Поделиться»
+Pin, reorder, hide and restore sharing apps and contacts	Закреплять, упорядочивать, скрывать и возвращать приложения и контакты в меню «Поделиться»
+Pinned and hidden sharing apps.	Закреплённые и скрытые приложения в меню «Поделиться».
+Pixel Studio setup	Настройка «Студия Pixel»
+Pixel Suite checks for updates and installs them right here.	Pixel Suite проверяет обновления и устанавливает их прямо здесь.
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite нужен root. Разрешите его в root-менеджере и снова откройте этот экран.
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite: двойное нажатие на карточку на заблокированном экране выключает экран, не открывая её.
+Pixel Watch with LTE	Pixel Watch с LTE
+Place folders anywhere among your apps, with their own grids and sorting.	Размещайте папки где угодно среди приложений, со своей сеткой и сортировкой.
+Play Store blocker	Блокировщик Play Маркета
+Play Store updates and system updates	Обновления Play Маркета и системы
+Preview of the chosen surface style on a folder over a wallpaper	Предпросмотр выбранного стиля поверхностей на папке поверх обоев
+Privacy & Security	Конфиденциальность и безопасность
+Protect locked apps	Защита заблокированных приложений
+Protected with your fingerprint or PIN.	Защищено отпечатком или PIN-кодом.
+Protection	Защита
+Pure black backgrounds and darker menus in dark theme.	Чисто-чёрный фон и более тёмные меню в тёмной теме.
+Quick actions from your phone's buttons.	Быстрые действия кнопками телефона.
+Recent	Недавние
+Recent Apps	Недавние приложения
+Record and save calls	Запись и сохранение звонков
+Record calls in the Phone app, in any country, without the announcement	Записывайте звонки в приложении «Телефон» в любой стране без предупреждения
+Reduce screenshot delay	Уменьшить задержку скриншота
+Refresh rate slider	Ползунок частоты обновления
+Removes sponsored cards from your feed, with no gaps left	Убирает спонсорские карточки из ленты, не оставляя пробелов
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	Убирает строку поиска внизу главного экрана. Док опускается, и приложения занимают освободившееся место.
+Removing apps from the home screen doesn't uninstall them.	При удалении приложений с главного экрана они не удаляются с телефона.
+Rename apps	Переименование приложений
+Reopen Settings to see the change.	Откройте настройки заново, чтобы увидеть изменение.
+Reopen apps that were already open.	Откройте заново уже открытые приложения.
+Reorder pinned apps and hide sharing apps	Упорядочить закреплённые и скрыть приложения в меню «Поделиться»
+Reset brings back the original name.	«Сбросить» возвращает исходное название.
+Reset restores the original name. Work-profile and Private Space apps keep their names.	«Сбросить» возвращает исходное название. Приложения в рабочем профиле и личном пространстве сохраняют свои названия.
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	«Восстановить» возвращает версию прямо сюда. Если версия сохранена с данными, вас спросят, восстановить ли и данные.
+Restore this backup?	Восстановить эту резервную копию?
+Right button	Правая кнопка
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	Круглые значки для 19 сайтов и папок. Удерживайте и перетаскивайте, чтобы переместить, или бросьте на другой, чтобы создать папку. Измените сайт, чтобы поставить своё изображение.
+Rounded keys	Скруглённые клавиши
+Rounded keys and corners, with smooth key pop-ups	Скруглённые клавиши и углы, с плавными всплывающими подсказками
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	Скруглённые клавиши с плавными всплывающими подсказками в светлой, тёмной теме и «Сверхтёмный». Проведите влево от клавиши удаления, чтобы стирать по букве.
+Save your settings, folders and icons to a file	Сохраните настройки, папки и значки в файл
+Saved versions of your apps, ready to put back.	Сохранённые версии ваших приложений, готовые к возврату.
+Saved. Gboard restarts with the new size	Сохранено. Gboard перезапустится с новым размером
+Saved. Gboard restarts with your toolbar	Сохранено. Gboard перезапустится с вашей панелью
+Screen recording sheet	Панель записи экрана
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	Скриншоты и запись в приложениях, которые их блокируют.\nСначала отключите другие модули, которые делают то же самое.
+Screenshots appear instantly. Uses a little extra memory.	Скриншоты появляются мгновенно. Использует немного больше памяти.
+Screenshots, accessibility, keyboard and developer options	Скриншоты, спецвозможности, клавиатура и параметры разработчика
+Screenshots, sleep, wake and dragging	Скриншоты, сон, пробуждение и перетаскивание
+Search stays in the app drawer.	Поиск остаётся в меню приложений.
+Set	Задать
+Set a phone screen lock first	Сначала настройте блокировку экрана
+Set up eSIM with a QR code	Настроить eSIM по QR-коду
+Setup, community and support	Настройка, сообщество и поддержка
+Shapes in Pixel Studio and Google Photos	Фигуры в «Студия Pixel» и Google Фото
+Share menu	Меню «Поделиться»
+Share sheet tools	Инструменты меню «Поделиться»
+Sharing	Отправка
+Show FPS	Показывать FPS
+Show toasts	Показывать всплывающие сообщения
+Shows right away everywhere. Tap the reset arrow for the original icon.	Сразу видно везде. Нажмите стрелку сброса, чтобы вернуть исходный значок.
+Shows right away everywhere. Work profile and Private Space apps keep their names.	Сразу видно везде. Приложения в рабочем профиле и личном пространстве сохраняют свои названия.
+Silence	Без звука
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	«Без звука», «Не беспокоить» и «Не надоедать» включаются удержанием и выключаются следующим. «Без помех» включает все три сразу.
+Silences calls and keeps you connected. Add its Quick Settings tile.	Глушит звонки и оставляет вас на связи. Добавьте плитку в Быстрые настройки.
+Single tap	Одно нажатие
+Small fixes, simple controls.	Мелкие исправления, простое управление.
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	Более плавные анимации ручной работы, встроенные дополнения, управление внизу и своя панель быстрого доступа.
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	Более плавные анимации ручной работы, встроенные дополнения, управление внизу, своя панель быстрого доступа
+Sort from the three-dot menu	Сортировка в меню с тремя точками
+Sorting and custom order	Сортировка и свой порядок
+Speak, then tap the checkmark to add your words	Говорите, затем нажмите галочку, чтобы добавить слова
+Speed dial	Быстрый доступ
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	Начните перетаскивать приложение и коснитесь других приложений другим пальцем. Отпустите их все на главном экране или в папке.
+Starts	С
+Stay connected. Keep incoming calls quiet.	Оставайтесь на связи. Входящие звонки без звука.
+Stays unlocked for a minute after you leave it	Остаётся разблокированным минуту после выхода
+Stock	Стандарт
+Stops system updates and hides Software updates in Settings.	Останавливает обновления системы и скрывает «Обновления ПО» в настройках.
+Surface style, three options	Стиль поверхностей, три варианта
+Surfaces and blur	Поверхности и размытие
+Swipe down with three fingers to take a screenshot.	Проведите тремя пальцами вниз, чтобы сделать скриншот.
+Swipe gestures still work.	Жесты смахивания продолжают работать.
+Swipe left from delete to remove letter by letter	Проведите влево от клавиши удаления, чтобы стирать по букве
+System colors, your way.	Системные цвета на ваш вкус.
+System update controls.	Управление обновлениями системы.
+System updates and factory reset	Обновления системы и сброс настроек
+Take a screenshot	Сделать скриншот
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Нажмите «Дополнения» на странице новой вкладки Chrome, чтобы пользоваться ими. Нажмите на дополнение, чтобы открыть его настройки, или удерживайте, чтобы закрепить на панели.
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Нажмите «Дополнения» на странице новой вкладки, чтобы пользоваться ими. Удерживайте дополнение, чтобы закрепить его на панели.
+Tap an app to see its saved versions.	Нажмите на приложение, чтобы увидеть его сохранённые версии.
+Tap to wake	Пробуждение касанием
+Text size	Размер текста
+That isn't a Pixel Suite backup	Это не резервная копия Pixel Suite
+The 3 newest versions of each app are kept.	Хранятся 3 самые новые версии каждого приложения.
+The clock and info while charging, and after the power button.	Часы и сведения во время зарядки и после нажатия кнопки питания.
+The green button puts a saved version back, with its data and sign-ins.	Зелёная кнопка возвращает сохранённую версию вместе с данными и входом в аккаунты.
+The power button shows the always-on display for a few seconds	Кнопка питания показывает всегда включённый экран на несколько секунд
+The three styles	Три стиля
+The toolbar	Панель инструментов
+Three-finger screenshot	Скриншот тремя пальцами
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Чтобы вернуться сюда, нажмите и удерживайте главный экран и выберите «Настройки Pixel Suite». Нужны root и LSPosed.
+To protect an app with your fingerprint or PIN, use Privacy & Security.	Чтобы защитить приложение отпечатком или PIN-кодом, используйте «Конфиденциальность и безопасность».
+Toasts	Всплывающие сообщения
+Toolbar	Панель инструментов
+Toolbar, keys, resize, auto-correction, clipboard	Панель, клавиши, размер, автозамена, буфер обмена
+Tools for your Google apps.	Инструменты для ваших приложений Google.
+Top	Вверху
+Turn auto-correction off for the languages you choose. Suggestions still show.	Отключите автозамену для выбранных языков. Подсказки продолжат появляться.
+Turn off after	Выключить через
+Turn on notifications in Android settings	Включите уведомления в настройках Android
+Turn the flashlight on or off, open the camera (stock), or do nothing.	Включить или выключить фонарик, открыть камеру (стандартную) или ничего не делать.
+Turn this feature on or off.	Включить или отключить эту функцию.
+Turn your phone sideways in recents for a cleaner view.	Поверните телефон в недавних для более аккуратного вида.
+Turns on	Включается
+Two-finger drag	Перетаскивание двумя пальцами
+Typing and clipboard	Ввод и буфер обмена
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	Отменить, Повторить, «Быстрый выбор», Выбрать все, Вырезать, Копировать и Вставить работают во всех приложениях. «Быстрый выбор»: нажатие выделяет слово, повторное снимает выделение, удержание выделяет все.
+Unlock OEM apps	Разблокировать OEM-приложения
+Unlock on the 4th digit	Разблокировка на 4-й цифре
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	Разблокирует, как только вы введёте 4-ю цифру PIN-кода, без Enter
+Up to 7 shortcuts, in the same order in every language.	До 7 ярлыков, в одном и том же порядке на всех языках.
+Up to 7 shortcuts, their order, the side buttons and two rows	До 7 ярлыков, их порядок, боковые кнопки и два ряда
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	«Обновить» сначала сохраняет текущую версию, затем открывает страницу в Play Маркете. После обновления приложение снова удерживается.
+Updates	Обновления
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	Обновление этих ключевых приложений из Play Маркета может сломать функции Pixel Suite. Pixel Suite обновляет их за вас с каждым релизом.
+Use Doodles	Использовать «Рисунки»
+Use Gboard+	Использовать Gboard+
+Use custom app icons	Использовать свои значки приложений
+Use your own image for an app icon	Своё изображение в качестве значка приложения
+Voice typing with checkmark	Голосовой ввод с галочкой
+Wake gesture	Жест пробуждения
+Wake the screen	Включить экран
+Wake your phone with a tap, with pocket protection.	Пробуждайте телефон касанием, с защитой в кармане.
+Websites open dark, with no white flash. Super Dark uses pure black.	Сайты открываются тёмными, без белой вспышки. «Сверхтёмный» использует чисто чёрный цвет.
+What's new	Что нового
+When you untick apps, Back up saves their current versions first.	Когда вы снимаете отметку с приложений, «Резервная копия» сначала сохраняет их текущие версии.
+While charging and after the power button	Во время зарядки и после нажатия кнопки питания
+While holding an app or folder, swipe with another finger to scroll or turn pages.	Удерживая приложение или папку, проведите другим пальцем, чтобы прокрутить или перелистнуть страницу.
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	Когда всегда включённый экран выключен, кнопка питания переводит экран в режим всегда включённого экрана. Он выключается через выбранное время.
+With Super Dark-Mode, panels stay black.	С «Сверхтёмный режим» панели остаются чёрными.
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	При выключенном экране и включённом «Всегда включённом экране» дважды нажмите кнопку уменьшения громкости. Не во время звонков и воспроизведения медиа.
+With the screen off, open the camera or turn the flashlight on or off.	При выключенном экране откройте камеру или включите/выключите фонарик.
+With themed icons on, the app drawer keeps each app's own colors.	С тематическими значками меню приложений сохраняет собственные цвета каждого приложения.
+You can also hold the search bar and choose Hide widget. It hides right away.	Можно также удерживать строку поиска и выбрать «Скрыть виджет». Она исчезнет сразу.
+Your own Always-on display setting isn't changed.	Ваш собственный параметр «Всегда включённый экран» не меняется.
+eSIM setup with a QR code	Настройка eSIM по QR-коду
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• Перетащите приложение в верхний ряд, чтобы закрепить его, затем перетаскивайте для сортировки.\n\n• Удерживайте приложение или контакт, чтобы закрепить или скрыть его.\n\n• Скрытое находится в «Скрытых приложениях» и «Скрытых контактах». Удерживайте элемент, чтобы показать его.
+Hide 1 app	Скрыть 1 приложение
+Tap to share. Long-press to unhide.	Нажмите, чтобы поделиться. Удерживайте, чтобы показать.
+Tick apps to unhide.	Отметьте приложения, которые нужно показать.
+Tick contacts to unhide.	Отметьте контакты, которые нужно показать.
+Unknown app	Неизвестное приложение
+Back up and update	Сохранить копию и обновить
+Back up now	Создать копию сейчас
+Check root access and reopen this page.	Проверьте root-доступ и снова откройте эту страницу.
+Close app selection	Закрыть выбор приложений
+Collapse blocked updates	Свернуть заблокированные обновления
+Couldn't open Play Store	Не удалось открыть Play Маркет
+Discard	Отменить
+Discard changes?	Отменить изменения?
+Expand blocked updates	Развернуть заблокированные обновления
+Keep editing	Продолжить
+Opening Play Store…	Открываем Play Маркет…
+Reopen this page to refresh installed apps	Снова откройте эту страницу, чтобы обновить список приложений
+Save them first, then apply	Сначала сохраните их, затем примените
+Tick Play Store in LSPosed for Pixel Suite.	Отметьте Play Маркет в LSPosed для Pixel Suite.
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	Включите «Разблокировать OEM-приложения», чтобы снять отметку. Обновление может нарушить работу Pixel Suite.
+Unknown	Неизвестно
+Unticked apps can get updates	Неотмеченные приложения могут получать обновления
+Update	Обновить
+Update blocker	Блокировщик обновлений
+Updating this core app may break Pixel Suite support.	Обновление этого ключевого приложения может нарушить работу Pixel Suite.
+Wait for your changes to finish applying	Дождитесь применения изменений
+Your app selections haven't been applied.	Ваш выбор приложений не применён.
+\n\nTick it and apply to hold it back.	\n\nОтметьте и примените, чтобы удерживать.
+stroke weight	толщина линии
+APK exceeds download limit	APK превышает лимит загрузки
+APK verification failed	Проверка APK не пройдена
+An update download is already running.	Загрузка обновления уже идёт.
+Cannot prepare APK	Не удалось подготовить APK
+Checking APK hash and signing certificate…	Проверка хеша APK и сертификата подписи…
+Could not open Android installer. Try Download and install again.	Не удалось открыть установщик Android. Снова нажмите «Скачать и установить».
+Download complete. Open Updates and tap Download and install to continue.	Загрузка завершена. Откройте «Обновления» и нажмите «Скачать и установить», чтобы продолжить.
+Download unavailable	Загрузка недоступна
+Incomplete APK	APK загружен не полностью
+No newer verified release is available on both repositories.	В обоих репозиториях нет более нового проверенного релиза.
+Pixel Suite update	Обновление Pixel Suite
+Unexpected APK size	Неожиданный размер APK
+Update could not be downloaded or verified. Check your connection and try again.	Не удалось скачать или проверить обновление. Проверьте подключение и повторите попытку.
+Verified. Opening Android installer…	Проверено. Открываем установщик Android…
+Verifying the official releases…	Проверка официальных релизов…
+Add the VPN tile to Quick Settings to connect with one tap.	Добавьте плитку VPN в Быстрые настройки, чтобы подключаться одним нажатием.
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	Только Chrome: включите VPN в дополнениях Chrome. Его использует только Chrome, и сайты видят эту страну.
+Connect	Подключить
+Couldn't connect	Не удалось подключиться
+Couldn't load servers. Tap to try again.	Не удалось загрузить серверы. Нажмите, чтобы повторить.
+Couldn't refresh. Showing the last list.	Не удалось обновить. Показан последний список.
+Couldn't start the VPN	Не удалось запустить VPN
+Countries without servers right now show as Unavailable.	Страны, где сейчас нет серверов, отмечены как недоступные.
+Fastest server	Самый быстрый сервер
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Бесплатные серверы, которые поддерживают волонтёры по всему миру. Pixel Suite подключается к самому быстрому.
+Getting the free server list	Получение списка бесплатных серверов
+Loading servers…	Загрузка серверов…
+No servers yet	Серверов пока нет
+Not connected	Не подключено
+Open-source servers change during the day	Серверы с открытым кодом меняются в течение дня
+Pick a country, then tap Connect	Выберите страну и нажмите «Подключить»
+Refresh servers	Обновить серверы
+Tap Refresh servers	Нажмите «Обновить серверы»
+Turn off	Выключить
+Use for all apps	Для всех приложений
+VPN is part of Patreon premium	VPN входит в «Патреон» премиум
+Couldn't ask for VPN permission	Не удалось запросить разрешение на VPN
+VPN permission is needed to connect	Для подключения нужно разрешение на VPN
+Russia	Россия
+Server list was empty	Список серверов пуст
+South Korea	Южная Корея
+United Kingdom	Великобритания
+United States	США
+Chrome only	Только Chrome
+Connecting…	Подключение…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	Разрешите Pixel Suite доступ к устройствам поблизости, чтобы «Не надоедать» мог переключать мобильную сеть часов.
+Do Not Annoy: watch	«Не надоедать»: часы
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Pixel Suite на часах нужно одноразовое разрешение (команда adb), чтобы переключать мобильную сеть.
+Watch	Часы
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	Добавляет ползунок 60 / 120 Гц в раздел Smooth Display (Настройки > Экран и касания)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	«Приложение и данные» сохраняет всё (входы в аккаунты, чаты, настройки и файлы) и восстанавливает точно как было. «Только приложение» сохраняет только приложение.
+Auto sorts A to Z; Custom lets you arrange them.	«Авто» сортирует от А до Я, «Свой порядок» позволяет расставить вручную.
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	Перетащите папку на «Переместить вниз», чтобы прокрутить; глубже — быстрее.
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	Папки в меню приложений: удерживайте папку на «Переместить вниз», чтобы прокрутить; глубже — быстрее.
+Hold an app or folder and choose Lock or Unlock.	Удерживайте приложение или папку и выберите «Заблокировать» или «Разблокировать».
+Pixel watch eSIM purchase	Покупка eSIM для Pixel Watch
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	Нажмите, чтобы открыть; удерживайте, чтобы переименовать или убрать. Удерживайте сайт внутри, чтобы изменить, переместить или убрать его.
+• Drag an app into the top row to pin it, then drag to reorder.	• Перетащите приложение в верхний ряд, чтобы закрепить его, затем перетаскивайте для сортировки.
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	Не удалось связаться с часами. Мобильная сеть на них включится, когда они снова подключатся.
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	Не удалось связаться с часами. Мобильная сеть на них выключится, когда они снова подключатся.
+Language	Язык
+Automatic	Автоматически
+Follows the phone	Как на телефоне
+Couldn't save the language	Не удалось сохранить язык
+‹  Back	‹  Назад
+just now	только что
+1 minute ago	1 минуту назад
+1 hour ago	1 час назад
+1 day ago	1 день назад
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	Списки рекламы: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Собственный блокировщик Pixel Suite.
+The Ad blocker is part of Pixel Suite's Patreon features	Блокировщик рекламы входит в функции «Патреон» в Pixel Suite
+Root access is needed	Нужен root-доступ
+Off: ads are no longer blocked	Выключено: реклама больше не блокируется
+Couldn't download the ad lists (no connection?). The current list stays.	Не удалось загрузить списки (нет сети?). Текущий список остаётся.
+Ready: restart the phone once to start blocking	Готово: перезапустите телефон один раз, чтобы начать блокировку
+Couldn't prepare the list	Не удалось подготовить список
+Couldn't prepare the module	Не удалось подготовить модуль
+Getting the ad lists…	Загрузка списков рекламы…
+No answer over UDP	Нет ответа по UDP
+TLS handshake timed out	Истекло время TLS-рукопожатия
+Key exchange timed out	Истекло время обмена ключами
+Server sent no address	Сервер не прислал адрес
+Server rejected the sign-in	Сервер отклонил вход
+Server gave no address	Сервер не выдал адрес
+Connection closed	Соединение закрыто
+Server didn't answer	Сервер не ответил
+Server refused the call	Сервер отклонил вызов
+Server closed the connection	Сервер закрыл соединение
+1 server	1 сервер
+Unhide 1 app	Показать 1 приложение
+Unhide 1 contact	Показать 1 контакт
+Unhide contact	Показать контакт
+1 app saved · 1 version	Сохранено: 1 приложение · 1 версия
+1 app · 1 version	1 приложение · 1 версия
+Doodles	Рисунки
+Super Dark-Mode	Сверхтёмный режим
+Super Dark	Сверхтёмный
+Frosted Glass	Матовое стекло
+Do Not Annoy	Не надоедать
+No Annoyance	Без помех
+Quick Select	Быстрый выбор
+Google Photos	Google Фото
+Pixel watch	Часы Pixel
+Google dialer+	Телефон Google+
+Keep	Keep Заметки
+Drive	Диск
+Sponsored	Реклама
+Recent apps	Недавние приложения
+3×3 (Stock)	3×3 (стандарт)
+Ag	Аа
+Aa	Аа
+1 website with custom settings	1 сайт со своими настройками
+1 app isn't saved at the version installed now	1 приложение не сохранено в текущей версии
+Words are never replaced; suggestions still show	Слова не заменяются; подсказки остаются
+Off: Gboard corrects nothing; turn it on to choose languages	Выкл.: Gboard ничего не исправляет; включите, чтобы выбрать языки
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	Тяните за ручки, чтобы изменить размер, или за середину, чтобы сдвинуть. «Применить» сохраняет; «Сбросить» возвращает размер Gboard. Только в книжной ориентации.
+Unlock Watch eSIM · $10 one-time purchase	Разблокировать eSIM часов · разовая покупка $10
+$10 one-time eSIM purchase	Разовая покупка eSIM за $10
+One-time purchase, $10, yours to keep.	Разовая покупка, $10, навсегда ваша.
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	Код покупки — в письме от purchases@roviandev.com. Проверьте и «Спам».
+Pixel Suite logo	Логотип Pixel Suite
+Open Android app settings to manage notifications.	Откройте настройки приложения Android, чтобы управлять уведомлениями.
+OK	ОК
+Opens this sheet from the toolbar	Открывает эту панель с панели инструментов
+Needs Pixel Suite premium and the ad blocker on	Нужны Pixel Suite премиум и включённый блокировщик рекламы
+Manage extensions	Управлять расширениями
+Enter an address	Введите адрес
+That isn't a web address	Это не веб-адрес
+Off in Chrome · on for other apps	Выкл. в Chrome · вкл. для других приложений
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	VPN включён для всего телефона. Выключение здесь убирает только Chrome.
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	Другие приложения используют VPN; Chrome исключён. Включите, чтобы добавить Chrome.
+Only Chrome uses this VPN. Other apps keep their own connection.	Этот VPN использует только Chrome. Другие приложения работают через своё подключение.
+All apps except Chrome	Все приложения, кроме Chrome
+• 1 setting	• 1 настройка
+• 1 custom icon	• 1 свой значок
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• Настройка «Лаунчер Pixel»: папки меню, сортировка, имена и блокировки
+• Share menu: pinned order and hidden apps	• Меню «Поделиться»: закреплённый порядок и скрытые приложения
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	Текущие настройки Pixel Suite будут заменены. «Лаунчер Pixel» перезапустится один раз.
+Two rows, shortcuts on top	Два ряда, ярлыки сверху
+Two rows	Два ряда
+Side buttons hidden	Боковые кнопки скрыты
+Menu button hidden	Кнопка меню скрыта
+Emoji/voice hidden	Эмодзи/голос скрыты
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	Добавляет кнопки навигации рядом с полосой жестов. После обновления модуля перезапустите «Лаунчер Pixel» один раз; дальше выбор кнопок применяется сразу.
+Sign-in timed out	Истекло время входа
+Address setup timed out	Истекло время настройки адреса
+Server renewed its keys	Сервер обновил ключи
+Stopped	Остановлено
+Couldn't finish the backup	Не удалось завершить резервную копию
+Root isn't available, or it took too long	Root недоступен или ответ занял слишком долго
+It didn't finish	Не завершилось
+Pixel Suite could not make the file	Pixel Suite не смог создать файл
+Pixel Suite is unavailable	Pixel Suite недоступен
+Pixel Suite gave no file	Pixel Suite не выдал файл
+the picked folder	выбранную папку
+Use a name between 1 and 80 characters	Имя должно быть от 1 до 80 символов
+Folder limit reached	Достигнут предел папок
+Drag here to add to home screen	Перетащите сюда, чтобы добавить на главный экран
+Drag a folder here to move it to the end of the list	Перетащите папку сюда, чтобы переместить её в конец списка
+Drag here to take out of the folder	Перетащите сюда, чтобы вынуть из папки
+More shapes	Ещё фигуры
+More colours	Ещё цвета
+Thickness	Толщина
+Fill shape	Заливка фигуры
+Delete shape	Удалить фигуру
+Make Doodles menu smaller	Уменьшить меню рисунков
+Move Doodles menu	Переместить меню рисунков
+Make text menu smaller	Уменьшить меню текста
+Move text menu	Переместить меню текста
+More fonts	Ещё шрифты
+Clear clipboard	Очистить буфер обмена
+Stop voice typing	Остановить голосовой ввод
+Save icon	Сохранить значок
+Reset to original icon	Вернуть исходный значок
+Folder options	Параметры папки
+Doodles tab	Вкладка «Рисунки»
+Edit: select hidden contacts to unhide	Изменить: выберите скрытые контакты, чтобы показать их
+Edit: select hidden apps to unhide	Изменить: выберите скрытые приложения, чтобы показать их
+Edit: select apps to hide	Изменить: выберите приложения, чтобы скрыть
+Hide the contacts row	Скрыть ряд контактов
+Show the contacts row	Показать ряд контактов
+Locked	Заблокировано
+Filtering mode	Режим фильтрации
+Change the picture	Сменить картинку
+Open a website to choose its filtering	Откройте сайт, чтобы выбрать его фильтрацию
+Highest refresh rate. The screen still slows down when nothing moves.	Максимальная частота обновления. Экран всё равно снижает её, когда ничего не движется.
+Cancelled: the app is locked by Pixel Suite	Отменено: приложение заблокировано Pixel Suite
+Incoming call declined by Do Not Annoy	Входящий вызов отклонён функцией «Не надоедать»
+Confirm it's you to uninstall this core app	Подтвердите, что это вы, чтобы удалить это основное приложение
+Confirm it's you to disable this core app	Подтвердите, что это вы, чтобы отключить это основное приложение
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	Внимание: отключение или удаление этого встроенного приложения может нарушить работу Pixel Suite и стабильность системы.
+Files · date modified	«Файлы» · дата изменения
+Site settings unavailable	Настройки сайта недоступны
+Could not save site settings	Не удалось сохранить настройки сайта
+Couldn't read existing Chrome site settings	Не удалось прочитать настройки сайтов Chrome
+Cannot create icon storage	Не удалось создать хранилище значков
+Unsupported dimensions	Неподдерживаемый размер
+Cannot encode image	Не удалось сохранить изображение
+Response too large	Слишком большой ответ
+Orange	Оранжевый
+Dark red	Тёмно-красный
+Turquoise	Бирюзовый
+Dark blue	Тёмно-синий
+Purple	Фиолетовый
+Pink	Розовый
+White	Белый
+Black	Чёрный
+Move to bottom	Переместить вниз
+Lock app	Заблокировать приложение
+Unlock app	Разблокировать приложение
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	Всё: приложение, входы в аккаунты, чаты, настройки и файлы. Восстанавливается точно как было.
+$5/month	$5/мес.
+Settings soft scrolling edges (Frosted Glass only):	Мягкие края прокрутки в настройках (только «Матовое стекло»):
+Digital Wellbeing	Цифровое благополучие
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	Включите эти области в LSPosed и перезагрузитесь. Оформляются только проверенные экраны, открытые из настроек, и надёжно определённые области прокрутки. Неподдерживаемые области пропускаются.
+Telegram	Телеграм
+Patreon	Патреон
+Pixel Launcher	Лаунчер Pixel
+Pixel Studio	Студия Pixel
+Hold power button when locked	Удерживать кнопку питания на заблокированном экране
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	Когда телефон заблокирован, удержание кнопки делает то, что выбрано в пункте «Удерживать кнопку питания на заблокированном экране». Каждый вариант работает отдельно.
+Reboot	Перезагрузить
+Tap again to reboot	Нажмите ещё раз для перезагрузки
+Rebooting…	Перезагрузка…
+These run inside Android, so they update after a reboot:	Они работают внутри Android, поэтому обновятся после перезагрузки:
+Reboot to finish updating. Long-press to hide.	Перезагрузите телефон, чтобы завершить обновление. Удерживайте, чтобы скрыть.
+Couldn't reboot: root access needed	Не удалось перезагрузить: нужен root-доступ
+Search in Chrome	Искать в Chrome
+Couldn't refresh: root access needed	Не удалось обновить: нужен root-доступ
+See-through keyboard background, with rims	Полупрозрачный фон клавиатуры с окантовкой
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	Фон клавиатуры становится матовым стеклом: то, что за ней, просвечивает размытым, с окантовкой. Клавиши остаются прежними.
+Frosted Gboard	Матовый Gboard
+Follows the phone language	Как язык телефона
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	В некоторых приложениях, например в Chrome, верхние углы клавиатуры выглядят белыми. Эти приложения заканчивают страницу там, где начинается клавиатура, поэтому за углами нечего показать.
+Pixel Stack	Pixel Stack
+Tap to start	Нажмите, чтобы начать
+Tap to drop	Нажмите, чтобы бросить
+Perfect!	Идеально!
+Best	Рекорд
+New best!	Новый рекорд!
+Tap to play again	Нажмите, чтобы сыграть ещё
+Share score	Поделиться счётом
+Sharing…	Отправка…
+Shared!	Отправлено!
+Couldn't share. Try again.	Не удалось поделиться. Попробуйте ещё раз.
+Your name	Ваше имя
+Optional	Необязательно
+Game Over	Игра окончена
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **Системный интерфейс** (com.android.systemui)\n• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Настройки** (com.android.settings)\n• **Сервисы настроек** (com.google.android.settings.intelligence)\n• **Установщик пакетов** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nДля оформления редакторов выберите также **Студия Pixel** (com.google.android.apps.pixel.creativeassistant) и **Google Фото** (com.google.android.apps.photos). Перезагрузитесь после добавления областей.
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **Лаунчер Pixel** (com.google.android.apps.nexuslauncher) — значки, папки, меню и мягкий край меню приложений\n• **Системный интерфейс** (com.android.systemui) — системные меню и сообщения\n• **Студия Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **Google Фото** (com.google.android.apps.photos) — меню редактора\n\n«Сверхтёмный» перечисляет свои дополнительные области на своей странице.
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} вернётся к этой версии. Данные останутся как есть. Если после этого приложение не откроется, очистите его хранилище в настройках.
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	На экспресс-панели нет места для его сайтов ({0}), поэтому они удалятся вместе с папкой.
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} сохранена. Нажмите «Обновить» в Play Store. После обновления {1} снова будет удерживаться.
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	Убрать «{0}»? Её приложения вернутся в меню приложений. Ничего не удалится.
+Couldn't save {0}, so it wasn't updated. Check root and free space.	Не удалось сохранить {0}, поэтому обновление не выполнено. Проверьте root и свободное место.
+Tap Update in Play Store. {0} is held back again once it's updated.	Нажмите «Обновить» в Play Маркете. После обновления {0} снова удерживается.
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nВерсия {1}\nСборка {2}\n{3}\n\nОтметьте и примените, чтобы удерживать.
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	До 7 ярлыков, их порядок, боковые кнопки и два ряда{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}, {1}, обновления заблокированы, основное приложение заблокировано. Нажмите, чтобы узнать почему
+{0}. A looping demo. It doesn't change your settings.	{0}. Демонстрация в цикле. Ваши настройки не меняются.
+Restore {0} (its saved version is the one installed)	Восстановить {0} (сохранённая версия уже установлена)
+{0} of {1} on the toolbar · {2} more · swipe left or right	{0} из {1} на панели · ещё {2} · листайте влево или вправо
+Couldn't back up {0} of {1}. Check root and free space.	Не удалось сохранить {0} из {1}. Проверьте root и свободное место.
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} доступен на GitHub и Xposed.
+{0} apps aren't saved at the version installed now	Не сохранено в текущей версии: {0}
+{0}, off, needs Suggestions and shortcuts together	{0}, выкл., нужны «Подсказки и ярлыки вместе»
+The saved version of {0} is the one installed now	Сохранённая версия {0} уже установлена
+{0}, on, needs Suggestions and shortcuts together	{0}, вкл., нужны «Подсказки и ярлыки вместе»
+{0}. Applies your changes. Long-press to hide.	{0}. Применяет ваши изменения. Удерживайте, чтобы скрыть.
+There's no room on the speed dial for its {0}	На панели быстрого доступа нет места для его {0}
+Couldn't save {0}. Check root and free space.	Не удалось сохранить {0}. Проверьте root и свободное место.
+{0}: the saved version is the one installed	{0}: сохранённая версия уже установлена
+Its {0} websites go back to the speed dial.	Его сайты ({0}) вернутся на экспресс-панель.
+{0} is back to {1}, with everything as it was	{0} снова в версии {1}, всё как было
+{0} apps protected from updates · {1} shown	Защищено от обновлений: {0} · показано: {1}
+{0}, {1}, core app locked. Tap to learn why	{0}, {1}, основное приложение заблокировано. Нажмите, чтобы узнать почему
+Select at least {0} apps for a folder	Выберите не менее {0} приложений для папки
+Sort the apps in “{0}” from A to Z?	Отсортировать приложения в «{0}» от А до Я?
+This folder is full ({0} websites)	Папка заполнена ({0} сайтов)
+Blocking {0} ad domains · updated {1}	Блокируется {0} рекламных доменов · обновлено {1}
+{0} apps did not fit on this page	Не поместилось на страницу приложений: {0}
+{0} open-source servers available	Доступно серверов с открытым кодом: {0}
+{0} websites with custom settings	Сайтов со своими настройками: {0}
+{0}, {1}. Tap to hide saved versions	{0}, {1}. Нажмите, чтобы скрыть сохранённые версии
+{0}, {1}. Tap to show saved versions	{0}, {1}. Нажмите, чтобы показать сохранённые версии
+{0} removed element(s) · Restore	Убрано элементов: {0} · Восстановить
+Couldn't reach any server in {0}	Не удалось связаться ни с одним сервером: {0}
+{0}. Check root and free space.	{0}. Проверьте root и свободное место.
+{0} apps protected from updates	Защищено от обновлений приложений: {0}
+Downloading Pixel Suite {0} — {1}%	Загрузка Pixel Suite {0} — {1}%
+Restore removed elements ({0})	Восстановить убранные элементы ({0})
+{0} of {1} on the toolbar · {2} more	{0} из {1} на панели · ещё {2}
+Update, back up or restore {0}	Обновить, сохранить или восстановить {0}
+{0}\nDefault for all websites	{0}\nПо умолчанию для всех сайтов
+{0} needs Pixel Suite premium	{0}: нужен Pixel Suite премиум
+No open-source servers in {0}	Нет серверов с открытым кодом: {0}
+Server list unavailable ({0})	Список серверов недоступен ({0})
+Connecting to server {0} of {1}…	Подключение к серверу {0} из {1}…
+{0}% wide · {1}% tall · {2} dp down	Ширина {0}% · высота {1}% · ниже на {2} dp
+Restore a saved version ({0})	Восстановить сохранённую версию ({0})
+Pixel Suite {0} is available	Доступна версия Pixel Suite {0}
+Saved {0} with Pixel Suite {1}.	Сохранено {0} в Pixel Suite {1}.
+{0}. Opens an external app.	{0}. Открывает внешнее приложение.
+{0}% wide · {1}% tall · {2} dp up	Ширина {0}% · высота {1}% · выше на {2} dp
+Waiting for dark mode · {0}	Ждёт тёмной темы · {0}
+{0} (folder not available)	{0} (папка недоступна)
+{0} apps saved · {1} versions	Сохранено: приложений: {0} · версий: {1}
+1 app saved · {0} versions	Сохранено: 1 приложение · версий: {0}
+{0} apps saved · 1 version	Сохранено: приложений: {0} · 1 версия
+Delete saved version {0}	Удалить сохранённую версию {0}
+Installed version of {0}	Установленная версия {0}
+What {0} ({1}) is used for	Для чего используется {0} ({1})
+Any country · up to {0}	Любая страна · до {0}
+{0} apps · {1} versions · {2}	приложений: {0} · версий: {1} · {2}
+1 app · {0} versions · {1}	1 приложение · версий: {0} · {1}
+{0} apps · 1 version · {1}	приложений: {0} · 1 версия · {1}
+1 app · 1 version · {0}	1 приложение · 1 версия · {0}
+Couldn't restore {0}: {1}	Не удалось восстановить {0}: {1}
+About {0} · only {1} free	Около {0} · свободно всего {1}
+Level {0} · {1} (Default)	Уровень {0} · {1} (по умолчанию)
+{0}, {1}, updates blocked	{0}, {1}, обновления заблокированы
+On · {0} · whole phone	Вкл. · {0} · весь телефон
+On · {0} · Chrome only	Вкл. · {0} · только Chrome
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	Проверка серверов: {0}…
+{0} selected · {1} shown	Выбрано: {0} · показано: {1}
+No results for "{0}"	Ничего не найдено по запросу «{0}»
+{0} apps · {1} versions	приложений: {0} · версий: {1}
+1 app · {0} versions	1 приложение · версий: {0}
+{0} apps · 1 version	приложений: {0} · 1 версия
+Purchase email: {0}	Email покупки: {0}
+No icons match “{0}	Нет значков по запросу «{0}
+Reconnecting… ({0})	Переподключение… ({0})
+Unhide {0} contacts	Показать контакты: {0}
+No apps match “{0}	Нет приложений по запросу «{0}
+Resend code ({0}s)	Отправить код снова ({0} с)
+Connecting to {0}…	Подключение: {0}…
+**Used for:**\n{0}	**Используется для:**\n{0}
+{0}, {1}, switch, off	{0}, {1}, переключатель, выкл.
+Restore {0} build {1}	Восстановить {0} сборки {1}
+Turns on at {0} · {1}	Включится в {0} · {1}
+Pin {0} to toolbar	Закрепить {0} на панели
+• {0} custom icons	• Своих значков: {0}
+Saving {0} · {1} of {2}	Сохранение {0} · {1} из {2}
+{0}  ·  {1} selected	{0}  ·  выбрано: {1}
+{0}, {1}, switch, on	{0}, {1}, переключатель, вкл.
+{0}, not selected	{0}, не выбрано
+{0} · Chrome only	{0} · только Chrome
+Use default ({0})	По умолчанию ({0})
+Pass expires {0}	Пропуск действует до {0}
+{0}, unavailable	{0}, недоступно
+Enables {0} in {1}.	Включает {0} в {1}.
+{0} · not Chrome	{0} · без Chrome
+{0} is unlocked	{0}: разблокировано
+Connected · {0}	Подключено · {0}
+{0} is selected	Выбрано: {0}
+{0} minutes ago	{0} мин. назад
+{0} is back to {1}	{0} снова в версии {1}
+Unhide {0} apps	Показать приложения: {0}
+On until {0} · {1}	Включено до {0} · {1}
+{0} icon packs	Наборов значков: {0}
+• {0} settings	• Настроек: {0}
+Remove "{0}"?	Убрать «{0}»?
+{0}, selected	{0}, выбрано
+{0} right now	{0} сейчас
+{0} is locked	{0}: заблокировано
+Hide {0} apps	Скрыть приложения ({0})
+{0} hours ago	{0} ч. назад
+Checking {0}	Проверка: {0}
+Saving {0} {1}…	Сохранение {0} {1}…
+{0} days ago	{0} дн. назад
+{0} · up to {1}	{0} · до {1}
+Level {0} · {1}	Уровень {0} · {1}
+Restore {0} {1}	Восстановить {0} {1}
+On now · {0}	Включено сейчас · {0}
+Back up {0}	Создать копию {0}
+Restart {0}	Перезапустить {0}
+Enables {0}	Включает {0}
+{0} dp down	{0} dp вниз
+Restore {0}	Восстановить {0}
+{0} servers	Серверов: {0}
+{0}, hidden	{0}, скрыт
+Level {0}, {1}	Уровень {0}, {1}
+Refresh {0}	Обновить {0}
+{0}, shown	{0}, показан
+Saved {0}.	Сохранено {0}.
+**{0}** ({1})	**{0}** ({1})
+About {0}	Около {0}
+Build {0}	Сборка {0}
+From  {0}	С  {0}
+VPN · {0}	VPN · {0}
+{0} icons	Значков: {0}
+Unpin {0}	Открепить {0}
+{0}, off	{0}, выкл.
+To  {0}	До  {0}
+Pin {0}	Закрепить {0}
+Its {0}	Его {0}
+Use {0}	Использовать {0}
+{0}, on	{0}, вкл.
+You’re a free member. Choose the paid tier to unlock	У вас бесплатное членство. Выберите платный уровень для разблокировки.
+Root access is needed to save membership changes.	Нужен root-доступ, чтобы сохранить изменения подписки.
+Sign-in expired. Sign in with Patreon again.	Срок входа истёк. Войдите через «Патреон» снова.
+Couldn’t check membership. Try again shortly.	Не удалось проверить подписку. Попробуйте чуть позже.
+Sign-in expired. Tap Unlock to try again.	Срок входа истёк. Нажмите «Разблокировать», чтобы попробовать снова.
+No active membership found. Join, then tap Unlock again.	Активная подписка не найдена. Присоединитесь и снова нажмите «Разблокировать».
+Sign-in wasn't completed. You can try again.	Вход не завершён. Можно попробовать снова.
+Couldn't verify this sign-in. Tap Unlock to try again.	Не удалось проверить этот вход. Нажмите «Разблокировать», чтобы попробовать снова.
+Couldn't confirm membership. Try again.	Не удалось подтвердить подписку. Попробуйте снова.
+Confirming Patreon membership…	Подтверждаем подписку «Патреон»…
+Log in	Войти
+Patreon profile photo	Фото профиля «Патреон»
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	После оплаты код покупки придёт на почту, с которой вы платите. Поищите письмо от purchases@roviandev.com во «Входящих» и в «Спаме».
+Buy	Купить
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	Поищите письмо от purchases@roviandev.com во «Входящих» и в «Спаме». Используйте самый новый код: он действует 10 минут.
+Hide app	Скрыть приложение
+Hide widget	Скрыть виджет
+Remove Google Play services from the scope	Уберите сервисы Google Play из области
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite больше не использует сервисы Google Play, а если оставить их в области LSPosed для Pixel Suite, можно потерять проверки Device и Strong integrity.
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	Откройте LSPosed (или Vector), снимите отметку с сервисов Google Play для Pixel Suite и перезагрузитесь.
+Reboot to restore Play Integrity	Перезагрузитесь, чтобы вернуть Play Integrity
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite убрал сервисы Google Play из своей области LSPosed: из-за них можно потерять проверки Device и Strong integrity, а сами они больше не используются. Перезагрузите телефон, чтобы завершить.
+Server connected but passes no traffic	Сервер подключён, но трафик не проходит
+Server connected but websites don't open ({0})	Сервер подключён, но сайты не открываются ({0})

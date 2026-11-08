@@ -28,7 +28,7 @@ final class LauncherData {
                 for (int j = 0; j < apps.length(); j++) if (!f.apps.contains(apps.getString(j))) f.apps.add(apps.getString(j));
                 result.add(f);
             }
-        } catch (Exception error) {  }
+        } catch (Exception error) { }
         return result;
     }
     static volatile int saves;
@@ -42,7 +42,7 @@ final class LauncherData {
             boolean ok = prefs.edit().putString("folders", array.toString()).commit();
             if (ok) saves++;
             return ok;
-        } catch (Exception error) {  return false; }
+        } catch (Exception error) { return false; }
     }
     String alias(String identity) { return prefs.getString("alias:" + identity, ""); }
     boolean rename(String identity, String label) {

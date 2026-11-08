@@ -33,6 +33,14 @@ public class Module extends XposedModule {
         Safe.run(() -> OtaBlocker.installSystem(cl));
         Safe.run(() -> ShowFps.installSystem(cl));
         Safe.run(() -> CallRecording.installSystem(cl));
+        Safe.run(() -> NavStrip.installSystem(cl));
+        Safe.run(() -> AodPlus.installSystem(cl));
+        Safe.run(() -> PowerHold.installSystem(cl));
+        Safe.run(() -> PinAuto.installSystem(cl));
+        Safe.run(() -> Downgrade.installSystem(cl));
+        Safe.run(() -> ChromeTextSearch.installSystem(cl));
+        Safe.run(() -> TextMenuStyle.install());
+        Safe.run(() -> SystemRev.installSystem(cl));
     }
 
     @Override
@@ -42,6 +50,7 @@ public class Module extends XposedModule {
         String pkg = param.getPackageName();
         if (GMS.equals(pkg)) return;
         Safe.run(() -> SettingsScrollEdges.install(cl, pkg));
+        Safe.run(() -> TextMenuStyle.install());
         if (SYSTEMUI.equals(pkg) && screenshotProcess()) {
             Safe.run(() -> SuperDark.installSystemUi(cl));
             Safe.run(() -> SystemToasts.install(cl));
@@ -53,8 +62,11 @@ public class Module extends XposedModule {
             Safe.run(() -> StatusBarFade.installSystemUi(cl));
             Safe.run(() -> SystemToasts.install(cl));
             Safe.run(() -> PromptStyle.install(cl));
+            Safe.run(() -> AodPlus.installSystemUi(cl));
+            Safe.run(() -> PinAuto.installSystemUi(cl));
         } else if (LAUNCHER.equals(pkg)) {
             Safe.run(() -> ClearAll.installLauncher(cl));
+            Safe.run(() -> PowerHold.installLauncher(cl));
             Safe.run(() -> RecentsLock.install(cl));
             Safe.run(() -> RecentsLandscape.install(cl));
             Safe.run(() -> PrivacyRecents.install(cl));
@@ -92,6 +104,8 @@ public class Module extends XposedModule {
         } else if (ChromeCosmetic.PACKAGE.equals(pkg)) {
             Safe.run(() -> ChromeCosmetic.install(cl));
             Safe.run(() -> ChromeFeedAds.install(cl));
+            Safe.run(() -> ChromeSuperDark.natives(cl));
+            Safe.run(() -> ChromeSuperDark.install());
             Safe.run(() -> KeyboardBarTweak.install(pkg));
             Safe.run(() -> DevOptionsHide.install(pkg));
         } else if (CallRecording.PACKAGE.equals(pkg)) {
@@ -111,6 +125,8 @@ public class Module extends XposedModule {
             if (SETTINGS.equals(pkg)) Safe.run(() -> OtaBlocker.installSettings(cl));
             if (SETTINGS.equals(pkg)) Safe.run(() -> RefreshRate90.installSettings(cl));
             if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> KeyboardBarTweak.install(pkg));
+            if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> GboardToolbar.install());
+            if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> GboardPlus.install(cl));
         } else {
             Safe.run(() -> KeyboardBarTweak.install(pkg));
             Safe.run(() -> DevOptionsHide.install(pkg));

@@ -116,12 +116,12 @@ final class HomeOptions {
         if(sample==null)return;
         int layout=context.getResources().getIdentifier("wallpaper_options_popup_item","layout",context.getPackageName());if(layout==0)return;
         final Object option=newOption();
-        LauncherFeatures.set(option,"label",LABEL);LauncherFeatures.set(option,"icon",new LauncherGlyph(context,10));
+        LauncherFeatures.set(option,"label",LABEL);final int menuInk=sampleLabel.getCurrentTextColor();LauncherFeatures.set(option,"icon",SuiteIcon.glyph(menuInk));
         try{LauncherFeatures.set(option,"eventId",LauncherFeatures.type("logging.StatsLogManager$LauncherEvent").getField("IGNORE").get(null));}catch(Exception error){throw new IllegalStateException(error);}
         LauncherFeatures.set(option,"clickListener",new View.OnLongClickListener(){public boolean onLongClick(View view){open(view);return true;}});
         View row=android.view.LayoutInflater.from(context).inflate(layout,popup,false);row.setTag("pixelsuite_settings");
-        android.widget.TextView text=(android.widget.TextView)LauncherFeatures.get(row,"mBubbleText");text.setText(LABEL);MenuFont.copyInto(text,sampleLabel);
-        View icon=(View)LauncherFeatures.get(row,"mIconView");icon.setBackground(new LauncherGlyph(context,10));icon.setBackgroundTintList(text.getTextColors());
+        android.widget.TextView text=(android.widget.TextView)LauncherFeatures.get(row,"mBubbleText");text.setText(I18n.cs(LABEL));MenuFont.copyInto(text,sampleLabel);
+        View icon=(View)LauncherFeatures.get(row,"mIconView");icon.setBackground(SuiteIcon.glyph(menuInk));
         row.setBackgroundTintList(sample.getBackgroundTintList());
         try{Object mode=LauncherFeatures.call(sample,"getBackgroundTintBlendMode");LauncherFeatures.call(row,"setBackgroundTintBlendMode",mode);}catch(Throwable ignored){}
         row.getLayoutParams().width=sample.getLayoutParams().width;
@@ -197,6 +197,11 @@ final class HomeOptions {
         return label instanceof CharSequence ? (CharSequence) label : "";
     }
 
+    static int menuInk(Context c) {
+        boolean night = (c.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+        return night ? 0xFFFFFFFF : 0xFF1F1F1F;
+    }
+
     static Object create(Object settings, final Context c) {
         for (Constructor<?> k : settings.getClass().getDeclaredConstructors()) {
             Class<?>[] t = k.getParameterTypes();
@@ -205,7 +210,7 @@ final class HomeOptions {
             if (event == null) return null;
             try {
                 k.setAccessible(true);
-                return k.newInstance(LABEL, new LauncherGlyph(c, 10), event, new View.OnLongClickListener() {
+                return k.newInstance(LABEL, SuiteIcon.glyph(menuInk(c)), event, new View.OnLongClickListener() {
                     public boolean onLongClick(View v) { open(v); return true; }
                 });
             } catch (Throwable error) { return null; }
@@ -222,7 +227,7 @@ final class HomeOptions {
         try { options = ActivityOptions.makeScaleUpAnimation(v, 0, 0, v.getWidth(), v.getHeight()).toBundle(); } catch (Throwable ignored) { }
         try { c.startActivity(intent, options); }
         catch (Throwable error) {
-            Toast.makeText(c, "Pixel Suite isn't available", Toast.LENGTH_SHORT).show();
+            Toast.makeText(c, I18n.cs("Pixel Suite isn't available"), Toast.LENGTH_SHORT).show();
         }
     }
 

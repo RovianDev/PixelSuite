@@ -1,0 +1,1588 @@
+# Pixel Suite fa: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	مسدود کردن آگهی
+AdAway or Systemless hosts is also on. Use only one blocker.	AdAway یا Systemless hosts هم روشن است. فقط از یک مسدودکننده استفاده کنید.
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	آگهی‌ها را در Chrome، اخبار Google و برنامه‌های دیگر مسدود می‌کند. فهرست‌ها هر روز به‌روز می‌شوند.
+Fewer ads.\nFaster pages.	آگهی کمتر.\nصفحه‌های سریع‌تر.
+Preparing ad protection…	درحال آماده‌سازی محافظت در برابر آگهی…
+Restart the phone once to start blocking.	برای شروع مسدودسازی، تلفن را یک بار بازراه‌اندازی کنید.
+Unlock with Patreon	باز کردن با پاتریون
+Update lists	به‌روزرسانی فهرست‌ها
+Updating…	درحال به‌روزرسانی…
+Works in every app and browser, also with Private DNS.	در همه برنامه‌ها و مرورگرها کار می‌کند، حتی با DNS خصوصی.
+Add	افزودن
+Add website	افزودن وب‌سایت
+Add website: domain or URL	افزودن وب‌سایت: دامنه یا نشانی وب
+Ads aren't filtered on these websites. Tap one to remove it.	آگهی‌ها در این وب‌سایت‌ها فیلتر نمی‌شوند. برای برداشتن روی یکی ضربه بزنید.
+All websites use the default level	همه وب‌سایت‌ها از سطح پیش‌فرض استفاده می‌کنند
+Allowed websites	وب‌سایت‌های مجاز
+Basic	ساده
+Bring back elements you removed.	عناصری را که برداشته‌اید برگردانید.
+Cancel	لغو
+Clear every website setting	پاک کردن همه تنظیمات وب‌سایت‌ها
+Clear every website setting? Your default level stays.	همه تنظیمات وب‌سایت‌ها پاک شود؟ سطح پیش‌فرض شما می‌ماند.
+Complete	کامل
+Couldn't load site settings. Open Chrome once, then reopen this page.	تنظیمات سایت بار نشد. یک بار Chrome را باز کنید و بعد این صفحه را دوباره باز کنید.
+Couldn't save site settings. Try again.	تنظیمات سایت ذخیره نشد. دوباره امتحان کنید.
+Default for all websites	پیش‌فرض برای همه وب‌سایت‌ها
+Enter a domain or an http/https URL	یک دامنه یا نشانی http/https وارد کنید
+Filtering level	سطح فیلتر
+Included with your Patreon unlock	در باز کردن پاتریون شما گنجانده شده است
+Loading site settings…	درحال بار کردن تنظیمات سایت…
+No allowed websites	وب‌سایت مجازی نیست
+No filtering	بدون فیلتر
+No filtering · tap to remove	بدون فیلتر · برای برداشتن ضربه بزنید
+No removed elements	عنصر برداشته‌شده‌ای نیست
+Optimal	بهینه
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	«بهینه» آگهی‌های جستجو را پنهان می‌کند. «کامل» بنرهای کوکی و پنجره‌های بازشو را هم پنهان می‌کند. سطح خود سایت اولویت دارد.
+Per-site levels	سطح برای هر سایت
+Removed elements	عناصر برداشته‌شده
+Reset	بازنشانی
+Reset all site settings	بازنشانی همه تنظیمات سایت
+Reset all site settings?	همه تنظیمات سایت بازنشانی شود؟
+Saving…	درحال ذخیره…
+Tap a website to change its level or use the default.	برای تغییر سطح یا استفاده از پیش‌فرض، روی وب‌سایتی ضربه بزنید.
+Unlock ad blocking with Patreon	باز کردن مسدود کردن آگهی با پاتریون
+\nDefault for all websites	\nپیش‌فرض برای همه وب‌سایت‌ها
+Close	بستن
+Clear search	پاک کردن جستجو
+Could not save the folder	پوشه ذخیره نشد
+Save	ذخیره
+Search apps	جستجوی برنامه‌ها
+Search	جستجو
+Search unavailable	جستجو دردسترس نیست
+Search, button	جستجو، دکمه
+Searching…	درحال جستجو…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nتنظیمات فعلی Pixel Suite شما جایگزین می‌شود. لانچر Pixel یک بار بازراه‌اندازی می‌شود.
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• تنظیمات لانچر Pixel: پوشه‌های کشو، مرتب‌سازی، تغییر نام‌ها و قفل‌ها\n
+• Share menu: pinned order and hidden apps\n	• منوی هم‌رسانی: ترتیب سنجاق‌شده و برنامه‌های پنهان\n
+App and data	برنامه و داده
+App only	فقط برنامه
+Back up	پشتیبان‌گیری
+Just the app. Its data isn't saved.	فقط خود برنامه. داده‌هایش ذخیره نمی‌شود.
+Only the app goes back. Its data now stays.	فقط برنامه برمی‌گردد. داده‌های فعلی‌اش می‌ماند.
+Only the app, signed out and empty.	فقط برنامه، بدون ورود و خالی.
+Puts everything back exactly as it was saved.	همه‌چیز را دقیقاً همان‌طور که ذخیره شده برمی‌گرداند.
+Puts everything back exactly as it was saved. Its data now is replaced.	همه‌چیز را دقیقاً همان‌طور که ذخیره شده برمی‌گرداند. داده‌های فعلی‌اش جایگزین می‌شود.
+Restore	بازیابی
+Working out the size…	درحال محاسبه اندازه…
+Backing up…	درحال پشتیبان‌گیری…
+Backup & Restore	پشتیبان‌گیری و بازیابی
+Checking…	درحال بررسی…
+Couldn't delete it. Check root.	حذف نشد. روت را بررسی کنید.
+Delete	حذف
+Delete?	حذف شود؟
+Every held-back app is saved at its current version	هر برنامه نگه‌داشته با نسخه فعلی‌اش ذخیره می‌شود
+Held-back apps	برنامه‌های نگه‌داشته
+Held-back apps are saved here before they update.	برنامه‌های نگه‌داشته پیش از به‌روزرسانی اینجا ذخیره می‌شوند.
+Installed apps	برنامه‌های نصب‌شده
+Loading saved apps…	درحال بار کردن برنامه‌های ذخیره‌شده…
+No installed app has saved versions	هیچ برنامه نصب‌شده‌ای نسخه ذخیره‌شده ندارد
+No saved versions yet	هنوز نسخه ذخیره‌شده‌ای نیست
+Not installed	نصب نیست
+Nothing saved yet	هنوز چیزی ذخیره نشده
+Saved	ذخیره شد
+Saved in PixelSuite/APK backups on your phone	در PixelSuite/APK backups روی تلفنتان ذخیره شد
+The 3 newest versions of each app are kept	۳ نسخه جدیدتر هر برنامه نگه داشته می‌شود
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	این برنامه‌ها حذف نصب شده‌اند. «بازیابی» دوباره نصبش می‌کند؛ اگر با داده‌هایش ذخیره شده باشد، با ورود.
+installed now	اکنون نصب است
+Audiobooks	کتاب‌های صوتی
+Documents	اسناد
+Download	بارگیری‌ها
+Music	موسیقی
+Podcasts	پادکست‌ها
+Recordings	ضبط‌ها
+Automatic (default)	خودکار (پیش‌فرض)
+Automatic: every call is recorded	خودکار: همه تماس‌ها ضبط می‌شوند
+Choose folder…	انتخاب پوشه…
+Couldn't keep access to that folder.	دسترسی به آن پوشه حفظ نشد.
+Couldn't load folder	پوشه بار نشد
+Couldn't load recording mode	حالت ضبط بار نشد
+Couldn't save: root access needed	ذخیره نشد: دسترسی روت لازم است
+Folder picker isn't available.	انتخابگر پوشه دردسترس نیست.
+HD: clearer voice (default)	HD: صدای واضح‌تر (پیش‌فرض)
+HD: twice the detail, clearer voice (default)	HD: جزئیات دوبرابر، صدای واضح‌تر (پیش‌فرض)
+Internal storage	حافظه داخلی
+Lossless: HD without compression, large WAV files	بی‌اتلاف: HD بدون فشرده‌سازی، فایل‌های WAV بزرگ
+Lossless: clearest voice, WAV files	بی‌اتلاف: واضح‌ترین صدا، فایل‌های WAV
+Manual	دستی
+Manual: tap Record during a call	دستی: هنگام تماس روی «ضبط» ضربه بزنید
+Recording mode	حالت ضبط
+Recording quality	کیفیت ضبط
+Recordings folder	پوشه ضبط‌ها
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (پیش‌فرض)
+SD card	کارت SD
+Standard: phone-call quality, smallest files	استاندارد: کیفیت تماس تلفنی، کوچک‌ترین فایل‌ها
+Standard: smaller files	استاندارد: فایل‌های کوچک‌تر
+Release notes are unavailable in this build.	یادداشت‌های نسخه در این ساخت دردسترس نیست.
+Release notes could not be opened. Please reopen this page.	یادداشت‌های نسخه باز نشد. لطفاً این صفحه را دوباره باز کنید.
+Always	همیشه
+Dark	تیره
+Dark mode	حالت تیره
+Dark pages	صفحه‌های تیره
+Needs Pixel Suite premium	Pixel Suite ویژه لازم است
+On this website	در این وب‌سایت
+Pictures and videos keep their colors.	عکس‌ها و ویدیوها رنگشان را نگه می‌دارند.
+Schedule	زمان‌بندی
+Style	سبک
+When	چه زمانی
+Speed Dial	شماره‌گیری سریع
+Ad Blocker	مسدودکننده آگهی
+Extensions	افزونه‌ها
+Hold an extension to pin it to the toolbar	برای سنجاق کردن افزونه به نوار ابزار، آن را نگه دارید
+Chrome didn't take the shortcut (limit reached?)	Chrome میان‌بر را نپذیرفت (به حد رسیده؟)
+Couldn't add it to the speed dial	به شماره‌گیری سریع اضافه نشد
+Couldn't make a folder in this Chrome version	در این نسخه Chrome نمی‌توان پوشه ساخت
+Couldn't move it into the folder	به پوشه منتقل نشد
+Edit	ویرایش
+Edit website	ویرایش وب‌سایت
+Its website goes back to the speed dial.	وب‌سایتش به شماره‌گیری سریع برمی‌گردد.
+Move to speed dial	انتقال به شماره‌گیری سریع
+Name	نام
+No room on the speed dial	در شماره‌گیری سریع جا نیست
+Open in new tab	باز کردن در برگه جدید
+Remove	برداشتن
+Remove folder	برداشتن پوشه
+Rename	تغییر نام
+Rename folder	تغییر نام پوشه
+URL	نشانی وب
+Back	برگشت
+Forward	بعدی
+Home	صفحه اصلی
+Profile	نمایه
+Tabs	برگه‌ها
+Filtering isn't available on this page.	فیلتر در این صفحه دردسترس نیست.
+Pixel Suite settings	تنظیمات Pixel Suite
+Remove an element	برداشتن یک عنصر
+This page	این صفحه
+filtering mode	حالت فیلتر
+no filtering	بدون فیلتر
+Couldn't open that picture	آن تصویر باز نشد
+Tap the picture to change it	برای تغییر روی تصویر ضربه بزنید
+Use the website's icon	استفاده از نماد وب‌سایت
+Country	کشور
+Getting the free server list…	درحال دریافت فهرست سرورهای رایگان…
+No servers yet. Pixel Suite loads them when you open this.	هنوز سروری نیست. Pixel Suite وقتی این را باز کنید بارشان می‌کند.
+Unavailable · no servers right now	دردسترس نیست · اکنون سروری نیست
+VPN	VPN
+VPN for Chrome	VPN برای Chrome
+Become a patron	حامی شوید
+Buy me a coffee	برایم قهوه بخرید
+Coffee	قهوه
+Join the community	پیوستن به انجمن
+No app is available to open this link	برنامه‌ای برای باز کردن این پیوند نیست
+This link could not be opened	این پیوند باز نشد
+On a schedule	طبق زمان‌بندی
+With the phone's dark mode	همراه حالت تیره تلفن
+Call	تماس
+Incoming call deflected (device reported as switched off)	تماس ورودی منتقل شد (دستگاه خاموش اعلام شد)
+Unknown caller	تماس‌گیرنده ناشناس
+Off	خاموش
+On	روشن
+Arrow	پیکان
+Circle	دایره
+Double arrow	پیکان دوطرفه
+Line	خط
+Speech bubble	حباب گفتگو
+Square	مربع
+Star	ستاره
+Triangle	مثلث
+Blue	آبی
+Green	سبز
+Red	قرمز
+Yellow	زرد
+Clear badge	پاک کردن نشان
+Could not save the name	نام ذخیره نشد
+No	نه
+Remove folder?	پوشه برداشته شود؟
+Sort apps?	برنامه‌ها مرتب شوند؟
+Yes	بله
+Add apps	افزودن برنامه
+Create folder	ساختن پوشه
+6-digit code	کد ۶ رقمی
+Allow root access to save your device ID.	برای ذخیره شناسه دستگاه، دسترسی روت بدهید.
+Allow root access to save your purchase.	برای ذخیره خریدتان، دسترسی روت بدهید.
+Allow root access to update your purchase.	برای به‌روزرسانی خریدتان، دسترسی روت بدهید.
+Change email	تغییر ایمیل
+Check your license code and try again.	کد مجوزتان را بررسی کنید و دوباره امتحان کنید.
+Contact support	تماس با پشتیبانی
+Couldn’t confirm the purchase. Your saved pass has been kept.	خرید تأیید نشد. گذرنامه ذخیره‌شده شما حفظ شد.
+Couldn’t connect. Check your internet connection and try again.	اتصال برقرار نشد. اتصال اینترنت را بررسی کنید و دوباره امتحان کنید.
+Couldn’t save the device ID. Check root access.	شناسه دستگاه ذخیره نشد. دسترسی روت را بررسی کنید.
+Couldn’t save the purchase. Check root access.	خرید ذخیره نشد. دسترسی روت را بررسی کنید.
+Couldn’t verify the purchase link.	پیوند خرید تأیید نشد.
+Couldn’t verify this purchase.	این خرید تأیید نشد.
+Email used for purchase	ایمیل استفاده‌شده برای خرید
+Enter code	وارد کردن کد
+Enter the email you paid with.	ایمیلی را که با آن پرداخت کردید وارد کنید.
+Enter the six-digit email code.	کد شش‌رقمی ایمیل را وارد کنید.
+If a purchase matches this email, your recovery code is on its way.	اگر خریدی با این ایمیل مطابقت داشته باشد، کد بازیابی‌تان در راه است.
+Invalid purchase pass.	گذرنامه خرید نامعتبر است.
+Invalid signature.	امضا نامعتبر است.
+No connection. Your saved purchase has been kept.	اتصال نیست. خرید ذخیره‌شده شما حفظ شد.
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	پس از فعال‌سازی قابل بازپرداخت نیست، مگر جایی که قانون یا قوانین Buy Me a Coffee الزام کند.
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	یک تلفن در هر زمان. Pixel Watch سازگار و طرح eSIM لازم است.
+Pixel watch eSIM	eSIM برای Pixel Watch
+Purchase is active.	خرید فعال است.
+Purchase is no longer active.	خرید دیگر فعال نیست.
+Purchase restored on this phone.	خرید در این تلفن بازیابی شد.
+Purchase unlocked.	خرید باز شد.
+Pixel Watch eSIM ✓ (purchased)	eSIM برای Pixel Watch ✓ (خریداری‌شده)
+Refresh purchase	به‌روزرسانی خرید
+Resend code	ارسال دوباره کد
+Restore on this phone	بازیابی در این تلفن
+Restore purchase	بازیابی خرید
+Restore purchase by email	بازیابی خرید با ایمیل
+Restoring…	درحال بازیابی…
+Send recovery code	ارسال کد بازیابی
+Sending…	درحال ارسال…
+The device ID needs support. It has not been changed.	شناسه دستگاه به پشتیبانی نیاز دارد. تغییر نکرده است.
+The shop is being set up. Please try again later.	فروشگاه درحال راه‌اندازی است. لطفاً بعداً دوباره امتحان کنید.
+This purchase pass is not valid for this phone.	این گذرنامه خرید برای این تلفن معتبر نیست.
+This purchase was revoked or moved to another phone.	این خرید لغو شده یا به تلفن دیگری منتقل شده است.
+Unlock	باز کردن
+Unlocking…	درحال باز کردن…
+Yours to keep on this phone. Patreon is not required.	برای همیشه روی این تلفن مال شماست. پاتریون لازم نیست.
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — صفحه‌های تیره\n\nپس از افزودن دامنه Chrome، آن را بازراه‌اندازی کنید.
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — پاک‌سازی کادر آگهی در مقاله‌هایی که با Chrome باز می‌شوند\n\nاخبار Google (com.google.android.apps.magazines) دامنه لازم ندارد. مسدود کردن دامنه‌های آگهی از مسدودکننده کل سیستم استفاده می‌کند.
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — پاک‌سازی کادرهای آگهی خالی\n\nپس از افزودن دامنه Chrome، آن را بازراه‌اندازی کنید. مسدود کردن دامنه‌های آگهی دامنه لازم ندارد.
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **فایل‌های Google** (com.google.android.apps.nbu.files) — مرورگر فایل\n• **فایل‌ها (سیستم)** (com.google.android.documentsui / com.android.documentsui) — انتخابگر فایل سیستم
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **سرویس‌های تلفن** (com.android.phone)\n\nهر دو را انتخاب کنید، سپس بازراه‌اندازی کنید. تغییرات بعدی کلید فوراً اعمال می‌شود.
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **سرویس‌های تلفن** (com.android.phone)\n\nآن را انتخاب کنید، سپس بازراه‌اندازی کنید. تغییرات بعدی کلید فوراً اعمال می‌شود.
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **تلفن** (com.google.android.dialer)\n• **چارچوب سیستم** (system) — پشتیبانی ضبط\n\nپس از افزودن دامنه، تلفن را دوباره باز کنید.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **لانچر Pixel** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — نمادها، پوشه‌ها، منوها و لبه نرم کشو\n• **رابط کاربری سیستم** (com.android.systemui) — منوها و پیام‌های سیستم\n• **استودیو Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **عکس‌های Google** (com.google.android.apps.photos) — منوهای ویرایشگر\n\nفوق‌تیره دامنه‌های اضافی‌اش را در صفحه خودش فهرست می‌کند.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — ویژگی‌های راه‌انداز\n• **Google** (com.google.android.googlequicksearchbox) — برنامه‌های سفارشی در جستجوی Google\n• **رابط کاربری سیستم** (com.android.systemui) — جای پیام‌های کوتاه
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — نمادها و نام‌های راه‌انداز\n• **Google** (com.google.android.googlequicksearchbox) — جستجوی Google صفحه اصلی
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — دکمه‌های پیمایش کنار نوار اشاره\n• **چارچوب سیستم** (system) — برنامه‌ها منوهای پایینشان را بالای دکمه‌ها نگه می‌دارند\n• **Gboard** (com.google.android.inputmethod.latin) — دکمه بستن صفحه‌کلید
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — برنامه‌های اخیر\n• **رابط کاربری سیستم** (com.android.systemui) — نوار وضعیت افقی
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **استودیو Pixel** (com.google.android.apps.pixel.creativeassistant) — نماگرفت‌ها\n• **عکس‌های Google** (com.google.android.apps.photos) — عکس‌ها
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play Store** (com.android.vending) — مسدود کردن به‌روزرسانی برنامه\n• **چارچوب سیستم** (system)\n• **تنظیمات** (com.android.settings) — مسدود کردن OTA و بازنشانی کارخانه
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play Store** (com.android.vending)\n• **چارچوب سیستم** (system), برای بازیابی نسخه ذخیره‌شده
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **برگه هم‌رسانی** (com.android.intentresolver)\n• **عکس‌های Google** (com.google.android.apps.photos) — رنگ‌های هماهنگ صفحه هم‌رسانی Photos
+• **System Framework** (system)	• **چارچوب سیستم** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **چارچوب سیستم** (system) — محافظت از برنامه\n• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — قفل برنامه و پوشه\n• **رابط کاربری سیستم** (com.android.systemui) — درخواست‌های احراز هویت\n\nقفل صفحه تلفن را تنظیم کنید، سپس پس از افزودن دامنه‌ها بازراه‌اندازی کنید.
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **چارچوب سیستم** (system) — دکمه روشن/خاموش\n• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — Circle to Search
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **چارچوب سیستم** (system) — مسدود کردن به‌روزرسانی\n• **تنظیمات** (com.android.settings) — کنترل‌های به‌روزرسانی و بازنشانی
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **چارچوب سیستم** (system) — بیدار کردن، خواب و نماگرفت\n• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — کشیدن برنامه‌ها\n• **رابط کاربری سیستم** (com.android.systemui) — کنترل‌های ضبط\n• **استودیو Pixel** (com.google.android.apps.pixel.creativeassistant) — برش نماگرفت
+• **System Framework** (system), to restore a saved version (also an older one)	• **چارچوب سیستم** (system), برای بازیابی نسخه ذخیره‌شده (حتی نسخه قدیمی‌تر)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **چارچوب سیستم** (system)\n• **رابط کاربری سیستم** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **رابط کاربری سیستم** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **رابط کاربری سیستم** (com.android.systemui) — نمایشگر همیشه روشن\n• **چارچوب سیستم** (system) — نمایشگر همیشه روشن را حتی با خاموش بودن دیگر گزینه‌های نمایش صفحه قفل شروع می‌کند
+• **System UI** (com.android.systemui) — the lock screen PIN	• **رابط کاربری سیستم** (com.android.systemui) — پین صفحه قفل
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **رابط کاربری سیستم** (com.android.systemui)\n• **لانچر Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **تنظیمات** (com.android.settings)\n• **سرویس‌های تنظیمات** (com.google.android.settings.intelligence)\n• **نصب‌کننده بسته** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nبرای سبک ویرایشگر، **استودیو Pixel** (com.google.android.apps.pixel.creativeassistant) و **عکس‌های Google** (com.google.android.apps.photos) را هم انتخاب کنید. پس از افزودن دامنه‌ها بازراه‌اندازی کنید.
+Auto (A–Z)	خودکار (A–Z)
+Custom	سفارشی
+Sort	مرتب‌سازی
+Sort the apps in this folder from A to Z?	برنامه‌های این پوشه از A تا Z مرتب شوند؟
+Auto-correction	تصحیح خودکار
+Corrects words as you type	کلمات را هنگام تایپ تصحیح می‌کند
+Gboard's own switch (reading it…)	کلید خود Gboard (درحال خواندن…)
+Languages	زبان‌ها
+On: Gboard corrects words in the languages turned on below	روشن: Gboard کلمات را در زبان‌هایی که پایین روشن است تصحیح می‌کند
+Reading Gboard's languages…	درحال خواندن زبان‌های Gboard…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	کلید بالا تصحیح خودکار خود Gboard است. برای هر زبانی پایین خاموشش کنید: آنجا کلمات جایگزین نمی‌شوند، اما پیشنهادها نشان داده می‌شوند. تغییرات دفعه بعد که صفحه‌کلید باز شود اعمال می‌شود.
+A Gboard shortcut	یک میان‌بر Gboard
+A keyboard you can move anywhere	صفحه‌کلیدی که می‌توانید هر جا ببرید
+Arrow keys and selection tools	کلیدهای پیکان و ابزارهای انتخاب
+Both show at once, in two rows (portrait)	هر دو با هم، در دو ردیف (عمودی)
+Bring back what you undid	برگرداندن چیزی که واگرد کردید
+Change how Gboard looks	تغییر ظاهر Gboard
+Clipboard	بریده‌دان
+Copy	کپی
+Copy the selected text	کپی متن انتخاب‌شده
+Cut	برش
+Cut the selected text	برش متن انتخاب‌شده
+Drag a shortcut to the edge of the list to turn the page.	برای ورق زدن، میان‌بری را به لبه فهرست بکشید.
+Edit toolbar shortcuts	ویرایش میان‌برهای نوار ابزار
+Emoji	اموجی
+Emoji, emoticons and symbols	اموجی، شکلک و نماد
+Fill in saved passwords and details	پر کردن گذرواژه‌ها و اطلاعات ذخیره‌شده
+Floating	شناور
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	نوار ابزار Gboard، میان‌برها بالای پیشنهادها: میان‌برها را اینجا بکشید
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	نوار ابزار Gboard، میان‌برها زیر پیشنهادها: میان‌برها را اینجا بکشید
+Gboard's toolbar: drag shortcuts here	نوار ابزار Gboard: میان‌برها را اینجا بکشید
+Hello	سلام
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	یک میان‌بر را نگه دارید و روی نوار ابزار بکشید؛ در طول آن برای تغییر ترتیب، یا بیرون از آن برای حذف. روی یکی ضربه بزنید تا ببینید چه کاری انجام می‌دهد.
+Make the keyboard bigger or smaller	بزرگ یا کوچک کردن صفحه‌کلید
+Menu button	دکمه منو
+Next language	زبان بعدی
+Okay	باشه
+One-handed	یک‌دستی
+Open Gboard's settings	باز کردن تنظیمات Gboard
+Paste	جای‌گذاری
+Paste what you copied	جای‌گذاری چیزی که کپی کرده‌اید
+Put at least one shortcut on the toolbar	دست‌کم یک میان‌بر روی نوار ابزار بگذارید
+Redo	انجام دوباره
+Resize	تغییر اندازه
+Rewrite or polish what you wrote	بازنویسی یا بهبود نوشته‌تان
+Scan text	اسکن متن
+Search and send GIFs	جستجو و ارسال GIF
+Search and send stickers	جستجو و ارسال برچسب
+Select all	انتخاب همه
+Select all the text	انتخاب کل متن
+Settings	تنظیمات
+Share	هم‌رسانی
+Share Gboard with others	هم‌رسانی Gboard با دیگران
+Shortcuts	میان‌برها
+Shortcuts above the suggestions, not below	میان‌برها بالای پیشنهادها، نه زیر آن‌ها
+Shortcuts below the suggestions, not above	میان‌برها زیر پیشنهادها، نه بالای آن‌ها
+Shortcuts row on bottom	ردیف میان‌برها در پایین
+Shortcuts row on top	ردیف میان‌برها در بالا
+Shrink the keyboard to one side	کوچک کردن صفحه‌کلید به یک سمت
+Stickers	برچسب‌ها
+Suggestions and shortcuts together	پیشنهادها و میان‌برها با هم
+Switch to your next language	رفتن به زبان بعدی‌تان
+Tap to select a word, tap again to clear. Hold to select all	برای انتخاب یک کلمه ضربه بزنید، دوباره ضربه بزنید تا لغو شود. برای انتخاب همه نگه دارید
+Text editing	ویرایش متن
+Thanks	ممنون
+Theme	زمینه
+Translate	ترجمه
+Translate as you type	ترجمه هنگام تایپ
+Type by speaking	تایپ با صحبت کردن
+Type text from your camera	تایپ متن از دوربین
+Undo	واگرد
+Undo your last change	واگرد آخرین تغییر
+Voice typing	تایپ صوتی
+Writing tools	ابزارهای نوشتن
+Your copied text and pinned clips	متن کپی‌شده و برش‌های سنجاق‌شده
+Clear	پاک کردن
+Clear the clipboard?	بریده‌دان پاک شود؟
+Every clip is deleted except pinned ones.	همه برش‌ها به‌جز برش‌های سنجاق‌شده حذف می‌شوند.
+Delete this pinned clip?	این برش سنجاق‌شده حذف شود؟
+Apply	اعمال
+Down	پایین
+Height	ارتفاع
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	اندازه و جای صفحه‌کلید. برای تغییر اندازه دستگیره‌ها را بکشید، یا برای جابه‌جایی خود صفحه‌کلید را.
+Try typing here after Apply	بعد از اعمال، اینجا تایپ کنید
+Up	بالا
+Width	عرض
+Apps list	فهرست برنامه‌ها
+Pixel Suite isn't available	Pixel Suite دردسترس نیست
+Adjust icon	تنظیم نماد
+Could not save this icon. Try another image.	این نماد ذخیره نشد. تصویر دیگری را امتحان کنید.
+Icon updated	نماد به‌روز شد
+Pinch to zoom, drag to move	برای بزرگ‌نمایی دو انگشت را باز و بسته کنید، برای جابه‌جایی بکشید
+Reset position and zoom	بازنشانی موقعیت و بزرگ‌نمایی
+Large	بزرگ
+Largest	بزرگ‌ترین
+Medium	متوسط
+Small	کوچک
+Smallest	کوچک‌ترین
+Apps the pack doesn't cover keep their own icons.	برنامه‌هایی که بسته پوشش نمی‌دهد نماد خودشان را نگه می‌دارند.
+Close icon packs	بستن بسته‌های نماد
+Get icon packs	دریافت بسته نماد
+Icon pack	بسته نماد
+Loading icon packs…	درحال بار کردن بسته‌های نماد…
+Loading icons…	درحال بار کردن نمادها…
+No icon packs installed yet	هنوز بسته نمادی نصب نشده است
+Pixel Launcher's own icons, including themed icons	نمادهای خود لانچر Pixel، همراه با نمادهای زمینه‌دار
+System default	پیش‌فرض سیستم
+Unavailable	دردسترس نیست
+Rename app	تغییر نام برنامه
+Shows on the home screen, in folders, the drawer and search.	در صفحه اصلی، پوشه‌ها، کشوی برنامه و جستجو نمایش داده می‌شود.
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	اینجا پنهان نشد. «پنهان کردن نوار جستجو» را در Pixel Suite روشن کنید.
+Couldn't save Hide search bar	«پنهان کردن نوار جستجو» ذخیره نشد
+Hide search bar isn't supported on this launcher version	«پنهان کردن نوار جستجو» در این نسخه از راه‌انداز پشتیبانی نمی‌شود
+Change icon	تغییر نماد
+Could not read this image. Try another image.	این تصویر خوانده نشد. تصویر دیگری را امتحان کنید.
+Could not reset the icon	نماد بازنشانی نشد
+Files	فایل‌ها
+Files is unavailable	فایل‌ها دردسترس نیست
+Original icon restored	نماد اصلی برگردانده شد
+Photos	عکس‌ها
+Photos is unavailable. Choose Files instead.	Photos دردسترس نیست. به‌جای آن فایل‌ها را انتخاب کنید.
+Reset icon	بازنشانی نماد
+Could not read this icon pack	این بسته نماد خوانده نشد
+Could not use this icon	این نماد استفاده نشد
+Loading…	درحال بار کردن…
+No icon packs installed yet.\nInstall one and it shows here.	هنوز بسته نمادی نصب نشده است.\nیکی نصب کنید تا اینجا نمایش داده شود.
+Play Store is unavailable	Play Store دردسترس نیست
+Search icons	جستجوی نمادها
+All apps	همه برنامه‌ها
+App picker	انتخابگر برنامه
+Choose apps	انتخاب برنامه‌ها
+Couldn't load apps. Check root access and reopen.	برنامه‌ها بار نشدند. دسترسی روت را بررسی و دوباره باز کنید.
+Couldn't save. Check root access and try again.	ذخیره نشد. دسترسی روت را بررسی و دوباره امتحان کنید.
+Filter installed apps	فیلتر برنامه‌های نصب‌شده
+Loading apps…	درحال بار کردن برنامه‌ها…
+Root unavailable	روت دردسترس نیست
+Saved. Changes apply the next time these apps open.	ذخیره شد. تغییرات دفعه بعد که این برنامه‌ها باز شوند اعمال می‌شوند.
+Search installed apps	جستجوی برنامه‌های نصب‌شده
+System apps	برنامه‌های سیستم
+User apps	برنامه‌های کاربر
+No room on this page for the other apps	در این صفحه جایی برای برنامه‌های دیگر نیست
+A Quest for the Kind-Hearted	مأموریتی برای مهربان‌دلان
+Close account	بستن حساب
+Membership refreshed	عضویت به‌روز شد
+Pass expires:  ∞	انقضای گذرنامه:  ∞
+Patreon account	حساب پاتریون
+Patreon member	عضو پاتریون
+Patron ✓	حامی ✓
+Read the quest	خواندن مأموریت
+Refresh	به‌روزرسانی
+Refreshing…	درحال به‌روزرسانی…
+Sign in with Patreon	ورود با پاتریون
+Sign out	خروج از سیستم
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	از Pixel Suite حمایت کنید تا Chrome+، Gboard+، مسدودکننده آگهی، VPN، صفحه‌های تیره، ضبط تماس و فید Google بدون آگهی باز شود.
+A Quest for the\nKind-Hearted	مأموریتی برای\nمهربان‌دلان
+Already a patron? Unlock	از قبل حامی هستید؟ باز کردن
+Checking Patreon membership…	درحال بررسی عضویت پاتریون…
+Join on Patreon	پیوستن در پاتریون
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	در پاتریون بپیوندید تا ویژگی‌های پاتریون باز شود، و ممنون که پروژه را زنده نگه می‌دارید. 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	پیوستید؟ برای تأیید عضویت پولی پاتریون روی «باز کردن» ضربه بزنید.
+Let's go	بزن بریم
+No paid membership found. Choose the paid tier to unlock.	عضویت پولی پیدا نشد. برای باز کردن، سطح پولی را انتخاب کنید.
+Open a browser to sign in with Patreon.	برای ورود با پاتریون یک مرورگر باز کنید.
+Open the Pixel Suite paid tier in your browser.	سطح پولی Pixel Suite را در مرورگرتان باز کنید.
+Patreon sign-in is being set up.	ورود با پاتریون درحال راه‌اندازی است.
+Patron verified	حامی تأیید شد
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	Pixel Suite آگهی و ردیاب ندارد. اطلاعات حساب و پرداخت فقط برای تأیید باز شدن قفل استفاده می‌شود.
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite را یک نفر، در اوقات فراغت، از روی عشق به گوشی‌های Pixel می‌سازد.
+Quest Complete!	مأموریت انجام شد!
+Ready to check membership	آماده بررسی عضویت
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	ممنون که از Pixel Suite حمایت می‌کنید. ویژگی‌های پاتریون شما آماده است.
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	حامیان Chrome+ و Gboard+، مسدودکننده آگهی و VPN، صفحه‌های تیره در Chrome، ضبط تماس و فید Google بدون آگهی را باز می‌کنند. هر حمایتی مستقیم به برنامه برمی‌گردد: همگام ماندن با به‌روزرسانی‌های Android و برنامه‌های Google، درست کردن چیزهایی که خراب می‌کنند و ساختن ویژگی‌های تازه.
+Welcome back!	خوش برگشتید!
+✨ Quest Complete!	✨ مأموریت انجام شد!
+📜 A Quest for the Kind-Hearted	📜 مأموریتی برای مهربان‌دلان
+Google apps	برنامه‌های Google
+Patreon feature	ویژگی پاتریون
+Unlock this feature with Patreon	این ویژگی را با پاتریون باز کنید
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android اجازه VPN را نداد. صفحه VPN را باز کنید و روی «اتصال» ضربه بزنید.
+Another VPN took over	VPN دیگری کنترل را گرفت
+Checking that websites open…	درحال بررسی باز شدن وب‌سایت‌ها…
+Checking the connection…	درحال بررسی اتصال…
+Chrome isn't installed	Chrome نصب نیست
+Connection failed	اتصال ناموفق بود
+Connection lost	اتصال قطع شد
+Couldn't load the server list. Check your connection.	فهرست سرورها بار نشد. اتصالتان را بررسی کنید.
+Disconnect	قطع اتصال
+Disconnected	قطع شد
+Finding servers…	درحال یافتن سرورها…
+Free volunteer server	سرور داوطلبانه رایگان
+No server answered	هیچ سروری پاسخ نداد
+Server stopped answering	سرور دیگر پاسخ نمی‌دهد
+Trying the faster UDP connection (up to 30 s)…	درحال امتحان اتصال سریع‌تر UDP (تا ۳۰ ثانیه)…
+VPN is a Patreon feature	VPN یکی از ویژگی‌های پاتریون است
+connections refused	اتصال‌ها رد شد
+no answer	بدون پاسخ
+Circle to Search isn't available	Circle to Search دردسترس نیست
+Do Not Annoy off	مزاحم نشو خاموش
+Do Not Annoy on	مزاحم نشو روشن
+Do Not Disturb off	مزاحم نشوید خاموش
+Do Not Disturb on	مزاحم نشوید روشن
+No Annoyance off	بی‌مزاحمت خاموش
+No Annoyance on	بی‌مزاحمت روشن
+Silence off	بی‌صدا خاموش
+Silence on	بی‌صدا روشن
+Authenticator	Authenticator
+Calculator	ماشین‌حساب
+Calendar	تقویم
+Camera	دوربین
+Clock	ساعت
+Contacts	مخاطبین
+Maps	Maps
+Messages	پیام‌نگار
+Play Store	Play Store
++  Add apps	+  افزودن برنامه
++ Add to home screen	+ افزودن به صفحه اصلی
+A clearer page	صفحه‌ای تمیزتر
+A website	یک وب‌سایت
+Ad blocking	مسدود کردن آگهی
+Add new	افزودن جدید
+Add to home screen	افزودن به صفحه اصلی
+Adjust	تنظیم
+Advertisement	آگهی
+Alex	Alex
+Another pack	بسته دیگر
+App info	اطلاعات برنامه
+App is locked	برنامه قفل است
+Applied	اعمال شد
+Applied across the launcher	در کل راه‌انداز اعمال شد
+Applying…	درحال اعمال…
+Apps	برنامه‌ها
+Authenticate to open	برای باز کردن احراز هویت کنید
+Back in your share list	دوباره در فهرست هم‌رسانی شما
+Block system updates	مسدود کردن به‌روزرسانی‌های سیستم
+Bluetooth	بلوتوث
+Bookmarks	نشانک‌ها
+Bookmarks bar	نوار نشانک‌ها
+Call ended	تماس پایان یافت
+Call log: Alex · Blocked	گزارش تماس: Alex · مسدود
+Call recording	ضبط تماس
+Camera (stock)	دوربین (اصلی)
+Centered labels. Clearer view.	برچسب‌های وسط‌چین. نمای واضح‌تر.
+Change icon → Icon pack	تغییر نماد ← بسته نماد
+Change icons	تغییر نمادها
+Choose Icon pack	انتخاب بسته نماد
+Choose a pack	انتخاب بسته
+Choose an image	انتخاب تصویر
+Cleaner articles in Chrome	مقاله‌های تمیزتر در Chrome
+Clear all	پاک کردن همه
+Collections	مجموعه‌ها
+Connected	متصل
+Controls within reach	کنترل‌ها دم دست
+Create	ایجاد
+Crop	برش
+Crop freely	برش آزاد
+Data and Wi-Fi stay on	داده و Wi-Fi روشن می‌مانند
+Date & time	تاریخ و زمان
+Device audio	صدای دستگاه
+Discover	Discover
+Display & touch	نمایشگر و لمس
+Do Not Disturb	مزاحم نشوید
+Done	تمام
+Dot cleared	نقطه پاک شد
+Downloads	بارگیری‌ها
+Drag to make a folder	برای ساختن پوشه بکشید
+Edit photo	ویرایش عکس
+Empty ad space	فضای آگهی خالی
+Enter PIN	پین را وارد کنید
+Entire screen	کل صفحه
+Erase all data	پاک کردن همه داده‌ها
+Every tab in view	همه برگه‌ها جلوی چشم
+Example app	برنامه نمونه
+Example pack	بسته نمونه
+Factory reset locked	بازنشانی کارخانه قفل است
+Father	پدر
+Fill	پر کردن
+Flashlight	چراغ‌قوه
+Folder	پوشه
+For you	برای شما
+Fri, Oct 16	جمعه، ۱۶ اکتبر
+Friday, Oct 16	جمعه، ۱۶ اکتبر
+Friend	دوست
+Headlines	سرخط‌ها
+Hidden apps	برنامه‌های پنهان
+Hidden apps remain available	برنامه‌های پنهان دردسترس می‌مانند
+Hidden contacts	مخاطبین پنهان
+Hide 2 apps	پنهان کردن ۲ برنامه
+Hide contact	پنهان کردن مخاطب
+Hide several apps	پنهان کردن چند برنامه
+Hold	نگه‌داشتن
+Hold and drag pinned apps	برنامه‌های سنجاق‌شده را نگه دارید و بکشید
+Hold to unhide	برای آشکار کردن نگه دارید
+How about this spot?	این جا چطور است؟
+Incoming call declined	تماس ورودی رد شد
+Incoming call deflected	تماس ورودی منتقل شد
+Incoming calls quiet	تماس‌های ورودی بی‌صدا
+Internet	اینترنت
+Keep Notes	Keep Notes
+Let's find a new place.	بیایید جای تازه‌ای پیدا کنیم.
+Lock	قفل
+Manage suggested contacts	مدیریت مخاطبین پیشنهادی
+Message	پیام
+Minus hides the contacts row	علامت منها ردیف مخاطبین را پنهان می‌کند
+Mobile bookmarks	نشانک‌های تلفن همراه
+Mobile network	شبکه تلفن همراه
+More of your feed	بیشتر از فید شما
+My folder	پوشه من
+New tab	برگه جدید
+Newest first	جدیدترین‌ها اول
+News article	مقاله خبری
+No empty ad boxes	بدون کادر آگهی خالی
+No recent apps	برنامه اخیری نیست
+No sponsored gaps	بدون فاصله‌های حمایت‌شده
+Notifications	اعلان‌ها
+OTA blocker	مسدودکننده OTA
+Oct 12, 10:20	۱۲ اکتبر، ۱۰:۲۰
+Oct 8, 08:10	۸ اکتبر، ۰۸:۱۰
+One app. Your choice.	یک برنامه. انتخاب شما.
+Open. Swipe. Close.	باز کن. بکش. ببند.
+Order saved	ترتیب ذخیره شد
+Other bookmarks	نشانک‌های دیگر
+Packages blocked	بسته‌ها مسدود شدند
+Perfect. See you there!	عالی. آنجا می‌بینمت!
+Phone	تلفن
+Pin	سنجاق کردن
+Pin moves apps above the divider	سنجاق کردن برنامه‌ها را بالای جداکننده می‌برد
+Pin, then drag to reorder	سنجاق کنید، بعد برای مرتب کردن بکشید
+Pinned apps	برنامه‌های سنجاق‌شده
+Plus brings the row back	علامت به‌علاوه ردیف را برمی‌گرداند
+Private	خصوصی
+Private folder	پوشه خصوصی
+Read the full story	خواندن کل خبر
+Reading list	فهرست خواندن
+Ready for the weekend?	برای آخر هفته آماده‌ای؟
+Ready to activate	آماده فعال‌سازی
+Record	ضبط
+Record your screen	ضبط صفحه‌نمایش
+Recorded	ضبط شد
+Recording	درحال ضبط
+Recording saved	ضبط ذخیره شد
+Recordings / Calls	Recordings / Calls
+Restricted packages	بسته‌های محدودشده
+Scan QR code	اسکن رمزینه QR
+Scan your carrier's code	رمزینه شرکت مخابراتی‌تان را اسکن کنید
+Screenshot	نماگرفت
+Screenshot saved	نماگرفت ذخیره شد
+Scroll to continue	برای ادامه پیمایش کنید
+Search the web	جستجو در وب
+Select	انتخاب
+Select apps	انتخاب برنامه‌ها
+Sep 30, 21:00	۳۰ سپتامبر، ۲۱:۰۰
+Share or restore hidden apps	هم‌رسانی یا بازیابی برنامه‌های پنهان
+Show touches	نمایش ضربه‌ها
+Sites	سایت‌ها
+Software updates	به‌روزرسانی‌های نرم‌افزار
+Sort  ⌄	مرتب‌سازی  ⌄
+Sort apps A–Z?	برنامه‌ها به ترتیب الفبا مرتب شوند؟
+Speed Dial in bookmarks	شماره‌گیری سریع در نشانک‌ها
+Split screen	تقسیم صفحه
+Start	شروع
+Swipe	کشیدن
+System settings	تنظیمات سیستم
+Tap to share	برای هم‌رسانی ضربه بزنید
+Themes	زمینه‌ها
+Themes → Icon pack	زمینه‌ها ← بسته نماد
+Today	امروز
+Today 09:15	امروز ۰۹:۱۵
+Today 14:42	امروز ۱۴:۴۲
+Today's stories	خبرهای امروز
+Today's top stories	مهم‌ترین خبرهای امروز
+Touch fingerprint sensor	حسگر اثر انگشت را لمس کنید
+Unhide app	آشکار کردن برنامه
+Unlocked on the 4th digit	با رقم چهارم باز شد
+Use Super Dark-Mode	استفاده از حالت فوق‌تیره
+Voice note.m4a	یادداشت صوتی.m4a
+Voice search	جستجوی صوتی
+Wallpaper & style	کاغذدیواری و سبک
+Watch eSIM	eSIM ساعت
+Weekend plans	برنامه‌های آخر هفته
+Wife	همسر
+Yes! A coffee sounds good.	آره! قهوه خوبه.
+Yesterday	دیروز
+Yesterday 18:30	دیروز ۱۸:۳۰
+Your Pixel. Your way.	Pixel شما. به روش شما.
+Your tabs	برگه‌های شما
+‹ Back	‹ برگشت
+↓ Move to bottom	↓ رفتن به پایین
+Lock folder	قفل کردن پوشه
+Unlock folder	باز کردن قفل پوشه
+Confirm it's you to disable this app	برای غیرفعال کردن این برنامه هویتتان را تأیید کنید
+Confirm it's you to lock this app	برای قفل کردن این برنامه هویتتان را تأیید کنید
+Confirm it's you to lock this folder	برای قفل کردن این پوشه هویتتان را تأیید کنید
+Confirm it's you to pause this app	برای مکث این برنامه هویتتان را تأیید کنید
+Confirm it's you to remove this app	برای برداشتن این برنامه هویتتان را تأیید کنید
+Confirm it's you to remove this folder	برای برداشتن این پوشه هویتتان را تأیید کنید
+Confirm it's you to uninstall this app	برای حذف نصب این برنامه هویتتان را تأیید کنید
+Confirm it's you to unlock this app	برای باز کردن قفل این برنامه هویتتان را تأیید کنید
+Confirm it's you to unlock this folder	برای باز کردن قفل این پوشه هویتتان را تأیید کنید
+Could not check your screen lock	قفل صفحه بررسی نشد
+Could not save. Is root allowed for Pixel Suite?	ذخیره نشد. آیا روت برای Pixel Suite مجاز است؟
+Please authenticate to proceed	لطفاً برای ادامه احراز هویت کنید
+Set a screen lock first to lock apps	برای قفل کردن برنامه‌ها، اول قفل صفحه تنظیم کنید
+Use PIN	استفاده از پین
+App remains locked	برنامه قفل می‌ماند
+Cannot dismiss locked apps	برنامه‌های قفل‌شده بسته نمی‌شوند
+Two apps locked	دو برنامه قفل‌شده
+Refresh rate	سرعت بازخوانی
+Accept	پذیرفتن
+An update check is already running.	بررسی به‌روزرسانی از قبل درحال اجرا است.
+Automatic update checks are off.	بررسی خودکار به‌روزرسانی خاموش است.
+Could not verify both release repositories. Try again later.	هر دو مخزن نسخه‌ها تأیید نشدند. بعداً دوباره امتحان کنید.
+New version ready. Tap to download and install.	نسخه جدید آماده است. برای بارگیری و نصب ضربه بزنید.
+No newer official release is published with matching APKs on both repositories.	نسخه رسمی جدیدتری با APKهای مطابق در هر دو مخزن منتشر نشده است.
+No release check yet.	هنوز نسخه‌ای بررسی نشده است.
+Apply update blocking choices	اعمال انتخاب‌های مسدود کردن به‌روزرسانی
+Couldn't apply: root access needed	اعمال نشد: دسترسی روت لازم است
+Couldn't restart: root access needed	بازراه‌اندازی نشد: دسترسی روت لازم است
+Restarting…	درحال بازراه‌اندازی…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	حالت فوق‌تیره از سبک سیاه خودش استفاده می‌کند.\nبرای تغییر سبک خاموشش کنید.
+**Used for:**\n	**کاربرد:**\n
+Adds Doodles and cropping tools to the screenshot editor.	خط‌خطی و ابزارهای برش را به ویرایشگر نماگرفت اضافه می‌کند.
+Adds editable Doodles to the photo editor.	خط‌خطی ویرایش‌پذیر را به ویرایشگر عکس اضافه می‌کند.
+Adds the refresh-rate slider to Display & touch.	لغزاننده سرعت بازخوانی را به «نمایشگر و لمس» اضافه می‌کند.
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	ضبط صفحه‌های امن را مجاز می‌کند، وضعیت دسترس‌پذیری و اشکال‌زدایی را از برنامه‌ها پنهان می‌کند و شمارنده FPS را فراهم می‌کند.
+Applies Super Dark to Gboard.	فوق‌تیره را روی Gboard اعمال می‌کند.
+Applies Super Dark to Settings search.	فوق‌تیره را روی جستجوی تنظیمات اعمال می‌کند.
+Applies Super Dark to Settings.	فوق‌تیره را روی تنظیمات اعمال می‌کند.
+Applies Super Dark to app uninstall dialogs.	فوق‌تیره را روی کادرهای حذف نصب برنامه اعمال می‌کند.
+Applies Super Dark to the Google app and feed.	فوق‌تیره را روی برنامه Google و فید اعمال می‌کند.
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	نمادها، پوشه‌ها و منوهای راه‌انداز را اعمال می‌کند، به‌علاوه لبه نرم مات پشت ناحیه جستجوی کشوی برنامه. جلوه کشو فقط با شیشه مات فعال است.
+Blocks system update installation and protects factory reset.	نصب به‌روزرسانی‌های سیستم را مسدود می‌کند و از بازنشانی کارخانه محافظت می‌کند.
+Controls Software updates and the factory-reset option in Settings.	به‌روزرسانی‌های نرم‌افزار و گزینه بازنشانی کارخانه را در تنظیمات کنترل می‌کند.
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	وقتی مسیر پشته تماس Pixel دردسترس نیست، تماس‌های ورودی را برای مزاحم نشو رد می‌کند.
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	فشار دوباره دکمه روشن/خاموش و کم کردن صدا را برای میان‌برهای چراغ‌قوه و دوربین تشخیص می‌دهد.
+Detects volume-down double presses while the screen is off.	فشار دوباره دکمه کم کردن صدا را وقتی صفحه خاموش است تشخیص می‌دهد.
+Enables QR-code eSIM setup in the Pixel Watch phone app.	راه‌اندازی eSIM با رمزینه QR را در برنامه Pixel Watch تلفن فعال می‌کند.
+Enables call recording and its controls in the Google Phone app.	ضبط تماس و کنترل‌های آن را در برنامه تلفن Google فعال می‌کند.
+Fades the status bar while recent apps are viewed in landscape.	هنگام دیدن برنامه‌های اخیر در حالت افقی، نوار وضعیت را کم‌رنگ می‌کند.
+Files (system)	فایل‌ها (سیستم)
+Files by Google	فایل‌های Google
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	لبه‌های پیمایش نرم شیشه مات در صفحه‌هایی که از تنظیمات Android باز می‌شوند، همراه با زیرصفحه‌های پشتیبانی‌شده. از حالت روشن، تیره و فوق‌تیره پیروی می‌کند. این دامنه را در LSPosed فعال کنید و برنامه یا تلفن را بازراه‌اندازی کنید.
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	اشاره‌های بیدار کردن، خواب و نماگرفت را در فرایند سیستم Android مدیریت می‌کند.
+Hides the keyboard globe and moves the dismiss arrow to the right.	دکمه کره زمین صفحه‌کلید را پنهان می‌کند و پیکان بستن را به راست می‌برد.
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	هنگام ذخیره ضبط‌ها، تماس‌ها را روان نگه می‌دارد.
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	وقتی مزاحم نشو روشن است، تماس‌های ورودی را از طریق پشته تماس Pixel بی‌صدا نگه می‌دارد.
+Keeps screenshots ready for faster capture.	نماگرفت‌ها را برای گرفتن سریع‌تر آماده نگه می‌دارد.
+Keeps selected apps on their current version by blocking their Play Store updates.	با مسدود کردن به‌روزرسانی‌های Play Store، برنامه‌های انتخاب‌شده را در نسخه فعلی نگه می‌دارد.
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	برنامه‌ها و پوشه‌ها را قفل می‌کند، نشان قفل نشان می‌دهد و از برنامه‌های قفل‌شده در برنامه‌های اخیر محافظت می‌کند.
+Matches Photos' share-page colors to the share sheet.	رنگ‌های صفحه هم‌رسانی Photos را با برگه هم‌رسانی هماهنگ می‌کند.
+Matches photo-editor menus and controls to your chosen theme and surface style.	منوها و کنترل‌های ویرایشگر عکس را با زمینه و سبک سطح انتخابی شما هماهنگ می‌کند.
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	منوها و کنترل‌های ویرایشگر نماگرفت را با زمینه و سبک سطح انتخابی شما هماهنگ می‌کند.
+Matches system menus and messages to your chosen theme and surface style.	منوها و پیام‌های سیستم را با زمینه و سبک سطح انتخابی شما هماهنگ می‌کند.
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	وقتی دکمه‌های پیمایش فعال است، دکمه بستن صفحه‌کلید را به منتهی‌الیه راست می‌برد. بعد از افزودن این دامنه صفحه‌کلید را بازراه‌اندازی کنید.
+Opens the camera from the volume-down shortcut.	دوربین را با میان‌بر کم کردن صدا باز می‌کند.
+Package installer	نصب‌کننده بسته
+Permission Controller	کنترل‌کننده مجوز
+Personal Safety	ایمنی شخصی
+Phone Services	سرویس‌های تلفن
+Pixel Troubleshooting	عیب‌یابی Pixel
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	پیام‌های کوتاه را بالا، وسط یا پایینِ اصلی نشان می‌دهد. تغییرات از پیام بعدی اعمال می‌شود.
+Provides cleaner screen-recording controls.	کنترل‌های تمیزتری برای ضبط صفحه فراهم می‌کند.
+Removes sponsored cards and their empty space from the Google feed.	کارت‌های حمایت‌شده و فضای خالی‌شان را از فید Google برمی‌دارد.
+Removes supported empty ad boxes from web pages opened in Chrome.	کادرهای آگهی خالی پشتیبانی‌شده را از صفحه‌های وبی که در Chrome باز می‌شوند برمی‌دارد.
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	برنامه‌های هم‌رسانی سنجاق‌شده را مرتب می‌کند و پوشه‌های برنامه‌های پنهان و مخاطبین را به برگه هم‌رسانی Android اضافه می‌کند.
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	پیش از باز کردن برنامه‌های محافظت‌شده یا حذف نصب، غیرفعال کردن یا مکث آن‌ها احراز هویت می‌خواهد.
+Settings Services	سرویس‌های تنظیمات
+Share sheet	برگه هم‌رسانی
+Shows customized app names and icons in home-screen Google search.	نام‌ها و نمادهای سفارشی برنامه‌ها را در جستجوی Google صفحه اصلی نشان می‌دهد.
+Shows fingerprint and PIN prompts for locked apps and folders.	درخواست اثر انگشت و پین را برای برنامه‌ها و پوشه‌های قفل‌شده نشان می‌دهد.
+Shows newest files first in the file browser.	در مرورگر فایل، جدیدترین فایل‌ها را اول نشان می‌دهد.
+Shows newest files first in the system file picker.	در انتخابگر فایل سیستم، جدیدترین فایل‌ها را اول نشان می‌دهد.
+System Framework	چارچوب سیستم
+System UI	رابط کاربری سیستم
+Toggles the flashlight with a double press of the power button.	با فشار دوباره دکمه روشن/خاموش، چراغ‌قوه را روشن و خاموش می‌کند.
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	جا برای ۷ میان‌بر در نوار ابزار، میان‌برهای ویرایش متن، کلیدهای گرد، بریده‌دان یک‌ستونی، تراشه‌های پنهان، دکمه‌های منو و اموجی/صدا، ترتیب نوار ابزار شما، پیشنهادها با میان‌برها در دو ردیف، تغییر اندازه (اندازه و جای صفحه‌کلید)، جای آزاد صفحه‌کلید، ؤ عربی روی و، حذف حرف‌به‌حرف با کشیدن، تصحیح خودکار برای هر زبان، بریده‌دان نامحدود و تصویر صفحه‌کلید در صفحه تغییر اندازه.
+10 seconds	۱۰ ثانیه
+15 seconds	۱۵ ثانیه
+3 seconds	۳ ثانیه
+30 seconds	۳۰ ثانیه
+5 seconds	۵ ثانیه
+A better starting view for your files.	نمای شروع بهتری برای فایل‌های شما.
+A feed without sponsored gaps	فیدی بدون فاصله‌های حمایت‌شده
+A tidier recording sheet. Needs your phone in English.	برگه ضبط مرتب‌تر. زبان تلفن باید انگلیسی باشد.
+AOD after screen off	AOD بعد از خاموش شدن صفحه
+AOD while charging	AOD هنگام شارژ
+About and support	درباره و پشتیبانی
+Ad Blocker, VPN, Dark pages and more to come	مسدودکننده آگهی، VPN، صفحه‌های تیره و موارد بیشتر
+Ad blocker	مسدودکننده آگهی
+Ad blocking for news browsing	مسدود کردن آگهی هنگام خواندن اخبار
+Add-ons for Chrome+.	افزونه‌هایی برای Chrome+.
+Adds Scan QR code to Mobile network when your carrier isn't listed	وقتی شرکت مخابراتی‌تان در فهرست نیست، «اسکن رمزینه QR» را به «شبکه تلفن همراه» اضافه می‌کند
+All of Gboard+ at once. Your choices are kept while it's off	همه Gboard+ یک‌جا. انتخاب‌هایتان هنگام خاموش بودن حفظ می‌شود
+Allow screenshots of secure screens	اجازه نماگرفت از صفحه‌های امن
+Allow update notifications	اجازه اعلان‌های به‌روزرسانی
+Always show Clear all	همیشه نمایش «پاک کردن همه»
+Always-on display	نمایشگر همیشه روشن
+Always-on display while plugged in	نمایشگر همیشه روشن هنگام شارژ
+App & folder lock	قفل برنامه و پوشه
+App drawer	کشوی برنامه
+App drawer folders	پوشه‌های کشوی برنامه
+App name	نام برنامه
+Applies right away. Open folders and search keep the usual size.	بلافاصله اعمال می‌شود. پوشه‌های باز و جستجو اندازه معمول را نگه می‌دارند.
+Apply matching icons across your apps	اعمال نمادهای هماهنگ در همه برنامه‌ها
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	برنامه‌هایی که ورود را به تلفن گره می‌زنند، مثل بسیاری از برنامه‌های بانکی، ممکن است بعد از حذف نصب دوباره ورود بخواهند.
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	برنامه‌هایی که با روشن بودن گزینه‌های برنامه‌نویسان باز نمی‌شوند، مثل برخی برنامه‌های بانکی، عادی کار می‌کنند.\nبرای باز کردن گزینه‌های برنامه‌نویسان روی چرخ‌دنده ضربه بزنید.
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	برنامه‌هایی که نسخه جدیدتری در Play Store دارند قرمز نشان داده می‌شوند. برای به‌روزرسانی، پشتیبان‌گیری یا بازیابی روی ! ضربه بزنید.
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	برنامه‌هایی که انتخاب می‌کنید سرویس‌های دسترس‌پذیری شما را نمی‌بینند.\nاول ماژول‌های دیگری را که همین کار را می‌کنند خاموش کنید.
+Asks before a locked app is uninstalled or paused	پیش از حذف نصب یا مکث برنامه قفل‌شده می‌پرسد
+Auto-confirm 4-digit PIN	تأیید خودکار پین ۴ رقمی
+Auto-confirm works with a 4-digit PIN, from your next unlock.	تأیید خودکار با پین ۴ رقمی، از بازگشایی بعدی کار می‌کند.
+Backspace swipe deletes letters	کشیدن روی پس‌بر حروف را حذف می‌کند
+Backup	پشتیبان
+Backup & Restore keeps every saved version, also of uninstalled apps.	پشتیبان‌گیری و بازیابی هر نسخه ذخیره‌شده را نگه می‌دارد، حتی برنامه‌های حذف‌شده.
+Backup restored	پشتیبان بازیابی شد
+Backup saved	پشتیبان ذخیره شد
+Battery saver can still turn it off.	بهینه‌سازی باتری همچنان می‌تواند خاموشش کند.
+Block ads, with filtering per site	مسدود کردن آگهی، با فیلتر برای هر سایت
+Blocks ads while you read the news.	هنگام خواندن اخبار آگهی‌ها را مسدود می‌کند.
+Blur Off	بدون محوشدگی
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	بدون محوشدگی\nبدون محوی، سطح‌های یکدست.\n\nپیش‌فرض\nظاهر خود سیستم.\n\nشیشه مات (پیش‌فرض)\nپشت پوشه‌ها، منوها و پیام‌ها را محو می‌کند.
+Blurred and tinted	محو و رنگی
+Bottom (Stock)	پایین (اصلی)
+Bring everything back from a backup file	برگرداندن همه‌چیز از فایل پشتیبان
+Browse from another country	مرور از کشوری دیگر
+Browse from another country, in Chrome or every app	مرور از کشوری دیگر، در Chrome یا همه برنامه‌ها
+Browse from another country.	مرور از کشوری دیگر.
+Browse without empty ad boxes	مرور بدون کادرهای آگهی خالی
+Buttons	دکمه‌ها
+Buttons beside the gesture bar	دکمه‌ها کنار نوار اشاره
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	ممکن است ضبط تماس طبق قوانین کشورتان محدود باشد. پیش از ضبط هر رضایت لازم را بگیرید. مسئولیت استفاده قانونی با شماست. RovianDev مسئول استفاده غیرقانونی نیست.
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	تماس‌گیرندگان می‌شنوند که دردسترس نیستید. برای هر تماس بی‌پاسخ اعلانی با دکمه «تماس» می‌گیرید. تماس‌های اضطراری همیشه وصل می‌شوند.
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	تماس‌ها پیش از زنگ خوردن تلفن رد می‌شوند. برای هر تماس بی‌پاسخ اعلانی با دکمه «تماس» می‌گیرید. تماس‌های اضطراری همیشه وصل می‌شوند.
+Capture, sleep, wake and app dragging.	گرفتن نماگرفت، خواب، بیدار شدن و کشیدن برنامه‌ها.
+Changelog	گزارش تغییرات
+Changes apply the next time the chosen apps open.	تغییرات دفعه بعد که برنامه‌های انتخاب‌شده باز شوند اعمال می‌شوند.
+Changes only the text under icons.\nIcon size and shape stay the same.	فقط متن زیر نمادها را تغییر می‌دهد.\nاندازه و شکل نمادها همان می‌ماند.
+Changing this option restarts Pixel Launcher.	تغییر این گزینه لانچر Pixel را بازراه‌اندازی می‌کند.
+Check for updates	بررسی به‌روزرسانی
+Check for updates automatically	بررسی خودکار به‌روزرسانی
+Check for updates now	بررسی به‌روزرسانی اکنون
+Check now	بررسی اکنون
+Checking for updates…	درحال بررسی به‌روزرسانی…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	برگشت، صفحه اصلی یا اخیر را کنار نوار اشاره انتخاب کنید. برای Circle to Search یا Gemini صفحه اصلی را نگه دارید.
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	برای هر طرف برگشت، صفحه اصلی یا اخیر را انتخاب کنید. برای Circle to Search یا Gemini صفحه اصلی را نگه دارید.
+Choose Lock from an app's recents menu to keep its card when you clear apps.	برای نگه داشتن کارت یک برنامه هنگام پاک کردن، از منوی آن در برنامه‌های اخیر «قفل» را انتخاب کنید.
+Choose a filtering level per site from the ad blocker button in Chrome.	از دکمه مسدودکننده آگهی در Chrome برای هر سایت سطح فیلتر انتخاب کنید.
+Choose the languages Gboard corrects.	زبان‌هایی را که Gboard تصحیح می‌کند انتخاب کنید.
+Choose which apps can't see your accessibility services	انتخاب برنامه‌هایی که سرویس‌های دسترس‌پذیری شما را نمی‌بینند
+Choose which apps stay on their current version.	انتخاب کنید کدام برنامه‌ها در نسخه فعلی بمانند.
+Circle to Search	Circle to Search
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	Circle to Search مثل نگه داشتن دستگیره پیمایش کار می‌کند. نماگرفت مثل روشن/خاموش + کم کردن صدا کار می‌کند.
+Cleaner news articles	مقاله‌های خبری تمیزتر
+Cleaner news browsing.	خواندن اخبار تمیزتر.
+Clear all in recents	پاک کردن همه در برنامه‌های اخیر
+Clear all is always there in recents, no scrolling.	«پاک کردن همه» همیشه در برنامه‌های اخیر هست، بدون پیمایش.
+Clear all, locked cards and landscape view	پاک کردن همه، کارت‌های قفل‌شده و نمای افقی
+Clipboard history	سابقه بریده‌دان
+Clipboard in one column	بریده‌دان یک‌ستونی
+Colorful icons in the app drawer (Stock)	نمادهای رنگی در کشوی برنامه (اصلی)
+Community and support	انجمن و پشتیبانی
+Confirm it's you to change privacy settings	برای تغییر تنظیمات حریم خصوصی هویتتان را تأیید کنید
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	کنترل‌ها با پویانمایی روان برگه‌ها به پایین می‌روند. در جابه‌جاگر برگه، + نارنجی برگه ناشناس باز می‌کند.
+Could not save text size	اندازه متن ذخیره نشد
+Could not save the surface style	سبک سطح ذخیره نشد
+Could not save this option	این گزینه ذخیره نشد
+Couldn't back up: root access needed	پشتیبان‌گیری نشد: دسترسی روت لازم است
+Couldn't load apps	برنامه‌ها بار نشدند
+Couldn't restore: root access needed	بازیابی نشد: دسترسی روت لازم است
+Couldn't save (root)	ذخیره نشد (روت)
+Crop screenshots to any size, even a single line.	نماگرفت‌ها را به هر اندازه‌ای برش دهید، حتی یک خط.
+Customize icon labels	سفارشی کردن برچسب نمادها
+Dark theme and schedules	زمینه تیره و زمان‌بندی‌ها
+Dark websites in Chrome	وب‌سایت‌های تیره در Chrome
+Dark websites in Chrome.	وب‌سایت‌های تیره در Chrome.
+Dark websites, always, with dark mode or on a schedule	وب‌سایت‌های تیره: همیشه، همراه حالت تیره یا طبق زمان‌بندی
+Developer options aren't available on this device.	گزینه‌های برنامه‌نویسان در این دستگاه دردسترس نیست.
+Double tap	دوضربه
+Double tap to sleep	دوضربه برای خواب
+Double-press power button	دو بار فشار دادن دکمه روشن/خاموش
+Double-press volume down	دو بار فشار دادن کم کردن صدا
+Double-tap an empty spot on the home screen to lock your phone.	برای قفل کردن تلفن، روی جای خالی صفحه اصلی دوضربه بزنید.
+Download and install	بارگیری و نصب
+Download and install the update in Pixel Suite	بارگیری و نصب به‌روزرسانی در Pixel Suite
+Drag an app onto another to make a folder. Use Add apps to pick more.	برای ساختن پوشه، برنامه‌ای را روی برنامه دیگر بکشید. برای انتخاب بیشتر از «افزودن برنامه» استفاده کنید.
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	برای تغییر اندازه دستگیره‌ها را بکشید، یا برای جابه‌جایی صفحه‌کلید وسط آن را. «بازنشانی» به اندازه Gboard برمی‌گرداند.
+Drag to home screen	کشیدن به صفحه اصلی
+Draw on screenshots and photos.	روی نماگرفت‌ها و عکس‌ها بکشید.
+Draw shapes and arrows on screenshots.	روی نماگرفت‌ها شکل و پیکان بکشید.
+Draw shapes on photos: Edit → Doodles. They stay editable.	روی عکس‌ها شکل بکشید: ویرایش ← خط‌خطی. ویرایش‌پذیر می‌مانند.
+Ends	پایان
+Erase all data is greyed out in Settings while OTA blocker is on.	وقتی مسدودکننده OTA روشن است، «پاک کردن همه داده‌ها» در تنظیمات خاکستری است.
+Every feature, fix and release	هر ویژگی، رفع اشکال و نسخه
+Feature preview	پیش‌نمایش ویژگی
+Features preview	پیش‌نمایش ویژگی‌ها
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	آگهی‌ها را برای هر سایت فیلتر کنید، از ساده تا کامل. «کامل» بنرهای کوکی و پنجره‌های بازشو را هم پنهان می‌کند. هر عنصری را هم می‌توانید بردارید.
+Filtering levels and website exceptions.	سطح‌های فیلتر و استثناهای وب‌سایت.
+Fingerprint or PIN before locked apps and folders open	اثر انگشت یا پین پیش از باز شدن برنامه‌ها و پوشه‌های قفل‌شده
+Five text sizes for app names. Icons stay the same size.	پنج اندازه متن برای نام برنامه‌ها. اندازه نمادها همان می‌ماند.
+Flashlight and camera shortcuts	میان‌برهای چراغ‌قوه و دوربین
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	چراغ‌قوه: برای روشن یا خاموش کردن، حتی در حالت قفل، دکمه روشن/خاموش را دو بار فشار دهید. «دوربین (اصلی)» دوربین را باز می‌کند.
+Folder grid	جدول پوشه
+Folder sorting	مرتب‌سازی پوشه
+Folders	پوشه‌ها
+Folders first, then your newest files.	اول پوشه‌ها، بعد جدیدترین فایل‌هایتان.
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	پوشه‌ها با تعداد برنامه‌های داخلشان بزرگ می‌شوند. از منوی سه‌نقطه هر پوشه جدولی انتخاب کنید.
+Folders, dragging and app shortcuts	پوشه‌ها، کشیدن و میان‌برهای برنامه
+Folders, dragging and app shortcuts.	پوشه‌ها، کشیدن و میان‌برهای برنامه.
+Folders, drawer, names, search bar and recents	پوشه‌ها، کشو، نام‌ها، نوار جستجو و برنامه‌های اخیر
+Folders, names, search bar and recents.	پوشه‌ها، نام‌ها، نوار جستجو و برنامه‌های اخیر.
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	از زمان‌بندی زمینه تیره پیروی می‌کند. در زمینه روشن، رنگ‌های عادی و محوی برمی‌گردند.
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	برای Pixel Watch با طرح تلفن همراه خودش: شبکه آن هم خاموش می‌شود. برنامه ساعت Pixel Suite لازم است.
+For fingerprint or PIN protection, use Privacy & Security.	برای محافظت با اثر انگشت یا پین، از «حریم خصوصی و امنیت» استفاده کنید.
+Free screenshot crop	برش آزاد نماگرفت
+From Chrome to Chrome+	از Chrome تا Chrome+
+Full changelog on GitHub	گزارش کامل تغییرات در GitHub
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard هر برش را تا وقتی حذفش کنید نگه می‌دارد. برش‌های سنجاق‌شده کارت آبی دارند و X بالا همه‌چیز جز آن‌ها را حذف می‌کند. «بریده‌دان یک‌ستونی» در هر ردیف یک برش نشان می‌دهد.
+Gboard restarts when you change any of these.	با تغییر هر کدام از این‌ها Gboard بازراه‌اندازی می‌شود.
+Gemini (stock)	Gemini (اصلی)
+Gemini when locked	Gemini در حالت قفل
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini، Circle to Search، نماگرفت یا حالت بی‌صدا.
+Gestures	اشاره‌ها
+Get the Pixel Suite watch app from the developer on Telegram.	برنامه ساعت Pixel Suite را از برنامه‌نویس در تلگرام بگیرید.
+Google Photos setup	راه‌اندازی عکس‌های Google
+Google app	برنامه Google
+Google news	اخبار Google
+Google's own look	ظاهر خود Google
+Held-back apps are saved automatically before they update.	برنامه‌های نگه‌داشته پیش از به‌روزرسانی خودکار ذخیره می‌شوند.
+Hide	پنهان کردن
+Hide Developer Options	پنهان کردن گزینه‌های برنامه‌نویسان
+Hide accessibility from apps	پنهان کردن دسترس‌پذیری از برنامه‌ها
+Hide ads in Google feed	پنهان کردن آگهی‌ها در فید Google
+Hide app shortcuts	پنهان کردن میان‌برهای برنامه
+Hide search bar	پنهان کردن نوار جستجو
+Hide suggestion chips	پنهان کردن تراشه‌های پیشنهاد
+Hides app shortcuts like View orders from the drawer menu.	میان‌برهای برنامه مثل «مشاهده سفارش‌ها» را از منوی کشو پنهان می‌کند.
+Hides the globe under your keyboard and moves the arrow to the right	کره زمین زیر صفحه‌کلید را پنهان می‌کند و پیکان را به راست می‌برد
+Hold Home for	نگه داشتن صفحه اصلی برای
+Hold a folder and drag it anywhere among your apps.	یک پوشه را نگه دارید و به هر جای میان برنامه‌ها بکشید.
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	برای تغییر نام، مرتب کردن یا برداشتن پوشه آن را نگه دارید. برداشتن پوشه برنامه‌هایش را حذف نصب نمی‌کند.
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	یک میان‌بر را نگه دارید و روی نوار ابزار بکشید؛ در طول آن برای تغییر ترتیب، یا بیرون از آن برای حذف. روی یکی ضربه بزنید تا ببینید چه کاری انجام می‌دهد. دکمه‌های کناری را پنهان کنید تا میان‌برها جای بیشتری داشته باشند.
+Hold an app and choose Change icon to use your own image.	برای استفاده از تصویر خودتان، برنامه‌ای را نگه دارید و «تغییر نماد» را انتخاب کنید.
+Hold an app and choose Rename.	برنامه‌ای را نگه دارید و «تغییر نام» را انتخاب کنید.
+Hold an app and choose Rename. It shows right away everywhere.	برنامه‌ای را نگه دارید و «تغییر نام» را انتخاب کنید. بلافاصله همه‌جا نشان داده می‌شود.
+Hold an app in the drawer and drag it onto Add to home screen.	برنامه‌ای را در کشو نگه دارید و روی «افزودن به صفحه اصلی» بکشید.
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	برنامه یا پوشه‌ای را نگه دارید و «قفل» یا «باز کردن قفل» را انتخاب کنید.\n\nقفل کردن پوشه برنامه‌های داخل آن را قفل نمی‌کند.
+Hold an app or folder with a dot and choose Clear badge.	برنامه یا پوشه دارای نقطه را نگه دارید و «پاک کردن نشان» را انتخاب کنید.
+Hold an app or folder with a notification dot and choose Clear badge.	برنامه یا پوشه دارای نقطه اعلان را نگه دارید و «پاک کردن نشان» را انتخاب کنید.
+Hold back app updates	نگه داشتن به‌روزرسانی برنامه‌ها
+Hold power button	نگه داشتن دکمه روشن/خاموش
+How it works	روش کار
+Icon label size	اندازه برچسب نماد
+Icon label size, five levels	اندازه برچسب نماد، پنج سطح
+Icons, Super Dark-Mode and blur	نمادها، حالت فوق‌تیره و محوی
+If a double tap doesn't register, tap once more within three seconds.	اگر دوضربه ثبت نشد، ظرف سه ثانیه یک بار دیگر ضربه بزنید.
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	در Chrome افزونه‌ها را باز کنید و برای خاموش کردن در یک وب‌سایت روی «صفحه‌های تیره» ضربه بزنید. عکس‌ها و ویدیوها رنگشان را نگه می‌دارند.
+Installation permission was not enabled. Tap Download and install when ready.	مجوز نصب روشن نشد. وقتی آماده بودید روی «بارگیری و نصب» ضربه بزنید.
+Keep calls quiet and stay connected	تماس‌ها بی‌صدا، اتصال برقرار
+Keep incoming calls quiet and stay connected	تماس‌های ورودی بی‌صدا، اتصال برقرار
+Keep unlocked for 1 minute	۱ دقیقه باز بماند
+Keep what matters. Clear the rest.	مهم‌ها را نگه دارید. بقیه را پاک کنید.
+Keeps Clear all next to Screenshot and Select.	«پاک کردن همه» را کنار «نماگرفت» و «انتخاب» نگه می‌دارد.
+Keeps chips like Screenshot off the toolbar	تراشه‌هایی مثل «نماگرفت» را از نوار ابزار دور نگه می‌دارد
+Keyboard bar tweak	تنظیم نوار صفحه‌کلید
+Keys	کلیدها
+Keys and backspace	کلیدها و پس‌بر
+LSPosed scope	دامنه LSPosed
+Landscape recent apps	برنامه‌های اخیر در حالت افقی
+Landscape view	نمای افقی
+Left button	دکمه چپ
+Live frame counter at the top right	شمارنده زنده فریم در بالا سمت راست
+Lock a card from its menu to keep it when you clear apps.	برای نگه داشتن کارت هنگام پاک کردن برنامه‌ها، آن را از منویش قفل کنید.
+Lock an app's card so Clear all keeps it.	کارت برنامه را قفل کنید تا «پاک کردن همه» نگهش دارد.
+Lock apps and folders	قفل کردن برنامه‌ها و پوشه‌ها
+Lock apps in recents	قفل کردن برنامه‌ها در برنامه‌های اخیر
+Lock factory reset	قفل کردن بازنشانی کارخانه
+Lock screen	صفحه قفل
+Lock-screen behavior	رفتار صفحه قفل
+Lock-screen taps	ضربه‌های صفحه قفل
+Locking recent apps	قفل کردن برنامه‌های اخیر
+Locks stay after a restart.	قفل‌ها پس از بازراه‌اندازی می‌مانند.
+Made by RovianDev	ساخته RovianDev
+Make it work your way.	به روش خودتان.
+Middle	وسط
+Miscellaneous	متفرقه
+More	بیشتر
+More to come.	موارد بیشتری در راه است.
+Move and resize the keyboard	جابه‌جایی و تغییر اندازه صفحه‌کلید
+Move folders between apps	جابه‌جایی پوشه‌ها میان برنامه‌ها
+Move several apps	جابه‌جایی چند برنامه
+Move to bottom and scroll	رفتن به پایین و پیمایش
+Navigation buttons	دکمه‌های پیمایش
+Newest files first, in Files and the file picker	جدیدترین فایل‌ها اول، در فایل‌ها و انتخابگر فایل
+No LTE Pixel Watch? Leave this off.	Pixel Watch با LTE ندارید؟ خاموش بگذارید.
+No blur anywhere	هیچ‌جا محوی نیست
+No file picker available	انتخابگر فایلی دردسترس نیست
+Nothing	هیچ
+Notifications that can be dismissed are cleared, and the dot goes away.	اعلان‌هایی که قابل رد کردن هستند پاک می‌شوند و نقطه می‌رود.
+OTA & Store blocker	مسدودکننده OTA و Store
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	وقتی خاموش است، کلمات هنگام صحبت ظاهر می‌شوند. با روشن بودن «تایپ صوتی با علامت تیک» صحبت کنید، سپس برای افزودن کلمات روی تیک یا برای لغو روی X ضربه بزنید. نوع دیکته در تنظیمات صوتی Gboard باید Rambler باشد.
+On the lock screen, holding power opens Gemini	در صفحه قفل، نگه داشتن دکمه روشن/خاموش Gemini را باز می‌کند
+One clip per row, exactly as you copied it	در هر ردیف یک برش، دقیقاً همان‌طور که کپی کردید
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	یک کلید برای همه‌چیز اینجا. وقتی خاموش است، Gboard مثل حالت اصلی کار می‌کند و انتخاب‌هایتان حفظ می‌شود.
+Only Clear all	فقط «پاک کردن همه»
+Only Clear all, in the middle	فقط «پاک کردن همه»، در وسط
+Open Developer options	باز کردن گزینه‌های برنامه‌نویسان
+Open locked apps and folders with your fingerprint or PIN	باز کردن برنامه‌ها و پوشه‌های قفل‌شده با اثر انگشت یا پین
+Per language	برای هر زبان
+Personalize	شخصی‌سازی
+Phone, Chrome, Gboard, Google, News and watch	تلفن، Chrome، Gboard، Google، News و ساعت
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	از منوی سه‌نقطه پوشه 3×3، 4×4 یا 5×5 را انتخاب کنید. با پر شدن پوشه جدول‌های بزرگ‌تر ظاهر می‌شوند.
+Pin, reorder and hide sharing apps	سنجاق کردن، مرتب کردن و پنهان کردن برنامه‌های هم‌رسانی
+Pin, reorder, hide and restore sharing apps and contacts	سنجاق کردن، مرتب کردن، پنهان کردن و بازیابی برنامه‌های هم‌رسانی و مخاطبین
+Pinned and hidden sharing apps.	برنامه‌های هم‌رسانی سنجاق‌شده و پنهان.
+Pixel Studio setup	راه‌اندازی استودیو Pixel
+Pixel Suite checks for updates and installs them right here.	Pixel Suite به‌روزرسانی‌ها را بررسی می‌کند و همین‌جا نصب می‌کند.
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite به روت نیاز دارد. در مدیر روت اجازه دهید و این صفحه را دوباره باز کنید.
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite: دوضربه روی کارت صفحه قفل، بدون باز کردن آن صفحه را خاموش می‌کند.
+Pixel Watch with LTE	Pixel Watch با LTE
+Place folders anywhere among your apps, with their own grids and sorting.	پوشه‌ها را هر جای میان برنامه‌ها بگذارید، با جدول و مرتب‌سازی خودشان.
+Play Store blocker	مسدودکننده Play Store
+Play Store updates and system updates	به‌روزرسانی‌های Play Store و سیستم
+Preview of the chosen surface style on a folder over a wallpaper	پیش‌نمایش سبک سطح انتخاب‌شده روی پوشه‌ای روی کاغذدیواری
+Privacy & Security	حریم خصوصی و امنیت
+Protect locked apps	محافظت از برنامه‌های قفل‌شده
+Protected with your fingerprint or PIN.	با اثر انگشت یا پین شما محافظت می‌شود.
+Protection	محافظت
+Pure black backgrounds and darker menus in dark theme.	پس‌زمینه‌های سیاه خالص و منوهای تیره‌تر در زمینه تیره.
+Quick actions from your phone's buttons.	کنش‌های سریع با دکمه‌های تلفن.
+Recent	اخیر
+Recent Apps	برنامه‌های اخیر
+Record and save calls	ضبط و ذخیره تماس‌ها
+Record calls in the Phone app, in any country, without the announcement	تماس‌ها را در برنامه تلفن، در هر کشوری، بدون اعلام ضبط کنید
+Reduce screenshot delay	کاهش تأخیر نماگرفت
+Refresh rate slider	لغزاننده سرعت بازخوانی
+Removes sponsored cards from your feed, with no gaps left	کارت‌های حمایت‌شده را بدون باقی گذاشتن فاصله از فیدتان برمی‌دارد
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	نوار جستجو را از پایین صفحه اصلی برمی‌دارد. Dock پایین می‌رود و برنامه‌ها از فضا استفاده می‌کنند.
+Removing apps from the home screen doesn't uninstall them.	برداشتن برنامه‌ها از صفحه اصلی آن‌ها را حذف نصب نمی‌کند.
+Rename apps	تغییر نام برنامه‌ها
+Reopen Settings to see the change.	برای دیدن تغییر، تنظیمات را دوباره باز کنید.
+Reopen apps that were already open.	برنامه‌هایی را که باز بودند دوباره باز کنید.
+Reorder pinned apps and hide sharing apps	مرتب کردن برنامه‌های سنجاق‌شده و پنهان کردن برنامه‌های هم‌رسانی
+Reset brings back the original name.	«بازنشانی» نام اصلی را برمی‌گرداند.
+Reset restores the original name. Work-profile and Private Space apps keep their names.	«بازنشانی» نام اصلی را برمی‌گرداند. برنامه‌های نمایه کاری و فضای خصوصی نامشان را نگه می‌دارند.
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	«بازیابی» آن را همین‌جا برمی‌گرداند. نسخه‌ای که با داده‌هایش ذخیره شده می‌پرسد داده‌ها هم بازیابی شوند یا نه.
+Restore this backup?	این پشتیبان بازیابی شود؟
+Right button	دکمه راست
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	نمادهای گرد برای حداکثر ۱۹ وب‌سایت و پوشه. برای جابه‌جایی نگه دارید و بکشید، یا برای ساختن پوشه روی دیگری رها کنید. وب‌سایتی را ویرایش کنید تا تصویر خودتان را بگیرد.
+Rounded keys	کلیدهای گرد
+Rounded keys and corners, with smooth key pop-ups	کلیدها و گوشه‌های گرد، با بازشوهای روان کلید
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	کلیدهای گرد با بازشوهای روان، در حالت روشن، تیره و فوق‌تیره. برای حذف حرف‌به‌حرف از کلید حذف به چپ بکشید.
+Save your settings, folders and icons to a file	ذخیره تنظیمات، پوشه‌ها و نمادها در یک فایل
+Saved versions of your apps, ready to put back.	نسخه‌های ذخیره‌شده برنامه‌هایتان، آماده برگرداندن.
+Saved. Gboard restarts with the new size	ذخیره شد. Gboard با اندازه جدید بازراه‌اندازی می‌شود
+Saved. Gboard restarts with your toolbar	ذخیره شد. Gboard با نوار ابزار شما بازراه‌اندازی می‌شود
+Screen recording sheet	برگه ضبط صفحه
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	نماگرفت و ضبط در برنامه‌هایی که آن را مسدود می‌کنند.\nاول ماژول‌های دیگری را که همین کار را می‌کنند خاموش کنید.
+Screenshots appear instantly. Uses a little extra memory.	نماگرفت‌ها فوراً ظاهر می‌شوند. کمی حافظه بیشتر مصرف می‌کند.
+Screenshots, accessibility, keyboard and developer options	نماگرفت، دسترس‌پذیری، صفحه‌کلید و گزینه‌های برنامه‌نویسان
+Screenshots, sleep, wake and dragging	نماگرفت، خواب، بیدار شدن و کشیدن
+Search stays in the app drawer.	جستجو در کشوی برنامه می‌ماند.
+Set	تنظیم
+Set a phone screen lock first	اول قفل صفحه تلفن را تنظیم کنید
+Set up eSIM with a QR code	راه‌اندازی eSIM با رمزینه QR
+Setup, community and support	راه‌اندازی، انجمن و پشتیبانی
+Shapes in Pixel Studio and Google Photos	شکل‌ها در استودیو Pixel و عکس‌های Google
+Share menu	منوی هم‌رسانی
+Share sheet tools	ابزارهای برگه هم‌رسانی
+Sharing	هم‌رسانی
+Show FPS	نمایش FPS
+Show toasts	نمایش پیام‌های کوتاه
+Shows right away everywhere. Tap the reset arrow for the original icon.	بلافاصله همه‌جا نشان داده می‌شود. برای نماد اصلی روی پیکان بازنشانی ضربه بزنید.
+Shows right away everywhere. Work profile and Private Space apps keep their names.	بلافاصله همه‌جا نشان داده می‌شود. برنامه‌های نمایه کاری و فضای خصوصی نامشان را نگه می‌دارند.
+Silence	بی‌صدا
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	بی‌صدا، مزاحم نشوید و مزاحم نشو با یک نگه‌داشتن روشن و با بعدی خاموش می‌شوند. بی‌مزاحمت هر سه را با هم انجام می‌دهد.
+Silences calls and keeps you connected. Add its Quick Settings tile.	تماس‌ها را بی‌صدا می‌کند و شما را متصل نگه می‌دارد. کاشی آن را در تنظیمات سریع اضافه کنید.
+Single tap	یک ضربه
+Small fixes, simple controls.	اصلاحات کوچک، کنترل‌های ساده.
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	پویانمایی‌های دست‌ساز روان‌تر، افزونه‌های داخلی، کنترل‌های پایین و شماره‌گیری سریع سفارشی.
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	پویانمایی‌های دست‌ساز روان‌تر، افزونه‌های داخلی، کنترل‌های پایین، شماره‌گیری سریع سفارشی
+Sort from the three-dot menu	مرتب‌سازی از منوی سه‌نقطه
+Sorting and custom order	مرتب‌سازی و ترتیب سفارشی
+Speak, then tap the checkmark to add your words	صحبت کنید، سپس برای افزودن کلمات روی تیک ضربه بزنید
+Speed dial	شماره‌گیری سریع
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	کشیدن یک برنامه را شروع کنید، سپس با انگشتی دیگر روی برنامه‌های دیگر ضربه بزنید. همه را روی صفحه اصلی یا در پوشه رها کنید.
+Starts	شروع
+Stay connected. Keep incoming calls quiet.	متصل بمانید. تماس‌های ورودی را بی‌صدا نگه دارید.
+Stays unlocked for a minute after you leave it	تا یک دقیقه پس از ترک آن باز می‌ماند
+Stock	پیش‌فرض
+Stops system updates and hides Software updates in Settings.	به‌روزرسانی‌های سیستم را متوقف می‌کند و «به‌روزرسانی‌های نرم‌افزار» را در تنظیمات پنهان می‌کند.
+Surface style, three options	سبک سطح، سه گزینه
+Surfaces and blur	سطح‌ها و محوی
+Swipe down with three fingers to take a screenshot.	برای گرفتن نماگرفت با سه انگشت به پایین بکشید.
+Swipe gestures still work.	اشاره‌های کشیدن همچنان کار می‌کنند.
+Swipe left from delete to remove letter by letter	برای حذف حرف‌به‌حرف از کلید حذف به چپ بکشید
+System colors, your way.	رنگ‌های سیستم، به روش شما.
+System update controls.	کنترل‌های به‌روزرسانی سیستم.
+System updates and factory reset	به‌روزرسانی‌های سیستم و بازنشانی کارخانه
+Take a screenshot	گرفتن نماگرفت
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	برای استفاده، در صفحه برگه جدید Chrome روی «افزونه‌ها» ضربه بزنید. برای تنظیمات روی یکی ضربه بزنید یا برای سنجاق کردن به نوار ابزار نگهش دارید.
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	برای استفاده، در صفحه برگه جدید روی «افزونه‌ها» ضربه بزنید. برای سنجاق کردن به نوار ابزار یکی را نگه دارید.
+Tap an app to see its saved versions.	برای دیدن نسخه‌های ذخیره‌شده روی برنامه‌ای ضربه بزنید.
+Tap to wake	ضربه برای بیدار کردن
+Text size	اندازه متن
+That isn't a Pixel Suite backup	این پشتیبان Pixel Suite نیست
+The 3 newest versions of each app are kept.	۳ نسخه جدیدتر هر برنامه نگه داشته می‌شود.
+The clock and info while charging, and after the power button.	ساعت و اطلاعات هنگام شارژ و پس از دکمه روشن/خاموش.
+The green button puts a saved version back, with its data and sign-ins.	دکمه سبز نسخه ذخیره‌شده را با داده‌ها و ورودهایش برمی‌گرداند.
+The power button shows the always-on display for a few seconds	دکمه روشن/خاموش نمایشگر همیشه روشن را چند ثانیه نشان می‌دهد
+The three styles	سه سبک
+The toolbar	نوار ابزار
+Three-finger screenshot	نماگرفت سه‌انگشتی
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	برای برگشت به اینجا، صفحه اصلی را فشار طولانی دهید و «تنظیمات Pixel Suite» را انتخاب کنید. روت و LSPosed لازم است.
+To protect an app with your fingerprint or PIN, use Privacy & Security.	برای محافظت از برنامه با اثر انگشت یا پین، از «حریم خصوصی و امنیت» استفاده کنید.
+Toasts	پیام‌های کوتاه
+Toolbar	نوار ابزار
+Toolbar, keys, resize, auto-correction, clipboard	نوار ابزار، کلیدها، اندازه، تصحیح خودکار، بریده‌دان
+Tools for your Google apps.	ابزارهایی برای برنامه‌های Google شما.
+Top	بالا
+Turn auto-correction off for the languages you choose. Suggestions still show.	تصحیح خودکار را برای زبان‌های دلخواه خاموش کنید. پیشنهادها همچنان نشان داده می‌شوند.
+Turn off after	خاموش شدن پس از
+Turn on notifications in Android settings	اعلان‌ها را در تنظیمات Android روشن کنید
+Turn the flashlight on or off, open the camera (stock), or do nothing.	روشن یا خاموش کردن چراغ‌قوه، باز کردن دوربین (اصلی) یا هیچ کاری.
+Turn this feature on or off.	این ویژگی را روشن یا خاموش کنید.
+Turn your phone sideways in recents for a cleaner view.	برای نمای تمیزتر، تلفن را در برنامه‌های اخیر افقی کنید.
+Turns on	روشن شدن
+Two-finger drag	کشیدن دوانگشتی
+Typing and clipboard	تایپ و بریده‌دان
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	واگرد، انجام دوباره، انتخاب سریع، انتخاب همه، برش، کپی و جای‌گذاری در همه برنامه‌ها کار می‌کنند. انتخاب سریع: برای یک کلمه ضربه بزنید، برای لغو دوباره ضربه بزنید، برای انتخاب همه نگه دارید.
+Unlock OEM apps	باز کردن قفل برنامه‌های OEM
+Unlock on the 4th digit	باز کردن قفل با رقم چهارم
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	به‌محض وارد کردن رقم چهارم پین، بدون Enter قفل را باز می‌کند
+Up to 7 shortcuts, in the same order in every language.	تا ۷ میان‌بر، با همان ترتیب در همه زبان‌ها.
+Up to 7 shortcuts, their order, the side buttons and two rows	تا ۷ میان‌بر، ترتیبشان، دکمه‌های کناری و دو ردیف
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	«به‌روزرسانی» اول نسخه فعلی را ذخیره می‌کند، بعد صفحه Play Store آن را باز می‌کند. پس از به‌روزرسانی دوباره نگه داشته می‌شود.
+Updates	به‌روزرسانی‌ها
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	به‌روزرسانی این برنامه‌های اصلی از Play Store ممکن است ویژگی‌های Pixel Suite را خراب کند. Pixel Suite در هر نسخه آن‌ها را برایتان به‌روز می‌کند.
+Use Doodles	استفاده از خط‌خطی
+Use Gboard+	استفاده از Gboard+
+Use custom app icons	استفاده از نمادهای سفارشی برنامه
+Use your own image for an app icon	استفاده از تصویر خودتان برای نماد برنامه
+Voice typing with checkmark	تایپ صوتی با علامت تیک
+Wake gesture	اشاره بیدار کردن
+Wake the screen	بیدار کردن صفحه
+Wake your phone with a tap, with pocket protection.	تلفن را با یک ضربه بیدار کنید، با محافظت در جیب.
+Websites open dark, with no white flash. Super Dark uses pure black.	وب‌سایت‌ها تیره و بدون درخشش سفید باز می‌شوند. فوق‌تیره از سیاه خالص استفاده می‌کند.
+What's new	موارد تازه
+When you untick apps, Back up saves their current versions first.	وقتی تیک برنامه‌ها را برمی‌دارید، «پشتیبان‌گیری» اول نسخه فعلی‌شان را ذخیره می‌کند.
+While charging and after the power button	هنگام شارژ و پس از دکمه روشن/خاموش
+While holding an app or folder, swipe with another finger to scroll or turn pages.	هنگام نگه داشتن برنامه یا پوشه، برای پیمایش یا ورق زدن با انگشتی دیگر بکشید.
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	وقتی نمایشگر همیشه روشن خاموش است، دکمه روشن/خاموش صفحه را به نمایشگر همیشه روشن می‌برد. پس از زمانی که انتخاب کنید خاموش می‌شود.
+With Super Dark-Mode, panels stay black.	با حالت فوق‌تیره، پانل‌ها سیاه می‌مانند.
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	با صفحه خاموش و نمایشگر همیشه روشن فعال، دکمه کم کردن صدا را دو بار فشار دهید. نه هنگام تماس یا پخش رسانه.
+With the screen off, open the camera or turn the flashlight on or off.	با صفحه خاموش، دوربین را باز کنید یا چراغ‌قوه را روشن/خاموش کنید.
+With themed icons on, the app drawer keeps each app's own colors.	با روشن بودن نمادهای زمینه‌دار، کشوی برنامه رنگ‌های خود هر برنامه را نگه می‌دارد.
+You can also hold the search bar and choose Hide widget. It hides right away.	می‌توانید نوار جستجو را هم نگه دارید و «پنهان کردن ابزارک» را انتخاب کنید. بلافاصله پنهان می‌شود.
+Your own Always-on display setting isn't changed.	تنظیم خودتان برای نمایشگر همیشه روشن تغییر نمی‌کند.
+eSIM setup with a QR code	راه‌اندازی eSIM با رمزینه QR
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• برای سنجاق کردن، برنامه‌ای را به ردیف بالا بکشید، بعد برای مرتب کردن بکشید.\n\n• برای سنجاق کردن یا پنهان کردن، برنامه یا مخاطبی را نگه دارید.\n\n• موارد پنهان در «برنامه‌های پنهان» و «مخاطبین پنهان» هستند. برای آشکار کردن یکی را نگه دارید.
+Hide 1 app	پنهان کردن ۱ برنامه
+Tap to share. Long-press to unhide.	برای هم‌رسانی ضربه بزنید. برای آشکار کردن فشار طولانی دهید.
+Tick apps to unhide.	برنامه‌هایی را که می‌خواهید آشکار شوند تیک بزنید.
+Tick contacts to unhide.	مخاطبینی را که می‌خواهید آشکار شوند تیک بزنید.
+Unknown app	برنامه ناشناخته
+Back up and update	پشتیبان‌گیری و به‌روزرسانی
+Back up now	پشتیبان‌گیری اکنون
+Check root access and reopen this page.	دسترسی روت را بررسی کنید و این صفحه را دوباره باز کنید.
+Close app selection	بستن انتخاب برنامه
+Collapse blocked updates	جمع کردن به‌روزرسانی‌های مسدود
+Couldn't open Play Store	Play Store باز نشد
+Discard	صرف‌نظر
+Discard changes?	از تغییرات صرف‌نظر شود؟
+Expand blocked updates	باز کردن به‌روزرسانی‌های مسدود
+Keep editing	ادامه ویرایش
+Opening Play Store…	درحال باز کردن Play Store…
+Reopen this page to refresh installed apps	برای به‌روز کردن برنامه‌های نصب‌شده این صفحه را دوباره باز کنید
+Save them first, then apply	اول ذخیره کنید، بعد اعمال کنید
+Tick Play Store in LSPosed for Pixel Suite.	در LSPosed برای Pixel Suite تیک Play Store را بزنید.
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	برای برداشتن تیک این برنامه، «باز کردن قفل برنامه‌های OEM» را روشن کنید. به‌روزرسانی آن ممکن است پشتیبانی Pixel Suite را خراب کند.
+Unknown	ناشناخته
+Unticked apps can get updates	برنامه‌های بدون تیک می‌توانند به‌روزرسانی بگیرند
+Update	به‌روزرسانی
+Update blocker	مسدودکننده به‌روزرسانی
+Updating this core app may break Pixel Suite support.	به‌روزرسانی این برنامه اصلی ممکن است پشتیبانی Pixel Suite را خراب کند.
+Wait for your changes to finish applying	صبر کنید تا اعمال تغییرات تمام شود
+Your app selections haven't been applied.	انتخاب برنامه‌های شما اعمال نشده است.
+\n\nTick it and apply to hold it back.	\n\nبرای نگه داشتن، تیک بزنید و اعمال کنید.
+stroke weight	ضخامت خط
+APK exceeds download limit	APK از حد بارگیری بیشتر است
+APK verification failed	تأیید APK ناموفق بود
+An update download is already running.	بارگیری به‌روزرسانی از قبل درحال اجرا است.
+Cannot prepare APK	آماده‌سازی APK ممکن نیست
+Checking APK hash and signing certificate…	درحال بررسی هش APK و گواهی امضا…
+Could not open Android installer. Try Download and install again.	نصب‌کننده Android باز نشد. دوباره «بارگیری و نصب» را امتحان کنید.
+Download complete. Open Updates and tap Download and install to continue.	بارگیری کامل شد. برای ادامه «به‌روزرسانی‌ها» را باز کنید و روی «بارگیری و نصب» ضربه بزنید.
+Download unavailable	بارگیری دردسترس نیست
+Incomplete APK	APK ناقص
+No newer verified release is available on both repositories.	نسخه تأییدشده جدیدتری در هر دو مخزن نیست.
+Pixel Suite update	به‌روزرسانی Pixel Suite
+Unexpected APK size	اندازه غیرمنتظره APK
+Update could not be downloaded or verified. Check your connection and try again.	به‌روزرسانی بارگیری یا تأیید نشد. اتصالتان را بررسی کنید و دوباره امتحان کنید.
+Verified. Opening Android installer…	تأیید شد. درحال باز کردن نصب‌کننده Android…
+Verifying the official releases…	درحال تأیید نسخه‌های رسمی…
+Add the VPN tile to Quick Settings to connect with one tap.	برای اتصال با یک ضربه، کاشی VPN را به تنظیمات سریع اضافه کنید.
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	فقط Chrome: VPN را از افزونه‌های Chrome روشن کنید. فقط Chrome از آن استفاده می‌کند و وب‌سایت‌ها آن کشور را می‌بینند.
+Connect	اتصال
+Couldn't connect	اتصال برقرار نشد
+Couldn't load servers. Tap to try again.	سرورها بار نشدند. برای امتحان دوباره ضربه بزنید.
+Couldn't refresh. Showing the last list.	به‌روزرسانی نشد. آخرین فهرست نشان داده می‌شود.
+Couldn't start the VPN	VPN شروع نشد
+Countries without servers right now show as Unavailable.	کشورهایی که اکنون سرور ندارند «دردسترس نیست» نشان داده می‌شوند.
+Fastest server	سریع‌ترین سرور
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	سرورهای رایگانی که داوطلبان در سراسر جهان اداره می‌کنند. Pixel Suite به سریع‌ترین وصل می‌شود.
+Getting the free server list	درحال دریافت فهرست سرورهای رایگان
+Loading servers…	درحال بار کردن سرورها…
+No servers yet	هنوز سروری نیست
+Not connected	متصل نیست
+Open-source servers change during the day	سرورهای متن‌باز در طول روز تغییر می‌کنند
+Pick a country, then tap Connect	کشوری را انتخاب کنید، سپس روی «اتصال» ضربه بزنید
+Refresh servers	به‌روزرسانی سرورها
+Tap Refresh servers	روی «به‌روزرسانی سرورها» ضربه بزنید
+Turn off	خاموش کردن
+Use for all apps	استفاده برای همه برنامه‌ها
+VPN is part of Patreon premium	VPN بخشی از پاتریون ویژه است
+Couldn't ask for VPN permission	درخواست مجوز VPN ممکن نشد
+VPN permission is needed to connect	برای اتصال، مجوز VPN لازم است
+Russia	روسیه
+Server list was empty	فهرست سرورها خالی بود
+South Korea	کره جنوبی
+United Kingdom	بریتانیا
+United States	ایالات متحده
+Chrome only	فقط Chrome
+Connecting…	درحال اتصال…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	به Pixel Suite اجازه «دستگاه‌های اطراف» را بدهید تا مزاحم نشو بتواند شبکه تلفن همراه ساعتتان را تغییر دهد.
+Do Not Annoy: watch	مزاحم نشو: ساعت
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Pixel Suite روی ساعت شما برای تغییر شبکه تلفن همراه به یک مجوز یک‌باره (فرمان adb) نیاز دارد.
+Watch	ساعت
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	لغزاننده ۶۰ / ۱۲۰ هرتز را زیر Smooth Display اضافه می‌کند (تنظیمات > نمایشگر و لمس)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	«برنامه و داده» همه‌چیز (ورودها، گفتگوها، تنظیمات و فایل‌ها) را ذخیره و دقیقاً همان‌طور بازیابی می‌کند. «فقط برنامه» فقط خود برنامه را ذخیره می‌کند.
+Auto sorts A to Z; Custom lets you arrange them.	خودکار از A تا Z مرتب می‌کند؛ سفارشی اجازه می‌دهد خودتان بچینید.
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	برای پیمایش، پوشه‌ای را روی «رفتن به پایین» بکشید؛ برای سرعت بیشتر عمیق‌تر فشار دهید.
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	پوشه‌های کشو: برای پیمایش، یکی را روی «رفتن به پایین» نگه دارید؛ برای سرعت بیشتر عمیق‌تر فشار دهید.
+Hold an app or folder and choose Lock or Unlock.	برنامه یا پوشه‌ای را نگه دارید و «قفل» یا «باز کردن قفل» را انتخاب کنید.
+Pixel watch eSIM purchase	خرید eSIM برای Pixel Watch
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	برای باز کردن ضربه بزنید؛ برای تغییر نام یا برداشتن نگه دارید. برای ویرایش، جابه‌جایی یا برداشتن، وب‌سایتی را در آن نگه دارید.
+• Drag an app into the top row to pin it, then drag to reorder.	• برای سنجاق کردن، برنامه‌ای را به ردیف بالا بکشید، بعد برای مرتب کردن بکشید.
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	به ساعتتان دسترسی نشد. وقتی دوباره وصل شود، شبکه تلفن همراهش روشن می‌شود.
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	به ساعتتان دسترسی نشد. وقتی دوباره وصل شود، شبکه تلفن همراهش خاموش می‌شود.
+Language	زبان
+Automatic	خودکار
+Follows the phone	مثل تلفن
+Couldn't save the language	زبان ذخیره نشد
+‹  Back	‹  بازگشت
+just now	همین الان
+1 minute ago	۱ دقیقه پیش
+1 hour ago	۱ ساعت پیش
+1 day ago	۱ روز پیش
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	فهرست‌های تبلیغات: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). مسدودکننده خود Pixel Suite.
+The Ad blocker is part of Pixel Suite's Patreon features	مسدودکننده تبلیغات جزو قابلیت‌های پاتریون در Pixel Suite است
+Root access is needed	دسترسی روت لازم است
+Off: ads are no longer blocked	خاموش: تبلیغات دیگر مسدود نمی‌شوند
+Couldn't download the ad lists (no connection?). The current list stays.	فهرست‌های تبلیغات دانلود نشد (اتصال ندارید؟). فهرست فعلی می‌ماند.
+Ready: restart the phone once to start blocking	آماده: برای شروع مسدودسازی، گوشی را یک بار ری‌استارت کنید
+Couldn't prepare the list	فهرست آماده نشد
+Couldn't prepare the module	ماژول آماده نشد
+Getting the ad lists…	در حال دریافت فهرست‌های تبلیغات…
+No answer over UDP	پاسخی از طریق UDP نیامد
+TLS handshake timed out	زمان دست‌دهی TLS تمام شد
+Key exchange timed out	زمان تبادل کلید تمام شد
+Server sent no address	سرور آدرسی نفرستاد
+Server rejected the sign-in	سرور ورود را رد کرد
+Server gave no address	سرور آدرسی نداد
+Connection closed	اتصال بسته شد
+Server didn't answer	سرور پاسخ نداد
+Server refused the call	سرور تماس را رد کرد
+Server closed the connection	سرور اتصال را بست
+1 server	۱ سرور
+Unhide 1 app	نمایش ۱ برنامه
+Unhide 1 contact	نمایش ۱ مخاطب
+Unhide contact	نمایش مخاطب
+1 app saved · 1 version	ذخیره‌شده: ۱ برنامه · ۱ نسخه
+1 app · 1 version	۱ برنامه · ۱ نسخه
+Doodles	خط‌خطی
+Super Dark-Mode	حالت فوق‌تیره
+Super Dark	فوق‌تیره
+Frosted Glass	شیشه مات
+Do Not Annoy	مزاحم نشو
+No Annoyance	بی‌مزاحمت
+Quick Select	انتخاب سریع
+Google Photos	عکس‌های Google
+Pixel watch	ساعت Pixel
+Google dialer+	تلفن Google+
+Keep	Keep
+Drive	Drive
+Sponsored	حمایت‌شده
+Recent apps	برنامه‌های اخیر
+3×3 (Stock)	3×3 (پیش‌فرض)
+Ag	اب
+Aa	اب
+1 website with custom settings	۱ وب‌سایت با تنظیمات سفارشی
+1 app isn't saved at the version installed now	۱ برنامه با نسخه نصب‌شده فعلی ذخیره نشده
+Words are never replaced; suggestions still show	کلمه‌ها هرگز جایگزین نمی‌شوند؛ پیشنهادها می‌مانند
+Off: Gboard corrects nothing; turn it on to choose languages	خاموش: Gboard چیزی را اصلاح نمی‌کند؛ برای انتخاب زبان‌ها روشنش کنید
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	برای تغییر اندازه دستگیره‌ها را بکشید، یا وسط را برای جابه‌جایی. «اعمال» ذخیره می‌کند؛ «بازنشانی» به اندازه Gboard برمی‌گرداند. فقط عمودی.
+Unlock Watch eSIM · $10 one-time purchase	باز کردن eSIM ساعت · خرید یک‌باره $10
+$10 one-time eSIM purchase	خرید یک‌باره eSIM به $10
+One-time purchase, $10, yours to keep.	خرید یک‌باره، $10، برای همیشه مال شما.
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	کد خرید را در ایمیل purchases@roviandev.com پیدا کنید. پوشه هرزنامه را هم ببینید.
+Pixel Suite logo	نشان Pixel Suite
+Open Android app settings to manage notifications.	برای مدیریت اعلان‌ها تنظیمات برنامه Android را باز کنید.
+OK	تأیید
+Opens this sheet from the toolbar	این برگه را از نوار ابزار باز می‌کند
+Needs Pixel Suite premium and the ad blocker on	به Pixel Suite ویژه و روشن بودن مسدودکننده تبلیغات نیاز دارد
+Manage extensions	مدیریت افزونه‌ها
+Enter an address	یک نشانی وارد کنید
+That isn't a web address	این نشانی وب نیست
+Off in Chrome · on for other apps	در Chrome خاموش · برای بقیه برنامه‌ها روشن
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	VPN برای کل گوشی روشن است. خاموش کردن آن در اینجا فقط Chrome را خارج می‌کند.
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	برنامه‌های دیگر از VPN استفاده می‌کنند؛ Chrome بیرون است. برای افزودن Chrome روشنش کنید.
+Only Chrome uses this VPN. Other apps keep their own connection.	فقط Chrome از این VPN استفاده می‌کند. برنامه‌های دیگر اتصال خودشان را دارند.
+All apps except Chrome	همه برنامه‌ها به‌جز Chrome
+• 1 setting	• ۱ تنظیم
+• 1 custom icon	• ۱ آیکون سفارشی
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• تنظیم لانچر Pixel: پوشه‌های کشو، مرتب‌سازی، نام‌ها و قفل‌ها
+• Share menu: pinned order and hidden apps	• منوی هم‌رسانی: ترتیب سنجاق‌شده و برنامه‌های پنهان
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	تنظیمات فعلی Pixel Suite جایگزین می‌شود. لانچر Pixel یک بار ری‌استارت می‌شود.
+Two rows, shortcuts on top	دو ردیف، میان‌برها بالا
+Two rows	دو ردیف
+Side buttons hidden	دکمه‌های کناری پنهان
+Menu button hidden	دکمه منو پنهان
+Emoji/voice hidden	ایموجی/صدا پنهان
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	دکمه‌های پیمایش را کنار نوار اشاره اضافه می‌کند. پس از به‌روزرسانی ماژول، لانچر Pixel را یک بار ری‌استارت کنید؛ بعد انتخاب دکمه‌ها فوری اعمال می‌شود.
+Sign-in timed out	زمان ورود تمام شد
+Address setup timed out	زمان تنظیم نشانی تمام شد
+Server renewed its keys	سرور کلیدهایش را تازه کرد
+Stopped	متوقف شد
+Couldn't finish the backup	پشتیبان‌گیری تمام نشد
+Root isn't available, or it took too long	روت در دسترس نیست یا خیلی طول کشید
+It didn't finish	تمام نشد
+Pixel Suite could not make the file	Pixel Suite نتوانست فایل را بسازد
+Pixel Suite is unavailable	Pixel Suite در دسترس نیست
+Pixel Suite gave no file	Pixel Suite فایلی نداد
+the picked folder	پوشه انتخاب‌شده
+Use a name between 1 and 80 characters	نامی بین ۱ تا ۸۰ نویسه بگذارید
+Folder limit reached	به حد پوشه‌ها رسیدید
+Drag here to add to home screen	برای افزودن به صفحه اصلی اینجا بکشید
+Drag a folder here to move it to the end of the list	پوشه را برای بردن به انتهای فهرست اینجا بکشید
+Drag here to take out of the folder	برای بیرون آوردن از پوشه اینجا بکشید
+More shapes	شکل‌های بیشتر
+More colours	رنگ‌های بیشتر
+Thickness	ضخامت
+Fill shape	پر کردن شکل
+Delete shape	حذف شکل
+Make Doodles menu smaller	کوچک کردن منوی خط‌خطی
+Move Doodles menu	جابه‌جایی منوی خط‌خطی
+Make text menu smaller	کوچک کردن منوی متن
+Move text menu	جابه‌جایی منوی متن
+More fonts	قلم‌های بیشتر
+Clear clipboard	پاک کردن بریده‌دان
+Stop voice typing	توقف تایپ صوتی
+Save icon	ذخیره آیکون
+Reset to original icon	بازگشت به آیکون اصلی
+Folder options	گزینه‌های پوشه
+Doodles tab	زبانه خط‌خطی
+Edit: select hidden contacts to unhide	ویرایش: مخاطبان پنهان را برای نمایش انتخاب کنید
+Edit: select hidden apps to unhide	ویرایش: برنامه‌های پنهان را برای نمایش انتخاب کنید
+Edit: select apps to hide	ویرایش: برنامه‌ها را برای پنهان کردن انتخاب کنید
+Hide the contacts row	پنهان کردن ردیف مخاطبان
+Show the contacts row	نمایش ردیف مخاطبان
+Locked	قفل‌شده
+Filtering mode	حالت پالایش
+Change the picture	تغییر تصویر
+Open a website to choose its filtering	برای انتخاب پالایش، یک وب‌سایت باز کنید
+Highest refresh rate. The screen still slows down when nothing moves.	بیشترین نرخ تازه‌سازی. وقتی چیزی حرکت نمی‌کند صفحه همچنان کند می‌شود.
+Cancelled: the app is locked by Pixel Suite	لغو شد: برنامه با Pixel Suite قفل است
+Incoming call declined by Do Not Annoy	تماس ورودی با «مزاحم نشو» رد شد
+Confirm it's you to uninstall this core app	برای حذف این برنامه اصلی تأیید کنید خودتان هستید
+Confirm it's you to disable this core app	برای غیرفعال کردن این برنامه اصلی تأیید کنید خودتان هستید
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	هشدار: غیرفعال کردن یا حذف این برنامه یکپارچه با سیستم ممکن است به کارکرد Pixel Suite و پایداری سیستم آسیب بزند.
+Files · date modified	فایل‌ها · تاریخ تغییر
+Site settings unavailable	تنظیمات سایت در دسترس نیست
+Could not save site settings	تنظیمات سایت ذخیره نشد
+Couldn't read existing Chrome site settings	تنظیمات فعلی سایت در Chrome خوانده نشد
+Cannot create icon storage	فضای آیکون ساخته نشد
+Unsupported dimensions	ابعاد پشتیبانی نمی‌شود
+Cannot encode image	تصویر رمزگذاری نشد
+Response too large	پاسخ خیلی بزرگ است
+Orange	نارنجی
+Dark red	قرمز تیره
+Turquoise	فیروزه‌ای
+Dark blue	آبی تیره
+Purple	بنفش
+Pink	صورتی
+White	سفید
+Black	سیاه
+Move to bottom	انتقال به پایین
+Lock app	قفل کردن برنامه
+Unlock app	باز کردن قفل برنامه
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	همه‌چیز: برنامه، ورودها، گفتگوها، تنظیمات و فایل‌ها. دقیقاً همان‌طور بازگردانی می‌شود.
+$5/month	$5/ماه
+Settings soft scrolling edges (Frosted Glass only):	لبه‌های پیمایش نرم در تنظیمات (فقط شیشه مات):
+Digital Wellbeing	سلامت دیجیتال
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	این محدوده‌ها را در LSPosed فعال کنید و ری‌استارت کنید. فقط صفحه‌های تأییدشده‌ای که از تنظیمات باز می‌شوند و ناحیه‌های پیمایشی که با اطمینان شناخته شده‌اند سبک می‌گیرند. ناحیه‌های پشتیبانی‌نشده رد می‌شوند.
+Telegram	تلگرام
+Patreon	پاتریون
+Pixel Launcher	لانچر Pixel
+Pixel Studio	استودیو Pixel
+Hold power button when locked	نگه داشتن دکمه روشن/خاموش در حالت قفل
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	وقتی گوشی قفل است، نگه داشتن دکمه همان کاری را می‌کند که در «نگه داشتن دکمه روشن/خاموش در حالت قفل» انتخاب کرده‌اید. هر انتخاب جداگانه کار می‌کند.
+Reboot	راه‌اندازی مجدد
+Tap again to reboot	برای راه‌اندازی مجدد دوباره بزنید
+Rebooting…	در حال راه‌اندازی مجدد…
+These run inside Android, so they update after a reboot:	این‌ها درون Android کار می‌کنند، پس بعد از راه‌اندازی مجدد به‌روز می‌شوند:
+Reboot to finish updating. Long-press to hide.	برای تمام شدن به‌روزرسانی، گوشی را دوباره راه‌اندازی کنید. برای پنهان کردن نگه دارید.
+Couldn't reboot: root access needed	راه‌اندازی مجدد نشد: دسترسی روت لازم است
+Search in Chrome	جستجو در Chrome
+Couldn't refresh: root access needed	تازه‌سازی نشد: دسترسی روت لازم است
+See-through keyboard background, with rims	پس‌زمینه شفاف صفحه‌کلید، با لبه
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	پس‌زمینه صفحه‌کلید به شیشه مات تبدیل می‌شود: آنچه پشت آن است، محو دیده می‌شود، با لبه. کلیدها همان‌طور می‌مانند.
+Frosted Gboard	Gboard مات
+Follows the phone language	مثل زبان تلفن
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	در بعضی برنامه‌ها، مثل Chrome، گوشه‌های بالای صفحه‌کلید سفید دیده می‌شوند. این برنامه‌ها صفحه‌شان را همان جایی تمام می‌کنند که صفحه‌کلید شروع می‌شود، پس پشت گوشه‌ها چیزی برای نمایش نیست.
+Pixel Stack	Pixel Stack
+Tap to start	برای شروع ضربه بزنید
+Tap to drop	برای انداختن ضربه بزنید
+Perfect!	عالی!
+Best	بهترین
+New best!	رکورد جدید!
+Tap to play again	برای بازی دوباره ضربه بزنید
+Share score	اشتراک امتیاز
+Sharing…	در حال اشتراک…
+Shared!	به اشتراک گذاشته شد!
+Couldn't share. Try again.	اشتراک ممکن نشد. دوباره امتحان کنید.
+Your name	نام شما
+Optional	اختیاری
+Game Over	بازی تمام شد
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **رابط کاربری سیستم** (com.android.systemui)\n• **لانچر Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **تنظیمات** (com.android.settings)\n• **سرویس‌های تنظیمات** (com.google.android.settings.intelligence)\n• **نصب‌کننده بسته** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nبرای سبک ویرایشگر، **استودیو Pixel** (com.google.android.apps.pixel.creativeassistant) و **عکس‌های Google** (com.google.android.apps.photos) را هم انتخاب کنید. پس از افزودن دامنه‌ها بازراه‌اندازی کنید.
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **لانچر Pixel** (com.google.android.apps.nexuslauncher) — نمادها، پوشه‌ها، منوها و لبه نرم کشو\n• **رابط کاربری سیستم** (com.android.systemui) — منوها و پیام‌های سیستم\n• **استودیو Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **عکس‌های Google** (com.google.android.apps.photos) — منوهای ویرایشگر\n\nفوق‌تیره دامنه‌های اضافی‌اش را در صفحه خودش فهرست می‌کند.
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} به این نسخه برمی‌گردد. داده‌هایش همان‌طور که هست می‌ماند. اگر بعد باز نشد، فضای ذخیره‌سازی آن را در تنظیمات پاک کنید.
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	در شماره‌گیری سریع جایی برای {0} وب‌سایت آن نیست، پس همراه پوشه حذف می‌شوند.
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} ذخیره شد. در Play Store روی «به‌روزرسانی» بزنید. {1} پس از به‌روزرسانی دوباره نگه داشته می‌شود.
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	«{0}» برداشته شود؟ برنامه‌هایش به کشوی برنامه برمی‌گردند. هیچ برنامه‌ای حذف نصب نمی‌شود.
+Couldn't save {0}, so it wasn't updated. Check root and free space.	{0} ذخیره نشد، پس به‌روز نشد. روت و فضای خالی را بررسی کنید.
+Tap Update in Play Store. {0} is held back again once it's updated.	در Play Store روی «به‌روزرسانی» ضربه بزنید. {0} پس از به‌روزرسانی دوباره نگه داشته می‌شود.
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nنسخه {1}\nساخت {2}\n{3}\n\nبرای نگه داشتن، تیک بزنید و اعمال کنید.
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	تا ۷ میان‌بر، ترتیبشان، دکمه‌های کناری و دو ردیف{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}، {1}، به‌روزرسانی مسدود، برنامه اصلی قفل است. برای دانستن دلیل بزنید
+{0}. A looping demo. It doesn't change your settings.	{0}. نمایشی تکرارشونده. تنظیماتتان را تغییر نمی‌دهد.
+Restore {0} (its saved version is the one installed)	بازیابی {0} (نسخه ذخیره‌شده همان نسخه نصب‌شده است)
+{0} of {1} on the toolbar · {2} more · swipe left or right	{0} از {1} در نوار ابزار · {2} مورد دیگر · به چپ یا راست بکشید
+Couldn't back up {0} of {1}. Check root and free space.	پشتیبان {0} از {1} گرفته نشد. روت و فضای خالی را بررسی کنید.
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} در GitHub و Xposed دردسترس است.
+{0} apps aren't saved at the version installed now	{0} برنامه با نسخه نصب‌شده فعلی ذخیره نشده
+{0}, off, needs Suggestions and shortcuts together	{0}، خاموش، به پیشنهادها و میان‌برها با هم نیاز دارد
+The saved version of {0} is the one installed now	نسخه ذخیره‌شده {0} همان نسخه‌ای است که اکنون نصب است
+{0}, on, needs Suggestions and shortcuts together	{0}، روشن، به پیشنهادها و میان‌برها با هم نیاز دارد
+{0}. Applies your changes. Long-press to hide.	{0}. تغییرات شما را اعمال می‌کند. برای پنهان کردن فشار طولانی دهید.
+There's no room on the speed dial for its {0}	در شماره‌گیری سریع برای {0} آن جا نیست
+Couldn't save {0}. Check root and free space.	{0} ذخیره نشد. روت و فضای خالی را بررسی کنید.
+{0}: the saved version is the one installed	{0}: نسخه ذخیره‌شده همان نسخه نصب‌شده است
+Its {0} websites go back to the speed dial.	{0} وب‌سایت آن به شماره‌گیری سریع برمی‌گردند.
+{0} is back to {1}, with everything as it was	{0} به {1} برگشت، همه‌چیز مثل قبل
+{0} apps protected from updates · {1} shown	{0} برنامه در برابر به‌روزرسانی محافظت‌شده · {1} نمایش‌داده‌شده
+{0}, {1}, core app locked. Tap to learn why	{0}، {1}، برنامه اصلی قفل است. برای دانستن دلیل بزنید
+Select at least {0} apps for a folder	برای پوشه دست‌کم {0} برنامه انتخاب کنید
+Sort the apps in “{0}” from A to Z?	برنامه‌های «{0}» از A تا Z مرتب شوند؟
+This folder is full ({0} websites)	این پوشه پر است ({0} وب‌سایت)
+Blocking {0} ad domains · updated {1}	{0} دامنه تبلیغاتی مسدود · به‌روزرسانی {1}
+{0} apps did not fit on this page	{0} برنامه در این صفحه جا نشد
+{0} open-source servers available	{0} سرور متن‌باز دردسترس است
+{0} websites with custom settings	{0} وب‌سایت با تنظیمات سفارشی
+{0}, {1}. Tap to hide saved versions	{0}، {1}. برای پنهان کردن نسخه‌های ذخیره‌شده بزنید
+{0}, {1}. Tap to show saved versions	{0}، {1}. برای دیدن نسخه‌های ذخیره‌شده بزنید
+{0} removed element(s) · Restore	{0} عنصر برداشته شد · بازیابی
+Couldn't reach any server in {0}	به هیچ سروری در {0} دسترسی نشد
+{0}. Check root and free space.	{0}. روت و فضای خالی را بررسی کنید.
+{0} apps protected from updates	{0} برنامه از به‌روزرسانی محافظت می‌شوند
+Downloading Pixel Suite {0} — {1}%	درحال بارگیری Pixel Suite {0} — {1}٪
+Restore removed elements ({0})	بازیابی عناصر برداشته‌شده ({0})
+{0} of {1} on the toolbar · {2} more	{0} از {1} در نوار ابزار · {2} مورد دیگر
+Update, back up or restore {0}	به‌روزرسانی، پشتیبان‌گیری یا بازگردانی {0}
+{0}\nDefault for all websites	{0}\nپیش‌فرض برای همه وب‌سایت‌ها
+{0} needs Pixel Suite premium	{0} به Pixel Suite ویژه نیاز دارد
+No open-source servers in {0}	هیچ سرور متن‌باز در {0} نیست
+Server list unavailable ({0})	فهرست سرورها در دسترس نیست ({0})
+Connecting to server {0} of {1}…	در حال اتصال به سرور {0} از {1}…
+{0}% wide · {1}% tall · {2} dp down	عرض {0}٪ · ارتفاع {1}٪ · {2} dp پایین‌تر
+Restore a saved version ({0})	بازگردانی نسخه ذخیره‌شده ({0})
+Pixel Suite {0} is available	Pixel Suite {0} دردسترس است
+Saved {0} with Pixel Suite {1}.	ذخیره‌شده در {0} با Pixel Suite {1}.
+{0}. Opens an external app.	{0}. برنامه‌ای خارجی را باز می‌کند.
+{0}% wide · {1}% tall · {2} dp up	عرض {0}٪ · ارتفاع {1}٪ · {2} dp بالاتر
+Waiting for dark mode · {0}	در انتظار حالت تیره · {0}
+{0} (folder not available)	{0} (پوشه دردسترس نیست)
+{0} apps saved · {1} versions	ذخیره‌شده: {0} برنامه · {1} نسخه
+1 app saved · {0} versions	ذخیره‌شده: ۱ برنامه · {0} نسخه
+{0} apps saved · 1 version	ذخیره‌شده: {0} برنامه · ۱ نسخه
+Delete saved version {0}	حذف نسخه ذخیره‌شده {0}
+Installed version of {0}	نسخه نصب‌شده {0}
+What {0} ({1}) is used for	{0} ({1}) برای چه استفاده می‌شود
+Any country · up to {0}	هر کشوری · تا {0}
+{0} apps · {1} versions · {2}	{0} برنامه · {1} نسخه · {2}
+1 app · {0} versions · {1}	۱ برنامه · {0} نسخه · {1}
+{0} apps · 1 version · {1}	{0} برنامه · ۱ نسخه · {1}
+1 app · 1 version · {0}	۱ برنامه · ۱ نسخه · {0}
+Couldn't restore {0}: {1}	{0} بازگردانی نشد: {1}
+About {0} · only {1} free	حدود {0} · فقط {1} خالی
+Level {0} · {1} (Default)	سطح {0} · {1} (پیش‌فرض)
+{0}, {1}, updates blocked	{0}، {1}، به‌روزرسانی مسدود
+On · {0} · whole phone	روشن · {0} · کل گوشی
+On · {0} · Chrome only	روشن · {0} · فقط Chrome
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	در حال بررسی {0} سرور…
+{0} selected · {1} shown	{0} انتخاب‌شده · {1} نمایش‌داده‌شده
+No results for "{0}"	نتیجه‌ای برای «{0}» نیست
+{0} apps · {1} versions	{0} برنامه · {1} نسخه
+1 app · {0} versions	۱ برنامه · {0} نسخه
+{0} apps · 1 version	{0} برنامه · ۱ نسخه
+Purchase email: {0}	ایمیل خرید: {0}
+No icons match “{0}	هیچ نمادی با “{0} مطابقت ندارد
+Reconnecting… ({0})	درحال اتصال دوباره… ({0})
+Unhide {0} contacts	نمایش {0} مخاطب
+No apps match “{0}	هیچ برنامه‌ای با “{0} مطابقت ندارد
+Resend code ({0}s)	ارسال دوباره کد ({0} ثانیه)
+Connecting to {0}…	درحال اتصال به {0}…
+**Used for:**\n{0}	**کاربرد:**\n{0}
+{0}, {1}, switch, off	{0}، {1}، کلید، خاموش
+Restore {0} build {1}	بازگردانی {0} نسخه {1}
+Turns on at {0} · {1}	ساعت {0} روشن می‌شود · {1}
+Pin {0} to toolbar	سنجاق کردن {0} به نوار ابزار
+• {0} custom icons	• {0} آیکون سفارشی
+Saving {0} · {1} of {2}	در حال ذخیره {0} · {1} از {2}
+{0}  ·  {1} selected	{0}  ·  {1} انتخاب‌شده
+{0}, {1}, switch, on	{0}، {1}، کلید، روشن
+{0}, not selected	{0}، انتخاب‌نشده
+{0} · Chrome only	{0} · فقط Chrome
+Use default ({0})	استفاده از پیش‌فرض ({0})
+Pass expires {0}	گذرنامه در {0} منقضی می‌شود
+{0}, unavailable	{0}، دردسترس نیست
+Enables {0} in {1}.	{0} را در {1} فعال می‌کند.
+{0} · not Chrome	{0} · بدون Chrome
+{0} is unlocked	قفل {0} باز است
+Connected · {0}	متصل · {0}
+{0} is selected	{0} انتخاب شده است
+{0} minutes ago	{0} دقیقه پیش
+{0} is back to {1}	{0} به {1} برگشت
+Unhide {0} apps	نمایش {0} برنامه
+On until {0} · {1}	روشن تا {0} · {1}
+{0} icon packs	{0} بسته نماد
+• {0} settings	• {0} تنظیم
+Remove "{0}"?	«{0}» برداشته شود؟
+{0}, selected	{0}، انتخاب شد
+{0} right now	اکنون {0}
+{0} is locked	{0} قفل است
+Hide {0} apps	پنهان کردن {0} برنامه
+{0} hours ago	{0} ساعت پیش
+Checking {0}	درحال بررسی {0}
+Saving {0} {1}…	درحال ذخیره {0} {1}…
+{0} days ago	{0} روز پیش
+{0} · up to {1}	{0} · تا {1}
+Level {0} · {1}	سطح {0} · {1}
+Restore {0} {1}	بازگردانی {0} {1}
+On now · {0}	اکنون روشن · {0}
+Back up {0}	پشتیبان‌گیری از {0}
+Restart {0}	بازراه‌اندازی {0}
+Enables {0}	{0} را فعال می‌کند
+{0} dp down	{0} dp به پایین
+Restore {0}	بازیابی {0}
+{0} servers	{0} سرور
+{0}, hidden	{0}، پنهان
+Level {0}, {1}	سطح {0}، {1}
+Refresh {0}	تازه‌سازی {0}
+{0}, shown	{0}، نمایان
+Saved {0}.	ذخیره‌شده در {0}.
+**{0}** ({1})	**{0}** ({1})
+About {0}	حدود {0}
+Build {0}	ساخت {0}
+From  {0}	از  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} آیکون
+Unpin {0}	برداشتن سنجاق {0}
+{0}, off	{0}، خاموش
+To  {0}	تا  {0}
+Pin {0}	سنجاق کردن {0}
+Its {0}	{0} آن
+Use {0}	استفاده از {0}
+{0}, on	{0}، روشن
+You’re a free member. Choose the paid tier to unlock	شما عضو رایگان هستید. برای باز کردن، سطح پولی را انتخاب کنید.
+Root access is needed to save membership changes.	برای ذخیره تغییرات عضویت، دسترسی روت لازم است.
+Sign-in expired. Sign in with Patreon again.	ورود منقضی شد. دوباره با پاتریون وارد شوید.
+Couldn’t check membership. Try again shortly.	بررسی عضویت انجام نشد. کمی بعد دوباره امتحان کنید.
+Sign-in expired. Tap Unlock to try again.	ورود منقضی شد. برای تلاش دوباره روی «باز کردن» بزنید.
+No active membership found. Join, then tap Unlock again.	عضویت فعالی پیدا نشد. بپیوندید، سپس دوباره روی «باز کردن» بزنید.
+Sign-in wasn't completed. You can try again.	ورود کامل نشد. می‌توانید دوباره امتحان کنید.
+Couldn't verify this sign-in. Tap Unlock to try again.	این ورود تأیید نشد. برای تلاش دوباره روی «باز کردن» بزنید.
+Couldn't confirm membership. Try again.	عضویت تأیید نشد. دوباره امتحان کنید.
+Confirming Patreon membership…	در حال تأیید عضویت پاتریون…
+Log in	ورود
+Patreon profile photo	عکس نمایه پاتریون
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	بعد از پرداخت، کد خرید به ایمیلی فرستاده می‌شود که با آن پرداخت می‌کنید. صندوق ورودی و پوشه هرزنامه را برای purchases@roviandev.com بررسی کنید.
+Buy	خرید
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	صندوق ورودی و پوشه هرزنامه را برای purchases@roviandev.com بررسی کنید. از جدیدترین کد استفاده کنید؛ 10 دقیقه بعد منقضی می‌شود.
+Hide app	پنهان کردن برنامه
+Hide widget	پنهان کردن ابزارک
+Remove Google Play services from the scope	حذف خدمات Google Play از دامنه
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite دیگر از خدمات Google Play استفاده نمی‌کند و نگه داشتن آن در دامنه LSPosed مربوط به Pixel Suite ممکن است یکپارچگی Device و Strong را از بین ببرد.
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	LSPosed (یا Vector) را باز کنید، تیک خدمات Google Play را برای Pixel Suite بردارید و سپس ری‌استارت کنید.
+Reboot to restore Play Integrity	برای بازگرداندن Play Integrity ری‌استارت کنید
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite خدمات Google Play را از دامنه LSPosed خود حذف کرد، چون ممکن است یکپارچگی Device و Strong را از بین ببرد و دیگر استفاده نمی‌شود. برای تمام کردن، گوشی را ری‌استارت کنید.
+Server connected but passes no traffic	سرور وصل شد اما هیچ ترافیکی عبور نمی‌دهد
+Server connected but websites don't open ({0})	سرور وصل شد اما وب‌سایت‌ها باز نمی‌شوند ({0})

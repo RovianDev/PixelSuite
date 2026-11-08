@@ -47,7 +47,7 @@ final class AdBlockCard extends LinearLayout implements SharedPreferences.OnShar
         hero.addView(title,new LayoutParams(0,-2,1));
         ProtectionMark mark=new ProtectionMark(c);mark.setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
         hero.addView(mark,new LayoutParams(dp(124),dp(132)));addView(hero,new LayoutParams(-1,-2));
-        TextView description=label("Ad blocking across Chrome, Google News and other apps. Always on, with daily list updates.",15,secondary,false);
+        TextView description=label("Blocks ads in Chrome, Google News and other apps. The lists update daily.",15,secondary,false);
         description.setLineSpacing(dp(3),1f);addView(description);
         status=label("Preparing ad protection…",14,ink,true);status.setPadding(0,dp(18),0,dp(4));status.setAccessibilityLiveRegion(ACCESSIBILITY_LIVE_REGION_POLITE);addView(status);
         warning=label("",14,secondary,false);warning.setVisibility(GONE);addView(warning);
@@ -55,34 +55,34 @@ final class AdBlockCard extends LinearLayout implements SharedPreferences.OnShar
         GradientDrawable button=new GradientDrawable();button.setColor(FrostedSurface.dark(c)?0xff303137:0xffe6eaf0);button.setCornerRadius(dp(24));update.setBackground(button);
         LayoutParams action=new LayoutParams(-1,-2);action.topMargin=dp(14);addView(update,action);update.setClickable(true);update.setFocusable(true);
         update.setOnClickListener(new OnClickListener(){public void onClick(View v){updateLists();}});
-        TextView note=label("Works across apps and browsers, including Private DNS. Removes empty ad boxes in Chrome.",12,secondary,false);note.setPadding(0,dp(14),0,dp(10));addView(note);
+        TextView note=label("Works in every app and browser, also with Private DNS.",12,secondary,false);note.setPadding(0,dp(14),0,dp(10));addView(note);
         TextView credit=label("",12,secondary,false);
-        credit.setText(Html.fromHtml("Ad lists: <a href=\"https://github.com/hagezi/dns-blocklists-legacy\">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href=\"https://adaway.org/hosts.txt\">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker."));
+        credit.setText(I18n.cs(Html.fromHtml(I18n.t("Ad lists: <a href=\"https://github.com/hagezi/dns-blocklists-legacy\">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href=\"https://adaway.org/hosts.txt\">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker."))));
         credit.setLinkTextColor(ink);credit.setMovementMethod(LinkMovementMethod.getInstance());addView(credit);
         prefs=c.getSharedPreferences("pixelsuite_adblock",0);
     }
-    private TextView label(String value,int size,int color,boolean bold){TextView v=new TextView(getContext());v.setText(value);v.setTextSize(size);v.setTextColor(color);v.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));return v;}
+    private TextView label(String value,int size,int color,boolean bold){TextView v=new TextView(getContext());v.setText(I18n.cs(value));v.setTextSize(size);v.setTextColor(color);v.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));return v;}
     private int dp(float n){return Math.round(n*getResources().getDisplayMetrics().density);}
     @Override protected void onAttachedToWindow(){super.onAttachedToWindow();attached=true;PatronAccess.watch(entitlement);prefs.registerOnSharedPreferenceChangeListener(this);refresh();}
     @Override protected void onDetachedFromWindow(){attached=false;PatronAccess.unwatch(entitlement);prefs.unregisterOnSharedPreferenceChangeListener(this);super.onDetachedFromWindow();}
     @Override public void onSharedPreferenceChanged(SharedPreferences p,String key){refresh();}
     private void refresh(){
         if(!attached)return;
-        if(!PatronAccess.unlocked()){status.setText("Unlock with Patreon");warning.setVisibility(GONE);update.setText("Update lists");update.setAlpha(.4f);invalidateMark(this);return;}update.setAlpha(1f);invalidateMark(this);
+        if(!PatronAccess.unlocked()){status.setText(I18n.cs("Unlock with Patreon"));warning.setVisibility(GONE);update.setText(I18n.cs("Update lists"));update.setAlpha(.4f);invalidateMark(this);return;}update.setAlpha(1f);invalidateMark(this);
         WORK.execute(new Runnable(){public void run(){
             final String value=AdBlock.status(getContext());
             final String conflict=AdBlock.otherBlocker()?"AdAway or Systemless hosts is also on. Use only one blocker.":null;
-            post(new Runnable(){public void run(){if(!attached)return;if(!PatronAccess.unlocked()){refresh();return;}status.setText(value);String message=conflict!=null?conflict:restartNote;warning.setText(message);warning.setVisibility(message==null?GONE:VISIBLE);}});
+            post(new Runnable(){public void run(){if(!attached)return;if(!PatronAccess.unlocked()){refresh();return;}status.setText(I18n.cs(value));String message=conflict!=null?conflict:restartNote;warning.setText(I18n.cs(message));warning.setVisibility(message==null?GONE:VISIBLE);}});
         }});
     }
     private void updateLists(){
         if(!PatronAccess.unlocked()){PatronPaper.open((android.app.Activity)getContext(),0,null);return;}
-        if(busy)return;busy=true;update.setEnabled(false);update.setText("Updating…");
+        if(busy)return;busy=true;update.setEnabled(false);update.setText(I18n.cs("Updating…"));
         final Context app=getContext().getApplicationContext();
         WORK.execute(new Runnable(){public void run(){
             final AdBlock.Result r=AdBlock.isOn()?AdBlock.update(app):AdBlock.setEnabled(app,true);
             restartNote=r.needsReboot?"Restart the phone once to start blocking.":!r.ok?r.message:null;
-            post(new Runnable(){public void run(){busy=false;if(!attached)return;update.setEnabled(true);update.setText("Update lists");refresh();if(!r.ok&&r.message!=null)AppToast.makeText(getContext(),r.message,Toast.LENGTH_LONG).show();}});
+            post(new Runnable(){public void run(){busy=false;if(!attached)return;update.setEnabled(true);update.setText(I18n.cs("Update lists"));refresh();if(!r.ok&&r.message!=null)AppToast.makeText(getContext(),I18n.cs(r.message),Toast.LENGTH_LONG).show();}});
         }});
     }
 

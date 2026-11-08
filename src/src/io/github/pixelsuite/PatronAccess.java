@@ -45,7 +45,7 @@ final class PatronAccess {
     static boolean unlocked(){return unlocked;}
     static SharedPreferences prefs(Context c){return c.getSharedPreferences("pixelsuite_patron",0);}
     static boolean configured(){return PatronConfig.SERVER.startsWith("https://")&&!PatronConfig.CAMPAIGN.isEmpty();}
-    static boolean protectedKey(String key){return CallRecording.KEY.equals(key)||GoogleFeedAds.KEY.equals(key)||WatchEsim.KEY.equals(key);}
+    static boolean protectedKey(String key){return key != null && (CallRecording.KEY.equals(key) || CallRecording.QUALITY_KEY.equals(key) || GoogleFeedAds.KEY.equals(key) || WatchEsim.KEY.equals(key) || ChromeLayout.KEY.equals(key) || AdBlock.KEY.equals(key) || ChromeShield.KEY_ON.equals(key) || DarkPages.KEY.equals(key) || DarkPages.KEY_STYLE.equals(key) || DarkPages.KEY_WHEN.equals(key) || DarkPages.KEY_FROM.equals(key) || DarkPages.KEY_TO.equals(key) || key.startsWith("pixelsuite_gboard_"));}
     static boolean allowed(Context c,String key){return WatchEsim.KEY.equals(key)?EsimPurchase.unlocked(c):unlocked();}
     static boolean protectedPage(String page){return "google_dialer".equals(page)||"google_app".equals(page);}
     static String random(){byte[] bytes=new byte[32];new SecureRandom().nextBytes(bytes);return Base64.encodeToString(bytes,Base64.URL_SAFE|Base64.NO_WRAP|Base64.NO_PADDING);}
@@ -106,7 +106,7 @@ final class PatronAccess {
     static boolean hasSession(Context c){try{verify(c,prefs(c).getString("pass",""),false,true);return loggedIn(c);}catch(Exception invalid){return false;}}
     static long passExpiry(Context c){try{return verify(c,prefs(c).getString("pass",""),false,true).getLong("exp");}catch(Exception invalid){return 0;}}
     static String membershipMessage(Context c){return "free".equals(prefs(c).getString("membership",""))?"You’re a free member. Choose the paid tier to unlock":"No paid membership found. Choose the paid tier to unlock.";}
-    static final String[] PREMIUM_APPS={ChromeCosmetic.PACKAGE,"com.google.android.apps.magazines",CallRecording.PACKAGE,AliasProvider.GOOGLE};
+    static final String[] PREMIUM_APPS={ChromeCosmetic.PACKAGE,"com.google.android.apps.magazines",CallRecording.PACKAGE,AliasProvider.GOOGLE,SuperDarkApps.GBOARD};
     static void refreshPremiumApps(Context c){
         boolean call=false;
         try{android.media.AudioManager audio=(android.media.AudioManager)c.getSystemService(Context.AUDIO_SERVICE);int mode=audio==null?0:audio.getMode();call=mode==android.media.AudioManager.MODE_IN_CALL||mode==android.media.AudioManager.MODE_IN_COMMUNICATION||mode==android.media.AudioManager.MODE_RINGTONE;}catch(Throwable ignored){}

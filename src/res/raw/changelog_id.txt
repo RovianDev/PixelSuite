@@ -1,0 +1,70 @@
+## v3.1.0
+Pixel Suite dalam 14 bahasa, Chrome+ dan Gboard+, VPN bawaan, Pencadangan & Pemulihan untuk aplikasi yang ditahan, opsi baru untuk tombol daya, volume, dan layar kunci, serta ikon baru.
+
+✨ Baru
+• 💾 **Pencadangan & Pemulihan**: aplikasi yang ditahan disimpan sebelum diperbarui, beserta datanya (info masuk, chat, setelan, dan file) atau aplikasinya saja. 3 versi terbaru setiap aplikasi tetap disimpan, bahkan setelah di-uninstal. (Perlindungan › Pemblokir OTA & Store › Pemblokir Play Store)
+• 🌍 **14 bahasa**: Pixel Suite kini berbahasa Mandarin, Hindi, Spanyol, Arab, Prancis, Portugis, Rusia, Bengali, Indonesia, Jerman, Jepang, Turki, Persia, dan Ibrani, termasuk catatan perubahan ini. Bahasanya mengikuti ponsel Anda, atau ketuk tombol bahasa di kanan atas halaman utama untuk memilih. (Bahasa Arab, Persia, dan Ibrani dibaca dari kanan ke kiri.)
+• 🎮 **Pixel Stack!** game kecil tersembunyi: tahan logo di bagian atas halaman utama Pixel Suite. Tumpuk balok setinggi mungkin, jatuhkan dengan pas untuk (Sempurna!), dan bagikan skor Anda ke komunitas Telegram kami!
+• 🔘 **Tahan tombol daya**: buka Gemini atau Circle to Search, ambil screenshot, atau nyalakan dan matikan mode senyap: Senyap, Jangan Ganggu, Jangan Ganggu Saya, atau Tanpa Gangguan untuk ketiganya. (Pintasan › Tombol)
+• 🔒 **Tahan tombol daya saat terkunci**: pilih tindakan lain saat ponsel terkunci: Gemini (bawaan), Senyap, Jangan Ganggu, Jangan Ganggu Saya, atau Tanpa Gangguan. Bekerja sendiri, terpisah dari Tahan tombol daya. (Pintasan › Tombol)
+• 📷 **Tekan dua kali tombol daya**: sekarang Anda juga bisa memilih “Kamera (bawaan)”. (Pintasan › Tombol)
+• 🔦 **Tekan dua kali volume turun**: sekarang Anda juga bisa menyalakan atau mematikan senter. (Pintasan › Tombol)
+• 🕒 **Tampilan Selalu Aktif**: tetap aktif selama mengisi daya, dan biarkan tombol daya menampilkannya beberapa detik saat layar dimatikan. (Personalisasi › Tampilan Selalu Aktif)
+• 🔢 **Konfirmasi otomatis PIN 4 digit**: ponsel langsung terbuka begitu Anda mengetik angka ke-4, tanpa Enter. (Perlindungan › Privasi & Keamanan › Layar kunci)
+• 🧹 **Sembunyikan kotak penelusuran**: cukup tahan kolom penelusuran dan pilih Sembunyikan widget. Dok turun, aplikasi Anda memakai ruangnya, dan penelusuran tetap ada di panel aplikasi. Anda juga bisa menyembunyikannya dari Personalisasi › Peluncur Pixel.
+• 📋 **Cadangkan aplikasi Anda**: cadangkan aplikasi apa pun, aplikasinya saja atau beserta semua datanya (info masuk, chat, setelan, dan file), lalu pulihkan kapan saja. Ketuk tombol hijau untuk mengembalikan versi tersimpan. (Pemblokir Play Store › Pilih aplikasi)
+• 🔎 **Telusuri di Chrome**: pilih teks di aplikasi mana pun, ketuk ⋮ lalu pilih Telusuri di Chrome. Kata-katanya langsung terbuka di Chrome.
+• 🗑️ **Hanya Hapus semua**: aplikasi terbaru hanya menampilkan Hapus semua di tengah, tanpa Pilih dan Screenshot. (Personalisasi › Peluncur Pixel › Aplikasi Terbaru)
+• 🎨 **Ikon baru Pixel Suite**: ikon aplikasi Pixel Suite kini memenuhi lingkaran dari tepi ke tepi, tanpa pelat putih, dan punya versi bertema yang mengikuti warna wallpaper Anda.
+
+💎 Patreon
+• 🚀 **Chrome+**: kontrol Chrome pindah ke bawah, dengan animasi buatan tangan yang lebih halus untuk tab, pengalih tab, dan tab baru. Tombol + oranye di pengalih tab membuka tab samaran. (Patreon › Aplikasi Google › Chrome+)
+• 🧩 **Ekstensi untuk Chrome**: VPN, Pemblokir Iklan, dan Halaman gelap dalam satu panel, dari tombol puzzle di toolbar Chrome. Ketuk untuk memakainya, atau tahan untuk menyematkannya ke toolbar.
+• 🌐 **VPN**: jelajahi dari negara lain dengan server gratis di seluruh dunia, untuk seluruh ponsel atau Chrome saja, server tercepat lebih dulu. Lokasi Chrome mengikuti VPN. (Patreon › VPN, plus kartu Setelan Cepat)
+• ⭐ **Speed dial**: ikon bulat untuk hingga 19 situs di halaman tab baru Chrome. Seret untuk memindahkannya, atau lepaskan satu di atas yang lain untuk membuat folder yang mengikuti Super Gelap. Beri situs mana pun gambar bulat Anda sendiri.
+• 🛡️ **Pemblokir Iklan**: pilih tingkat filter untuk setiap situs. Tingkat lengkap juga menyembunyikan banner cookie dan pop-up, dan Anda bisa menghapus bagian halaman mana pun sendiri. Sakelarnya di Ekstensi mematikan atau menyalakannya untuk semua situs web. (Chrome+ › Ekstensi)
+• 🌙 **Halaman gelap**: situs terbuka gelap tanpa kilatan putih, atau hitam pekat dengan Super Gelap: selalu, mengikuti mode gelap ponsel, atau terjadwal. Foto dan video tetap berwarna aslinya. (Chrome+ › Ekstensi)
+• 🎙️ **Telepon Google+**: (Kualitas rekaman) Standar untuk file lebih kecil, HD untuk suara lebih jernih (kini default), atau Lossless untuk yang paling jernih. (Patreon › Aplikasi Google › Telepon Google+)
+• ⌨️ **Toolbar Gboard+**: hingga 7 pintasan Anda sendiri, seperti Urungkan, Ulangi, Pilih Cepat, Pilih semua, Potong, Salin, dan Tempel, di semua aplikasi. Pilih semua dan Pilih Cepat langsung membuka menu salin dan tempel. (Patreon › Aplikasi Google › Gboard+)
+• 🔤 **Tombol Gboard+**: tombol membulat dengan pop-up halus, geser ke kiri dari tombol hapus untuk menghapus huruf demi huruf, serta ubah ukuran atau pindahkan keyboard. Saat baris angka Gboard aktif, halaman simbol tetap memakai ukuran tombol yang sama. (Patreon › Aplikasi Google › Gboard+)
+• ✍️ **Mengetik dengan Gboard+**: matikan Koreksi otomatis untuk bahasa pilihan Anda, simpan setiap klip di papan klip, dan pakai Ketik dengan suara dengan tanda centang: bicara, lalu ketuk tanda centang untuk menambahkan kata-kata Anda. (Patreon › Aplikasi Google › Gboard+)
+• 🧊 **Gboard Buram**: latar keyboard menjadi kaca buram: yang ada di belakangnya terlihat samar, dengan tepian kaca, dalam mode terang, gelap, dan Super Gelap. Tombolnya tetap seperti semula. (Patreon › Aplikasi Google › Gboard+)
+
+🪄 Penyempurnaan
+• 🌑 **Super Gelap**: menu di atas teks yang dipilih (Potong, Salin, Telusuri di Chrome, dan lainnya) kini hitam dengan bingkai di semua aplikasi, dan mode samaran Chrome tetap hitam pekat di mana pun, juga saat berpindah tab.
+• ⚡ **Opsi berlaku sendiri**: Mode Super Gelap dan gaya permukaan langsung berubah saat diganti, opsi lain memulai ulang aplikasinya sendiri, dan tombol Segarkan hanya muncul untuk opsi Peluncur Pixel.
+• 🔄 **Tombol Mulai ulang**: beberapa fitur baru mulai bekerja setelah dimulai ulang. Setelah memperbarui, tombol Mulai ulang tampil sampai ponsel dimulai ulang. Ketuk untuk melihat fitur mana yang butuh dimulai ulang, lalu ketuk lagi untuk memulai ulang.
+• 🌄 **Feed Google**: geser ke kanan di layar utama dan feed meluncur di atas wallpaper Anda, tanpa panel putih yang berkedip lebih dulu.
+• 🏠 **Peluncur Pixel**: menahan kolom penelusuran kini hanya menampilkan Setelan widget dan Sembunyikan widget.
+
+🐞 Perbaikan bug
+• 🧠 **Peluncur Pixel**: setelah sering beralih antara terang dan gelap (misalnya dengan jadwal mode gelap), launcher bisa melambat, berhenti merespons, lalu dimulai ulang. Kini tetap lancar.
+• 📱 **Tombol navigasi**: setelah layar diputar, geser ke atas untuk ke layar utama bisa berhenti berfungsi saat tombol Kembali aktif. Kini selalu berfungsi. (Pintasan › Gestur › Tombol navigasi)
+• 🧭 **Tombol navigasi**: beberapa aplikasi menaruh menu bawahnya di balik tombol. Kini menu itu berada di atasnya. (Pintasan › Gestur › Tombol navigasi)
+• 🛟 **Pemblokir Iklan**: Chrome bisa tertutup sendiri jika Anda meninggalkan halaman atau menutup tab saat masih dimuat. Kini tetap terbuka.
+• 🖐️ **Peluncur Pixel**: menahan aplikasi di beberapa titik layar utama hanya menampilkan beberapa ikon kecil, lalu menunya hilang. Kini menu terbuka penuh di mana pun.
+• 📰 **Feed Chrome**: feed bisa melompat saat cerita bersponsor disembunyikan. Kini tetap di tempat dan bergulir lebih halus.
+• 🔴 **Panel aplikasi**: di beberapa versi Peluncur Pixel, titik notifikasi folder melayang di atas foldernya. Kini kembali berada di folder.
+• 🔔 **Super Gelap**: notifikasi satu baris di bawah bayangan notifikasi tetap abu-abu. Kini sudah Super Gelap.
+• #️⃣ **Super Gelap**: tombol angka Gboard (untuk PIN, nomor telepon, dan jumlah uang) hitam di atas hitam dan tidak menyala saat diketuk. Kini terlihat dan menyala lagi.
+• ➗ **Gboard+**: di halaman angka, kolom + - * / kini sama seperti tombol lainnya. Tombol spasi dan hapus kembali tampil sebagai tombol dan tidak lagi hilang di mode gelap.
+• 🪟 **Menu layar utama**: dengan Kaca buram, baris ikon di atas menu aplikasi tampil lebih dulu dari bagian lain. Kini muncul bersama menunya.
+• ✅ **Pilih aplikasi**: keyboard tetap terbuka di atas daftar setelah Anda mencentang aplikasi dari penelusuran. Kini keyboard tertutup.
+
+Pasang di atas versi Anda saat ini lalu mulai ulang.
+
+## v3.0.4
+Perbaikan untuk Play Integrity.
+
+🐞 Perbaikan bug
+• Play Integrity: Pixel Suite tidak lagi memakai layanan Google Play. Layanan itu hanya dipakai untuk tepi gulir lembut di beberapa layar Google yang dibuka dari Setelan (Kaca Buram), dan mempertahankannya bisa membuat Anda kehilangan integritas Device dan Strong, jadi tidak sepadan. Jika Anda mencentangnya di cakupan LSPosed Pixel Suite, Pixel Suite kini menghapus centangnya untuk Anda. Cukup mulai ulang saat diminta. Terima kasih kepada Ashray V K di Telegram yang sudah memberi tahu 🙏
+
+Pasang di atas versi Anda saat ini lalu mulai ulang.
+
+## v3.0.3
+Perbaikan untuk masuk ke Patreon.
+
+🐞 Perbaikan bug
+• Patreon: proses masuk kini selesai meski browser Anda tidak bisa membuka Pixel Suite (misalnya saat menampilkan halaman Play Store "item tidak ditemukan"). Setelah masuk, cukup kembali ke Pixel Suite dan aplikasi terbuka sendiri.
+
+Pasang di atas versi Anda saat ini.

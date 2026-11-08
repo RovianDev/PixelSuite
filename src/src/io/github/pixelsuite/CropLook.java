@@ -211,11 +211,9 @@ final class CropLook {
 
     static volatile long lastMarkColour = 0L;
 
-    static volatile long cropLayerFrame = -1;
 
     private static boolean arcs(Canvas canvas, Object state, long colour) {
         lastMarkColour = colour;
-        cropLayerFrame = android.view.animation.AnimationUtils.currentAnimationTimeMillis();
         return marks(canvas, ScreenshotEditor.cropRect(state), colour);
     }
 

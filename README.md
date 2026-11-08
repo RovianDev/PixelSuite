@@ -1,48 +1,74 @@
 [![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases)
 
-# Pixel Suite 3.0.4
+# Pixel Suite 3.1.0
 
 Your Pixel. Your way.
 
-Made by **RovianDev**. An open-source LSPosed module for Pixel phones: launcher customization and icon packs, navigation buttons, app and folder locks, gestures, screenshot tools, share menu tools, call recording, ad blocking and more. Every feature has its own switch.
+Made by **RovianDev**. An open-source LSPosed module for Pixel phones, in 14 languages: launcher customization and icon packs, navigation buttons, app and folder locks, gestures, screenshot tools, share menu tools, backup & restore, Chrome+ and Gboard+, a built-in VPN, call recording, ad blocking and more. Every feature has its own switch.
 
 **Open Pixel Suite from your home screen:** touch and hold an empty area, then choose **Pixel Suite settings**.
 
-[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases) · [Full 3.0.0 release notes](RELEASE-NOTES-v3.0.0.md) · [Changelog](CHANGELOG.md)
+[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases) · [3.1.0 release notes](RELEASE-NOTES-v3.1.0.md) · [Changelog](CHANGELOG.md)
 
-## What's new in 3.0.2
+## What's new in 3.1.0
 
-A share menu you can arrange by hand, app drawer folders you can place anywhere, and icon pack fixes.
+Pixel Suite in 14 languages, Chrome+ and Gboard+, a built-in VPN, Backup & Restore for held-back apps, new power button, volume and lock screen options, and a new icon.
 
 ### ✨ New
 
-- 📤 **Share menu, your way:** drag an app into the top row to pin it, then drag your pinned apps into the order you want. The apps below keep your chosen order instead of being rearranged by suggestions. Newly installed apps join the bottom of the list.
-- 👆 **Hold to pin or hide:** hold an app in the share menu to open its Pin / Hide window. If it has several shortcuts, they appear between Pin and Hide; tap the arrow under the app to open them directly. Pinning or hiding keeps the app and its shortcuts together as one app.
-- 📁 **Place drawer folders anywhere:** hold a folder in the app drawer and drag it among your apps. The apps glide aside to make room, and the folder lands with a gentle bounce.
-- ⬇️ **Move to bottom:** a pill appears at the bottom while you drag a drawer folder. Touch it to start scrolling down, then push deeper into the bottom area to scroll faster. Drag toward the top edge to scroll upward in the same way.
-- ✌️ **Two-finger drag for folders:** while holding a folder, swipe with a second finger to scroll the list.
-- 🧹 **Clear badge:** hold an app or folder with a notification dot, then choose Clear badge. Notifications that can be dismissed are cleared. Notifications that cannot be dismissed remain, but stop showing a dot.
+- 💾 **Backup & Restore**: held-back apps are saved before they update, with their data (sign-ins, chats, settings and files) or the app only. The 3 newest versions of each app are kept, even after you uninstall it. (Protection › OTA & Store blocker › Play Store blocker)
+- 🌍 **14 languages**: Pixel Suite now speaks Chinese, Hindi, Spanish, Arabic, French, Portuguese, Russian, Bengali, Indonesian, German, Japanese, Turkish, Persian and Hebrew, this changelog included. It follows your phone's language, or tap the language pill at the top right of the home page to pick one. (Arabic, Persian and Hebrew read right to left.)
+- 🎮 **Pixel Stack!** hold the logo at the top of Pixel Suite's home page for a little hidden game. Stack the blocks as high as you can, land them exactly for (Perfect!), and share your score with our Telegram community!
+- 🔘 **Hold power button**: open Gemini or Circle to Search, take a screenshot, or switch a quiet mode on and off: Silence, Do Not Disturb, Do Not Annoy, or No Annoyance for all three. (Shortcuts › Buttons)
+- 🔒 **Hold power button when locked**: pick a different action for when your phone is locked: Gemini (stock), Silence, Do Not Disturb, Do Not Annoy or No Annoyance. It works on its own, apart from Hold power button. (Shortcuts › Buttons)
+- 📷 **Double-press power button**: now you can also choose Camera (stock). (Shortcuts › Buttons)
+- 🔦 **Double-press volume down**: now you can also turn the flashlight on or off. (Shortcuts › Buttons)
+- 🕒 **Always-on display**: keep it on while charging, and let the power button show it for a few seconds when you turn the screen off. (Personalize › Always-on display)
+- 🔢 **Auto-confirm 4-digit PIN**: your phone unlocks as soon as you type the 4th digit, no Enter needed. (Protection › Privacy & Security › Lock screen)
+- 🧹 **Hide search bar**: simply hold the search bar and choose Hide widget. The dock moves down, your apps use the space, and search stays in the app drawer. You can also hide it from Personalize › Pixel Launcher.
+- 📋 **Back up your apps**: back up any app, either the app only or the app with all its data (sign-ins, chats, settings and files), and restore it whenever you like. Tap the green button to put a saved version back. (Play Store blocker › Select apps)
+- 🔎 **Search in Chrome**: select text in any app, tap ⋮ and choose Search in Chrome. The words open straight into Chrome.
+- 🗑️ **Only Clear all**: recents shows just Clear all, in the middle, without Select and Screenshot. (Personalize › Pixel Launcher › Recent Apps)
+- 🎨 **New Pixel Suite icon**: Pixel Suite's own app icon now fills the circle edge to edge, without the white plate, and has a themed version that follows your wallpaper colours.
 
-### 💎 Polish
+### 💎 Patreon
 
-- ✨ **Share menu:** pinning, unpinning and hiding apps are way smoother, with apps gliding into place and the menu resizing without jumps or flicker.
-- 🗂️ **Share menu:** the Hidden apps panel groups each app with its own shortcuts and icons.
-- 🎯 **App drawer:** dropping an app or folder now lands with a soft bounce, and nearby apps give way slightly.
-- 🏠 **App drawer:** the Add to home screen pill sits slightly higher, to prevent accidentally adding apps or folders to the home screen.
-- 🎨 **Icon packs:** the pack list and the per-app icon picker have more spacing, so selections no longer touch.
+- 🚀 **Chrome+**: Chrome's controls move to the bottom, with smoother hand-crafted animations for tabs, the tab switcher and new tabs. The orange + in the tab switcher opens an incognito tab. (Patreon › Google apps › Chrome+)
+- 🧩 **Extensions for Chrome**: VPN, Ad Blocker and Dark pages in one sheet, from the puzzle button in Chrome's toolbar. Tap one to use it, or hold it to pin it to the toolbar.
+- 🌐 **VPN**: browse from another country on free servers worldwide, for the whole phone or Chrome only, with the fastest server first. Chrome's location follows the VPN. (Patreon › VPN, or its Quick Settings tile)
+- ⭐ **Speed dial**: round icons for up to 19 websites on Chrome's new tab page. Drag to move them, or drop one on another to make a folder that follows Super Dark. Give any website your own round picture.
+- 🛡️ **Ad Blocker**: pick a filtering level for each website. Complete also hides cookie banners and pop-ups, and you can remove any part of a page yourself. Its switch in the Extensions sheet turns it off or on for every website. (Chrome+ › Extensions)
+- 🌙 **Dark pages**: websites open dark with no white flash, or pure black with Super Dark: always, with your phone's dark mode, or on a schedule. Pictures and videos keep their colours. (Chrome+ › Extensions)
+- 🎙️ **Google dialer+**: (Recording quality) Standard for smaller files, HD for a clearer voice (now the default), or Lossless for the clearest. (Patreon › Google apps › Google dialer+)
+- ⌨️ **Gboard+ toolbar**: up to 7 shortcuts of your own, like Undo, Redo, Quick Select, Select all, Cut, Copy and Paste, in every app. Select all and Quick Select open the Copy and Paste menu right away. (Patreon › Google apps › Gboard+)
+- 🔤 **Gboard+ keys**: rounded keys with smooth pop-ups, swipe left from delete to remove letter by letter, and resize or move the keyboard. With Gboard's number row on, the symbols page keeps the same key size. (Patreon › Google apps › Gboard+)
+- ✍️ **Gboard+ typing**: turn Auto-correction off for the languages you choose, keep every clip in the clipboard, and use Voice typing with checkmark: speak, then tap the checkmark to add your words. (Patreon › Google apps › Gboard+)
+- 🧊 **Frosted Gboard**: the keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the glass rims, in light, dark and Super Dark. The keys stay as they are. (Patreon › Google apps › Gboard+)
+
+### 🪄 Polish
+
+- 🌑 **Super Dark**: the menu over selected text (Cut, Copy, Search in Chrome and more) is now black with a rim in every app, and Chrome's incognito stays pure black everywhere, also while switching tabs.
+- ⚡ **Options apply on their own**: Super Dark-Mode and the surface style change as you switch them, other options restart their own app, and the Refresh pill only shows for Pixel Launcher options.
+- 🔄 **Reboot pill**: some features only start working after a reboot. After you update, a Reboot pill shows until your phone restarts. Tap it to see which features need the reboot, then tap again to reboot.
+- 🌄 **Google feed**: swipe right on the home screen and the feed slides in over your wallpaper, with no white panel flashing first.
+- 🏠 **Pixel Launcher**: holding the search bar now shows only Widget settings and Hide widget.
 
 ### 🐞 Bug fixes
 
-- **App drawer:** folders now show a notification dot when an app inside has notifications.
-- **Icon packs:** see-through icon packs now stay see-through, with no white or black disc behind them, and icons are no longer cut off at the edges.
-- **App drawer:** on some Pixel Launcher versions, folder backgrounds no longer flash when you open or close them.
-- **Screen recording:** the Start and close panel no longer flashes or flickers with Frosted Glass.
-- **Hide Developer Options:** USB debugging is now hidden more thoroughly, even from apps that aren't ticked in LSPosed.
+- 🧠 **Pixel Launcher**: after many switches between light and dark (a dark mode schedule, say), it could slow down, stop responding and restart. It stays smooth now.
+- 📱 **Navigation buttons**: after you turned the screen, swiping up to go home could stop working when the Back button was on. It works every time now. (Shortcuts › Gestures › Navigation buttons)
+- 🧭 **Navigation buttons**: some apps put their bottom menu under the buttons. It sits above them now. (Shortcuts › Gestures › Navigation buttons)
+- 🛟 **Ad Blocker**: Chrome could close by itself if you left a page or closed a tab while it was still loading. It stays open now.
+- 🖐️ **Pixel Launcher**: holding an app at some home screen spots showed only a few small icons, and its menu vanished. Menus open fully everywhere now.
+- 📰 **Chrome feed**: the feed could jump while sponsored stories were hidden. It stays put now and scrolls more smoothly.
+- 🔴 **App drawer**: folder notification dots floated above their folders on some Pixel Launcher versions. They sit on the folders again.
+- 🔔 **Super Dark**: one-line notifications at the bottom of the shade stayed grey. They're Super Dark now.
+- #️⃣ **Super Dark**: Gboard's number keys (for PINs, phone numbers and amounts) were black on black and didn't light up when tapped. They show and light up again.
+- ➗ **Gboard+**: on the numbers page, the + - * / column now matches the other keys. The space and delete keys look like keys again and no longer disappear in dark mode.
+- 🪟 **Home screen menus**: with Frosted Glass, the row of icons at the top of an app's menu showed before the rest. It fades in with the menu now.
+- ✅ **Select apps**: the keyboard stayed open over the list after you ticked an app from search. It closes now.
 
-### 🛠️ Google & Pixel bugs fixed
-
-- **Pixel Launcher:** some app icons had clipped corners and rough edges. They're clean now.
-
+See the [3.1.0 release notes](RELEASE-NOTES-v3.1.0.md).
 
 ## What's new in 3.0.0
 
@@ -251,21 +277,23 @@ Bugs in Google's own apps that Pixel Suite now fixes:
 - Super Dark-Mode (pure black), three surface styles (Blur Off, Stock, Frosted Glass) with glass rims, and soft frosted edges.
 
 **Google apps** (Patreon)
-- Call recording, system-wide ad blocking (also in Chrome and Google News) and an ad-free Google feed.
+- Chrome+: bottom controls, smoother animations, speed dial with folders, and Extensions for Chrome: VPN, Ad Blocker and Dark pages.
+- Gboard+: your own toolbar shortcuts, rounded keys, resize, voice typing with checkmark, and Frosted Gboard.
+- Call recording with a choice of quality, system-wide ad blocking (also in Chrome and Google News) and an ad-free Google feed.
 - Pixel Watch eSIM setup with a QR code (one-time purchase).
 
 **More**
-- Share menu tools, Do Not Annoy, OTA & Store blocker, newest-first file sorting, refresh rate slider, Show FPS, secure-screen screenshots, hiding accessibility or Developer options from apps, and a keyboard bar tweak.
+- 14 languages, Backup & Restore for apps, share menu tools, Do Not Annoy, OTA & Store blocker, newest-first file sorting, refresh rate slider, Show FPS, secure-screen screenshots, hiding accessibility or Developer options from apps, and a keyboard bar tweak.
 
 ## 🔒 Privacy
 
-Pixel Suite has no ads, analytics or tracking, and the module itself never connects to the internet. The app goes online only to check for updates (you can turn this off), to download the Ad blocker's lists while it's on, and for Patreon sign-in or the eSIM purchase if you use them. Doodles, screenshots, photos and call recordings stay on your phone.
+Pixel Suite has no ads, analytics or tracking, and the module itself never connects to the internet. The app goes online only to check for updates (you can turn this off), to download the Ad blocker's lists while it's on, to load the VPN's list of free volunteer servers and connect to the one you pick while the VPN is on, to share your Pixel Stack score when you tap Share, and for Patreon sign-in or the eSIM purchase if you use them. Doodles, screenshots, photos, backups and call recordings stay on your phone.
 
 ## 📥 Install and scope
 
 **Root + LSPosed API 102 required.** Tested on Pixel 11 Pro with Android 17.
 
-1. Install **PixelSuite-v3.0.4.apk** over your current version.
+1. Install **PixelSuite-v3.1.0.apk** over your current version.
 2. Enable Pixel Suite in LSPosed and grant its app root access.
 3. Open Pixel Suite and turn on the features you want. Each feature page has an **LSPosed scope** section listing the apps to select for it.
 4. Select those apps in LSPosed, then reboot.

@@ -49,7 +49,6 @@ final class CaptionDeselect {
                 StudioItems.injecting = true;
                 try { a.getWindow().superDispatchTouchEvent(down); a.getWindow().superDispatchTouchEvent(up); }
                 finally { StudioItems.injecting = false; down.recycle(); up.recycle(); }
-                placed = true;
                 return true;
             }
             android.graphics.Rect seen = new android.graphics.Rect();
@@ -71,11 +70,9 @@ final class CaptionDeselect {
                 StudioItems.injecting = true;
                 try { a.getWindow().superDispatchTouchEvent(down); a.getWindow().superDispatchTouchEvent(up); }
                 finally { StudioItems.injecting = false; down.recycle(); up.recycle(); }
-                placed = true;
                 return true;
             }
         } catch (Throwable t) { }
         return false;
     }
-    private static boolean placed;
 }

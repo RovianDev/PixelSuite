@@ -29,7 +29,6 @@ final class Cosmetic {
     private static final String FILE = "cosmetic_rules.txt";
 
     private static long sLoaded = -1;
-    private static List<String> sGeneric = new ArrayList<String>();
     private static Map<String, List<String>> sSpecific = new HashMap<String, List<String>>();
     private static Map<String, List<String>> sExcept = new HashMap<String, List<String>>();
     private static Map<String, List<String>> sNoGeneric = new HashMap<String, List<String>>();
@@ -177,7 +176,7 @@ final class Cosmetic {
             for (int j = i * PART; j < Math.min(generic.size(), (i + 1) * PART); j++) b.append(generic.get(j)).append('\n');
             parts[i] = b.toString();
         }
-        sGeneric = generic; sSpecific = specific; sExcept = except; sNoGeneric = noGeneric; sGenericParts = parts; sLoaded = stamp;
+        sSpecific = specific; sExcept = except; sNoGeneric = noGeneric; sGenericParts = parts; sLoaded = stamp;
     }
 
     static Bundle generic(Context c, String part) {

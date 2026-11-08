@@ -19,3 +19,7 @@ The settings app reads icons locally for a fixed list of known Google apps. Thes
 ## Ad blocker lists
 
 The Ad blocker downloads HaGeZi's Multi LIGHT hosts list (https://github.com/hagezi/dns-blocklists-legacy, GPL-3.0), AdAway's default hosts list (https://adaway.org/hosts.txt, CC BY 3.0) and EasyList (https://easylist.to, by The EasyList authors, dual-licensed GPL-3.0 and CC BY-SA 3.0) on the device at update time. EasyList's ad-server domains are added to the hosts list, and its element-hiding rules are applied to web pages in Chrome. The lists are not included in the APK. Pixel Suite's blocker is its own code and contains no AdAway code.
+
+## VPN servers
+
+The VPN downloads the public server list of the VPN Gate Academic Experiment Project (https://www.vpngate.net, University of Tsukuba) when you use it, and connects to the volunteer server you pick. The list is not included in the APK, and Pixel Suite's VPN client is its own code.

@@ -1,0 +1,1588 @@
+# Pixel Suite he: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	חסימת מודעות
+AdAway or Systemless hosts is also on. Use only one blocker.	גם AdAway או Systemless hosts פועל. כדאי להשתמש רק בחוסם אחד.
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	חוסם מודעות ב-Chrome, ב-Google חדשות ובאפליקציות אחרות. הרשימות מתעדכנות מדי יום.
+Fewer ads.\nFaster pages.	פחות מודעות.\nדפים מהירים יותר.
+Preparing ad protection…	מכינים את ההגנה מפני מודעות…
+Restart the phone once to start blocking.	כדי להתחיל לחסום, צריך להפעיל את הטלפון מחדש פעם אחת.
+Unlock with Patreon	פתיחה עם פטריאון
+Update lists	עדכון הרשימות
+Updating…	מתעדכן…
+Works in every app and browser, also with Private DNS.	פועל בכל אפליקציה ודפדפן, גם עם DNS פרטי.
+Add	הוספה
+Add website	הוספת אתר
+Add website: domain or URL	הוספת אתר: דומיין או כתובת URL
+Ads aren't filtered on these websites. Tap one to remove it.	באתרים האלה המודעות לא מסוננות. מקישים על אתר כדי להסיר אותו.
+All websites use the default level	כל האתרים משתמשים ברמת ברירת המחדל
+Allowed websites	אתרים מורשים
+Basic	בסיסי
+Bring back elements you removed.	החזרת רכיבים שהסרת.
+Cancel	ביטול
+Clear every website setting	ניקוי כל הגדרות האתרים
+Clear every website setting? Your default level stays.	לנקות את כל הגדרות האתרים? רמת ברירת המחדל שלך נשארת.
+Complete	מלא
+Couldn't load site settings. Open Chrome once, then reopen this page.	לא ניתן לטעון את הגדרות האתרים. פותחים את Chrome פעם אחת ואז פותחים שוב את הדף הזה.
+Couldn't save site settings. Try again.	לא ניתן לשמור את הגדרות האתרים. כדאי לנסות שוב.
+Default for all websites	ברירת מחדל לכל האתרים
+Enter a domain or an http/https URL	צריך להזין דומיין או כתובת URL מסוג http/https
+Filtering level	רמת סינון
+Included with your Patreon unlock	כלול בפתיחה שלך דרך פטריאון
+Loading site settings…	הגדרות האתרים נטענות…
+No allowed websites	אין אתרים מורשים
+No filtering	ללא סינון
+No filtering · tap to remove	ללא סינון · מקישים כדי להסיר
+No removed elements	אין רכיבים שהוסרו
+Optimal	אופטימלי
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	״אופטימלי״ מסתיר מודעות חיפוש. ״מלא״ מסתיר גם באנרים של קובצי Cookie וחלונות קופצים. הרמה של האתר עצמו קובעת קודם.
+Per-site levels	רמות לכל אתר
+Removed elements	רכיבים שהוסרו
+Reset	איפוס
+Reset all site settings	איפוס כל הגדרות האתרים
+Reset all site settings?	לאפס את כל הגדרות האתרים?
+Saving…	שומרים…
+Tap a website to change its level or use the default.	מקישים על אתר כדי לשנות את הרמה שלו או להשתמש בברירת המחדל.
+Unlock ad blocking with Patreon	פתיחת חסימת המודעות עם פטריאון
+\nDefault for all websites	\nברירת מחדל לכל האתרים
+Close	סגירה
+Clear search	ניקוי החיפוש
+Could not save the folder	לא ניתן לשמור את התיקייה
+Save	שמירה
+Search apps	חיפוש אפליקציות
+Search	חיפוש
+Search unavailable	החיפוש לא זמין
+Search, button	חיפוש, לחצן
+Searching…	מחפשים…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nההגדרה הנוכחית של Pixel Suite תוחלף. משגר Pixel יופעל מחדש פעם אחת.
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• הגדרת משגר Pixel: תיקיות במגירה, מיון, שינויי שם ונעילות\n
+• Share menu: pinned order and hidden apps\n	• תפריט השיתוף: סדר מוצמד ואפליקציות מוסתרות\n
+App and data	אפליקציה ונתונים
+App only	אפליקציה בלבד
+Back up	גיבוי
+Just the app. Its data isn't saved.	רק האפליקציה. הנתונים שלה לא נשמרים.
+Only the app goes back. Its data now stays.	רק האפליקציה חוזרת. הנתונים הנוכחיים שלה נשארים.
+Only the app, signed out and empty.	רק האפליקציה, מנותקת וריקה.
+Puts everything back exactly as it was saved.	מחזיר הכול בדיוק כמו שנשמר.
+Puts everything back exactly as it was saved. Its data now is replaced.	מחזיר הכול בדיוק כמו שנשמר. הנתונים הנוכחיים שלה מוחלפים.
+Restore	שחזור
+Working out the size…	מחשבים את הגודל…
+Backing up…	מגבים…
+Backup & Restore	גיבוי ושחזור
+Checking…	בודקים…
+Couldn't delete it. Check root.	לא ניתן למחוק. צריך לבדוק את ה-root.
+Delete	מחיקה
+Delete?	למחוק?
+Every held-back app is saved at its current version	כל אפליקציה מעוכבת נשמרת בגרסה הנוכחית שלה
+Held-back apps	אפליקציות מעוכבות
+Held-back apps are saved here before they update.	אפליקציות מעוכבות נשמרות כאן לפני שהן מתעדכנות.
+Installed apps	אפליקציות מותקנות
+Loading saved apps…	האפליקציות השמורות נטענות…
+No installed app has saved versions	לאף אפליקציה מותקנת אין גרסאות שמורות
+No saved versions yet	עדיין אין גרסאות שמורות
+Not installed	לא מותקנת
+Nothing saved yet	עדיין לא נשמר כלום
+Saved	נשמר
+Saved in PixelSuite/APK backups on your phone	נשמר ב-PixelSuite/APK backups בטלפון שלך
+The 3 newest versions of each app are kept	נשמרות 3 הגרסאות החדשות ביותר של כל אפליקציה
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	האפליקציות האלה הוסרו. ״שחזור״ מתקין אפליקציה מחדש, מחוברת אם היא נשמרה עם הנתונים שלה.
+installed now	מותקנת עכשיו
+Audiobooks	ספרי שמע
+Documents	מסמכים
+Download	הורדות
+Music	מוזיקה
+Podcasts	פודקאסטים
+Recordings	הקלטות
+Automatic (default)	אוטומטי (ברירת מחדל)
+Automatic: every call is recorded	אוטומטי: כל שיחה מוקלטת
+Choose folder…	בחירת תיקייה…
+Couldn't keep access to that folder.	לא ניתן לשמור את הגישה לתיקייה הזו.
+Couldn't load folder	לא ניתן לטעון את התיקייה
+Couldn't load recording mode	לא ניתן לטעון את מצב ההקלטה
+Couldn't save: root access needed	לא ניתן לשמור: נדרשת הרשאת root
+Folder picker isn't available.	בוחר התיקיות לא זמין.
+HD: clearer voice (default)	HD: קול ברור יותר (ברירת מחדל)
+HD: twice the detail, clearer voice (default)	HD: פי שניים פרטים, קול ברור יותר (ברירת מחדל)
+Internal storage	אחסון פנימי
+Lossless: HD without compression, large WAV files	ללא אובדן: HD בלי דחיסה, קובצי WAV גדולים
+Lossless: clearest voice, WAV files	ללא אובדן: הקול הברור ביותר, קובצי WAV
+Manual	ידני
+Manual: tap Record during a call	ידני: מקישים על ״הקלטה״ במהלך שיחה
+Recording mode	מצב הקלטה
+Recording quality	איכות ההקלטה
+Recordings folder	תיקיית ההקלטות
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (ברירת מחדל)
+SD card	כרטיס SD
+Standard: phone-call quality, smallest files	רגיל: איכות שיחת טלפון, הקבצים הקטנים ביותר
+Standard: smaller files	רגיל: קבצים קטנים יותר
+Release notes are unavailable in this build.	הערות הגרסה לא זמינות בגרסה הזו.
+Release notes could not be opened. Please reopen this page.	לא ניתן לפתוח את הערות הגרסה. צריך לפתוח שוב את הדף הזה.
+Always	תמיד
+Dark	כהה
+Dark mode	מצב כהה
+Dark pages	דפים כהים
+Needs Pixel Suite premium	נדרש Pixel Suite פרימיום
+On this website	באתר הזה
+Pictures and videos keep their colors.	תמונות וסרטונים שומרים על הצבעים שלהם.
+Schedule	תזמון
+Style	סגנון
+When	מתי
+Speed Dial	חיוג מהיר
+Ad Blocker	חוסם מודעות
+Extensions	תוספים
+Hold an extension to pin it to the toolbar	לחיצה ארוכה על תוסף מצמידה אותו לסרגל הכלים
+Chrome didn't take the shortcut (limit reached?)	Chrome לא קיבל את קיצור הדרך (הגעת למגבלה?)
+Couldn't add it to the speed dial	לא ניתן להוסיף לחיוג המהיר
+Couldn't make a folder in this Chrome version	אי אפשר ליצור תיקייה בגרסה הזו של Chrome
+Couldn't move it into the folder	לא ניתן להעביר לתיקייה
+Edit	עריכה
+Edit website	עריכת האתר
+Its website goes back to the speed dial.	האתר שלו חוזר לחיוג המהיר.
+Move to speed dial	העברה לחיוג המהיר
+Name	שם
+No room on the speed dial	אין מקום בחיוג המהיר
+Open in new tab	פתיחה בכרטיסייה חדשה
+Remove	הסרה
+Remove folder	הסרת התיקייה
+Rename	שינוי שם
+Rename folder	שינוי שם התיקייה
+URL	כתובת URL
+Back	חזרה
+Forward	קדימה
+Home	דף הבית
+Profile	פרופיל
+Tabs	כרטיסיות
+Filtering isn't available on this page.	הסינון לא זמין בדף הזה.
+Pixel Suite settings	ההגדרות של Pixel Suite
+Remove an element	הסרת רכיב
+This page	הדף הזה
+filtering mode	מצב סינון
+no filtering	ללא סינון
+Couldn't open that picture	לא ניתן לפתוח את התמונה
+Tap the picture to change it	מקישים על התמונה כדי לשנות אותה
+Use the website's icon	שימוש בסמל של האתר
+Country	מדינה
+Getting the free server list…	מקבלים את רשימת השרתים החינמיים…
+No servers yet. Pixel Suite loads them when you open this.	עדיין אין שרתים. Pixel Suite טוענת אותם כשפותחים את זה.
+Unavailable · no servers right now	לא זמין · אין שרתים כרגע
+VPN	VPN
+VPN for Chrome	VPN ל-Chrome
+Become a patron	להפוך לתומך/ת
+Buy me a coffee	לקנות לי קפה
+Coffee	קפה
+Join the community	הצטרפות לקהילה
+No app is available to open this link	אין אפליקציה שיכולה לפתוח את הקישור הזה
+This link could not be opened	לא ניתן לפתוח את הקישור
+On a schedule	לפי תזמון
+With the phone's dark mode	עם המצב הכהה של הטלפון
+Call	התקשרות
+Incoming call deflected (device reported as switched off)	השיחה הנכנסת הועברה (המכשיר דווח ככבוי)
+Unknown caller	מתקשר לא ידוע
+Off	כבוי
+On	פועל
+Arrow	חץ
+Circle	עיגול
+Double arrow	חץ כפול
+Line	קו
+Speech bubble	בועת דיבור
+Square	ריבוע
+Star	כוכב
+Triangle	משולש
+Blue	כחול
+Green	ירוק
+Red	אדום
+Yellow	צהוב
+Clear badge	ניקוי התג
+Could not save the name	לא ניתן לשמור את השם
+No	לא
+Remove folder?	להסיר את התיקייה?
+Sort apps?	למיין את האפליקציות?
+Yes	כן
+Add apps	הוספת אפליקציות
+Create folder	יצירת תיקייה
+6-digit code	קוד בן 6 ספרות
+Allow root access to save your device ID.	כדי לשמור את מזהה המכשיר צריך לאשר הרשאת root.
+Allow root access to save your purchase.	כדי לשמור את הרכישה צריך לאשר הרשאת root.
+Allow root access to update your purchase.	כדי לעדכן את הרכישה צריך לאשר הרשאת root.
+Change email	שינוי כתובת האימייל
+Check your license code and try again.	צריך לבדוק את קוד הרישיון ולנסות שוב.
+Contact support	פנייה לתמיכה
+Couldn’t confirm the purchase. Your saved pass has been kept.	לא ניתן לאשר את הרכישה. הכרטיס השמור שלך נשמר.
+Couldn’t connect. Check your internet connection and try again.	לא ניתן להתחבר. צריך לבדוק את החיבור לאינטרנט ולנסות שוב.
+Couldn’t save the device ID. Check root access.	לא ניתן לשמור את מזהה המכשיר. צריך לבדוק את הרשאת ה-root.
+Couldn’t save the purchase. Check root access.	לא ניתן לשמור את הרכישה. צריך לבדוק את הרשאת ה-root.
+Couldn’t verify the purchase link.	לא ניתן לאמת את קישור הרכישה.
+Couldn’t verify this purchase.	לא ניתן לאמת את הרכישה הזו.
+Email used for purchase	כתובת האימייל של הרכישה
+Enter code	הזנת הקוד
+Enter the email you paid with.	צריך להזין את כתובת האימייל ששילמת איתה.
+Enter the six-digit email code.	צריך להזין את הקוד בן שש הספרות מהאימייל.
+If a purchase matches this email, your recovery code is on its way.	אם יש רכישה שתואמת לכתובת הזו, קוד השחזור בדרך אליך.
+Invalid purchase pass.	כרטיס הרכישה לא תקין.
+Invalid signature.	החתימה לא תקינה.
+No connection. Your saved purchase has been kept.	אין חיבור. הרכישה השמורה שלך נשמרה.
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	אין החזר אחרי ההפעלה, אלא אם החוק או הכללים של Buy Me a Coffee מחייבים זאת.
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	טלפון אחד בכל פעם. נדרשים Pixel Watch תואם וחבילת eSIM.
+Pixel watch eSIM	eSIM ל-Pixel Watch
+Purchase is active.	הרכישה פעילה.
+Purchase is no longer active.	הרכישה כבר לא פעילה.
+Purchase restored on this phone.	הרכישה שוחזרה בטלפון הזה.
+Purchase unlocked.	הרכישה נפתחה.
+Pixel Watch eSIM ✓ (purchased)	eSIM ל-Pixel Watch ✓ (נרכש)
+Refresh purchase	רענון הרכישה
+Resend code	שליחת הקוד מחדש
+Restore on this phone	שחזור בטלפון הזה
+Restore purchase	שחזור הרכישה
+Restore purchase by email	שחזור הרכישה באימייל
+Restoring…	משחזרים…
+Send recovery code	שליחת קוד שחזור
+Sending…	שולחים…
+The device ID needs support. It has not been changed.	מזהה המכשיר צריך טיפול של התמיכה. הוא לא שונה.
+The shop is being set up. Please try again later.	החנות בהקמה. כדאי לנסות שוב מאוחר יותר.
+This purchase pass is not valid for this phone.	כרטיס הרכישה הזה לא תקף לטלפון הזה.
+This purchase was revoked or moved to another phone.	הרכישה הזו בוטלה או הועברה לטלפון אחר.
+Unlock	פתיחה
+Unlocking…	פותחים…
+Yours to keep on this phone. Patreon is not required.	שלך לתמיד בטלפון הזה. לא צריך פטריאון.
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — דפים כהים\n\nאחרי הוספת ההיקף שלו מפעילים מחדש את Chrome.
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — ניקוי תיבות פרסום בכתבות שנפתחות ב-Chrome\n\nGoogle חדשות (com.google.android.apps.magazines) לא צריך היקף. חסימת דומיינים של מודעות משתמשת בחוסם של כל המערכת.
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — ניקוי תיבות פרסום ריקות\n\nאחרי הוספת ההיקף שלו מפעילים מחדש את Chrome. חסימת דומיינים של מודעות לא צריכה היקף.
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **קבצים של Google** (com.google.android.apps.nbu.files) — דפדפן קבצים\n• **קבצים (מערכת)** (com.google.android.documentsui / com.android.documentsui) — בוחר הקבצים של המערכת
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **שירותי הטלפון** (com.android.phone)\n\nבוחרים את שניהם ואז מפעילים מחדש. שינויים בהמשך חלים מיד.
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **שירותי הטלפון** (com.android.phone)\n\nבוחרים אותו ואז מפעילים מחדש. שינויים בהמשך חלים מיד.
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **טלפון** (com.google.android.dialer)\n• **מסגרת המערכת** (system) — תמיכה בהקלטה\n\nאחרי הוספת ההיקף שלה פותחים שוב את הטלפון.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **משגר Pixel** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **משגר Pixel** (com.google.android.apps.nexuslauncher) — סמלים, תיקיות, תפריטים והשוליים הרכים של המגירה\n• **ממשק המשתמש של המערכת** (com.android.systemui) — תפריטים והודעות של המערכת\n• **סטודיו Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **תמונות Google** (com.google.android.apps.photos) — תפריטי העורך\n\nכהה במיוחד מפרט את ההיקפים הנוספים שלו בדף משלו.
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **משגר Pixel** (com.google.android.apps.nexuslauncher) — תכונות של מרכז האפליקציות\n• **Google** (com.google.android.googlequicksearchbox) — אפליקציות מותאמות בחיפוש Google\n• **ממשק המשתמש של המערכת** (com.android.systemui) — מיקום ההודעות הקופצות
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **משגר Pixel** (com.google.android.apps.nexuslauncher) — סמלים ושמות במרכז האפליקציות\n• **Google** (com.google.android.googlequicksearchbox) — חיפוש Google במסך הבית
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **משגר Pixel** (com.google.android.apps.nexuslauncher) — לחצני ניווט ליד סרגל התנועות\n• **מסגרת המערכת** (system) — האפליקציות שומרות את התפריטים התחתונים מעל הלחצנים\n• **Gboard** (com.google.android.inputmethod.latin) — לחצן סגירת המקלדת
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **משגר Pixel** (com.google.android.apps.nexuslauncher) — אפליקציות אחרונות\n• **ממשק המשתמש של המערכת** (com.android.systemui) — שורת הסטטוס לרוחב
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **סטודיו Pixel** (com.google.android.apps.pixel.creativeassistant) — צילומי מסך\n• **תמונות Google** (com.google.android.apps.photos) — תמונות
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **חנות Play** (com.android.vending) — חסימת עדכוני אפליקציות\n• **מסגרת המערכת** (system)\n• **הגדרות** (com.android.settings) — חסימת OTA ואיפוס להגדרות היצרן
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **חנות Play** (com.android.vending)\n• **מסגרת המערכת** (system), כדי לשחזר גרסה שמורה
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **גיליון השיתוף** (com.android.intentresolver)\n• **תמונות Google** (com.google.android.apps.photos) — צבעים תואמים בדף השיתוף של תמונות
+• **System Framework** (system)	• **מסגרת המערכת** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **מסגרת המערכת** (system) — הגנה על אפליקציות\n• **משגר Pixel** (com.google.android.apps.nexuslauncher) — נעילת אפליקציות ותיקיות\n• **ממשק המשתמש של המערכת** (com.android.systemui) — בקשות אימות\n\nמגדירים נעילת מסך בטלפון, ואז מפעילים מחדש אחרי הוספת ההיקפים.
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **מסגרת המערכת** (system) — לחצן ההפעלה\n• **משגר Pixel** (com.google.android.apps.nexuslauncher) — מקיפים ומחפשים
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **מסגרת המערכת** (system) — חסימת עדכונים\n• **הגדרות** (com.android.settings) — פקדי עדכון ואיפוס
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **מסגרת המערכת** (system) — התעוררות, שינה וצילומי מסך\n• **משגר Pixel** (com.google.android.apps.nexuslauncher) — גרירת אפליקציות\n• **ממשק המשתמש של המערכת** (com.android.systemui) — פקדי הקלטה\n• **סטודיו Pixel** (com.google.android.apps.pixel.creativeassistant) — חיתוך צילומי מסך
+• **System Framework** (system), to restore a saved version (also an older one)	• **מסגרת המערכת** (system), כדי לשחזר גרסה שמורה (גם ישנה יותר)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **מסגרת המערכת** (system)\n• **ממשק המשתמש של המערכת** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **ממשק המשתמש של המערכת** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **ממשק המשתמש של המערכת** (com.android.systemui) — תצוגה פעילה תמידית\n• **מסגרת המערכת** (system) — מפעיל את התצוגה הפעילה תמידית גם כשאפשרויות התצוגה האחרות של מסך הנעילה כבויות
+• **System UI** (com.android.systemui) — the lock screen PIN	• **ממשק המשתמש של המערכת** (com.android.systemui) — קוד האימות של מסך הנעילה
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **ממשק המשתמש של המערכת** (com.android.systemui)\n• **משגר Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **הגדרות** (com.android.settings)\n• **שירותי ההגדרות** (com.google.android.settings.intelligence)\n• **מנהל התקנת החבילות** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nלעיצוב העורך צריך לבחור גם את **סטודיו Pixel** (com.google.android.apps.pixel.creativeassistant) ואת **תמונות Google** (com.google.android.apps.photos). אחרי הוספת ההיקפים מפעילים מחדש.
+Auto (A–Z)	אוטומטי (A–Z)
+Custom	מותאם אישית
+Sort	מיון
+Sort the apps in this folder from A to Z?	למיין את האפליקציות בתיקייה הזו מ-A עד Z?
+Auto-correction	תיקון אוטומטי
+Corrects words as you type	מתקן מילים בזמן ההקלדה
+Gboard's own switch (reading it…)	המתג של Gboard עצמו (בקריאה…)
+Languages	שפות
+On: Gboard corrects words in the languages turned on below	פועל: Gboard מתקן מילים בשפות שמופעלות למטה
+Reading Gboard's languages…	קוראים את השפות של Gboard…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	המתג העליון הוא התיקון האוטומטי של Gboard עצמו. כיבוי שלו לשפה למטה מונע החלפת מילים בה, אבל ההצעות ממשיכות להופיע. השינויים יחולו בפעם הבאה שהמקלדת תיפתח.
+A Gboard shortcut	קיצור דרך של Gboard
+A keyboard you can move anywhere	מקלדת שאפשר להזיז לכל מקום
+Arrow keys and selection tools	מקשי חיצים וכלי בחירה
+Both show at once, in two rows (portrait)	שניהם יחד, בשתי שורות (לאורך)
+Bring back what you undid	החזרת מה שביטלת
+Change how Gboard looks	שינוי המראה של Gboard
+Clipboard	לוח
+Copy	העתקה
+Copy the selected text	העתקת הטקסט שנבחר
+Cut	גזירה
+Cut the selected text	גזירת הטקסט שנבחר
+Drag a shortcut to the edge of the list to turn the page.	גוררים קיצור דרך לקצה הרשימה כדי להעביר דף.
+Edit toolbar shortcuts	עריכת קיצורי הדרך בסרגל הכלים
+Emoji	אמוג׳י
+Emoji, emoticons and symbols	אמוג׳י, סמיילים וסמלים
+Fill in saved passwords and details	מילוי סיסמאות ופרטים שמורים
+Floating	צף
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	סרגל הכלים של Gboard, קיצורי דרך מעל ההצעות: גוררים לכאן קיצורי דרך
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	סרגל הכלים של Gboard, קיצורי דרך מתחת להצעות: גוררים לכאן קיצורי דרך
+Gboard's toolbar: drag shortcuts here	סרגל הכלים של Gboard: גוררים לכאן קיצורי דרך
+Hello	שלום
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	לוחצים לחיצה ארוכה על קיצור דרך וגוררים אותו לסרגל הכלים, לאורכו כדי לשנות סדר, או החוצה כדי להסיר. מקישים על קיצור כדי לראות מה הוא עושה.
+Make the keyboard bigger or smaller	הגדלה או הקטנה של המקלדת
+Menu button	לחצן התפריט
+Next language	השפה הבאה
+Okay	אישור
+One-handed	מצב יד אחת
+Open Gboard's settings	פתיחת ההגדרות של Gboard
+Paste	הדבקה
+Paste what you copied	הדבקת מה שהעתקת
+Put at least one shortcut on the toolbar	צריך לשים לפחות קיצור דרך אחד בסרגל הכלים
+Redo	ביצוע מחדש
+Resize	שינוי גודל
+Rewrite or polish what you wrote	שכתוב או ליטוש של מה שכתבת
+Scan text	סריקת טקסט
+Search and send GIFs	חיפוש ושליחה של קובצי GIF
+Search and send stickers	חיפוש ושליחה של מדבקות
+Select all	בחירת הכול
+Select all the text	בחירת כל הטקסט
+Settings	הגדרות
+Share	שיתוף
+Share Gboard with others	שיתוף Gboard עם אחרים
+Shortcuts	קיצורי דרך
+Shortcuts above the suggestions, not below	קיצורי הדרך מעל ההצעות, לא מתחת
+Shortcuts below the suggestions, not above	קיצורי הדרך מתחת להצעות, לא מעל
+Shortcuts row on bottom	שורת קיצורי הדרך למטה
+Shortcuts row on top	שורת קיצורי הדרך למעלה
+Shrink the keyboard to one side	כיווץ המקלדת לצד אחד
+Stickers	מדבקות
+Suggestions and shortcuts together	הצעות וקיצורי דרך יחד
+Switch to your next language	מעבר לשפה הבאה שלך
+Tap to select a word, tap again to clear. Hold to select all	מקישים כדי לבחור מילה, ושוב כדי לבטל. לחיצה ארוכה בוחרת הכול
+Text editing	עריכת טקסט
+Thanks	תודה
+Theme	עיצוב
+Translate	תרגום
+Translate as you type	תרגום בזמן ההקלדה
+Type by speaking	הקלדה בדיבור
+Type text from your camera	הקלדת טקסט מהמצלמה
+Undo	ביטול
+Undo your last change	ביטול השינוי האחרון
+Voice typing	הקלדה קולית
+Writing tools	כלי כתיבה
+Your copied text and pinned clips	הטקסט שהעתקת והקטעים המוצמדים
+Clear	ניקוי
+Clear the clipboard?	לנקות את הלוח?
+Every clip is deleted except pinned ones.	כל הקטעים יימחקו מלבד המוצמדים.
+Delete this pinned clip?	למחוק את הקטע המוצמד הזה?
+Apply	החלה
+Down	למטה
+Height	גובה
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	גודל ומיקום המקלדת. גוררים את הידיות כדי לשנות גודל, או את המקלדת כדי להזיז אותה.
+Try typing here after Apply	אפשר לנסות להקליד כאן אחרי ״החלה״
+Up	למעלה
+Width	רוחב
+Apps list	רשימת האפליקציות
+Pixel Suite isn't available	Pixel Suite לא זמינה
+Adjust icon	כוונון הסמל
+Could not save this icon. Try another image.	לא ניתן לשמור את הסמל. כדאי לנסות תמונה אחרת.
+Icon updated	הסמל עודכן
+Pinch to zoom, drag to move	צובטים כדי לשנות את גודל התצוגה, גוררים כדי להזיז
+Reset position and zoom	איפוס המיקום והזום
+Large	גדול
+Largest	הכי גדול
+Medium	בינוני
+Small	קטן
+Smallest	הכי קטן
+Apps the pack doesn't cover keep their own icons.	אפליקציות שהחבילה לא כוללת שומרות על הסמלים שלהן.
+Close icon packs	סגירת חבילות הסמלים
+Get icon packs	קבלת חבילות סמלים
+Icon pack	חבילת סמלים
+Loading icon packs…	חבילות הסמלים נטענות…
+Loading icons…	הסמלים נטענים…
+No icon packs installed yet	עדיין לא הותקנו חבילות סמלים
+Pixel Launcher's own icons, including themed icons	הסמלים של משגר Pixel, כולל סמלים בעיצוב אישי
+System default	ברירת המחדל של המערכת
+Unavailable	לא זמין
+Rename app	שינוי שם האפליקציה
+Shows on the home screen, in folders, the drawer and search.	מוצג במסך הבית, בתיקיות, במגירת האפליקציות ובחיפוש.
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	לא ניתן להסתיר כאן. צריך להפעיל את ״הסתרת סרגל החיפוש״ ב-Pixel Suite.
+Couldn't save Hide search bar	לא ניתן לשמור את ״הסתרת סרגל החיפוש״
+Hide search bar isn't supported on this launcher version	״הסתרת סרגל החיפוש״ לא נתמכת בגרסה הזו של מרכז האפליקציות
+Change icon	שינוי הסמל
+Could not read this image. Try another image.	לא ניתן לקרוא את התמונה. כדאי לנסות תמונה אחרת.
+Could not reset the icon	לא ניתן לאפס את הסמל
+Files	קבצים
+Files is unavailable	קבצים לא זמינה
+Original icon restored	הסמל המקורי שוחזר
+Photos	תמונות
+Photos is unavailable. Choose Files instead.	תמונות לא זמינה. אפשר לבחור ב-קבצים במקום.
+Reset icon	איפוס הסמל
+Could not read this icon pack	לא ניתן לקרוא את חבילת הסמלים
+Could not use this icon	לא ניתן להשתמש בסמל הזה
+Loading…	בטעינה…
+No icon packs installed yet.\nInstall one and it shows here.	עדיין לא הותקנו חבילות סמלים.\nאחרי ההתקנה היא תופיע כאן.
+Play Store is unavailable	חנות Play לא זמינה
+Search icons	חיפוש סמלים
+All apps	כל האפליקציות
+App picker	בוחר האפליקציות
+Choose apps	בחירת אפליקציות
+Couldn't load apps. Check root access and reopen.	לא ניתן לטעון את האפליקציות. צריך לבדוק את הרשאת ה-root ולפתוח שוב.
+Couldn't save. Check root access and try again.	לא ניתן לשמור. צריך לבדוק את הרשאת ה-root ולנסות שוב.
+Filter installed apps	סינון האפליקציות המותקנות
+Loading apps…	האפליקציות נטענות…
+Root unavailable	root לא זמין
+Saved. Changes apply the next time these apps open.	נשמר. השינויים יחולו בפעם הבאה שהאפליקציות האלה ייפתחו.
+Search installed apps	חיפוש באפליקציות המותקנות
+System apps	אפליקציות מערכת
+User apps	אפליקציות משתמש
+No room on this page for the other apps	אין מקום בדף הזה לשאר האפליקציות
+A Quest for the Kind-Hearted	משימה לטובי הלב
+Close account	סגירת החשבון
+Membership refreshed	החברות רועננה
+Pass expires:  ∞	תוקף הכרטיס:  ∞
+Patreon account	חשבון פטריאון
+Patreon member	חבר/ה ב-פטריאון
+Patron ✓	תומך/ת ✓
+Read the quest	לקריאת המשימה
+Refresh	רענון
+Refreshing…	מתבצע רענון…
+Sign in with Patreon	כניסה עם פטריאון
+Sign out	יציאה
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	אפשר לתמוך ב-Pixel Suite כדי לפתוח את Chrome+, Gboard+, חוסם המודעות, ה-VPN, דפים כהים, הקלטת שיחות ופיד Google בלי מודעות.
+A Quest for the\nKind-Hearted	משימה\nלטובי הלב
+Already a patron? Unlock	כבר תומך/ת? פתיחה
+Checking Patreon membership…	החברות ב-פטריאון נבדקת…
+Join on Patreon	הצטרפות ב-פטריאון
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	מצטרפים ב-פטריאון כדי לפתוח את תכונות פטריאון – ותודה שאתם שומרים על הפרויקט בחיים. 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	הצטרפת? יש להקיש על ״פתיחה״ כדי לאשר את החברות בתשלום ב-פטריאון.
+Let's go	יאללה
+No paid membership found. Choose the paid tier to unlock.	לא נמצאה חברות בתשלום. צריך לבחור את הרמה בתשלום כדי לפתוח.
+Open a browser to sign in with Patreon.	צריך לפתוח דפדפן כדי להיכנס עם פטריאון.
+Open the Pixel Suite paid tier in your browser.	פתיחת הרמה בתשלום של Pixel Suite בדפדפן.
+Patreon sign-in is being set up.	הכניסה עם פטריאון עדיין בהגדרה.
+Patron verified	התומך/ת אומת/ה
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	ב-Pixel Suite אין מודעות ואין רכיבי מעקב. פרטי החשבון והתשלום משמשים רק לאימות הפתיחה.
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	את Pixel Suite בונה אדם אחד, בשעות הפנאי, מתוך אהבה לטלפונים של Pixel.
+Quest Complete!	המשימה הושלמה!
+Ready to check membership	מוכן לבדיקת החברות
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	תודה על התמיכה ב-Pixel Suite. תכונות פטריאון שלך מוכנות.
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	התומכים פותחים את Chrome+ ו-Gboard+, את חוסם המודעות ואת ה-VPN, דפים כהים ב-Chrome, הקלטת שיחות ופיד Google בלי מודעות. כל תמיכה חוזרת ישר לאפליקציה: לעמוד בקצב העדכונים של Android ושל אפליקציות Google, לתקן את מה שהם שוברים ולבנות תכונות חדשות.
+Welcome back!	ברוך שובך!
+✨ Quest Complete!	✨ המשימה הושלמה!
+📜 A Quest for the Kind-Hearted	📜 משימה לטובי הלב
+Google apps	אפליקציות Google
+Patreon feature	תכונת פטריאון
+Unlock this feature with Patreon	פתיחת התכונה הזו עם פטריאון
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android לא אישרה את ה-VPN. צריך לפתוח את דף ה-VPN ולהקיש על ״חיבור״.
+Another VPN took over	VPN אחר השתלט
+Checking that websites open…	בודקים שאתרים נפתחים…
+Checking the connection…	החיבור נבדק…
+Chrome isn't installed	Chrome לא מותקן
+Connection failed	החיבור נכשל
+Connection lost	החיבור אבד
+Couldn't load the server list. Check your connection.	לא ניתן לטעון את רשימת השרתים. צריך לבדוק את החיבור.
+Disconnect	ניתוק
+Disconnected	מנותק
+Finding servers…	מחפשים שרתים…
+Free volunteer server	שרת מתנדבים חינמי
+No server answered	אף שרת לא ענה
+Server stopped answering	השרת הפסיק לענות
+Trying the faster UDP connection (up to 30 s)…	מנסים את חיבור ה-UDP המהיר יותר (עד 30 שנ׳)…
+VPN is a Patreon feature	ה-VPN הוא תכונת פטריאון
+connections refused	החיבורים נדחו
+no answer	אין תשובה
+Circle to Search isn't available	״מקיפים ומחפשים״ לא זמין
+Do Not Annoy off	אל תציק כבוי
+Do Not Annoy on	אל תציק פועל
+Do Not Disturb off	״נא לא להפריע״ כבוי
+Do Not Disturb on	״נא לא להפריע״ פועל
+No Annoyance off	בלי הצקות כבוי
+No Annoyance on	בלי הצקות פועל
+Silence off	השתקה כבויה
+Silence on	השתקה פועלת
+Authenticator	Authenticator
+Calculator	מחשבון
+Calendar	יומן
+Camera	מצלמה
+Clock	שעון
+Contacts	אנשי קשר
+Maps	מפות
+Messages	הודעות
+Play Store	חנות Play
++  Add apps	+  הוספת אפליקציות
++ Add to home screen	+ הוספה למסך הבית
+A clearer page	דף נקי יותר
+A website	אתר
+Ad blocking	חסימת מודעות
+Add new	הוספה
+Add to home screen	הוספה למסך הבית
+Adjust	כוונון
+Advertisement	מודעה
+Alex	Alex
+Another pack	חבילה אחרת
+App info	פרטי האפליקציה
+App is locked	האפליקציה נעולה
+Applied	הוחל
+Applied across the launcher	הוחל בכל מרכז האפליקציות
+Applying…	מתבצעת החלה…
+Apps	אפליקציות
+Authenticate to open	צריך לאמת כדי לפתוח
+Back in your share list	חזר לרשימת השיתוף
+Block system updates	חסימת עדכוני מערכת
+Bluetooth	Bluetooth
+Bookmarks	סימניות
+Bookmarks bar	סרגל הסימניות
+Call ended	השיחה הסתיימה
+Call log: Alex · Blocked	יומן שיחות: Alex · חסום
+Call recording	הקלטת שיחות
+Camera (stock)	מצלמה (מקורית)
+Centered labels. Clearer view.	תוויות במרכז. תצוגה ברורה יותר.
+Change icon → Icon pack	שינוי הסמל ← חבילת סמלים
+Change icons	שינוי סמלים
+Choose Icon pack	בחירת חבילת סמלים
+Choose a pack	בחירת חבילה
+Choose an image	בחירת תמונה
+Cleaner articles in Chrome	מאמרים נקיים יותר ב-Chrome
+Clear all	ניקוי הכול
+Collections	אוספים
+Connected	מחובר
+Controls within reach	הפקדים בהישג יד
+Create	יצירה
+Crop	חיתוך
+Crop freely	חיתוך חופשי
+Data and Wi-Fi stay on	החבילה וה-Wi-Fi נשארים פעילים
+Date & time	תאריך ושעה
+Device audio	אודיו של המכשיר
+Discover	Discover
+Display & touch	תצוגה ומגע
+Do Not Disturb	נא לא להפריע
+Done	סיום
+Dot cleared	הנקודה נוקתה
+Downloads	הורדות
+Drag to make a folder	גוררים כדי ליצור תיקייה
+Edit photo	עריכת התמונה
+Empty ad space	שטח פרסום ריק
+Enter PIN	הזנת קוד אימות
+Entire screen	כל המסך
+Erase all data	מחיקת כל הנתונים
+Every tab in view	כל הכרטיסיות לנגד עיניך
+Example app	אפליקציה לדוגמה
+Example pack	חבילה לדוגמה
+Factory reset locked	איפוס להגדרות היצרן נעול
+Father	אבא
+Fill	מילוי
+Flashlight	פנס
+Folder	תיקייה
+For you	בשבילך
+Fri, Oct 16	יום ו׳, 16 באוק׳
+Friday, Oct 16	יום שישי, 16 באוק׳
+Friend	חבר
+Headlines	כותרות
+Hidden apps	אפליקציות מוסתרות
+Hidden apps remain available	אפליקציות מוסתרות נשארות זמינות
+Hidden contacts	אנשי קשר מוסתרים
+Hide 2 apps	הסתרת 2 אפליקציות
+Hide contact	הסתרת איש הקשר
+Hide several apps	הסתרת כמה אפליקציות
+Hold	המתנה
+Hold and drag pinned apps	לחיצה ארוכה וגרירה של אפליקציות מוצמדות
+Hold to unhide	לחיצה ארוכה לביטול ההסתרה
+How about this spot?	מה דעתך על המקום הזה?
+Incoming call declined	השיחה הנכנסת נדחתה
+Incoming call deflected	השיחה הנכנסת הועברה
+Incoming calls quiet	שיחות נכנסות בשקט
+Internet	אינטרנט
+Keep Notes	Keep
+Let's find a new place.	בואו נמצא מקום חדש.
+Lock	נעילה
+Manage suggested contacts	ניהול אנשי קשר מוצעים
+Message	הודעה
+Minus hides the contacts row	המינוס מסתיר את שורת אנשי הקשר
+Mobile bookmarks	סימניות בנייד
+Mobile network	רשת סלולרית
+More of your feed	עוד מהפיד שלך
+My folder	התיקייה שלי
+New tab	כרטיסייה חדשה
+Newest first	החדשים ביותר קודם
+News article	כתבה חדשותית
+No empty ad boxes	בלי תיבות פרסום ריקות
+No recent apps	אין אפליקציות אחרונות
+No sponsored gaps	בלי רווחים ממומנים
+Notifications	התראות
+OTA blocker	חוסם OTA
+Oct 12, 10:20	12 באוק׳, 10:20
+Oct 8, 08:10	8 באוק׳, 08:10
+One app. Your choice.	אפליקציה אחת. הבחירה שלך.
+Open. Swipe. Close.	פותחים. מחליקים. סוגרים.
+Order saved	הסדר נשמר
+Other bookmarks	סימניות אחרות
+Packages blocked	חבילות חסומות
+Perfect. See you there!	מעולה. נתראה שם!
+Phone	טלפון
+Pin	הצמדה
+Pin moves apps above the divider	הצמדה מעבירה אפליקציות מעל הקו המפריד
+Pin, then drag to reorder	מצמידים, ואז גוררים כדי לשנות סדר
+Pinned apps	אפליקציות מוצמדות
+Plus brings the row back	הפלוס מחזיר את השורה
+Private	פרטי
+Private folder	תיקייה פרטית
+Read the full story	לקריאת הכתבה המלאה
+Reading list	רשימת קריאה
+Ready for the weekend?	מוכנים לסוף השבוע?
+Ready to activate	מוכן להפעלה
+Record	הקלטה
+Record your screen	הקלטת המסך
+Recorded	הוקלט
+Recording	מקליט
+Recording saved	ההקלטה נשמרה
+Recordings / Calls	Recordings / Calls
+Restricted packages	חבילות מוגבלות
+Scan QR code	סריקת קוד QR
+Scan your carrier's code	סריקת הקוד של הספק הסלולרי
+Screenshot	צילום מסך
+Screenshot saved	צילום המסך נשמר
+Scroll to continue	גוללים כדי להמשיך
+Search the web	חיפוש באינטרנט
+Select	בחירה
+Select apps	בחירת אפליקציות
+Sep 30, 21:00	30 בספט׳, 21:00
+Share or restore hidden apps	שיתוף או שחזור של אפליקציות מוסתרות
+Show touches	הצגת הקשות
+Sites	אתרים
+Software updates	עדכוני תוכנה
+Sort  ⌄	מיון  ⌄
+Sort apps A–Z?	למיין את האפליקציות לפי הא״ב?
+Speed Dial in bookmarks	חיוג מהיר בסימניות
+Split screen	מסך מפוצל
+Start	התחלה
+Swipe	החלקה
+System settings	הגדרות המערכת
+Tap to share	מקישים כדי לשתף
+Themes	עיצובים
+Themes → Icon pack	עיצובים ← חבילת סמלים
+Today	היום
+Today 09:15	היום 09:15
+Today 14:42	היום 14:42
+Today's stories	הכתבות של היום
+Today's top stories	הכתבות המובילות של היום
+Touch fingerprint sensor	צריך לגעת בחיישן טביעות האצבע
+Unhide app	ביטול הסתרת האפליקציה
+Unlocked on the 4th digit	הנעילה בוטלה בספרה הרביעית
+Use Super Dark-Mode	שימוש ב-מצב כהה במיוחד
+Voice note.m4a	הערה קולית.m4a
+Voice search	חיפוש קולי
+Wallpaper & style	טפט וסגנון
+Watch eSIM	eSIM לשעון
+Weekend plans	תוכניות לסוף השבוע
+Wife	אשתי
+Yes! A coffee sounds good.	כן! קפה נשמע טוב.
+Yesterday	אתמול
+Yesterday 18:30	אתמול 18:30
+Your Pixel. Your way.	ה-Pixel שלך. בדרך שלך.
+Your tabs	הכרטיסיות שלך
+‹ Back	‹ חזרה
+↓ Move to bottom	↓ העברה לתחתית
+Lock folder	נעילת התיקייה
+Unlock folder	ביטול נעילת התיקייה
+Confirm it's you to disable this app	צריך לאמת את זהותך כדי להשבית את האפליקציה
+Confirm it's you to lock this app	צריך לאמת את זהותך כדי לנעול את האפליקציה
+Confirm it's you to lock this folder	צריך לאמת את זהותך כדי לנעול את התיקייה
+Confirm it's you to pause this app	צריך לאמת את זהותך כדי להשהות את האפליקציה
+Confirm it's you to remove this app	צריך לאמת את זהותך כדי להסיר את האפליקציה
+Confirm it's you to remove this folder	צריך לאמת את זהותך כדי להסיר את התיקייה
+Confirm it's you to uninstall this app	צריך לאמת את זהותך כדי להסיר את התקנת האפליקציה
+Confirm it's you to unlock this app	צריך לאמת את זהותך כדי לבטל את נעילת האפליקציה
+Confirm it's you to unlock this folder	צריך לאמת את זהותך כדי לבטל את נעילת התיקייה
+Could not check your screen lock	לא ניתן לבדוק את נעילת המסך
+Could not save. Is root allowed for Pixel Suite?	לא ניתן לשמור. האם root מאושר ל-Pixel Suite?
+Please authenticate to proceed	צריך לבצע אימות כדי להמשיך
+Set a screen lock first to lock apps	כדי לנעול אפליקציות צריך קודם להגדיר נעילת מסך
+Use PIN	שימוש בקוד אימות
+App remains locked	האפליקציה נשארת נעולה
+Cannot dismiss locked apps	אי אפשר לסגור אפליקציות נעולות
+Two apps locked	שתי אפליקציות נעולות
+Refresh rate	קצב רענון
+Accept	אישור
+An update check is already running.	כבר מתבצעת בדיקת עדכונים.
+Automatic update checks are off.	בדיקת עדכונים אוטומטית כבויה.
+Could not verify both release repositories. Try again later.	לא ניתן לאמת את שני מאגרי הגרסאות. כדאי לנסות שוב מאוחר יותר.
+New version ready. Tap to download and install.	גרסה חדשה מוכנה. מקישים כדי להוריד ולהתקין.
+No newer official release is published with matching APKs on both repositories.	לא פורסמה גרסה רשמית חדשה יותר עם קובצי APK תואמים בשני המאגרים.
+No release check yet.	עדיין לא נבדקו גרסאות.
+Apply update blocking choices	החלת הבחירות לחסימת עדכונים
+Couldn't apply: root access needed	לא ניתן להחיל: נדרשת הרשאת root
+Couldn't restart: root access needed	לא ניתן להפעיל מחדש: נדרשת הרשאת root
+Restarting…	מתבצעת הפעלה מחדש…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	מצב כהה במיוחד משתמש בסגנון שחור משלו.\nכדי לשנות סגנון צריך לכבות אותו.
+**Used for:**\n	**משמש ל:**\n
+Adds Doodles and cropping tools to the screenshot editor.	מוסיף שרבוטים וכלי חיתוך לעורך צילומי המסך.
+Adds editable Doodles to the photo editor.	מוסיף שרבוטים שניתנים לעריכה לעורך התמונות.
+Adds the refresh-rate slider to Display & touch.	מוסיף את פס ההזזה של קצב הרענון ל״תצוגה ומגע״.
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	מאפשר צילום של מסכים מאובטחים, מסתיר מאפליקציות את מצב הנגישות וניפוי הבאגים, ומספק את מונה ה-FPS.
+Applies Super Dark to Gboard.	מחיל כהה במיוחד על Gboard.
+Applies Super Dark to Settings search.	מחיל כהה במיוחד על החיפוש בהגדרות.
+Applies Super Dark to Settings.	מחיל כהה במיוחד על ההגדרות.
+Applies Super Dark to app uninstall dialogs.	מחיל כהה במיוחד על חלונות הסרת ההתקנה.
+Applies Super Dark to the Google app and feed.	מחיל כהה במיוחד על אפליקציית Google ועל הפיד.
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	מחיל את הסמלים, התיקיות והתפריטים של מרכז האפליקציות, וגם את השוליים הרכים המעומעמים מאחורי אזור החיפוש במגירת האפליקציות. האפקט במגירה פעיל רק עם זכוכית חלבית.
+Blocks system update installation and protects factory reset.	חוסם התקנה של עדכוני מערכת ומגן על איפוס להגדרות היצרן.
+Controls Software updates and the factory-reset option in Settings.	שולט ב״עדכוני תוכנה״ ובאפשרות האיפוס להגדרות היצרן בהגדרות.
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	דוחה שיחות נכנסות עבור אל תציק כשמסלול ערימת השיחות של Pixel לא זמין.
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	מזהה לחיצה כפולה על לחצן ההפעלה ועל החלשת עוצמת הקול לקיצורי הפנס והמצלמה.
+Detects volume-down double presses while the screen is off.	מזהה לחיצה כפולה על החלשת עוצמת הקול כשהמסך כבוי.
+Enables QR-code eSIM setup in the Pixel Watch phone app.	מפעיל הגדרת eSIM בקוד QR באפליקציית Pixel Watch בטלפון.
+Enables call recording and its controls in the Google Phone app.	מפעיל הקלטת שיחות ואת הפקדים שלה באפליקציית הטלפון של Google.
+Fades the status bar while recent apps are viewed in landscape.	מעמעם את שורת הסטטוס בזמן צפייה באפליקציות האחרונות לרוחב.
+Files (system)	קבצים (מערכת)
+Files by Google	קבצים של Google
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	שוליים רכים לגלילה עם זכוכית חלבית במסכים שנפתחים מההגדרות של Android, כולל דפי משנה נתמכים. מתאים את עצמו למצב בהיר, כהה ו-כהה במיוחד. צריך להפעיל את ההיקף הזה ב-LSPosed ולהפעיל מחדש את האפליקציה או את הטלפון.
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	מטפל בתנועות ההתעוררות, השינה וצילום המסך בתהליך המערכת של Android.
+Hides the keyboard globe and moves the dismiss arrow to the right.	מסתיר את לחצן הגלובוס במקלדת ומזיז את חץ הסגירה ימינה.
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	שומר על תגובה מהירה בשיחות בזמן שמירת ההקלטות.
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	משאיר שיחות נכנסות שקטות דרך ערימת השיחות של Pixel כש-אל תציק פועל.
+Keeps screenshots ready for faster capture.	מחזיק צילומי מסך מוכנים לצילום מהיר יותר.
+Keeps selected apps on their current version by blocking their Play Store updates.	משאיר אפליקציות נבחרות בגרסה הנוכחית שלהן על ידי חסימת העדכונים מחנות Play.
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	נועל אפליקציות ותיקיות, מציג תגי מנעול ומגן על אפליקציות נעולות באפליקציות האחרונות.
+Matches Photos' share-page colors to the share sheet.	מתאים את הצבעים של דף השיתוף בתמונות לגיליון השיתוף.
+Matches photo-editor menus and controls to your chosen theme and surface style.	מתאים את התפריטים והפקדים של עורך התמונות לעיצוב ולסגנון המשטח שבחרת.
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	מתאים את התפריטים והפקדים של עורך צילומי המסך לעיצוב ולסגנון המשטח שבחרת.
+Matches system menus and messages to your chosen theme and surface style.	מתאים את התפריטים וההודעות של המערכת לעיצוב ולסגנון המשטח שבחרת.
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	מעביר את לחצן סגירת המקלדת לקצה הימני כשלחצני הניווט מופעלים. צריך להפעיל מחדש את המקלדת אחרי הוספת ההיקף הזה.
+Opens the camera from the volume-down shortcut.	פותח את המצלמה מקיצור החלשת עוצמת הקול.
+Package installer	מנהל התקנת החבילות
+Permission Controller	בקר ההרשאות
+Personal Safety	בטיחות אישית
+Phone Services	שירותי הטלפון
+Pixel Troubleshooting	פתרון בעיות ב-Pixel
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	מציג הודעות קופצות למעלה, באמצע או למטה כמו במקור. השינויים חלים מההודעה הבאה.
+Provides cleaner screen-recording controls.	מספק פקדים נקיים יותר להקלטת המסך.
+Removes sponsored cards and their empty space from the Google feed.	מסיר כרטיסים ממומנים ואת הרווח הריק שלהם מהפיד של Google.
+Removes supported empty ad boxes from web pages opened in Chrome.	מסיר תיבות פרסום ריקות נתמכות מדפי אינטרנט שנפתחים ב-Chrome.
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	משנה את הסדר של אפליקציות השיתוף המוצמדות ומוסיף לגיליון השיתוף של Android תיקיות של אפליקציות מוסתרות ואנשי קשר.
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	דורש אימות לפני פתיחה של אפליקציות מוגנות או הסרה, השבתה או השהיה שלהן.
+Settings Services	שירותי ההגדרות
+Share sheet	גיליון השיתוף
+Shows customized app names and icons in home-screen Google search.	מציג שמות וסמלים מותאמים של אפליקציות בחיפוש Google במסך הבית.
+Shows fingerprint and PIN prompts for locked apps and folders.	מציג בקשות לטביעת אצבע ולקוד אימות לאפליקציות ותיקיות נעולות.
+Shows newest files first in the file browser.	מציג את הקבצים החדשים ביותר קודם בדפדפן הקבצים.
+Shows newest files first in the system file picker.	מציג את הקבצים החדשים ביותר קודם בבוחר הקבצים של המערכת.
+System Framework	מסגרת המערכת
+System UI	ממשק המשתמש של המערכת
+Toggles the flashlight with a double press of the power button.	מדליק ומכבה את הפנס בלחיצה כפולה על לחצן ההפעלה.
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	מקום ל-7 קיצורי דרך בסרגל, קיצורים לעריכת טקסט, מקשים מעוגלים, לוח בעמודה אחת, הסתרת צ׳יפים, לחצני תפריט ואמוג׳י/קול, סדר הסרגל שלך, הצעות עם קיצורים בשתי שורות, שינוי גודל (גודל ומיקום המקלדת), מיקום חופשי למקלדת, ؤ ערבית על و, מחיקה אות אחר אות בהחלקה, תיקון אוטומטי לכל שפה, לוח בלי הגבלה ותמונת המקלדת בדף שינוי הגודל.
+10 seconds	10 שניות
+15 seconds	15 שניות
+3 seconds	3 שניות
+30 seconds	30 שניות
+5 seconds	5 שניות
+A better starting view for your files.	תצוגת פתיחה טובה יותר לקבצים שלך.
+A feed without sponsored gaps	פיד בלי רווחים ממומנים
+A tidier recording sheet. Needs your phone in English.	גיליון הקלטה מסודר יותר. הטלפון צריך להיות באנגלית.
+AOD after screen off	AOD אחרי כיבוי המסך
+AOD while charging	AOD בזמן טעינה
+About and support	מידע ותמיכה
+Ad Blocker, VPN, Dark pages and more to come	חוסם מודעות, VPN, דפים כהים ועוד
+Ad blocker	חוסם מודעות
+Ad blocking for news browsing	חסימת מודעות בזמן קריאת חדשות
+Add-ons for Chrome+.	תוספים ל-Chrome+.
+Adds Scan QR code to Mobile network when your carrier isn't listed	מוסיף ״סריקת קוד QR״ ל״רשת סלולרית״ כשהספק שלך לא ברשימה
+All of Gboard+ at once. Your choices are kept while it's off	כל Gboard+ בבת אחת. הבחירות נשמרות כשהוא כבוי
+Allow screenshots of secure screens	לאפשר צילומי מסך של מסכים מאובטחים
+Allow update notifications	לאפשר התראות על עדכונים
+Always show Clear all	להציג תמיד את ״ניקוי הכול״
+Always-on display	תצוגה פעילה תמידית
+Always-on display while plugged in	תצוגה פעילה תמידית בזמן טעינה
+App & folder lock	נעילת אפליקציות ותיקיות
+App drawer	מגירת האפליקציות
+App drawer folders	תיקיות במגירת האפליקציות
+App name	שם האפליקציה
+Applies right away. Open folders and search keep the usual size.	חל מיד. תיקיות פתוחות והחיפוש שומרים על הגודל הרגיל.
+Apply matching icons across your apps	החלת סמלים תואמים בכל האפליקציות
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	אפליקציות שקושרות את הכניסה לטלפון, כמו אפליקציות בנקים רבות, עשויות לבקש כניסה מחדש אחרי הסרת התקנה.
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	אפליקציות שמסרבות להיפתח כשאפשרויות המפתחים מופעלות, כמו חלק מאפליקציות הבנקים, פועלות כרגיל.\nמקישים על גלגל השיניים כדי לפתוח את אפשרויות המפתחים.
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	אפליקציות שיש להן גרסה חדשה יותר בחנות Play מוצגות באדום. מקישים על ! כדי לעדכן, לגבות או לשחזר.
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	האפליקציות שבחרת לא רואות את שירותי הנגישות שלך.\nצריך קודם לכבות מודולים אחרים שעושים את זה.
+Asks before a locked app is uninstalled or paused	שואל לפני הסרה או השהיה של אפליקציה נעולה
+Auto-confirm 4-digit PIN	אישור אוטומטי של קוד בן 4 ספרות
+Auto-confirm works with a 4-digit PIN, from your next unlock.	האישור האוטומטי פועל עם קוד בן 4 ספרות, מביטול הנעילה הבא.
+Backspace swipe deletes letters	החלקה על Backspace מוחקת אותיות
+Backup	גיבוי
+Backup & Restore keeps every saved version, also of uninstalled apps.	גיבוי ושחזור שומר כל גרסה שנשמרה, גם של אפליקציות שהוסרו.
+Backup restored	הגיבוי שוחזר
+Backup saved	הגיבוי נשמר
+Battery saver can still turn it off.	מצב חיסכון בסוללה עדיין יכול לכבות את זה.
+Block ads, with filtering per site	חסימת מודעות, עם סינון לכל אתר
+Blocks ads while you read the news.	חוסם מודעות בזמן קריאת חדשות.
+Blur Off	בלי טשטוש
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	בלי טשטוש\nבלי טשטוש, משטחים אטומים.\n\nמקורי\nהמראה של המערכת עצמה.\n\nזכוכית חלבית (ברירת מחדל)\nמטשטש את מה שמאחורי תיקיות, תפריטים והודעות.
+Blurred and tinted	מטושטש וצבוע
+Bottom (Stock)	למטה (מקורי)
+Bring everything back from a backup file	שחזור של הכול מקובץ גיבוי
+Browse from another country	גלישה ממדינה אחרת
+Browse from another country, in Chrome or every app	גלישה ממדינה אחרת, ב-Chrome או בכל אפליקציה
+Browse from another country.	גלישה ממדינה אחרת.
+Browse without empty ad boxes	גלישה בלי תיבות פרסום ריקות
+Buttons	לחצנים
+Buttons beside the gesture bar	לחצנים ליד סרגל התנועות
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	הקלטת שיחות עשויה להיות מוגבלת לפי החוק במדינה שלך. יש לקבל כל הסכמה נדרשת לפני ההקלטה. האחריות לשימוש חוקי היא שלך. RovianDev לא אחראי לשימוש בלתי חוקי.
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	המתקשרים שומעים שאינך זמין/ה. על כל שיחה שלא נענתה מקבלים התראה עם לחצן ״התקשרות״. שיחות חירום תמיד עוברות.
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	שיחות נדחות לפני שהטלפון מצלצל. על כל שיחה שלא נענתה מקבלים התראה עם לחצן ״התקשרות״. שיחות חירום תמיד עוברות.
+Capture, sleep, wake and app dragging.	צילום, שינה, התעוררות וגרירת אפליקציות.
+Changelog	יומן שינויים
+Changes apply the next time the chosen apps open.	השינויים יחולו בפעם הבאה שהאפליקציות שנבחרו ייפתחו.
+Changes only the text under icons.\nIcon size and shape stay the same.	משנה רק את הטקסט שמתחת לסמלים.\nהגודל והצורה של הסמלים לא משתנים.
+Changing this option restarts Pixel Launcher.	שינוי האפשרות הזו מפעיל מחדש את משגר Pixel.
+Check for updates	בדיקת עדכונים
+Check for updates automatically	בדיקת עדכונים אוטומטית
+Check for updates now	בדיקת עדכונים עכשיו
+Check now	לבדוק עכשיו
+Checking for updates…	בודקים עדכונים…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	בוחרים ״חזרה״, ״דף הבית״ או ״אחרונות״ ליד סרגל התנועות. לחיצה ארוכה על ״דף הבית״ פותחת את ״מקיפים ומחפשים״ או את Gemini.
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	בוחרים ״חזרה״, ״דף הבית״ או ״אחרונות״ לכל צד. לחיצה ארוכה על ״דף הבית״ פותחת את ״מקיפים ומחפשים״ או את Gemini.
+Choose Lock from an app's recents menu to keep its card when you clear apps.	כדי שהכרטיס של אפליקציה יישאר כשמנקים אפליקציות, בוחרים ״נעילה״ בתפריט שלה באפליקציות האחרונות.
+Choose a filtering level per site from the ad blocker button in Chrome.	בוחרים רמת סינון לכל אתר מהלחצן של חוסם המודעות ב-Chrome.
+Choose the languages Gboard corrects.	בחירת השפות ש-Gboard מתקן.
+Choose which apps can't see your accessibility services	בחירת האפליקציות שלא יראו את שירותי הנגישות שלך
+Choose which apps stay on their current version.	בחירת האפליקציות שיישארו בגרסה הנוכחית.
+Circle to Search	מקיפים ומחפשים
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	״מקיפים ומחפשים״ פועל כמו לחיצה ארוכה על פס הניווט. צילום מסך פועל כמו הפעלה + החלשת עוצמת הקול.
+Cleaner news articles	כתבות חדשות נקיות יותר
+Cleaner news browsing.	קריאת חדשות נקייה יותר.
+Clear all in recents	״ניקוי הכול״ באפליקציות האחרונות
+Clear all is always there in recents, no scrolling.	״ניקוי הכול״ תמיד נמצא באפליקציות האחרונות, בלי לגלול.
+Clear all, locked cards and landscape view	ניקוי הכול, כרטיסים נעולים ותצוגה לרוחב
+Clipboard history	היסטוריית הלוח
+Clipboard in one column	לוח בעמודה אחת
+Colorful icons in the app drawer (Stock)	סמלים צבעוניים במגירת האפליקציות (מקורי)
+Community and support	קהילה ותמיכה
+Confirm it's you to change privacy settings	צריך לאמת את זהותך כדי לשנות את הגדרות הפרטיות
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	הפקדים עוברים למטה, עם אנימציות חלקות של כרטיסיות. במחליף הכרטיסיות, ה-+ הכתום פותח כרטיסיית גלישה בסתר.
+Could not save text size	לא ניתן לשמור את גודל הטקסט
+Could not save the surface style	לא ניתן לשמור את סגנון המשטח
+Could not save this option	לא ניתן לשמור את האפשרות הזו
+Couldn't back up: root access needed	לא ניתן לגבות: נדרשת הרשאת root
+Couldn't load apps	לא ניתן לטעון אפליקציות
+Couldn't restore: root access needed	לא ניתן לשחזר: נדרשת הרשאת root
+Couldn't save (root)	לא ניתן לשמור (root)
+Crop screenshots to any size, even a single line.	אפשר לחתוך צילומי מסך לכל גודל, אפילו לשורה אחת.
+Customize icon labels	התאמה אישית של שמות הסמלים
+Dark theme and schedules	עיצוב כהה ותזמונים
+Dark websites in Chrome	אתרים כהים ב-Chrome
+Dark websites in Chrome.	אתרים כהים ב-Chrome.
+Dark websites, always, with dark mode or on a schedule	אתרים כהים: תמיד, עם מצב כהה או לפי תזמון
+Developer options aren't available on this device.	אפשרויות המפתחים לא זמינות במכשיר הזה.
+Double tap	הקשה כפולה
+Double tap to sleep	הקשה כפולה לנעילה
+Double-press power button	לחיצה כפולה על לחצן ההפעלה
+Double-press volume down	לחיצה כפולה על החלשת עוצמת הקול
+Double-tap an empty spot on the home screen to lock your phone.	כדי לנעול את הטלפון, מקישים פעמיים על מקום ריק במסך הבית.
+Download and install	הורדה והתקנה
+Download and install the update in Pixel Suite	הורדה והתקנה של העדכון ב-Pixel Suite
+Drag an app onto another to make a folder. Use Add apps to pick more.	גוררים אפליקציה על אחרת כדי ליצור תיקייה. אפשר לבחור עוד דרך ״הוספת אפליקציות״.
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	גוררים את הידיות כדי לשנות גודל, או את האמצע כדי להזיז את המקלדת. ״איפוס״ מחזיר לגודל של Gboard.
+Drag to home screen	גרירה למסך הבית
+Draw on screenshots and photos.	ציור על צילומי מסך ותמונות.
+Draw shapes and arrows on screenshots.	ציור צורות וחצים על צילומי מסך.
+Draw shapes on photos: Edit → Doodles. They stay editable.	ציור צורות על תמונות: עריכה ← שרבוטים. אפשר לערוך אותן אחר כך.
+Ends	מסתיים
+Erase all data is greyed out in Settings while OTA blocker is on.	״מחיקת כל הנתונים״ מופיע באפור בהגדרות כשחוסם ה-OTA פועל.
+Every feature, fix and release	כל תכונה, תיקון וגרסה
+Feature preview	תצוגה מקדימה של התכונה
+Features preview	תצוגה מקדימה של התכונות
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	סינון מודעות לכל אתר, מבסיסי ועד מלא. ברמה המלאה מוסתרים גם באנרים של קובצי Cookie וחלונות קופצים. אפשר גם להסיר כל רכיב.
+Filtering levels and website exceptions.	רמות סינון וחריגים לאתרים.
+Fingerprint or PIN before locked apps and folders open	טביעת אצבע או קוד אימות לפני פתיחה של אפליקציות ותיקיות נעולות
+Five text sizes for app names. Icons stay the same size.	חמישה גדלים לטקסט של שמות האפליקציות. הסמלים נשארים באותו גודל.
+Flashlight and camera shortcuts	קיצורי פנס ומצלמה
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	פנס: לחיצה כפולה על לחצן ההפעלה מדליקה או מכבה אותו, גם כשהטלפון נעול. ״מצלמה (מקורית)״ פותחת את המצלמה.
+Folder grid	רשת התיקייה
+Folder sorting	מיון התיקייה
+Folders	תיקיות
+Folders first, then your newest files.	קודם תיקיות, ואחר כך הקבצים החדשים ביותר.
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	תיקיות גדלות לפי מספר האפליקציות שבהן. בוחרים רשת מתפריט שלוש הנקודות של כל תיקייה.
+Folders, dragging and app shortcuts	תיקיות, גרירה וקיצורי דרך לאפליקציות
+Folders, dragging and app shortcuts.	תיקיות, גרירה וקיצורי דרך לאפליקציות.
+Folders, drawer, names, search bar and recents	תיקיות, מגירה, שמות, סרגל חיפוש ואפליקציות אחרונות
+Folders, names, search bar and recents.	תיקיות, שמות, סרגל חיפוש ואפליקציות אחרונות.
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	פועל לפי התזמון של העיצוב הכהה. בעיצוב בהיר חוזרים הצבעים הרגילים והטשטוש.
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	ל-Pixel Watch עם חבילה סלולרית משלו: גם הרשת שלו נכבית. נדרשת אפליקציית השעון של Pixel Suite.
+For fingerprint or PIN protection, use Privacy & Security.	להגנה בטביעת אצבע או בקוד אימות, משתמשים ב״פרטיות ואבטחה״.
+Free screenshot crop	חיתוך חופשי של צילומי מסך
+From Chrome to Chrome+	מ-Chrome ל-Chrome+
+Full changelog on GitHub	יומן השינויים המלא ב-GitHub
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard שומר כל קטע עד שמוחקים אותו. לקטעים מוצמדים יש כרטיסים כחולים, וה-X למעלה מוחק הכול חוץ מהם. ״לוח בעמודה אחת״ מציג קטע אחד בכל שורה.
+Gboard restarts when you change any of these.	Gboard מופעל מחדש כשמשנים אחת מהאפשרויות האלה.
+Gemini (stock)	Gemini (מקורי)
+Gemini when locked	Gemini כשהטלפון נעול
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini, ״מקיפים ומחפשים״, צילום מסך או מצב שקט.
+Gestures	תנועות
+Get the Pixel Suite watch app from the developer on Telegram.	את אפליקציית השעון של Pixel Suite מקבלים מהמפתח ב-טלגרם.
+Google Photos setup	הגדרת תמונות Google
+Google app	אפליקציית Google
+Google news	Google חדשות
+Google's own look	המראה של Google
+Held-back apps are saved automatically before they update.	אפליקציות שעדכונן מעוכב נשמרות אוטומטית לפני שהן מתעדכנות.
+Hide	הסתרה
+Hide Developer Options	הסתרת אפשרויות המפתחים
+Hide accessibility from apps	הסתרת הנגישות מאפליקציות
+Hide ads in Google feed	הסתרת מודעות בפיד של Google
+Hide app shortcuts	הסתרת קיצורי דרך לאפליקציות
+Hide search bar	הסתרת סרגל החיפוש
+Hide suggestion chips	הסתרת צ׳יפים של הצעות
+Hides app shortcuts like View orders from the drawer menu.	מסתיר קיצורי דרך לאפליקציות כמו ״הצגת הזמנות״ מתפריט המגירה.
+Hides the globe under your keyboard and moves the arrow to the right	מסתיר את הגלובוס מתחת למקלדת ומזיז את החץ ימינה
+Hold Home for	לחיצה ארוכה על ״דף הבית״ ל:
+Hold a folder and drag it anywhere among your apps.	לוחצים לחיצה ארוכה על תיקייה וגוררים אותה לכל מקום בין האפליקציות.
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	לחיצה ארוכה על תיקייה מאפשרת לשנות את שמה, למיין אותה או להסיר אותה. הסרה לא מסירה את התקנת האפליקציות שבה.
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	לוחצים לחיצה ארוכה על קיצור דרך וגוררים אותו לסרגל הכלים, לאורכו כדי לשנות סדר, או החוצה כדי להסיר. מקישים על קיצור כדי לראות מה הוא עושה. אפשר להסתיר את הלחצנים שבצדדים כדי לתת לקיצורים יותר מקום.
+Hold an app and choose Change icon to use your own image.	לוחצים לחיצה ארוכה על אפליקציה ובוחרים ״שינוי הסמל״ כדי להשתמש בתמונה משלך.
+Hold an app and choose Rename.	לוחצים לחיצה ארוכה על אפליקציה ובוחרים ״שינוי שם״.
+Hold an app and choose Rename. It shows right away everywhere.	לוחצים לחיצה ארוכה על אפליקציה ובוחרים ״שינוי שם״. השם מופיע מיד בכל מקום.
+Hold an app in the drawer and drag it onto Add to home screen.	לוחצים לחיצה ארוכה על אפליקציה במגירה וגוררים אותה אל ״הוספה למסך הבית״.
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	לוחצים לחיצה ארוכה על אפליקציה או תיקייה ובוחרים ״נעילה״ או ״ביטול נעילה״.\n\nנעילת תיקייה לא נועלת את האפליקציות שבתוכה.
+Hold an app or folder with a dot and choose Clear badge.	לוחצים לחיצה ארוכה על אפליקציה או תיקייה עם נקודה ובוחרים ״ניקוי התג״.
+Hold an app or folder with a notification dot and choose Clear badge.	לוחצים לחיצה ארוכה על אפליקציה או תיקייה עם נקודת התראה ובוחרים ״ניקוי התג״.
+Hold back app updates	עיכוב עדכוני אפליקציות
+Hold power button	לחיצה ארוכה על לחצן ההפעלה
+How it works	איך זה עובד
+Icon label size	גודל שמות הסמלים
+Icon label size, five levels	גודל שמות הסמלים, חמש רמות
+Icons, Super Dark-Mode and blur	סמלים, מצב כהה במיוחד וטשטוש
+If a double tap doesn't register, tap once more within three seconds.	אם הקשה כפולה לא נקלטת, מקישים שוב תוך שלוש שניות.
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	ב-Chrome, פותחים את התוספים ומקישים על ״דפים כהים״ כדי לכבות אותם לאתר אחד. תמונות וסרטונים שומרים על הצבעים שלהם.
+Installation permission was not enabled. Tap Download and install when ready.	הרשאת ההתקנה לא הופעלה. כשמוכנים, מקישים על ״הורדה והתקנה״.
+Keep calls quiet and stay connected	שיחות בשקט, בלי לאבד חיבור
+Keep incoming calls quiet and stay connected	שיחות נכנסות בשקט, בלי לאבד חיבור
+Keep unlocked for 1 minute	להשאיר לא נעול לדקה
+Keep what matters. Clear the rest.	שומרים את מה שחשוב. מנקים את השאר.
+Keeps Clear all next to Screenshot and Select.	משאיר את ״ניקוי הכול״ ליד ״צילום מסך״ ו״בחירה״.
+Keeps chips like Screenshot off the toolbar	מרחיק צ׳יפים כמו ״צילום מסך״ מסרגל הכלים
+Keyboard bar tweak	כוונון סרגל המקלדת
+Keys	מקשים
+Keys and backspace	מקשים ו-Backspace
+LSPosed scope	היקף LSPosed
+Landscape recent apps	אפליקציות אחרונות לרוחב
+Landscape view	תצוגה לרוחב
+Left button	לחצן שמאלי
+Live frame counter at the top right	מונה פריימים חי בפינה הימנית העליונה
+Lock a card from its menu to keep it when you clear apps.	נועלים כרטיס מהתפריט שלו כדי שיישאר כשמנקים אפליקציות.
+Lock an app's card so Clear all keeps it.	נועלים את הכרטיס של אפליקציה כדי ש״ניקוי הכול״ ישאיר אותו.
+Lock apps and folders	נעילת אפליקציות ותיקיות
+Lock apps in recents	נעילת אפליקציות באפליקציות האחרונות
+Lock factory reset	נעילת האיפוס להגדרות היצרן
+Lock screen	מסך הנעילה
+Lock-screen behavior	התנהגות מסך הנעילה
+Lock-screen taps	הקשות במסך הנעילה
+Locking recent apps	נעילת אפליקציות אחרונות
+Locks stay after a restart.	הנעילות נשארות גם אחרי הפעלה מחדש.
+Made by RovianDev	נוצר על ידי RovianDev
+Make it work your way.	בדרך שלך.
+Middle	אמצע
+Miscellaneous	שונות
+More	עוד
+More to come.	עוד בדרך.
+Move and resize the keyboard	הזזה ושינוי גודל של המקלדת
+Move folders between apps	הזזת תיקיות בין אפליקציות
+Move several apps	הזזת כמה אפליקציות
+Move to bottom and scroll	העברה לתחתית וגלילה
+Navigation buttons	לחצני ניווט
+Newest files first, in Files and the file picker	הקבצים החדשים ביותר קודם, ב-קבצים ובבוחר הקבצים
+No LTE Pixel Watch? Leave this off.	אין לך Pixel Watch עם LTE? כדאי להשאיר כבוי.
+No blur anywhere	בלי טשטוש בשום מקום
+No file picker available	אין בוחר קבצים זמין
+Nothing	כלום
+Notifications that can be dismissed are cleared, and the dot goes away.	התראות שאפשר לסגור מנוקות, והנקודה נעלמת.
+OTA & Store blocker	חוסם OTA וחנות
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	כשכבוי, המילים מופיעות בזמן הדיבור. כש״הקלדה קולית עם וי״ פועלת, מדברים ואז מקישים על הווי כדי להוסיף את המילים או על X כדי לבטל. נדרש Rambler כסוג ההכתבה בהגדרות הקול של Gboard.
+On the lock screen, holding power opens Gemini	במסך הנעילה, לחיצה ארוכה על לחצן ההפעלה פותחת את Gemini
+One clip per row, exactly as you copied it	קטע אחד בכל שורה, בדיוק כמו שהועתק
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	מתג אחד לכל מה שכאן. כשהוא כבוי, Gboard פועל כרגיל והבחירות שלך נשמרות.
+Only Clear all	רק ״ניקוי הכול״
+Only Clear all, in the middle	רק ״ניקוי הכול״, באמצע
+Open Developer options	פתיחת אפשרויות המפתחים
+Open locked apps and folders with your fingerprint or PIN	פתיחת אפליקציות ותיקיות נעולות בטביעת אצבע או בקוד אימות
+Per language	לכל שפה
+Personalize	התאמה אישית
+Phone, Chrome, Gboard, Google, News and watch	טלפון, Chrome, Gboard, Google, News ושעון
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	בוחרים 3×3,‏ 4×4 או 5×5 מתפריט שלוש הנקודות של תיקייה. רשתות גדולות יותר מופיעות כשהתיקייה מתמלאת.
+Pin, reorder and hide sharing apps	הצמדה, שינוי סדר והסתרה של אפליקציות שיתוף
+Pin, reorder, hide and restore sharing apps and contacts	הצמדה, שינוי סדר, הסתרה ושחזור של אפליקציות שיתוף ואנשי קשר
+Pinned and hidden sharing apps.	אפליקציות שיתוף מוצמדות ומוסתרות.
+Pixel Studio setup	הגדרת סטודיו Pixel
+Pixel Suite checks for updates and installs them right here.	Pixel Suite בודקת עדכונים ומתקינה אותם ממש כאן.
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite צריכה root. צריך לאשר אותו במנהל ה-root ואז לפתוח שוב את המסך הזה.
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite: הקשה כפולה על כרטיס במסך הנעילה מכבה את המסך בלי לפתוח אותו.
+Pixel Watch with LTE	Pixel Watch עם LTE
+Place folders anywhere among your apps, with their own grids and sorting.	אפשר למקם תיקיות בכל מקום בין האפליקציות, עם רשת ומיון משלהן.
+Play Store blocker	חוסם חנות Play
+Play Store updates and system updates	עדכוני חנות Play ועדכוני מערכת
+Preview of the chosen surface style on a folder over a wallpaper	תצוגה מקדימה של סגנון המשטח שנבחר על תיקייה מעל טפט
+Privacy & Security	פרטיות ואבטחה
+Protect locked apps	הגנה על אפליקציות נעולות
+Protected with your fingerprint or PIN.	מוגן בטביעת האצבע או בקוד האימות שלך.
+Protection	הגנה
+Pure black backgrounds and darker menus in dark theme.	רקעים בשחור מלא ותפריטים כהים יותר בעיצוב הכהה.
+Quick actions from your phone's buttons.	פעולות מהירות מהלחצנים של הטלפון.
+Recent	אחרונות
+Recent Apps	אפליקציות אחרונות
+Record and save calls	הקלטה ושמירה של שיחות
+Record calls in the Phone app, in any country, without the announcement	הקלטת שיחות באפליקציית הטלפון, בכל מדינה, בלי ההודעה
+Reduce screenshot delay	קיצור ההשהיה של צילום המסך
+Refresh rate slider	פס הזזה לקצב הרענון
+Removes sponsored cards from your feed, with no gaps left	מסיר כרטיסים ממומנים מהפיד, בלי להשאיר רווחים
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	מסיר את סרגל החיפוש מתחתית מסך הבית. סרגל האפליקציות הקבוע יורד והאפליקציות מנצלות את המקום.
+Removing apps from the home screen doesn't uninstall them.	הסרת אפליקציות ממסך הבית לא מסירה את התקנתן.
+Rename apps	שינוי שמות אפליקציות
+Reopen Settings to see the change.	פותחים שוב את ההגדרות כדי לראות את השינוי.
+Reopen apps that were already open.	פותחים שוב אפליקציות שכבר היו פתוחות.
+Reorder pinned apps and hide sharing apps	שינוי סדר של אפליקציות מוצמדות והסתרת אפליקציות שיתוף
+Reset brings back the original name.	״איפוס״ מחזיר את השם המקורי.
+Reset restores the original name. Work-profile and Private Space apps keep their names.	״איפוס״ מחזיר את השם המקורי. אפליקציות בפרופיל העבודה ובמרחב הפרטי שומרות על השמות שלהן.
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	״שחזור״ מחזיר אותה לכאן. בגרסה שנשמרה עם הנתונים שלה תופיע שאלה אם לשחזר גם את הנתונים.
+Restore this backup?	לשחזר את הגיבוי הזה?
+Right button	לחצן ימני
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	סמלים עגולים לעד 19 אתרים ותיקיות. לוחצים לחיצה ארוכה וגוררים כדי להזיז, או משחררים על אחר כדי ליצור תיקייה. עורכים אתר כדי לתת לו תמונה משלך.
+Rounded keys	מקשים מעוגלים
+Rounded keys and corners, with smooth key pop-ups	מקשים ופינות מעוגלים, עם חלונות מקשים חלקים
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	מקשים מעוגלים עם חלונות קופצים חלקים, במצב בהיר, כהה ו-כהה במיוחד. מחליקים שמאלה ממקש המחיקה כדי למחוק אות אחר אות.
+Save your settings, folders and icons to a file	שמירת ההגדרות, התיקיות והסמלים בקובץ
+Saved versions of your apps, ready to put back.	גרסאות שמורות של האפליקציות שלך, מוכנות להחזרה.
+Saved. Gboard restarts with the new size	נשמר. Gboard מופעל מחדש בגודל החדש
+Saved. Gboard restarts with your toolbar	נשמר. Gboard מופעל מחדש עם סרגל הכלים שלך
+Screen recording sheet	גיליון הקלטת המסך
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	צילומי מסך והקלטות באפליקציות שחוסמות אותם.\nצריך קודם לכבות מודולים אחרים שעושים את זה.
+Screenshots appear instantly. Uses a little extra memory.	צילומי המסך מופיעים מיד. משתמש בקצת יותר זיכרון.
+Screenshots, accessibility, keyboard and developer options	צילומי מסך, נגישות, מקלדת ואפשרויות מפתחים
+Screenshots, sleep, wake and dragging	צילומי מסך, שינה, התעוררות וגרירה
+Search stays in the app drawer.	החיפוש נשאר במגירת האפליקציות.
+Set	הגדרה
+Set a phone screen lock first	צריך קודם להגדיר נעילת מסך בטלפון
+Set up eSIM with a QR code	הגדרת eSIM עם קוד QR
+Setup, community and support	הגדרה, קהילה ותמיכה
+Shapes in Pixel Studio and Google Photos	צורות ב-סטודיו Pixel וב-תמונות Google
+Share menu	תפריט השיתוף
+Share sheet tools	כלים לגיליון השיתוף
+Sharing	שיתוף
+Show FPS	הצגת FPS
+Show toasts	הצגת הודעות קופצות
+Shows right away everywhere. Tap the reset arrow for the original icon.	מופיע מיד בכל מקום. מקישים על חץ האיפוס כדי לחזור לסמל המקורי.
+Shows right away everywhere. Work profile and Private Space apps keep their names.	מופיע מיד בכל מקום. אפליקציות בפרופיל העבודה ובמרחב הפרטי שומרות על השמות שלהן.
+Silence	השתקה
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	השתקה, ״נא לא להפריע״ ו-אל תציק נדלקים בלחיצה ארוכה ונכבים בלחיצה הבאה. בלי הצקות עושה את שלושתם יחד.
+Silences calls and keeps you connected. Add its Quick Settings tile.	משתיק שיחות ומשאיר אותך מחובר/ת. מוסיפים את האריח שלו להגדרות המהירות.
+Single tap	הקשה אחת
+Small fixes, simple controls.	תיקונים קטנים, פקדים פשוטים.
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	אנימציות בעבודת יד חלקות יותר, תוספים מובנים, פקדים למטה וחיוג מהיר מותאם אישית.
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	אנימציות בעבודת יד חלקות יותר, תוספים מובנים, פקדים למטה, חיוג מהיר מותאם אישית
+Sort from the three-dot menu	מיון מתפריט שלוש הנקודות
+Sorting and custom order	מיון וסדר מותאם אישית
+Speak, then tap the checkmark to add your words	מדברים, ואז מקישים על הווי כדי להוסיף את המילים
+Speed dial	חיוג מהיר
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	מתחילים לגרור אפליקציה, ואז מקישים על אפליקציות נוספות באצבע אחרת. משחררים את כולן במסך הבית או בתיקייה.
+Starts	מתחיל
+Stay connected. Keep incoming calls quiet.	נשארים מחוברים. שיחות נכנסות בשקט.
+Stays unlocked for a minute after you leave it	נשאר לא נעול דקה אחרי שיוצאים ממנו
+Stock	מקורי
+Stops system updates and hides Software updates in Settings.	עוצר עדכוני מערכת ומסתיר את ״עדכוני תוכנה״ בהגדרות.
+Surface style, three options	סגנון משטח, שלוש אפשרויות
+Surfaces and blur	משטחים וטשטוש
+Swipe down with three fingers to take a screenshot.	מחליקים למטה בשלוש אצבעות כדי לצלם את המסך.
+Swipe gestures still work.	תנועות ההחלקה עדיין פועלות.
+Swipe left from delete to remove letter by letter	מחליקים שמאלה ממקש המחיקה כדי למחוק אות אחר אות
+System colors, your way.	צבעי המערכת, בדרך שלך.
+System update controls.	פקדים לעדכוני מערכת.
+System updates and factory reset	עדכוני מערכת ואיפוס להגדרות היצרן
+Take a screenshot	צילום מסך
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	כדי להשתמש בתוספים, מקישים על ״תוספים״ בדף הכרטיסייה החדשה של Chrome. הקשה על תוסף פותחת את ההגדרות שלו, ולחיצה ארוכה מצמידה אותו לסרגל הכלים.
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	כדי להשתמש בתוספים, מקישים על ״תוספים״ בדף הכרטיסייה החדשה. לחיצה ארוכה על תוסף מצמידה אותו לסרגל הכלים.
+Tap an app to see its saved versions.	מקישים על אפליקציה כדי לראות את הגרסאות השמורות שלה.
+Tap to wake	הקשה להפעלת המסך
+Text size	גודל הטקסט
+That isn't a Pixel Suite backup	זה לא גיבוי של Pixel Suite
+The 3 newest versions of each app are kept.	נשמרות 3 הגרסאות החדשות ביותר של כל אפליקציה.
+The clock and info while charging, and after the power button.	השעון והמידע בזמן טעינה ואחרי לחיצה על לחצן ההפעלה.
+The green button puts a saved version back, with its data and sign-ins.	הלחצן הירוק מחזיר גרסה שמורה, עם הנתונים והכניסות שלה.
+The power button shows the always-on display for a few seconds	לחצן ההפעלה מציג את התצוגה הפעילה תמידית לכמה שניות
+The three styles	שלושת הסגנונות
+The toolbar	סרגל הכלים
+Three-finger screenshot	צילום מסך בשלוש אצבעות
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	כדי לחזור לכאן, לוחצים לחיצה ארוכה על מסך הבית ובוחרים ״ההגדרות של Pixel Suite״. נדרשים root ו-LSPosed.
+To protect an app with your fingerprint or PIN, use Privacy & Security.	כדי להגן על אפליקציה בטביעת אצבע או בקוד אימות, משתמשים ב״פרטיות ואבטחה״.
+Toasts	הודעות קופצות
+Toolbar	סרגל הכלים
+Toolbar, keys, resize, auto-correction, clipboard	סרגל כלים, מקשים, שינוי גודל, תיקון אוטומטי, לוח
+Tools for your Google apps.	כלים לאפליקציות Google שלך.
+Top	למעלה
+Turn auto-correction off for the languages you choose. Suggestions still show.	כיבוי התיקון האוטומטי לשפות שבוחרים. ההצעות ממשיכות להופיע.
+Turn off after	כיבוי אחרי
+Turn on notifications in Android settings	צריך להפעיל התראות בהגדרות של Android
+Turn the flashlight on or off, open the camera (stock), or do nothing.	הדלקה או כיבוי של הפנס, פתיחת המצלמה (מקורית) או שום דבר.
+Turn this feature on or off.	הפעלה או כיבוי של התכונה הזו.
+Turn your phone sideways in recents for a cleaner view.	מסובבים את הטלפון לרוחב באפליקציות האחרונות לתצוגה נקייה יותר.
+Turns on	מופעל
+Two-finger drag	גרירה בשתי אצבעות
+Typing and clipboard	הקלדה ולוח
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	ביטול, ביצוע מחדש, בחירה מהירה, בחירת הכול, גזירה, העתקה והדבקה פועלים בכל אפליקציה. בחירה מהירה: הקשה בוחרת מילה, הקשה נוספת מבטלת, לחיצה ארוכה בוחרת הכול.
+Unlock OEM apps	ביטול הנעילה של אפליקציות OEM
+Unlock on the 4th digit	ביטול הנעילה בספרה הרביעית
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	הנעילה מבוטלת ברגע שמקלידים את הספרה הרביעית של הקוד, בלי Enter
+Up to 7 shortcuts, in the same order in every language.	עד 7 קיצורי דרך, באותו סדר בכל שפה.
+Up to 7 shortcuts, their order, the side buttons and two rows	עד 7 קיצורי דרך, הסדר שלהם, הלחצנים שבצדדים ושתי שורות
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	״עדכון״ שומר קודם את הגרסה הנוכחית ואז פותח את הדף שלה בחנות Play. אחרי העדכון היא מעוכבת שוב.
+Updates	עדכונים
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	עדכון של אפליקציות הליבה האלה מחנות Play עלול לשבור תכונות של Pixel Suite. Pixel Suite מעדכנת אותן בשבילך בכל גרסה.
+Use Doodles	שימוש ב-שרבוטים
+Use Gboard+	שימוש ב-Gboard+
+Use custom app icons	שימוש בסמלי אפליקציות מותאמים
+Use your own image for an app icon	שימוש בתמונה משלך כסמל של אפליקציה
+Voice typing with checkmark	הקלדה קולית עם וי
+Wake gesture	תנועת התעוררות
+Wake the screen	הפעלת המסך
+Wake your phone with a tap, with pocket protection.	מעירים את הטלפון בהקשה, עם הגנה בכיס.
+Websites open dark, with no white flash. Super Dark uses pure black.	אתרים נפתחים כהים, בלי הבזק לבן. כהה במיוחד משתמש בשחור מלא.
+What's new	מה חדש
+When you untick apps, Back up saves their current versions first.	כשמבטלים סימון של אפליקציות, ״גיבוי״ שומר קודם את הגרסאות הנוכחיות שלהן.
+While charging and after the power button	בזמן טעינה ואחרי לחיצה על לחצן ההפעלה
+While holding an app or folder, swipe with another finger to scroll or turn pages.	בזמן לחיצה ארוכה על אפליקציה או תיקייה, מחליקים באצבע אחרת כדי לגלול או להעביר דף.
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	כשהתצוגה הפעילה תמידית כבויה, לחצן ההפעלה מעביר את המסך לתצוגה הפעילה תמידית. היא נכבית אחרי הזמן שבוחרים.
+With Super Dark-Mode, panels stay black.	עם מצב כהה במיוחד, החלוניות נשארות שחורות.
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	כשהמסך כבוי והתצוגה הפעילה תמידית מופעלת, לוחצים פעמיים על החלשת עוצמת הקול. לא בזמן שיחות או הפעלת מדיה.
+With the screen off, open the camera or turn the flashlight on or off.	כשהמסך כבוי, פותחים את המצלמה או מדליקים ומכבים את הפנס.
+With themed icons on, the app drawer keeps each app's own colors.	כשסמלים בעיצוב אישי מופעלים, מגירת האפליקציות שומרת על הצבעים של כל אפליקציה.
+You can also hold the search bar and choose Hide widget. It hides right away.	אפשר גם ללחוץ לחיצה ארוכה על סרגל החיפוש ולבחור ״הסתרת הווידג׳ט״. הוא נעלם מיד.
+Your own Always-on display setting isn't changed.	ההגדרה שלך לתצוגה הפעילה תמידית לא משתנה.
+eSIM setup with a QR code	הגדרת eSIM עם קוד QR
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• גוררים אפליקציה לשורה העליונה כדי להצמיד אותה, ואז גוררים כדי לשנות סדר.\n\n• לחיצה ארוכה על אפליקציה או איש קשר מצמידה או מסתירה אותם.\n\n• פריטים מוסתרים נמצאים ב״אפליקציות מוסתרות״ וב״אנשי קשר מוסתרים״. לחיצה ארוכה על פריט מבטלת את ההסתרה.
+Hide 1 app	הסתרת אפליקציה אחת
+Tap to share. Long-press to unhide.	הקשה לשיתוף. לחיצה ארוכה לביטול ההסתרה.
+Tick apps to unhide.	מסמנים אפליקציות כדי לבטל את ההסתרה.
+Tick contacts to unhide.	מסמנים אנשי קשר כדי לבטל את ההסתרה.
+Unknown app	אפליקציה לא ידועה
+Back up and update	גיבוי ועדכון
+Back up now	גיבוי עכשיו
+Check root access and reopen this page.	צריך לבדוק את הרשאת ה-root ולפתוח שוב את הדף הזה.
+Close app selection	סגירת בחירת האפליקציות
+Collapse blocked updates	כיווץ העדכונים החסומים
+Couldn't open Play Store	לא ניתן לפתוח את חנות Play
+Discard	ביטול השינויים
+Discard changes?	לבטל את השינויים?
+Expand blocked updates	הרחבת העדכונים החסומים
+Keep editing	המשך עריכה
+Opening Play Store…	חנות Play נפתחת…
+Reopen this page to refresh installed apps	צריך לפתוח שוב את הדף כדי לרענן את האפליקציות המותקנות
+Save them first, then apply	קודם שומרים, ואז מחילים
+Tick Play Store in LSPosed for Pixel Suite.	צריך לסמן את חנות Play ב-LSPosed עבור Pixel Suite.
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	כדי לבטל את הסימון של האפליקציה הזו צריך להפעיל ״ביטול הנעילה של אפליקציות OEM״. עדכון שלה עלול לשבור את התמיכה של Pixel Suite.
+Unknown	לא ידוע
+Unticked apps can get updates	אפליקציות שלא מסומנות יכולות לקבל עדכונים
+Update	עדכון
+Update blocker	חוסם עדכונים
+Updating this core app may break Pixel Suite support.	עדכון של אפליקציית הליבה הזו עלול לשבור את התמיכה של Pixel Suite.
+Wait for your changes to finish applying	צריך לחכות שהשינויים יסיימו לחול
+Your app selections haven't been applied.	הבחירות שלך באפליקציות לא הוחלו.
+\n\nTick it and apply to hold it back.	\n\nמסמנים ומחילים כדי לעכב אותה.
+stroke weight	עובי הקו
+APK exceeds download limit	ה-APK חורג ממגבלת ההורדה
+APK verification failed	אימות ה-APK נכשל
+An update download is already running.	כבר מתבצעת הורדה של עדכון.
+Cannot prepare APK	לא ניתן להכין את ה-APK
+Checking APK hash and signing certificate…	בודקים את הגיבוב של ה-APK ואת תעודת החתימה…
+Could not open Android installer. Try Download and install again.	לא ניתן לפתוח את מנהל ההתקנה של Android. כדאי לנסות שוב ״הורדה והתקנה״.
+Download complete. Open Updates and tap Download and install to continue.	ההורדה הושלמה. כדי להמשיך, פותחים את ״עדכונים״ ומקישים על ״הורדה והתקנה״.
+Download unavailable	ההורדה לא זמינה
+Incomplete APK	ה-APK לא שלם
+No newer verified release is available on both repositories.	אין גרסה מאומתת חדשה יותר בשני המאגרים.
+Pixel Suite update	עדכון של Pixel Suite
+Unexpected APK size	גודל APK לא צפוי
+Update could not be downloaded or verified. Check your connection and try again.	לא ניתן להוריד או לאמת את העדכון. צריך לבדוק את החיבור ולנסות שוב.
+Verified. Opening Android installer…	אומת. מנהל ההתקנה של Android נפתח…
+Verifying the official releases…	מאמתים את הגרסאות הרשמיות…
+Add the VPN tile to Quick Settings to connect with one tap.	מוסיפים את אריח ה-VPN להגדרות המהירות כדי להתחבר בהקשה אחת.
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	Chrome בלבד: מפעילים את ה-VPN מהתוספים של Chrome. רק Chrome משתמש בו, והאתרים רואים את המדינה הזו.
+Connect	חיבור
+Couldn't connect	לא ניתן להתחבר
+Couldn't load servers. Tap to try again.	לא ניתן לטעון שרתים. מקישים כדי לנסות שוב.
+Couldn't refresh. Showing the last list.	לא ניתן לרענן. מוצגת הרשימה האחרונה.
+Couldn't start the VPN	לא ניתן להפעיל את ה-VPN
+Countries without servers right now show as Unavailable.	מדינות שאין בהן שרתים כרגע מוצגות כ״לא זמין״.
+Fastest server	השרת המהיר ביותר
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	שרתים חינמיים שמפעילים מתנדבים בכל העולם. Pixel Suite מתחברת למהיר ביותר.
+Getting the free server list	מקבלים את רשימת השרתים החינמיים
+Loading servers…	השרתים נטענים…
+No servers yet	עדיין אין שרתים
+Not connected	לא מחובר
+Open-source servers change during the day	שרתי קוד פתוח משתנים במהלך היום
+Pick a country, then tap Connect	בוחרים מדינה ואז מקישים על ״חיבור״
+Refresh servers	רענון השרתים
+Tap Refresh servers	מקישים על ״רענון השרתים״
+Turn off	כיבוי
+Use for all apps	שימוש לכל האפליקציות
+VPN is part of Patreon premium	ה-VPN הוא חלק מ-פטריאון פרימיום
+Couldn't ask for VPN permission	לא ניתן לבקש הרשאת VPN
+VPN permission is needed to connect	כדי להתחבר נדרשת הרשאת VPN
+Russia	רוסיה
+Server list was empty	רשימת השרתים הייתה ריקה
+South Korea	דרום קוריאה
+United Kingdom	בריטניה
+United States	ארצות הברית
+Chrome only	Chrome בלבד
+Connecting…	מתחבר…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	צריך לאשר ל-Pixel Suite גישה למכשירים בקרבת מקום כדי ש-אל תציק יוכל להחליף את הרשת הסלולרית של השעון.
+Do Not Annoy: watch	אל תציק: שעון
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Pixel Suite בשעון צריכה הרשאה חד-פעמית (פקודת adb) כדי להחליף את הרשת הסלולרית.
+Watch	שעון
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	מוסיף פס הזזה של 60 / 120 Hz מתחת ל-Smooth Display (הגדרות > תצוגה ומגע)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	״אפליקציה ונתונים״ שומר הכול (כניסות, צ׳אטים, הגדרות וקבצים) ומשחזר בדיוק כמו שהיה. ״אפליקציה בלבד״ שומר רק את האפליקציה.
+Auto sorts A to Z; Custom lets you arrange them.	״אוטומטי״ ממיין מ-A עד Z; ״מותאם אישית״ מאפשר לסדר בעצמך.
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	גוררים תיקייה אל ״העברה לתחתית״ כדי לגלול; לוחצים עמוק יותר כדי להאיץ.
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	תיקיות במגירה: מחזיקים אחת על ״העברה לתחתית״ כדי לגלול; לוחצים עמוק יותר כדי להאיץ.
+Hold an app or folder and choose Lock or Unlock.	לוחצים לחיצה ארוכה על אפליקציה או תיקייה ובוחרים ״נעילה״ או ״ביטול נעילה״.
+Pixel watch eSIM purchase	רכישת eSIM ל-Pixel Watch
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	הקשה פותחת; לחיצה ארוכה משנה שם או מסירה. לחיצה ארוכה על אתר בפנים מאפשרת לערוך, להזיז או להסיר אותו.
+• Drag an app into the top row to pin it, then drag to reorder.	• גוררים אפליקציה לשורה העליונה כדי להצמיד אותה, ואז גוררים כדי לשנות סדר.
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	לא ניתן להגיע לשעון. הרשת הסלולרית שלו תופעל כשהוא יתחבר מחדש.
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	לא ניתן להגיע לשעון. הרשת הסלולרית שלו תכובה כשהוא יתחבר מחדש.
+Language	שפה
+Automatic	אוטומטי
+Follows the phone	לפי הטלפון
+Couldn't save the language	לא ניתן לשמור את השפה
+‹  Back	‹  חזרה
+just now	הרגע
+1 minute ago	לפני דקה
+1 hour ago	לפני שעה
+1 day ago	לפני יום
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	רשימות פרסומות: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). החוסם של Pixel Suite עצמה.
+The Ad blocker is part of Pixel Suite's Patreon features	חוסם הפרסומות הוא חלק מתכונות ה-פטריאון של Pixel Suite
+Root access is needed	נדרשת גישת root
+Off: ads are no longer blocked	כבוי: פרסומות כבר לא נחסמות
+Couldn't download the ad lists (no connection?). The current list stays.	לא ניתן להוריד את רשימות הפרסומות (אין חיבור?). הרשימה הנוכחית נשארת.
+Ready: restart the phone once to start blocking	מוכן: הפעילו מחדש את הטלפון פעם אחת כדי להתחיל לחסום
+Couldn't prepare the list	לא ניתן להכין את הרשימה
+Couldn't prepare the module	לא ניתן להכין את המודול
+Getting the ad lists…	מוריד את רשימות הפרסומות…
+No answer over UDP	אין תשובה ב-UDP
+TLS handshake timed out	תם הזמן ללחיצת היד של TLS
+Key exchange timed out	תם הזמן להחלפת המפתחות
+Server sent no address	השרת לא שלח כתובת
+Server rejected the sign-in	השרת דחה את ההתחברות
+Server gave no address	השרת לא נתן כתובת
+Connection closed	החיבור נסגר
+Server didn't answer	השרת לא ענה
+Server refused the call	השרת סירב לקריאה
+Server closed the connection	השרת סגר את החיבור
+1 server	שרת אחד
+Unhide 1 app	הצגת אפליקציה אחת
+Unhide 1 contact	הצגת איש קשר אחד
+Unhide contact	הצגת איש הקשר
+1 app saved · 1 version	נשמרו: אפליקציה אחת · גרסה אחת
+1 app · 1 version	אפליקציה אחת · גרסה אחת
+Doodles	שרבוטים
+Super Dark-Mode	מצב כהה במיוחד
+Super Dark	כהה במיוחד
+Frosted Glass	זכוכית חלבית
+Do Not Annoy	אל תציק
+No Annoyance	בלי הצקות
+Quick Select	בחירה מהירה
+Google Photos	תמונות Google
+Pixel watch	שעון Pixel
+Google dialer+	הטלפון של Google+
+Keep	Keep
+Drive	Drive
+Sponsored	ממומן
+Recent apps	אפליקציות אחרונות
+3×3 (Stock)	3×3 (מקורי)
+Ag	אב
+Aa	אב
+1 website with custom settings	אתר אחד עם הגדרות משלו
+1 app isn't saved at the version installed now	אפליקציה אחת לא שמורה בגרסה המותקנת עכשיו
+Words are never replaced; suggestions still show	מילים לא מוחלפות אף פעם; ההצעות עדיין מופיעות
+Off: Gboard corrects nothing; turn it on to choose languages	כבוי: Gboard לא מתקן כלום; הפעילו כדי לבחור שפות
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	גררו את הידיות לשינוי גודל, או את האמצע להזזה. 'החלה' שומרת; 'איפוס' מחזיר לגודל של Gboard. לאורך בלבד.
+Unlock Watch eSIM · $10 one-time purchase	פתיחת eSIM לשעון · רכישה חד-פעמית של $10
+$10 one-time eSIM purchase	רכישת eSIM חד-פעמית ב-$10
+One-time purchase, $10, yours to keep.	רכישה חד-פעמית, $10, שלכם לתמיד.
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	את קוד הרכישה תמצאו במייל מ-purchases@roviandev.com. בדקו גם בספאם.
+Pixel Suite logo	הלוגו של Pixel Suite
+Open Android app settings to manage notifications.	פתחו את הגדרות האפליקציה ב-Android כדי לנהל התראות.
+OK	אישור
+Opens this sheet from the toolbar	פותח את החלונית הזו מהסרגל
+Needs Pixel Suite premium and the ad blocker on	דורש את Pixel Suite פרימיום וחוסם פרסומות פועל
+Manage extensions	ניהול תוספים
+Enter an address	הזינו כתובת
+That isn't a web address	זו לא כתובת אינטרנט
+Off in Chrome · on for other apps	כבוי ב-Chrome · פועל לאפליקציות אחרות
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	ה-VPN פועל לכל הטלפון. כיבוי כאן מוציא רק את Chrome.
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	אפליקציות אחרות משתמשות ב-VPN; Chrome בחוץ. הפעילו כדי להוסיף את Chrome.
+Only Chrome uses this VPN. Other apps keep their own connection.	רק Chrome משתמש ב-VPN הזה. אפליקציות אחרות נשארות בחיבור שלהן.
+All apps except Chrome	כל האפליקציות חוץ מ-Chrome
+• 1 setting	• הגדרה אחת
+• 1 custom icon	• סמל מותאם אחד
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• הגדרת משגר Pixel: תיקיות מגירה, מיון, שמות ונעילות
+• Share menu: pinned order and hidden apps	• תפריט השיתוף: סדר מוצמד ואפליקציות מוסתרות
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	ההגדרות הנוכחיות של Pixel Suite יוחלפו. משגר Pixel יופעל מחדש פעם אחת.
+Two rows, shortcuts on top	שתי שורות, קיצורים למעלה
+Two rows	שתי שורות
+Side buttons hidden	הכפתורים בצדדים מוסתרים
+Menu button hidden	כפתור התפריט מוסתר
+Emoji/voice hidden	אימוג'י/קול מוסתרים
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	מוסיף כפתורי ניווט ליד סרגל המחוות. אחרי עדכון המודול, הפעילו מחדש את משגר Pixel פעם אחת; אחר כך בחירת הכפתורים חלה מיד.
+Sign-in timed out	תם הזמן להתחברות
+Address setup timed out	תם הזמן להגדרת הכתובת
+Server renewed its keys	השרת חידש את המפתחות שלו
+Stopped	נעצר
+Couldn't finish the backup	לא ניתן לסיים את הגיבוי
+Root isn't available, or it took too long	root לא זמין, או שזה לקח יותר מדי זמן
+It didn't finish	זה לא הסתיים
+Pixel Suite could not make the file	Pixel Suite לא הצליחה ליצור את הקובץ
+Pixel Suite is unavailable	Pixel Suite לא זמינה
+Pixel Suite gave no file	Pixel Suite לא נתנה קובץ
+the picked folder	התיקייה שנבחרה
+Use a name between 1 and 80 characters	השתמשו בשם של 1 עד 80 תווים
+Folder limit reached	הגעתם למגבלת התיקיות
+Drag here to add to home screen	גררו לכאן כדי להוסיף למסך הבית
+Drag a folder here to move it to the end of the list	גררו תיקייה לכאן כדי להעביר אותה לסוף הרשימה
+Drag here to take out of the folder	גררו לכאן כדי להוציא מהתיקייה
+More shapes	עוד צורות
+More colours	עוד צבעים
+Thickness	עובי
+Fill shape	מילוי הצורה
+Delete shape	מחיקת הצורה
+Make Doodles menu smaller	הקטנת תפריט השרבוטים
+Move Doodles menu	הזזת תפריט השרבוטים
+Make text menu smaller	הקטנת תפריט הטקסט
+Move text menu	הזזת תפריט הטקסט
+More fonts	עוד גופנים
+Clear clipboard	ניקוי הלוח
+Stop voice typing	עצירת הקלדה קולית
+Save icon	שמירת הסמל
+Reset to original icon	חזרה לסמל המקורי
+Folder options	אפשרויות תיקייה
+Doodles tab	הכרטיסייה 'שרבוטים'
+Edit: select hidden contacts to unhide	עריכה: בחרו אנשי קשר מוסתרים להצגה
+Edit: select hidden apps to unhide	עריכה: בחרו אפליקציות מוסתרות להצגה
+Edit: select apps to hide	עריכה: בחרו אפליקציות להסתרה
+Hide the contacts row	הסתרת שורת אנשי הקשר
+Show the contacts row	הצגת שורת אנשי הקשר
+Locked	נעול
+Filtering mode	מצב סינון
+Change the picture	החלפת התמונה
+Open a website to choose its filtering	פתחו אתר כדי לבחור את הסינון שלו
+Highest refresh rate. The screen still slows down when nothing moves.	קצב הרענון הגבוה ביותר. המסך עדיין מאט כשדבר לא זז.
+Cancelled: the app is locked by Pixel Suite	בוטל: האפליקציה נעולה על ידי Pixel Suite
+Incoming call declined by Do Not Annoy	שיחה נכנסת נדחתה על ידי 'אל תציק'
+Confirm it's you to uninstall this core app	אשרו שזה אתם כדי להסיר את אפליקציית הליבה הזו
+Confirm it's you to disable this core app	אשרו שזה אתם כדי להשבית את אפליקציית הליבה הזו
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	אזהרה: השבתה או הסרה של אפליקציה משולבת-מערכת זו עלולה לפגוע בתפקוד Pixel Suite וביציבות המערכת.
+Files · date modified	קבצים · תאריך שינוי
+Site settings unavailable	הגדרות האתר לא זמינות
+Could not save site settings	לא ניתן לשמור את הגדרות האתר
+Couldn't read existing Chrome site settings	לא ניתן לקרוא את הגדרות האתר הקיימות ב-Chrome
+Cannot create icon storage	לא ניתן ליצור אחסון לסמלים
+Unsupported dimensions	מידות שאינן נתמכות
+Cannot encode image	לא ניתן לקודד את התמונה
+Response too large	התשובה גדולה מדי
+Orange	כתום
+Dark red	אדום כהה
+Turquoise	טורקיז
+Dark blue	כחול כהה
+Purple	סגול
+Pink	ורוד
+White	לבן
+Black	שחור
+Move to bottom	העברה לסוף
+Lock app	נעילת האפליקציה
+Unlock app	ביטול נעילת האפליקציה
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	הכול: האפליקציה, ההתחברויות, הצ'אטים, ההגדרות והקבצים. משוחזר בדיוק כמו שהיה.
+$5/month	$5 לחודש
+Settings soft scrolling edges (Frosted Glass only):	קצוות גלילה רכים בהגדרות (רק זכוכית חלבית):
+Digital Wellbeing	איזון דיגיטלי
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	הפעילו את הטווחים האלה ב-LSPosed והפעילו מחדש. רק מסכים מאומתים שנפתחו מההגדרות ואזורי גלילה שזוהו בבטחה מעוצבים. אזורים שאינם נתמכים מדולגים.
+Telegram	טלגרם
+Patreon	פטריאון
+Pixel Launcher	משגר Pixel
+Pixel Studio	סטודיו Pixel
+Hold power button when locked	לחיצה ארוכה על לחצן ההפעלה כשהטלפון נעול
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	כשהטלפון נעול, לחיצה ארוכה עושה את מה שבחרת ב„לחיצה ארוכה על לחצן ההפעלה כשהטלפון נעול”. כל בחירה פועלת בנפרד.
+Reboot	הפעלה מחדש
+Tap again to reboot	מקישים שוב כדי להפעיל מחדש
+Rebooting…	מפעיל מחדש…
+These run inside Android, so they update after a reboot:	הם פועלים בתוך Android, ולכן מתעדכנים אחרי הפעלה מחדש:
+Reboot to finish updating. Long-press to hide.	מפעילים מחדש כדי לסיים את העדכון. לחיצה ארוכה מסתירה.
+Couldn't reboot: root access needed	לא ניתן להפעיל מחדש: נדרשת הרשאת root
+Search in Chrome	חיפוש ב-Chrome
+Couldn't refresh: root access needed	לא ניתן לרענן: נדרשת הרשאת root
+See-through keyboard background, with rims	רקע מקלדת שקוף, עם מסגרת
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	רקע המקלדת הופך לזכוכית חלבית: מה שמאחוריו נראה מבעדו, מטושטש, עם מסגרת. המקשים נשארים כמו שהם.
+Frosted Gboard	Gboard חלבי
+Follows the phone language	לפי שפת הטלפון
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	בחלק מהאפליקציות, כמו Chrome, הפינות העליונות של המקלדת נראות לבנות. האפליקציות האלה מסיימות את הדף בדיוק איפה שהמקלדת מתחילה, ולכן אין מאחורי הפינות מה להראות.
+Pixel Stack	Pixel Stack
+Tap to start	הקישו כדי להתחיל
+Tap to drop	הקישו כדי להפיל
+Perfect!	מושלם!
+Best	שיא
+New best!	שיא חדש!
+Tap to play again	הקישו כדי לשחק שוב
+Share score	שיתוף הניקוד
+Sharing…	משתף…
+Shared!	שותף!
+Couldn't share. Try again.	לא ניתן היה לשתף. נסו שוב.
+Your name	השם שלך
+Optional	לא חובה
+Game Over	המשחק נגמר
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **ממשק המשתמש של המערכת** (com.android.systemui)\n• **משגר Pixel** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **הגדרות** (com.android.settings)\n• **שירותי ההגדרות** (com.google.android.settings.intelligence)\n• **מנהל התקנת החבילות** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nלעיצוב העורך צריך לבחור גם את **סטודיו Pixel** (com.google.android.apps.pixel.creativeassistant) ואת **תמונות Google** (com.google.android.apps.photos). אחרי הוספת ההיקפים מפעילים מחדש.
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **משגר Pixel** (com.google.android.apps.nexuslauncher) — סמלים, תיקיות, תפריטים והשוליים הרכים של המגירה\n• **ממשק המשתמש של המערכת** (com.android.systemui) — תפריטים והודעות של המערכת\n• **סטודיו Pixel** (com.google.android.apps.pixel.creativeassistant)\n• **תמונות Google** (com.google.android.apps.photos) — תפריטי העורך\n\nכהה במיוחד מפרט את ההיקפים הנוספים שלו בדף משלו.
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} חוזרת לגרסה הזו. הנתונים שלה נשארים כמו שהם עכשיו. אם היא לא נפתחת אחר כך, מנקים את האחסון שלה בהגדרות.
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	אין מקום בחיוג המהיר ל-{0} האתרים שלה, ולכן הם יימחקו עם התיקייה.
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} נשמרה. הקישו על 'עדכון' ב-Play Store. {1} תעוכב שוב אחרי העדכון.
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	להסיר את “{0}”? האפליקציות שבה חוזרות למגירת האפליקציות. שום אפליקציה לא מוסרת.
+Couldn't save {0}, so it wasn't updated. Check root and free space.	לא ניתן לשמור את {0}, ולכן הוא לא עודכן. צריך לבדוק את ה-root ואת המקום הפנוי.
+Tap Update in Play Store. {0} is held back again once it's updated.	מקישים על ״עדכון״ בחנות Play. אחרי העדכון {0} מעוכבת שוב.
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nגרסה {1}\nBuild {2}\n{3}\n\nמסמנים ומחילים כדי לעכב אותה.
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	עד 7 קיצורי דרך, הסדר שלהם, הלחצנים שבצדדים ושתי שורות{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}, {1}, עדכונים חסומים, אפליקציית ליבה נעולה. הקישו כדי לדעת למה
+{0}. A looping demo. It doesn't change your settings.	{0}. הדגמה בלולאה. היא לא משנה את ההגדרות שלך.
+Restore {0} (its saved version is the one installed)	שחזור {0} (הגרסה השמורה היא המותקנת)
+{0} of {1} on the toolbar · {2} more · swipe left or right	{0} מתוך {1} בסרגל · עוד {2} · החליקו ימינה או שמאלה
+Couldn't back up {0} of {1}. Check root and free space.	לא ניתן לגבות {0} מתוך {1}. בדקו root ומקום פנוי.
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} זמינה ב-GitHub וב-Xposed.
+{0} apps aren't saved at the version installed now	{0} אפליקציות לא שמורות בגרסה המותקנת עכשיו
+{0}, off, needs Suggestions and shortcuts together	{0}, כבוי, צריך הצעות וקיצורים יחד
+The saved version of {0} is the one installed now	הגרסה השמורה של {0} היא זו שמותקנת עכשיו
+{0}, on, needs Suggestions and shortcuts together	{0}, פועל, צריך הצעות וקיצורים יחד
+{0}. Applies your changes. Long-press to hide.	{0}. מחיל את השינויים. לחיצה ארוכה מסתירה.
+There's no room on the speed dial for its {0}	אין מקום בחיוג המהיר ל-{0} שלו
+Couldn't save {0}. Check root and free space.	לא ניתן לשמור את {0}. צריך לבדוק את ה-root ואת המקום הפנוי.
+{0}: the saved version is the one installed	{0}: הגרסה השמורה היא זו שמותקנת
+Its {0} websites go back to the speed dial.	{0} האתרים שלה חוזרים לחיוג המהיר.
+{0} is back to {1}, with everything as it was	{0} חזרה ל-{1}, הכול כמו שהיה
+{0} apps protected from updates · {1} shown	{0} אפליקציות מוגנות מעדכונים · {1} מוצגות
+{0}, {1}, core app locked. Tap to learn why	{0}, {1}, אפליקציית ליבה נעולה. הקישו כדי לדעת למה
+Select at least {0} apps for a folder	צריך לבחור לפחות {0} אפליקציות לתיקייה
+Sort the apps in “{0}” from A to Z?	למיין את האפליקציות ב-“{0}” מ-A עד Z?
+This folder is full ({0} websites)	התיקייה מלאה ({0} אתרים)
+Blocking {0} ad domains · updated {1}	חוסם {0} דומיינים של פרסומות · עודכן {1}
+{0} apps did not fit on this page	{0} אפליקציות לא נכנסו לדף הזה
+{0} open-source servers available	{0} שרתי קוד פתוח זמינים
+{0} websites with custom settings	{0} אתרים עם הגדרות משלהם
+{0}, {1}. Tap to hide saved versions	{0}, {1}. הקישו להסתרת הגרסאות השמורות
+{0}, {1}. Tap to show saved versions	{0}, {1}. הקישו להצגת הגרסאות השמורות
+{0} removed element(s) · Restore	{0} רכיבים הוסרו · שחזור
+Couldn't reach any server in {0}	לא ניתן להגיע לאף שרת ב{0}
+{0}. Check root and free space.	{0}. צריך לבדוק את ה-root ואת המקום הפנוי.
+{0} apps protected from updates	{0} אפליקציות מוגנות מעדכונים
+Downloading Pixel Suite {0} — {1}%	מורידים את Pixel Suite {0} — {1}%
+Restore removed elements ({0})	שחזור רכיבים שהוסרו ({0})
+{0} of {1} on the toolbar · {2} more	{0} מתוך {1} בסרגל · עוד {2}
+Update, back up or restore {0}	עדכון, גיבוי או שחזור של {0}
+{0}\nDefault for all websites	{0}\nברירת מחדל לכל האתרים
+{0} needs Pixel Suite premium	{0} דורש Pixel Suite פרימיום
+No open-source servers in {0}	אין שרתי קוד פתוח ב{0}
+Server list unavailable ({0})	רשימת השרתים לא זמינה ({0})
+Connecting to server {0} of {1}…	מתחבר לשרת {0} מתוך {1}…
+{0}% wide · {1}% tall · {2} dp down	רוחב {0}% · גובה {1}% · {2} dp למטה
+Restore a saved version ({0})	שחזור גרסה שמורה ({0})
+Pixel Suite {0} is available	Pixel Suite {0} זמינה
+Saved {0} with Pixel Suite {1}.	נשמר ב-{0} עם Pixel Suite {1}.
+{0}. Opens an external app.	{0}. פותח אפליקציה חיצונית.
+{0}% wide · {1}% tall · {2} dp up	רוחב {0}% · גובה {1}% · {2} dp למעלה
+Waiting for dark mode · {0}	ממתין למצב כהה · {0}
+{0} (folder not available)	{0} (התיקייה לא זמינה)
+{0} apps saved · {1} versions	נשמרו: {0} אפליקציות · {1} גרסאות
+1 app saved · {0} versions	נשמרו: אפליקציה אחת · {0} גרסאות
+{0} apps saved · 1 version	נשמרו: {0} אפליקציות · גרסה אחת
+Delete saved version {0}	מחיקת הגרסה השמורה {0}
+Installed version of {0}	הגרסה המותקנת של {0}
+What {0} ({1}) is used for	למה משמש {0} ({1})
+Any country · up to {0}	כל מדינה · עד {0}
+{0} apps · {1} versions · {2}	{0} אפליקציות · {1} גרסאות · {2}
+1 app · {0} versions · {1}	אפליקציה אחת · {0} גרסאות · {1}
+{0} apps · 1 version · {1}	{0} אפליקציות · גרסה אחת · {1}
+1 app · 1 version · {0}	אפליקציה אחת · גרסה אחת · {0}
+Couldn't restore {0}: {1}	לא ניתן לשחזר את {0}: {1}
+About {0} · only {1} free	כ-{0} · רק {1} פנויים
+Level {0} · {1} (Default)	רמה {0} · {1} (ברירת מחדל)
+{0}, {1}, updates blocked	{0}, {1}, עדכונים חסומים
+On · {0} · whole phone	פועל · {0} · כל הטלפון
+On · {0} · Chrome only	פועל · {0} · רק Chrome
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	בודק {0} שרתים…
+{0} selected · {1} shown	{0} נבחרו · {1} מוצגים
+No results for "{0}"	אין תוצאות עבור "{0}"
+{0} apps · {1} versions	{0} אפליקציות · {1} גרסאות
+1 app · {0} versions	אפליקציה אחת · {0} גרסאות
+{0} apps · 1 version	{0} אפליקציות · גרסה אחת
+Purchase email: {0}	כתובת האימייל של הרכישה: {0}
+No icons match “{0}	אין סמלים שתואמים ל-“{0}
+Reconnecting… ({0})	מתחבר מחדש… ({0})
+Unhide {0} contacts	הצגת {0} אנשי קשר
+No apps match “{0}	אין אפליקציות שתואמות ל-“{0}
+Resend code ({0}s)	שליחת הקוד מחדש ({0} שנ׳)
+Connecting to {0}…	מתחבר אל {0}…
+**Used for:**\n{0}	**משמש ל:**\n{0}
+{0}, {1}, switch, off	{0}, {1}, מתג, כבוי
+Restore {0} build {1}	שחזור {0} גרסת build {1}
+Turns on at {0} · {1}	יופעל ב-{0} · {1}
+Pin {0} to toolbar	הצמדת {0} לסרגל
+• {0} custom icons	• {0} סמלים מותאמים
+Saving {0} · {1} of {2}	שומר את {0} · {1} מתוך {2}
+{0}  ·  {1} selected	{0}  ·  {1} נבחרו
+{0}, {1}, switch, on	{0}, {1}, מתג, פועל
+{0}, not selected	{0}, לא נבחר
+{0} · Chrome only	{0} · רק Chrome
+Use default ({0})	ברירת מחדל ({0})
+Pass expires {0}	תוקף הכרטיס יפוג ב-{0}
+{0}, unavailable	{0}, לא זמין
+Enables {0} in {1}.	מפעיל את {0} ב-{1}.
+{0} · not Chrome	{0} · בלי Chrome
+{0} is unlocked	{0} לא נעולה
+Connected · {0}	מחובר · {0}
+{0} is selected	{0} נבחר
+{0} minutes ago	לפני {0} דקות
+{0} is back to {1}	{0} חזרה ל-{1}
+Unhide {0} apps	הצגת {0} אפליקציות
+On until {0} · {1}	פועל עד {0} · {1}
+{0} icon packs	{0} חבילות סמלים
+• {0} settings	• {0} הגדרות
+Remove "{0}"?	להסיר את "{0}"?
+{0}, selected	{0}, נבחר
+{0} right now	{0} כרגע
+{0} is locked	{0} נעולה
+Hide {0} apps	הסתרת {0} אפליקציות
+{0} hours ago	לפני {0} שעות
+Checking {0}	{0} נבדק
+Saving {0} {1}…	שומרים את {0} {1}…
+{0} days ago	לפני {0} ימים
+{0} · up to {1}	{0} · עד {1}
+Level {0} · {1}	רמה {0} · {1}
+Restore {0} {1}	שחזור {0} {1}
+On now · {0}	פועל עכשיו · {0}
+Back up {0}	גיבוי של {0}
+Restart {0}	הפעלה מחדש של {0}
+Enables {0}	מפעיל את {0}
+{0} dp down	{0} dp למטה
+Restore {0}	שחזור {0}
+{0} servers	{0} שרתים
+{0}, hidden	{0}, מוסתר
+Level {0}, {1}	רמה {0}, {1}
+Refresh {0}	רענון {0}
+{0}, shown	{0}, מוצג
+Saved {0}.	נשמר ב-{0}.
+**{0}** ({1})	**{0}** ({1})
+About {0}	בערך {0}
+Build {0}	Build {0}
+From  {0}	מ-  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} סמלים
+Unpin {0}	ביטול הצמדה של {0}
+{0}, off	{0}, כבוי
+To  {0}	עד  {0}
+Pin {0}	הצמדת {0}
+Its {0}	ה-{0} שלו
+Use {0}	שימוש ב-{0}
+{0}, on	{0}, פועל
+You’re a free member. Choose the paid tier to unlock	החברות שלך היא בחינם. צריך לבחור את הרמה בתשלום כדי לפתוח.
+Root access is needed to save membership changes.	נדרשת גישת root כדי לשמור שינויים בחברות.
+Sign-in expired. Sign in with Patreon again.	תוקף ההתחברות פג. צריך להתחבר שוב עם פטריאון.
+Couldn’t check membership. Try again shortly.	לא ניתן היה לבדוק את החברות. כדאי לנסות שוב עוד מעט.
+Sign-in expired. Tap Unlock to try again.	תוקף ההתחברות פג. צריך להקיש על ״פתיחה״ כדי לנסות שוב.
+No active membership found. Join, then tap Unlock again.	לא נמצאה חברות פעילה. אפשר להצטרף ואז להקיש שוב על ״פתיחה״.
+Sign-in wasn't completed. You can try again.	ההתחברות לא הושלמה. אפשר לנסות שוב.
+Couldn't verify this sign-in. Tap Unlock to try again.	לא ניתן היה לאמת את ההתחברות הזו. צריך להקיש על ״פתיחה״ כדי לנסות שוב.
+Couldn't confirm membership. Try again.	לא ניתן היה לאשר את החברות. כדאי לנסות שוב.
+Confirming Patreon membership…	מאשרים את החברות בפטריאון…
+Log in	התחברות
+Patreon profile photo	תמונת הפרופיל בפטריאון
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	אחרי התשלום, קוד הרכישה נשלח למייל שאיתו משלמים. כדאי לחפש את purchases@roviandev.com בתיבת הדואר הנכנס ובתיקיית הספאם.
+Buy	קנייה
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	כדאי לחפש את purchases@roviandev.com בתיבת הדואר הנכנס ובתיקיית הספאם. צריך להשתמש בקוד החדש ביותר; התוקף שלו פג אחרי 10 דקות.
+Hide app	הסתרת האפליקציה
+Hide widget	הסתרת הווידג׳ט
+Remove Google Play services from the scope	הסרת Google Play Services מההיקף
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite כבר לא משתמשת ב-Google Play Services, והשארתם בהיקף LSPosed של Pixel Suite עלולה לעלות לך ב-Device integrity וב-Strong integrity.
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	צריך לפתוח את LSPosed (או Vector), לבטל את הסימון של Google Play Services עבור Pixel Suite ואז להפעיל מחדש.
+Reboot to restore Play Integrity	צריך להפעיל מחדש כדי לשחזר את Play Integrity
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite הסירה את Google Play Services מההיקף שלה ב-LSPosed, כי הם עלולים לעלות לך ב-Device integrity וב-Strong integrity וכבר לא נמצאים בשימוש. צריך להפעיל את הטלפון מחדש כדי לסיים.
+Server connected but passes no traffic	השרת התחבר אבל לא מעביר תעבורה
+Server connected but websites don't open ({0})	השרת התחבר אבל אתרים לא נפתחים ({0})

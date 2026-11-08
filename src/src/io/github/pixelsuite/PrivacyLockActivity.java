@@ -36,7 +36,7 @@ public class PrivacyLockActivity extends Activity {
             || PrivacyLock.REASON_UNINSTALL_CORE.equals(r) || PrivacyLock.REASON_DISABLE_CORE.equals(r) ? r : null; }
 
     @Override protected void onCreate(Bundle state) {
-        super.onCreate(state);
+        super.onCreate(state); Rtl.activity(this);
         quiet();
         Intent i = getIntent();
         mode = i.getStringExtra(PrivacyLock.EXTRA_MODE);
@@ -89,7 +89,7 @@ public class PrivacyLockActivity extends Activity {
         started = true;
         KeyguardManager km = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
         if (km == null || !km.isDeviceSecure()) {
-            AppToast.makeText(this, "Set a screen lock first to lock apps", Toast.LENGTH_LONG).show();
+            AppToast.makeText(this, I18n.cs("Set a screen lock first to lock apps"), Toast.LENGTH_LONG).show();
             if (PrivacyLock.MODE_OPEN.equals(mode)) proceed();
             else if (PrivacyLock.MODE_CONFIRM.equals(mode)) success();
             else done(false);
@@ -122,11 +122,11 @@ public class PrivacyLockActivity extends Activity {
     private void fingerprint() {
         try {
             BiometricPrompt.Builder b = new BiometricPrompt.Builder(this);
-            b.setTitle(label);
-            b.setDescription(why());
+            b.setTitle(I18n.cs(label));
+            b.setDescription(I18n.cs(why()));
             b.setAllowedAuthenticators(BIOMETRIC_ANY);
             b.setConfirmationRequired(false);
-            b.setNegativeButton("Pin", onMain, new DialogInterface.OnClickListener() {
+            b.setNegativeButton("PIN", onMain, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface d, int which) { toCredential(); }
             });
             BiometricPrompt prompt = b.build();
@@ -159,8 +159,8 @@ public class PrivacyLockActivity extends Activity {
         if (finished) return;
         try {
             BiometricPrompt.Builder b = new BiometricPrompt.Builder(this);
-            b.setTitle(label);
-            b.setDescription(why());
+            b.setTitle(I18n.cs(label));
+            b.setDescription(I18n.cs(why()));
             b.setAllowedAuthenticators(DEVICE_CREDENTIAL);
             BiometricPrompt prompt = b.build();
             signal = new CancellationSignal();
@@ -170,7 +170,7 @@ public class PrivacyLockActivity extends Activity {
                 @Override public void onAuthenticationError(int code, CharSequence msg) { if (mine == generation && !finished) done(false); }
             });
         } catch (Throwable error) {
-            AppToast.makeText(this, "Could not check your screen lock", Toast.LENGTH_SHORT).show();
+            AppToast.makeText(this, I18n.cs("Could not check your screen lock"), Toast.LENGTH_SHORT).show();
             done(false);
         }
     }
@@ -239,7 +239,7 @@ public class PrivacyLockActivity extends Activity {
             } catch (Throwable error) { }
             final boolean saved = ok;
             main.post(new Runnable() { public void run() {
-                AppToast.makeText(PrivacyLockActivity.this, !saved ? "Could not save. Is root allowed for Pixel Suite?" : lock ? label + " is locked" : label + " is unlocked", Toast.LENGTH_SHORT).show();
+                AppToast.makeText(PrivacyLockActivity.this, I18n.cs(!saved ? "Could not save. Is root allowed for Pixel Suite?" : lock ? label + " is locked" : label + " is unlocked"), Toast.LENGTH_SHORT).show();
                 done(saved);
             } });
         } }, "PixelSuiteAppLockSave").start();

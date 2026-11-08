@@ -1,0 +1,1588 @@
+# Pixel Suite ja: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	広告ブロック
+AdAway or Systemless hosts is also on. Use only one blocker.	AdAway または Systemless hosts もオンになっています。ブロッカーは 1 つだけ使ってください。
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	Chrome、Google ニュースなどのアプリで広告をブロックします。リストは毎日更新されます。
+Fewer ads.\nFaster pages.	広告を少なく。\nページをもっと速く。
+Preparing ad protection…	広告ブロックを準備中…
+Restart the phone once to start blocking.	ブロックを始めるにはスマートフォンを 1 回再起動してください。
+Unlock with Patreon	パトレオン でロック解除
+Update lists	リストを更新
+Updating…	更新中…
+Works in every app and browser, also with Private DNS.	すべてのアプリとブラウザで動作します。プライベート DNS 使用時も OK。
+Add	追加
+Add website	ウェブサイトを追加
+Add website: domain or URL	ウェブサイトを追加：ドメインまたは URL
+Ads aren't filtered on these websites. Tap one to remove it.	これらのサイトでは広告をフィルタしません。タップすると削除します。
+All websites use the default level	すべてのサイトでデフォルトのレベルを使用
+Allowed websites	許可したウェブサイト
+Basic	基本
+Bring back elements you removed.	削除した要素を戻します。
+Cancel	キャンセル
+Clear every website setting	すべてのサイト設定を消去
+Clear every website setting? Your default level stays.	すべてのサイト設定を消去しますか？デフォルトのレベルはそのままです。
+Complete	完全
+Couldn't load site settings. Open Chrome once, then reopen this page.	サイト設定を読み込めませんでした。Chrome を 1 回開いてから、このページを開き直してください。
+Couldn't save site settings. Try again.	サイト設定を保存できませんでした。もう一度お試しください。
+Default for all websites	すべてのサイトのデフォルト
+Enter a domain or an http/https URL	ドメインまたは http/https の URL を入力
+Filtering level	フィルタ レベル
+Included with your Patreon unlock	パトレオン のロック解除に含まれます
+Loading site settings…	サイト設定を読み込み中…
+No allowed websites	許可したウェブサイトはありません
+No filtering	フィルタなし
+No filtering · tap to remove	フィルタなし · タップで削除
+No removed elements	削除した要素はありません
+Optimal	最適
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	最適では検索広告を非表示にします。完全では Cookie バナーやポップアップも非表示にします。サイト個別のレベルが優先されます。
+Per-site levels	サイトごとのレベル
+Removed elements	削除した要素
+Reset	リセット
+Reset all site settings	すべてのサイト設定をリセット
+Reset all site settings?	すべてのサイト設定をリセットしますか？
+Saving…	保存中…
+Tap a website to change its level or use the default.	サイトをタップすると、レベルを変更するかデフォルトを使用できます。
+Unlock ad blocking with Patreon	パトレオン で広告ブロックのロックを解除
+\nDefault for all websites	\nすべてのサイトのデフォルト
+Close	閉じる
+Clear search	検索をクリア
+Could not save the folder	フォルダを保存できませんでした
+Save	保存
+Search apps	アプリを検索
+Search	検索
+Search unavailable	検索を利用できません
+Search, button	検索、ボタン
+Searching…	検索中…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\n現在の Pixel Suite の設定が置き換えられます。Pixel ランチャーが 1 回再起動します。
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• Pixel ランチャーの設定：ドロワーのフォルダ、並べ替え、名前の変更、ロック\n
+• Share menu: pinned order and hidden apps\n	• 共有メニュー：固定の並び順と非表示のアプリ\n
+App and data	アプリとデータ
+App only	アプリのみ
+Back up	バックアップ
+Just the app. Its data isn't saved.	アプリだけ。データは保存しません。
+Only the app goes back. Its data now stays.	アプリだけを戻します。現在のデータは残ります。
+Only the app, signed out and empty.	アプリのみ。ログアウトした空の状態です。
+Puts everything back exactly as it was saved.	保存したときとまったく同じ状態に戻します。
+Puts everything back exactly as it was saved. Its data now is replaced.	保存したときとまったく同じ状態に戻します。現在のデータは置き換えられます。
+Restore	復元
+Working out the size…	サイズを計算中…
+Backing up…	バックアップ中…
+Backup & Restore	バックアップと復元
+Checking…	確認中…
+Couldn't delete it. Check root.	削除できませんでした。root を確認してください。
+Delete	削除
+Delete?	削除しますか？
+Every held-back app is saved at its current version	保留中のアプリはすべて現在のバージョンで保存されます
+Held-back apps	保留中のアプリ
+Held-back apps are saved here before they update.	保留中のアプリはアップデート前にここに保存されます。
+Installed apps	インストール済みのアプリ
+Loading saved apps…	保存したアプリを読み込み中…
+No installed app has saved versions	保存したバージョンがあるインストール済みアプリはありません
+No saved versions yet	保存したバージョンはまだありません
+Not installed	未インストール
+Nothing saved yet	まだ何も保存されていません
+Saved	保存済み
+Saved in PixelSuite/APK backups on your phone	スマートフォンの PixelSuite/APK backups に保存しました
+The 3 newest versions of each app are kept	各アプリの最新 3 バージョンが保持されます
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	これらのアプリはアンインストールされています。復元すると再インストールされます。データ付きで保存した場合はログインしたままです。
+installed now	現在インストール済み
+Audiobooks	オーディオブック
+Documents	ドキュメント
+Download	ダウンロード
+Music	音楽
+Podcasts	ポッドキャスト
+Recordings	録音
+Automatic (default)	自動（デフォルト）
+Automatic: every call is recorded	自動：すべての通話を録音
+Choose folder…	フォルダを選択…
+Couldn't keep access to that folder.	そのフォルダへのアクセスを保持できませんでした。
+Couldn't load folder	フォルダを読み込めませんでした
+Couldn't load recording mode	録音モードを読み込めませんでした
+Couldn't save: root access needed	保存できませんでした：root アクセスが必要です
+Folder picker isn't available.	フォルダ選択を利用できません。
+HD: clearer voice (default)	HD：よりクリアな音声（デフォルト）
+HD: twice the detail, clearer voice (default)	HD：2 倍の精細さ、よりクリアな音声（デフォルト）
+Internal storage	内部ストレージ
+Lossless: HD without compression, large WAV files	ロスレス：圧縮なしの HD、大きな WAV ファイル
+Lossless: clearest voice, WAV files	ロスレス：最もクリアな音声、WAV ファイル
+Manual	手動
+Manual: tap Record during a call	手動：通話中に「録音」をタップ
+Recording mode	録音モード
+Recording quality	録音の品質
+Recordings folder	録音フォルダ
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls（デフォルト）
+SD card	SD カード
+Standard: phone-call quality, smallest files	標準：通話品質、最小のファイル
+Standard: smaller files	標準：小さいファイル
+Release notes are unavailable in this build.	このビルドではリリースノートを利用できません。
+Release notes could not be opened. Please reopen this page.	リリースノートを開けませんでした。このページを開き直してください。
+Always	常に
+Dark	ダーク
+Dark mode	ダークモード
+Dark pages	ダークページ
+Needs Pixel Suite premium	Pixel Suite プレミアムが必要です
+On this website	このウェブサイトで
+Pictures and videos keep their colors.	写真や動画の色はそのままです。
+Schedule	スケジュール
+Style	スタイル
+When	タイミング
+Speed Dial	スピードダイヤル
+Ad Blocker	広告ブロッカー
+Extensions	拡張機能
+Hold an extension to pin it to the toolbar	拡張機能を長押しするとツールバーに固定できます
+Chrome didn't take the shortcut (limit reached?)	Chrome がショートカットを受け付けませんでした（上限に達した？）
+Couldn't add it to the speed dial	スピードダイヤルに追加できませんでした
+Couldn't make a folder in this Chrome version	この Chrome バージョンではフォルダを作成できません
+Couldn't move it into the folder	フォルダに移動できませんでした
+Edit	編集
+Edit website	ウェブサイトを編集
+Its website goes back to the speed dial.	ウェブサイトはスピードダイヤルに戻ります。
+Move to speed dial	スピードダイヤルに移動
+Name	名前
+No room on the speed dial	スピードダイヤルに空きがありません
+Open in new tab	新しいタブで開く
+Remove	削除
+Remove folder	フォルダを削除
+Rename	名前を変更
+Rename folder	フォルダ名を変更
+URL	URL
+Back	戻る
+Forward	進む
+Home	ホーム
+Profile	プロフィール
+Tabs	タブ
+Filtering isn't available on this page.	このページではフィルタを使用できません。
+Pixel Suite settings	Pixel Suite の設定
+Remove an element	要素を削除
+This page	このページ
+filtering mode	フィルタ モード
+no filtering	フィルタなし
+Couldn't open that picture	その画像を開けませんでした
+Tap the picture to change it	画像をタップして変更
+Use the website's icon	ウェブサイトのアイコンを使用
+Country	国
+Getting the free server list…	無料サーバーのリストを取得中…
+No servers yet. Pixel Suite loads them when you open this.	サーバーはまだありません。これを開くと Pixel Suite が読み込みます。
+Unavailable · no servers right now	利用不可 · 現在サーバーなし
+VPN	VPN
+VPN for Chrome	Chrome 用 VPN
+Become a patron	パトロンになる
+Buy me a coffee	コーヒーをおごる
+Coffee	コーヒー
+Join the community	コミュニティに参加
+No app is available to open this link	このリンクを開けるアプリがありません
+This link could not be opened	このリンクを開けませんでした
+On a schedule	スケジュール
+With the phone's dark mode	スマートフォンのダークモードに合わせる
+Call	発信
+Incoming call deflected (device reported as switched off)	着信を転送しました（デバイスは電源オフと応答）
+Unknown caller	不明な発信者
+Off	オフ
+On	オン
+Arrow	矢印
+Circle	円
+Double arrow	両矢印
+Line	線
+Speech bubble	吹き出し
+Square	四角
+Star	星
+Triangle	三角
+Blue	青
+Green	緑
+Red	赤
+Yellow	黄
+Clear badge	バッジを消去
+Could not save the name	名前を保存できませんでした
+No	いいえ
+Remove folder?	フォルダを削除しますか？
+Sort apps?	アプリを並べ替えますか？
+Yes	はい
+Add apps	アプリを追加
+Create folder	フォルダを作成
+6-digit code	6 桁のコード
+Allow root access to save your device ID.	デバイス ID を保存するには root アクセスを許可してください。
+Allow root access to save your purchase.	購入情報を保存するには root アクセスを許可してください。
+Allow root access to update your purchase.	購入情報を更新するには root アクセスを許可してください。
+Change email	メールアドレスを変更
+Check your license code and try again.	ライセンスコードを確認して、もう一度お試しください。
+Contact support	サポートに問い合わせる
+Couldn’t confirm the purchase. Your saved pass has been kept.	購入を確認できませんでした。保存済みのパスはそのままです。
+Couldn’t connect. Check your internet connection and try again.	接続できませんでした。インターネット接続を確認して、もう一度お試しください。
+Couldn’t save the device ID. Check root access.	デバイス ID を保存できませんでした。root アクセスを確認してください。
+Couldn’t save the purchase. Check root access.	購入情報を保存できませんでした。root アクセスを確認してください。
+Couldn’t verify the purchase link.	購入リンクを確認できませんでした。
+Couldn’t verify this purchase.	この購入を確認できませんでした。
+Email used for purchase	購入時のメールアドレス
+Enter code	コードを入力
+Enter the email you paid with.	支払いに使ったメールアドレスを入力してください。
+Enter the six-digit email code.	メールに記載された 6 桁のコードを入力してください。
+If a purchase matches this email, your recovery code is on its way.	このメールアドレスに一致する購入がある場合、復元コードが届きます。
+Invalid purchase pass.	購入パスが無効です。
+Invalid signature.	署名が無効です。
+No connection. Your saved purchase has been kept.	接続がありません。保存済みの購入情報はそのままです。
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	有効化後の返金はできません（法律または Buy Me a Coffee の規約で必要な場合を除く）。
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	一度に 1 台のスマートフォンのみ。対応する Pixel Watch と eSIM プランが必要です。
+Pixel watch eSIM	Pixel Watch eSIM
+Purchase is active.	購入は有効です。
+Purchase is no longer active.	購入は有効ではなくなりました。
+Purchase restored on this phone.	このスマートフォンで購入を復元しました。
+Purchase unlocked.	購入のロックを解除しました。
+Pixel Watch eSIM ✓ (purchased)	Pixel Watch eSIM ✓（購入済み）
+Refresh purchase	購入情報を更新
+Resend code	コードを再送信
+Restore on this phone	このスマートフォンで復元
+Restore purchase	購入を復元
+Restore purchase by email	メールで購入を復元
+Restoring…	復元中…
+Send recovery code	復元コードを送信
+Sending…	送信中…
+The device ID needs support. It has not been changed.	デバイス ID にはサポートが必要です。変更されていません。
+The shop is being set up. Please try again later.	ストアを準備中です。しばらくしてからもう一度お試しください。
+This purchase pass is not valid for this phone.	この購入パスはこのスマートフォンでは無効です。
+This purchase was revoked or moved to another phone.	この購入は取り消されたか、別のスマートフォンに移されました。
+Unlock	ロック解除
+Unlocking…	ロック解除中…
+Yours to keep on this phone. Patreon is not required.	このスマートフォンでずっと使えます。パトレオン は不要です。
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — ダークページ\n\nスコープを追加したら Chrome を再起動してください。
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — Chrome で開いた記事の広告枠の除去\n\nGoogle ニュース（com.google.android.apps.magazines）にスコープは不要です。広告ドメインのブロックはシステム全体のブロッカーを使います。
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — 空の広告枠の除去\n\nスコープを追加したら Chrome を再起動してください。広告ドメインのブロックにスコープは不要です。
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **Google ファイル** (com.google.android.apps.nbu.files) — ファイルブラウザ\n• **ファイル（システム）** (com.google.android.documentsui / com.android.documentsui) — システムのファイル選択画面
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **電話サービス** (com.android.phone)\n\n両方を選択してから再起動してください。以降のスイッチ変更はすぐに反映されます。
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **電話サービス** (com.android.phone)\n\n選択してから再起動してください。以降のスイッチ変更はすぐに反映されます。
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **電話** (com.google.android.dialer)\n• **システム フレームワーク** (system) — 録音のサポート\n\nスコープを追加したら電話アプリを開き直してください。
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **Pixel ランチャー** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — アイコン、フォルダ、メニュー、ドロワーのソフトエッジ\n• **システム UI** (com.android.systemui) — システムのメニューとメッセージ\n• **Pixel スタジオ** (com.google.android.apps.pixel.creativeassistant)\n• **Google フォト** (com.google.android.apps.photos) — エディタのメニュー\n\nスーパーダーク の追加スコープは専用ページに記載されています。
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — ランチャーの機能\n• **Google** (com.google.android.googlequicksearchbox) — Google 検索でのカスタマイズしたアプリ\n• **システム UI** (com.android.systemui) — トーストの位置
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — ランチャーのアイコンと名前\n• **Google** (com.google.android.googlequicksearchbox) — ホーム画面の Google 検索
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — ジェスチャー バーの横のナビゲーション ボタン\n• **システム フレームワーク** (system) — アプリの下部メニューをボタンの上に保つ\n• **Gboard** (com.google.android.inputmethod.latin) — キーボードを閉じるボタン
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — 最近のアプリ\n• **システム UI** (com.android.systemui) — 横向きのステータスバー
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **Pixel スタジオ** (com.google.android.apps.pixel.creativeassistant) — スクリーンショット\n• **Google フォト** (com.google.android.apps.photos) — 写真
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play ストア** (com.android.vending) — アプリのアップデートのブロック\n• **システム フレームワーク** (system)\n• **設定** (com.android.settings) — OTA と出荷時設定へのリセットのブロック
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play ストア** (com.android.vending)\n• **システム フレームワーク** (system), 保存したバージョンを復元するため
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **共有シート** (com.android.intentresolver)\n• **Google フォト** (com.google.android.apps.photos) — フォトの共有ページの色合わせ
+• **System Framework** (system)	• **システム フレームワーク** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **システム フレームワーク** (system) — アプリの保護\n• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — アプリとフォルダのロック\n• **システム UI** (com.android.systemui) — 認証の確認画面\n\nスマートフォンの画面ロックを設定し、スコープを追加したら再起動してください。
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **システム フレームワーク** (system) — 電源ボタン\n• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — かこって検索
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **システム フレームワーク** (system) — アップデートのブロック\n• **設定** (com.android.settings) — アップデートとリセットの管理
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **システム フレームワーク** (system) — スリープ解除、スリープ、スクリーンショット\n• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — アプリのドラッグ\n• **システム UI** (com.android.systemui) — 録画の操作部\n• **Pixel スタジオ** (com.google.android.apps.pixel.creativeassistant) — スクリーンショットの切り抜き
+• **System Framework** (system), to restore a saved version (also an older one)	• **システム フレームワーク** (system), 保存したバージョンを復元するため（古いバージョンも可）
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **システム フレームワーク** (system)\n• **システム UI** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **システム UI** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **システム UI** (com.android.systemui) — 常に表示状態のディスプレイ\n• **システム フレームワーク** (system) — ロック画面の他の表示オプションがオフでも、常に表示状態のディスプレイを開始
+• **System UI** (com.android.systemui) — the lock screen PIN	• **システム UI** (com.android.systemui) — ロック画面の PIN
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **システム UI** (com.android.systemui)\n• **Pixel ランチャー** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **設定** (com.android.settings)\n• **設定サービス** (com.google.android.settings.intelligence)\n• **パッケージ インストーラ** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nエディタのスタイル設定には **Pixel スタジオ** (com.google.android.apps.pixel.creativeassistant) と **Google フォト** (com.google.android.apps.photos) も選択してください。スコープを追加したら再起動してください。
+Auto (A–Z)	自動（A～Z）
+Custom	カスタム
+Sort	並べ替え
+Sort the apps in this folder from A to Z?	このフォルダのアプリを A～Z 順に並べ替えますか？
+Auto-correction	自動修正
+Corrects words as you type	入力中の単語を修正します
+Gboard's own switch (reading it…)	Gboard 本体のスイッチ（読み取り中…）
+Languages	言語
+On: Gboard corrects words in the languages turned on below	オン：下でオンにした言語で Gboard が単語を修正します
+Reading Gboard's languages…	Gboard の言語を読み取り中…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	上のスイッチは Gboard 本体の自動修正です。下で言語ごとにオフにすると、その言語では単語は置き換えられませんが、候補は表示されます。変更は次にキーボードを開いたときに反映されます。
+A Gboard shortcut	Gboard のショートカット
+A keyboard you can move anywhere	好きな場所に動かせるキーボード
+Arrow keys and selection tools	矢印キーと選択ツール
+Both show at once, in two rows (portrait)	両方を同時に 2 行で表示（縦向き）
+Bring back what you undid	元に戻した操作をやり直し
+Change how Gboard looks	Gboard の見た目を変更
+Clipboard	クリップボード
+Copy	コピー
+Copy the selected text	選択したテキストをコピー
+Cut	切り取り
+Cut the selected text	選択したテキストを切り取り
+Drag a shortcut to the edge of the list to turn the page.	ショートカットをリストの端までドラッグするとページが切り替わります。
+Edit toolbar shortcuts	ツールバーのショートカットを編集
+Emoji	絵文字
+Emoji, emoticons and symbols	絵文字、顔文字、記号
+Fill in saved passwords and details	保存したパスワードや情報を入力
+Floating	フローティング
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	Gboard のツールバー（候補の上にショートカット）：ここにショートカットをドラッグ
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	Gboard のツールバー（候補の下にショートカット）：ここにショートカットをドラッグ
+Gboard's toolbar: drag shortcuts here	Gboard のツールバー：ここにショートカットをドラッグ
+Hello	こんにちは
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	ショートカットを長押ししてツールバーへドラッグします。ツールバー上で動かすと並べ替え、外に出すと削除できます。タップすると機能を確認できます。
+Make the keyboard bigger or smaller	キーボードを拡大・縮小
+Menu button	メニューボタン
+Next language	次の言語
+Okay	OK
+One-handed	片手モード
+Open Gboard's settings	Gboard の設定を開く
+Paste	貼り付け
+Paste what you copied	コピーした内容を貼り付け
+Put at least one shortcut on the toolbar	ツールバーにショートカットを 1 つ以上置いてください
+Redo	やり直し
+Resize	サイズ変更
+Rewrite or polish what you wrote	書いた文章を書き直し・推敲
+Scan text	テキストをスキャン
+Search and send GIFs	GIF を検索して送信
+Search and send stickers	ステッカーを検索して送信
+Select all	すべて選択
+Select all the text	テキストをすべて選択
+Settings	設定
+Share	共有
+Share Gboard with others	Gboard を共有
+Shortcuts	ショートカット
+Shortcuts above the suggestions, not below	ショートカットを候補の上に（下ではなく）
+Shortcuts below the suggestions, not above	ショートカットを候補の下に（上ではなく）
+Shortcuts row on bottom	ショートカット行を下に
+Shortcuts row on top	ショートカット行を上に
+Shrink the keyboard to one side	キーボードを片側に縮小
+Stickers	ステッカー
+Suggestions and shortcuts together	候補とショートカットを一緒に
+Switch to your next language	次の言語に切り替え
+Tap to select a word, tap again to clear. Hold to select all	タップで単語を選択、もう一度タップで解除。長押しですべて選択
+Text editing	テキスト編集
+Thanks	ありがとう
+Theme	テーマ
+Translate	翻訳
+Translate as you type	入力しながら翻訳
+Type by speaking	話して入力
+Type text from your camera	カメラでテキストを入力
+Undo	元に戻す
+Undo your last change	最後の変更を元に戻す
+Voice typing	音声入力
+Writing tools	文章作成ツール
+Your copied text and pinned clips	コピーしたテキストと固定したクリップ
+Clear	消去
+Clear the clipboard?	クリップボードを消去しますか？
+Every clip is deleted except pinned ones.	固定したもの以外のクリップはすべて削除されます。
+Delete this pinned clip?	この固定クリップを削除しますか？
+Apply	適用
+Down	下
+Height	高さ
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	キーボードのサイズと位置。ハンドルをドラッグしてサイズ変更、キーボードをドラッグして移動します。
+Try typing here after Apply	「適用」の後にここで入力してみてください
+Up	上
+Width	幅
+Apps list	アプリリスト
+Pixel Suite isn't available	Pixel Suite を利用できません
+Adjust icon	アイコンを調整
+Could not save this icon. Try another image.	このアイコンを保存できませんでした。別の画像をお試しください。
+Icon updated	アイコンを更新しました
+Pinch to zoom, drag to move	ピンチでズーム、ドラッグで移動
+Reset position and zoom	位置とズームをリセット
+Large	大
+Largest	特大
+Medium	中
+Small	小
+Smallest	極小
+Apps the pack doesn't cover keep their own icons.	パックに含まれないアプリは元のアイコンのままです。
+Close icon packs	アイコンパックを閉じる
+Get icon packs	アイコンパックを入手
+Icon pack	アイコンパック
+Loading icon packs…	アイコンパックを読み込み中…
+Loading icons…	アイコンを読み込み中…
+No icon packs installed yet	アイコンパックがまだインストールされていません
+Pixel Launcher's own icons, including themed icons	Pixel ランチャー標準のアイコン（テーマアイコンを含む）
+System default	システムのデフォルト
+Unavailable	利用不可
+Rename app	アプリ名を変更
+Shows on the home screen, in folders, the drawer and search.	ホーム画面、フォルダ、アプリドロワー、検索に表示されます。
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	ここでは非表示にできませんでした。Pixel Suite で「検索バーを非表示」をオンにしてください。
+Couldn't save Hide search bar	「検索バーを非表示」を保存できませんでした
+Hide search bar isn't supported on this launcher version	このバージョンのランチャーは「検索バーを非表示」に対応していません
+Change icon	アイコンを変更
+Could not read this image. Try another image.	この画像を読み込めませんでした。別の画像をお試しください。
+Could not reset the icon	アイコンをリセットできませんでした
+Files	ファイル
+Files is unavailable	ファイルを利用できません
+Original icon restored	元のアイコンに戻しました
+Photos	フォト
+Photos is unavailable. Choose Files instead.	フォトを利用できません。代わりにファイルを選択してください。
+Reset icon	アイコンをリセット
+Could not read this icon pack	このアイコンパックを読み込めませんでした
+Could not use this icon	このアイコンを使用できませんでした
+Loading…	読み込み中…
+No icon packs installed yet.\nInstall one and it shows here.	アイコンパックがまだインストールされていません。\nインストールするとここに表示されます。
+Play Store is unavailable	Play ストアを利用できません
+Search icons	アイコンを検索
+All apps	すべてのアプリ
+App picker	アプリ選択
+Choose apps	アプリを選択
+Couldn't load apps. Check root access and reopen.	アプリを読み込めませんでした。root アクセスを確認して開き直してください。
+Couldn't save. Check root access and try again.	保存できませんでした。root アクセスを確認してもう一度お試しください。
+Filter installed apps	インストール済みアプリを絞り込み
+Loading apps…	アプリを読み込み中…
+Root unavailable	root を利用できません
+Saved. Changes apply the next time these apps open.	保存しました。次にこれらのアプリを開いたときに反映されます。
+Search installed apps	インストール済みアプリを検索
+System apps	システムアプリ
+User apps	ユーザーアプリ
+No room on this page for the other apps	このページに他のアプリを置く場所がありません
+A Quest for the Kind-Hearted	心優しき者たちのクエスト
+Close account	アカウントを閉じる
+Membership refreshed	メンバーシップを更新しました
+Pass expires:  ∞	パスの有効期限： ∞
+Patreon account	パトレオン アカウント
+Patreon member	パトレオン メンバー
+Patron ✓	パトロン ✓
+Read the quest	クエストを読む
+Refresh	更新
+Refreshing…	更新中…
+Sign in with Patreon	パトレオン でログイン
+Sign out	ログアウト
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Pixel Suite を支援すると、Chrome+、Gboard+、広告ブロッカー、VPN、ダークページ、通話録音、広告なしの Google フィードが利用できます。
+A Quest for the\nKind-Hearted	心優しき者たちの\nクエスト
+Already a patron? Unlock	すでにパトロンですか？ ロック解除
+Checking Patreon membership…	パトレオン のメンバーシップを確認中…
+Join on Patreon	パトレオン に参加
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	パトレオン に参加して パトレオン 機能のロックを解除しましょう。プロジェクトを支えてくださりありがとうございます。💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	参加済みですか？「ロック解除」をタップして有料の パトレオン メンバーシップを確認してください。
+Let's go	はじめよう
+No paid membership found. Choose the paid tier to unlock.	有料のメンバーシップが見つかりません。ロックを解除するには有料プランを選択してください。
+Open a browser to sign in with Patreon.	ブラウザを開いて パトレオン でログインしてください。
+Open the Pixel Suite paid tier in your browser.	ブラウザで Pixel Suite の有料プランを開きます。
+Patreon sign-in is being set up.	パトレオン ログインを準備しています。
+Patron verified	パトロンを確認しました
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	Pixel Suite には広告もトラッカーもありません。アカウントと支払いの情報はロック解除の確認にのみ使用されます。
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite は、Pixel スマートフォンが大好きな 1 人が空き時間に作っています。
+Quest Complete!	クエスト達成！
+Ready to check membership	メンバーシップを確認できます
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	Pixel Suite を支援してくださりありがとうございます。パトレオン 機能を利用できます。
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	パトロンは Chrome+ と Gboard+、広告ブロッカーと VPN、Chrome のダークページ、通話録音、広告なしの Google フィードを利用できます。支援はすべてアプリに還元されます：Android と Google アプリのアップデートへの対応、それによる不具合の修正、新機能の開発です。
+Welcome back!	おかえりなさい！
+✨ Quest Complete!	✨ クエスト達成！
+📜 A Quest for the Kind-Hearted	📜 心優しき者たちのクエスト
+Google apps	Google アプリ
+Patreon feature	パトレオン 機能
+Unlock this feature with Patreon	パトレオン でこの機能のロックを解除
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android で VPN が許可されませんでした。VPN ページを開いて「接続」をタップしてください。
+Another VPN took over	別の VPN に切り替わりました
+Checking that websites open…	ウェブサイトが開けるか確認中…
+Checking the connection…	接続を確認中…
+Chrome isn't installed	Chrome がインストールされていません
+Connection failed	接続できませんでした
+Connection lost	接続が切れました
+Couldn't load the server list. Check your connection.	サーバーリストを読み込めませんでした。接続を確認してください。
+Disconnect	切断
+Disconnected	切断されました
+Finding servers…	サーバーを検索中…
+Free volunteer server	無料のボランティアサーバー
+No server answered	応答したサーバーはありません
+Server stopped answering	サーバーが応答しなくなりました
+Trying the faster UDP connection (up to 30 s)…	より高速な UDP 接続を試しています（最大 30 秒）…
+VPN is a Patreon feature	VPN は パトレオン 機能です
+connections refused	接続を拒否されました
+no answer	応答なし
+Circle to Search isn't available	かこって検索を利用できません
+Do Not Annoy off	迷惑ブロック オフ
+Do Not Annoy on	迷惑ブロック オン
+Do Not Disturb off	サイレント モード オフ
+Do Not Disturb on	サイレント モード オン
+No Annoyance off	迷惑なし オフ
+No Annoyance on	迷惑なし オン
+Silence off	消音 オフ
+Silence on	消音 オン
+Authenticator	Authenticator
+Calculator	電卓
+Calendar	カレンダー
+Camera	カメラ
+Clock	時計
+Contacts	連絡帳
+Maps	マップ
+Messages	メッセージ
+Play Store	Play ストア
++  Add apps	+  アプリを追加
++ Add to home screen	+ ホーム画面に追加
+A clearer page	すっきりしたページ
+A website	ウェブサイト
+Ad blocking	広告ブロック
+Add new	新規追加
+Add to home screen	ホーム画面に追加
+Adjust	調整
+Advertisement	広告
+Alex	Alex
+Another pack	別のパック
+App info	アプリ情報
+App is locked	アプリはロックされています
+Applied	適用しました
+Applied across the launcher	ランチャー全体に適用しました
+Applying…	適用中…
+Apps	アプリ
+Authenticate to open	開くには認証してください
+Back in your share list	共有リストに戻りました
+Block system updates	システム アップデートをブロック
+Bluetooth	Bluetooth
+Bookmarks	ブックマーク
+Bookmarks bar	ブックマーク バー
+Call ended	通話終了
+Call log: Alex · Blocked	通話履歴：Alex · ブロック済み
+Call recording	通話録音
+Camera (stock)	カメラ（標準）
+Centered labels. Clearer view.	中央揃えのラベル。見やすい表示。
+Change icon → Icon pack	アイコンを変更 → アイコンパック
+Change icons	アイコンを変更
+Choose Icon pack	アイコンパックを選択
+Choose a pack	パックを選択
+Choose an image	画像を選択
+Cleaner articles in Chrome	Chrome の記事をすっきり
+Clear all	すべてクリア
+Collections	コレクション
+Connected	接続済み
+Controls within reach	操作を手の届く位置に
+Create	作成
+Crop	切り抜き
+Crop freely	自由に切り抜き
+Data and Wi-Fi stay on	モバイルデータと Wi-Fi はオンのまま
+Date & time	日付と時刻
+Device audio	デバイスの音声
+Discover	Discover
+Display & touch	ディスプレイとタップ
+Do Not Disturb	サイレント モード
+Done	完了
+Dot cleared	ドットを消去しました
+Downloads	ダウンロード
+Drag to make a folder	ドラッグしてフォルダを作成
+Edit photo	写真を編集
+Empty ad space	空の広告スペース
+Enter PIN	PIN を入力
+Entire screen	画面全体
+Erase all data	すべてのデータを消去
+Every tab in view	すべてのタブを一覧
+Example app	サンプルアプリ
+Example pack	サンプルパック
+Factory reset locked	出荷時設定へのリセットはロック中
+Father	父
+Fill	塗りつぶし
+Flashlight	ライト
+Folder	フォルダ
+For you	おすすめ
+Fri, Oct 16	10月16日(金)
+Friday, Oct 16	10月16日 金曜日
+Friend	友だち
+Headlines	ヘッドライン
+Hidden apps	非表示のアプリ
+Hidden apps remain available	非表示のアプリも引き続き使えます
+Hidden contacts	非表示の連絡先
+Hide 2 apps	2 個のアプリを非表示
+Hide contact	連絡先を非表示
+Hide several apps	複数のアプリを非表示
+Hold	保留
+Hold and drag pinned apps	固定したアプリを長押ししてドラッグ
+Hold to unhide	長押しで再表示
+How about this spot?	この場所はどうですか？
+Incoming call declined	着信を拒否しました
+Incoming call deflected	着信を転送しました
+Incoming calls quiet	着信を消音
+Internet	インターネット
+Keep Notes	Keep メモ
+Let's find a new place.	新しい場所を探しましょう。
+Lock	ロック
+Manage suggested contacts	おすすめの連絡先を管理
+Message	メッセージ
+Minus hides the contacts row	マイナスで連絡先の行を非表示
+Mobile bookmarks	モバイルのブックマーク
+Mobile network	モバイル ネットワーク
+More of your feed	フィードの続き
+My folder	マイフォルダ
+New tab	新しいタブ
+Newest first	新しい順
+News article	ニュース記事
+No empty ad boxes	空の広告枠なし
+No recent apps	最近のアプリはありません
+No sponsored gaps	スポンサーの隙間なし
+Notifications	通知
+OTA blocker	OTA ブロッカー
+Oct 12, 10:20	10月12日 10:20
+Oct 8, 08:10	10月8日 08:10
+One app. Your choice.	アプリは 1 つ。選ぶのはあなた。
+Open. Swipe. Close.	開く。スワイプ。閉じる。
+Order saved	並び順を保存しました
+Other bookmarks	その他のブックマーク
+Packages blocked	ブロックしたパッケージ
+Perfect. See you there!	ばっちり。そこで会いましょう！
+Phone	電話
+Pin	固定
+Pin moves apps above the divider	固定するとアプリが区切り線の上に移動します
+Pin, then drag to reorder	固定してからドラッグで並べ替え
+Pinned apps	固定したアプリ
+Plus brings the row back	プラスで行を元に戻す
+Private	プライベート
+Private folder	プライベート フォルダ
+Read the full story	記事全文を読む
+Reading list	リーディング リスト
+Ready for the weekend?	週末の準備はできた？
+Ready to activate	有効化の準備完了
+Record	録音
+Record your screen	画面を録画
+Recorded	録音済み
+Recording	録音中
+Recording saved	録音を保存しました
+Recordings / Calls	Recordings / Calls
+Restricted packages	制限されたパッケージ
+Scan QR code	QR コードをスキャン
+Scan your carrier's code	携帯通信会社のコードをスキャン
+Screenshot	スクリーンショット
+Screenshot saved	スクリーンショットを保存しました
+Scroll to continue	スクロールして続行
+Search the web	ウェブを検索
+Select	選択
+Select apps	アプリを選択
+Sep 30, 21:00	9月30日 21:00
+Share or restore hidden apps	非表示のアプリを共有・復元
+Show touches	タップを表示
+Sites	サイト
+Software updates	ソフトウェア アップデート
+Sort  ⌄	並べ替え  ⌄
+Sort apps A–Z?	アプリを A～Z 順に並べ替えますか？
+Speed Dial in bookmarks	ブックマーク内のスピードダイヤル
+Split screen	分割画面
+Start	開始
+Swipe	スワイプ
+System settings	システム設定
+Tap to share	タップして共有
+Themes	テーマ
+Themes → Icon pack	テーマ → アイコンパック
+Today	今日
+Today 09:15	今日 09:15
+Today 14:42	今日 14:42
+Today's stories	今日のニュース
+Today's top stories	今日のトップニュース
+Touch fingerprint sensor	指紋認証センサーに触れてください
+Unhide app	アプリを再表示
+Unlocked on the 4th digit	4 桁目でロック解除
+Use Super Dark-Mode	スーパーダークモード を使用
+Voice note.m4a	ボイスメモ.m4a
+Voice search	音声検索
+Wallpaper & style	壁紙とスタイル
+Watch eSIM	Watch の eSIM
+Weekend plans	週末の予定
+Wife	妻
+Yes! A coffee sounds good.	いいね！コーヒーにしよう。
+Yesterday	昨日
+Yesterday 18:30	昨日 18:30
+Your Pixel. Your way.	あなたの Pixel を、あなた流に。
+Your tabs	あなたのタブ
+‹ Back	‹ 戻る
+↓ Move to bottom	↓ 一番下に移動
+Lock folder	フォルダをロック
+Unlock folder	フォルダのロックを解除
+Confirm it's you to disable this app	このアプリを無効にするには本人確認をしてください
+Confirm it's you to lock this app	このアプリをロックするには本人確認をしてください
+Confirm it's you to lock this folder	このフォルダをロックするには本人確認をしてください
+Confirm it's you to pause this app	このアプリを一時停止するには本人確認をしてください
+Confirm it's you to remove this app	このアプリを削除するには本人確認をしてください
+Confirm it's you to remove this folder	このフォルダを削除するには本人確認をしてください
+Confirm it's you to uninstall this app	このアプリをアンインストールするには本人確認をしてください
+Confirm it's you to unlock this app	このアプリのロックを解除するには本人確認をしてください
+Confirm it's you to unlock this folder	このフォルダのロックを解除するには本人確認をしてください
+Could not check your screen lock	画面ロックを確認できませんでした
+Could not save. Is root allowed for Pixel Suite?	保存できませんでした。Pixel Suite に root が許可されていますか？
+Please authenticate to proceed	続行するには認証してください
+Set a screen lock first to lock apps	アプリをロックするには、まず画面ロックを設定してください
+Use PIN	PIN を使用
+App remains locked	アプリはロックされたままです
+Cannot dismiss locked apps	ロックしたアプリは閉じられません
+Two apps locked	2 つのアプリをロック中
+Refresh rate	リフレッシュ レート
+Accept	同意する
+An update check is already running.	アップデートの確認はすでに実行中です。
+Automatic update checks are off.	自動アップデート確認はオフです。
+Could not verify both release repositories. Try again later.	両方のリリース リポジトリを確認できませんでした。しばらくしてからもう一度お試しください。
+New version ready. Tap to download and install.	新しいバージョンの準備ができました。タップしてダウンロード・インストールします。
+No newer official release is published with matching APKs on both repositories.	両方のリポジトリで APK が一致する新しい公式リリースは公開されていません。
+No release check yet.	リリースはまだ確認していません。
+Apply update blocking choices	アップデートのブロック設定を適用
+Couldn't apply: root access needed	適用できませんでした：root アクセスが必要です
+Couldn't restart: root access needed	再起動できませんでした：root アクセスが必要です
+Restarting…	再起動中…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	スーパーダークモード は独自の黒いスタイルを使用します。\nスタイルを変更するにはオフにしてください。
+**Used for:**\n	**用途:**\n
+Adds Doodles and cropping tools to the screenshot editor.	スクリーンショット エディタに 落書き と切り抜きツールを追加します。
+Adds editable Doodles to the photo editor.	写真エディタに編集可能な 落書き を追加します。
+Adds the refresh-rate slider to Display & touch.	「ディスプレイとタップ」にリフレッシュ レートのスライダーを追加します。
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	保護された画面のキャプチャを許可し、ユーザー補助とデバッグの状態をアプリから隠し、FPS カウンターを表示します。
+Applies Super Dark to Gboard.	Gboard に スーパーダーク を適用します。
+Applies Super Dark to Settings search.	設定の検索に スーパーダーク を適用します。
+Applies Super Dark to Settings.	設定に スーパーダーク を適用します。
+Applies Super Dark to app uninstall dialogs.	アプリのアンインストール ダイアログに スーパーダーク を適用します。
+Applies Super Dark to the Google app and feed.	Google アプリとフィードに スーパーダーク を適用します。
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	ランチャーのアイコン、フォルダ、メニューに加え、アプリドロワーの検索エリアの背後にあるすりガラスのソフトエッジを適用します。ドロワーの効果は すりガラス のときのみ有効です。
+Blocks system update installation and protects factory reset.	システム アップデートのインストールをブロックし、出荷時設定へのリセットを保護します。
+Controls Software updates and the factory-reset option in Settings.	設定の「ソフトウェア アップデート」と出荷時設定へのリセットを制御します。
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	Pixel の通話スタック経由が使えないとき、迷惑ブロック の着信を拒否します。
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	ライトとカメラのショートカット用に、電源ボタンと音量小ボタンの 2 回押しを検出します。
+Detects volume-down double presses while the screen is off.	画面オフ時の音量小ボタンの 2 回押しを検出します。
+Enables QR-code eSIM setup in the Pixel Watch phone app.	スマートフォンの Pixel Watch アプリで QR コードによる eSIM 設定を有効にします。
+Enables call recording and its controls in the Google Phone app.	Google の電話アプリで通話録音とその操作を有効にします。
+Fades the status bar while recent apps are viewed in landscape.	最近のアプリを横向きで表示中にステータスバーを薄くします。
+Files (system)	ファイル（システム）
+Files by Google	Google ファイル
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	Android の設定から開く画面（対応するサブページを含む）に、すりガラス のなめらかなスクロールの縁を追加します。ライト、ダーク、スーパーダーク に対応します。LSPosed でこのスコープを有効にし、アプリまたはスマートフォンを再起動してください。
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	Android のシステム プロセスでスリープ解除、スリープ、スクリーンショットの操作を処理します。
+Hides the keyboard globe and moves the dismiss arrow to the right.	キーボードの地球儀キーを非表示にし、閉じる矢印を右に移動します。
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	録音の保存中も通話の反応を保ちます。
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	迷惑ブロック がオンの間、Pixel の通話スタックで着信を消音します。
+Keeps screenshots ready for faster capture.	スクリーンショットを準備しておき、すばやく撮影できるようにします。
+Keeps selected apps on their current version by blocking their Play Store updates.	Play ストアのアップデートをブロックして、選んだアプリを現在のバージョンのままにします。
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	アプリとフォルダをロックし、鍵バッジを表示し、最近のアプリでロック中のアプリを保護します。
+Matches Photos' share-page colors to the share sheet.	フォトの共有ページの色を共有シートに合わせます。
+Matches photo-editor menus and controls to your chosen theme and surface style.	写真エディタのメニューと操作部を、選んだテーマとサーフェス スタイルに合わせます。
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	スクリーンショット エディタのメニューと操作部を、選んだテーマとサーフェス スタイルに合わせます。
+Matches system menus and messages to your chosen theme and surface style.	システムのメニューとメッセージを、選んだテーマとサーフェス スタイルに合わせます。
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	ナビゲーション ボタンが有効なとき、キーボードを閉じるボタンを右端に移動します。このスコープを追加した後、キーボードを再起動してください。
+Opens the camera from the volume-down shortcut.	音量小ボタンのショートカットでカメラを起動します。
+Package installer	パッケージ インストーラ
+Permission Controller	権限コントローラ
+Personal Safety	パーソナル セーフティ
+Phone Services	電話サービス
+Pixel Troubleshooting	Pixel のトラブルシューティング
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	トースト メッセージを上、中央、または標準の下に表示します。次のトーストから反映されます。
+Provides cleaner screen-recording controls.	すっきりした画面録画の操作部にします。
+Removes sponsored cards and their empty space from the Google feed.	Google フィードからスポンサー カードとその空白を取り除きます。
+Removes supported empty ad boxes from web pages opened in Chrome.	Chrome で開いたウェブページから、対応する空の広告枠を取り除きます。
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	共有アプリの固定順を並べ替え、Android の共有シートに非表示アプリと連絡先のフォルダを追加します。
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	保護されたアプリを開く前や、アンインストール・無効化・一時停止の前に認証を求めます。
+Settings Services	設定サービス
+Share sheet	共有シート
+Shows customized app names and icons in home-screen Google search.	ホーム画面の Google 検索に、カスタマイズしたアプリ名とアイコンを表示します。
+Shows fingerprint and PIN prompts for locked apps and folders.	ロック中のアプリとフォルダに指紋と PIN の確認を表示します。
+Shows newest files first in the file browser.	ファイル ブラウザで新しいファイルを先頭に表示します。
+Shows newest files first in the system file picker.	システムのファイル選択画面で新しいファイルを先頭に表示します。
+System Framework	システム フレームワーク
+System UI	システム UI
+Toggles the flashlight with a double press of the power button.	電源ボタンの 2 回押しでライトをオン・オフします。
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	ツールバーに 7 個のショートカット、テキスト編集ショートカット、角の丸いキー、1 列のクリップボード、チップの非表示、メニューと絵文字・音声ボタン、ツールバーの並び順、2 行の候補とショートカット、サイズ変更（キーボードのサイズと位置）、自由なキーボード位置、و 上のアラビア語 ؤ、スワイプで 1 文字ずつ削除、言語ごとの自動修正、無制限のクリップボード、サイズ変更ページのキーボード画像。
+10 seconds	10 秒
+15 seconds	15 秒
+3 seconds	3 秒
+30 seconds	30 秒
+5 seconds	5 秒
+A better starting view for your files.	ファイルの見やすい最初の表示。
+A feed without sponsored gaps	スポンサーの隙間がないフィード
+A tidier recording sheet. Needs your phone in English.	すっきりした録画シート。スマートフォンの言語を英語にする必要があります。
+AOD after screen off	画面オフ後の AOD
+AOD while charging	充電中の AOD
+About and support	概要とサポート
+Ad Blocker, VPN, Dark pages and more to come	広告ブロッカー、VPN、ダークページなど
+Ad blocker	広告ブロッカー
+Ad blocking for news browsing	ニュース閲覧中の広告ブロック
+Add-ons for Chrome+.	Chrome+ のアドオン。
+Adds Scan QR code to Mobile network when your carrier isn't listed	携帯通信会社が一覧にないとき、モバイル ネットワークに「QR コードをスキャン」を追加します
+All of Gboard+ at once. Your choices are kept while it's off	Gboard+ をまとめてオン・オフ。オフの間も選択内容は保持されます
+Allow screenshots of secure screens	保護された画面のスクリーンショットを許可
+Allow update notifications	アップデート通知を許可
+Always show Clear all	「すべてクリア」を常に表示
+Always-on display	常に表示状態のディスプレイ
+Always-on display while plugged in	充電中は常に表示状態のディスプレイ
+App & folder lock	アプリとフォルダのロック
+App drawer	アプリドロワー
+App drawer folders	アプリドロワーのフォルダ
+App name	アプリ名
+Applies right away. Open folders and search keep the usual size.	すぐに反映されます。開いたフォルダと検索は通常のサイズのままです。
+Apply matching icons across your apps	すべてのアプリに統一したアイコンを適用
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	多くの銀行アプリのように、ログインをスマートフォンに紐づけるアプリは、アンインストール後に再ログインを求めることがあります。
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	開発者向けオプションがオンだと起動しないアプリ（一部の銀行アプリなど）も通常どおり動作します。\n歯車をタップすると開発者向けオプションが開きます。
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	Play ストアに新しいバージョンがあるアプリは赤で表示されます。! をタップして更新、バックアップ、復元できます。
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	選んだアプリからユーザー補助サービスが見えなくなります。\n同じことをする他のモジュールは先にオフにしてください。
+Asks before a locked app is uninstalled or paused	ロック中のアプリをアンインストール・一時停止する前に確認します
+Auto-confirm 4-digit PIN	4 桁の PIN を自動確認
+Auto-confirm works with a 4-digit PIN, from your next unlock.	自動確認は 4 桁の PIN で、次回のロック解除から使えます。
+Backspace swipe deletes letters	Backspace のスワイプで 1 文字ずつ削除
+Backup	バックアップ
+Backup & Restore keeps every saved version, also of uninstalled apps.	バックアップと復元は、アンインストールしたアプリも含め、保存したすべてのバージョンを残します。
+Backup restored	バックアップを復元しました
+Backup saved	バックアップを保存しました
+Battery saver can still turn it off.	バッテリー セーバーでオフになることがあります。
+Block ads, with filtering per site	サイトごとのフィルタで広告をブロック
+Blocks ads while you read the news.	ニュースを読んでいる間、広告をブロックします。
+Blur Off	ぼかしなし
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	ぼかしなし\nぼかしなし、不透明な面。\n\n標準\nシステム標準の見た目。\n\nすりガラス（デフォルト）\nフォルダ、メニュー、メッセージの背後をぼかします。
+Blurred and tinted	ぼかしと色付き
+Bottom (Stock)	下（標準）
+Bring everything back from a backup file	バックアップ ファイルからすべてを戻す
+Browse from another country	別の国からブラウジング
+Browse from another country, in Chrome or every app	Chrome またはすべてのアプリで、別の国からブラウジング
+Browse from another country.	別の国からブラウジング。
+Browse without empty ad boxes	空の広告枠なしでブラウジング
+Buttons	ボタン
+Buttons beside the gesture bar	ジェスチャー バーの横のボタン
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	通話録音はお住まいの国の法律で制限されている場合があります。録音前に必要な同意を得てください。適法な使用はお客様の責任です。RovianDev は違法な使用について責任を負いません。
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	発信者には応答できない旨が伝わります。不在着信ごとに「発信」ボタン付きの通知が届きます。緊急通報は常につながります。
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	着信音が鳴る前に着信を拒否します。不在着信ごとに「発信」ボタン付きの通知が届きます。緊急通報は常につながります。
+Capture, sleep, wake and app dragging.	撮影、スリープ、スリープ解除、アプリのドラッグ。
+Changelog	変更履歴
+Changes apply the next time the chosen apps open.	選んだアプリを次に開いたときに反映されます。
+Changes only the text under icons.\nIcon size and shape stay the same.	アイコンの下のテキストだけを変更します。\nアイコンのサイズと形は変わりません。
+Changing this option restarts Pixel Launcher.	このオプションを変更するとPixel ランチャーが再起動します。
+Check for updates	アップデートを確認
+Check for updates automatically	アップデートを自動で確認
+Check for updates now	今すぐアップデートを確認
+Check now	今すぐ確認
+Checking for updates…	アップデートを確認中…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	ジェスチャー バーの横に「戻る」「ホーム」「最近」を選びます。ホームを長押しで かこって検索 または Gemini。
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	左右それぞれに「戻る」「ホーム」「最近」を選びます。ホームを長押しで かこって検索 または Gemini。
+Choose Lock from an app's recents menu to keep its card when you clear apps.	最近のアプリでアプリのメニューから「ロック」を選ぶと、アプリをクリアしてもカードが残ります。
+Choose a filtering level per site from the ad blocker button in Chrome.	Chrome の広告ブロッカー ボタンから、サイトごとにフィルタ レベルを選びます。
+Choose the languages Gboard corrects.	Gboard が修正する言語を選択します。
+Choose which apps can't see your accessibility services	ユーザー補助サービスを見せないアプリを選択
+Choose which apps stay on their current version.	現在のバージョンのままにするアプリを選択します。
+Circle to Search	かこって検索
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	かこって検索はナビゲーション ハンドルの長押しと同じ、スクリーンショットは電源 + 音量小と同じように動作します。
+Cleaner news articles	すっきりしたニュース記事
+Cleaner news browsing.	すっきりしたニュース閲覧。
+Clear all in recents	最近のアプリの「すべてクリア」
+Clear all is always there in recents, no scrolling.	「すべてクリア」が最近のアプリに常に表示され、スクロール不要です。
+Clear all, locked cards and landscape view	すべてクリア、ロックしたカード、横向き表示
+Clipboard history	クリップボードの履歴
+Clipboard in one column	1 列のクリップボード
+Colorful icons in the app drawer (Stock)	アプリドロワーのカラフルなアイコン（標準）
+Community and support	コミュニティとサポート
+Confirm it's you to change privacy settings	プライバシー設定を変更するには本人確認をしてください
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	操作部が下に移動し、タブのアニメーションがなめらかになります。タブ切り替え画面では、オレンジの + でシークレット タブが開きます。
+Could not save text size	テキストサイズを保存できませんでした
+Could not save the surface style	サーフェス スタイルを保存できませんでした
+Could not save this option	このオプションを保存できませんでした
+Couldn't back up: root access needed	バックアップできませんでした：root アクセスが必要です
+Couldn't load apps	アプリを読み込めませんでした
+Couldn't restore: root access needed	復元できませんでした：root アクセスが必要です
+Couldn't save (root)	保存できませんでした（root）
+Crop screenshots to any size, even a single line.	スクリーンショットを好きなサイズに切り抜けます。1 行だけでも OK。
+Customize icon labels	アイコンのラベルをカスタマイズ
+Dark theme and schedules	ダークテーマとスケジュール
+Dark websites in Chrome	Chrome のダーク ウェブサイト
+Dark websites in Chrome.	Chrome のダーク ウェブサイト。
+Dark websites, always, with dark mode or on a schedule	ダーク ウェブサイト：常に、ダークモード連動、またはスケジュール
+Developer options aren't available on this device.	このデバイスでは開発者向けオプションを利用できません。
+Double tap	ダブルタップ
+Double tap to sleep	ダブルタップでスリープ
+Double-press power button	電源ボタンを 2 回押す
+Double-press volume down	音量小ボタンを 2 回押す
+Double-tap an empty spot on the home screen to lock your phone.	ホーム画面の空いている場所をダブルタップしてスマートフォンをロックします。
+Download and install	ダウンロードしてインストール
+Download and install the update in Pixel Suite	Pixel Suite でアップデートをダウンロードしてインストール
+Drag an app onto another to make a folder. Use Add apps to pick more.	アプリを別のアプリにドラッグするとフォルダが作成されます。「アプリを追加」でさらに選べます。
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	ハンドルをドラッグしてサイズを変更、中央をドラッグしてキーボードを移動します。リセットで Gboard のサイズに戻ります。
+Drag to home screen	ホーム画面にドラッグ
+Draw on screenshots and photos.	スクリーンショットと写真に描画。
+Draw shapes and arrows on screenshots.	スクリーンショットに図形や矢印を描画。
+Draw shapes on photos: Edit → Doodles. They stay editable.	写真に図形を描画：編集 → 落書き。後から編集できます。
+Ends	終了
+Erase all data is greyed out in Settings while OTA blocker is on.	OTA ブロッカーがオンの間、設定の「すべてのデータを消去」はグレー表示になります。
+Every feature, fix and release	すべての機能、修正、リリース
+Feature preview	機能のプレビュー
+Features preview	機能のプレビュー
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	サイトごとに広告をフィルタ（基本～完全）。完全では Cookie バナーやポップアップも非表示になります。任意の要素を削除することもできます。
+Filtering levels and website exceptions.	フィルタ レベルとウェブサイトの例外。
+Fingerprint or PIN before locked apps and folders open	ロック中のアプリやフォルダを開く前に指紋または PIN
+Five text sizes for app names. Icons stay the same size.	アプリ名のテキストサイズを 5 段階で。アイコンのサイズはそのままです。
+Flashlight and camera shortcuts	ライトとカメラのショートカット
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	ライト：電源ボタンを 2 回押してオン・オフ（ロック中も可）。カメラ（標準）はカメラを起動します。
+Folder grid	フォルダのグリッド
+Folder sorting	フォルダの並べ替え
+Folders	フォルダ
+Folders first, then your newest files.	フォルダが先、次に新しいファイル。
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	フォルダは中のアプリの数に合わせて大きくなります。各フォルダのその他メニューからグリッドを選べます。
+Folders, dragging and app shortcuts	フォルダ、ドラッグ、アプリのショートカット
+Folders, dragging and app shortcuts.	フォルダ、ドラッグ、アプリのショートカット。
+Folders, drawer, names, search bar and recents	フォルダ、ドロワー、名前、検索バー、最近のアプリ
+Folders, names, search bar and recents.	フォルダ、名前、検索バー、最近のアプリ。
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	ダークテーマのスケジュールに従います。ライトテーマでは通常の色とぼかしに戻ります。
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	独自のモバイルプランを持つ Pixel Watch 用：Watch のネットワークもオフになります。Pixel Suite の Watch アプリが必要です。
+For fingerprint or PIN protection, use Privacy & Security.	指紋や PIN で保護するには「プライバシーとセキュリティ」を使います。
+Free screenshot crop	スクリーンショットの自由な切り抜き
+From Chrome to Chrome+	Chrome から Chrome+ へ
+Full changelog on GitHub	GitHub の変更履歴（全文）
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard はクリップを削除するまで保持します。固定したクリップは青いカードで表示され、上部の X で固定以外をすべて削除します。「1 列のクリップボード」では 1 行に 1 クリップを表示します。
+Gboard restarts when you change any of these.	これらを変更すると Gboard が再起動します。
+Gemini (stock)	Gemini（標準）
+Gemini when locked	ロック中の Gemini
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini、かこって検索、スクリーンショット、またはサイレントモード。
+Gestures	操作
+Get the Pixel Suite watch app from the developer on Telegram.	Pixel Suite の Watch アプリは テレグラム で開発者から入手してください。
+Google Photos setup	Google フォトの設定
+Google app	Google アプリ
+Google news	Google ニュース
+Google's own look	Google 本来の見た目
+Held-back apps are saved automatically before they update.	保留中のアプリはアップデート前に自動で保存されます。
+Hide	非表示
+Hide Developer Options	開発者向けオプションを隠す
+Hide accessibility from apps	ユーザー補助をアプリから隠す
+Hide ads in Google feed	Google フィードの広告を非表示
+Hide app shortcuts	アプリのショートカットを非表示
+Hide search bar	検索バーを非表示
+Hide suggestion chips	候補チップを非表示
+Hides app shortcuts like View orders from the drawer menu.	「注文を表示」などのアプリのショートカットをドロワーのメニューから隠します。
+Hides the globe under your keyboard and moves the arrow to the right	キーボード下の地球儀を非表示にし、矢印を右に移動します
+Hold Home for	ホーム長押しの動作
+Hold a folder and drag it anywhere among your apps.	フォルダを長押しして、アプリの間の好きな場所にドラッグします。
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	フォルダを長押しすると、名前の変更、並べ替え、削除ができます。削除しても中のアプリはアンインストールされません。
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	ショートカットを長押ししてツールバーへドラッグします。ツールバー上で動かすと並べ替え、外に出すと削除できます。タップすると機能を確認できます。両端のボタンを非表示にするとショートカットの場所が広がります。
+Hold an app and choose Change icon to use your own image.	アプリを長押しして「アイコンを変更」を選ぶと、好きな画像を使えます。
+Hold an app and choose Rename.	アプリを長押しして「名前を変更」を選びます。
+Hold an app and choose Rename. It shows right away everywhere.	アプリを長押しして「名前を変更」を選びます。すぐにどこでも反映されます。
+Hold an app in the drawer and drag it onto Add to home screen.	ドロワーでアプリを長押しして「ホーム画面に追加」にドラッグします。
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	アプリまたはフォルダを長押しして「ロック」または「ロック解除」を選びます。\n\nフォルダをロックしても中のアプリはロックされません。
+Hold an app or folder with a dot and choose Clear badge.	ドット付きのアプリまたはフォルダを長押しして「バッジを消去」を選びます。
+Hold an app or folder with a notification dot and choose Clear badge.	通知ドット付きのアプリまたはフォルダを長押しして「バッジを消去」を選びます。
+Hold back app updates	アプリのアップデートを保留
+Hold power button	電源ボタンを長押し
+How it works	使い方
+Icon label size	アイコンのラベルサイズ
+Icon label size, five levels	アイコンのラベルサイズ（5 段階）
+Icons, Super Dark-Mode and blur	アイコン、スーパーダークモード、ぼかし
+If a double tap doesn't register, tap once more within three seconds.	ダブルタップが反応しないときは、3 秒以内にもう一度タップしてください。
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	Chrome で拡張機能を開き「ダークページ」をタップすると、そのサイトだけオフにできます。写真や動画の色はそのままです。
+Installation permission was not enabled. Tap Download and install when ready.	インストールの権限がオンになっていません。準備ができたら「ダウンロードしてインストール」をタップしてください。
+Keep calls quiet and stay connected	通話を静かにしたまま接続を維持
+Keep incoming calls quiet and stay connected	着信を静かにしたまま接続を維持
+Keep unlocked for 1 minute	1 分間ロック解除のままにする
+Keep what matters. Clear the rest.	大切なものは残して、あとはクリア。
+Keeps Clear all next to Screenshot and Select.	「すべてクリア」を「スクリーンショット」「選択」の横に表示します。
+Keeps chips like Screenshot off the toolbar	「スクリーンショット」などのチップをツールバーに出さない
+Keyboard bar tweak	キーボードバーの調整
+Keys	キー
+Keys and backspace	キーと Backspace
+LSPosed scope	LSPosed スコープ
+Landscape recent apps	横向きの最近のアプリ
+Landscape view	横向き表示
+Left button	左のボタン
+Live frame counter at the top right	右上にリアルタイムのフレームカウンター
+Lock a card from its menu to keep it when you clear apps.	メニューからカードをロックすると、アプリをクリアしても残ります。
+Lock an app's card so Clear all keeps it.	アプリのカードをロックすると「すべてクリア」で残ります。
+Lock apps and folders	アプリとフォルダをロック
+Lock apps in recents	最近のアプリでアプリをロック
+Lock factory reset	出荷時設定へのリセットをロック
+Lock screen	ロック画面
+Lock-screen behavior	ロック画面の動作
+Lock-screen taps	ロック画面のタップ
+Locking recent apps	最近のアプリのロック
+Locks stay after a restart.	ロックは再起動後も維持されます。
+Made by RovianDev	開発：RovianDev
+Make it work your way.	あなた好みに。
+Middle	中央
+Miscellaneous	その他
+More	その他
+More to come.	今後も追加予定。
+Move and resize the keyboard	キーボードの移動とサイズ変更
+Move folders between apps	アプリの間でフォルダを移動
+Move several apps	複数のアプリを移動
+Move to bottom and scroll	一番下に移動してスクロール
+Navigation buttons	ナビゲーション ボタン
+Newest files first, in Files and the file picker	ファイルとファイル選択画面で新しいファイルを先頭に
+No LTE Pixel Watch? Leave this off.	LTE 対応の Pixel Watch がない場合はオフのままにしてください。
+No blur anywhere	どこにもぼかしなし
+No file picker available	利用できるファイル選択画面がありません
+Nothing	なし
+Notifications that can be dismissed are cleared, and the dot goes away.	消去できる通知が消去され、ドットが消えます。
+OTA & Store blocker	OTA とストアのブロッカー
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	オフ：話すと同時に文字が表示されます。「チェックマーク付き音声入力」をオンにすると、話した後チェックマークをタップして追加、X でキャンセルします。Gboard の音声設定で入力タイプを Rambler にする必要があります。
+On the lock screen, holding power opens Gemini	ロック画面で電源ボタンを長押しすると Gemini が開きます
+One clip per row, exactly as you copied it	1 行に 1 クリップ、コピーしたとおりに
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	ここにあるすべてをまとめてオン・オフ。オフの間、Gboard は標準のまま動作し、選択内容は保持されます。
+Only Clear all	「すべてクリア」のみ
+Only Clear all, in the middle	「すべてクリア」のみ（中央）
+Open Developer options	開発者向けオプションを開く
+Open locked apps and folders with your fingerprint or PIN	ロック中のアプリやフォルダを指紋または PIN で開く
+Per language	言語ごと
+Personalize	カスタマイズ
+Phone, Chrome, Gboard, Google, News and watch	電話、Chrome、Gboard、Google、ニュース、Watch
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	フォルダのその他メニューから 3×3、4×4、5×5 を選べます。フォルダがいっぱいになると大きなグリッドが表示されます。
+Pin, reorder and hide sharing apps	共有アプリを固定、並べ替え、非表示
+Pin, reorder, hide and restore sharing apps and contacts	共有アプリと連絡先を固定、並べ替え、非表示、復元
+Pinned and hidden sharing apps.	固定・非表示にした共有アプリ。
+Pixel Studio setup	Pixel スタジオの設定
+Pixel Suite checks for updates and installs them right here.	Pixel Suite がアップデートを確認し、ここでインストールします。
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite には root が必要です。root マネージャーで許可してから、この画面を開き直してください。
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite：ロック画面のカードをダブルタップすると、開かずに画面をオフにします。
+Pixel Watch with LTE	LTE 対応の Pixel Watch
+Place folders anywhere among your apps, with their own grids and sorting.	フォルダをアプリの間の好きな場所に置けます。グリッドと並び順もフォルダごとに設定できます。
+Play Store blocker	Play ストア ブロッカー
+Play Store updates and system updates	Play ストアのアップデートとシステム アップデート
+Preview of the chosen surface style on a folder over a wallpaper	壁紙の上のフォルダで、選んだサーフェス スタイルをプレビュー
+Privacy & Security	プライバシーとセキュリティ
+Protect locked apps	ロック中のアプリを保護
+Protected with your fingerprint or PIN.	指紋または PIN で保護されています。
+Protection	保護
+Pure black backgrounds and darker menus in dark theme.	ダークテーマで真っ黒な背景と、より暗いメニュー。
+Quick actions from your phone's buttons.	スマートフォンのボタンからクイック操作。
+Recent	最近
+Recent Apps	最近のアプリ
+Record and save calls	通話を録音して保存
+Record calls in the Phone app, in any country, without the announcement	電話アプリで、どの国でも、アナウンスなしで通話を録音
+Reduce screenshot delay	スクリーンショットの遅延を短縮
+Refresh rate slider	リフレッシュ レートのスライダー
+Removes sponsored cards from your feed, with no gaps left	フィードからスポンサー カードを取り除き、隙間も残しません
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	ホーム画面下部の検索バーを取り除きます。ドックが下に移動し、アプリがその場所を使います。
+Removing apps from the home screen doesn't uninstall them.	ホーム画面からアプリを削除してもアンインストールはされません。
+Rename apps	アプリ名を変更
+Reopen Settings to see the change.	変更を確認するには設定を開き直してください。
+Reopen apps that were already open.	すでに開いていたアプリを開き直してください。
+Reorder pinned apps and hide sharing apps	固定アプリを並べ替え、共有アプリを非表示
+Reset brings back the original name.	リセットで元の名前に戻ります。
+Reset restores the original name. Work-profile and Private Space apps keep their names.	リセットで元の名前に戻ります。仕事用プロファイルとプライベート スペースのアプリは名前が変わりません。
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	「復元」でここに戻します。データ付きで保存したバージョンは、データも復元するか確認します。
+Restore this backup?	このバックアップを復元しますか？
+Right button	右のボタン
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	最大 19 個のウェブサイトとフォルダを丸いアイコンで。長押ししてドラッグで移動、別のアイコンに重ねるとフォルダになります。ウェブサイトを編集して好きな画像を設定できます。
+Rounded keys	角の丸いキー
+Rounded keys and corners, with smooth key pop-ups	角の丸いキーと角、なめらかなキー ポップアップ付き
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	ライト、ダーク、スーパーダーク で、なめらかなポップアップ付きの角の丸いキー。削除キーから左にスワイプすると 1 文字ずつ消せます。
+Save your settings, folders and icons to a file	設定、フォルダ、アイコンをファイルに保存
+Saved versions of your apps, ready to put back.	保存したアプリのバージョン。いつでも戻せます。
+Saved. Gboard restarts with the new size	保存しました。新しいサイズで Gboard を再起動します
+Saved. Gboard restarts with your toolbar	保存しました。新しいツールバーで Gboard を再起動します
+Screen recording sheet	画面録画シート
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	ブロックしているアプリでもスクリーンショットと録画が可能に。\n同じことをする他のモジュールは先にオフにしてください。
+Screenshots appear instantly. Uses a little extra memory.	スクリーンショットがすぐに表示されます。メモリを少し多く使います。
+Screenshots, accessibility, keyboard and developer options	スクリーンショット、ユーザー補助、キーボード、開発者向けオプション
+Screenshots, sleep, wake and dragging	スクリーンショット、スリープ、スリープ解除、ドラッグ
+Search stays in the app drawer.	検索はアプリドロワーに残ります。
+Set	設定
+Set a phone screen lock first	先にスマートフォンの画面ロックを設定してください
+Set up eSIM with a QR code	QR コードで eSIM を設定
+Setup, community and support	設定、コミュニティ、サポート
+Shapes in Pixel Studio and Google Photos	Pixel スタジオと Google フォトの図形
+Share menu	共有メニュー
+Share sheet tools	共有シートのツール
+Sharing	共有
+Show FPS	FPS を表示
+Show toasts	トーストを表示
+Shows right away everywhere. Tap the reset arrow for the original icon.	すぐにどこでも反映されます。リセットの矢印をタップすると元のアイコンに戻ります。
+Shows right away everywhere. Work profile and Private Space apps keep their names.	すぐにどこでも反映されます。仕事用プロファイルとプライベート スペースのアプリは名前が変わりません。
+Silence	消音
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	消音、サイレント モード、迷惑ブロック は長押しでオン、次の長押しでオフになります。迷惑なし は 3 つをまとめて行います。
+Silences calls and keeps you connected. Add its Quick Settings tile.	着信を消音し、接続は維持します。クイック設定のタイルを追加してください。
+Single tap	シングルタップ
+Small fixes, simple controls.	ちょっとした修正、シンプルな操作。
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	よりなめらかな手作りアニメーション、内蔵の拡張機能、下部の操作部、カスタム スピードダイヤル。
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	よりなめらかな手作りアニメーション、内蔵の拡張機能、下部の操作部、カスタム スピードダイヤル
+Sort from the three-dot menu	その他メニューから並べ替え
+Sorting and custom order	並べ替えとカスタム順
+Speak, then tap the checkmark to add your words	話してからチェックマークをタップして追加
+Speed dial	スピードダイヤル
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	アプリをドラッグし始めたら、別の指で他のアプリをタップします。すべてをホーム画面かフォルダにドロップします。
+Starts	開始
+Stay connected. Keep incoming calls quiet.	接続を保ったまま、着信を静かに。
+Stays unlocked for a minute after you leave it	離れてから 1 分間はロック解除のまま
+Stock	標準
+Stops system updates and hides Software updates in Settings.	システム アップデートを止め、設定の「ソフトウェア アップデート」を非表示にします。
+Surface style, three options	サーフェス スタイル（3 種類）
+Surfaces and blur	サーフェスとぼかし
+Swipe down with three fingers to take a screenshot.	3 本の指で下にスワイプしてスクリーンショットを撮影します。
+Swipe gestures still work.	スワイプ操作は引き続き使えます。
+Swipe left from delete to remove letter by letter	削除キーから左にスワイプして 1 文字ずつ削除
+System colors, your way.	システムの色を、あなた好みに。
+System update controls.	システム アップデートの管理。
+System updates and factory reset	システム アップデートと出荷時設定へのリセット
+Take a screenshot	スクリーンショットを撮る
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Chrome の新しいタブページで「拡張機能」をタップして使います。タップで設定、長押しでツールバーに固定できます。
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	新しいタブページで「拡張機能」をタップして使います。長押しでツールバーに固定できます。
+Tap an app to see its saved versions.	アプリをタップすると保存したバージョンが表示されます。
+Tap to wake	タップでスリープ解除
+Text size	テキストサイズ
+That isn't a Pixel Suite backup	Pixel Suite のバックアップではありません
+The 3 newest versions of each app are kept.	各アプリの最新 3 バージョンが保持されます。
+The clock and info while charging, and after the power button.	充電中と電源ボタンを押した後に、時計と情報を表示。
+The green button puts a saved version back, with its data and sign-ins.	緑のボタンで、保存したバージョンをデータとログイン状態ごと戻します。
+The power button shows the always-on display for a few seconds	電源ボタンで常に表示状態のディスプレイを数秒間表示
+The three styles	3 つのスタイル
+The toolbar	ツールバー
+Three-finger screenshot	3 本指スクリーンショット
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	ここに戻るには、ホーム画面を長押しして「Pixel Suite の設定」を選びます。root と LSPosed が必要です。
+To protect an app with your fingerprint or PIN, use Privacy & Security.	アプリを指紋や PIN で保護するには「プライバシーとセキュリティ」を使います。
+Toasts	トースト
+Toolbar	ツールバー
+Toolbar, keys, resize, auto-correction, clipboard	ツールバー、キー、サイズ変更、自動修正、クリップボード
+Tools for your Google apps.	Google アプリのためのツール。
+Top	上
+Turn auto-correction off for the languages you choose. Suggestions still show.	選んだ言語の自動修正をオフにします。候補は引き続き表示されます。
+Turn off after	オフにするまでの時間
+Turn on notifications in Android settings	Android の設定で通知をオンにしてください
+Turn the flashlight on or off, open the camera (stock), or do nothing.	ライトのオン・オフ、カメラ（標準）の起動、または何もしない。
+Turn this feature on or off.	この機能をオン・オフします。
+Turn your phone sideways in recents for a cleaner view.	最近のアプリでスマートフォンを横にすると、すっきり表示されます。
+Turns on	オンにする時刻
+Two-finger drag	2 本指でドラッグ
+Typing and clipboard	入力とクリップボード
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	元に戻す、やり直し、クイック選択、すべて選択、切り取り、コピー、貼り付けがすべてのアプリで使えます。クイック選択：タップで単語、もう一度タップで解除、長押しですべて選択。
+Unlock OEM apps	OEM アプリのロックを解除
+Unlock on the 4th digit	4 桁目でロック解除
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	PIN の 4 桁目を入力した時点で、Enter なしでロック解除します
+Up to 7 shortcuts, in the same order in every language.	最大 7 個のショートカット。どの言語でも同じ並び順です。
+Up to 7 shortcuts, their order, the side buttons and two rows	最大 7 個のショートカット、並び順、両端のボタン、2 行表示
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	「更新」はまず現在のバージョンを保存してから Play ストアのページを開きます。更新後は再び保留されます。
+Updates	アップデート
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	これらの主要アプリを Play ストアから更新すると、Pixel Suite の機能が動かなくなることがあります。Pixel Suite がリリースごとに更新します。
+Use Doodles	落書き を使用
+Use Gboard+	Gboard+ を使用
+Use custom app icons	カスタムのアプリアイコンを使用
+Use your own image for an app icon	好きな画像をアプリアイコンに使う
+Voice typing with checkmark	チェックマーク付き音声入力
+Wake gesture	スリープ解除の操作
+Wake the screen	画面をオンにする
+Wake your phone with a tap, with pocket protection.	タップでスマートフォンをスリープ解除。ポケット内での誤動作を防止します。
+Websites open dark, with no white flash. Super Dark uses pure black.	ウェブサイトが白く光らずダークで開きます。スーパーダーク は真っ黒を使います。
+What's new	新機能
+When you untick apps, Back up saves their current versions first.	アプリのチェックを外すと、「バックアップ」がまず現在のバージョンを保存します。
+While charging and after the power button	充電中と電源ボタンを押した後
+While holding an app or folder, swipe with another finger to scroll or turn pages.	アプリやフォルダを長押ししたまま、別の指でスワイプしてスクロールやページ切り替えができます。
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	常に表示状態のディスプレイがオフのとき、電源ボタンで画面を常に表示状態のディスプレイに切り替えます。選んだ時間が過ぎるとオフになります。
+With Super Dark-Mode, panels stay black.	スーパーダークモード では、パネルは黒のままです。
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	画面がオフで常に表示状態のディスプレイがオンのとき、音量小ボタンを 2 回押します。通話中やメディア再生中は使えません。
+With the screen off, open the camera or turn the flashlight on or off.	画面オフのまま、カメラを起動したりライトをオン・オフしたりできます。
+With themed icons on, the app drawer keeps each app's own colors.	テーマアイコンがオンでも、アプリドロワーでは各アプリ本来の色を保ちます。
+You can also hold the search bar and choose Hide widget. It hides right away.	検索バーを長押しして「ウィジェットを非表示」を選ぶこともできます。すぐに非表示になります。
+Your own Always-on display setting isn't changed.	ご自身の「常に表示状態のディスプレイ」の設定は変わりません。
+eSIM setup with a QR code	QR コードによる eSIM 設定
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• アプリを一番上の行にドラッグすると固定され、さらにドラッグで並べ替えられます。\n\n• アプリや連絡先を長押しすると、固定または非表示にできます。\n\n• 非表示の項目は「非表示のアプリ」と「非表示の連絡先」にあります。長押しで再表示できます。
+Hide 1 app	1 個のアプリを非表示
+Tap to share. Long-press to unhide.	タップで共有。長押しで再表示。
+Tick apps to unhide.	再表示するアプリにチェックを入れてください。
+Tick contacts to unhide.	再表示する連絡先にチェックを入れてください。
+Unknown app	不明なアプリ
+Back up and update	バックアップして更新
+Back up now	今すぐバックアップ
+Check root access and reopen this page.	root アクセスを確認して、このページを開き直してください。
+Close app selection	アプリの選択を閉じる
+Collapse blocked updates	ブロック中のアップデートを折りたたむ
+Couldn't open Play Store	Play ストアを開けませんでした
+Discard	破棄
+Discard changes?	変更を破棄しますか？
+Expand blocked updates	ブロック中のアップデートを展開
+Keep editing	編集を続ける
+Opening Play Store…	Play ストアを開いています…
+Reopen this page to refresh installed apps	インストール済みアプリを更新するには、このページを開き直してください
+Save them first, then apply	先に保存してから適用してください
+Tick Play Store in LSPosed for Pixel Suite.	LSPosed で Pixel Suite の Play ストアにチェックを入れてください。
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	このアプリのチェックを外すには「OEM アプリのロックを解除」をオンにしてください。更新すると Pixel Suite が対応できなくなることがあります。
+Unknown	不明
+Unticked apps can get updates	チェックを外したアプリはアップデートを受け取れます
+Update	更新
+Update blocker	アップデート ブロッカー
+Updating this core app may break Pixel Suite support.	この主要アプリを更新すると Pixel Suite が対応できなくなることがあります。
+Wait for your changes to finish applying	変更の適用が終わるまでお待ちください
+Your app selections haven't been applied.	アプリの選択はまだ適用されていません。
+\n\nTick it and apply to hold it back.	\n\nチェックを入れて適用すると保留されます。
+stroke weight	線の太さ
+APK exceeds download limit	APK がダウンロード上限を超えています
+APK verification failed	APK の検証に失敗しました
+An update download is already running.	アップデートのダウンロードはすでに実行中です。
+Cannot prepare APK	APK を準備できません
+Checking APK hash and signing certificate…	APK のハッシュと署名証明書を確認中…
+Could not open Android installer. Try Download and install again.	Android のインストーラを開けませんでした。もう一度「ダウンロードしてインストール」をお試しください。
+Download complete. Open Updates and tap Download and install to continue.	ダウンロードが完了しました。「アップデート」を開いて「ダウンロードしてインストール」をタップしてください。
+Download unavailable	ダウンロードできません
+Incomplete APK	APK が不完全です
+No newer verified release is available on both repositories.	両方のリポジトリに、検証済みの新しいリリースはありません。
+Pixel Suite update	Pixel Suite のアップデート
+Unexpected APK size	APK のサイズが想定と異なります
+Update could not be downloaded or verified. Check your connection and try again.	アップデートをダウンロードまたは検証できませんでした。接続を確認してもう一度お試しください。
+Verified. Opening Android installer…	検証しました。Android のインストーラを開いています…
+Verifying the official releases…	公式リリースを検証中…
+Add the VPN tile to Quick Settings to connect with one tap.	クイック設定に VPN タイルを追加すると、ワンタップで接続できます。
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	Chrome のみ：Chrome の拡張機能から VPN をオンにします。Chrome だけが使い、ウェブサイトにはその国が表示されます。
+Connect	接続
+Couldn't connect	接続できませんでした
+Couldn't load servers. Tap to try again.	サーバーを読み込めませんでした。タップして再試行してください。
+Couldn't refresh. Showing the last list.	更新できませんでした。前回のリストを表示しています。
+Couldn't start the VPN	VPN を開始できませんでした
+Countries without servers right now show as Unavailable.	現在サーバーがない国は「利用不可」と表示されます。
+Fastest server	最速のサーバー
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	世界中のボランティアが運営する無料サーバー。Pixel Suite が最速のサーバーに接続します。
+Getting the free server list	無料サーバーのリストを取得中
+Loading servers…	サーバーを読み込み中…
+No servers yet	サーバーはまだありません
+Not connected	未接続
+Open-source servers change during the day	オープンソースのサーバーは 1 日のうちに変わります
+Pick a country, then tap Connect	国を選んで「接続」をタップしてください
+Refresh servers	サーバーを更新
+Tap Refresh servers	「サーバーを更新」をタップしてください
+Turn off	オフにする
+Use for all apps	すべてのアプリで使用
+VPN is part of Patreon premium	VPN は パトレオン プレミアムの機能です
+Couldn't ask for VPN permission	VPN の権限をリクエストできませんでした
+VPN permission is needed to connect	接続には VPN の権限が必要です
+Russia	ロシア
+Server list was empty	サーバーリストが空でした
+South Korea	韓国
+United Kingdom	イギリス
+United States	アメリカ
+Chrome only	Chrome のみ
+Connecting…	接続中…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	迷惑ブロック が Watch のモバイル ネットワークを切り替えられるよう、Pixel Suite に「付近のデバイス」を許可してください。
+Do Not Annoy: watch	迷惑ブロック：Watch
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	Watch の Pixel Suite がモバイル ネットワークを切り替えるには、1 回だけの権限付与（adb コマンド）が必要です。
+Watch	Watch
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	「スムーズ ディスプレイ」の下に 60 / 120 Hz のスライダーを追加（設定 > ディスプレイとタップ）
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	「アプリとデータ」はすべて（ログイン、チャット、設定、ファイル）を保存し、そのまま復元します。「アプリのみ」はアプリだけを保存します。
+Auto sorts A to Z; Custom lets you arrange them.	自動は A～Z 順、カスタムは自由に並べられます。
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	フォルダを「一番下に移動」にドラッグするとスクロール。深く押すほど速くなります。
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	ドロワーのフォルダ：「一番下に移動」の上で長押しするとスクロール。深く押すほど速くなります。
+Hold an app or folder and choose Lock or Unlock.	アプリまたはフォルダを長押しして「ロック」または「ロック解除」を選びます。
+Pixel watch eSIM purchase	Pixel Watch eSIM の購入
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	タップで開き、長押しで名前の変更や削除。中のウェブサイトを長押しすると編集、移動、削除できます。
+• Drag an app into the top row to pin it, then drag to reorder.	• アプリを一番上の行にドラッグすると固定され、さらにドラッグで並べ替えられます。
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	Watch に接続できませんでした。再接続したらモバイル ネットワークをオンにします。
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	Watch に接続できませんでした。再接続したらモバイル ネットワークをオフにします。
+Language	言語
+Automatic	自動
+Follows the phone	スマートフォンに合わせる
+Couldn't save the language	言語を保存できませんでした
+‹  Back	‹  戻る
+just now	たった今
+1 minute ago	1 分前
+1 hour ago	1 時間前
+1 day ago	1 日前
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	広告リスト：<a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0)。Pixel Suite 独自のブロッカーです。
+The Ad blocker is part of Pixel Suite's Patreon features	広告ブロッカーは Pixel Suite の パトレオン 機能です
+Root access is needed	root 権限が必要です
+Off: ads are no longer blocked	オフ：広告はブロックされなくなりました
+Couldn't download the ad lists (no connection?). The current list stays.	広告リストをダウンロードできません（接続なし？）。現在のリストを使い続けます。
+Ready: restart the phone once to start blocking	準備完了：ブロックを始めるにはスマートフォンを一度再起動してください
+Couldn't prepare the list	リストを準備できません
+Couldn't prepare the module	モジュールを準備できません
+Getting the ad lists…	広告リストを取得中…
+No answer over UDP	UDP で応答がありません
+TLS handshake timed out	TLS ハンドシェイクがタイムアウトしました
+Key exchange timed out	鍵交換がタイムアウトしました
+Server sent no address	サーバーからアドレスが届きません
+Server rejected the sign-in	サーバーがログインを拒否しました
+Server gave no address	サーバーがアドレスを割り当てません
+Connection closed	接続が切れました
+Server didn't answer	サーバーが応答しません
+Server refused the call	サーバーが接続を拒否しました
+Server closed the connection	サーバーが接続を閉じました
+1 server	1 台のサーバー
+Unhide 1 app	1 個のアプリを再表示
+Unhide 1 contact	1 件の連絡先を再表示
+Unhide contact	連絡先を再表示
+1 app saved · 1 version	保存済み：1 個のアプリ · 1 個のバージョン
+1 app · 1 version	1 個のアプリ · 1 個のバージョン
+Doodles	落書き
+Super Dark-Mode	スーパーダークモード
+Super Dark	スーパーダーク
+Frosted Glass	すりガラス
+Do Not Annoy	迷惑ブロック
+No Annoyance	迷惑なし
+Quick Select	クイック選択
+Google Photos	Google フォト
+Pixel watch	Pixel ウォッチ
+Google dialer+	Google 電話+
+Keep	Keep メモ
+Drive	ドライブ
+Sponsored	スポンサー
+Recent apps	最近使用したアプリ
+3×3 (Stock)	3×3（標準）
+Ag	あ
+Aa	あ
+1 website with custom settings	1 件のサイトに個別の設定
+1 app isn't saved at the version installed now	1 個のアプリが現在のバージョンで保存されていません
+Words are never replaced; suggestions still show	単語は置き換えられません。候補は表示されます
+Off: Gboard corrects nothing; turn it on to choose languages	オフ：Gboard は何も修正しません。言語を選ぶにはオンにしてください
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	ハンドルをドラッグでサイズ変更、中央をドラッグで移動。［適用］で保存、［リセット］で Gboard のサイズに戻ります。縦向きのみ。
+Unlock Watch eSIM · $10 one-time purchase	ウォッチ eSIM を解除 · $10 の買い切り
+$10 one-time eSIM purchase	$10 の eSIM 買い切り
+One-time purchase, $10, yours to keep.	買い切り $10、ずっと使えます。
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	購入コードは purchases@roviandev.com からのメールにあります。迷惑メールも確認してください。
+Pixel Suite logo	Pixel Suite のロゴ
+Open Android app settings to manage notifications.	通知を管理するには Android のアプリ設定を開いてください。
+OK	OK
+Opens this sheet from the toolbar	ツールバーからこのシートを開きます
+Needs Pixel Suite premium and the ad blocker on	Pixel Suite プレミアムと広告ブロッカーのオンが必要です
+Manage extensions	拡張機能を管理
+Enter an address	アドレスを入力してください
+That isn't a web address	ウェブアドレスではありません
+Off in Chrome · on for other apps	Chrome ではオフ · 他のアプリではオン
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	VPN はスマートフォン全体でオンです。ここでオフにすると Chrome だけが外れます。
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	他のアプリは VPN を使用中で、Chrome は除外されています。オンにすると Chrome も加わります。
+Only Chrome uses this VPN. Other apps keep their own connection.	この VPN を使うのは Chrome だけです。他のアプリは自分の接続を使います。
+All apps except Chrome	Chrome 以外のすべてのアプリ
+• 1 setting	• 1 個の設定
+• 1 custom icon	• 1 個のカスタムアイコン
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• Pixel ランチャーの設定：ドロワーのフォルダ、並べ替え、名前、ロック
+• Share menu: pinned order and hidden apps	• 共有メニュー：固定した順序と非表示のアプリ
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	現在の Pixel Suite の設定は置き換えられます。Pixel ランチャーが一度再起動します。
+Two rows, shortcuts on top	2 行、ショートカットが上
+Two rows	2 行
+Side buttons hidden	サイドボタンを非表示
+Menu button hidden	メニューボタンを非表示
+Emoji/voice hidden	絵文字/音声を非表示
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	ジェスチャーバーの横にナビゲーションボタンを追加します。モジュール更新後にPixel ランチャーを一度再起動すると、以後ボタンの選択はすぐ反映されます。
+Sign-in timed out	ログインがタイムアウトしました
+Address setup timed out	アドレスの設定がタイムアウトしました
+Server renewed its keys	サーバーが鍵を更新しました
+Stopped	停止しました
+Couldn't finish the backup	バックアップを完了できません
+Root isn't available, or it took too long	root が使えないか、時間がかかりすぎました
+It didn't finish	完了しませんでした
+Pixel Suite could not make the file	Pixel Suite がファイルを作成できません
+Pixel Suite is unavailable	Pixel Suite を利用できません
+Pixel Suite gave no file	Pixel Suite からファイルが届きません
+the picked folder	選んだフォルダ
+Use a name between 1 and 80 characters	1～80 文字の名前にしてください
+Folder limit reached	フォルダの上限に達しました
+Drag here to add to home screen	ここにドラッグしてホーム画面に追加
+Drag a folder here to move it to the end of the list	フォルダをここにドラッグするとリストの最後に移動
+Drag here to take out of the folder	ここにドラッグするとフォルダから出せます
+More shapes	その他の図形
+More colours	その他の色
+Thickness	太さ
+Fill shape	図形を塗りつぶす
+Delete shape	図形を削除
+Make Doodles menu smaller	落書きメニューを小さくする
+Move Doodles menu	落書きメニューを移動
+Make text menu smaller	テキストメニューを小さくする
+Move text menu	テキストメニューを移動
+More fonts	その他のフォント
+Clear clipboard	クリップボードを消去
+Stop voice typing	音声入力を停止
+Save icon	アイコンを保存
+Reset to original icon	元のアイコンに戻す
+Folder options	フォルダのオプション
+Doodles tab	落書きタブ
+Edit: select hidden contacts to unhide	編集：再表示する非表示の連絡先を選択
+Edit: select hidden apps to unhide	編集：再表示する非表示のアプリを選択
+Edit: select apps to hide	編集：非表示にするアプリを選択
+Hide the contacts row	連絡先の列を非表示
+Show the contacts row	連絡先の列を表示
+Locked	ロック中
+Filtering mode	フィルタモード
+Change the picture	画像を変更
+Open a website to choose its filtering	サイトを開いてフィルタを選んでください
+Highest refresh rate. The screen still slows down when nothing moves.	最高のリフレッシュレート。動きがないときは画面がリフレッシュレートを下げます。
+Cancelled: the app is locked by Pixel Suite	キャンセル：このアプリは Pixel Suite でロックされています
+Incoming call declined by Do Not Annoy	迷惑ブロックが着信を拒否しました
+Confirm it's you to uninstall this core app	このコアアプリをアンインストールするには本人確認してください
+Confirm it's you to disable this core app	このコアアプリを無効にするには本人確認してください
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	警告：このシステム統合アプリを無効化またはアンインストールすると、Pixel Suite の機能とシステムの安定性が損なわれる可能性があります。
+Files · date modified	ファイル · 更新日
+Site settings unavailable	サイトの設定を利用できません
+Could not save site settings	サイトの設定を保存できません
+Couldn't read existing Chrome site settings	Chrome の既存のサイト設定を読み取れません
+Cannot create icon storage	アイコンの保存先を作成できません
+Unsupported dimensions	サポートされていないサイズです
+Cannot encode image	画像をエンコードできません
+Response too large	応答が大きすぎます
+Orange	オレンジ
+Dark red	濃い赤
+Turquoise	ターコイズ
+Dark blue	濃い青
+Purple	紫
+Pink	ピンク
+White	白
+Black	黒
+Move to bottom	一番下へ移動
+Lock app	アプリをロック
+Unlock app	アプリのロックを解除
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	すべて：アプリ、ログイン情報、チャット、設定、ファイル。元どおりに復元されます。
+$5/month	$5/月
+Settings soft scrolling edges (Frosted Glass only):	設定のやわらかいスクロール端（すりガラスのみ）：
+Digital Wellbeing	Digital Wellbeing
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	LSPosed でこれらのスコープを有効にして再起動してください。確認済みの設定から開いた画面と、安全に識別できたスクロール領域だけに適用されます。非対応の領域はスキップされます。
+Telegram	テレグラム
+Patreon	パトレオン
+Pixel Launcher	Pixel ランチャー
+Pixel Studio	Pixel スタジオ
+Hold power button when locked	ロック中に電源ボタンを長押し
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	スマートフォンがロックされているときは、「ロック中に電源ボタンを長押し」で選んだ操作が実行されます。それぞれの選択は別々に動作します。
+Reboot	再起動
+Tap again to reboot	もう一度タップすると再起動します
+Rebooting…	再起動しています…
+These run inside Android, so they update after a reboot:	これらは Android 内で動作するため、再起動後に更新されます：
+Reboot to finish updating. Long-press to hide.	再起動すると更新が完了します。長押しで非表示にできます。
+Couldn't reboot: root access needed	再起動できません：root 権限が必要です
+Search in Chrome	Chrome で検索
+Couldn't refresh: root access needed	リフレッシュできません：root 権限が必要です
+See-through keyboard background, with rims	縁取り付きの透けるキーボード背景
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	キーボードの背景がすりガラスになり、後ろにあるものがぼやけて透けて見えます。縁取り付きです。キーはそのままです。
+Frosted Gboard	すりガラス Gboard
+Follows the phone language	スマートフォンの言語に合わせる
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	Chrome など一部のアプリでは、キーボード上部の角が白く見えます。これらのアプリはキーボードが始まる位置でページを終えるため、角の後ろに表示するものがありません。
+Pixel Stack	Pixel Stack
+Tap to start	タップしてスタート
+Tap to drop	タップして落とす
+Perfect!	パーフェクト！
+Best	ベスト
+New best!	新記録！
+Tap to play again	タップしてもう一度
+Share score	スコアを共有
+Sharing…	共有中…
+Shared!	共有しました！
+Couldn't share. Try again.	共有できませんでした。もう一度お試しください。
+Your name	あなたの名前
+Optional	任意
+Game Over	ゲームオーバー
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **システム UI** (com.android.systemui)\n• **Pixel ランチャー** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **設定** (com.android.settings)\n• **設定サービス** (com.google.android.settings.intelligence)\n• **パッケージ インストーラ** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nエディタのスタイル設定には **Pixel スタジオ** (com.google.android.apps.pixel.creativeassistant) と **Google フォト** (com.google.android.apps.photos) も選択してください。スコープを追加したら再起動してください。
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **Pixel ランチャー** (com.google.android.apps.nexuslauncher) — アイコン、フォルダ、メニュー、ドロワーのソフトエッジ\n• **システム UI** (com.android.systemui) — システムのメニューとメッセージ\n• **Pixel スタジオ** (com.google.android.apps.pixel.creativeassistant)\n• **Google フォト** (com.google.android.apps.photos) — エディタのメニュー\n\nスーパーダーク の追加スコープは専用ページに記載されています。
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} をこのバージョンに戻します。データは現在のままです。起動しなくなった場合は、設定でストレージを消去してください。
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	スピードダイヤルに {0} 件のサイトを置く場所がないため、フォルダと一緒に削除されます。
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} を保存しました。Play Store で［更新］をタップしてください。更新後、{1} は再び保留されます。
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	「{0}」を削除しますか？中のアプリはアプリドロワーに戻ります。アプリはアンインストールされません。
+Couldn't save {0}, so it wasn't updated. Check root and free space.	{0} を保存できなかったため、更新していません。root と空き容量を確認してください。
+Tap Update in Play Store. {0} is held back again once it's updated.	Play ストアで「更新」をタップしてください。更新後、{0} は再び保留されます。
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nバージョン {1}\nビルド {2}\n{3}\n\nチェックを入れて適用すると保留されます。
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	最大 7 個のショートカット、並び順、両端のボタン、2 行表示{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}、{1}、更新をブロック中、コアアプリはロック中。タップで理由を表示
+{0}. A looping demo. It doesn't change your settings.	{0}。繰り返し再生されるデモです。設定は変わりません。
+Restore {0} (its saved version is the one installed)	{0} を復元（保存したバージョンがインストール済み）
+{0} of {1} on the toolbar · {2} more · swipe left or right	ツールバーに {0}/{1} · ほか {2} 個 · 左右にスワイプ
+Couldn't back up {0} of {1}. Check root and free space.	{1} 個中 {0} 個をバックアップできません。root と空き容量を確認してください。
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} を GitHub と Xposed で入手できます。
+{0} apps aren't saved at the version installed now	{0} 個のアプリが現在のバージョンで保存されていません
+{0}, off, needs Suggestions and shortcuts together	{0}、オフ、「候補とショートカットを一緒に」が必要
+The saved version of {0} is the one installed now	{0} の保存したバージョンが現在インストールされています
+{0}, on, needs Suggestions and shortcuts together	{0}、オン、「候補とショートカットを一緒に」が必要
+{0}. Applies your changes. Long-press to hide.	{0}。変更を適用します。長押しで非表示。
+There's no room on the speed dial for its {0}	スピードダイヤルに {0} を置く空きがありません
+Couldn't save {0}. Check root and free space.	{0} を保存できませんでした。root と空き容量を確認してください。
+{0}: the saved version is the one installed	{0}：保存したバージョンがインストール済みです
+Its {0} websites go back to the speed dial.	{0} 件のサイトはスピードダイヤルに戻ります。
+{0} is back to {1}, with everything as it was	{0} を {1} に戻しました。すべて元どおりです
+{0} apps protected from updates · {1} shown	{0} 個のアプリを更新から保護 · {1} 個を表示
+{0}, {1}, core app locked. Tap to learn why	{0}、{1}、コアアプリはロック中。タップで理由を表示
+Select at least {0} apps for a folder	フォルダには {0} 個以上のアプリを選択してください
+Sort the apps in “{0}” from A to Z?	「{0}」のアプリを A～Z 順に並べ替えますか？
+This folder is full ({0} websites)	このフォルダはいっぱいです（{0} サイト）
+Blocking {0} ad domains · updated {1}	{0} 件の広告ドメインをブロック中 · {1}に更新
+{0} apps did not fit on this page	{0} 個のアプリがこのページに収まりませんでした
+{0} open-source servers available	オープンソースのサーバー {0} 台を利用可能
+{0} websites with custom settings	{0} 件のサイトに個別の設定
+{0}, {1}. Tap to hide saved versions	{0}、{1}。タップすると保存済みバージョンを非表示
+{0}, {1}. Tap to show saved versions	{0}、{1}。タップすると保存済みバージョンを表示
+{0} removed element(s) · Restore	削除した要素 {0} 件 · 復元
+Couldn't reach any server in {0}	{0} のサーバーに接続できませんでした
+{0}. Check root and free space.	{0}。root と空き容量を確認してください。
+{0} apps protected from updates	{0} 個のアプリをアップデートから保護中
+Downloading Pixel Suite {0} — {1}%	Pixel Suite {0} をダウンロード中 — {1}%
+Restore removed elements ({0})	削除した要素を復元（{0}）
+{0} of {1} on the toolbar · {2} more	ツールバーに {0}/{1} · ほか {2} 個
+Update, back up or restore {0}	{0} を更新・バックアップ・復元
+{0}\nDefault for all websites	{0}\nすべてのサイトのデフォルト
+{0} needs Pixel Suite premium	{0} には Pixel Suite プレミアムが必要です
+No open-source servers in {0}	{0} にオープンソースのサーバーはありません
+Server list unavailable ({0})	サーバーリストを取得できません（{0}）
+Connecting to server {0} of {1}…	サーバー {0}/{1} に接続中…
+{0}% wide · {1}% tall · {2} dp down	幅 {0}% · 高さ {1}% · {2} dp 下
+Restore a saved version ({0})	保存済みバージョンを復元（{0}）
+Pixel Suite {0} is available	Pixel Suite {0} が利用可能です
+Saved {0} with Pixel Suite {1}.	{0} に Pixel Suite {1} で保存。
+{0}. Opens an external app.	{0}。外部アプリを開きます。
+{0}% wide · {1}% tall · {2} dp up	幅 {0}% · 高さ {1}% · {2} dp 上
+Waiting for dark mode · {0}	ダークモード待ち · {0}
+{0} (folder not available)	{0}（フォルダを利用できません）
+{0} apps saved · {1} versions	保存済み：{0} 個のアプリ · {1} 個のバージョン
+1 app saved · {0} versions	保存済み：1 個のアプリ · {0} 個のバージョン
+{0} apps saved · 1 version	保存済み：{0} 個のアプリ · 1 個のバージョン
+Delete saved version {0}	保存したバージョン {0} を削除
+Installed version of {0}	{0} のインストール済みバージョン
+What {0} ({1}) is used for	{0}（{1}）の用途
+Any country · up to {0}	すべての国 · 最大 {0}
+{0} apps · {1} versions · {2}	{0} 個のアプリ · {1} 個のバージョン · {2}
+1 app · {0} versions · {1}	1 個のアプリ · {0} 個のバージョン · {1}
+{0} apps · 1 version · {1}	{0} 個のアプリ · 1 個のバージョン · {1}
+1 app · 1 version · {0}	1 個のアプリ · 1 個のバージョン · {0}
+Couldn't restore {0}: {1}	{0} を復元できません：{1}
+About {0} · only {1} free	約 {0} · 空きは {1} のみ
+Level {0} · {1} (Default)	レベル {0} · {1}（デフォルト）
+{0}, {1}, updates blocked	{0}、{1}、更新をブロック中
+On · {0} · whole phone	オン · {0} · スマートフォン全体
+On · {0} · Chrome only	オン · {0} · Chrome のみ
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	{0} 台のサーバーを確認中…
+{0} selected · {1} shown	{0} 件を選択 · {1} 件を表示
+No results for "{0}"	「{0}」の検索結果はありません
+{0} apps · {1} versions	{0} 個のアプリ · {1} 個のバージョン
+1 app · {0} versions	1 個のアプリ · {0} 個のバージョン
+{0} apps · 1 version	{0} 個のアプリ · 1 個のバージョン
+Purchase email: {0}	購入時のメール：{0}
+No icons match “{0}	“{0} に一致するアイコンはありません
+Reconnecting… ({0})	再接続中…（{0}）
+Unhide {0} contacts	{0} 件の連絡先を再表示
+No apps match “{0}	“{0} に一致するアプリはありません
+Resend code ({0}s)	コードを再送信（{0} 秒）
+Connecting to {0}…	{0} に接続中…
+**Used for:**\n{0}	**用途:**\n{0}
+{0}, {1}, switch, off	{0}、{1}、スイッチ、オフ
+Restore {0} build {1}	{0} ビルド {1} を復元
+Turns on at {0} · {1}	{0} にオン · {1}
+Pin {0} to toolbar	{0} をツールバーに固定
+• {0} custom icons	• {0} 個のカスタムアイコン
+Saving {0} · {1} of {2}	{0} を保存中 · {1}/{2}
+{0}  ·  {1} selected	{0}  ·  {1} 件を選択
+{0}, {1}, switch, on	{0}、{1}、スイッチ、オン
+{0}, not selected	{0}、未選択
+{0} · Chrome only	{0} · Chrome のみ
+Use default ({0})	デフォルトを使用（{0}）
+Pass expires {0}	パスの有効期限：{0}
+{0}, unavailable	{0}、利用不可
+Enables {0} in {1}.	{1} で {0} を有効にします。
+{0} · not Chrome	{0} · Chrome 以外
+{0} is unlocked	{0} のロックを解除しました
+Connected · {0}	接続済み · {0}
+{0} is selected	{0} を選択中
+{0} minutes ago	{0} 分前
+{0} is back to {1}	{0} を {1} に戻しました
+Unhide {0} apps	{0} 個のアプリを再表示
+On until {0} · {1}	{0} までオン · {1}
+{0} icon packs	アイコンパック {0} 個
+• {0} settings	• {0} 個の設定
+Remove "{0}"?	「{0}」を削除しますか？
+{0}, selected	{0}、選択済み
+{0} right now	現在 {0}
+{0} is locked	{0} はロックされています
+Hide {0} apps	{0} 個のアプリを非表示
+{0} hours ago	{0} 時間前
+Checking {0}	{0} を確認中
+Saving {0} {1}…	{0} {1} を保存中…
+{0} days ago	{0} 日前
+{0} · up to {1}	{0} · 最大 {1}
+Level {0} · {1}	レベル {0} · {1}
+Restore {0} {1}	{0} {1} を復元
+On now · {0}	現在オン · {0}
+Back up {0}	{0} をバックアップ
+Restart {0}	{0} を再起動
+Enables {0}	{0} を有効にします
+{0} dp down	{0} dp 下へ
+Restore {0}	{0} を復元
+{0} servers	{0} 台のサーバー
+{0}, hidden	{0}、非表示
+Level {0}, {1}	レベル {0}、{1}
+Refresh {0}	{0}をリフレッシュ
+{0}, shown	{0}、表示
+Saved {0}.	{0} に保存。
+**{0}** ({1})	**{0}**（{1}）
+About {0}	約 {0}
+Build {0}	ビルド {0}
+From  {0}	開始  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} 個のアイコン
+Unpin {0}	{0} の固定を解除
+{0}, off	{0}、オフ
+To  {0}	終了  {0}
+Pin {0}	{0} を固定
+Its {0}	{0}
+Use {0}	{0} を使用
+{0}, on	{0}、オン
+You’re a free member. Choose the paid tier to unlock	無料メンバーです。ロックを解除するには有料プランを選択してください。
+Root access is needed to save membership changes.	メンバーシップの変更を保存するには root 権限が必要です。
+Sign-in expired. Sign in with Patreon again.	ログインの有効期限が切れました。もう一度 パトレオン でログインしてください。
+Couldn’t check membership. Try again shortly.	メンバーシップを確認できませんでした。しばらくしてからもう一度お試しください。
+Sign-in expired. Tap Unlock to try again.	ログインの有効期限が切れました。「ロック解除」をタップしてもう一度お試しください。
+No active membership found. Join, then tap Unlock again.	有効なメンバーシップが見つかりません。参加してから、もう一度「ロック解除」をタップしてください。
+Sign-in wasn't completed. You can try again.	ログインが完了しませんでした。もう一度お試しいただけます。
+Couldn't verify this sign-in. Tap Unlock to try again.	このログインを確認できませんでした。「ロック解除」をタップしてもう一度お試しください。
+Couldn't confirm membership. Try again.	メンバーシップを確定できませんでした。もう一度お試しください。
+Confirming Patreon membership…	パトレオン のメンバーシップを確認しています…
+Log in	ログイン
+Patreon profile photo	パトレオン のプロフィール写真
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	支払い後、購入コードは支払いに使ったメールアドレスに届きます。受信トレイと迷惑メールフォルダで purchases@roviandev.com からのメールを確認してください。
+Buy	購入
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	受信トレイと迷惑メールフォルダで purchases@roviandev.com からのメールを確認してください。最新のコードを使ってください。有効期限は 10 分です。
+Hide app	アプリを非表示
+Hide widget	ウィジェットを非表示
+Remove Google Play services from the scope	スコープから Google Play 開発者サービスを外してください
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite は Google Play 開発者サービスを使わなくなりました。Pixel Suite の LSPosed スコープに残しておくと、Device と Strong の完全性を失うことがあります。
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	LSPosed（または Vector）を開き、Pixel Suite の Google Play 開発者サービスのチェックを外してから再起動してください。
+Reboot to restore Play Integrity	Play Integrity を戻すには再起動してください
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite は LSPosed スコープから Google Play 開発者サービスを外しました。Device と Strong の完全性を失うおそれがあり、もう使われていないためです。完了するにはスマートフォンを再起動してください。
+Server connected but passes no traffic	サーバーに接続しましたが、通信が通りません
+Server connected but websites don't open ({0})	サーバーに接続しましたが、ウェブサイトが開きません（{0}）

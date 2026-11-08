@@ -2,7 +2,6 @@ package io.github.pixelsuite;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.Typeface;
-import android.graphics.Color;
 import android.view.*;
 import android.widget.*;
 final class PatronAccount {
@@ -25,19 +24,19 @@ final class PatronAccount {
   }
  }
  private int dp(float n){return Math.round(n*activity.getResources().getDisplayMetrics().density);}
- private TextView text(String value,int size,int color,boolean bold){TextView t=new TextView(activity);t.setText(value);t.setTextSize(size);t.setTextColor(color);t.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));t.setPadding(0,dp(6),0,dp(6));return t;}
+ private TextView text(String value,int size,int color,boolean bold){TextView t=new TextView(activity);t.setText(I18n.cs(value));t.setTextSize(size);t.setTextColor(color);t.setTypeface(Typeface.create("sans-serif",bold?Typeface.BOLD:Typeface.NORMAL));t.setPadding(0,dp(6),0,dp(6));return t;}
  private void button(String name,Runnable action){TextView t=text(name,16,ink,true);t.setGravity(Gravity.CENTER);t.setMinimumHeight(dp(48));t.setBackground(AppSurfaces.accountButton(activity,24));LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.topMargin=dp(10);content.addView(t,lp);t.setEnabled(!busy);t.setAlpha(busy?.55f:1);t.setOnClickListener(v->action.run());}
  private void render(){if(activity.isFinishing()||activity.isDestroyed())return;content.removeAllViews();LinearLayout heading=new LinearLayout(activity);heading.setGravity(Gravity.CENTER_VERTICAL);
-  heading.addView(text("Patreon account",22,ink,true),new LinearLayout.LayoutParams(0,-2,1));TextView close=text("×",27,muted,false);close.setGravity(Gravity.CENTER);AppCloseButton.style(close);close.setContentDescription("Close account");heading.addView(close,new LinearLayout.LayoutParams(dp(48),dp(48)));close.setOnClickListener(v->dialog.dismiss());content.addView(heading);
+  heading.addView(text("Patreon account",22,ink,true),new LinearLayout.LayoutParams(0,-2,1));TextView close=text("×",27,muted,false);close.setGravity(Gravity.CENTER);AppCloseButton.style(close);close.setContentDescription(I18n.cs("Close account"));heading.addView(close,new LinearLayout.LayoutParams(dp(48),dp(48)));close.setOnClickListener(v->dialog.dismiss());content.addView(heading);
   if(!PatronAccess.loggedIn(activity)){content.addView(text("Sign in with Patreon",16,muted,false));button("Sign in with Patreon",()->{dialog.dismiss();PatronPaper.login(activity);});return;}
   content.addView(text(PatronAccess.prefs(activity).getString("name","Patreon member"),18,ink,true));
   if(PatronAccess.unlocked()){
    content.addView(text("Patron ✓",18,ink,true));boolean creator=false;try{creator="creator".equals(PatronAccess.verify(activity,PatronAccess.prefs(activity).getString("pass",""),false).optString("membership"));}catch(Exception ignored){}
-   long expiry=PatronAccess.passExpiry(activity);if(creator){TextView expiration=text("Pass expires:  ∞",14,muted,false);android.text.SpannableString label=new android.text.SpannableString(expiration.getText());label.setSpan(new InfinityMark(),label.length()-1,label.length(),android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);expiration.setText(label);content.addView(expiration);}else if(expiry>0)content.addView(text("Pass expires "+java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.MEDIUM,java.text.DateFormat.SHORT).format(new java.util.Date(expiry*1000)),14,muted,false));
-   button(busy?"Refreshing…":"Refresh",()->{busy=true;render();PatronAccess.refresh(activity,()->{busy=false;render();String error=PatronAccess.prefs(activity).getString("refresh_error",null);if(error!=null)AppToast.makeText(activity,error,Toast.LENGTH_LONG).show();else AppToast.makeText(activity,PatronAccess.unlocked()?"Membership refreshed":PatronAccess.membershipMessage(activity),Toast.LENGTH_LONG).show();});});
+   long expiry=PatronAccess.passExpiry(activity);if(creator){TextView expiration=text("Pass expires:  ∞",14,muted,false);android.text.SpannableString label=new android.text.SpannableString(I18n.t("Pass expires:  ∞"));label.setSpan(new InfinityMark(),label.length()-1,label.length(),android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);expiration.setText(I18n.cs(label));content.addView(expiration);}else if(expiry>0)content.addView(text("Pass expires "+java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.MEDIUM,java.text.DateFormat.SHORT).format(new java.util.Date(expiry*1000)),14,muted,false));
+   button(busy?"Refreshing…":"Refresh",()->{busy=true;render();PatronAccess.refresh(activity,()->{busy=false;render();String error=PatronAccess.prefs(activity).getString("refresh_error",null);if(error!=null)AppToast.makeText(activity,I18n.cs(error),Toast.LENGTH_LONG).show();else AppToast.makeText(activity,I18n.cs(PatronAccess.unlocked()?"Membership refreshed":PatronAccess.membershipMessage(activity)),Toast.LENGTH_LONG).show();});});
   }else{
    content.addView(text("A Quest for the Kind-Hearted",21,ink,true));content.addView(text(PatronAccess.membershipMessage(activity),16,muted,false));
-   content.addView(text("Support Pixel Suite to unlock call recording, an ad-free Google feed and ad blocking.",15,muted,false));
+   content.addView(text("Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.",15,muted,false));
    button("Read the quest",()->{dialog.dismiss();PatronPaper.open(activity,0,null);});
    button("Join on Patreon · $5/month",()->{PatronAccess.prefs(activity).edit().putBoolean("join_return",true).apply();dialog.dismiss();PatronPaper.join(activity);});
    button("Unlock",()->{dialog.dismiss();PatronPaper.login(activity);});

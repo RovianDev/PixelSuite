@@ -13,7 +13,6 @@ import android.content.IntentFilter;
 import android.content.res.ColorStateList;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
@@ -47,10 +46,8 @@ import java.io.FileOutputStream;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -218,22 +215,6 @@ final class LauncherIconPack {
         } catch (Throwable ignored) { }
     }
 
-    private static Bitmap own(String key, Object info) {
-        try {
-            Object bitmapInfo;
-            synchronized (LauncherIcon.cache) { bitmapInfo = LauncherIcon.nativeIcons.get(key); }
-            if (bitmapInfo == null && info != null) {
-                Object current = LauncherFeatures.get(info, "bitmap");
-                if (!LauncherIcon.ours(current)) bitmapInfo = current;
-            }
-            Object icon = bitmapInfo == null ? null : LauncherFeatures.get(bitmapInfo, "icon");
-            if (!(icon instanceof Bitmap)) return null;
-            Bitmap b = (Bitmap) icon;
-            return b.getConfig() == Bitmap.Config.ARGB_8888 ? b : b.copy(Bitmap.Config.ARGB_8888, false);
-        } catch (Throwable t) {
-            return null;
-        }
-    }
 
     private static ComponentName component(String key) {
         int bar = key.indexOf('|');
@@ -290,11 +271,11 @@ final class LauncherIconPack {
         root.setOrientation(LinearLayout.VERTICAL);
         root.setPadding(0, dp(a, 4), 0, 0);
 
-        final AlertDialog dialog = new AlertDialog.Builder(a).setTitle("Icon pack").setView(root).setNegativeButton("Cancel", null).create();
+        final AlertDialog dialog = new AlertDialog.Builder(a).setTitle(I18n.cs("Icon pack")).setView(root).setNegativeButton(I18n.cs("Cancel"), null).create();
 
         if (packs.isEmpty()) {
             TextView none = new TextView(a);
-            none.setText("No icon packs installed yet.\nInstall one from the Play Store (or any APK) and it shows here straight away.");
+            none.setText(I18n.cs("No icon packs installed yet.\nInstall one and it shows here."));
             none.setTextColor((ink & 0xffffff) | 0xb3000000);
             none.setTextSize(15);
             none.setGravity(Gravity.CENTER);
@@ -311,7 +292,7 @@ final class LauncherIconPack {
                 try {
                     a.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=icon%20pack&c=apps")).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 } catch (Throwable t) {
-                    Toast.makeText(a, "Play Store is unavailable", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(a, I18n.cs("Play Store is unavailable"), Toast.LENGTH_SHORT).show();
                 }
             });
             FrostedSurface.show(dialog);
@@ -348,7 +329,7 @@ final class LauncherIconPack {
         final EditText field = new EditText(a);
         field.setBackground(null);
         field.setSingleLine(true);
-        field.setHint("Search icons");
+        field.setHint(I18n.cs("Search icons"));
         field.setTextSize(16);
         field.setTextColor(ink);
         field.setHintTextColor((ink & 0xffffff) | 0x8c000000);
@@ -361,7 +342,7 @@ final class LauncherIconPack {
         clearGlyph.setTintList(ColorStateList.valueOf(ink));
         clear.setImageDrawable(clearGlyph);
         clear.setPadding(dp(a, 12), dp(a, 12), dp(a, 12), dp(a, 12));
-        clear.setContentDescription("Clear search");
+        clear.setContentDescription(I18n.cs("Clear search"));
         clear.setVisibility(View.GONE);
         search.addView(clear, new LinearLayout.LayoutParams(dp(a, 44), dp(a, 44)));
         LinearLayout.LayoutParams fp = new LinearLayout.LayoutParams(-1, dp(a, 52));
@@ -412,7 +393,7 @@ final class LauncherIconPack {
                     }
                 }
             }
-            empty.setText(st.pack == null ? "Loading…" : st.shown.isEmpty() ? "No icons match “" + field.getText().toString().trim() + "”" : "");
+            empty.setText(I18n.cs(st.pack == null ? "Loading…" : st.shown.isEmpty() ? "No icons match “" + field.getText().toString().trim() + "”" : ""));
             adapter.notifyDataSetChanged();
             grid.setSelection(0);
         };
@@ -470,7 +451,7 @@ final class LauncherIconPack {
                 } catch (Throwable ignored) { }
                 final boolean done = ok;
                 MAIN.post(() -> {
-                    if (!done) { Toast.makeText(a, "Could not use this icon", Toast.LENGTH_SHORT).show(); return; }
+                    if (!done) { Toast.makeText(a, I18n.cs("Could not use this icon"), Toast.LENGTH_SHORT).show(); return; }
                     AppPicker.keyboard(field, false);
                     dialog.dismiss();
                     synchronized (LauncherIcon.cache) { LauncherIcon.retire(key); }
@@ -528,7 +509,7 @@ final class LauncherIconPack {
             final List<String> s = p == null ? new ArrayList<String>() : p.suggestions(cn, label);
             MAIN.post(() -> {
                 if (!pkg.equals(st.loading)) return;
-                if (p == null) { Toast.makeText(a, "Could not read this icon pack", Toast.LENGTH_SHORT).show(); return; }
+                if (p == null) { Toast.makeText(a, I18n.cs("Could not read this icon pack"), Toast.LENGTH_SHORT).show(); return; }
                 st.pack = p;
                 st.suggested = s;
                 filter.run();
@@ -548,7 +529,7 @@ final class LauncherIconPack {
             final IconPacks.Pack pack = st.pack;
             final String id = pack.pkg + "/" + name;
             cell.tag = id;
-            cell.label.setText(IconPacks.title(name));
+            cell.label.setText(I18n.cs(IconPacks.title(name)));
             cell.setContentDescription(IconPacks.title(name));
             cell.mark(i < st.matches, accent);
             Bitmap cached = st.thumbs.get(id);
@@ -608,7 +589,7 @@ final class LauncherIconPack {
 
     private static TextView pill(Context c, String text, boolean filled, int accent, int ink, boolean dark) {
         TextView t = new TextView(c);
-        t.setText(text);
+        t.setText(I18n.cs(text));
         t.setTextSize(14);
         t.setGravity(Gravity.CENTER);
         t.setSingleLine(true);

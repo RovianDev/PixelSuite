@@ -42,6 +42,20 @@ final class PopupAbove {
         return best;
     }
 
+    static void clearOtherMargin(ViewGroup popup) {
+        int gravity = ((Number) Xp.getObjectField(popup, "mGravity")).intValue();
+        boolean centred = (gravity & 0x70) == 16;
+        boolean above = Boolean.TRUE.equals(Xp.getObjectField(popup, "mIsAboveIcon"));
+        clear(popup.getLayoutParams(), above, centred);
+        try { View arrow = (View) Xp.getObjectField(popup, "mArrow"); if (arrow != null) clear(arrow.getLayoutParams(), above, centred); } catch (Throwable ignored) { }
+    }
+    private static void clear(ViewGroup.LayoutParams lp, boolean above, boolean centred) {
+        if (!(lp instanceof FrameLayout.LayoutParams)) return;
+        FrameLayout.LayoutParams f = (FrameLayout.LayoutParams) lp;
+        if (centred || above) f.topMargin = 0;
+        if (centred || !above) f.bottomMargin = 0;
+    }
+
     static void place(ViewGroup popup) throws Exception {
         if (!LauncherFeatures.type("popup.PopupContainer").isInstance(popup)) return;
         Xp.callMethod(popup, "orientAboutObject");

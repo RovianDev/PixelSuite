@@ -88,7 +88,7 @@ final class ShowFps {
             bg.setColor(0x99000000);
             bg.setCornerRadius(dp(10));
             v.setBackground(bg);
-            v.setText("-- FPS");
+            v.setText(I18n.cs("-- FPS"));
             WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
                     WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT,
                     2015 ,
@@ -100,7 +100,7 @@ final class ShowFps {
             try { int id = c.getResources().getIdentifier("status_bar_height", "dimen", "android"); if (id != 0) sb = c.getResources().getDimensionPixelSize(id); } catch (Throwable ignored) { }
             lp.x = dp(10);
             lp.y = sb + dp(4);
-            lp.setTitle("PixelSuiteFps");
+            lp.setTitle(I18n.cs("PixelSuiteFps"));
             try { WindowManager.LayoutParams.class.getField("layoutInDisplayCutoutMode").setInt(lp, 3 ); } catch (Throwable ignored) { }
             try { Xp.setObjectField(lp, "privateFlags", (Integer) Xp.getObjectField(lp, "privateFlags") | 0x00000010 ); } catch (Throwable ignored) { }
             if (locked()) v.setVisibility(View.GONE);
@@ -139,7 +139,7 @@ final class ShowFps {
         float f = sFps;
         if (f >= 0 && android.os.SystemClock.uptimeMillis() - sAt > 700) f = 0f;
         String text = f < 0 ? "-- FPS" : Math.round(f) + " FPS";
-        if (sView != null && !text.equals(sShown)) { sView.setText(text); sShown = text; }
+        if (sView != null && !text.equals(sShown)) { sView.setText(I18n.cs(text)); sShown = text; }
     }
 
     private static boolean locked() {

@@ -53,7 +53,29 @@ final class DrawerFolderAlignment {
         try{View label=(View)LauncherFeatures.get(icon,"mFolderName");if(label.getTranslationY()==0&&v[2]!=0)label.setTranslationY(v[2]);}catch(Throwable ignored){}
     }
 
+    private static final ThreadLocal<View> sDotIcon=new ThreadLocal<View>();
+    private static void installDots(){
+        Xp.hookAllMethods(LauncherFeatures.type("folder.FolderIcon"),"drawDot",new Xp.Callback(){
+            protected void beforeHookedMethod(Xp.Param p){if(p.thisObject instanceof View&&drawer(p.thisObject))sDotIcon.set((View)p.thisObject);}
+            protected void afterHookedMethod(Xp.Param p){sDotIcon.remove();}
+        });
+        Xp.hookAllMethods(Xp.findClass("com.android.launcher3.icons.DotRenderer",LauncherFeatures.loader),"draw",new Xp.Callback(){
+            protected void beforeHookedMethod(Xp.Param p){
+                View icon=sDotIcon.get();if(icon==null||p.args.length<2||p.args[1]==null)return;
+                try{
+                    Object bg=LauncherFeatures.get(icon,"mBackground");
+                    int size=((Number)LauncherFeatures.get(bg,"previewSize")).intValue();
+                    int left=((Number)LauncherFeatures.get(bg,"basePreviewOffsetX")).intValue(),top=((Number)LauncherFeatures.get(bg,"basePreviewOffsetY")).intValue();
+                    if(size<=0)return;
+                    android.graphics.Rect r=(android.graphics.Rect)LauncherFeatures.get(p.args[1],"iconBounds");
+                    r.set(left,top,left+size,top+size);
+                }catch(Throwable ignored){}
+            }
+        });
+    }
+
     static void install(){
+        try{installDots();}catch(Throwable ignored){}
         Xp.hookAllMethods(LauncherFeatures.type("folder.PreviewBackground"),"setup",new Xp.Callback(){
             protected void afterHookedMethod(Xp.Param p){
                 if(p.args.length<5||!(p.args[2] instanceof View)||!drawer(p.args[2]))return;
@@ -93,7 +115,7 @@ final class DrawerFolderAlignment {
         int size=((Number)LauncherFeatures.get(sample,"mIconSize")).intValue();
         ColorDrawable placeholder=new ColorDrawable(0);placeholder.setBounds(0,0,size,size);
         sample.setCompoundDrawables(null,placeholder,null,null);
-        if(sample.getText().length()==0)sample.setText("Ag");
+        if(sample.getText().length()==0)sample.setText(I18n.cs("Ag"));
         sample.measure(View.MeasureSpec.makeMeasureSpec(frame.getWidth(),View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(frame.getHeight(),View.MeasureSpec.EXACTLY));
         sample.layout(0,0,frame.getWidth(),frame.getHeight());
         return new int[]{sample.getPaddingTop(),size,sample.getBaseline()};

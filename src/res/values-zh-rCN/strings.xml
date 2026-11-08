@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">手势、Pixel Launcher 自定义、应用和文件夹锁、超暗模式、文件排序、自由截图剪裁，以及 Pixel Studio 和 Google 相册中的 涂鸦。所有设置都在 Pixel Suite 应用中完成。请启用推荐的 LSPosed 作用域（包括你使用的编辑器），然后重启这些应用或重启手机。</string>
+    <string name="search_in_chrome">在 Chrome 中搜索</string>
+</resources>

@@ -905,7 +905,7 @@ final class DoodleOverlay extends FrameLayout {
             final int kind = SHAPE_ORDER[i];
             ImageView b = new ImageView(c);
             b.setImageDrawable(new ShapeIcon(kind, onSurface, density).big());
-            b.setContentDescription(Doodle.NAMES[kind]);
+            b.setContentDescription(I18n.cs(Doodle.NAMES[kind]));
             b.setScaleType(ImageView.ScaleType.CENTER);
             b.setOnClickListener(new OnClickListener() { public void onClick(View v) {
                 sKind = kind;
@@ -929,13 +929,13 @@ final class DoodleOverlay extends FrameLayout {
             if (i == SHOWN) {
                 moreColors = new View(c);
                 moreColors.setBackground(new RainbowIcon(density));
-                moreColors.setContentDescription("More colours");
+                moreColors.setContentDescription(I18n.cs("More colours"));
                 moreColors.setOnClickListener(new OnClickListener() { public void onClick(View v) { setExpanded(true, true); } });
                 colorRow.addView(moreColors, new LinearLayout.LayoutParams(Math.round(colCompact()), rowH()));
             }
             final int color = COLORS[i];
             ImageView swatch = new ImageView(c);
-            swatch.setContentDescription(COLOR_NAMES[i]);
+            swatch.setContentDescription(I18n.cs(COLOR_NAMES[i]));
             swatch.setOnClickListener(new OnClickListener() { public void onClick(View v) { sColor = color; applyToSelected(); syncPanel(); } });
             colorRow.addView(swatch, new LinearLayout.LayoutParams(Math.round(colCompact()), rowH()));
             colorButtons.add(swatch);
@@ -948,12 +948,12 @@ final class DoodleOverlay extends FrameLayout {
         controls.setGravity(Gravity.CENTER_VERTICAL);
         ImageView thin = new ImageView(c);
         thin.setImageDrawable(new StrokeIcon(onSurfaceVariant, density));
-        thin.setContentDescription("Thickness");
+        thin.setContentDescription(I18n.cs("Thickness"));
         controls.addView(thin, new LinearLayout.LayoutParams(dp(24), rowH()));
         size = new SeekBar(c);
         size.setMax(23);
         size.setProgress(Math.round(sWidthDp) - 1);
-        size.setContentDescription("Thickness");
+        size.setContentDescription(I18n.cs("Thickness"));
         size.setPadding(dp(8), 0, dp(8), 0);
         size.setProgressTintList(android.content.res.ColorStateList.valueOf(accent));
         size.setThumbTintList(android.content.res.ColorStateList.valueOf(accent));
@@ -1098,7 +1098,7 @@ final class DoodleOverlay extends FrameLayout {
                 canvas.drawPath(arrow, p);
             }
         };
-        g.setContentDescription("Make Doodles menu smaller");
+        g.setContentDescription(I18n.cs("Make Doodles menu smaller"));
         g.setOnTouchListener(new View.OnTouchListener() {
             float startX, startP; android.view.VelocityTracker vt; boolean moved;
             public boolean onTouch(View v, MotionEvent e) {
@@ -1151,7 +1151,7 @@ final class DoodleOverlay extends FrameLayout {
                 canvas.drawRoundRect(cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2, h / 2, h / 2, p);
             }
         };
-        pill.setContentDescription("Move Doodles menu");
+        pill.setContentDescription(I18n.cs("Move Doodles menu"));
         pill.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent e) {
                 if (e.getActionMasked() == MotionEvent.ACTION_DOWN && Math.abs(e.getX() - v.getWidth() / 2f) > dp(110)) return false;
@@ -1409,7 +1409,7 @@ final class DoodleOverlay extends FrameLayout {
         ImageView b = new ImageView(c);
         b.setImageDrawable(icon);
         b.setScaleType(ImageView.ScaleType.CENTER);
-        b.setContentDescription(label);
+        b.setContentDescription(I18n.cs(label));
         b.setOnClickListener(click);
         return b;
     }

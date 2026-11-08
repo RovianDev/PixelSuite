@@ -1,0 +1,1588 @@
+# Pixel Suite hi: English<TAB>translation. {0}, {1} … are the parts that change.
+AD BLOCKING	विज्ञापन ब्लॉक करना
+AdAway or Systemless hosts is also on. Use only one blocker.	AdAway या Systemless hosts भी चालू है। सिर्फ़ एक ब्लॉकर इस्तेमाल करें।
+Blocks ads in Chrome, Google News and other apps. The lists update daily.	Chrome, Google समाचार और दूसरे ऐप्लिकेशन में विज्ञापन ब्लॉक करता है। सूचियां रोज़ अपडेट होती हैं।
+Fewer ads.\nFaster pages.	कम विज्ञापन।\nतेज़ पेज।
+Preparing ad protection…	विज्ञापन सुरक्षा तैयार हो रही है…
+Restart the phone once to start blocking.	ब्लॉक करना शुरू करने के लिए फ़ोन एक बार रीस्टार्ट करें।
+Unlock with Patreon	पैट्रियन से अनलॉक करें
+Update lists	सूचियां अपडेट करें
+Updating…	अपडेट हो रहा है…
+Works in every app and browser, also with Private DNS.	हर ऐप्लिकेशन और ब्राउज़र में काम करता है, निजी डीएनएस के साथ भी।
+Add	जोड़ें
+Add website	वेबसाइट जोड़ें
+Add website: domain or URL	वेबसाइट जोड़ें: डोमेन या URL
+Ads aren't filtered on these websites. Tap one to remove it.	इन वेबसाइटों पर विज्ञापन फ़िल्टर नहीं होते। हटाने के लिए किसी पर टैप करें।
+All websites use the default level	सभी वेबसाइटें डिफ़ॉल्ट लेवल इस्तेमाल करती हैं
+Allowed websites	अनुमति वाली वेबसाइटें
+Basic	बुनियादी
+Bring back elements you removed.	हटाए गए एलिमेंट वापस लाएं।
+Cancel	रद्द करें
+Clear every website setting	हर वेबसाइट की सेटिंग मिटाएं
+Clear every website setting? Your default level stays.	हर वेबसाइट की सेटिंग मिटाएं? आपका डिफ़ॉल्ट लेवल बना रहेगा।
+Complete	पूरा
+Couldn't load site settings. Open Chrome once, then reopen this page.	साइट की सेटिंग लोड नहीं हो सकीं। Chrome एक बार खोलें, फिर यह पेज दोबारा खोलें।
+Couldn't save site settings. Try again.	साइट की सेटिंग सेव नहीं हो सकीं। फिर से कोशिश करें।
+Default for all websites	सभी वेबसाइटों के लिए डिफ़ॉल्ट
+Enter a domain or an http/https URL	कोई डोमेन या http/https URL डालें
+Filtering level	फ़िल्टर का लेवल
+Included with your Patreon unlock	आपके पैट्रियन अनलॉक में शामिल
+Loading site settings…	साइट की सेटिंग लोड हो रही हैं…
+No allowed websites	अनुमति वाली कोई वेबसाइट नहीं
+No filtering	कोई फ़िल्टर नहीं
+No filtering · tap to remove	कोई फ़िल्टर नहीं · हटाने के लिए टैप करें
+No removed elements	कोई एलिमेंट नहीं हटाया गया
+Optimal	बेहतरीन
+Optimal hides search ads. Complete also hides cookie banners and pop-ups. A site's own level comes first.	बेहतरीन खोज वाले विज्ञापन छिपाता है। पूरा कुकी बैनर और पॉप-अप भी छिपाता है। साइट का अपना लेवल पहले लागू होता है।
+Per-site levels	हर साइट के लेवल
+Removed elements	हटाए गए एलिमेंट
+Reset	रीसेट करें
+Reset all site settings	सभी साइट की सेटिंग रीसेट करें
+Reset all site settings?	सभी साइट की सेटिंग रीसेट करें?
+Saving…	सेव हो रहा है…
+Tap a website to change its level or use the default.	लेवल बदलने या डिफ़ॉल्ट इस्तेमाल करने के लिए किसी वेबसाइट पर टैप करें।
+Unlock ad blocking with Patreon	पैट्रियन से विज्ञापन ब्लॉक करना अनलॉक करें
+\nDefault for all websites	\nसभी वेबसाइटों के लिए डिफ़ॉल्ट
+Close	बंद करें
+Clear search	खोज मिटाएं
+Could not save the folder	फ़ोल्डर सेव नहीं हो सका
+Save	सेव करें
+Search apps	ऐप्लिकेशन खोजें
+Search	खोजें
+Search unavailable	खोज उपलब्ध नहीं है
+Search, button	खोजें, बटन
+Searching…	खोजा जा रहा है…
+\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	\nआपका मौजूदा Pixel Suite सेटअप बदल दिया जाएगा। Pixel लॉन्चर एक बार रीस्टार्ट होगा।
+• Pixel Launcher setup: drawer folders, sorting, renames and locks\n	• Pixel लॉन्चर सेटअप: ड्रॉअर फ़ोल्डर, क्रम, नाम और लॉक\n
+• Share menu: pinned order and hidden apps\n	• शेयर मेन्यू: पिन किया गया क्रम और छिपाए गए ऐप्लिकेशन\n
+App and data	ऐप्लिकेशन और डेटा
+App only	सिर्फ़ ऐप्लिकेशन
+Back up	बैकअप लें
+Just the app. Its data isn't saved.	सिर्फ़ ऐप्लिकेशन। इसका डेटा सेव नहीं होता।
+Only the app goes back. Its data now stays.	सिर्फ़ ऐप्लिकेशन वापस आता है। इसका मौजूदा डेटा बना रहता है।
+Only the app, signed out and empty.	सिर्फ़ ऐप्लिकेशन, साइन आउट और खाली।
+Puts everything back exactly as it was saved.	सब कुछ ठीक वैसा ही वापस लाता है जैसा सेव किया गया था।
+Puts everything back exactly as it was saved. Its data now is replaced.	सब कुछ ठीक वैसा ही वापस लाता है जैसा सेव किया गया था। इसका मौजूदा डेटा बदल दिया जाता है।
+Restore	वापस लाएं
+Working out the size…	साइज़ पता किया जा रहा है…
+Backing up…	बैकअप हो रहा है…
+Backup & Restore	बैकअप और वापस लाना
+Checking…	जांच हो रही है…
+Couldn't delete it. Check root.	मिटाया नहीं जा सका। रूट जांचें।
+Delete	मिटाएं
+Delete?	मिटाएं?
+Every held-back app is saved at its current version	रोका गया हर ऐप्लिकेशन अपने मौजूदा वर्शन पर सेव होता है
+Held-back apps	रोके गए ऐप्लिकेशन
+Held-back apps are saved here before they update.	रोके गए ऐप्लिकेशन अपडेट होने से पहले यहां सेव होते हैं।
+Installed apps	इंस्टॉल किए गए ऐप्लिकेशन
+Loading saved apps…	सेव किए गए ऐप्लिकेशन लोड हो रहे हैं…
+No installed app has saved versions	किसी इंस्टॉल ऐप्लिकेशन के सेव किए गए वर्शन नहीं हैं
+No saved versions yet	अभी कोई सेव किया गया वर्शन नहीं
+Not installed	इंस्टॉल नहीं है
+Nothing saved yet	अभी कुछ सेव नहीं हुआ
+Saved	सेव हो गया
+Saved in PixelSuite/APK backups on your phone	आपके फ़ोन पर PixelSuite/APK backups में सेव किया गया
+The 3 newest versions of each app are kept	हर ऐप्लिकेशन के 3 सबसे नए वर्शन रखे जाते हैं
+These apps were uninstalled. Restore installs one again, signed in if it was saved with its data.	ये ऐप्लिकेशन अनइंस्टॉल किए गए थे। वापस लाएं उसे फिर से इंस्टॉल करता है, और अगर डेटा के साथ सेव हुआ था तो साइन इन के साथ।
+installed now	अभी इंस्टॉल है
+Audiobooks	ऑडियो बुक
+Documents	दस्तावेज़
+Download	डाउनलोड
+Music	संगीत
+Podcasts	पॉडकास्ट
+Recordings	रिकॉर्डिंग
+Automatic (default)	अपने-आप (डिफ़ॉल्ट)
+Automatic: every call is recorded	अपने-आप: हर कॉल रिकॉर्ड होता है
+Choose folder…	फ़ोल्डर चुनें…
+Couldn't keep access to that folder.	उस फ़ोल्डर का ऐक्सेस बनाए नहीं रखा जा सका।
+Couldn't load folder	फ़ोल्डर लोड नहीं हो सका
+Couldn't load recording mode	रिकॉर्डिंग मोड लोड नहीं हो सका
+Couldn't save: root access needed	सेव नहीं हो सका: रूट ऐक्सेस ज़रूरी है
+Folder picker isn't available.	फ़ोल्डर पिकर उपलब्ध नहीं है।
+HD: clearer voice (default)	HD: साफ़ आवाज़ (डिफ़ॉल्ट)
+HD: twice the detail, clearer voice (default)	HD: दोगुनी बारीकी, साफ़ आवाज़ (डिफ़ॉल्ट)
+Internal storage	डिवाइस का स्टोरेज
+Lossless: HD without compression, large WAV files	लॉसलेस: बिना कंप्रेशन वाला HD, बड़ी WAV फ़ाइलें
+Lossless: clearest voice, WAV files	लॉसलेस: सबसे साफ़ आवाज़, WAV फ़ाइलें
+Manual	मैन्युअल
+Manual: tap Record during a call	मैन्युअल: कॉल के दौरान रिकॉर्ड करें पर टैप करें
+Recording mode	रिकॉर्डिंग मोड
+Recording quality	रिकॉर्डिंग क्वालिटी
+Recordings folder	रिकॉर्डिंग फ़ोल्डर
+Recordings/Calls	Recordings/Calls
+Recordings/Calls (default)	Recordings/Calls (डिफ़ॉल्ट)
+SD card	एसडी कार्ड
+Standard: phone-call quality, smallest files	स्टैंडर्ड: फ़ोन कॉल की क्वालिटी, सबसे छोटी फ़ाइलें
+Standard: smaller files	स्टैंडर्ड: छोटी फ़ाइलें
+Release notes are unavailable in this build.	इस बिल्ड में रिलीज़ नोट उपलब्ध नहीं हैं।
+Release notes could not be opened. Please reopen this page.	रिलीज़ नोट खोले नहीं जा सके। कृपया यह पेज दोबारा खोलें।
+Always	हमेशा
+Dark	डार्क
+Dark mode	डार्क मोड
+Dark pages	डार्क पेज
+Needs Pixel Suite premium	Pixel Suite प्रीमियम ज़रूरी है
+On this website	इस वेबसाइट पर
+Pictures and videos keep their colors.	फ़ोटो और वीडियो के रंग वही रहते हैं।
+Schedule	शेड्यूल
+Style	स्टाइल
+When	कब
+Speed Dial	स्पीड डायल
+Ad Blocker	विज्ञापन ब्लॉकर
+Extensions	एक्सटेंशन
+Hold an extension to pin it to the toolbar	किसी एक्सटेंशन को टूलबार पर पिन करने के लिए दबाकर रखें
+Chrome didn't take the shortcut (limit reached?)	Chrome ने शॉर्टकट नहीं लिया (सीमा पूरी?)
+Couldn't add it to the speed dial	स्पीड डायल में नहीं जोड़ा जा सका
+Couldn't make a folder in this Chrome version	इस Chrome वर्शन में फ़ोल्डर नहीं बन सकता
+Couldn't move it into the folder	फ़ोल्डर में नहीं ले जाया जा सका
+Edit	बदलाव करें
+Edit website	वेबसाइट में बदलाव करें
+Its website goes back to the speed dial.	इसकी वेबसाइट स्पीड डायल पर वापस चली जाती है।
+Move to speed dial	स्पीड डायल पर ले जाएं
+Name	नाम
+No room on the speed dial	स्पीड डायल पर जगह नहीं है
+Open in new tab	नए टैब में खोलें
+Remove	हटाएं
+Remove folder	फ़ोल्डर हटाएं
+Rename	नाम बदलें
+Rename folder	फ़ोल्डर का नाम बदलें
+URL	URL
+Back	वापस जाएं
+Forward	आगे जाएं
+Home	होम
+Profile	प्रोफ़ाइल
+Tabs	टैब
+Filtering isn't available on this page.	इस पेज पर फ़िल्टर उपलब्ध नहीं है।
+Pixel Suite settings	Pixel Suite सेटिंग
+Remove an element	कोई एलिमेंट हटाएं
+This page	यह पेज
+filtering mode	फ़िल्टर मोड
+no filtering	कोई फ़िल्टर नहीं
+Couldn't open that picture	वह तस्वीर नहीं खुल सकी
+Tap the picture to change it	बदलने के लिए तस्वीर पर टैप करें
+Use the website's icon	वेबसाइट का आइकॉन इस्तेमाल करें
+Country	देश
+Getting the free server list…	मुफ़्त सर्वर की सूची ली जा रही है…
+No servers yet. Pixel Suite loads them when you open this.	अभी कोई सर्वर नहीं। इसे खोलने पर Pixel Suite उन्हें लोड करता है।
+Unavailable · no servers right now	उपलब्ध नहीं · अभी कोई सर्वर नहीं
+VPN	VPN
+VPN for Chrome	Chrome के लिए VPN
+Become a patron	पेट्रन बनें
+Buy me a coffee	मुझे एक कॉफ़ी पिलाएं
+Coffee	कॉफ़ी
+Join the community	कम्यूनिटी से जुड़ें
+No app is available to open this link	इस लिंक को खोलने के लिए कोई ऐप्लिकेशन नहीं है
+This link could not be opened	यह लिंक नहीं खुल सका
+On a schedule	शेड्यूल पर
+With the phone's dark mode	फ़ोन के डार्क मोड के साथ
+Call	कॉल करें
+Incoming call deflected (device reported as switched off)	आने वाला कॉल डायवर्ट किया गया (डिवाइस बंद बताया गया)
+Unknown caller	अनजान कॉलर
+Off	बंद
+On	चालू
+Arrow	तीर
+Circle	गोला
+Double arrow	दोहरा तीर
+Line	लाइन
+Speech bubble	स्पीच बबल
+Square	वर्ग
+Star	तारा
+Triangle	त्रिभुज
+Blue	नीला
+Green	हरा
+Red	लाल
+Yellow	पीला
+Clear badge	बैज हटाएं
+Could not save the name	नाम सेव नहीं हो सका
+No	नहीं
+Remove folder?	फ़ोल्डर हटाएं?
+Sort apps?	ऐप्लिकेशन क्रम से लगाएं?
+Yes	हां
+Add apps	ऐप्लिकेशन जोड़ें
+Create folder	फ़ोल्डर बनाएं
+6-digit code	6 अंकों का कोड
+Allow root access to save your device ID.	अपना डिवाइस आईडी सेव करने के लिए रूट ऐक्सेस दें।
+Allow root access to save your purchase.	अपनी खरीदारी सेव करने के लिए रूट ऐक्सेस दें।
+Allow root access to update your purchase.	अपनी खरीदारी अपडेट करने के लिए रूट ऐक्सेस दें।
+Change email	ईमेल बदलें
+Check your license code and try again.	अपना लाइसेंस कोड जांचें और फिर से कोशिश करें।
+Contact support	सहायता टीम से संपर्क करें
+Couldn’t confirm the purchase. Your saved pass has been kept.	खरीदारी की पुष्टि नहीं हो सकी। आपका सेव किया गया पास बना रहा।
+Couldn’t connect. Check your internet connection and try again.	कनेक्ट नहीं हो सका। अपना इंटरनेट कनेक्शन जांचें और फिर से कोशिश करें।
+Couldn’t save the device ID. Check root access.	डिवाइस आईडी सेव नहीं हो सका। रूट ऐक्सेस जांचें।
+Couldn’t save the purchase. Check root access.	खरीदारी सेव नहीं हो सकी। रूट ऐक्सेस जांचें।
+Couldn’t verify the purchase link.	खरीदारी के लिंक की पुष्टि नहीं हो सकी।
+Couldn’t verify this purchase.	इस खरीदारी की पुष्टि नहीं हो सकी।
+Email used for purchase	खरीदारी के लिए इस्तेमाल किया गया ईमेल
+Enter code	कोड डालें
+Enter the email you paid with.	वह ईमेल डालें जिससे आपने पेमेंट किया था।
+Enter the six-digit email code.	ईमेल में मिला छह अंकों का कोड डालें।
+If a purchase matches this email, your recovery code is on its way.	अगर कोई खरीदारी इस ईमेल से मेल खाती है, तो आपका रिकवरी कोड भेजा जा रहा है।
+Invalid purchase pass.	खरीदारी का पास अमान्य है।
+Invalid signature.	हस्ताक्षर अमान्य है।
+No connection. Your saved purchase has been kept.	कोई कनेक्शन नहीं। आपकी सेव की गई खरीदारी बनी रही।
+Non-refundable once activated, except where required by law or Buy Me a Coffee’s rules.	चालू होने के बाद रिफ़ंड नहीं होगा, सिवाय वहां जहां कानून या Buy Me a Coffee के नियमों के तहत ज़रूरी हो।
+One phone at a time. Requires a compatible Pixel Watch and eSIM plan.	एक बार में एक फ़ोन। साथ काम करने वाली Pixel Watch और eSIM प्लान ज़रूरी है।
+Pixel watch eSIM	Pixel Watch eSIM
+Purchase is active.	खरीदारी चालू है।
+Purchase is no longer active.	खरीदारी अब चालू नहीं है।
+Purchase restored on this phone.	इस फ़ोन पर खरीदारी वापस लाई गई।
+Purchase unlocked.	खरीदारी अनलॉक हो गई।
+Pixel Watch eSIM ✓ (purchased)	Pixel Watch eSIM ✓ (खरीदा गया)
+Refresh purchase	खरीदारी रीफ़्रेश करें
+Resend code	कोड फिर से भेजें
+Restore on this phone	इस फ़ोन पर वापस लाएं
+Restore purchase	खरीदारी वापस लाएं
+Restore purchase by email	ईमेल से खरीदारी वापस लाएं
+Restoring…	वापस लाया जा रहा है…
+Send recovery code	रिकवरी कोड भेजें
+Sending…	भेजा जा रहा है…
+The device ID needs support. It has not been changed.	डिवाइस आईडी के लिए सहायता चाहिए। इसे बदला नहीं गया है।
+The shop is being set up. Please try again later.	स्टोर सेट अप किया जा रहा है। कृपया बाद में फिर से कोशिश करें।
+This purchase pass is not valid for this phone.	यह खरीदारी पास इस फ़ोन के लिए मान्य नहीं है।
+This purchase was revoked or moved to another phone.	यह खरीदारी रद्द की गई या दूसरे फ़ोन पर ले जाई गई।
+Unlock	अनलॉक करें
+Unlocking…	अनलॉक हो रहा है…
+Yours to keep on this phone. Patreon is not required.	इस फ़ोन पर हमेशा के लिए आपका। पैट्रियन ज़रूरी नहीं है।
+• **Chrome** (com.android.chrome) — Dark pages\n\nRestart Chrome after adding its scope.	• **Chrome** (com.android.chrome) — डार्क पेज\n\nस्कोप जोड़ने के बाद Chrome रीस्टार्ट करें।
+• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.	• **Chrome** (com.android.chrome) — Chrome से खुले लेखों में विज्ञापन बॉक्स की सफ़ाई\n\nGoogle समाचार (com.google.android.apps.magazines) को स्कोप नहीं चाहिए। विज्ञापन डोमेन ब्लॉक करने के लिए पूरे सिस्टम का ब्लॉकर इस्तेमाल होता है।
+• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.	• **Chrome** (com.android.chrome) — विज्ञापन के खाली बॉक्स की सफ़ाई\n\nस्कोप जोड़ने के बाद Chrome रीस्टार्ट करें। विज्ञापन डोमेन ब्लॉक करने के लिए स्कोप नहीं चाहिए।
+• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker	• **Google फ़ाइलें** (com.google.android.apps.nbu.files) — फ़ाइल ब्राउज़र\n• **फ़ाइलें (सिस्टम)** (com.google.android.documentsui / com.android.documentsui) — सिस्टम फ़ाइल पिकर
+• **Gboard** (com.google.android.inputmethod.latin)	• **Gboard** (com.google.android.inputmethod.latin)
+• **Google** (com.google.android.googlequicksearchbox)	• **Google** (com.google.android.googlequicksearchbox)
+• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.	• **IMS Stack** (com.android.imsstack)\n• **फ़ोन सेवाएं** (com.android.phone)\n\nदोनों चुनें, फिर रीबूट करें। बाद में स्विच बदलने पर तुरंत लागू होता है।
+• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.	• **फ़ोन सेवाएं** (com.android.phone)\n\nइसे चुनें, फिर रीबूट करें। बाद में स्विच बदलने पर तुरंत लागू होता है।
+• **Phone** (com.google.android.dialer)\n• **System Framework** (system) — recording support\n\nReopen Phone after adding its scope.	• **फ़ोन** (com.google.android.dialer)\n• **सिस्टम फ़्रेमवर्क** (system) — रिकॉर्डिंग सपोर्ट\n\nस्कोप जोड़ने के बाद फ़ोन ऐप्लिकेशन दोबारा खोलें।
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher)	• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher)
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — आइकॉन, फ़ोल्डर, मेन्यू और ड्रॉअर का नरम किनारा\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — सिस्टम मेन्यू और मैसेज\n• **Pixel स्टूडियो** (com.google.android.apps.pixel.creativeassistant)\n• **Google फ़ोटो** (com.google.android.apps.photos) — एडिटर मेन्यू\n\nसुपर डार्क अपने अतिरिक्त स्कोप अपने पेज पर दिखाता है।
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position	• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — लॉन्चर की सुविधाएं\n• **Google** (com.google.android.googlequicksearchbox) — Google खोज में बदले गए ऐप्लिकेशन\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — टोस्ट की जगह
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher icons and names\n• **Google** (com.google.android.googlequicksearchbox) — home-screen Google search	• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — लॉन्चर आइकॉन और नाम\n• **Google** (com.google.android.googlequicksearchbox) — होम स्क्रीन की Google खोज
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button	• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — जेस्चर बार के बगल में नेविगेशन बटन\n• **सिस्टम फ़्रेमवर्क** (system) — ऐप्लिकेशन अपने नीचे के मेन्यू बटन के ऊपर रखते हैं\n• **Gboard** (com.google.android.inputmethod.latin) — कीबोर्ड बंद करने का बटन
+• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar	• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — हाल ही के ऐप्लिकेशन\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — लैंडस्केप स्टेटस बार
+• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshots\n• **Google Photos** (com.google.android.apps.photos) — photos	• **Pixel स्टूडियो** (com.google.android.apps.pixel.creativeassistant) — स्क्रीनशॉट\n• **Google फ़ोटो** (com.google.android.apps.photos) — फ़ोटो
+• **Pixel watch** (com.google.android.apps.wear.companion)	• **Pixel Watch** (com.google.android.apps.wear.companion)
+• **Play Store** (com.android.vending) — app update blocking\n• **System Framework** (system)\n• **Settings** (com.android.settings) — OTA and factory-reset blocking	• **Play Store** (com.android.vending) — ऐप्लिकेशन अपडेट ब्लॉक करना\n• **सिस्टम फ़्रेमवर्क** (system)\n• **सेटिंग** (com.android.settings) — OTA और फ़ैक्ट्री रीसेट ब्लॉक करना
+• **Play Store** (com.android.vending)\n• **System Framework** (system), to restore a saved version	• **Play Store** (com.android.vending)\n• **सिस्टम फ़्रेमवर्क** (system), सेव किया गया वर्शन वापस लाने के लिए
+• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors	• **शेयर शीट** (com.android.intentresolver)\n• **Google फ़ोटो** (com.google.android.apps.photos) — Photos के शेयर पेज के मेल खाते रंग
+• **System Framework** (system)	• **सिस्टम फ़्रेमवर्क** (system)
+• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.	• **सिस्टम फ़्रेमवर्क** (system) — ऐप्लिकेशन सुरक्षा\n• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — ऐप्लिकेशन और फ़ोल्डर लॉक\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — पुष्टि की मांग\n\nअपने फ़ोन का स्क्रीन लॉक सेट करें, फिर स्कोप जोड़ने के बाद रीबूट करें।
+• **System Framework** (system) — the power button\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — Circle to Search	• **सिस्टम फ़्रेमवर्क** (system) — पावर बटन\n• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — Circle to Search
+• **System Framework** (system) — update blocking\n• **Settings** (com.android.settings) — update and reset controls	• **सिस्टम फ़्रेमवर्क** (system) — अपडेट ब्लॉक करना\n• **सेटिंग** (com.android.settings) — अपडेट और रीसेट कंट्रोल
+• **System Framework** (system) — wake, sleep and screenshots\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app dragging\n• **System UI** (com.android.systemui) — recording controls\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) — screenshot cropping	• **सिस्टम फ़्रेमवर्क** (system) — जगाना, स्लीप और स्क्रीनशॉट\n• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — ऐप्लिकेशन खींचना\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — रिकॉर्डिंग कंट्रोल\n• **Pixel स्टूडियो** (com.google.android.apps.pixel.creativeassistant) — स्क्रीनशॉट काटना
+• **System Framework** (system), to restore a saved version (also an older one)	• **सिस्टम फ़्रेमवर्क** (system), सेव किया गया वर्शन वापस लाने के लिए (पुराना भी)
+• **System Framework** (system)\n• **System UI** (com.android.systemui)	• **सिस्टम फ़्रेमवर्क** (system)\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui)
+• **System UI** (com.android.systemui)	• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui)
+• **System UI** (com.android.systemui) — always-on display\n• **System Framework** (system) — starts the always-on display even with the other lock screen display options off	• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — हमेशा चालू रहने वाला डिसप्ले\n• **सिस्टम फ़्रेमवर्क** (system) — लॉक स्क्रीन के दूसरे डिसप्ले विकल्प बंद होने पर भी हमेशा चालू रहने वाला डिसप्ले शुरू करता है
+• **System UI** (com.android.systemui) — the lock screen PIN	• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — लॉक स्क्रीन पिन
+• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui)\n• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **सेटिंग** (com.android.settings)\n• **सेटिंग सेवाएं** (com.google.android.settings.intelligence)\n• **पैकेज इंस्टॉलर** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nएडिटर स्टाइल के लिए **Pixel स्टूडियो** (com.google.android.apps.pixel.creativeassistant) और **Google फ़ोटो** (com.google.android.apps.photos) भी चुनें। स्कोप जोड़ने के बाद रीबूट करें।
+Auto (A–Z)	ऑटो (A–Z)
+Custom	कस्टम
+Sort	क्रम से लगाएं
+Sort the apps in this folder from A to Z?	इस फ़ोल्डर के ऐप्लिकेशन A से Z क्रम में लगाएं?
+Auto-correction	अपने-आप सुधार
+Corrects words as you type	टाइप करते समय शब्द सुधारता है
+Gboard's own switch (reading it…)	Gboard का अपना स्विच (पढ़ा जा रहा है…)
+Languages	भाषाएं
+On: Gboard corrects words in the languages turned on below	चालू: Gboard नीचे चालू की गई भाषाओं में शब्द सुधारता है
+Reading Gboard's languages…	Gboard की भाषाएं पढ़ी जा रही हैं…
+The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.	ऊपर का स्विच Gboard का अपना अपने-आप सुधार है। नीचे किसी भी भाषा के लिए इसे बंद करें: वहां शब्द नहीं बदलते, पर सुझाव दिखते रहते हैं। कीबोर्ड अगली बार खुलने पर बदलाव लागू होते हैं।
+A Gboard shortcut	एक Gboard शॉर्टकट
+A keyboard you can move anywhere	ऐसा कीबोर्ड जिसे कहीं भी ले जा सकें
+Arrow keys and selection tools	तीर वाली कुंजियां और चुनने के टूल
+Both show at once, in two rows (portrait)	दोनों एक साथ, दो पंक्तियों में (पोर्ट्रेट)
+Bring back what you undid	जो पहले जैसा किया उसे वापस लाएं
+Change how Gboard looks	Gboard का लुक बदलें
+Clipboard	क्लिपबोर्ड
+Copy	कॉपी करें
+Copy the selected text	चुना गया टेक्स्ट कॉपी करें
+Cut	काटें
+Cut the selected text	चुना गया टेक्स्ट काटें
+Drag a shortcut to the edge of the list to turn the page.	पेज पलटने के लिए किसी शॉर्टकट को सूची के किनारे तक खींचें।
+Edit toolbar shortcuts	टूलबार शॉर्टकट में बदलाव करें
+Emoji	इमोजी
+Emoji, emoticons and symbols	इमोजी, इमोटिकॉन और सिंबल
+Fill in saved passwords and details	सेव किए गए पासवर्ड और जानकारी भरें
+Floating	फ़्लोटिंग
+Gboard's toolbar, shortcuts above the suggestions: drag shortcuts here	Gboard टूलबार, सुझावों के ऊपर शॉर्टकट: शॉर्टकट यहां खींचें
+Gboard's toolbar, shortcuts below the suggestions: drag shortcuts here	Gboard टूलबार, सुझावों के नीचे शॉर्टकट: शॉर्टकट यहां खींचें
+Gboard's toolbar: drag shortcuts here	Gboard टूलबार: शॉर्टकट यहां खींचें
+Hello	नमस्ते
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does.	किसी शॉर्टकट को दबाकर रखें और टूलबार पर खींचें, क्रम बदलने के लिए उसके साथ-साथ, या हटाने के लिए बाहर। कोई शॉर्टकट क्या करता है, देखने के लिए उस पर टैप करें।
+Make the keyboard bigger or smaller	कीबोर्ड को बड़ा या छोटा करें
+Menu button	मेन्यू बटन
+Next language	अगली भाषा
+Okay	ठीक है
+One-handed	एक हाथ से
+Open Gboard's settings	Gboard की सेटिंग खोलें
+Paste	चिपकाएं
+Paste what you copied	कॉपी किया हुआ चिपकाएं
+Put at least one shortcut on the toolbar	टूलबार पर कम से कम एक शॉर्टकट रखें
+Redo	फिर से करें
+Resize	आकार बदलें
+Rewrite or polish what you wrote	जो लिखा है उसे दोबारा लिखें या निखारें
+Scan text	टेक्स्ट स्कैन करें
+Search and send GIFs	GIF खोजें और भेजें
+Search and send stickers	स्टिकर खोजें और भेजें
+Select all	सभी चुनें
+Select all the text	पूरा टेक्स्ट चुनें
+Settings	सेटिंग
+Share	शेयर करें
+Share Gboard with others	Gboard दूसरों के साथ शेयर करें
+Shortcuts	शॉर्टकट
+Shortcuts above the suggestions, not below	शॉर्टकट सुझावों के ऊपर, नीचे नहीं
+Shortcuts below the suggestions, not above	शॉर्टकट सुझावों के नीचे, ऊपर नहीं
+Shortcuts row on bottom	शॉर्टकट की पंक्ति नीचे
+Shortcuts row on top	शॉर्टकट की पंक्ति ऊपर
+Shrink the keyboard to one side	कीबोर्ड को एक तरफ़ छोटा करें
+Stickers	स्टिकर
+Suggestions and shortcuts together	सुझाव और शॉर्टकट एक साथ
+Switch to your next language	अपनी अगली भाषा पर जाएं
+Tap to select a word, tap again to clear. Hold to select all	किसी शब्द को चुनने के लिए टैप करें, हटाने के लिए फिर से टैप करें। सभी चुनने के लिए दबाकर रखें
+Text editing	टेक्स्ट में बदलाव
+Thanks	धन्यवाद
+Theme	थीम
+Translate	अनुवाद करें
+Translate as you type	टाइप करते समय अनुवाद करें
+Type by speaking	बोलकर टाइप करें
+Type text from your camera	कैमरे से टेक्स्ट टाइप करें
+Undo	पहले जैसा करें
+Undo your last change	अपना पिछला बदलाव पहले जैसा करें
+Voice typing	बोलकर टाइप करना
+Writing tools	लिखने के टूल
+Your copied text and pinned clips	आपका कॉपी किया गया टेक्स्ट और पिन की गई क्लिप
+Clear	साफ़ करें
+Clear the clipboard?	क्लिपबोर्ड साफ़ करें?
+Every clip is deleted except pinned ones.	पिन की गई क्लिप को छोड़कर सभी क्लिप मिटा दी जाएंगी।
+Delete this pinned clip?	पिन की गई यह क्लिप मिटाएं?
+Apply	लागू करें
+Down	नीचे
+Height	ऊंचाई
+Keyboard size and place. Drag the handles to resize, or the keyboard to move it.	कीबोर्ड का आकार और जगह। आकार बदलने के लिए हैंडल खींचें, या जगह बदलने के लिए कीबोर्ड।
+Try typing here after Apply	लागू करें के बाद यहां टाइप करके देखें
+Up	ऊपर
+Width	चौड़ाई
+Apps list	ऐप्लिकेशन सूची
+Pixel Suite isn't available	Pixel Suite उपलब्ध नहीं है
+Adjust icon	आइकॉन अडजस्ट करें
+Could not save this icon. Try another image.	यह आइकॉन सेव नहीं हो सका। कोई दूसरी इमेज आज़माएं।
+Icon updated	आइकॉन अपडेट हो गया
+Pinch to zoom, drag to move	ज़ूम करने के लिए पिंच करें, खिसकाने के लिए खींचें
+Reset position and zoom	जगह और ज़ूम रीसेट करें
+Large	बड़ा
+Largest	सबसे बड़ा
+Medium	मध्यम
+Small	छोटा
+Smallest	सबसे छोटा
+Apps the pack doesn't cover keep their own icons.	जो ऐप्लिकेशन पैक में शामिल नहीं हैं, उनके अपने आइकॉन रहते हैं।
+Close icon packs	आइकॉन पैक बंद करें
+Get icon packs	आइकॉन पैक पाएं
+Icon pack	आइकॉन पैक
+Loading icon packs…	आइकॉन पैक लोड हो रहे हैं…
+Loading icons…	आइकॉन लोड हो रहे हैं…
+No icon packs installed yet	अभी कोई आइकॉन पैक इंस्टॉल नहीं है
+Pixel Launcher's own icons, including themed icons	Pixel लॉन्चर के अपने आइकॉन, थीम वाले आइकॉन के साथ
+System default	सिस्टम डिफ़ॉल्ट
+Unavailable	उपलब्ध नहीं
+Rename app	ऐप्लिकेशन का नाम बदलें
+Shows on the home screen, in folders, the drawer and search.	होम स्क्रीन, फ़ोल्डर, ऐप्लिकेशन ड्रॉअर और खोज में दिखता है।
+Couldn't hide it here. Turn on Hide search bar in Pixel Suite.	यहां छिपाया नहीं जा सका। Pixel Suite में खोज बार छिपाएं चालू करें।
+Couldn't save Hide search bar	खोज बार छिपाएं सेव नहीं हो सका
+Hide search bar isn't supported on this launcher version	लॉन्चर का यह वर्शन खोज बार छिपाएं की सुविधा नहीं देता
+Change icon	आइकॉन बदलें
+Could not read this image. Try another image.	यह इमेज पढ़ी नहीं जा सकी। कोई दूसरी इमेज आज़माएं।
+Could not reset the icon	आइकॉन रीसेट नहीं हो सका
+Files	फ़ाइलें
+Files is unavailable	फ़ाइलें उपलब्ध नहीं है
+Original icon restored	मूल आइकॉन वापस आ गया
+Photos	फ़ोटो
+Photos is unavailable. Choose Files instead.	Photos उपलब्ध नहीं है। इसके बजाय फ़ाइलें चुनें।
+Reset icon	आइकॉन रीसेट करें
+Could not read this icon pack	यह आइकॉन पैक पढ़ा नहीं जा सका
+Could not use this icon	यह आइकॉन इस्तेमाल नहीं हो सका
+Loading…	लोड हो रहा है…
+No icon packs installed yet.\nInstall one and it shows here.	अभी कोई आइकॉन पैक इंस्टॉल नहीं है।\nएक इंस्टॉल करें, वह यहां दिखेगा।
+Play Store is unavailable	Play Store उपलब्ध नहीं है
+Search icons	आइकॉन खोजें
+All apps	सभी ऐप्लिकेशन
+App picker	ऐप्लिकेशन चुनने वाला
+Choose apps	ऐप्लिकेशन चुनें
+Couldn't load apps. Check root access and reopen.	ऐप्लिकेशन लोड नहीं हो सके। रूट ऐक्सेस जांचें और फिर से खोलें।
+Couldn't save. Check root access and try again.	सेव नहीं हो सका। रूट ऐक्सेस जांचें और फिर से कोशिश करें।
+Filter installed apps	इंस्टॉल किए गए ऐप्लिकेशन फ़िल्टर करें
+Loading apps…	ऐप्लिकेशन लोड हो रहे हैं…
+Root unavailable	रूट उपलब्ध नहीं है
+Saved. Changes apply the next time these apps open.	सेव हो गया। ये ऐप्लिकेशन अगली बार खुलने पर बदलाव लागू होंगे।
+Search installed apps	इंस्टॉल किए गए ऐप्लिकेशन खोजें
+System apps	सिस्टम ऐप्लिकेशन
+User apps	उपयोगकर्ता ऐप्लिकेशन
+No room on this page for the other apps	इस पेज पर दूसरे ऐप्लिकेशन के लिए जगह नहीं है
+A Quest for the Kind-Hearted	नेक दिल वालों के लिए एक क्वेस्ट
+Close account	खाता बंद करें
+Membership refreshed	सदस्यता रीफ़्रेश हो गई
+Pass expires:  ∞	पास खत्म होगा:  ∞
+Patreon account	पैट्रियन खाता
+Patreon member	पैट्रियन सदस्य
+Patron ✓	पेट्रन ✓
+Read the quest	क्वेस्ट पढ़ें
+Refresh	रीफ़्रेश करें
+Refreshing…	रीफ़्रेश हो रहा है…
+Sign in with Patreon	पैट्रियन से साइन इन करें
+Sign out	साइन आउट करें
+Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Chrome+, Gboard+, विज्ञापन ब्लॉकर, VPN, डार्क पेज, कॉल रिकॉर्डिंग और बिना विज्ञापन वाली Google फ़ीड अनलॉक करने के लिए Pixel Suite को सपोर्ट करें।
+A Quest for the\nKind-Hearted	नेक दिल वालों के लिए\nएक क्वेस्ट
+Already a patron? Unlock	पहले से पेट्रन हैं? अनलॉक करें
+Checking Patreon membership…	पैट्रियन सदस्यता जांची जा रही है…
+Join on Patreon	पैट्रियन पर जुड़ें
+Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙	पैट्रियन सुविधाएं अनलॉक करने के लिए पैट्रियन पर जुड़ें, और इस प्रोजेक्ट को ज़िंदा रखने के लिए धन्यवाद। 💙
+Joined? Tap Unlock to confirm your paid Patreon membership.	जुड़ गए? अपनी पेड पैट्रियन सदस्यता की पुष्टि के लिए अनलॉक करें पर टैप करें।
+Let's go	चलिए शुरू करें
+No paid membership found. Choose the paid tier to unlock.	कोई पेड सदस्यता नहीं मिली। अनलॉक करने के लिए पेड टियर चुनें।
+Open a browser to sign in with Patreon.	पैट्रियन से साइन इन करने के लिए ब्राउज़र खोलें।
+Open the Pixel Suite paid tier in your browser.	अपने ब्राउज़र में Pixel Suite का पेड टियर खोलें।
+Patreon sign-in is being set up.	पैट्रियन साइन-इन सेट अप किया जा रहा है।
+Patron verified	पेट्रन की पुष्टि हो गई
+Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.	Pixel Suite में कोई विज्ञापन या ट्रैकर नहीं है। खाते और पेमेंट की जानकारी सिर्फ़ आपके अनलॉक की पुष्टि के लिए इस्तेमाल होती है।
+Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.	Pixel Suite को एक व्यक्ति, अपने खाली समय में, Pixel फ़ोन के प्यार में बनाता है।
+Quest Complete!	क्वेस्ट पूरा हुआ!
+Ready to check membership	सदस्यता जांचने के लिए तैयार
+Thank you for supporting Pixel Suite. Your Patreon features are ready.	Pixel Suite को सपोर्ट करने के लिए धन्यवाद। आपकी पैट्रियन सुविधाएं तैयार हैं।
+Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	पेट्रन Chrome+ और Gboard+, विज्ञापन ब्लॉकर और VPN, Chrome में डार्क पेज, कॉल रिकॉर्डिंग और बिना विज्ञापन वाली Google फ़ीड अनलॉक करते हैं। हर सपोर्ट सीधे ऐप्लिकेशन में वापस जाता है: Android और Google ऐप्लिकेशन के अपडेट के साथ चलना, उनसे जो टूटे उसे ठीक करना, और नई सुविधाएं बनाना।
+Welcome back!	वापसी पर स्वागत है!
+✨ Quest Complete!	✨ क्वेस्ट पूरा हुआ!
+📜 A Quest for the Kind-Hearted	📜 नेक दिल वालों के लिए एक क्वेस्ट
+Google apps	Google ऐप्लिकेशन
+Patreon feature	पैट्रियन सुविधा
+Unlock this feature with Patreon	पैट्रियन से यह सुविधा अनलॉक करें
+Android didn't allow the VPN. Open the VPN page and tap Connect.	Android ने VPN की अनुमति नहीं दी। VPN पेज खोलें और कनेक्ट करें पर टैप करें।
+Another VPN took over	किसी दूसरे VPN ने कनेक्शन ले लिया
+Checking that websites open…	जांचा जा रहा है कि वेबसाइटें खुल रही हैं…
+Checking the connection…	कनेक्शन जांचा जा रहा है…
+Chrome isn't installed	Chrome इंस्टॉल नहीं है
+Connection failed	कनेक्शन नहीं हो सका
+Connection lost	कनेक्शन टूट गया
+Couldn't load the server list. Check your connection.	सर्वर सूची लोड नहीं हो सकी। अपना कनेक्शन जांचें।
+Disconnect	डिसकनेक्ट करें
+Disconnected	डिसकनेक्ट हो गया
+Finding servers…	सर्वर ढूंढे जा रहे हैं…
+Free volunteer server	मुफ़्त वॉलंटियर सर्वर
+No server answered	किसी सर्वर ने जवाब नहीं दिया
+Server stopped answering	सर्वर ने जवाब देना बंद कर दिया
+Trying the faster UDP connection (up to 30 s)…	तेज़ UDP कनेक्शन आज़माया जा रहा है (30 सेकंड तक)…
+VPN is a Patreon feature	VPN एक पैट्रियन सुविधा है
+connections refused	कनेक्शन अस्वीकार किए गए
+no answer	कोई जवाब नहीं
+Circle to Search isn't available	Circle to Search उपलब्ध नहीं है
+Do Not Annoy off	तंग न करें बंद
+Do Not Annoy on	तंग न करें चालू
+Do Not Disturb off	परेशान न करें बंद
+Do Not Disturb on	परेशान न करें चालू
+No Annoyance off	कोई झंझट नहीं बंद
+No Annoyance on	कोई झंझट नहीं चालू
+Silence off	साइलेंट बंद
+Silence on	साइलेंट चालू
+Authenticator	Authenticator
+Calculator	कैलकुलेटर
+Calendar	कैलेंडर
+Camera	कैमरा
+Clock	घड़ी
+Contacts	संपर्क
+Maps	Maps
+Messages	मैसेज
+Play Store	Play Store
++  Add apps	+  ऐप्लिकेशन जोड़ें
++ Add to home screen	+ होम स्क्रीन पर जोड़ें
+A clearer page	ज़्यादा साफ़ पेज
+A website	कोई वेबसाइट
+Ad blocking	विज्ञापन ब्लॉक करना
+Add new	नया जोड़ें
+Add to home screen	होम स्क्रीन पर जोड़ें
+Adjust	अडजस्ट करें
+Advertisement	विज्ञापन
+Alex	Alex
+Another pack	कोई दूसरा पैक
+App info	ऐप्लिकेशन की जानकारी
+App is locked	ऐप्लिकेशन लॉक है
+Applied	लागू हो गया
+Applied across the launcher	पूरे लॉन्चर में लागू हो गया
+Applying…	लागू हो रहा है…
+Apps	ऐप्लिकेशन
+Authenticate to open	खोलने के लिए पुष्टि करें
+Back in your share list	आपकी शेयर सूची में वापस
+Block system updates	सिस्टम अपडेट ब्लॉक करें
+Bluetooth	ब्लूटूथ
+Bookmarks	बुकमार्क
+Bookmarks bar	बुकमार्क बार
+Call ended	कॉल खत्म हुआ
+Call log: Alex · Blocked	कॉल लॉग: Alex · ब्लॉक किया गया
+Call recording	कॉल रिकॉर्डिंग
+Camera (stock)	कैमरा (स्टॉक)
+Centered labels. Clearer view.	बीच में लेबल। ज़्यादा साफ़ दृश्य।
+Change icon → Icon pack	आइकॉन बदलें → आइकॉन पैक
+Change icons	आइकॉन बदलें
+Choose Icon pack	आइकॉन पैक चुनें
+Choose a pack	कोई पैक चुनें
+Choose an image	कोई इमेज चुनें
+Cleaner articles in Chrome	Chrome में ज़्यादा साफ़ लेख
+Clear all	सभी हटाएं
+Collections	कलेक्शन
+Connected	कनेक्ट है
+Controls within reach	कंट्रोल पहुंच में
+Create	बनाएं
+Crop	काटें
+Crop freely	अपने हिसाब से काटें
+Data and Wi-Fi stay on	डेटा और वाई-फ़ाई चालू रहते हैं
+Date & time	तारीख और समय
+Device audio	डिवाइस ऑडियो
+Discover	Discover
+Display & touch	डिसप्ले और टच
+Do Not Disturb	परेशान न करें
+Done	हो गया
+Dot cleared	बिंदु हटाया गया
+Downloads	डाउनलोड
+Drag to make a folder	फ़ोल्डर बनाने के लिए खींचें
+Edit photo	फ़ोटो में बदलाव करें
+Empty ad space	विज्ञापन की खाली जगह
+Enter PIN	पिन डालें
+Entire screen	पूरी स्क्रीन
+Erase all data	सारा डेटा मिटाएं
+Every tab in view	हर टैब नज़र में
+Example app	उदाहरण ऐप्लिकेशन
+Example pack	उदाहरण पैक
+Factory reset locked	फ़ैक्ट्री रीसेट लॉक है
+Father	पिता
+Fill	भरें
+Flashlight	फ़्लैशलाइट
+Folder	फ़ोल्डर
+For you	आपके लिए
+Fri, Oct 16	शुक्र, 16 अक्टू॰
+Friday, Oct 16	शुक्रवार, 16 अक्टू॰
+Friend	दोस्त
+Headlines	सुर्खियां
+Hidden apps	छिपाए गए ऐप्लिकेशन
+Hidden apps remain available	छिपाए गए ऐप्लिकेशन उपलब्ध रहते हैं
+Hidden contacts	छिपाए गए संपर्क
+Hide 2 apps	2 ऐप्लिकेशन छिपाएं
+Hide contact	संपर्क छिपाएं
+Hide several apps	कई ऐप्लिकेशन छिपाएं
+Hold	होल्ड करें
+Hold and drag pinned apps	पिन किए गए ऐप्लिकेशन दबाकर खींचें
+Hold to unhide	दिखाने के लिए दबाकर रखें
+How about this spot?	यह जगह कैसी रहेगी?
+Incoming call declined	आने वाला कॉल अस्वीकार किया गया
+Incoming call deflected	आने वाला कॉल डायवर्ट किया गया
+Incoming calls quiet	आने वाले कॉल साइलेंट
+Internet	इंटरनेट
+Keep Notes	Keep नोट्स
+Let's find a new place.	चलिए नई जगह ढूंढते हैं।
+Lock	लॉक करें
+Manage suggested contacts	सुझाए गए संपर्क मैनेज करें
+Message	मैसेज
+Minus hides the contacts row	माइनस से संपर्कों की पंक्ति छिपती है
+Mobile bookmarks	मोबाइल बुकमार्क
+Mobile network	मोबाइल नेटवर्क
+More of your feed	आपकी फ़ीड से और
+My folder	मेरा फ़ोल्डर
+New tab	नया टैब
+Newest first	सबसे नया पहले
+News article	खबर
+No empty ad boxes	विज्ञापन के खाली बॉक्स नहीं
+No recent apps	हाल ही के कोई ऐप्लिकेशन नहीं
+No sponsored gaps	स्पॉन्सर की गई खाली जगह नहीं
+Notifications	सूचनाएं
+OTA blocker	OTA ब्लॉकर
+Oct 12, 10:20	12 अक्टू॰, 10:20
+Oct 8, 08:10	8 अक्टू॰, 08:10
+One app. Your choice.	एक ऐप्लिकेशन। आपकी पसंद।
+Open. Swipe. Close.	खोलें। स्वाइप करें। बंद करें।
+Order saved	क्रम सेव हो गया
+Other bookmarks	दूसरे बुकमार्क
+Packages blocked	पैकेज ब्लॉक किए गए
+Perfect. See you there!	बढ़िया। वहीं मिलते हैं!
+Phone	फ़ोन
+Pin	पिन करें
+Pin moves apps above the divider	पिन करने से ऐप्लिकेशन डिवाइडर के ऊपर चले जाते हैं
+Pin, then drag to reorder	पिन करें, फिर क्रम बदलने के लिए खींचें
+Pinned apps	पिन किए गए ऐप्लिकेशन
+Plus brings the row back	प्लस से पंक्ति वापस आती है
+Private	निजी
+Private folder	निजी फ़ोल्डर
+Read the full story	पूरी खबर पढ़ें
+Reading list	पढ़ने की सूची
+Ready for the weekend?	वीकेंड के लिए तैयार?
+Ready to activate	चालू करने के लिए तैयार
+Record	रिकॉर्ड करें
+Record your screen	अपनी स्क्रीन रिकॉर्ड करें
+Recorded	रिकॉर्ड किया गया
+Recording	रिकॉर्डिंग
+Recording saved	रिकॉर्डिंग सेव हो गई
+Recordings / Calls	Recordings / Calls
+Restricted packages	प्रतिबंधित पैकेज
+Scan QR code	QR कोड स्कैन करें
+Scan your carrier's code	अपने ऑपरेटर का कोड स्कैन करें
+Screenshot	स्क्रीनशॉट
+Screenshot saved	स्क्रीनशॉट सेव हो गया
+Scroll to continue	जारी रखने के लिए स्क्रोल करें
+Search the web	वेब पर खोजें
+Select	चुनें
+Select apps	ऐप्लिकेशन चुनें
+Sep 30, 21:00	30 सित॰, 21:00
+Share or restore hidden apps	छिपाए गए ऐप्लिकेशन शेयर करें या वापस लाएं
+Show touches	टैप दिखाएं
+Sites	साइटें
+Software updates	सॉफ़्टवेयर अपडेट
+Sort  ⌄	क्रम से लगाएं  ⌄
+Sort apps A–Z?	ऐप्लिकेशन A–Z क्रम में लगाएं?
+Speed Dial in bookmarks	बुकमार्क में स्पीड डायल
+Split screen	स्प्लिट स्क्रीन
+Start	शुरू करें
+Swipe	स्वाइप करें
+System settings	सिस्टम सेटिंग
+Tap to share	शेयर करने के लिए टैप करें
+Themes	थीम
+Themes → Icon pack	थीम → आइकॉन पैक
+Today	आज
+Today 09:15	आज 09:15
+Today 14:42	आज 14:42
+Today's stories	आज की खबरें
+Today's top stories	आज की मुख्य खबरें
+Touch fingerprint sensor	फ़िंगरप्रिंट सेंसर छुएं
+Unhide app	ऐप्लिकेशन दिखाएं
+Unlocked on the 4th digit	चौथे अंक पर अनलॉक हुआ
+Use Super Dark-Mode	सुपर डार्क मोड इस्तेमाल करें
+Voice note.m4a	वॉइस नोट.m4a
+Voice search	बोलकर खोजें
+Wallpaper & style	वॉलपेपर और स्टाइल
+Watch eSIM	वॉच eSIM
+Weekend plans	वीकेंड के प्लान
+Wife	पत्नी
+Yes! A coffee sounds good.	हां! कॉफ़ी अच्छी रहेगी।
+Yesterday	कल
+Yesterday 18:30	कल 18:30
+Your Pixel. Your way.	आपका Pixel. आपके अंदाज़ में।
+Your tabs	आपके टैब
+‹ Back	‹ वापस जाएं
+↓ Move to bottom	↓ सबसे नीचे ले जाएं
+Lock folder	फ़ोल्डर लॉक करें
+Unlock folder	फ़ोल्डर अनलॉक करें
+Confirm it's you to disable this app	यह ऐप्लिकेशन बंद करने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to lock this app	यह ऐप्लिकेशन लॉक करने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to lock this folder	यह फ़ोल्डर लॉक करने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to pause this app	यह ऐप्लिकेशन रोकने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to remove this app	यह ऐप्लिकेशन हटाने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to remove this folder	यह फ़ोल्डर हटाने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to uninstall this app	यह ऐप्लिकेशन अनइंस्टॉल करने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to unlock this app	यह ऐप्लिकेशन अनलॉक करने के लिए अपनी पहचान की पुष्टि करें
+Confirm it's you to unlock this folder	यह फ़ोल्डर अनलॉक करने के लिए अपनी पहचान की पुष्टि करें
+Could not check your screen lock	आपका स्क्रीन लॉक जांचा नहीं जा सका
+Could not save. Is root allowed for Pixel Suite?	सेव नहीं हो सका। क्या Pixel Suite को रूट की अनुमति है?
+Please authenticate to proceed	आगे बढ़ने के लिए पुष्टि करें
+Set a screen lock first to lock apps	ऐप्लिकेशन लॉक करने के लिए पहले स्क्रीन लॉक सेट करें
+Use PIN	पिन इस्तेमाल करें
+App remains locked	ऐप्लिकेशन लॉक रहता है
+Cannot dismiss locked apps	लॉक किए गए ऐप्लिकेशन खारिज नहीं किए जा सकते
+Two apps locked	दो ऐप्लिकेशन लॉक हैं
+Refresh rate	रीफ़्रेश रेट
+Accept	स्वीकार करें
+An update check is already running.	अपडेट की जांच पहले से चल रही है।
+Automatic update checks are off.	अपडेट की अपने-आप जांच बंद है।
+Could not verify both release repositories. Try again later.	दोनों रिलीज़ रिपॉज़िटरी की पुष्टि नहीं हो सकी। बाद में फिर से कोशिश करें।
+New version ready. Tap to download and install.	नया वर्शन तैयार है। डाउनलोड और इंस्टॉल करने के लिए टैप करें।
+No newer official release is published with matching APKs on both repositories.	दोनों रिपॉज़िटरी पर मेल खाने वाले APK के साथ कोई नई आधिकारिक रिलीज़ नहीं है।
+No release check yet.	अभी तक रिलीज़ की जांच नहीं हुई।
+Apply update blocking choices	अपडेट ब्लॉक करने के विकल्प लागू करें
+Couldn't apply: root access needed	लागू नहीं हो सका: रूट ऐक्सेस ज़रूरी है
+Couldn't restart: root access needed	रीस्टार्ट नहीं हो सका: रूट ऐक्सेस ज़रूरी है
+Restarting…	रीस्टार्ट हो रहा है…
+Super Dark-Mode uses its own black style.\nTurn it off to change styles.	सुपर डार्क मोड अपनी काली स्टाइल इस्तेमाल करता है।\nस्टाइल बदलने के लिए इसे बंद करें।
+**Used for:**\n	**इसके लिए इस्तेमाल:**\n
+Adds Doodles and cropping tools to the screenshot editor.	स्क्रीनशॉट एडिटर में डूडल और काटने के टूल जोड़ता है।
+Adds editable Doodles to the photo editor.	फ़ोटो एडिटर में बदलाव किए जा सकने वाले डूडल जोड़ता है।
+Adds the refresh-rate slider to Display & touch.	डिसप्ले और टच में रीफ़्रेश रेट स्लाइडर जोड़ता है।
+Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.	सुरक्षित स्क्रीन के स्क्रीनशॉट की अनुमति देता है, सुलभता और डीबगिंग की स्थिति ऐप्लिकेशन से छिपाता है, और FPS काउंटर देता है।
+Applies Super Dark to Gboard.	Gboard पर सुपर डार्क लागू करता है।
+Applies Super Dark to Settings search.	सेटिंग की खोज पर सुपर डार्क लागू करता है।
+Applies Super Dark to Settings.	सेटिंग पर सुपर डार्क लागू करता है।
+Applies Super Dark to app uninstall dialogs.	ऐप्लिकेशन अनइंस्टॉल करने के डायलॉग पर सुपर डार्क लागू करता है।
+Applies Super Dark to the Google app and feed.	Google ऐप्लिकेशन और फ़ीड पर सुपर डार्क लागू करता है।
+Applies launcher icons, folders and menus, plus the frosted soft edge behind the app drawer search area. The drawer effect is active only with Frosted Glass.	लॉन्चर आइकॉन, फ़ोल्डर और मेन्यू लागू करता है, साथ ही ऐप्लिकेशन ड्रॉअर के खोज वाले हिस्से के पीछे फ़्रॉस्टेड नरम किनारा। ड्रॉअर का इफ़ेक्ट सिर्फ़ फ्रॉस्टेड ग्लास के साथ चालू होता है।
+Blocks system update installation and protects factory reset.	सिस्टम अपडेट इंस्टॉल होने से रोकता है और फ़ैक्ट्री रीसेट को सुरक्षित रखता है।
+Controls Software updates and the factory-reset option in Settings.	सेटिंग में सॉफ़्टवेयर अपडेट और फ़ैक्ट्री रीसेट विकल्प को कंट्रोल करता है।
+Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.	Pixel कॉलिंग स्टैक का रास्ता उपलब्ध न होने पर तंग न करें के लिए आने वाले कॉल अस्वीकार करता है।
+Detects power-button and volume-down double presses for the flashlight and camera shortcuts.	फ़्लैशलाइट और कैमरा शॉर्टकट के लिए पावर बटन और आवाज़ कम करने वाले बटन को दो बार दबाने का पता लगाता है।
+Detects volume-down double presses while the screen is off.	स्क्रीन बंद होने पर आवाज़ कम करने वाले बटन को दो बार दबाने का पता लगाता है।
+Enables QR-code eSIM setup in the Pixel Watch phone app.	फ़ोन के Pixel Watch ऐप्लिकेशन में QR कोड से eSIM सेटअप चालू करता है।
+Enables call recording and its controls in the Google Phone app.	Google के फ़ोन ऐप्लिकेशन में कॉल रिकॉर्डिंग और उसके कंट्रोल चालू करता है।
+Fades the status bar while recent apps are viewed in landscape.	लैंडस्केप में हाल ही के ऐप्लिकेशन देखते समय स्टेटस बार धुंधला करता है।
+Files (system)	फ़ाइलें (सिस्टम)
+Files by Google	Google फ़ाइलें
+Frosted Glass soft scrolling edges on screens opened from Android Settings, including their supported sub-pages. Follows light, dark and Super Dark. Enable this scope in LSPosed and restart the app or reboot.	Android सेटिंग से खुलने वाली स्क्रीन पर, उनके साथ काम करने वाले सब-पेज समेत, फ्रॉस्टेड ग्लास के नरम स्क्रोलिंग किनारे। लाइट, डार्क और सुपर डार्क के हिसाब से चलता है। LSPosed में यह स्कोप चालू करें और ऐप्लिकेशन या फ़ोन रीस्टार्ट करें।
+Gboard	Gboard
+Handles wake, sleep and screenshot gestures in Android's system process.	Android की सिस्टम प्रोसेस में जगाने, सुलाने और स्क्रीनशॉट वाले जेस्चर संभालता है।
+Hides the keyboard globe and moves the dismiss arrow to the right.	कीबोर्ड का ग्लोब बटन छिपाता है और बंद करने वाले तीर को दाईं ओर ले जाता है।
+IMS Stack	IMS Stack
+Keeps calls responsive while recordings are saved.	रिकॉर्डिंग सेव होते समय कॉल को तेज़ बनाए रखता है।
+Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.	तंग न करें चालू होने पर Pixel कॉलिंग स्टैक से आने वाले कॉल साइलेंट रखता है।
+Keeps screenshots ready for faster capture.	तेज़ स्क्रीनशॉट के लिए उन्हें तैयार रखता है।
+Keeps selected apps on their current version by blocking their Play Store updates.	Play Store अपडेट ब्लॉक करके चुने गए ऐप्लिकेशन को उनके मौजूदा वर्शन पर रखता है।
+Locks apps and folders, shows padlock badges, and protects locked apps in recents.	ऐप्लिकेशन और फ़ोल्डर लॉक करता है, ताले वाले बैज दिखाता है, और हाल ही के ऐप्लिकेशन में लॉक किए गए ऐप्लिकेशन सुरक्षित रखता है।
+Matches Photos' share-page colors to the share sheet.	Photos के शेयर पेज के रंग शेयर शीट से मिलाता है।
+Matches photo-editor menus and controls to your chosen theme and surface style.	फ़ोटो एडिटर के मेन्यू और कंट्रोल आपकी चुनी थीम और सरफ़ेस स्टाइल से मिलाता है।
+Matches screenshot-editor menus and controls to your chosen theme and surface style.	स्क्रीनशॉट एडिटर के मेन्यू और कंट्रोल आपकी चुनी थीम और सरफ़ेस स्टाइल से मिलाता है।
+Matches system menus and messages to your chosen theme and surface style.	सिस्टम मेन्यू और मैसेज आपकी चुनी थीम और सरफ़ेस स्टाइल से मिलाता है।
+Moves the keyboard dismiss button to the far right while Navigation buttons is enabled. Restart your keyboard after adding this scope.	नेविगेशन बटन चालू होने पर कीबोर्ड बंद करने वाला बटन सबसे दाईं ओर ले जाता है। यह स्कोप जोड़ने के बाद अपना कीबोर्ड रीस्टार्ट करें।
+Opens the camera from the volume-down shortcut.	आवाज़ कम करने वाले शॉर्टकट से कैमरा खोलता है।
+Package installer	पैकेज इंस्टॉलर
+Permission Controller	अनुमति कंट्रोलर
+Personal Safety	निजी सुरक्षा
+Phone Services	फ़ोन सेवाएं
+Pixel Troubleshooting	Pixel की समस्या हल करना
+Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.	टोस्ट मैसेज ऊपर, बीच में या स्टॉक नीचे वाली जगह पर दिखाता है। बदलाव अगले टोस्ट पर लागू होते हैं।
+Provides cleaner screen-recording controls.	स्क्रीन रिकॉर्डिंग के ज़्यादा साफ़ कंट्रोल देता है।
+Removes sponsored cards and their empty space from the Google feed.	Google फ़ीड से स्पॉन्सर किए गए कार्ड और उनकी खाली जगह हटाता है।
+Removes supported empty ad boxes from web pages opened in Chrome.	Chrome में खुले वेब पेज से, जिन पर यह काम करता है, विज्ञापन के खाली बॉक्स हटाता है।
+Reorders pinned sharing apps and adds hidden-app and contact folders to Android's share sheet.	पिन किए गए शेयर ऐप्लिकेशन का क्रम बदलता है और Android की शेयर शीट में छिपे ऐप्लिकेशन और संपर्कों के फ़ोल्डर जोड़ता है।
+Requires authentication before opening protected apps or uninstalling, disabling or pausing them.	सुरक्षित ऐप्लिकेशन खोलने, अनइंस्टॉल करने, बंद करने या रोकने से पहले पुष्टि मांगता है।
+Settings Services	सेटिंग सेवाएं
+Share sheet	शेयर शीट
+Shows customized app names and icons in home-screen Google search.	होम स्क्रीन की Google खोज में बदले गए ऐप्लिकेशन के नाम और आइकॉन दिखाता है।
+Shows fingerprint and PIN prompts for locked apps and folders.	लॉक किए गए ऐप्लिकेशन और फ़ोल्डर के लिए फ़िंगरप्रिंट और पिन की मांग दिखाता है।
+Shows newest files first in the file browser.	फ़ाइल ब्राउज़र में सबसे नई फ़ाइलें पहले दिखाता है।
+Shows newest files first in the system file picker.	सिस्टम के फ़ाइल पिकर में सबसे नई फ़ाइलें पहले दिखाता है।
+System Framework	सिस्टम फ़्रेमवर्क
+System UI	सिस्टम यूज़र इंटरफ़ेस
+Toggles the flashlight with a double press of the power button.	पावर बटन को दो बार दबाकर फ़्लैशलाइट चालू/बंद करता है।
+Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.	टूलबार में 7 शॉर्टकट की जगह, टेक्स्ट में बदलाव के शॉर्टकट, गोल कोनों वाली कुंजियां, एक कॉलम वाला क्लिपबोर्ड, छिपे चिप, मेन्यू और इमोजी/वॉइस बटन, आपका टूलबार क्रम, दो पंक्तियों में सुझाव और शॉर्टकट, आकार बदलें (कीबोर्ड का आकार और जगह), कीबोर्ड की आज़ाद जगह, و पर अरबी ؤ, स्वाइप करके अक्षर-दर-अक्षर मिटाना, हर भाषा के लिए अपने-आप सुधार, असीमित क्लिपबोर्ड, और आकार बदलें पेज पर कीबोर्ड की तस्वीर।
+10 seconds	10 सेकंड
+15 seconds	15 सेकंड
+3 seconds	3 सेकंड
+30 seconds	30 सेकंड
+5 seconds	5 सेकंड
+A better starting view for your files.	आपकी फ़ाइलों के लिए बेहतर शुरुआती व्यू।
+A feed without sponsored gaps	स्पॉन्सर की गई खाली जगह के बिना फ़ीड
+A tidier recording sheet. Needs your phone in English.	ज़्यादा साफ़ रिकॉर्डिंग शीट। फ़ोन की भाषा अंग्रेज़ी होनी चाहिए।
+AOD after screen off	स्क्रीन बंद होने के बाद AOD
+AOD while charging	चार्ज होते समय AOD
+About and support	जानकारी और सहायता
+Ad Blocker, VPN, Dark pages and more to come	विज्ञापन ब्लॉकर, VPN, डार्क पेज और भी बहुत कुछ
+Ad blocker	विज्ञापन ब्लॉकर
+Ad blocking for news browsing	खबरें पढ़ते समय विज्ञापन ब्लॉक करना
+Add-ons for Chrome+.	Chrome+ के ऐड-ऑन।
+Adds Scan QR code to Mobile network when your carrier isn't listed	आपकी मोबाइल कंपनी सूची में न हो, तो मोबाइल नेटवर्क में QR कोड स्कैन करें जोड़ता है
+All of Gboard+ at once. Your choices are kept while it's off	पूरा Gboard+ एक साथ। बंद रहने पर भी आपकी पसंद बनी रहती है
+Allow screenshots of secure screens	सुरक्षित स्क्रीन के स्क्रीनशॉट की अनुमति दें
+Allow update notifications	अपडेट की सूचनाओं की अनुमति दें
+Always show Clear all	सभी हटाएं हमेशा दिखाएं
+Always-on display	हमेशा चालू रहने वाला डिसप्ले
+Always-on display while plugged in	चार्ज होते समय हमेशा चालू रहने वाला डिसप्ले
+App & folder lock	ऐप्लिकेशन और फ़ोल्डर लॉक
+App drawer	ऐप्लिकेशन ड्रॉअर
+App drawer folders	ऐप्लिकेशन ड्रॉअर फ़ोल्डर
+App name	ऐप्लिकेशन का नाम
+Applies right away. Open folders and search keep the usual size.	तुरंत लागू होता है। खुले फ़ोल्डर और खोज का आकार सामान्य रहता है।
+Apply matching icons across your apps	अपने सभी ऐप्लिकेशन में मेल खाते आइकॉन लगाएं
+Apps that lock their sign-in to the phone, like many banking apps, may ask you to sign in again after an uninstall.	जो ऐप्लिकेशन अपना साइन-इन फ़ोन से जोड़ते हैं, जैसे कई बैंकिंग ऐप्लिकेशन, वे अनइंस्टॉल करने के बाद फिर से साइन इन करने को कह सकते हैं।
+Apps that refuse to open with developer options on, like some banking apps, work normally.\nTap the gear to open Developer options.	डेवलपर के लिए सेटिंग चालू होने पर न खुलने वाले ऐप्लिकेशन, जैसे कुछ बैंकिंग ऐप्लिकेशन, सामान्य रूप से काम करते हैं।\nडेवलपर के लिए सेटिंग और टूल खोलने के लिए गियर पर टैप करें।
+Apps with a newer version on the Play Store show it in red. Tap ! to update, back up or restore.	Play Store पर नए वर्शन वाले ऐप्लिकेशन लाल रंग में दिखते हैं। अपडेट, बैकअप या वापस लाने के लिए ! पर टैप करें।
+Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.	आपके चुने ऐप्लिकेशन आपकी सुलभता सेवाएं नहीं देख सकते।\nऐसा करने वाले दूसरे मॉड्यूल पहले बंद करें।
+Asks before a locked app is uninstalled or paused	लॉक किए गए ऐप्लिकेशन को अनइंस्टॉल करने या रोकने से पहले पूछता है
+Auto-confirm 4-digit PIN	4 अंकों का पिन अपने-आप कन्फ़र्म करें
+Auto-confirm works with a 4-digit PIN, from your next unlock.	अपने-आप कन्फ़र्म करना 4 अंकों के पिन के साथ, अगली बार अनलॉक करने से काम करता है।
+Backspace swipe deletes letters	बैकस्पेस पर स्वाइप करने से अक्षर मिटते हैं
+Backup	बैकअप
+Backup & Restore keeps every saved version, also of uninstalled apps.	बैकअप और वापस लाना हर सेव किया गया वर्शन रखता है, अनइंस्टॉल किए गए ऐप्लिकेशन का भी।
+Backup restored	बैकअप वापस लाया गया
+Backup saved	बैकअप सेव हो गया
+Battery saver can still turn it off.	बैटरी सेवर इसे फिर भी बंद कर सकता है।
+Block ads, with filtering per site	हर साइट के लिए फ़िल्टर के साथ विज्ञापन ब्लॉक करें
+Blocks ads while you read the news.	खबरें पढ़ते समय विज्ञापन ब्लॉक करता है।
+Blur Off	ब्लर बंद
+Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.	ब्लर बंद\nकोई धुंधलापन नहीं, ठोस सतहें।\n\nमूल\nसिस्टम का अपना लुक।\n\nफ्रॉस्टेड ग्लास (डिफ़ॉल्ट)\nफ़ोल्डर, मेन्यू और मैसेज के पीछे की चीज़ें धुंधली करता है।
+Blurred and tinted	धुंधला और रंगीन
+Bottom (Stock)	नीचे (स्टॉक)
+Bring everything back from a backup file	बैकअप फ़ाइल से सब कुछ वापस लाएं
+Browse from another country	किसी दूसरे देश से ब्राउज़ करें
+Browse from another country, in Chrome or every app	Chrome या हर ऐप्लिकेशन में किसी दूसरे देश से ब्राउज़ करें
+Browse from another country.	किसी दूसरे देश से ब्राउज़ करें।
+Browse without empty ad boxes	विज्ञापन के खाली बॉक्स के बिना ब्राउज़ करें
+Buttons	बटन
+Buttons beside the gesture bar	जेस्चर बार के बगल में बटन
+Call recording may be restricted by your country’s laws. Obtain any required consent before recording. You are responsible for lawful use. RovianDev is not responsible for illegal use.	आपके देश के कानूनों के तहत कॉल रिकॉर्डिंग पर पाबंदी हो सकती है। रिकॉर्ड करने से पहले ज़रूरी सहमति लें। कानूनी इस्तेमाल की ज़िम्मेदारी आपकी है। RovianDev गैर-कानूनी इस्तेमाल के लिए ज़िम्मेदार नहीं है।
+Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.	कॉल करने वालों को सुनाई देता है कि आप उपलब्ध नहीं हैं। हर मिस्ड कॉल के लिए आपको कॉल करें बटन वाली सूचना मिलती है। आपातकालीन कॉल हमेशा आते हैं।
+Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.	फ़ोन बजने से पहले ही कॉल अस्वीकार कर दिए जाते हैं। हर मिस्ड कॉल के लिए आपको कॉल करें बटन वाली सूचना मिलती है। आपातकालीन कॉल हमेशा आते हैं।
+Capture, sleep, wake and app dragging.	कैप्चर, स्लीप, जगाना और ऐप्लिकेशन खींचना।
+Changelog	बदलावों की सूची
+Changes apply the next time the chosen apps open.	चुने गए ऐप्लिकेशन अगली बार खुलने पर बदलाव लागू होंगे।
+Changes only the text under icons.\nIcon size and shape stay the same.	सिर्फ़ आइकॉन के नीचे का टेक्स्ट बदलता है।\nआइकॉन का आकार और बनावट वही रहती है।
+Changing this option restarts Pixel Launcher.	यह विकल्प बदलने पर Pixel लॉन्चर रीस्टार्ट होता है।
+Check for updates	अपडेट देखें
+Check for updates automatically	अपडेट अपने-आप देखें
+Check for updates now	अभी अपडेट देखें
+Check now	अभी देखें
+Checking for updates…	अपडेट देखे जा रहे हैं…
+Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.	जेस्चर बार के बगल में वापस जाएं, होम या हाल ही के चुनें। Circle to Search या Gemini के लिए होम दबाकर रखें।
+Choose Back, Home or Recent for each side. Hold Home for Circle to Search or Gemini.	हर तरफ़ के लिए वापस जाएं, होम या हाल ही के चुनें। Circle to Search या Gemini के लिए होम दबाकर रखें।
+Choose Lock from an app's recents menu to keep its card when you clear apps.	ऐप्लिकेशन हटाते समय किसी ऐप्लिकेशन का कार्ड बनाए रखने के लिए, हाल ही के ऐप्लिकेशन में उसके मेन्यू से लॉक करें चुनें।
+Choose a filtering level per site from the ad blocker button in Chrome.	Chrome में विज्ञापन ब्लॉकर बटन से हर साइट के लिए फ़िल्टर का लेवल चुनें।
+Choose the languages Gboard corrects.	वे भाषाएं चुनें जिन्हें Gboard सुधारता है।
+Choose which apps can't see your accessibility services	चुनें कि कौनसे ऐप्लिकेशन आपकी सुलभता सेवाएं न देखें
+Choose which apps stay on their current version.	चुनें कि कौनसे ऐप्लिकेशन अपने मौजूदा वर्शन पर रहें।
+Circle to Search	Circle to Search
+Circle to Search works like holding the navigation handle. Screenshot works like power + volume down.	Circle to Search नेविगेशन हैंडल दबाकर रखने जैसा काम करता है। स्क्रीनशॉट पावर + आवाज़ कम करने जैसा काम करता है।
+Cleaner news articles	ज़्यादा साफ़ खबरें
+Cleaner news browsing.	खबरें पढ़ने का ज़्यादा साफ़ अनुभव।
+Clear all in recents	हाल ही के ऐप्लिकेशन में सभी हटाएं
+Clear all is always there in recents, no scrolling.	सभी हटाएं हाल ही के ऐप्लिकेशन में हमेशा मौजूद है, स्क्रोल किए बिना।
+Clear all, locked cards and landscape view	सभी हटाएं, लॉक किए गए कार्ड और लैंडस्केप व्यू
+Clipboard history	क्लिपबोर्ड इतिहास
+Clipboard in one column	एक कॉलम में क्लिपबोर्ड
+Colorful icons in the app drawer (Stock)	ऐप्लिकेशन ड्रॉअर में रंगीन आइकॉन (स्टॉक)
+Community and support	कम्यूनिटी और सहायता
+Confirm it's you to change privacy settings	निजता सेटिंग बदलने के लिए अपनी पहचान की पुष्टि करें
+Controls move to the bottom, with smooth tab animations. In the tab switcher, the orange + opens an incognito tab.	कंट्रोल नीचे चले जाते हैं, टैब के स्मूद ऐनिमेशन के साथ। टैब स्विचर में नारंगी + गुप्त टैब खोलता है।
+Could not save text size	टेक्स्ट का साइज़ सेव नहीं हो सका
+Could not save the surface style	सरफ़ेस स्टाइल सेव नहीं हो सकी
+Could not save this option	यह विकल्प सेव नहीं हो सका
+Couldn't back up: root access needed	बैकअप नहीं हो सका: रूट ऐक्सेस ज़रूरी है
+Couldn't load apps	ऐप्लिकेशन लोड नहीं हो सके
+Couldn't restore: root access needed	वापस नहीं लाया जा सका: रूट ऐक्सेस ज़रूरी है
+Couldn't save (root)	सेव नहीं हो सका (रूट)
+Crop screenshots to any size, even a single line.	स्क्रीनशॉट को किसी भी आकार में काटें, एक लाइन तक भी।
+Customize icon labels	आइकॉन लेबल पसंद के मुताबिक बनाएं
+Dark theme and schedules	गहरे रंग वाली थीम और शेड्यूल
+Dark websites in Chrome	Chrome में डार्क वेबसाइटें
+Dark websites in Chrome.	Chrome में डार्क वेबसाइटें।
+Dark websites, always, with dark mode or on a schedule	डार्क वेबसाइटें: हमेशा, डार्क मोड के साथ या शेड्यूल पर
+Developer options aren't available on this device.	इस डिवाइस पर डेवलपर के लिए सेटिंग और टूल उपलब्ध नहीं हैं।
+Double tap	दो बार टैप करें
+Double tap to sleep	स्लीप के लिए दो बार टैप करें
+Double-press power button	पावर बटन दो बार दबाएं
+Double-press volume down	आवाज़ कम करने वाला बटन दो बार दबाएं
+Double-tap an empty spot on the home screen to lock your phone.	फ़ोन लॉक करने के लिए होम स्क्रीन की खाली जगह पर दो बार टैप करें।
+Download and install	डाउनलोड और इंस्टॉल करें
+Download and install the update in Pixel Suite	Pixel Suite में अपडेट डाउनलोड और इंस्टॉल करें
+Drag an app onto another to make a folder. Use Add apps to pick more.	फ़ोल्डर बनाने के लिए एक ऐप्लिकेशन को दूसरे पर खींचें। और चुनने के लिए ऐप्लिकेशन जोड़ें इस्तेमाल करें।
+Drag the handles to change the size, or the middle to move the keyboard. Reset goes back to Gboard's size.	आकार बदलने के लिए हैंडल खींचें, या कीबोर्ड खिसकाने के लिए बीच का हिस्सा। रीसेट से Gboard का आकार वापस आता है।
+Drag to home screen	होम स्क्रीन पर खींचें
+Draw on screenshots and photos.	स्क्रीनशॉट और फ़ोटो पर ड्रॉ करें।
+Draw shapes and arrows on screenshots.	स्क्रीनशॉट पर आकृतियां और तीर बनाएं।
+Draw shapes on photos: Edit → Doodles. They stay editable.	फ़ोटो पर आकृतियां बनाएं: बदलाव करें → डूडल. उनमें बाद में भी बदलाव हो सकता है।
+Ends	खत्म होगा
+Erase all data is greyed out in Settings while OTA blocker is on.	OTA ब्लॉकर चालू होने पर सेटिंग में सारा डेटा मिटाएं धूसर दिखता है।
+Every feature, fix and release	हर सुविधा, सुधार और रिलीज़
+Feature preview	सुविधा की झलक
+Features preview	सुविधाओं की झलक
+Filter ads per site, from basic to complete. Complete also hides cookie banners and pop-ups. You can remove any element too.	हर साइट के लिए विज्ञापन फ़िल्टर करें, बुनियादी से पूरा तक। पूरा फ़िल्टर कुकी बैनर और पॉप-अप भी छिपाता है। आप कोई भी एलिमेंट हटा भी सकते हैं।
+Filtering levels and website exceptions.	फ़िल्टर के लेवल और वेबसाइट के अपवाद।
+Fingerprint or PIN before locked apps and folders open	लॉक किए गए ऐप्लिकेशन और फ़ोल्डर खुलने से पहले फ़िंगरप्रिंट या पिन
+Five text sizes for app names. Icons stay the same size.	ऐप्लिकेशन के नामों के लिए टेक्स्ट के पांच साइज़। आइकॉन का साइज़ वही रहता है।
+Flashlight and camera shortcuts	फ़्लैशलाइट और कैमरा शॉर्टकट
+Flashlight: double-press power to turn it on or off, also when locked. Camera (stock) opens the camera.	फ़्लैशलाइट: चालू या बंद करने के लिए पावर बटन दो बार दबाएं, लॉक होने पर भी। कैमरा (स्टॉक) कैमरा खोलता है।
+Folder grid	फ़ोल्डर ग्रिड
+Folder sorting	फ़ोल्डर का क्रम
+Folders	फ़ोल्डर
+Folders first, then your newest files.	पहले फ़ोल्डर, फिर आपकी सबसे नई फ़ाइलें।
+Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu.	फ़ोल्डर अंदर के ऐप्लिकेशन की संख्या के साथ बड़े होते हैं। हर फ़ोल्डर के तीन बिंदु वाले मेन्यू से ग्रिड चुनें।
+Folders, dragging and app shortcuts	फ़ोल्डर, खींचना और ऐप्लिकेशन शॉर्टकट
+Folders, dragging and app shortcuts.	फ़ोल्डर, खींचना और ऐप्लिकेशन शॉर्टकट।
+Folders, drawer, names, search bar and recents	फ़ोल्डर, ड्रॉअर, नाम, खोज बार और हाल ही के ऐप्लिकेशन
+Folders, names, search bar and recents.	फ़ोल्डर, नाम, खोज बार और हाल ही के ऐप्लिकेशन।
+Follows your dark theme schedule. In light theme, normal colors and blur come back.	आपके गहरे रंग वाली थीम के शेड्यूल के हिसाब से चलता है। हल्के रंग वाली थीम में सामान्य रंग और धुंधलापन लौट आते हैं।
+For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.	अपने मोबाइल प्लान वाली Pixel Watch के लिए: उसका नेटवर्क भी बंद हो जाता है। Pixel Suite वॉच ऐप्लिकेशन ज़रूरी है।
+For fingerprint or PIN protection, use Privacy & Security.	फ़िंगरप्रिंट या पिन सुरक्षा के लिए निजता और सुरक्षा इस्तेमाल करें।
+Free screenshot crop	स्क्रीनशॉट को अपने हिसाब से काटना
+From Chrome to Chrome+	Chrome से Chrome+ तक
+Full changelog on GitHub	GitHub पर बदलावों की पूरी सूची
+Gboard keeps every clip until you delete it. Pinned clips have blue cards, and the X at the top deletes all but the pinned ones. Clipboard in one column shows one clip per row.	Gboard हर क्लिप तब तक रखता है जब तक आप उसे मिटा न दें। पिन की गई क्लिप के कार्ड नीले होते हैं, और ऊपर का X पिन की गई क्लिप छोड़कर सब मिटा देता है। एक कॉलम में क्लिपबोर्ड हर पंक्ति में एक क्लिप दिखाता है।
+Gboard restarts when you change any of these.	इनमें से कुछ भी बदलने पर Gboard रीस्टार्ट होता है।
+Gemini (stock)	Gemini (स्टॉक)
+Gemini when locked	लॉक होने पर Gemini
+Gemini, Circle to Search, a screenshot or a quiet mode.	Gemini, Circle to Search, स्क्रीनशॉट या शांत मोड।
+Gestures	जेस्चर
+Get the Pixel Suite watch app from the developer on Telegram.	Pixel Suite वॉच ऐप्लिकेशन, टेलीग्राम पर डेवलपर से पाएं।
+Google Photos setup	Google फ़ोटो का सेटअप
+Google app	Google ऐप्लिकेशन
+Google news	Google समाचार
+Google's own look	Google का अपना लुक
+Held-back apps are saved automatically before they update.	रोके गए ऐप्लिकेशन अपडेट होने से पहले अपने-आप सेव हो जाते हैं।
+Hide	छिपाएं
+Hide Developer Options	डेवलपर के लिए सेटिंग और टूल छिपाएं
+Hide accessibility from apps	ऐप्लिकेशन से सुलभता छिपाएं
+Hide ads in Google feed	Google फ़ीड में विज्ञापन छिपाएं
+Hide app shortcuts	ऐप्लिकेशन शॉर्टकट छिपाएं
+Hide search bar	खोज बार छिपाएं
+Hide suggestion chips	सुझाव वाले चिप छिपाएं
+Hides app shortcuts like View orders from the drawer menu.	ड्रॉअर मेन्यू से ऑर्डर देखें जैसे ऐप्लिकेशन शॉर्टकट छिपाता है।
+Hides the globe under your keyboard and moves the arrow to the right	आपके कीबोर्ड के नीचे का ग्लोब छिपाता है और तीर को दाईं ओर ले जाता है
+Hold Home for	होम दबाकर रखने पर
+Hold a folder and drag it anywhere among your apps.	किसी फ़ोल्डर को दबाकर रखें और अपने ऐप्लिकेशन के बीच कहीं भी खींचें।
+Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.	किसी फ़ोल्डर का नाम बदलने, क्रम लगाने या हटाने के लिए उसे दबाकर रखें। हटाने से उसके ऐप्लिकेशन अनइंस्टॉल नहीं होते।
+Hold a shortcut and drag it onto the toolbar, along it to reorder, or off to remove it. Tap one to see what it does. Hide the side buttons to give your shortcuts more room.	किसी शॉर्टकट को दबाकर रखें और टूलबार पर खींचें, क्रम बदलने के लिए उसके साथ-साथ, या हटाने के लिए बाहर। कोई शॉर्टकट क्या करता है, देखने के लिए उस पर टैप करें। शॉर्टकट को ज़्यादा जगह देने के लिए किनारे के बटन छिपाएं।
+Hold an app and choose Change icon to use your own image.	अपनी इमेज इस्तेमाल करने के लिए किसी ऐप्लिकेशन को दबाकर रखें और आइकॉन बदलें चुनें।
+Hold an app and choose Rename.	किसी ऐप्लिकेशन को दबाकर रखें और नाम बदलें चुनें।
+Hold an app and choose Rename. It shows right away everywhere.	किसी ऐप्लिकेशन को दबाकर रखें और नाम बदलें चुनें। यह तुरंत हर जगह दिखता है।
+Hold an app in the drawer and drag it onto Add to home screen.	ड्रॉअर में किसी ऐप्लिकेशन को दबाकर रखें और होम स्क्रीन पर जोड़ें पर खींचें।
+Hold an app or folder and choose Lock or Unlock.\n\nLocking a folder doesn't lock the apps inside.	किसी ऐप्लिकेशन या फ़ोल्डर को दबाकर रखें और लॉक करें या अनलॉक करें चुनें।\n\nफ़ोल्डर लॉक करने से उसके अंदर के ऐप्लिकेशन लॉक नहीं होते।
+Hold an app or folder with a dot and choose Clear badge.	बिंदु वाले ऐप्लिकेशन या फ़ोल्डर को दबाकर रखें और बैज हटाएं चुनें।
+Hold an app or folder with a notification dot and choose Clear badge.	सूचना बिंदु वाले ऐप्लिकेशन या फ़ोल्डर को दबाकर रखें और बैज हटाएं चुनें।
+Hold back app updates	ऐप्लिकेशन अपडेट रोकें
+Hold power button	पावर बटन दबाकर रखें
+How it works	यह कैसे काम करता है
+Icon label size	आइकॉन लेबल का साइज़
+Icon label size, five levels	आइकॉन लेबल का साइज़, पांच लेवल
+Icons, Super Dark-Mode and blur	आइकॉन, सुपर डार्क मोड और धुंधलापन
+If a double tap doesn't register, tap once more within three seconds.	अगर दो बार टैप दर्ज न हो, तो तीन सेकंड के अंदर एक बार और टैप करें।
+In Chrome, open Extensions and tap Dark pages to turn it off for one website. Pictures and videos keep their colors.	Chrome में एक्सटेंशन खोलें और किसी वेबसाइट के लिए बंद करने के लिए डार्क पेज पर टैप करें। फ़ोटो और वीडियो के रंग वही रहते हैं।
+Installation permission was not enabled. Tap Download and install when ready.	इंस्टॉल करने की अनुमति चालू नहीं की गई। तैयार होने पर डाउनलोड और इंस्टॉल करें पर टैप करें।
+Keep calls quiet and stay connected	कॉल शांत रखें और कनेक्ट रहें
+Keep incoming calls quiet and stay connected	आने वाले कॉल शांत रखें और कनेक्ट रहें
+Keep unlocked for 1 minute	1 मिनट तक अनलॉक रखें
+Keep what matters. Clear the rest.	ज़रूरी चीज़ें रखें। बाकी हटाएं।
+Keeps Clear all next to Screenshot and Select.	सभी हटाएं को स्क्रीनशॉट और चुनें के बगल में रखता है।
+Keeps chips like Screenshot off the toolbar	स्क्रीनशॉट जैसे चिप को टूलबार से दूर रखता है
+Keyboard bar tweak	कीबोर्ड बार में बदलाव
+Keys	कुंजियां
+Keys and backspace	कुंजियां और बैकस्पेस
+LSPosed scope	LSPosed स्कोप
+Landscape recent apps	लैंडस्केप में हाल ही के ऐप्लिकेशन
+Landscape view	लैंडस्केप व्यू
+Left button	बायां बटन
+Live frame counter at the top right	सबसे ऊपर दाईं ओर लाइव फ़्रेम काउंटर
+Lock a card from its menu to keep it when you clear apps.	ऐप्लिकेशन हटाते समय कार्ड बनाए रखने के लिए उसे उसके मेन्यू से लॉक करें।
+Lock an app's card so Clear all keeps it.	किसी ऐप्लिकेशन का कार्ड लॉक करें, ताकि सभी हटाएं उसे बनाए रखे।
+Lock apps and folders	ऐप्लिकेशन और फ़ोल्डर लॉक करें
+Lock apps in recents	हाल ही के ऐप्लिकेशन में ऐप्लिकेशन लॉक करें
+Lock factory reset	फ़ैक्ट्री रीसेट लॉक करें
+Lock screen	लॉक स्क्रीन
+Lock-screen behavior	लॉक स्क्रीन का व्यवहार
+Lock-screen taps	लॉक स्क्रीन पर टैप
+Locking recent apps	हाल ही के ऐप्लिकेशन लॉक करना
+Locks stay after a restart.	रीस्टार्ट के बाद भी लॉक बने रहते हैं।
+Made by RovianDev	RovianDev ने बनाया
+Make it work your way.	अपने हिसाब से चलाएं।
+Middle	बीच में
+Miscellaneous	अन्य
+More	ज़्यादा
+More to come.	और भी आने वाला है।
+Move and resize the keyboard	कीबोर्ड खिसकाएं और उसका आकार बदलें
+Move folders between apps	ऐप्लिकेशन के बीच फ़ोल्डर खिसकाएं
+Move several apps	कई ऐप्लिकेशन खिसकाएं
+Move to bottom and scroll	सबसे नीचे ले जाएं और स्क्रोल करें
+Navigation buttons	नेविगेशन बटन
+Newest files first, in Files and the file picker	सबसे नई फ़ाइलें पहले, फ़ाइलें और फ़ाइल पिकर में
+No LTE Pixel Watch? Leave this off.	LTE वाली Pixel Watch नहीं है? इसे बंद रहने दें।
+No blur anywhere	कहीं भी धुंधलापन नहीं
+No file picker available	कोई फ़ाइल पिकर उपलब्ध नहीं है
+Nothing	कुछ नहीं
+Notifications that can be dismissed are cleared, and the dot goes away.	जिन सूचनाओं को खारिज किया जा सकता है वे हटा दी जाती हैं, और बिंदु गायब हो जाता है।
+OTA & Store blocker	OTA और Store ब्लॉकर
+Off, the words appear as you speak. With Voice typing with checkmark on, speak, then tap the checkmark to add your words or X to cancel. It needs Rambler as the dictation type in Gboard's voice settings.	बंद होने पर, बोलते समय शब्द दिखते हैं। सही के निशान वाली बोलकर टाइपिंग चालू होने पर बोलें, फिर शब्द जोड़ने के लिए सही के निशान पर या रद्द करने के लिए X पर टैप करें। इसके लिए Gboard की वॉइस सेटिंग में डिक्टेशन टाइप Rambler होना चाहिए।
+On the lock screen, holding power opens Gemini	लॉक स्क्रीन पर पावर दबाकर रखने से Gemini खुलता है
+One clip per row, exactly as you copied it	हर पंक्ति में एक क्लिप, ठीक वैसी जैसी आपने कॉपी की
+One switch for everything here. While it's off, Gboard works as it comes and your choices are kept.	यहां की हर चीज़ के लिए एक स्विच। बंद होने पर Gboard अपने मूल रूप में चलता है और आपकी पसंद बनी रहती है।
+Only Clear all	सिर्फ़ सभी हटाएं
+Only Clear all, in the middle	सिर्फ़ सभी हटाएं, बीच में
+Open Developer options	डेवलपर के लिए सेटिंग और टूल खोलें
+Open locked apps and folders with your fingerprint or PIN	लॉक किए गए ऐप्लिकेशन और फ़ोल्डर अपने फ़िंगरप्रिंट या पिन से खोलें
+Per language	हर भाषा के लिए
+Personalize	मनमुताबिक बनाएं
+Phone, Chrome, Gboard, Google, News and watch	फ़ोन, Chrome, Gboard, Google, News और वॉच
+Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.	किसी फ़ोल्डर के तीन बिंदु वाले मेन्यू से 3×3, 4×4 या 5×5 चुनें। फ़ोल्डर भरने के साथ बड़े ग्रिड दिखते हैं।
+Pin, reorder and hide sharing apps	शेयर करने वाले ऐप्लिकेशन पिन करें, क्रम बदलें और छिपाएं
+Pin, reorder, hide and restore sharing apps and contacts	शेयर करने वाले ऐप्लिकेशन और संपर्क पिन करें, क्रम बदलें, छिपाएं और वापस लाएं
+Pinned and hidden sharing apps.	पिन किए गए और छिपाए गए शेयर ऐप्लिकेशन।
+Pixel Studio setup	Pixel स्टूडियो का सेटअप
+Pixel Suite checks for updates and installs them right here.	Pixel Suite अपडेट देखता है और उन्हें यहीं इंस्टॉल करता है।
+Pixel Suite needs root. Allow it in your root manager, then reopen this screen.	Pixel Suite को रूट चाहिए। अपने रूट मैनेजर में अनुमति दें, फिर यह स्क्रीन दोबारा खोलें।
+Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.	Pixel Suite: लॉक स्क्रीन के किसी कार्ड पर दो बार टैप करने से वह खुले बिना स्क्रीन बंद हो जाती है।
+Pixel Watch with LTE	LTE वाली Pixel Watch
+Place folders anywhere among your apps, with their own grids and sorting.	फ़ोल्डर को अपने ऐप्लिकेशन के बीच कहीं भी रखें, उनके अपने ग्रिड और क्रम के साथ।
+Play Store blocker	Play Store ब्लॉकर
+Play Store updates and system updates	Play Store अपडेट और सिस्टम अपडेट
+Preview of the chosen surface style on a folder over a wallpaper	वॉलपेपर पर रखे फ़ोल्डर में चुनी गई सरफ़ेस स्टाइल की झलक
+Privacy & Security	निजता और सुरक्षा
+Protect locked apps	लॉक किए गए ऐप्लिकेशन सुरक्षित रखें
+Protected with your fingerprint or PIN.	आपके फ़िंगरप्रिंट या पिन से सुरक्षित।
+Protection	सुरक्षा
+Pure black backgrounds and darker menus in dark theme.	गहरे रंग वाली थीम में एकदम काले बैकग्राउंड और ज़्यादा गहरे मेन्यू।
+Quick actions from your phone's buttons.	फ़ोन के बटन से फटाफट कार्रवाई।
+Recent	हाल ही के
+Recent Apps	हाल ही के ऐप्लिकेशन
+Record and save calls	कॉल रिकॉर्ड और सेव करें
+Record calls in the Phone app, in any country, without the announcement	फ़ोन ऐप्लिकेशन में किसी भी देश में, बिना घोषणा के कॉल रिकॉर्ड करें
+Reduce screenshot delay	स्क्रीनशॉट की देरी कम करें
+Refresh rate slider	रीफ़्रेश रेट स्लाइडर
+Removes sponsored cards from your feed, with no gaps left	आपकी फ़ीड से स्पॉन्सर किए गए कार्ड हटाता है, बिना खाली जगह छोड़े
+Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space.	होम स्क्रीन के नीचे से खोज बार हटाता है। डॉक नीचे चला जाता है और ऐप्लिकेशन उस जगह का इस्तेमाल करते हैं।
+Removing apps from the home screen doesn't uninstall them.	होम स्क्रीन से ऐप्लिकेशन हटाने पर वे अनइंस्टॉल नहीं होते।
+Rename apps	ऐप्लिकेशन के नाम बदलें
+Reopen Settings to see the change.	बदलाव देखने के लिए सेटिंग दोबारा खोलें।
+Reopen apps that were already open.	पहले से खुले ऐप्लिकेशन दोबारा खोलें।
+Reorder pinned apps and hide sharing apps	पिन किए गए ऐप्लिकेशन का क्रम बदलें और शेयर ऐप्लिकेशन छिपाएं
+Reset brings back the original name.	रीसेट से मूल नाम वापस आता है।
+Reset restores the original name. Work-profile and Private Space apps keep their names.	रीसेट से मूल नाम वापस आता है। वर्क प्रोफ़ाइल और प्राइवेट स्पेस के ऐप्लिकेशन के नाम वही रहते हैं।
+Restore puts it back right here. A version saved with its data asks whether to restore the data too.	वापस लाएं उसे यहीं वापस रखता है। डेटा के साथ सेव किए गए वर्शन के लिए पूछा जाता है कि डेटा भी वापस लाना है या नहीं।
+Restore this backup?	यह बैकअप वापस लाएं?
+Right button	दायां बटन
+Round icons for up to 19 websites and folders. Hold and drag to move one, or drop it on another to make a folder. Edit a website to give it your own picture.	ज़्यादा से ज़्यादा 19 वेबसाइटों और फ़ोल्डर के लिए गोल आइकॉन। किसी को खिसकाने के लिए दबाकर खींचें, या फ़ोल्डर बनाने के लिए उसे दूसरे पर छोड़ें। किसी वेबसाइट को अपनी तस्वीर देने के लिए उसमें बदलाव करें।
+Rounded keys	गोल कोनों वाली कुंजियां
+Rounded keys and corners, with smooth key pop-ups	गोल कुंजियां और कोने, कुंजियों के स्मूद पॉप-अप के साथ
+Rounded keys with smooth pop-ups, in light, dark and Super Dark. Swipe left from delete to remove letter by letter.	लाइट, डार्क और सुपर डार्क में स्मूद पॉप-अप वाली गोल कुंजियां। अक्षर-दर-अक्षर मिटाने के लिए डिलीट से बाईं ओर स्वाइप करें।
+Save your settings, folders and icons to a file	अपनी सेटिंग, फ़ोल्डर और आइकॉन एक फ़ाइल में सेव करें
+Saved versions of your apps, ready to put back.	आपके ऐप्लिकेशन के सेव किए गए वर्शन, वापस लगाने के लिए तैयार।
+Saved. Gboard restarts with the new size	सेव हो गया। Gboard नए आकार के साथ रीस्टार्ट होता है
+Saved. Gboard restarts with your toolbar	सेव हो गया। Gboard आपके टूलबार के साथ रीस्टार्ट होता है
+Screen recording sheet	स्क्रीन रिकॉर्डिंग शीट
+Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.	उन ऐप्लिकेशन में स्क्रीनशॉट और रिकॉर्डिंग जो इन्हें ब्लॉक करते हैं।\nऐसा करने वाले दूसरे मॉड्यूल पहले बंद करें।
+Screenshots appear instantly. Uses a little extra memory.	स्क्रीनशॉट तुरंत दिखते हैं। थोड़ी ज़्यादा मेमोरी इस्तेमाल होती है।
+Screenshots, accessibility, keyboard and developer options	स्क्रीनशॉट, सुलभता, कीबोर्ड और डेवलपर के लिए सेटिंग
+Screenshots, sleep, wake and dragging	स्क्रीनशॉट, स्लीप, जगाना और खींचना
+Search stays in the app drawer.	खोज ऐप्लिकेशन ड्रॉअर में रहती है।
+Set	सेट करें
+Set a phone screen lock first	पहले फ़ोन का स्क्रीन लॉक सेट करें
+Set up eSIM with a QR code	QR कोड से eSIM सेट अप करें
+Setup, community and support	सेटअप, कम्यूनिटी और सहायता
+Shapes in Pixel Studio and Google Photos	Pixel स्टूडियो और Google फ़ोटो में आकृतियां
+Share menu	शेयर मेन्यू
+Share sheet tools	शेयर शीट के टूल
+Sharing	शेयर करना
+Show FPS	FPS दिखाएं
+Show toasts	टोस्ट दिखाएं
+Shows right away everywhere. Tap the reset arrow for the original icon.	तुरंत हर जगह दिखता है। मूल आइकॉन के लिए रीसेट तीर पर टैप करें।
+Shows right away everywhere. Work profile and Private Space apps keep their names.	तुरंत हर जगह दिखता है। वर्क प्रोफ़ाइल और प्राइवेट स्पेस के ऐप्लिकेशन के नाम वही रहते हैं।
+Silence	साइलेंट
+Silence, Do Not Disturb and Do Not Annoy turn on with a hold and off with the next one. No Annoyance does all three together.	साइलेंट, परेशान न करें और तंग न करें दबाकर रखने से चालू और अगली बार दबाकर रखने से बंद होते हैं। कोई झंझट नहीं तीनों एक साथ करता है।
+Silences calls and keeps you connected. Add its Quick Settings tile.	कॉल साइलेंट करता है और आपको कनेक्ट रखता है। इसकी क्विक सेटिंग टाइल जोड़ें।
+Single tap	एक बार टैप करें
+Small fixes, simple controls.	छोटे सुधार, आसान कंट्रोल।
+Smoother hand-crafted animations, built-in extensions, bottom controls and a custom speed dial.	ज़्यादा स्मूद हाथ से बने ऐनिमेशन, बिल्ट-इन एक्सटेंशन, नीचे कंट्रोल और अपना स्पीड डायल।
+Smoother hand-crafted animations, built-in extensions, bottom controls, custom speed dial	ज़्यादा स्मूद हाथ से बने ऐनिमेशन, बिल्ट-इन एक्सटेंशन, नीचे कंट्रोल, अपना स्पीड डायल
+Sort from the three-dot menu	तीन बिंदु वाले मेन्यू से क्रम लगाएं
+Sorting and custom order	क्रम और अपना क्रम
+Speak, then tap the checkmark to add your words	बोलें, फिर शब्द जोड़ने के लिए सही के निशान पर टैप करें
+Speed dial	स्पीड डायल
+Start dragging an app, then tap more apps with another finger. Drop them all on the home screen or into a folder.	किसी ऐप्लिकेशन को खींचना शुरू करें, फिर दूसरी उंगली से और ऐप्लिकेशन पर टैप करें। सबको होम स्क्रीन पर या किसी फ़ोल्डर में छोड़ें।
+Starts	शुरू होगा
+Stay connected. Keep incoming calls quiet.	कनेक्ट रहें। आने वाले कॉल शांत रखें।
+Stays unlocked for a minute after you leave it	छोड़ने के बाद एक मिनट तक अनलॉक रहता है
+Stock	मूल
+Stops system updates and hides Software updates in Settings.	सिस्टम अपडेट रोकता है और सेटिंग में सॉफ़्टवेयर अपडेट छिपाता है।
+Surface style, three options	सरफ़ेस स्टाइल, तीन विकल्प
+Surfaces and blur	सरफ़ेस और धुंधलापन
+Swipe down with three fingers to take a screenshot.	स्क्रीनशॉट लेने के लिए तीन उंगलियों से नीचे स्वाइप करें।
+Swipe gestures still work.	स्वाइप जेस्चर अब भी काम करते हैं।
+Swipe left from delete to remove letter by letter	अक्षर-दर-अक्षर मिटाने के लिए डिलीट से बाईं ओर स्वाइप करें
+System colors, your way.	सिस्टम के रंग, आपके हिसाब से।
+System update controls.	सिस्टम अपडेट के कंट्रोल।
+System updates and factory reset	सिस्टम अपडेट और फ़ैक्ट्री रीसेट
+Take a screenshot	स्क्रीनशॉट लें
+Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	इस्तेमाल करने के लिए Chrome के नए टैब पेज पर एक्सटेंशन पर टैप करें। सेटिंग के लिए किसी पर टैप करें, या टूलबार पर पिन करने के लिए दबाकर रखें।
+Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	इस्तेमाल करने के लिए नए टैब पेज पर एक्सटेंशन पर टैप करें। टूलबार पर पिन करने के लिए किसी को दबाकर रखें।
+Tap an app to see its saved versions.	सेव किए गए वर्शन देखने के लिए किसी ऐप्लिकेशन पर टैप करें।
+Tap to wake	चालू करने के लिए टैप करें
+Text size	टेक्स्ट का साइज़
+That isn't a Pixel Suite backup	यह Pixel Suite का बैकअप नहीं है
+The 3 newest versions of each app are kept.	हर ऐप्लिकेशन के 3 सबसे नए वर्शन रखे जाते हैं।
+The clock and info while charging, and after the power button.	चार्ज होते समय और पावर बटन के बाद घड़ी और जानकारी।
+The green button puts a saved version back, with its data and sign-ins.	हरा बटन सेव किए गए वर्शन को उसके डेटा और साइन-इन के साथ वापस लगाता है।
+The power button shows the always-on display for a few seconds	पावर बटन कुछ सेकंड के लिए हमेशा चालू रहने वाला डिसप्ले दिखाता है
+The three styles	तीन स्टाइल
+The toolbar	टूलबार
+Three-finger screenshot	तीन उंगलियों से स्क्रीनशॉट
+To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	यहां वापस आने के लिए होम स्क्रीन को दबाकर रखें और Pixel Suite सेटिंग चुनें। रूट और LSPosed ज़रूरी हैं।
+To protect an app with your fingerprint or PIN, use Privacy & Security.	किसी ऐप्लिकेशन को फ़िंगरप्रिंट या पिन से सुरक्षित करने के लिए निजता और सुरक्षा इस्तेमाल करें।
+Toasts	टोस्ट
+Toolbar	टूलबार
+Toolbar, keys, resize, auto-correction, clipboard	टूलबार, कुंजियां, आकार, अपने-आप सुधार, क्लिपबोर्ड
+Tools for your Google apps.	आपके Google ऐप्लिकेशन के लिए टूल।
+Top	ऊपर
+Turn auto-correction off for the languages you choose. Suggestions still show.	अपनी चुनी भाषाओं के लिए अपने-आप सुधार बंद करें। सुझाव दिखते रहते हैं।
+Turn off after	इसके बाद बंद करें
+Turn on notifications in Android settings	Android सेटिंग में सूचनाएं चालू करें
+Turn the flashlight on or off, open the camera (stock), or do nothing.	फ़्लैशलाइट चालू या बंद करें, कैमरा (स्टॉक) खोलें या कुछ न करें।
+Turn this feature on or off.	यह सुविधा चालू या बंद करें।
+Turn your phone sideways in recents for a cleaner view.	ज़्यादा साफ़ व्यू के लिए हाल ही के ऐप्लिकेशन में फ़ोन को तिरछा करें।
+Turns on	चालू होगा
+Two-finger drag	दो उंगलियों से खींचें
+Typing and clipboard	टाइपिंग और क्लिपबोर्ड
+Undo, Redo, Quick Select, Select all, Cut, Copy and Paste work in every app. Quick Select: tap for a word, tap again to clear, hold to select all.	पहले जैसा करें, फिर से करें, तुरंत चुनें, सभी चुनें, काटें, कॉपी करें और चिपकाएं हर ऐप्लिकेशन में काम करते हैं। तुरंत चुनें: शब्द के लिए टैप करें, हटाने के लिए फिर से टैप करें, सभी चुनने के लिए दबाकर रखें।
+Unlock OEM apps	OEM ऐप्लिकेशन अनलॉक करें
+Unlock on the 4th digit	चौथे अंक पर अनलॉक करें
+Unlocks as soon as you type the 4th digit of your PIN, without Enter	पिन का चौथा अंक डालते ही, Enter के बिना अनलॉक हो जाता है
+Up to 7 shortcuts, in the same order in every language.	ज़्यादा से ज़्यादा 7 शॉर्टकट, हर भाषा में एक ही क्रम में।
+Up to 7 shortcuts, their order, the side buttons and two rows	ज़्यादा से ज़्यादा 7 शॉर्टकट, उनका क्रम, किनारे के बटन और दो पंक्तियां
+Update saves the current version first, then opens its Play Store page. It's held back again once updated.	अपडेट करें पहले मौजूदा वर्शन सेव करता है, फिर उसका Play Store पेज खोलता है। अपडेट होने के बाद इसे फिर से रोका जाता है।
+Updates	अपडेट
+Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.	Play Store से इन मुख्य ऐप्लिकेशन को अपडेट करने पर Pixel Suite की सुविधाएं बिगड़ सकती हैं। Pixel Suite हर रिलीज़ के साथ इन्हें आपके लिए अपडेट करता है।
+Use Doodles	डूडल इस्तेमाल करें
+Use Gboard+	Gboard+ इस्तेमाल करें
+Use custom app icons	अपने ऐप्लिकेशन आइकॉन इस्तेमाल करें
+Use your own image for an app icon	ऐप्लिकेशन आइकॉन के लिए अपनी इमेज इस्तेमाल करें
+Voice typing with checkmark	सही के निशान वाली बोलकर टाइपिंग
+Wake gesture	जगाने का जेस्चर
+Wake the screen	स्क्रीन चालू करें
+Wake your phone with a tap, with pocket protection.	जेब में सुरक्षा के साथ, एक टैप से फ़ोन जगाएं।
+Websites open dark, with no white flash. Super Dark uses pure black.	वेबसाइटें बिना सफ़ेद चमक के डार्क खुलती हैं। सुपर डार्क एकदम काले रंग का इस्तेमाल करता है।
+What's new	नया क्या है
+When you untick apps, Back up saves their current versions first.	ऐप्लिकेशन से सही का निशान हटाने पर, बैकअप पहले उनके मौजूदा वर्शन सेव करता है।
+While charging and after the power button	चार्ज होते समय और पावर बटन के बाद
+While holding an app or folder, swipe with another finger to scroll or turn pages.	किसी ऐप्लिकेशन या फ़ोल्डर को पकड़े रहते हुए, स्क्रोल करने या पेज पलटने के लिए दूसरी उंगली से स्वाइप करें।
+With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.	हमेशा चालू रहने वाला डिसप्ले बंद होने पर, पावर बटन स्क्रीन को हमेशा चालू रहने वाले डिसप्ले में बदल देता है। यह आपके चुने समय के बाद बंद हो जाता है।
+With Super Dark-Mode, panels stay black.	सुपर डार्क मोड के साथ पैनल काले रहते हैं।
+With the screen off and Always-on display on, double-press volume down. Not during calls or while media plays.	स्क्रीन बंद होने और हमेशा चालू रहने वाला डिसप्ले चालू होने पर, आवाज़ कम करने वाला बटन दो बार दबाएं। कॉल या मीडिया चलते समय नहीं।
+With the screen off, open the camera or turn the flashlight on or off.	स्क्रीन बंद होने पर कैमरा खोलें या फ़्लैशलाइट चालू/बंद करें।
+With themed icons on, the app drawer keeps each app's own colors.	थीम वाले आइकॉन चालू होने पर ऐप्लिकेशन ड्रॉअर हर ऐप्लिकेशन के अपने रंग बनाए रखता है।
+You can also hold the search bar and choose Hide widget. It hides right away.	आप खोज बार को दबाकर रखकर विजेट छिपाएं भी चुन सकते हैं। यह तुरंत छिप जाता है।
+Your own Always-on display setting isn't changed.	हमेशा चालू रहने वाले डिसप्ले की आपकी अपनी सेटिंग नहीं बदलती।
+eSIM setup with a QR code	QR कोड से eSIM सेटअप
+• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.	• पिन करने के लिए किसी ऐप्लिकेशन को सबसे ऊपर की पंक्ति में खींचें, फिर क्रम बदलने के लिए खींचें।\n\n• पिन करने या छिपाने के लिए किसी ऐप्लिकेशन या संपर्क को दबाकर रखें।\n\n• छिपाई गई चीज़ें छिपाए गए ऐप्लिकेशन और छिपाए गए संपर्क में हैं। दिखाने के लिए किसी को दबाकर रखें।
+Hide 1 app	1 ऐप्लिकेशन छिपाएं
+Tap to share. Long-press to unhide.	शेयर करने के लिए टैप करें। दिखाने के लिए दबाकर रखें।
+Tick apps to unhide.	दिखाने के लिए ऐप्लिकेशन पर सही का निशान लगाएं।
+Tick contacts to unhide.	दिखाने के लिए संपर्कों पर सही का निशान लगाएं।
+Unknown app	अनजान ऐप्लिकेशन
+Back up and update	बैकअप लें और अपडेट करें
+Back up now	अभी बैकअप लें
+Check root access and reopen this page.	रूट ऐक्सेस जांचें और यह पेज दोबारा खोलें।
+Close app selection	ऐप्लिकेशन चुनना बंद करें
+Collapse blocked updates	ब्लॉक किए गए अपडेट छोटा करें
+Couldn't open Play Store	Play Store नहीं खुल सका
+Discard	खारिज करें
+Discard changes?	बदलाव खारिज करें?
+Expand blocked updates	ब्लॉक किए गए अपडेट बड़ा करें
+Keep editing	बदलाव करते रहें
+Opening Play Store…	Play Store खुल रहा है…
+Reopen this page to refresh installed apps	इंस्टॉल किए गए ऐप्लिकेशन रीफ़्रेश करने के लिए यह पेज दोबारा खोलें
+Save them first, then apply	पहले सेव करें, फिर लागू करें
+Tick Play Store in LSPosed for Pixel Suite.	LSPosed में Pixel Suite के लिए Play Store पर सही का निशान लगाएं।
+Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.	इस ऐप्लिकेशन से सही का निशान हटाने के लिए OEM ऐप्लिकेशन अनलॉक करें चालू करें। इसे अपडेट करने से Pixel Suite का सपोर्ट बिगड़ सकता है।
+Unknown	अनजान
+Unticked apps can get updates	जिन ऐप्लिकेशन से सही का निशान हटा है उन्हें अपडेट मिल सकते हैं
+Update	अपडेट करें
+Update blocker	अपडेट ब्लॉकर
+Updating this core app may break Pixel Suite support.	इस मुख्य ऐप्लिकेशन को अपडेट करने से Pixel Suite का सपोर्ट बिगड़ सकता है।
+Wait for your changes to finish applying	अपने बदलाव लागू होने तक इंतज़ार करें
+Your app selections haven't been applied.	ऐप्लिकेशन के आपके चुनाव लागू नहीं हुए हैं।
+\n\nTick it and apply to hold it back.	\n\nरोकने के लिए सही का निशान लगाकर लागू करें।
+stroke weight	लाइन की मोटाई
+APK exceeds download limit	APK डाउनलोड सीमा से बड़ा है
+APK verification failed	APK की पुष्टि नहीं हो सकी
+An update download is already running.	अपडेट का डाउनलोड पहले से चल रहा है।
+Cannot prepare APK	APK तैयार नहीं हो सका
+Checking APK hash and signing certificate…	APK हैश और साइनिंग सर्टिफ़िकेट जांचे जा रहे हैं…
+Could not open Android installer. Try Download and install again.	Android इंस्टॉलर नहीं खुल सका। फिर से डाउनलोड और इंस्टॉल करें आज़माएं।
+Download complete. Open Updates and tap Download and install to continue.	डाउनलोड पूरा हुआ। जारी रखने के लिए अपडेट खोलें और डाउनलोड और इंस्टॉल करें पर टैप करें।
+Download unavailable	डाउनलोड उपलब्ध नहीं है
+Incomplete APK	अधूरा APK
+No newer verified release is available on both repositories.	दोनों रिपॉज़िटरी पर पुष्टि की गई कोई नई रिलीज़ उपलब्ध नहीं है।
+Pixel Suite update	Pixel Suite अपडेट
+Unexpected APK size	APK का साइज़ अनुमान से अलग है
+Update could not be downloaded or verified. Check your connection and try again.	अपडेट डाउनलोड या पुष्टि नहीं हो सका। अपना कनेक्शन जांचें और फिर से कोशिश करें।
+Verified. Opening Android installer…	पुष्टि हो गई। Android इंस्टॉलर खुल रहा है…
+Verifying the official releases…	आधिकारिक रिलीज़ की पुष्टि हो रही है…
+Add the VPN tile to Quick Settings to connect with one tap.	एक टैप में कनेक्ट करने के लिए क्विक सेटिंग में VPN टाइल जोड़ें।
+Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.	सिर्फ़ Chrome: Chrome के एक्सटेंशन से VPN चालू करें। सिर्फ़ Chrome इसका इस्तेमाल करता है, और वेबसाइटों को वही देश दिखता है।
+Connect	कनेक्ट करें
+Couldn't connect	कनेक्ट नहीं हो सका
+Couldn't load servers. Tap to try again.	सर्वर लोड नहीं हो सके। फिर से कोशिश करने के लिए टैप करें।
+Couldn't refresh. Showing the last list.	रीफ़्रेश नहीं हो सका। पिछली सूची दिख रही है।
+Couldn't start the VPN	VPN शुरू नहीं हो सका
+Countries without servers right now show as Unavailable.	जिन देशों में अभी सर्वर नहीं हैं वे उपलब्ध नहीं के रूप में दिखते हैं।
+Fastest server	सबसे तेज़ सर्वर
+Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	दुनिया भर के वॉलंटियर के चलाए मुफ़्त सर्वर। Pixel Suite सबसे तेज़ सर्वर से कनेक्ट करता है।
+Getting the free server list	मुफ़्त सर्वर की सूची ली जा रही है
+Loading servers…	सर्वर लोड हो रहे हैं…
+No servers yet	अभी कोई सर्वर नहीं
+Not connected	कनेक्ट नहीं है
+Open-source servers change during the day	ओपन-सोर्स सर्वर दिन भर बदलते रहते हैं
+Pick a country, then tap Connect	कोई देश चुनें, फिर कनेक्ट करें पर टैप करें
+Refresh servers	सर्वर रीफ़्रेश करें
+Tap Refresh servers	सर्वर रीफ़्रेश करें पर टैप करें
+Turn off	बंद करें
+Use for all apps	सभी ऐप्लिकेशन के लिए इस्तेमाल करें
+VPN is part of Patreon premium	VPN, पैट्रियन प्रीमियम का हिस्सा है
+Couldn't ask for VPN permission	VPN की अनुमति नहीं मांगी जा सकी
+VPN permission is needed to connect	कनेक्ट करने के लिए VPN की अनुमति ज़रूरी है
+Russia	रूस
+Server list was empty	सर्वर सूची खाली थी
+South Korea	दक्षिण कोरिया
+United Kingdom	यूनाइटेड किंगडम
+United States	अमेरिका
+Chrome only	सिर्फ़ Chrome
+Connecting…	कनेक्ट हो रहा है…
+Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.	Pixel Suite के लिए आस-पास मौजूद डिवाइस की अनुमति दें, ताकि तंग न करें आपकी वॉच का मोबाइल नेटवर्क बदल सके।
+Do Not Annoy: watch	तंग न करें: वॉच
+Pixel Suite on your watch needs its one-time permission (the adb command) to switch the mobile network.	आपकी वॉच पर Pixel Suite को मोबाइल नेटवर्क बदलने के लिए एक बार की अनुमति (adb कमांड) चाहिए।
+Watch	वॉच
+Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)	Smooth Display के नीचे 60 / 120 Hz स्लाइडर जोड़ता है (सेटिंग > डिसप्ले और टच)
+App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.	ऐप्लिकेशन और डेटा सब कुछ (साइन-इन, चैट, सेटिंग और फ़ाइलें) सेव करता है और बिल्कुल वैसा ही वापस लाता है। सिर्फ़ ऐप्लिकेशन बस ऐप्लिकेशन सेव करता है।
+Auto sorts A to Z; Custom lets you arrange them.	ऑटो A से Z क्रम में लगाता है; कस्टम से आप खुद जमा सकते हैं।
+Drag a folder onto Move to bottom to scroll; push deeper to go faster.	स्क्रोल करने के लिए किसी फ़ोल्डर को सबसे नीचे ले जाएं पर खींचें; तेज़ी के लिए और गहराई तक धकेलें।
+Drawer folders: hold one on Move to bottom to scroll; push deeper to go faster.	ड्रॉअर फ़ोल्डर: स्क्रोल करने के लिए किसी को सबसे नीचे ले जाएं पर पकड़े रहें; तेज़ी के लिए और गहराई तक धकेलें।
+Hold an app or folder and choose Lock or Unlock.	किसी ऐप्लिकेशन या फ़ोल्डर को दबाकर रखें और लॉक करें या अनलॉक करें चुनें।
+Pixel watch eSIM purchase	Pixel Watch eSIM खरीदारी
+Tap to open; hold to rename or remove. Hold a website inside to edit, move or remove it.	खोलने के लिए टैप करें; नाम बदलने या हटाने के लिए दबाकर रखें। बदलाव करने, खिसकाने या हटाने के लिए अंदर की किसी वेबसाइट को दबाकर रखें।
+• Drag an app into the top row to pin it, then drag to reorder.	• पिन करने के लिए किसी ऐप्लिकेशन को सबसे ऊपर की पंक्ति में खींचें, फिर क्रम बदलने के लिए खींचें।
+Couldn't reach your watch. Its mobile network will be turned on when it reconnects.	आपकी वॉच तक नहीं पहुंचा जा सका। फिर से कनेक्ट होने पर इसका मोबाइल नेटवर्क चालू कर दिया जाएगा।
+Couldn't reach your watch. Its mobile network will be turned off when it reconnects.	आपकी वॉच तक नहीं पहुंचा जा सका। फिर से कनेक्ट होने पर इसका मोबाइल नेटवर्क बंद कर दिया जाएगा।
+Language	भाषा
+Automatic	अपने-आप
+Follows the phone	फ़ोन के हिसाब से
+Couldn't save the language	भाषा सेव नहीं हो सकी
+‹  Back	‹  वापस
+just now	अभी
+1 minute ago	1 मिनट पहले
+1 hour ago	1 घंटा पहले
+1 day ago	1 दिन पहले
+Ad lists: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0). Pixel Suite's own blocker.	विज्ञापन सूचियां: <a href="https://github.com/hagezi/dns-blocklists-legacy">HaGeZi Multi LIGHT</a> (GPL-3.0) + <a href="https://adaway.org/hosts.txt">AdAway</a> (CC BY 3.0)। Pixel Suite का अपना ब्लॉकर।
+The Ad blocker is part of Pixel Suite's Patreon features	विज्ञापन ब्लॉकर Pixel Suite की पैट्रियन सुविधाओं का हिस्सा है
+Root access is needed	रूट एक्सेस चाहिए
+Off: ads are no longer blocked	बंद: अब विज्ञापन ब्लॉक नहीं होंगे
+Couldn't download the ad lists (no connection?). The current list stays.	विज्ञापन सूचियां डाउनलोड नहीं हुईं (कनेक्शन नहीं?)। मौजूदा सूची बनी रहेगी।
+Ready: restart the phone once to start blocking	तैयार: ब्लॉक करना शुरू करने के लिए फ़ोन एक बार रीस्टार्ट करें
+Couldn't prepare the list	सूची तैयार नहीं हो सकी
+Couldn't prepare the module	मॉड्यूल तैयार नहीं हो सका
+Getting the ad lists…	विज्ञापन सूचियां ला रहे हैं…
+No answer over UDP	UDP पर कोई जवाब नहीं
+TLS handshake timed out	TLS हैंडशेक का समय खत्म
+Key exchange timed out	कुंजी विनिमय का समय खत्म
+Server sent no address	सर्वर ने कोई पता नहीं भेजा
+Server rejected the sign-in	सर्वर ने साइन-इन अस्वीकार किया
+Server gave no address	सर्वर ने कोई पता नहीं दिया
+Connection closed	कनेक्शन बंद हुआ
+Server didn't answer	सर्वर ने जवाब नहीं दिया
+Server refused the call	सर्वर ने कॉल अस्वीकार की
+Server closed the connection	सर्वर ने कनेक्शन बंद किया
+1 server	1 सर्वर
+Unhide 1 app	1 ऐप दिखाएं
+Unhide 1 contact	1 संपर्क दिखाएं
+Unhide contact	संपर्क दिखाएं
+1 app saved · 1 version	सेव: 1 ऐप · 1 वर्शन
+1 app · 1 version	1 ऐप · 1 वर्शन
+Doodles	डूडल
+Super Dark-Mode	सुपर डार्क मोड
+Super Dark	सुपर डार्क
+Frosted Glass	फ्रॉस्टेड ग्लास
+Do Not Annoy	तंग न करें
+No Annoyance	कोई झंझट नहीं
+Quick Select	तुरंत चुनें
+Google Photos	Google फ़ोटो
+Pixel watch	Pixel घड़ी
+Google dialer+	Google फ़ोन+
+Keep	Keep नोट्स
+Drive	Drive
+Sponsored	प्रायोजित
+Recent apps	हाल ही के ऐप्लिकेशन
+3×3 (Stock)	3×3 (मूल)
+Ag	अ
+Aa	अ
+1 website with custom settings	1 वेबसाइट की अलग सेटिंग है
+1 app isn't saved at the version installed now	1 ऐप अभी इंस्टॉल वर्शन पर सेव नहीं है
+Words are never replaced; suggestions still show	शब्द कभी नहीं बदले जाते; सुझाव दिखते रहते हैं
+Off: Gboard corrects nothing; turn it on to choose languages	बंद: Gboard कुछ नहीं सुधारता; भाषाएं चुनने के लिए चालू करें
+Drag the handles to resize, or the middle to move it. Apply saves; Reset goes back to Gboard's size. Portrait only.	आकार बदलने के लिए हैंडल खींचें, या हिलाने के लिए बीच का हिस्सा। लागू करें सेव करता है; रीसेट Gboard के साइज़ पर लौटाता है। सिर्फ़ पोर्ट्रेट।
+Unlock Watch eSIM · $10 one-time purchase	वॉच eSIM अनलॉक करें · $10 एक बार की खरीद
+$10 one-time eSIM purchase	$10 एक बार की eSIM खरीद
+One-time purchase, $10, yours to keep.	एक बार की खरीद, $10, हमेशा आपकी।
+Find your purchase code in the email from purchases@roviandev.com. Check Junk/Spam too.	purchases@roviandev.com से आए ईमेल में खरीद कोड देखें। जंक/स्पैम भी देखें।
+Pixel Suite logo	Pixel Suite लोगो
+Open Android app settings to manage notifications.	सूचनाएं संभालने के लिए Android ऐप सेटिंग खोलें।
+OK	ठीक है
+Opens this sheet from the toolbar	टूलबार से यह शीट खोलता है
+Needs Pixel Suite premium and the ad blocker on	Pixel Suite प्रीमियम और चालू विज्ञापन ब्लॉकर चाहिए
+Manage extensions	एक्सटेंशन मैनेज करें
+Enter an address	पता डालें
+That isn't a web address	यह वेब पता नहीं है
+Off in Chrome · on for other apps	Chrome में बंद · बाकी ऐप के लिए चालू
+The VPN is on for the whole phone. Switching it off here only takes Chrome out.	VPN पूरे फ़ोन के लिए चालू है। यहां बंद करने से सिर्फ़ Chrome बाहर होगा।
+Other apps use the VPN; Chrome is left out. Switch it on to add Chrome.	बाकी ऐप VPN इस्तेमाल करते हैं; Chrome बाहर है। Chrome जोड़ने के लिए चालू करें।
+Only Chrome uses this VPN. Other apps keep their own connection.	सिर्फ़ Chrome यह VPN इस्तेमाल करता है। बाकी ऐप अपना कनेक्शन रखते हैं।
+All apps except Chrome	Chrome को छोड़कर सभी ऐप
+• 1 setting	• 1 सेटिंग
+• 1 custom icon	• 1 कस्टम आइकन
+• Pixel Launcher setup: drawer folders, sorting, renames and locks	• Pixel लॉन्चर सेटअप: ड्रॉअर फ़ोल्डर, क्रम, नाम और लॉक
+• Share menu: pinned order and hidden apps	• शेयर मेन्यू: पिन किया क्रम और छिपे ऐप
+Your current Pixel Suite setup will be replaced. Pixel Launcher restarts once.	आपका मौजूदा Pixel Suite सेटअप बदल जाएगा। Pixel लॉन्चर एक बार रीस्टार्ट होगा।
+Two rows, shortcuts on top	दो पंक्तियां, शॉर्टकट ऊपर
+Two rows	दो पंक्तियां
+Side buttons hidden	साइड बटन छिपे
+Menu button hidden	मेन्यू बटन छिपा
+Emoji/voice hidden	इमोजी/वॉइस छिपा
+Adds navigation buttons beside the gesture bar. After the module update, restart Pixel Launcher once; button choices then apply live.	जेस्चर बार के पास नेविगेशन बटन जोड़ता है। मॉड्यूल अपडेट के बाद Pixel लॉन्चर एक बार रीस्टार्ट करें; फिर बटन के बदलाव तुरंत लागू होंगे।
+Sign-in timed out	साइन-इन का समय खत्म
+Address setup timed out	पता सेट होने का समय खत्म
+Server renewed its keys	सर्वर ने अपनी कुंजियां बदलीं
+Stopped	रुक गया
+Couldn't finish the backup	बैकअप पूरा नहीं हो सका
+Root isn't available, or it took too long	रूट उपलब्ध नहीं है, या बहुत देर लगी
+It didn't finish	यह पूरा नहीं हुआ
+Pixel Suite could not make the file	Pixel Suite फ़ाइल नहीं बना सका
+Pixel Suite is unavailable	Pixel Suite उपलब्ध नहीं है
+Pixel Suite gave no file	Pixel Suite ने कोई फ़ाइल नहीं दी
+the picked folder	चुना गया फ़ोल्डर
+Use a name between 1 and 80 characters	1 से 80 अक्षरों का नाम रखें
+Folder limit reached	फ़ोल्डर की सीमा पूरी हुई
+Drag here to add to home screen	होम स्क्रीन पर जोड़ने के लिए यहां खींचें
+Drag a folder here to move it to the end of the list	फ़ोल्डर को सूची के आखिर में ले जाने के लिए यहां खींचें
+Drag here to take out of the folder	फ़ोल्डर से बाहर निकालने के लिए यहां खींचें
+More shapes	और आकृतियां
+More colours	और रंग
+Thickness	मोटाई
+Fill shape	आकृति भरें
+Delete shape	आकृति हटाएं
+Make Doodles menu smaller	डूडल मेन्यू छोटा करें
+Move Doodles menu	डूडल मेन्यू हिलाएं
+Make text menu smaller	टेक्स्ट मेन्यू छोटा करें
+Move text menu	टेक्स्ट मेन्यू हिलाएं
+More fonts	और फ़ॉन्ट
+Clear clipboard	क्लिपबोर्ड साफ़ करें
+Stop voice typing	वॉइस टाइपिंग रोकें
+Save icon	आइकन सेव करें
+Reset to original icon	मूल आइकन पर लौटाएं
+Folder options	फ़ोल्डर विकल्प
+Doodles tab	डूडल टैब
+Edit: select hidden contacts to unhide	बदलें: दिखाने के लिए छिपे संपर्क चुनें
+Edit: select hidden apps to unhide	बदलें: दिखाने के लिए छिपे ऐप चुनें
+Edit: select apps to hide	बदलें: छिपाने के लिए ऐप चुनें
+Hide the contacts row	संपर्क पंक्ति छिपाएं
+Show the contacts row	संपर्क पंक्ति दिखाएं
+Locked	लॉक है
+Filtering mode	फ़िल्टर मोड
+Change the picture	तस्वीर बदलें
+Open a website to choose its filtering	फ़िल्टर चुनने के लिए कोई वेबसाइट खोलें
+Highest refresh rate. The screen still slows down when nothing moves.	सबसे ज़्यादा रिफ़्रेश रेट। कुछ न हिलने पर स्क्रीन अब भी धीमी होती है।
+Cancelled: the app is locked by Pixel Suite	रद्द: ऐप Pixel Suite से लॉक है
+Incoming call declined by Do Not Annoy	आने वाली कॉल 'तंग न करें' ने काटी
+Confirm it's you to uninstall this core app	इस मुख्य ऐप को अनइंस्टॉल करने के लिए पुष्टि करें कि आप ही हैं
+Confirm it's you to disable this core app	इस मुख्य ऐप को बंद करने के लिए पुष्टि करें कि आप ही हैं
+Warning: Disabling or uninstalling this system-integrated application may compromise Pixel Suite functionality and system stability.	चेतावनी: इस सिस्टम से जुड़े ऐप को बंद या अनइंस्टॉल करने से Pixel Suite के फ़ीचर और सिस्टम की स्थिरता बिगड़ सकती है।
+Files · date modified	फ़ाइलें · बदलने की तारीख
+Site settings unavailable	साइट सेटिंग उपलब्ध नहीं
+Could not save site settings	साइट सेटिंग सेव नहीं हो सकी
+Couldn't read existing Chrome site settings	Chrome की मौजूदा साइट सेटिंग पढ़ी नहीं जा सकी
+Cannot create icon storage	आइकन स्टोरेज नहीं बन सका
+Unsupported dimensions	यह आकार काम नहीं करता
+Cannot encode image	इमेज नहीं बन सकी
+Response too large	जवाब बहुत बड़ा है
+Orange	नारंगी
+Dark red	गहरा लाल
+Turquoise	फ़िरोज़ी
+Dark blue	गहरा नीला
+Purple	बैंगनी
+Pink	गुलाबी
+White	सफ़ेद
+Black	काला
+Move to bottom	नीचे ले जाएं
+Lock app	ऐप लॉक करें
+Unlock app	ऐप अनलॉक करें
+Everything: the app, its sign-ins, chats, settings and files. Restores exactly as it was.	सब कुछ: ऐप, उसके साइन-इन, चैट, सेटिंग और फ़ाइलें। ठीक पहले जैसा लौटता है।
+$5/month	$5/महीना
+Settings soft scrolling edges (Frosted Glass only):	सेटिंग के सॉफ़्ट स्क्रॉलिंग किनारे (सिर्फ़ फ्रॉस्टेड ग्लास):
+Digital Wellbeing	डिजिटल वेलबीइंग
+Enable these scopes in LSPosed and reboot. Only verified Settings-origin activities and safely identified scrolling regions are styled. Unsupported regions are skipped.	LSPosed में ये स्कोप चालू करें और रीबूट करें। सिर्फ़ सेटिंग से खुली पुष्टि की गई स्क्रीन और सुरक्षित रूप से पहचाने गए स्क्रॉल हिस्सों पर स्टाइल लगता है। बाकी हिस्से छोड़ दिए जाते हैं।
+Telegram	टेलीग्राम
+Patreon	पैट्रियन
+Pixel Launcher	Pixel लॉन्चर
+Pixel Studio	Pixel स्टूडियो
+Hold power button when locked	लॉक होने पर पावर बटन दबाकर रखें
+While your phone is locked, a hold does what you pick in Hold power button when locked. Each choice works on its own.	फ़ोन लॉक होने पर, पावर बटन दबाकर रखने से वही होता है जो आपने “लॉक होने पर पावर बटन दबाकर रखें” में चुना है। दोनों विकल्प अलग-अलग काम करते हैं।
+Reboot	रीबूट करें
+Tap again to reboot	रीबूट करने के लिए फिर से टैप करें
+Rebooting…	रीबूट हो रहा है…
+These run inside Android, so they update after a reboot:	ये Android के अंदर चलते हैं, इसलिए रीबूट के बाद अपडेट होते हैं:
+Reboot to finish updating. Long-press to hide.	अपडेट पूरा करने के लिए रीबूट करें। छिपाने के लिए दबाकर रखें।
+Couldn't reboot: root access needed	रीबूट नहीं हो सका: रूट एक्सेस चाहिए
+Search in Chrome	Chrome में खोजें
+Couldn't refresh: root access needed	रीफ़्रेश नहीं हो सका: रूट एक्सेस चाहिए
+See-through keyboard background, with rims	किनारों के साथ पारदर्शी कीबोर्ड बैकग्राउंड
+The keyboard's background turns to frosted glass: what's behind it shows through, blurred, with the rims. The keys stay as they are.	कीबोर्ड का बैकग्राउंड फ्रॉस्टेड ग्लास बन जाता है: उसके पीछे की चीज़ें धुंधली होकर दिखती हैं, किनारों के साथ। कुंजियां वैसी ही रहती हैं।
+Frosted Gboard	फ्रॉस्टेड Gboard
+Follows the phone language	फ़ोन की भाषा के हिसाब से
+In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.	कुछ ऐप्स में, जैसे Chrome, कीबोर्ड के ऊपरी कोने सफ़ेद दिखते हैं। ये ऐप्स अपना पेज वहीं खत्म कर देते हैं जहाँ कीबोर्ड शुरू होता है, इसलिए कोनों के पीछे दिखाने को कुछ नहीं होता।
+Pixel Stack	Pixel Stack
+Tap to start	शुरू करने के लिए टैप करें
+Tap to drop	गिराने के लिए टैप करें
+Perfect!	एकदम सही!
+Best	सर्वश्रेष्ठ
+New best!	नया रिकॉर्ड!
+Tap to play again	फिर से खेलने के लिए टैप करें
+Share score	स्कोर शेयर करें
+Sharing…	शेयर हो रहा है…
+Shared!	शेयर हो गया!
+Couldn't share. Try again.	शेयर नहीं हो सका। फिर से कोशिश करें।
+Your name	आपका नाम
+Optional	वैकल्पिक
+Game Over	गेम ओवर
+{0}• **System UI** (com.android.systemui)\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **Settings** (com.android.settings)\n• **Settings Services** (com.google.android.settings.intelligence)\n• **Package installer** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nFor editor styling, also select **Pixel Studio** (com.google.android.apps.pixel.creativeassistant) and **Google Photos** (com.google.android.apps.photos). Reboot after adding scopes.	{0}• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui)\n• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher)\n• **Google** (com.google.android.googlequicksearchbox)\n• **Gboard** (com.google.android.inputmethod.latin)\n• **सेटिंग** (com.android.settings)\n• **सेटिंग सेवाएं** (com.google.android.settings.intelligence)\n• **पैकेज इंस्टॉलर** (com.google.android.packageinstaller / com.android.packageinstaller)\n\nएडिटर स्टाइल के लिए **Pixel स्टूडियो** (com.google.android.apps.pixel.creativeassistant) और **Google फ़ोटो** (com.google.android.apps.photos) भी चुनें। स्कोप जोड़ने के बाद रीबूट करें।
+{0}• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — icons, folders, menus and the drawer soft edge\n• **System UI** (com.android.systemui) — system menus and messages\n• **Pixel Studio** (com.google.android.apps.pixel.creativeassistant)\n• **Google Photos** (com.google.android.apps.photos) — editor menus\n\nSuper Dark lists its extra scopes on its own page.	{0}• **Pixel लॉन्चर** (com.google.android.apps.nexuslauncher) — आइकॉन, फ़ोल्डर, मेन्यू और ड्रॉअर का नरम किनारा\n• **सिस्टम यूज़र इंटरफ़ेस** (com.android.systemui) — सिस्टम मेन्यू और मैसेज\n• **Pixel स्टूडियो** (com.google.android.apps.pixel.creativeassistant)\n• **Google फ़ोटो** (com.google.android.apps.photos) — एडिटर मेन्यू\n\nसुपर डार्क अपने अतिरिक्त स्कोप अपने पेज पर दिखाता है।
+{0} goes back to this version. Its data stays as it is now. If it doesn't open after, clear its storage in Settings.	{0} इस वर्शन पर वापस जाता है। इसका डेटा अभी जैसा है वैसा ही रहता है। अगर इसके बाद यह न खुले, तो सेटिंग में इसका स्टोरेज साफ़ करें।
+There's no room on the speed dial for its {0} websites, so they'll be deleted with the folder.	स्पीड डायल पर इसकी {0} वेबसाइटों की जगह नहीं है, इसलिए वे फ़ोल्डर के साथ हट जाएंगी।
+Saved {0}. Tap Update in Play Store. {1} is held back again once it's updated.	{0} सेव हुआ। Play Store में अपडेट करें पर टैप करें। अपडेट के बाद {1} फिर से रोका जाएगा।
+Remove “{0}”? Its apps go back to the app drawer. No apps are uninstalled.	“{0}” हटाएं? इसके ऐप्लिकेशन ऐप्लिकेशन ड्रॉअर में लौट जाते हैं। कोई ऐप्लिकेशन अनइंस्टॉल नहीं होता।
+Couldn't save {0}, so it wasn't updated. Check root and free space.	{0} सेव नहीं हो सका, इसलिए अपडेट नहीं हुआ। रूट और खाली जगह जांचें।
+Tap Update in Play Store. {0} is held back again once it's updated.	Play Store में अपडेट करें पर टैप करें। अपडेट होने के बाद {0} को फिर से रोका जाता है।
+**{0}**\nVersion {1}\nBuild {2}\n{3}\n\nTick it and apply to hold it back.	**{0}**\nवर्शन {1}\nबिल्ड {2}\n{3}\n\nरोकने के लिए सही का निशान लगाकर लागू करें।
+Up to 7 shortcuts, their order, the side buttons and two rows{0}	ज़्यादा से ज़्यादा 7 शॉर्टकट, उनका क्रम, किनारे के बटन और दो पंक्तियां{0}
+{0}, {1}, updates blocked, core app locked. Tap to learn why	{0}, {1}, अपडेट रोके गए, मुख्य ऐप लॉक है। वजह जानने के लिए टैप करें
+{0}. A looping demo. It doesn't change your settings.	{0}. एक लूप डेमो। यह आपकी सेटिंग नहीं बदलता।
+Restore {0} (its saved version is the one installed)	{0} वापस लाएं (सेव किया गया वर्शन ही इंस्टॉल है)
+{0} of {1} on the toolbar · {2} more · swipe left or right	टूलबार पर {1} में से {0} · {2} और · बाएं या दाएं स्वाइप करें
+Couldn't back up {0} of {1}. Check root and free space.	{1} में से {0} का बैकअप नहीं हुआ। रूट और खाली जगह जांचें।
+Pixel Suite {0} is available on GitHub and Xposed.	Pixel Suite {0} GitHub और Xposed पर उपलब्ध है।
+{0} apps aren't saved at the version installed now	{0} ऐप अभी इंस्टॉल वर्शन पर सेव नहीं हैं
+{0}, off, needs Suggestions and shortcuts together	{0}, बंद, सुझाव और शॉर्टकट साथ में चाहिए
+The saved version of {0} is the one installed now	{0} का सेव किया गया वर्शन ही अभी इंस्टॉल है
+{0}, on, needs Suggestions and shortcuts together	{0}, चालू, सुझाव और शॉर्टकट साथ में चाहिए
+{0}. Applies your changes. Long-press to hide.	{0}. आपके बदलाव लागू करता है। छिपाने के लिए दबाकर रखें।
+There's no room on the speed dial for its {0}	स्पीड डायल पर इसकी {0} के लिए जगह नहीं है
+Couldn't save {0}. Check root and free space.	{0} सेव नहीं हो सका। रूट और खाली जगह जांचें।
+{0}: the saved version is the one installed	{0}: सेव किया गया वर्शन ही इंस्टॉल है
+Its {0} websites go back to the speed dial.	इसकी {0} वेबसाइटें स्पीड डायल पर लौट जाएंगी।
+{0} is back to {1}, with everything as it was	{0} वापस {1} पर है, सब कुछ पहले जैसा
+{0} apps protected from updates · {1} shown	{0} ऐप अपडेट से सुरक्षित · {1} दिख रहे
+{0}, {1}, core app locked. Tap to learn why	{0}, {1}, मुख्य ऐप लॉक है। वजह जानने के लिए टैप करें
+Select at least {0} apps for a folder	फ़ोल्डर के लिए कम से कम {0} ऐप्लिकेशन चुनें
+Sort the apps in “{0}” from A to Z?	“{0}” के ऐप्लिकेशन A से Z क्रम में लगाएं?
+This folder is full ({0} websites)	यह फ़ोल्डर भरा है ({0} वेबसाइटें)
+Blocking {0} ad domains · updated {1}	{0} विज्ञापन डोमेन ब्लॉक · {1} अपडेट हुआ
+{0} apps did not fit on this page	{0} ऐप्लिकेशन इस पेज पर नहीं आ सके
+{0} open-source servers available	{0} ओपन-सोर्स सर्वर उपलब्ध हैं
+{0} websites with custom settings	{0} वेबसाइट की अलग सेटिंग है
+{0}, {1}. Tap to hide saved versions	{0}, {1}. सेव वर्शन छिपाने के लिए टैप करें
+{0}, {1}. Tap to show saved versions	{0}, {1}. सेव वर्शन देखने के लिए टैप करें
+{0} removed element(s) · Restore	{0} हटाए गए एलिमेंट · वापस लाएं
+Couldn't reach any server in {0}	{0} में किसी सर्वर तक नहीं पहुंचा जा सका
+{0}. Check root and free space.	{0}. रूट और खाली जगह जांचें।
+{0} apps protected from updates	{0} ऐप्लिकेशन अपडेट से सुरक्षित
+Downloading Pixel Suite {0} — {1}%	Pixel Suite {0} डाउनलोड हो रहा है — {1}%
+Restore removed elements ({0})	हटाए गए एलिमेंट वापस लाएं ({0})
+{0} of {1} on the toolbar · {2} more	टूलबार पर {1} में से {0} · {2} और
+Update, back up or restore {0}	{0} अपडेट, बैकअप या रीस्टोर करें
+{0}\nDefault for all websites	{0}\nसभी वेबसाइटों के लिए डिफ़ॉल्ट
+{0} needs Pixel Suite premium	{0} के लिए Pixel Suite प्रीमियम ज़रूरी है
+No open-source servers in {0}	{0} में कोई ओपन-सोर्स सर्वर नहीं
+Server list unavailable ({0})	सर्वर सूची उपलब्ध नहीं ({0})
+Connecting to server {0} of {1}…	{1} में से सर्वर {0} से कनेक्ट हो रहा है…
+{0}% wide · {1}% tall · {2} dp down	{0}% चौड़ा · {1}% ऊंचा · {2} dp नीचे
+Restore a saved version ({0})	सेव किया वर्शन रीस्टोर करें ({0})
+Pixel Suite {0} is available	Pixel Suite {0} उपलब्ध है
+Saved {0} with Pixel Suite {1}.	{0} को Pixel Suite {1} से सेव किया।
+{0}. Opens an external app.	{0}. कोई बाहरी ऐप्लिकेशन खोलता है।
+{0}% wide · {1}% tall · {2} dp up	{0}% चौड़ा · {1}% ऊंचा · {2} dp ऊपर
+Waiting for dark mode · {0}	डार्क मोड का इंतज़ार · {0}
+{0} (folder not available)	{0} (फ़ोल्डर उपलब्ध नहीं)
+{0} apps saved · {1} versions	सेव: {0} ऐप · {1} वर्शन
+1 app saved · {0} versions	सेव: 1 ऐप · {0} वर्शन
+{0} apps saved · 1 version	सेव: {0} ऐप · 1 वर्शन
+Delete saved version {0}	सेव किया गया वर्शन {0} मिटाएं
+Installed version of {0}	{0} का इंस्टॉल वर्शन
+What {0} ({1}) is used for	{0} ({1}) किसलिए इस्तेमाल होता है
+Any country · up to {0}	कोई भी देश · ज़्यादा से ज़्यादा {0}
+{0} apps · {1} versions · {2}	{0} ऐप · {1} वर्शन · {2}
+1 app · {0} versions · {1}	1 ऐप · {0} वर्शन · {1}
+{0} apps · 1 version · {1}	{0} ऐप · 1 वर्शन · {1}
+1 app · 1 version · {0}	1 ऐप · 1 वर्शन · {0}
+Couldn't restore {0}: {1}	{0} वापस नहीं लाया जा सका: {1}
+About {0} · only {1} free	लगभग {0} · सिर्फ़ {1} खाली
+Level {0} · {1} (Default)	स्तर {0} · {1} (डिफ़ॉल्ट)
+{0}, {1}, updates blocked	{0}, {1}, अपडेट रोके गए
+On · {0} · whole phone	चालू · {0} · पूरा फ़ोन
+On · {0} · Chrome only	चालू · {0} · सिर्फ़ Chrome
+Pixel Suite VPN · {0}	Pixel Suite VPN · {0}
+Checking {0} servers…	{0} सर्वर जांच रहे हैं…
+{0} selected · {1} shown	{0} चुने गए · {1} दिख रहे
+No results for "{0}"	"{0}" के लिए कोई नतीजा नहीं
+{0} apps · {1} versions	{0} ऐप · {1} वर्शन
+1 app · {0} versions	1 ऐप · {0} वर्शन
+{0} apps · 1 version	{0} ऐप · 1 वर्शन
+Purchase email: {0}	खरीदारी का ईमेल: {0}
+No icons match “{0}	“{0} से मेल खाने वाला कोई आइकॉन नहीं
+Reconnecting… ({0})	फिर से कनेक्ट हो रहा है… ({0})
+Unhide {0} contacts	{0} संपर्क दिखाएं
+No apps match “{0}	“{0} से मेल खाने वाला कोई ऐप्लिकेशन नहीं
+Resend code ({0}s)	कोड फिर से भेजें ({0} सेकंड)
+Connecting to {0}…	{0} से कनेक्ट हो रहा है…
+**Used for:**\n{0}	**इसके लिए इस्तेमाल:**\n{0}
+{0}, {1}, switch, off	{0}, {1}, स्विच, बंद
+Restore {0} build {1}	{0} बिल्ड {1} रीस्टोर करें
+Turns on at {0} · {1}	{0} पर चालू होगा · {1}
+Pin {0} to toolbar	{0} को टूलबार पर पिन करें
+• {0} custom icons	• {0} कस्टम आइकन
+Saving {0} · {1} of {2}	{0} सेव हो रहा है · {2} में से {1}
+{0}  ·  {1} selected	{0}  ·  {1} चुने गए
+{0}, {1}, switch, on	{0}, {1}, स्विच, चालू
+{0}, not selected	{0}, चुना नहीं गया
+{0} · Chrome only	{0} · सिर्फ़ Chrome
+Use default ({0})	डिफ़ॉल्ट इस्तेमाल करें ({0})
+Pass expires {0}	पास {0} को खत्म होगा
+{0}, unavailable	{0}, उपलब्ध नहीं
+Enables {0} in {1}.	{1} में {0} चालू करता है।
+{0} · not Chrome	{0} · Chrome नहीं
+{0} is unlocked	{0} अनलॉक है
+Connected · {0}	कनेक्ट है · {0}
+{0} is selected	{0} चुना गया है
+{0} minutes ago	{0} मिनट पहले
+{0} is back to {1}	{0} वापस {1} पर है
+Unhide {0} apps	{0} ऐप दिखाएं
+On until {0} · {1}	{0} तक चालू · {1}
+{0} icon packs	{0} आइकॉन पैक
+• {0} settings	• {0} सेटिंग
+Remove "{0}"?	"{0}" हटाएं?
+{0}, selected	{0}, चुना गया
+{0} right now	अभी {0}
+{0} is locked	{0} लॉक है
+Hide {0} apps	{0} ऐप्लिकेशन छिपाएं
+{0} hours ago	{0} घंटे पहले
+Checking {0}	{0} जांचा जा रहा है
+Saving {0} {1}…	{0} {1} सेव हो रहा है…
+{0} days ago	{0} दिन पहले
+{0} · up to {1}	{0} · {1} तक
+Level {0} · {1}	स्तर {0} · {1}
+Restore {0} {1}	{0} {1} रीस्टोर करें
+On now · {0}	अभी चालू · {0}
+Back up {0}	{0} का बैकअप लें
+Restart {0}	{0} रीस्टार्ट करें
+Enables {0}	{0} चालू करता है
+{0} dp down	{0} dp नीचे
+Restore {0}	{0} वापस लाएं
+{0} servers	{0} सर्वर
+{0}, hidden	{0}, छिपा है
+Level {0}, {1}	स्तर {0}, {1}
+Refresh {0}	{0} रीफ़्रेश करें
+{0}, shown	{0}, दिख रहा है
+Saved {0}.	{0} को सेव किया।
+**{0}** ({1})	**{0}** ({1})
+About {0}	लगभग {0}
+Build {0}	बिल्ड {0}
+From  {0}	से  {0}
+VPN · {0}	VPN · {0}
+{0} icons	{0} आइकन
+Unpin {0}	{0} अनपिन करें
+{0}, off	{0}, बंद
+To  {0}	तक  {0}
+Pin {0}	{0} पिन करें
+Its {0}	इसकी {0}
+Use {0}	{0} इस्तेमाल करें
+{0}, on	{0}, चालू
+You’re a free member. Choose the paid tier to unlock	आप फ़्री सदस्य हैं। अनलॉक करने के लिए पेड टियर चुनें।
+Root access is needed to save membership changes.	सदस्यता के बदलाव सेव करने के लिए रूट एक्सेस चाहिए।
+Sign-in expired. Sign in with Patreon again.	साइन-इन की समय-सीमा खत्म हो गई। पैट्रियन से फिर साइन इन करें।
+Couldn’t check membership. Try again shortly.	सदस्यता जांची नहीं जा सकी। थोड़ी देर में फिर कोशिश करें।
+Sign-in expired. Tap Unlock to try again.	साइन-इन की समय-सीमा खत्म हो गई। फिर कोशिश करने के लिए अनलॉक करें पर टैप करें।
+No active membership found. Join, then tap Unlock again.	कोई चालू सदस्यता नहीं मिली। जुड़ें, फिर दोबारा अनलॉक करें पर टैप करें।
+Sign-in wasn't completed. You can try again.	साइन-इन पूरा नहीं हुआ। आप फिर कोशिश कर सकते हैं।
+Couldn't verify this sign-in. Tap Unlock to try again.	यह साइन-इन जांचा नहीं जा सका। फिर कोशिश करने के लिए अनलॉक करें पर टैप करें।
+Couldn't confirm membership. Try again.	सदस्यता की पुष्टि नहीं हो सकी। फिर कोशिश करें।
+Confirming Patreon membership…	पैट्रियन सदस्यता की पुष्टि हो रही है…
+Log in	लॉग इन करें
+Patreon profile photo	पैट्रियन प्रोफ़ाइल फ़ोटो
+After checkout, your purchase code goes to the email you pay with. Check your inbox and Junk/Spam folder for purchases@roviandev.com.	भुगतान के बाद खरीद कोड उसी ईमेल पर आता है जिससे आप भुगतान करते हैं। purchases@roviandev.com के लिए इनबॉक्स और जंक/स्पैम फ़ोल्डर देखें।
+Buy	खरीदें
+Check your inbox and Junk/Spam folder for purchases@roviandev.com. Use the newest code; it expires in 10 minutes.	purchases@roviandev.com के लिए इनबॉक्स और जंक/स्पैम फ़ोल्डर देखें। सबसे नया कोड इस्तेमाल करें; यह 10 मिनट में खत्म हो जाता है।
+Hide app	ऐप्लिकेशन छिपाएं
+Hide widget	विजेट छिपाएं
+Remove Google Play services from the scope	स्कोप से Google Play सेवाएं हटाएं
+Pixel Suite no longer uses Google Play services, and keeping it in Pixel Suite's LSPosed scope can cost you Device and Strong integrity.	Pixel Suite अब Google Play सेवाओं का इस्तेमाल नहीं करता, और उन्हें Pixel Suite के LSPosed स्कोप में रखने से Device और Strong integrity जा सकती है।
+Open LSPosed (or Vector), untick Google Play services for Pixel Suite, then reboot.	LSPosed (या Vector) खोलें, Pixel Suite के लिए Google Play सेवाओं से सही का निशान हटाएं, फिर रीबूट करें।
+Reboot to restore Play Integrity	Play Integrity वापस पाने के लिए रीबूट करें
+Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite ने अपने LSPosed स्कोप से Google Play सेवाएं हटा दीं, क्योंकि इनसे Device और Strong integrity जा सकती है और अब इनका इस्तेमाल नहीं होता। पूरा करने के लिए फ़ोन रीबूट करें।
+Server connected but passes no traffic	सर्वर जुड़ गया, पर कोई ट्रैफ़िक नहीं जा रहा
+Server connected but websites don't open ({0})	सर्वर जुड़ गया, पर वेबसाइटें नहीं खुलतीं ({0})

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="description">Gesten, Anpassung von Pixel Launcher, App- und Ordnersperren, Super-Dunkelmodus, Dateisortierung, freies Zuschneiden von Screenshots und Kritzeleien in Pixel Studio und Google Fotos. Alles wird in der Pixel Suite-App eingerichtet. Aktiviere die empfohlenen LSPosed-Bereiche, auch für die Editoren, die du nutzt, und starte diese Apps oder das Smartphone neu.</string>
+    <string name="search_in_chrome">In Chrome suchen</string>
+</resources>

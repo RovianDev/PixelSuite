@@ -65,22 +65,86 @@ final class ChromeCosmetic {
         Xp.hookAllMethods(proxy, "primaryMainDocumentElementAvailable", cb);
         Xp.hookAllMethods(proxy, "documentLoadedInPrimaryMainFrame", cb);
         sInstalled = true;
+        try { ChromeShield.install(l); } catch (Throwable ignored) { }
+        try { ChromeDarkPages.install(l); } catch (Throwable ignored) { }
     }
 
     private static void inject(Object proxy) throws Throwable {
         Context app = (Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
-        if (app == null || "0".equals(Settings.Secure.getString(app.getContentResolver(), AdBlock.KEY)) || !PatronGate.ok(app)) return;
+        if (app == null) return;
+        boolean on = !"0".equals(Settings.Secure.getString(app.getContentResolver(), AdBlock.KEY)) && PatronGate.ok(app);
         Object wc = webContents(proxy);
         if (wc == null) return;
+        String host = host(wc);
+        int level = on && ChromeShield.filtering(app) ? ChromeShield.level(app, host) : 0;
+        ChromeShield.loaded(app, wc, on);
+        if (level == 0) return;
         List<Object> done = new ArrayList<Object>(2);
         for (Method m : sFrames) {
             Object rfh = m.invoke(wc);
             if (rfh == null || done.contains(rfh)) continue;
             done.add(rfh);
-            sExec.invoke(rfh, SCRIPT, sNoop);
+            if (level >= 2) sExec.invoke(rfh, SCRIPT, sNoop);
+            if (level >= 3) sExec.invoke(rfh, ChromeShield.ANNOY, sNoop);
         }
-        lists(app, wc, done);
+        lists(app, host, done, ChromeShield.hidden(app, host), !(level == 1 && ChromeShield.googleSearch(host)));
     }
+
+    static boolean alive(Object rfh) {
+        if (rfh == null) return false;
+        try {
+            boolean any = false;
+            for (Class<?> k = rfh.getClass(); k != null && k != Object.class; k = k.getSuperclass()) {
+                for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                    if (f.getType() != long.class || java.lang.reflect.Modifier.isStatic(f.getModifiers())) continue;
+                    f.setAccessible(true);
+                    any = true;
+                    if (f.getLong(rfh) != 0L) return true;
+                }
+                if (any) return false;
+            }
+            return true;
+        } catch (Throwable t) { return true; }
+    }
+
+    static Object mainFrame(Object wc) {
+        for (Method m : sFrames) {
+            try { Object rfh = m.invoke(wc); if (rfh != null) return rfh; } catch (Throwable ignored) { }
+        }
+        return null;
+    }
+
+    static void run(Object wc, String js, final java.util.function.Consumer<String> done) {
+        try {
+            Object rfh = wc == null || sExec == null ? null : mainFrame(wc);
+            if (rfh == null || !alive(rfh)) return;
+            Object cb = done == null ? sNoop : Proxy.newProxyInstance(sCallback.getClassLoader(), new Class<?>[]{sCallback}, (o, m, a) -> {
+                if ("hashCode".equals(m.getName())) return System.identityHashCode(o);
+                if ("equals".equals(m.getName())) return o == a[0];
+                if ("toString".equals(m.getName())) return "PixelSuiteResult";
+                if (a != null && a.length == 1 && (a[0] == null || a[0] instanceof String)) { try { done.accept((String) a[0]); } catch (Throwable ignored) { } }
+                return null;
+            });
+            sExec.invoke(rfh, js, cb);
+        } catch (Throwable ignored) { }
+    }
+
+    static void runAll(Object wc, String js) {
+        if (wc == null || sExec == null) return;
+        List<Object> done = new ArrayList<Object>(2);
+        for (Method m : sFrames) {
+            try {
+                Object rfh = m.invoke(wc);
+                if (rfh == null || done.contains(rfh) || !alive(rfh)) continue;
+                done.add(rfh);
+                sExec.invoke(rfh, js, sNoop);
+            } catch (Throwable ignored) { }
+        }
+    }
+
+    static Class<?> webContentsClass() { return sWebContents; }
+
+    static String hostOf(Object wc) { return wc == null || sWebContents == null ? null : host(wc); }
 
     private static final android.net.Uri LISTS = android.net.Uri.parse("content://" + Cosmetic.AUTHORITY);
     private static final ExecutorService sWorker = Executors.newSingleThreadExecutor();
@@ -90,13 +154,12 @@ final class ChromeCosmetic {
     private static long sFetchedAt = -1;
     private static List<Method> sUrls;
 
-    private static void lists(final Context app, Object wc, final List<Object> frames) {
-        final String host = host(wc);
+    private static void lists(final Context app, final String host, final List<Object> frames, final Set<String> custom, final boolean filters) {
         sWorker.execute(new Runnable() {
             @Override public void run() {
                 try {
                     long now = android.os.SystemClock.uptimeMillis();
-                    if (sGeneric == null || sGeneric.length == 0 || now - sFetchedAt > 30L * 60 * 1000) {
+                    if (filters && (sGeneric == null || sGeneric.length == 0 || now - sFetchedAt > 30L * 60 * 1000)) {
                         List<String> all = new ArrayList<String>();
                         int parts = 1;
                         for (int i = 0; i < parts && i < 40; i++) {
@@ -107,9 +170,10 @@ final class ChromeCosmetic {
                         }
                         if (!all.isEmpty()) { sGeneric = all.toArray(new String[0]); sGenericCss = css(sGeneric, null, null); sFetchedAt = now; }
                     }
-                    if (sGeneric == null) return;
+                    String[] generic = filters ? sGeneric : null;
+                    if (generic == null && custom.isEmpty()) return;
                     String[] extra = null; Set<String> skip = null;
-                    if (host != null) {
+                    if (filters && host != null) {
                         android.os.Bundle h = app.getContentResolver().call(LISTS, "host", host, null);
                         if (h != null) {
                             extra = split(h.getString("rules"));
@@ -117,13 +181,15 @@ final class ChromeCosmetic {
                             if (x.length > 0) { skip = new HashSet<String>(); for (String v : x) skip.add(v); }
                         }
                     }
-                    StringBuilder sheet = new StringBuilder(skip == null ? sGenericCss : css(sGeneric, null, skip));
+                    StringBuilder sheet = new StringBuilder(generic == null ? "" : skip == null ? sGenericCss : css(generic, null, skip));
                     if (extra != null) sheet.append(css(extra, null, skip));
+                    for (String c : custom) if (!c.isEmpty()) sheet.append(c).append('\n');
                     if (sheet.length() == 0) return;
                     final String js = "(function () { \n"
                             + "if (window.__pixelSuiteLists) return; \n"
                             + "window.__pixelSuiteLists = 1; \n"
-                            + "var css = " + quote(sheet.toString()) + ".split('\\n').map(function (s) { return s ? s + '{display:none!important}' : ''; }).join('\\n'); \n"
+                            + "var sels = " + quote(sheet.toString()) + ".split('\\n'); window.__psSels = sels; \n"
+                            + "var css = sels.map(function (s) { return s ? s + '{display:none!important}' : ''; }).join('\\n'); \n"
                             + "try { var s = new CSSStyleSheet(); s.replaceSync(css); \n"
                             + "var add = function () { try { if (document.adoptedStyleSheets.indexOf(s) < 0) document.adoptedStyleSheets = document.adoptedStyleSheets.concat([s]); } catch (e) { } }; \n"
                             + "add(); document.addEventListener('DOMContentLoaded', add, true); return; } catch (e) { } \n"
@@ -131,7 +197,7 @@ final class ChromeCosmetic {
                             + "})();\n";
                     sMain.post(new Runnable() {
                         @Override public void run() {
-                            for (Object rfh : frames) { try { sExec.invoke(rfh, js, sNoop); } catch (Throwable ignored) { } }
+                            for (Object rfh : frames) { try { if (alive(rfh)) sExec.invoke(rfh, js, sNoop); } catch (Throwable ignored) { } }
                         }
                     });
                 } catch (Throwable ignored) { }
@@ -196,6 +262,10 @@ final class ChromeCosmetic {
             }
         } catch (Throwable ignored) { }
         return null;
+    }
+
+    static Object webContentsOf(Object proxy) {
+        try { return webContents(proxy); } catch (Throwable t) { return null; }
     }
 
     private static Object webContents(Object proxy) throws Throwable {

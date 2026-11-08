@@ -17,13 +17,17 @@ final class SuperDarkApps {
 
     private static final java.util.List<Object> sHandles = new java.util.ArrayList<Object>();
 
+    private static boolean sGboard;
+    static final int KEY = 0x2C2C2E, KEY_PRESSED = 0x48484A;
+
     static void install(ClassLoader cl, String pkg) {
         if (SETTINGS.equals(pkg) || SETTINGS_SEARCH.equals(pkg)) sBlackMax = 0x18;
+        sGboard = GBOARD.equals(pkg);
         sHandles.clear();
         hookResult(android.content.res.Resources.class, "getColor");
         hookResult(android.content.res.TypedArray.class, "getColor");
-        hookResult(android.content.res.ColorStateList.class, "getColorForState");
-        hookResult(android.content.res.ColorStateList.class, "getDefaultColor");
+        hookStateResult(android.content.res.ColorStateList.class, "getColorForState");
+        hookStateResult(android.content.res.ColorStateList.class, "getDefaultColor");
         hookFirstArg(android.graphics.drawable.GradientDrawable.class, "setColor");
         hookFirstArg(android.graphics.drawable.ColorDrawable.class, "setColor");
         hookFirstArg(android.view.View.class, "setBackgroundColor");
@@ -110,6 +114,17 @@ final class SuperDarkApps {
         } catch (Throwable t) { return 0; }
     }
 
+    private static int hookStateResult(Class<?> c, String name) {
+        try {
+            return keep(Xp.hookAllMethods(c, name, new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    Object r = p.getResult();
+                    if (r instanceof Integer && active()) { int v = remap((Integer) r); if (v != (Integer) r) p.setResult(v); }
+                }
+            }));
+        } catch (Throwable t) { return 0; }
+    }
+
     private static int hookFirstArg(Class<?> c, String name) {
         try {
             return keep(Xp.hookAllMethods(c, name, new Xp.Callback() {
@@ -180,9 +195,11 @@ final class SuperDarkApps {
 
     static int remap(int c) {
         int a = c >>> 24; if (a == 0) return c;
+        if (sGboard && ((c & 0xffffff) == KEY || (c & 0xffffff) == KEY_PRESSED)) return c;
         int r = (c >> 16) & 0xff, g = (c >> 8) & 0xff, b = c & 0xff;
         int max = Math.max(r, Math.max(g, b)), min = Math.min(r, Math.min(g, b));
         if (max > 0x50 || max - min > 0x14 || max == 0) return c;
+        if (sGboard && max >= 0x30) return (a << 24) | (max < 0x40 ? KEY : KEY_PRESSED);
         int B = sBlackMax;
         int v = max <= B ? 0 : 0x10 + (max - B) * 0x14 / (0x50 - B);
         if (v == max) return c;

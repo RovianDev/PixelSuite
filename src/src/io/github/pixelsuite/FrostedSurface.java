@@ -135,6 +135,7 @@ final class FrostedSurface {
     }
     private static View find(View root,String name){int id=root.getResources().getIdentifier(name,"id","android");return id==0?null:root.findViewById(id);}
     static void style(AlertDialog dialog){
+        Rtl.dialog(dialog);
         Window window=dialog.getWindow();if(window==null)return;Context c=dialog.getContext();window.setDimAmount(dark(c)?.18f:.10f);
         View panel=window.getDecorView().findViewById(android.R.id.content);
         if(!blurEnabled(c)||panel==null){window.setBackgroundDrawable(GlassRim.over(c,solidMenu(c,24),dp(c,24)));return;}

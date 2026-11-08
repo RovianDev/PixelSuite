@@ -462,8 +462,8 @@ final class PhotosEditor {
                 tab.setGravity(cropTab.getGravity());
             }
             tab.setTag(TAG);
-            tab.setText("Doodles");
-            tab.setContentDescription("Doodles tab");
+            tab.setText(I18n.cs("Doodles"));
+            tab.setContentDescription(I18n.cs("Doodles tab"));
             tab.setCompoundDrawablesRelative(null, null, null, null);
             tab.setTextColor(restColor(list, cropTab));
             final TextView mine = tab;

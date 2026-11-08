@@ -116,15 +116,6 @@ final class StudioToolbar {
         try { return rawY >= android.content.res.Resources.getSystem().getDisplayMetrics().heightPixels * 0.75f; } catch (Throwable t) { return true; }
     }
 
-    private static boolean nearToolbar(float rawY) {
-        try {
-            for (ComposeTree.Node n : ComposeTree.clickables(ComposeTree.composeView(ScreenshotEditor.canvasView.get()))) {
-                String l = n.label == null ? "" : n.label.toLowerCase(java.util.Locale.ROOT);
-                if ((l.contains("stroke") || l.contains("eraser")) && Math.abs(n.bounds.centerY() - rawY) <= n.bounds.height()) return true;
-            }
-        } catch (Throwable ignored) { }
-        return false;
-    }
 
     static void otherMenu() {
         main.post(new Runnable() { @Override public void run() {
