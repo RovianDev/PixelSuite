@@ -1,3 +1,21 @@
+## v3.1.1
+Matikan pemblokiran iklan di seluruh sistem, Sembunyikan kotak penelusuran di lebih banyak peluncur, nama lebih panjang di speed dial Chrome, dan perbaikan.
+
+💎 Patreon
+• 🛡️ **Blokir iklan di semua aplikasi**: matikan untuk memblokir iklan hanya di Chrome dan Google News. File hosts ponsel Anda langsung kembali seperti semula, dan menghapus modul pemblokir iklan di pengelola root kini juga mematikannya. (Patreon › Aplikasi Google)
+• ⭐ **Speed dial**: nama situs dan folder kini memakai seluruh kolomnya, jadi nama panjang tampil jauh lebih banyak sebelum "…".
+
+🪄 Penyempurnaan
+• 🗂️ **Panel aplikasi**: folder atau aplikasi yang Anda lepas kembali di tempatnya sendiri kini mendarat dengan getaran kecil yang sama seperti saat dipindah.
+
+🐞 Perbaikan bug
+• 🔢 **Layar kunci**: mengetik PIN setelah memulai ulang bisa mematikan layar. Sekarang layar tetap menyala.
+• 🧹 **Sembunyikan kotak penelusuran**: versi Pixel Launcher yang lebih lama bilang fitur ini tidak didukung. Sekarang berfungsi di sana.
+• 🧭 **Tombol navigasi**: upaya memperbaiki pasangan tombol kedua yang muncul di bagian atas layar di beberapa ponsel.
+• 📁 **Speed dial**: nama folder yang panjang kehilangan huruf pertamanya. Sekarang tampil dari awal.
+
+Pasang di atas versi Anda saat ini lalu mulai ulang.
+
 ## v3.1.0
 Pixel Suite dalam 14 bahasa, Chrome+ dan Gboard+, VPN bawaan, Pencadangan & Pemulihan untuk aplikasi yang ditahan, opsi baru untuk tombol daya, volume, dan layar kunci, serta ikon baru.
 
@@ -20,7 +38,7 @@ Pixel Suite dalam 14 bahasa, Chrome+ dan Gboard+, VPN bawaan, Pencadangan & Pemu
 💎 Patreon
 • 🚀 **Chrome+**: kontrol Chrome pindah ke bawah, dengan animasi buatan tangan yang lebih halus untuk tab, pengalih tab, dan tab baru. Tombol + oranye di pengalih tab membuka tab samaran. (Patreon › Aplikasi Google › Chrome+)
 • 🧩 **Ekstensi untuk Chrome**: VPN, Pemblokir Iklan, dan Halaman gelap dalam satu panel, dari tombol puzzle di toolbar Chrome. Ketuk untuk memakainya, atau tahan untuk menyematkannya ke toolbar.
-• 🌐 **VPN**: jelajahi dari negara lain dengan server gratis di seluruh dunia, untuk seluruh ponsel atau Chrome saja, server tercepat lebih dulu. Lokasi Chrome mengikuti VPN. (Patreon › VPN, plus kartu Setelan Cepat)
+• 🌐 **VPN**: jelajahi dari negara lain dengan server open source di seluruh dunia, untuk seluruh ponsel atau Chrome saja, server tercepat lebih dulu. Lokasi Chrome mengikuti VPN. (Patreon › VPN, plus kartu Setelan Cepat)
 • ⭐ **Speed dial**: ikon bulat untuk hingga 19 situs di halaman tab baru Chrome. Seret untuk memindahkannya, atau lepaskan satu di atas yang lain untuk membuat folder yang mengikuti Super Gelap. Beri situs mana pun gambar bulat Anda sendiri.
 • 🛡️ **Pemblokir Iklan**: pilih tingkat filter untuk setiap situs. Tingkat lengkap juga menyembunyikan banner cookie dan pop-up, dan Anda bisa menghapus bagian halaman mana pun sendiri. Sakelarnya di Ekstensi mematikan atau menyalakannya untuk semua situs web. (Chrome+ › Ekstensi)
 • 🌙 **Halaman gelap**: situs terbuka gelap tanpa kilatan putih, atau hitam pekat dengan Super Gelap: selalu, mengikuti mode gelap ponsel, atau terjadwal. Foto dan video tetap berwarna aslinya. (Chrome+ › Ekstensi)
@@ -60,11 +78,3 @@ Perbaikan untuk Play Integrity.
 • Play Integrity: Pixel Suite tidak lagi memakai layanan Google Play. Layanan itu hanya dipakai untuk tepi gulir lembut di beberapa layar Google yang dibuka dari Setelan (Kaca Buram), dan mempertahankannya bisa membuat Anda kehilangan integritas Device dan Strong, jadi tidak sepadan. Jika Anda mencentangnya di cakupan LSPosed Pixel Suite, Pixel Suite kini menghapus centangnya untuk Anda. Cukup mulai ulang saat diminta. Terima kasih kepada Ashray V K di Telegram yang sudah memberi tahu 🙏
 
 Pasang di atas versi Anda saat ini lalu mulai ulang.
-
-## v3.0.3
-Perbaikan untuk masuk ke Patreon.
-
-🐞 Perbaikan bug
-• Patreon: proses masuk kini selesai meski browser Anda tidak bisa membuka Pixel Suite (misalnya saat menampilkan halaman Play Store "item tidak ditemukan"). Setelah masuk, cukup kembali ke Pixel Suite dan aplikasi terbuka sendiri.
-
-Pasang di atas versi Anda saat ini.

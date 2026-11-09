@@ -12,6 +12,7 @@ import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.concurrent.ExecutorService;
@@ -22,9 +23,11 @@ final class AdBlockCard extends LinearLayout implements SharedPreferences.OnShar
     private static boolean started;
     private static volatile String restartNote;
     private final TextView status,warning,update;
+    private final Switch every;
+    private final LinearLayout everyRow;
     private final SharedPreferences prefs;
     private final int ink,secondary;
-    private boolean attached,busy;
+    private boolean attached,busy,switching;
     private final Runnable entitlement=new Runnable(){public void run(){refresh();}};
 
     static synchronized void start(Context context){
@@ -38,7 +41,7 @@ final class AdBlockCard extends LinearLayout implements SharedPreferences.OnShar
         }});
     }
 
-    AdBlockCard(Context c,int text,int sub){
+    AdBlockCard(Context c,int text,int sub,int accent,int onAccent,int trackOff){
         super(c);ink=text;secondary=sub;setOrientation(VERTICAL);setPadding(dp(22),dp(22),dp(22),dp(20));
         setBackground(AppSurfaces.card(c,26));
         TextView eyebrow=label("AD BLOCKING",12,secondary,true);eyebrow.setLetterSpacing(.12f);addView(eyebrow);
@@ -51,6 +54,16 @@ final class AdBlockCard extends LinearLayout implements SharedPreferences.OnShar
         description.setLineSpacing(dp(3),1f);addView(description);
         status=label("Preparing ad protection…",14,ink,true);status.setPadding(0,dp(18),0,dp(4));status.setAccessibilityLiveRegion(ACCESSIBILITY_LIVE_REGION_POLITE);addView(status);
         warning=label("",14,secondary,false);warning.setVisibility(GONE);addView(warning);
+        everyRow=new LinearLayout(c);everyRow.setGravity(Gravity.CENTER_VERTICAL);everyRow.setPadding(0,dp(14),0,0);
+        LinearLayout everyText=new LinearLayout(c);everyText.setOrientation(VERTICAL);
+        TextView everyTitle=label("Block ads in every app",16,ink,true);everyTitle.setTextDirection(TEXT_DIRECTION_LOCALE);everyTitle.setTextAlignment(TEXT_ALIGNMENT_VIEW_START);everyText.addView(everyTitle);
+        TextView everySummary=label("Turn off to block ads only in Chrome and Google News.",13,secondary,false);everySummary.setPadding(0,dp(2),0,0);everyText.addView(everySummary);
+        everyRow.addView(everyText,new LayoutParams(0,-2,1));
+        every=new Switch(c);SwitchStyle.apply(every,accent,trackOff,onAccent,secondary);every.setContentDescription(I18n.cs("Block ads in every app"));
+        LayoutParams switchLayout=new LayoutParams(-2,-2);switchLayout.leftMargin=dp(12);everyRow.addView(every,switchLayout);
+        every.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener(){public void onCheckedChanged(android.widget.CompoundButton b,boolean on){if(!switching)setEvery(on);}});
+        everyRow.setOnClickListener(new OnClickListener(){public void onClick(View v){if(every.isEnabled())every.toggle();else PatronPaper.open((android.app.Activity)getContext(),0,null);}});
+        addView(everyRow,new LayoutParams(-1,-2));
         update=label("Update lists",15,ink,true);update.setGravity(Gravity.CENTER);update.setPadding(dp(16),dp(12),dp(16),dp(12));update.setMinimumHeight(dp(48));
         GradientDrawable button=new GradientDrawable();button.setColor(FrostedSurface.dark(c)?0xff303137:0xffe6eaf0);button.setCornerRadius(dp(24));update.setBackground(button);
         LayoutParams action=new LayoutParams(-1,-2);action.topMargin=dp(14);addView(update,action);update.setClickable(true);update.setFocusable(true);
@@ -68,11 +81,23 @@ final class AdBlockCard extends LinearLayout implements SharedPreferences.OnShar
     @Override public void onSharedPreferenceChanged(SharedPreferences p,String key){refresh();}
     private void refresh(){
         if(!attached)return;
-        if(!PatronAccess.unlocked()){status.setText(I18n.cs("Unlock with Patreon"));warning.setVisibility(GONE);update.setText(I18n.cs("Update lists"));update.setAlpha(.4f);invalidateMark(this);return;}update.setAlpha(1f);invalidateMark(this);
+        if(!PatronAccess.unlocked()){status.setText(I18n.cs("Unlock with Patreon"));warning.setVisibility(GONE);update.setText(I18n.cs("Update lists"));update.setAlpha(.4f);showEvery(false,false);invalidateMark(this);return;}update.setAlpha(1f);invalidateMark(this);
         WORK.execute(new Runnable(){public void run(){
+            final boolean hosts=AdBlock.hostsOn();
             final String value=AdBlock.status(getContext());
-            final String conflict=AdBlock.otherBlocker()?"AdAway or Systemless hosts is also on. Use only one blocker.":null;
-            post(new Runnable(){public void run(){if(!attached)return;if(!PatronAccess.unlocked()){refresh();return;}status.setText(I18n.cs(value));String message=conflict!=null?conflict:restartNote;warning.setText(I18n.cs(message));warning.setVisibility(message==null?GONE:VISIBLE);}});
+            final String conflict=hosts&&AdBlock.otherBlocker()?"AdAway or Systemless hosts is also on. Use only one blocker.":null;
+            post(new Runnable(){public void run(){if(!attached)return;if(!PatronAccess.unlocked()){refresh();return;}status.setText(I18n.cs(value));String message=conflict!=null?conflict:hosts?restartNote:null;warning.setText(I18n.cs(message));warning.setVisibility(message==null?GONE:VISIBLE);if(!busy)showEvery(hosts,true);}});
+        }});
+    }
+    private void showEvery(boolean on,boolean enabled){switching=true;every.setChecked(on);switching=false;every.setEnabled(enabled);everyRow.setAlpha(enabled?1f:.4f);}
+    private void setEvery(final boolean on){
+        if(!PatronAccess.unlocked()){showEvery(false,false);PatronPaper.open((android.app.Activity)getContext(),0,null);return;}
+        if(busy){showEvery(!on,true);return;}busy=true;every.setEnabled(false);
+        final Context app=getContext().getApplicationContext();
+        WORK.execute(new Runnable(){public void run(){
+            final AdBlock.Result r=AdBlock.setHosts(app,on);
+            restartNote=on&&r.needsReboot?"Restart the phone once to start blocking.":!r.ok?r.message:null;
+            post(new Runnable(){public void run(){busy=false;if(!attached)return;every.setEnabled(true);refresh();if(!r.ok&&r.message!=null)AppToast.makeText(getContext(),I18n.cs(r.message),Toast.LENGTH_LONG).show();}});
         }});
     }
     private void updateLists(){

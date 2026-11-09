@@ -1,3 +1,21 @@
+## v3.1.1
+Desative o bloqueio de anúncios em todo o sistema, Ocultar barra de pesquisa em mais inicializadores, nomes mais longos na discagem rápida do Chrome e correções.
+
+💎 Patreon
+• 🛡️ **Bloquear anúncios em todos os apps**: desative para bloquear anúncios só no Chrome e no Google News. O arquivo hosts do seu celular volta ao original na hora, e remover o módulo do bloqueador de anúncios no seu gerenciador de root agora também o desativa. (Patreon › Apps do Google)
+• ⭐ **Discagem rápida**: os nomes de sites e pastas agora usam a coluna inteira, então nomes longos mostram muito mais antes do "…".
+
+🪄 Refinamentos
+• 🗂️ **Gaveta de apps**: uma pasta ou app que você solta de volta no próprio lugar agora se encaixa com a mesma tremidinha de quando é movido.
+
+🐞 Correções
+• 🔢 **Tela de bloqueio**: digitar seu PIN depois de reiniciar podia desligar a tela. Agora ela fica ligada.
+• 🧹 **Ocultar barra de pesquisa**: versões mais antigas do Pixel Launcher diziam que não era compatível. Agora funciona nelas também.
+• 🧭 **Botões de navegação**: uma tentativa de corrigir um segundo par de botões aparecendo no topo da tela em alguns celulares.
+• 📁 **Discagem rápida**: nomes longos de pasta perdiam as primeiras letras. Agora aparecem desde o início.
+
+Instale por cima da sua versão atual e reinicie.
+
 ## v3.1.0
 Pixel Suite em 14 idiomas, Chrome+ e Gboard+, uma VPN integrada, Backup e restauração para os apps retidos, novas opções para o botão liga/desliga, o volume e a tela de bloqueio, e um ícone novo.
 
@@ -20,7 +38,7 @@ Pixel Suite em 14 idiomas, Chrome+ e Gboard+, uma VPN integrada, Backup e restau
 💎 Patreon
 • 🚀 **Chrome+**: os controles do Chrome vão para baixo, com animações mais suaves e feitas à mão nas guias, no seletor de guias e nas guias novas. O + laranja no seletor abre uma guia anônima. (Patreon › Apps do Google › Chrome+)
 • 🧩 **Extensões para o Chrome**: VPN, Bloqueador de anúncios e Páginas escuras em um só painel, pelo botão de peça de quebra-cabeça na barra do Chrome. Toque em uma para usar, ou segure para fixá-la na barra.
-• 🌐 **VPN**: navegue de outro país com servidores gratuitos pelo mundo, para o celular todo ou só o Chrome, com o servidor mais rápido primeiro. A localização do Chrome segue a VPN. (Patreon › VPN, além de um bloco nas Configurações rápidas)
+• 🌐 **VPN**: navegue de outro país com servidores de código aberto pelo mundo, para o celular todo ou só o Chrome, com o servidor mais rápido primeiro. A localização do Chrome segue a VPN. (Patreon › VPN, além de um bloco nas Configurações rápidas)
 • ⭐ **Discagem rápida**: ícones redondos para até 19 sites na página de nova guia do Chrome. Arraste para mover, ou solte um sobre outro para criar uma pasta que segue o Super Escuro. Dê a qualquer site sua própria imagem redonda.
 • 🛡️ **Bloqueador de anúncios**: escolha um nível de filtragem para cada site. O completo também oculta avisos de cookies e pop-ups, e você pode remover qualquer parte de uma página. O interruptor dele em Complementos o liga ou desliga em todos os sites. (Chrome+ › Complementos)
 • 🌙 **Páginas escuras**: os sites abrem escuros sem clarão branco, ou em preto puro com o Super Escuro: sempre, com o modo escuro do celular ou por horário. Fotos e vídeos mantêm as cores. (Chrome+ › Complementos)
@@ -60,11 +78,3 @@ Uma correção para o Play Integrity.
 • Play Integrity: o Pixel Suite não usa mais o Google Play Services. Ele só era usado para as bordas de rolagem suaves em algumas telas do Google abertas pelas Configurações (Vidro fosco), e mantê-lo podia custar a integridade Device e Strong, então não valia a pena. Se você o tinha marcado no escopo do LSPosed do Pixel Suite, o Pixel Suite agora desmarca para você. É só reiniciar quando ele pedir. Obrigado a Ashray V K no Telegram por avisar 🙏
 
 Instale por cima da sua versão atual e reinicie.
-
-## v3.0.3
-Uma correção para o login no Patreon.
-
-🐞 Correções
-• Patreon: o login agora termina mesmo quando o navegador não consegue abrir o Pixel Suite (por exemplo, quando mostra uma página da Play Store de "item não encontrado"). Depois de entrar, é só voltar ao Pixel Suite que ele se desbloqueia sozinho.
-
-Instale por cima da sua versão atual.

@@ -161,7 +161,7 @@ Couldn't open that picture	تعذّر فتح تلك الصورة
 Tap the picture to change it	انقر على الصورة لتغييرها
 Use the website's icon	استخدام رمز الموقع
 Country	البلد
-Getting the free server list…	جارٍ جلب قائمة الخوادم المجانية…
+Getting the open-source server list…	جارٍ جلب قائمة الخوادم مفتوحة المصدر…
 No servers yet. Pixel Suite loads them when you open this.	لا توجد خوادم بعد. يحمّلها Pixel Suite عند فتح هذا.
 Unavailable · no servers right now	غير متاح · لا خوادم حاليًا
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	تعذّر تحميل قا
 Disconnect	قطع الاتصال
 Disconnected	غير متصل
 Finding servers…	جارٍ البحث عن خوادم…
-Free volunteer server	خادم تطوعي مجاني
+Open-source volunteer server	خادم تطوعي مفتوح المصدر
 No server answered	لم يستجب أي خادم
 Server stopped answering	توقف الخادم عن الاستجابة
 Trying the faster UDP connection (up to 30 s)…	جارٍ تجربة اتصال UDP الأسرع (حتى 30 ث)…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	تعذّر التحديث. تُعرض �
 Couldn't start the VPN	تعذّر بدء VPN
 Countries without servers right now show as Unavailable.	تظهر البلدان التي لا خوادم فيها حاليًا كغير متاحة.
 Fastest server	أسرع خادم
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	خوادم مجانية يديرها متطوعون حول العالم. يتصل Pixel Suite بأسرعها.
-Getting the free server list	جارٍ جلب قائمة الخوادم المجانية
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	خوادم مفتوحة المصدر يديرها متطوعون حول العالم. يتصل Pixel Suite بأسرعها.
+Getting the open-source server list	جارٍ جلب قائمة الخوادم مفتوحة المصدر
 Loading servers…	جارٍ تحميل الخوادم…
 No servers yet	لا توجد خوادم بعد
 Not connected	غير متصل
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	أعد التشغيل لاستعادة Play Int
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	أزال Pixel Suite خدمات Google Play من نطاق LSPosed الخاص به، لأنها قد تُفقدك سلامة Device وStrong ولم تعد مستخدمة. أعد تشغيل هاتفك للإنهاء.
 Server connected but passes no traffic	اتصل الخادم لكنه لا يمرر أي بيانات
 Server connected but websites don't open ({0})	اتصل الخادم لكن المواقع لا تفتح ({0})
+Block ads in every app	حظر الإعلانات في كل التطبيقات
+Turn off to block ads only in Chrome and Google News.	أوقفه لحظر الإعلانات في Chrome وGoogle News فقط.
+Ads are blocked only in Chrome and Google News.	تُحظر الإعلانات في Chrome وGoogle News فقط.
+Open-source servers worldwide	خوادم مفتوحة المصدر حول العالم

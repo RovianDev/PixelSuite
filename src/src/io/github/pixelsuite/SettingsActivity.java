@@ -1112,7 +1112,7 @@ public class SettingsActivity extends Activity {
 
             finishGroup(apps);
 
-            AdBlockCard protection=new AdBlockCard(this,mText,mTextSecondary);LinearLayout.LayoutParams protectionLayout=new LinearLayout.LayoutParams(-1,-2);protectionLayout.topMargin=dp(8);protectionLayout.bottomMargin=0;page.addView(protection,protectionLayout);return;
+            AdBlockCard protection=new AdBlockCard(this,mText,mTextSecondary,mAccent,mOnAccent,switchTrackOff());LinearLayout.LayoutParams protectionLayout=new LinearLayout.LayoutParams(-1,-2);protectionLayout.topMargin=dp(8);protectionLayout.bottomMargin=0;page.addView(protection,protectionLayout);return;
 
         }
 
@@ -1447,7 +1447,7 @@ public class SettingsActivity extends Activity {
 
         googleNavigationIcon(categories);
 
-        navigation(categories,"VPN","Browse from another country","ic_ps_vpn",new Runnable(){public void run(){openPage("vpn");}});
+        navigation(categories,"VPN","Open-source servers worldwide","ic_ps_vpn",new Runnable(){public void run(){openPage("vpn");}});
 
         PatronUi.navigationBadge(this,(LinearLayout)categories.getChildAt(categories.getChildCount()-1),"VPN");
 

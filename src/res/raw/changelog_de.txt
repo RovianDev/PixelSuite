@@ -1,3 +1,21 @@
+## v3.1.1
+Systemweiten Werbeblocker abschalten, Suchleiste ausblenden auf mehr Launchern, längere Namen in Chromes Schnellwahl und Fehlerbehebungen.
+
+💎 Patreon
+• 🛡️ **Werbung in allen Apps blockieren**: schalte es aus, um Werbung nur in Chrome und Google News zu blockieren. Die hosts-Datei deines Smartphones ist sofort wieder im Originalzustand, und wenn du das Werbeblocker-Modul im Root-Manager entfernst, wird es jetzt ebenfalls ausgeschaltet. (Patreon › Google-Apps)
+• ⭐ **Schnellwahl**: Website- und Ordnernamen nutzen jetzt ihre ganze Spalte, lange Namen zeigen also viel mehr vor dem „…“.
+
+🪄 Feinschliff
+• 🗂️ **App-Übersicht**: ein Ordner oder eine App, die du an derselben Stelle ablegst, landet jetzt mit demselben kleinen Rütteln wie beim Verschieben.
+
+🐞 Fehlerbehebungen
+• 🔢 **Sperrbildschirm**: die PIN-Eingabe nach einem Neustart konnte den Bildschirm ausschalten. Er bleibt jetzt an.
+• 🧹 **Suchleiste ausblenden**: ältere Versionen von Pixel Launcher meldeten, es werde nicht unterstützt. Dort funktioniert es jetzt.
+• 🧭 **Navigationsschaltflächen**: ein Versuch, ein zweites Tastenpaar oben auf dem Bildschirm bei manchen Smartphones zu beheben.
+• 📁 **Schnellwahl**: lange Ordnernamen verloren ihre ersten Buchstaben. Sie werden jetzt von Anfang an angezeigt.
+
+Über die aktuelle Version installieren und neu starten.
+
 ## v3.1.0
 Pixel Suite in 14 Sprachen, Chrome+ und Gboard+, ein integriertes VPN, Sichern & Wiederherstellen für zurückgehaltene Apps, neue Optionen für Ein-/Aus-Taste, Lautstärke und Sperrbildschirm und ein neues Symbol.
 
@@ -20,7 +38,7 @@ Pixel Suite in 14 Sprachen, Chrome+ und Gboard+, ein integriertes VPN, Sichern &
 💎 Patreon
 • 🚀 **Chrome+**: Chromes Bedienelemente wandern nach unten, mit noch flüssigeren, von Hand gestalteten Animationen für Tabs, Tab-Übersicht und neue Tabs. Das orange + in der Tab-Übersicht öffnet einen Inkognito-Tab. (Patreon › Google-Apps › Chrome+)
 • 🧩 **Erweiterungen für Chrome**: „VPN“, „Werbeblocker“ und „Dunkle Seiten“ in einem Fenster, über die Puzzle-Taste in Chromes Symbolleiste. Tippe zum Verwenden oder halte gedrückt, um sie an die Symbolleiste anzuheften.
-• 🌐 **VPN**: surfe über kostenlose Server weltweit aus einem anderen Land, für das ganze Smartphone oder nur Chrome, der schnellste Server zuerst. Chromes Standort folgt dem VPN. (Patreon › VPN, dazu eine Kachel in den Schnelleinstellungen)
+• 🌐 **VPN**: surfe über Open-Source-Server weltweit aus einem anderen Land, für das ganze Smartphone oder nur Chrome, der schnellste Server zuerst. Chromes Standort folgt dem VPN. (Patreon › VPN, dazu eine Kachel in den Schnelleinstellungen)
 • ⭐ **Schnellwahl**: runde Symbole für bis zu 19 Websites auf Chromes Neuer-Tab-Seite. Ziehe sie zum Verschieben, oder lass eines auf ein anderes fallen, um einen Ordner zu erstellen, der „Super-Dunkel“ folgt. Gib jeder Website dein eigenes rundes Bild.
 • 🛡️ **Werbeblocker**: wähle für jede Website eine Filterstufe. Vollständig blendet auch Cookie-Banner und Pop-ups aus, und du kannst jeden Teil einer Seite selbst entfernen. Mit seinem Schalter in den Erweiterungen schaltest du ihn für alle Websites aus oder ein. (Chrome+ › Erweiterungen)
 • 🌙 **Dunkle Seiten**: Websites öffnen sich dunkel ohne weißes Aufblitzen, oder tiefschwarz mit „Super-Dunkel“: immer, mit dem dunklen Design des Smartphones oder nach Zeitplan. Bilder und Videos behalten ihre Farben. (Chrome+ › Erweiterungen)
@@ -60,11 +78,3 @@ Eine Korrektur für Play Integrity.
 • Play Integrity: Pixel Suite nutzt die Google Play-Dienste nicht mehr. Sie dienten nur den weichen Scrollrändern auf einigen Google-Bildschirmen, die aus den Einstellungen geöffnet werden („Milchglas“), und sie zu behalten konnte dich Device- und Strong-Integrität kosten – das war es nicht wert. Wenn du sie im LSPosed-Bereich von Pixel Suite angehakt hattest, entfernt Pixel Suite den Haken jetzt für dich. Starte einfach neu, wenn es dich fragt. Danke an Ashray V K auf Telegram für den Hinweis 🙏
 
 Über die aktuelle Version installieren und neu starten.
-
-## v3.0.3
-Eine Korrektur für die Patreon-Anmeldung.
-
-🐞 Fehlerbehebungen
-• Patreon: Die Anmeldung wird jetzt abgeschlossen, auch wenn dein Browser Pixel Suite nicht öffnen kann (zum Beispiel, wenn er eine Play Store-Seite „Artikel nicht gefunden“ zeigt). Wechsle nach der Anmeldung einfach zurück zu Pixel Suite, es schaltet sich selbst frei.
-
-Über die aktuelle Version installieren.

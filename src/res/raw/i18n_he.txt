@@ -161,7 +161,7 @@ Couldn't open that picture	לא ניתן לפתוח את התמונה
 Tap the picture to change it	מקישים על התמונה כדי לשנות אותה
 Use the website's icon	שימוש בסמל של האתר
 Country	מדינה
-Getting the free server list…	מקבלים את רשימת השרתים החינמיים…
+Getting the open-source server list…	מקבלים את רשימת שרתי הקוד הפתוח…
 No servers yet. Pixel Suite loads them when you open this.	עדיין אין שרתים. Pixel Suite טוענת אותם כשפותחים את זה.
 Unavailable · no servers right now	לא זמין · אין שרתים כרגע
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	לא ניתן לטעון �
 Disconnect	ניתוק
 Disconnected	מנותק
 Finding servers…	מחפשים שרתים…
-Free volunteer server	שרת מתנדבים חינמי
+Open-source volunteer server	שרת מתנדבים בקוד פתוח
 No server answered	אף שרת לא ענה
 Server stopped answering	השרת הפסיק לענות
 Trying the faster UDP connection (up to 30 s)…	מנסים את חיבור ה-UDP המהיר יותר (עד 30 שנ׳)…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	לא ניתן לרענן. מוצגת ה
 Couldn't start the VPN	לא ניתן להפעיל את ה-VPN
 Countries without servers right now show as Unavailable.	מדינות שאין בהן שרתים כרגע מוצגות כ״לא זמין״.
 Fastest server	השרת המהיר ביותר
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	שרתים חינמיים שמפעילים מתנדבים בכל העולם. Pixel Suite מתחברת למהיר ביותר.
-Getting the free server list	מקבלים את רשימת השרתים החינמיים
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	שרתי קוד פתוח שמפעילים מתנדבים בכל העולם. Pixel Suite מתחברת למהיר ביותר.
+Getting the open-source server list	מקבלים את רשימת שרתי הקוד הפתוח
 Loading servers…	השרתים נטענים…
 No servers yet	עדיין אין שרתים
 Not connected	לא מחובר
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	צריך להפעיל מחדש כדי לשחז�
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite הסירה את Google Play Services מההיקף שלה ב-LSPosed, כי הם עלולים לעלות לך ב-Device integrity וב-Strong integrity וכבר לא נמצאים בשימוש. צריך להפעיל את הטלפון מחדש כדי לסיים.
 Server connected but passes no traffic	השרת התחבר אבל לא מעביר תעבורה
 Server connected but websites don't open ({0})	השרת התחבר אבל אתרים לא נפתחים ({0})
+Block ads in every app	חסימת מודעות בכל האפליקציות
+Turn off to block ads only in Chrome and Google News.	כבו כדי לחסום מודעות רק ב-Chrome וב-Google News.
+Ads are blocked only in Chrome and Google News.	מודעות נחסמות רק ב-Chrome וב-Google News.
+Open-source servers worldwide	שרתי קוד פתוח בכל העולם

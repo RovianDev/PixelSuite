@@ -161,7 +161,7 @@ Couldn't open that picture	O resim açılamadı
 Tap the picture to change it	Değiştirmek için resme dokunun
 Use the website's icon	Web sitesinin simgesini kullan
 Country	Ülke
-Getting the free server list…	Ücretsiz sunucu listesi alınıyor…
+Getting the open-source server list…	Açık kaynak sunucu listesi alınıyor…
 No servers yet. Pixel Suite loads them when you open this.	Henüz sunucu yok. Pixel Suite bunu açtığınızda yükler.
 Unavailable · no servers right now	Kullanılamıyor · şu an sunucu yok
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	Sunucu listesi yüklenemed
 Disconnect	Bağlantıyı kes
 Disconnected	Bağlantı kesildi
 Finding servers…	Sunucular aranıyor…
-Free volunteer server	Ücretsiz gönüllü sunucusu
+Open-source volunteer server	Açık kaynak gönüllü sunucusu
 No server answered	Hiçbir sunucu yanıt vermedi
 Server stopped answering	Sunucu yanıt vermeyi bıraktı
 Trying the faster UDP connection (up to 30 s)…	Daha hızlı UDP bağlantısı deneniyor (30 sn'ye kadar)…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	Yenilenemedi. Son liste gösteriliyor.
 Couldn't start the VPN	VPN başlatılamadı
 Countries without servers right now show as Unavailable.	Şu an sunucusu olmayan ülkeler Kullanılamıyor olarak gösterilir.
 Fastest server	En hızlı sunucu
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Dünya genelinde gönüllülerin çalıştırdığı ücretsiz sunucular. Pixel Suite en hızlısına bağlanır.
-Getting the free server list	Ücretsiz sunucu listesi alınıyor
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Dünya genelinde gönüllülerin çalıştırdığı açık kaynak sunucular. Pixel Suite en hızlısına bağlanır.
+Getting the open-source server list	Açık kaynak sunucu listesi alınıyor
 Loading servers…	Sunucular yükleniyor…
 No servers yet	Henüz sunucu yok
 Not connected	Bağlı değil
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	Play Integrity'yi geri getirmek için yeniden b
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite, Google Play Hizmetleri'ni LSPosed kapsamından kaldırdı; çünkü Device ve Strong bütünlüğünü kaybettirebilir ve artık kullanılmıyor. Bitirmek için telefonunuzu yeniden başlatın.
 Server connected but passes no traffic	Sunucuya bağlanıldı ancak trafik geçmiyor
 Server connected but websites don't open ({0})	Sunucuya bağlanıldı ancak web siteleri açılmıyor ({0})
+Block ads in every app	Tüm uygulamalarda reklamları engelle
+Turn off to block ads only in Chrome and Google News.	Reklamları yalnızca Chrome ve Google Haberler'de engellemek için kapatın.
+Ads are blocked only in Chrome and Google News.	Reklamlar yalnızca Chrome ve Google Haberler'de engelleniyor.
+Open-source servers worldwide	Dünya genelinde açık kaynak sunucular

@@ -226,7 +226,39 @@ final class ChromeFolders {
 
     private static final WeakHashMap<ImageView, Drawable> sStyled = new WeakHashMap<ImageView, Drawable>();
 
+    static int sLabelRoom;
+
+    private static void wideTitle(View tile) {
+        TextView t = title(tile);
+        if (t == null || !(tile.getParent() instanceof ViewGroup) || !(t.getParent() instanceof ViewGroup)) return;
+        ViewGroup g = (ViewGroup) tile.getParent(), box = (ViewGroup) t.getParent();
+        int avail = g.getWidth() - g.getPaddingLeft() - g.getPaddingRight();
+        if (avail <= 0) return;
+        int room = avail / ChromeSpeedDial.COLUMNS - Math.round(4 * tile.getResources().getDisplayMetrics().density);
+        if (room <= 0) return;
+        sLabelRoom = room;
+        if (g.getClipChildren()) g.setClipChildren(false);
+        for (View v = t.getParent() instanceof View ? (View) t.getParent() : null; v != null && v != g; v = v.getParent() instanceof View ? (View) v.getParent() : null) {
+            if (v instanceof ViewGroup && ((ViewGroup) v).getClipChildren()) ((ViewGroup) v).setClipChildren(false);
+        }
+        ViewGroup.LayoutParams lp = t.getLayoutParams();
+        if (!(lp instanceof ViewGroup.MarginLayoutParams) || lp.width == room) return;
+        int inner = box.getWidth() - box.getPaddingLeft() - box.getPaddingRight();
+        if (inner <= 0 || room <= inner) return;
+        ViewGroup.MarginLayoutParams m = (ViewGroup.MarginLayoutParams) lp;
+        int side = -(room - inner) / 2;
+        m.width = room;
+        m.leftMargin = side;
+        m.rightMargin = side;
+        m.setMarginStart(side);
+        m.setMarginEnd(side);
+        t.setMaxWidth(room);
+        t.setEllipsize(TextUtils.TruncateAt.END);
+        t.setLayoutParams(m);
+    }
+
     static void style(View tile) {
+        try { wideTitle(tile); } catch (Throwable ignored) { }
         ImageView icon = icon(tile);
         if (icon == null) return;
         Context c = tile.getContext();
@@ -446,6 +478,7 @@ final class ChromeFolders {
         tp.setTextAlign(Paint.Align.CENTER);
         if (alpha < 1f) tp.setAlpha(Math.round(Color.alpha(sTitleColor) * Math.max(0f, alpha)));
         float room = room0 > 0 ? room0 : sTitleW > 0 ? sTitleW : width - 8 * d;
+        room = Math.min(room, room0 > 0 ? width - 4 * d : Math.max(width - 4 * d, sLabelRoom));
         CharSequence t = TextUtils.ellipsize(text == null ? "" : text, tp, room, TextUtils.TruncateAt.END);
         float base = sTitleBase > 0 ? sTitleBase : iconBottom + 8 * d - tp.ascent();
         c.drawText(t, 0, t.length(), width / 2f, base, tp);

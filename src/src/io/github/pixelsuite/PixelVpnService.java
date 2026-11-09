@@ -409,7 +409,7 @@ public final class PixelVpnService extends VpnService {
             int icon=getResources().getIdentifier("ic_ps_vpn","drawable",getPackageName());
             Notification.Builder n=new Notification.Builder(this);
             if(Build.VERSION.SDK_INT>=26)n.getClass().getMethod("setChannelId",String.class).invoke(n,CHANNEL);
-            n.setSmallIcon(icon).setContentTitle(I18n.cs(sState==ON?"VPN · "+place:"Connecting to "+place+"…")).setContentText(I18n.cs(sState==ON?"Free volunteer server":sDetail))
+            n.setSmallIcon(icon).setContentTitle(I18n.cs(sState==ON?"VPN · "+place:"Connecting to "+place+"…")).setContentText(I18n.cs(sState==ON?"Open-source volunteer server":sDetail))
              .setOngoing(true).setOnlyAlertOnce(true).setContentIntent(open).addAction(new Notification.Action.Builder(android.graphics.drawable.Icon.createWithResource(this,icon),"Disconnect",stop).build());
             if(sState==ON)n.setWhen(sSince).setShowWhen(true).setUsesChronometer(true);
             nm.notify(NOTE,n.build());

@@ -1,3 +1,21 @@
+## v3.1.1
+Le blocage des pubs dans tout le système peut s'éteindre, Masquer la barre de recherche sur plus de lanceurs, des noms plus longs dans l'accès rapide de Chrome, et des corrections.
+
+💎 Patreon
+• 🛡️ **Bloquer les pubs dans toutes les applis** : désactivez-le pour bloquer les pubs seulement dans Chrome et Google News. Le fichier hosts de votre téléphone redevient celui d'origine aussitôt, et supprimer le module du bloqueur de pubs dans votre gestionnaire root le désactive désormais aussi. (Patreon › Applis Google)
+• ⭐ **Accès rapide** : les noms des sites et des dossiers utilisent maintenant toute leur colonne, donc les noms longs en montrent bien plus avant le « … ».
+
+🪄 Finitions
+• 🗂️ **Panneau des applis** : un dossier ou une appli que vous reposez à sa propre place se pose maintenant avec le même petit tremblement qu'un déplacement.
+
+🐞 Corrections
+• 🔢 **Écran de verrouillage** : saisir votre code après un redémarrage pouvait éteindre l'écran. Il reste allumé maintenant.
+• 🧹 **Masquer la barre de recherche** : les anciennes versions de Pixel Launcher disaient que ce n'était pas pris en charge. Ça marche aussi maintenant.
+• 🧭 **Boutons de navigation** : une tentative de correction d'une deuxième paire de boutons affichée en haut de l'écran sur certains téléphones.
+• 📁 **Accès rapide** : les noms de dossier longs perdaient leurs premières lettres. Ils s'affichent depuis le début maintenant.
+
+Installez par-dessus votre version actuelle et redémarrez.
+
 ## v3.1.0
 Pixel Suite en 14 langues, Chrome+ et Gboard+, un VPN intégré, Sauvegarde et restauration pour les applis retenues, de nouvelles options pour le bouton Marche/Arrêt, le volume et l'écran de verrouillage, et une nouvelle icône.
 
@@ -20,7 +38,7 @@ Pixel Suite en 14 langues, Chrome+ et Gboard+, un VPN intégré, Sauvegarde et r
 💎 Patreon
 • 🚀 **Chrome+** : les commandes de Chrome passent en bas, avec des animations plus fluides, faites main, pour les onglets, le sélecteur d'onglets et les nouveaux onglets. Le + orange du sélecteur ouvre un onglet de navigation privée. (Patreon › Applis Google › Chrome+)
 • 🧩 **Extensions pour Chrome** : VPN, Bloqueur de pubs et Pages sombres dans un même volet, depuis le bouton en forme de pièce de puzzle de la barre de Chrome. Appuyez sur une extension pour l'utiliser, ou maintenez-la pour l'épingler à la barre.
-• 🌐 **VPN** : naviguez depuis un autre pays grâce à des serveurs gratuits dans le monde entier, pour tout le téléphone ou Chrome seul, le plus rapide en premier. La position de Chrome suit le VPN. (Patreon › VPN, plus un bloc dans les Réglages rapides)
+• 🌐 **VPN** : naviguez depuis un autre pays grâce à des serveurs open source dans le monde entier, pour tout le téléphone ou Chrome seul, le plus rapide en premier. La position de Chrome suit le VPN. (Patreon › VPN, plus un bloc dans les Réglages rapides)
 • ⭐ **Accès rapide** : des icônes rondes pour 19 sites web au maximum sur la page Nouvel onglet de Chrome. Faites-les glisser pour les déplacer, ou déposez-en une sur une autre pour créer un dossier qui suit Super Sombre. Donnez à n'importe quel site votre propre image ronde.
 • 🛡️ **Bloqueur de pubs** : choisissez un niveau de filtrage pour chaque site. Complet masque aussi les bannières de cookies et les pop-ups, et vous pouvez retirer vous-même n'importe quelle partie d'une page. Son interrupteur dans Modules l'active ou le désactive sur tous les sites. (Chrome+ › Modules)
 • 🌙 **Pages sombres** : les sites s'ouvrent en sombre sans flash blanc, ou en noir pur avec Super Sombre : toujours, avec le mode sombre du téléphone, ou selon un horaire. Les photos et vidéos gardent leurs couleurs. (Chrome+ › Modules)
@@ -60,11 +78,3 @@ Un correctif pour Play Integrity.
 • Play Integrity : Pixel Suite n'utilise plus les services Google Play. Ils ne servaient qu'aux bords de défilement doux de quelques écrans Google ouverts depuis Paramètres (Verre dépoli), et les garder pouvait vous coûter l'intégrité Device et Strong : ça n'en valait pas la peine. Si vous les aviez cochés dans la portée LSPosed de Pixel Suite, Pixel Suite les décoche maintenant pour vous. Redémarrez simplement quand il le demande. Merci à Ashray V K sur Telegram de l'avoir signalé 🙏
 
 Installez par-dessus votre version actuelle et redémarrez.
-
-## v3.0.3
-Un correctif pour la connexion Patreon.
-
-🐞 Corrections
-• Patreon : la connexion aboutit maintenant même si votre navigateur ne peut pas ouvrir Pixel Suite (par exemple quand il affiche une page Play Store "élément introuvable"). Après la connexion, revenez simplement dans Pixel Suite : il se débloque tout seul.
-
-Installez par-dessus votre version actuelle.

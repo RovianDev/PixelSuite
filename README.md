@@ -1,6 +1,6 @@
 [![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases)
 
-# Pixel Suite 3.1.0
+# Pixel Suite 3.1.1
 
 Your Pixel. Your way.
 
@@ -8,7 +8,21 @@ Made by **RovianDev**. An open-source LSPosed module for Pixel phones, in 14 lan
 
 **Open Pixel Suite from your home screen:** touch and hold an empty area, then choose **Pixel Suite settings**.
 
-[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases) · [3.1.0 release notes](RELEASE-NOTES-v3.1.0.md) · [Changelog](CHANGELOG.md)
+[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases) · [3.1.1 release notes](RELEASE-NOTES-v3.1.1.md) · [Changelog](CHANGELOG.md)
+
+## What's new in 3.1.1
+
+Turn off system-wide ad blocking, Hide search bar on more launchers, longer names on Chrome's speed dial, and fixes.
+
+- 🛡️ **Block ads in every app** (Patreon): turn it off to block ads only in Chrome and Google News. Removing the ad blocker module in your root manager now turns it off too.
+- ⭐ **Speed dial** (Patreon): website and folder names now use their whole column, so long names show much more.
+- 🗂️ **App drawer**: a folder or app dropped back in its own spot lands with the same little rattle as a move.
+- 🔢 **Lock screen**: typing your PIN after a restart no longer turns the screen off.
+- 🧹 **Hide search bar**: now works on older Pixel Launcher versions too.
+- 🧭 **Navigation buttons**: an attempt to fix a second pair of buttons at the top of the screen on some phones.
+- 📁 **Speed dial**: long folder names keep their first letters.
+
+See the [3.1.1 release notes](RELEASE-NOTES-v3.1.1.md).
 
 ## What's new in 3.1.0
 
@@ -293,7 +307,7 @@ Pixel Suite has no ads, analytics or tracking, and the module itself never conne
 
 **Root + LSPosed API 102 required.** Tested on Pixel 11 Pro with Android 17.
 
-1. Install **PixelSuite-v3.1.0.apk** over your current version.
+1. Install **PixelSuite-v3.1.1.apk** over your current version.
 2. Enable Pixel Suite in LSPosed and grant its app root access.
 3. Open Pixel Suite and turn on the features you want. Each feature page has an **LSPosed scope** section listing the apps to select for it.
 4. Select those apps in LSPosed, then reboot.

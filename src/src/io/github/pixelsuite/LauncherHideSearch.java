@@ -18,7 +18,8 @@ final class LauncherHideSearch {
     private static final Set<Method> factories=new HashSet<Method>();
     private static final ThreadLocal<Build> builds=new ThreadLocal<Build>();
     private static final ThreadLocal<Boolean> stock=new ThreadLocal<Boolean>();
-    private static final class Build { Object properties, builder; Build previous; boolean hidden; Boolean hide; }
+    private static final class Build { Object properties, builder; Build previous; boolean hidden; Boolean hide; float[] space; Object inv; }
+    private static boolean legacy;
     private static int qsbHeightId, qsbShadowId;
     private static boolean drawerWarned;
     private LauncherHideSearch() {}
@@ -38,9 +39,17 @@ final class LauncherHideSearch {
         catch(Throwable t){warn(t);}
     }
     private static boolean phone(Object properties)throws Exception {
-        if(properties==null||!Boolean.TRUE.equals(get(properties,"isPhone"))||Boolean.TRUE.equals(get(properties,"isLargeScreen")))return false;
-        if(Boolean.TRUE.equals(get(get(properties,"taskbarConfiguration"),"isTaskbarPresent")))return false;
-        return !(Boolean.TRUE.equals(get(properties,"isLandscape"))&&Boolean.TRUE.equals(get(get(properties,"deviceConfiguration"),"transposeLayoutWithOrientation")));
+        if(properties==null||!Boolean.TRUE.equals(get(properties,"isPhone"))||Boolean.TRUE.equals(opt(properties,"isLargeScreen","isTablet")))return false;
+        Object taskbar=opt(properties,"taskbarConfiguration",null);
+        if(taskbar!=null&&Boolean.TRUE.equals(get(taskbar,"isTaskbarPresent")))return false;
+        Object config=opt(properties,"deviceConfiguration",null);
+        Object transpose=config!=null?get(config,"transposeLayoutWithOrientation"):opt(properties,"transposeLayoutWithOrientation",null);
+        return !(Boolean.TRUE.equals(get(properties,"isLandscape"))&&Boolean.TRUE.equals(transpose));
+    }
+    private static Object opt(Object o,String name,String other){
+        try{return get(o,name);}catch(Throwable t){}
+        if(other!=null)try{return get(o,other);}catch(Throwable t){}
+        return null;
     }
     private static boolean hidden(Context c){
         if(!enabled||!ready)return false;
@@ -77,15 +86,18 @@ final class LauncherHideSearch {
             try{read((Context)Xp.callStaticMethod(Class.forName("android.app.ActivityThread"),"currentApplication"));}catch(Throwable ignored){}
             if(Xp.hookAllMethods(builder,"build",new Xp.Callback(){
                 protected void beforeHookedMethod(Xp.Param p){Build b=new Build();b.previous=builds.get();b.builder=p.thisObject;builds.set(b);}
-                protected void afterHookedMethod(Xp.Param p){Build b=builds.get();if(b!=null){if(b.previous==null)builds.remove();else builds.set(b.previous);}
+                protected void afterHookedMethod(Xp.Param p){Build b=builds.get();if(b!=null){restoreSpace(b);if(b.previous==null)builds.remove();else builds.set(b.previous);}
                     if(b!=null&&b.hidden&&p.getResult()!=null&&!Boolean.TRUE.equals(stock.get()))keepDrawer(p.thisObject,p.getResult());}
             }).isEmpty())throw new IllegalStateException("profile builder unavailable");
             if(Xp.hookAllConstructors(properties,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p)throws Throwable{
-                Build b=builds.get();if(b!=null&&((Integer)get(p.thisObject,"widthPx"))>0)b.properties=p.thisObject;
+                Build b=builds.get();if(b!=null&&((Integer)get(p.thisObject,"widthPx"))>0){b.properties=p.thisObject;if(legacy)zeroSpace(b);}
             }}).isEmpty())throw new IllegalStateException("device properties hook unavailable");
-            if(onePass)installOnePass(cl);else installInitialValues(cl);
-            hookFactory(Xp.findClass("com.android.launcher3.qsb.QsbWidgetFactory",cl));
-            if(Xp.hookAllConstructors(hotseat,new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){
+            boolean initial;try{Xp.findClass("com.android.launcher3.deviceprofile.HotseatProfileInitialValues",cl);initial=!onePass;}catch(Throwable none){initial=false;}
+            Class<?> factory=null;try{factory=Xp.findClass("com.android.launcher3.qsb.QsbWidgetFactory",cl);}catch(Throwable none){}
+            legacy=!onePass&&!initial&&factory==null;
+            if(initial)installInitialValues(cl);else installOnePass(cl);
+            if(legacy)installLegacyBar(hotseat);else hookFactory(factory);
+            if(!legacy&&Xp.hookAllConstructors(hotseat,new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){
                 if(p.args.length==0||!(p.args[0] instanceof Context)||!hidden((Context)p.args[0]))return;
                 try{
                     Object component=Xp.callStaticMethod(Xp.findClass("com.android.launcher3.dagger.LauncherComponentProvider",loader),"get",p.args[0]);
@@ -123,7 +135,7 @@ final class LauncherHideSearch {
         field(spec,"hotseatQsbSpace");
         Class<?> specs=Xp.findClass("com.android.launcher3.responsive.HotseatSpecsProvider",cl);
         Class<?> profile=Xp.findClass("com.android.launcher3.deviceprofile.HotseatProfile",cl);
-        field(profile,"isQsbInline");
+        if(!legacy)field(profile,"isQsbInline");
         if(Xp.hookAllMethods(specs,"getCalculatedSpec",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             Object r=p.getResult();if(r==null||!spec.isInstance(r)||!hideNow())return;
             try{field(spec,"hotseatQsbSpace").setInt(r,0);}catch(Throwable t){warn(t);}
@@ -137,7 +149,7 @@ final class LauncherHideSearch {
         }});
         if(Xp.hookAllConstructors(profile,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             Build b=builds.get();if(b==null||!hideNow())return;
-            try{if(Boolean.TRUE.equals(get(p.thisObject,"isQsbInline")))return;}catch(Throwable t){warn(t);return;}
+            if(!legacy)try{if(Boolean.TRUE.equals(get(p.thisObject,"isQsbInline")))return;}catch(Throwable t){warn(t);return;}
             Xp.setAdditionalInstanceField(p.thisObject,"ps_hidden_search",Boolean.TRUE);b.hidden=true;
         }}).isEmpty())throw new IllegalStateException("hotseat profile hook unavailable");
     }
@@ -157,6 +169,30 @@ final class LauncherHideSearch {
             b.hide=hide;
         }
         return b.hide;
+    }
+
+    private static void zeroSpace(Build b){
+        if(b.space!=null||!hideNow())return;
+        try{Object inv=get(b.builder,"inv");Field f=field(inv.getClass(),"hotseatQsbSpace");float[] old=(float[])f.get(inv);if(old==null)return;
+            b.inv=inv;b.space=old;f.set(inv,new float[old.length]);}catch(Throwable t){warn(t);}
+    }
+    private static void restoreSpace(Build b){
+        if(b.space==null)return;
+        try{field(b.inv.getClass(),"hotseatQsbSpace").set(b.inv,b.space);}catch(Throwable t){warn(t);}
+        b.space=null;b.inv=null;
+    }
+    private static void installLegacyBar(Class<?> hotseat)throws Exception {
+        if(Xp.hookAllConstructors(hotseat,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
+            if(p.args.length==0||!(p.args[0] instanceof Context)||!hidden((Context)p.args[0]))return;
+            try{shrink((View)get(p.thisObject,"mQsb"));}catch(Throwable t){warn(t);}
+        }}).isEmpty())throw new IllegalStateException("hotseat constructor hook unavailable");
+    }
+    private static void shrink(View bar){
+        if(bar==null)return;
+        bar.setScaleX(0);bar.setScaleY(0);bar.setClickable(false);bar.setLongClickable(false);bar.setFocusable(false);
+        bar.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO_HIDE_DESCENDANTS);
+        if(bar instanceof ViewGroup)((ViewGroup)bar).setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
+
     }
 
     private static void keepDrawer(Object builder,Object hiddenProfile){
@@ -189,7 +225,8 @@ final class LauncherHideSearch {
     private static boolean applyLive(android.app.Activity a,ViewGroup hotseat,View bar){
         try{
             Field q=field(hotseat.getClass(),"mQsb");
-            if(q.get(hotseat)==bar){
+            if(legacy)shrink(bar);
+            else if(q.get(hotseat)==bar){
                 View empty=new EmptySearch(a);
                 hotseat.removeView(bar);q.set(hotseat,empty);hotseat.addView(empty);
             }

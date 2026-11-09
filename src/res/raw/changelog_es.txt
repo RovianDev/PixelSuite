@@ -1,3 +1,21 @@
+## v3.1.1
+Desactiva el bloqueo de anuncios en todo el sistema, Ocultar barra de búsqueda en más launchers, nombres más largos en la marcación rápida de Chrome y correcciones.
+
+💎 Patreon
+• 🛡️ **Bloquear anuncios en todas las apps**: desactívalo para bloquear anuncios solo en Chrome y Google News. El archivo hosts de tu teléfono vuelve a ser el original al instante, y quitar el módulo del bloqueador de anuncios en tu gestor de root ahora también lo desactiva. (Patreon › Apps de Google)
+• ⭐ **Marcación rápida**: los nombres de sitios web y carpetas ahora usan toda su columna, así que los nombres largos muestran mucho más antes del "…".
+
+🪄 Pulido
+• 🗂️ **Cajón de apps**: una carpeta o app que sueltas en su mismo sitio ahora se coloca con la misma pequeña sacudida que al moverla.
+
+🐞 Correcciones
+• 🔢 **Pantalla de bloqueo**: escribir tu PIN después de reiniciar podía apagar la pantalla. Ahora se queda encendida.
+• 🧹 **Ocultar barra de búsqueda**: las versiones antiguas de Pixel Launcher decían que no era compatible. Ahora funciona también ahí.
+• 🧭 **Botones de navegación**: un intento de corregir un segundo par de botones que aparecía en la parte superior de la pantalla en algunos teléfonos.
+• 📁 **Marcación rápida**: los nombres largos de carpeta perdían sus primeras letras. Ahora se ven desde el principio.
+
+Instala sobre tu versión actual y reinicia.
+
 ## v3.1.0
 Pixel Suite en 14 idiomas, Chrome+ y Gboard+, una VPN integrada, Copia y restauración para las apps retenidas, nuevas opciones para el botón de encendido, el volumen y la pantalla de bloqueo, y un icono nuevo.
 
@@ -20,7 +38,7 @@ Pixel Suite en 14 idiomas, Chrome+ y Gboard+, una VPN integrada, Copia y restaur
 💎 Patreon
 • 🚀 **Chrome+**: los controles de Chrome pasan abajo, con animaciones más fluidas y hechas a mano para las pestañas, el selector de pestañas y las pestañas nuevas. El + naranja del selector abre una pestaña de incógnito. (Patreon › Apps de Google › Chrome+)
 • 🧩 **Extensiones para Chrome**: VPN, Bloqueador de anuncios y Páginas oscuras en un mismo panel, desde el botón de pieza de puzle de la barra de Chrome. Toca una para usarla, o mantenla pulsada para fijarla en la barra.
-• 🌐 **VPN**: navega desde otro país con servidores gratuitos de todo el mundo, para todo el teléfono o solo Chrome, con el servidor más rápido primero. La ubicación de Chrome sigue a la VPN. (Patreon › VPN, además de un recuadro en Ajustes rápidos)
+• 🌐 **VPN**: navega desde otro país con servidores de código abierto de todo el mundo, para todo el teléfono o solo Chrome, con el servidor más rápido primero. La ubicación de Chrome sigue a la VPN. (Patreon › VPN, además de un recuadro en Ajustes rápidos)
 • ⭐ **Marcación rápida**: iconos redondos para hasta 19 sitios web en la página de nueva pestaña de Chrome. Arrástralos para moverlos, o suelta uno sobre otro para crear una carpeta que sigue Súper Oscuro. Pon tu propia imagen redonda a cualquier sitio.
 • 🛡️ **Bloqueador de anuncios**: elige un nivel de filtrado para cada sitio web. Completo también oculta los avisos de cookies y las ventanas emergentes, y puedes quitar tú mismo cualquier parte de una página. Su interruptor en Complementos lo activa o desactiva en todos los sitios web. (Chrome+ › Complementos)
 • 🌙 **Páginas oscuras**: los sitios web se abren oscuros sin destellos blancos, o en negro puro con Súper Oscuro: siempre, con el modo oscuro del teléfono o con horario. Las fotos y los vídeos mantienen sus colores. (Chrome+ › Complementos)
@@ -60,11 +78,3 @@ Una corrección para Play Integrity.
 • Play Integrity: Pixel Suite ya no usa los servicios de Google Play. Solo se usaba para los bordes de desplazamiento suaves en algunas pantallas de Google abiertas desde Ajustes (Cristal esmerilado), y mantenerlo podía costarte la integridad Device y Strong, así que no valía la pena. Si lo tenías marcado en el ámbito de LSPosed de Pixel Suite, Pixel Suite ahora lo desmarca por ti. Reinicia cuando te lo pida. Gracias a Ashray V K en Telegram por avisar 🙏
 
 Instala sobre tu versión actual y reinicia.
-
-## v3.0.3
-Una corrección para el inicio de sesión de Patreon.
-
-🐞 Correcciones
-• Patreon: el inicio de sesión ahora se completa aunque tu navegador no pueda abrir Pixel Suite (por ejemplo, cuando muestra una página de Play Store de "no se encontró el elemento"). Tras iniciar sesión, vuelve a Pixel Suite y se desbloquea solo.
-
-Instala sobre tu versión actual.

@@ -161,7 +161,7 @@ Couldn't open that picture	Não foi possível abrir essa imagem
 Tap the picture to change it	Toque na imagem para mudar
 Use the website's icon	Usar o ícone do site
 Country	País
-Getting the free server list…	Buscando a lista de servidores gratuitos…
+Getting the open-source server list…	Buscando a lista de servidores de código aberto…
 No servers yet. Pixel Suite loads them when you open this.	Nenhum servidor ainda. O Pixel Suite carrega quando você abre isto.
 Unavailable · no servers right now	Indisponível · nenhum servidor agora
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	Não foi possível carrega
 Disconnect	Desconectar
 Disconnected	Desconectado
 Finding servers…	Procurando servidores…
-Free volunteer server	Servidor voluntário gratuito
+Open-source volunteer server	Servidor voluntário de código aberto
 No server answered	Nenhum servidor respondeu
 Server stopped answering	O servidor parou de responder
 Trying the faster UDP connection (up to 30 s)…	Tentando a conexão UDP mais rápida (até 30 s)…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	Não foi possível atualizar. Mostrando
 Couldn't start the VPN	Não foi possível iniciar a VPN
 Countries without servers right now show as Unavailable.	Países sem servidores no momento aparecem como Indisponível.
 Fastest server	Servidor mais rápido
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Servidores gratuitos mantidos por voluntários do mundo todo. O Pixel Suite se conecta ao mais rápido.
-Getting the free server list	Buscando a lista de servidores gratuitos
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Servidores de código aberto mantidos por voluntários do mundo todo. O Pixel Suite se conecta ao mais rápido.
+Getting the open-source server list	Buscando a lista de servidores de código aberto
 Loading servers…	Carregando servidores…
 No servers yet	Nenhum servidor ainda
 Not connected	Não conectado
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	Reinicie para recuperar o Play Integrity
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	O Pixel Suite removeu o Google Play Services do escopo do LSPosed, porque ele pode fazer você perder a integridade Device e Strong e não é mais usado. Reinicie o celular para terminar.
 Server connected but passes no traffic	O servidor conectou, mas não passa tráfego
 Server connected but websites don't open ({0})	O servidor conectou, mas os sites não abrem ({0})
+Block ads in every app	Bloquear anúncios em todos os apps
+Turn off to block ads only in Chrome and Google News.	Desative para bloquear anúncios só no Chrome e no Google News.
+Ads are blocked only in Chrome and Google News.	Os anúncios são bloqueados só no Chrome e no Google News.
+Open-source servers worldwide	Servidores de código aberto pelo mundo

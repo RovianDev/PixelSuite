@@ -27,6 +27,8 @@ final class AdBlock {
     static final String MOD = "/data/adb/modules/pixelsuite_adblock";
     static final String HOSTS = MOD + "/system/etc/hosts";
     static final String MARK = "# Pixel Suite ad blocker";
+    static final String HOSTS_KEY = "pixelsuite_adblock_hosts";
+    private static final String OFF_MARK = "ps_off";
     private static final String PREFS = "pixelsuite_adblock";
     private static final String PKG = "io.github.roviandev.pixelsuite";
     private static final String STOCK = "127.0.0.1 localhost\n::1 ip6-localhost\n";
@@ -47,6 +49,30 @@ final class AdBlock {
         List<String> out = Root.run("settings get secure " + KEY);
         if (out == null || out.isEmpty()) return true;
         return !"0".equals(out.get(0).trim());
+    }
+
+    static boolean hostsOn() {
+        List<String> out = Root.run("settings get secure " + HOSTS_KEY);
+        return out == null || out.isEmpty() || !"0".equals(out.get(0).trim());
+    }
+
+    static Result setHosts(Context c, boolean on) {
+        Result r = new Result();
+        if (on && !entitled(c)) { r.message = "The Ad blocker is part of Pixel Suite's Patreon features"; return r; }
+        if (Root.run("settings put secure " + HOSTS_KEY + (on ? " 1" : " 0")) == null) { r.message = "Root access is needed"; return r; }
+        if (!on) { removeModule(c); r.ok = true; return r; }
+        return isOn() ? update(c) : setEnabled(c, true);
+    }
+
+    private static boolean removedByUser(Context c) {
+        List<String> out = Root.run("M=" + MOD + "; if [ -d $M ]; then if { [ -f $M/remove ] || [ -f $M/disable ]; } && [ ! -f $M/" + OFF_MARK + " ]; then echo USER; fi; else echo GONE; fi");
+        if (out == null) return false;
+        return out.contains("USER") || (out.contains("GONE") && prefs(c).getBoolean("module", false));
+    }
+
+    private static void removeModule(Context c) {
+        Root.run("M=" + MOD + "; F=" + HOSTS + "; if [ -d $M ]; then [ -f $F ] && printf '" + MARK + " (off)\\n127.0.0.1 localhost\\n::1 ip6-localhost\\n' > $F; touch $M/" + OFF_MARK + " $M/remove; fi");
+        prefs(c).edit().putBoolean("module", false).apply();
     }
 
     static android.os.Bundle serveChrome(Context c, String key, android.os.Bundle extras) {
@@ -82,16 +108,20 @@ final class AdBlock {
             return update(c);
         }
         cancel(c);
-        writeHosts(c, MARK + " (off)\n" + STOCK, r);
-        if (r.ok) r.message = "Off: ads are no longer blocked";
+        removeModule(c);
+        r.ok = true;
+        r.message = "Off: ads are no longer blocked";
         return r;
     }
 
     static void ensure(Context c) {
         if (!isOn() || !entitled(c)) { stop(c); return; }
+        if (hostsOn() && removedByUser(c)) Root.run("settings put secure " + HOSTS_KEY + " 0");
         schedule(c);
+        boolean hosts = hostsOn();
+        if (!hosts && installed()) removeModule(c);
         long age = System.currentTimeMillis() - prefs(c).getLong("updated", 0);
-        if (!installed() || age > 24L * 3600 * 1000 || !Cosmetic.present(c)) update(c);
+        if ((hosts && !installed()) || age > 24L * 3600 * 1000 || !Cosmetic.present(c)) update(c);
     }
 
     private static boolean installed() {
@@ -101,7 +131,7 @@ final class AdBlock {
 
     static void stop(Context c) {
         cancel(c);
-        try { if (installed()) writeHosts(c, MARK + " (off)\n" + STOCK, new Result()); } catch (Throwable ignored) { }
+        try { if (installed()) removeModule(c); } catch (Throwable ignored) { }
     }
 
     static Result update(Context c) {
@@ -112,9 +142,17 @@ final class AdBlock {
         for (String url : LISTS) if (download(url, domains)) listsOk++;
         if (Cosmetic.update(c)) { listsOk++; domains.addAll(Cosmetic.blocked()); domains.removeAll(Cosmetic.allowed()); }
         for (String a : ALLOW) domains.remove(a);
+        if (hostsOn() && removedByUser(c)) Root.run("settings put secure " + HOSTS_KEY + " 0");
         if (listsOk == 0 || domains.size() < 1000) {
             r.message = "Couldn't download the ad lists (no connection?). The current list stays.";
             prefs(c).edit().putString("error", r.message).apply();
+            return r;
+        }
+        if (!hostsOn()) {
+            if (installed()) removeModule(c);
+            r.ok = true;
+            r.domains = domains.size();
+            prefs(c).edit().putInt("domains", r.domains).putLong("updated", System.currentTimeMillis()).remove("error").apply();
             return r;
         }
         StringBuilder sb = new StringBuilder(domains.size() * 28 + 256);
@@ -198,7 +236,7 @@ final class AdBlock {
                 + "mkdir -p $M/system/etc;"
                 + "cat '" + prop.getAbsolutePath() + "' > $M/module.prop;"
                 + "cat '" + service.getAbsolutePath() + "' > $M/service.sh; chmod 755 $M/service.sh;"
-                + "rm -f $M/remove $M/disable;"
+                + "rm -f $M/remove $M/disable $M/" + OFF_MARK + ";"
                 + "[ -f $F ] || touch $F;"
                 + "cat '" + tmp.getAbsolutePath() + "' > $F;"
                 + "chmod 644 $F; chcon -R u:object_r:system_file:s0 $M/system;"
@@ -214,6 +252,7 @@ final class AdBlock {
         }
         r.ok = true;
         r.needsReboot = out.contains("REBOOT");
+        prefs(c).edit().putBoolean("module", true).apply();
     }
 
     private static String liveMount() {
@@ -254,6 +293,7 @@ final class AdBlock {
         int n = p.getInt("domains", 0);
         long t = p.getLong("updated", 0);
         if (n == 0) return err != null ? err : "Getting the ad lists…";
+        if (!hostsOn()) return "Ads are blocked only in Chrome and Google News.";
         long now = System.currentTimeMillis();
         String when;
         if (I18n.on()) {

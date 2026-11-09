@@ -274,7 +274,7 @@ final class ChromeVpn {
             shown[0] = key;
             list.removeAllViews();
             if (rows == null || rows.isEmpty()) {
-                TextView wait = text(c, b != null && b.getBoolean("loading") ? "Getting the free server list…" : "No servers yet. Pixel Suite loads them when you open this.", 14, muted, false);
+                TextView wait = text(c, b != null && b.getBoolean("loading") ? "Getting the open-source server list…" : "No servers yet. Pixel Suite loads them when you open this.", 14, muted, false);
                 wait.setPadding(dp(c, 24), dp(c, 12), dp(c, 24), dp(c, 12));
                 list.addView(wait);
                 return;

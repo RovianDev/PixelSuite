@@ -1,3 +1,21 @@
+## v3.1.1
+Turn off system-wide ad blocking, Hide search bar on more launchers, longer names on Chrome's speed dial, and fixes.
+
+💎 Patreon
+• 🛡️ **Block ads in every app**: turn it off to block ads only in Chrome and Google News. Your phone's hosts file goes back to stock right away, and removing the ad blocker module in your root manager now turns it off too. (Patreon › Google apps)
+• ⭐ **Speed dial**: website and folder names now use their whole column, so long names show much more before the "…".
+
+🪄 Polish
+• 🗂️ **App drawer**: a folder or app you drop back in its own spot now lands with the same little rattle as a move.
+
+🐞 Bug fixes
+• 🔢 **Lock screen**: typing your PIN after a restart could turn the screen off. It stays on now.
+• 🧹 **Hide search bar**: older Pixel Launcher versions said it isn't supported. It works there now.
+• 🧭 **Navigation buttons**: an attempt to fix a second pair of buttons showing at the top of the screen on some phones.
+• 📁 **Speed dial**: long folder names lost their first letters. They show from the start now.
+
+Install over your current version and reboot.
+
 ## v3.1.0
 Pixel Suite in 14 languages, Chrome+ and Gboard+, a built-in VPN, Backup & Restore for held-back apps, new power button, volume and lock screen options, and a new icon.
 
@@ -20,7 +38,7 @@ Pixel Suite in 14 languages, Chrome+ and Gboard+, a built-in VPN, Backup & Resto
 💎 Patreon
 • 🚀 **Chrome+**: Chrome's controls move to the bottom, with smoother hand-crafted animations for tabs, the tab switcher and new tabs. The orange + in the tab switcher opens an incognito tab. (Patreon › Google apps › Chrome+)
 • 🧩 **Extensions for Chrome**: VPN, Ad Blocker and Dark pages in one sheet, from the puzzle button in Chrome's toolbar. Tap one to use it, or hold it to pin it to the toolbar.
-• 🌐 **VPN**: browse from another country on free servers worldwide, for the whole phone or Chrome only, with the fastest server first. Chrome's location follows the VPN. (Patreon › VPN, or its Quick Settings tile)
+• 🌐 **VPN**: browse from another country on open-source servers worldwide, for the whole phone or Chrome only, with the fastest server first. Chrome's location follows the VPN. (Patreon › VPN, or its Quick Settings tile)
 • ⭐ **Speed dial**: round icons for up to 19 websites on Chrome's new tab page. Drag to move them, or drop one on another to make a folder that follows Super Dark. Give any website your own round picture.
 • 🛡️ **Ad Blocker**: pick a filtering level for each website. Complete also hides cookie banners and pop-ups, and you can remove any part of a page yourself. Its switch in the Extensions sheet turns it off or on for every website. (Chrome+ › Extensions)
 • 🌙 **Dark pages**: websites open dark with no white flash, or pure black with Super Dark: always, with your phone's dark mode, or on a schedule. Pictures and videos keep their colours. (Chrome+ › Extensions)
@@ -60,11 +78,3 @@ A fix for Play Integrity.
 • Play Integrity: Pixel Suite no longer uses Google Play services. It was only used for the soft scrolling edges on a few Google screens opened from Settings (Frosted Glass), and keeping it could cost you Device and Strong integrity, so it wasn't worth it. If you had it ticked in Pixel Suite's LSPosed scope, Pixel Suite now unticks it for you. Just reboot when it asks. Thanks to Ashray V K on Telegram for pointing it out 🙏
 
 Install over your current version and reboot.
-
-## v3.0.3
-A fix for Patreon sign-in.
-
-🐞 Bug fixes
-• Patreon: signing in now completes even when your browser can't open Pixel Suite (for example, when it shows a Play Store "item not found" page). After signing in, just switch back to Pixel Suite and it unlocks on its own.
-
-Install over your current version.

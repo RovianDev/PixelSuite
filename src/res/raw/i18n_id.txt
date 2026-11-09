@@ -161,7 +161,7 @@ Couldn't open that picture	Tidak dapat membuka gambar itu
 Tap the picture to change it	Ketuk gambar untuk menggantinya
 Use the website's icon	Gunakan ikon situs
 Country	Negara
-Getting the free server list…	Mengambil daftar server gratis…
+Getting the open-source server list…	Mengambil daftar server open source…
 No servers yet. Pixel Suite loads them when you open this.	Belum ada server. Pixel Suite memuatnya saat Anda membuka ini.
 Unavailable · no servers right now	Tidak tersedia · tidak ada server saat ini
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	Tidak dapat memuat daftar 
 Disconnect	Putuskan
 Disconnected	Terputus
 Finding servers…	Mencari server…
-Free volunteer server	Server relawan gratis
+Open-source volunteer server	Server relawan open source
 No server answered	Tidak ada server yang menjawab
 Server stopped answering	Server berhenti menjawab
 Trying the faster UDP connection (up to 30 s)…	Mencoba koneksi UDP yang lebih cepat (hingga 30 dtk)…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	Tidak dapat memperbarui. Menampilkan da
 Couldn't start the VPN	Tidak dapat memulai VPN
 Countries without servers right now show as Unavailable.	Negara yang sedang tidak punya server ditampilkan Tidak tersedia.
 Fastest server	Server tercepat
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Server gratis yang dijalankan relawan di seluruh dunia. Pixel Suite terhubung ke yang tercepat.
-Getting the free server list	Mengambil daftar server gratis
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	Server open source yang dijalankan relawan di seluruh dunia. Pixel Suite terhubung ke yang tercepat.
+Getting the open-source server list	Mengambil daftar server open source
 Loading servers…	Memuat server…
 No servers yet	Belum ada server
 Not connected	Tidak terhubung
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	Mulai ulang untuk memulihkan Play Integrity
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite menghapus Layanan Google Play dari cakupan LSPosed-nya, karena bisa membuat Anda kehilangan integritas Device dan Strong dan tidak dipakai lagi. Mulai ulang ponsel untuk menyelesaikan.
 Server connected but passes no traffic	Server terhubung tetapi tidak meneruskan lalu lintas
 Server connected but websites don't open ({0})	Server terhubung tetapi situs web tidak terbuka ({0})
+Block ads in every app	Blokir iklan di semua aplikasi
+Turn off to block ads only in Chrome and Google News.	Matikan untuk memblokir iklan hanya di Chrome dan Google News.
+Ads are blocked only in Chrome and Google News.	Iklan hanya diblokir di Chrome dan Google News.
+Open-source servers worldwide	Server open source di seluruh dunia

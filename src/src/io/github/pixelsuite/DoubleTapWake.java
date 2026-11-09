@@ -2947,7 +2947,7 @@ final class DoubleTapWake {
 
     private static void onLockDoubleTap() {
         boolean screenOn = sPm != null && sPm.isInteractive();
-        if (!screenOn || !lockScreenShowing()) return;
+        if (!screenOn || !lockScreenShowing() || !userUnlocked()) return;
         long tap = sChipTapAt;
         Handler h = sWorker;
         if (h != null && undoingChips() && chipTapRecent() && sBackSentFor != tap) {
@@ -2974,6 +2974,21 @@ final class DoubleTapWake {
                     .invoke(sPm, SystemClock.uptimeMillis(), SLEEP_REASON_POWER_BUTTON, 0);
         } catch (Throwable t) {
         }
+    }
+
+    private static volatile boolean sUserUnlocked;
+
+    private static boolean userUnlocked() {
+        if (sUserUnlocked) return true;
+        try {
+            Object um = sCtx.getSystemService(Context.USER_SERVICE);
+            if (um != null && Boolean.TRUE.equals(Xp.callMethod(um, "isUserUnlocked"))) {
+                sUserUnlocked = true;
+            }
+        } catch (Throwable t) {
+            sUserUnlocked = true;
+        }
+        return sUserUnlocked;
     }
 
     private static boolean deviceLocked() {

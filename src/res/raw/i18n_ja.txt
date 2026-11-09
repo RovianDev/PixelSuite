@@ -161,7 +161,7 @@ Couldn't open that picture	その画像を開けませんでした
 Tap the picture to change it	画像をタップして変更
 Use the website's icon	ウェブサイトのアイコンを使用
 Country	国
-Getting the free server list…	無料サーバーのリストを取得中…
+Getting the open-source server list…	オープンソースのサーバーのリストを取得中…
 No servers yet. Pixel Suite loads them when you open this.	サーバーはまだありません。これを開くと Pixel Suite が読み込みます。
 Unavailable · no servers right now	利用不可 · 現在サーバーなし
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	サーバーリストを�
 Disconnect	切断
 Disconnected	切断されました
 Finding servers…	サーバーを検索中…
-Free volunteer server	無料のボランティアサーバー
+Open-source volunteer server	オープンソースのボランティアサーバー
 No server answered	応答したサーバーはありません
 Server stopped answering	サーバーが応答しなくなりました
 Trying the faster UDP connection (up to 30 s)…	より高速な UDP 接続を試しています（最大 30 秒）…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	更新できませんでした。前回
 Couldn't start the VPN	VPN を開始できませんでした
 Countries without servers right now show as Unavailable.	現在サーバーがない国は「利用不可」と表示されます。
 Fastest server	最速のサーバー
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	世界中のボランティアが運営する無料サーバー。Pixel Suite が最速のサーバーに接続します。
-Getting the free server list	無料サーバーのリストを取得中
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	世界中のボランティアが運営するオープンソースのサーバー。Pixel Suite が最速のサーバーに接続します。
+Getting the open-source server list	オープンソースのサーバーのリストを取得中
 Loading servers…	サーバーを読み込み中…
 No servers yet	サーバーはまだありません
 Not connected	未接続
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	Play Integrity を戻すには再起動して�
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite は LSPosed スコープから Google Play 開発者サービスを外しました。Device と Strong の完全性を失うおそれがあり、もう使われていないためです。完了するにはスマートフォンを再起動してください。
 Server connected but passes no traffic	サーバーに接続しましたが、通信が通りません
 Server connected but websites don't open ({0})	サーバーに接続しましたが、ウェブサイトが開きません（{0}）
+Block ads in every app	すべてのアプリで広告をブロック
+Turn off to block ads only in Chrome and Google News.	オフにすると Chrome と Google News だけで広告をブロックします。
+Ads are blocked only in Chrome and Google News.	広告は Chrome と Google News だけでブロックされています。
+Open-source servers worldwide	世界中のオープンソースのサーバー

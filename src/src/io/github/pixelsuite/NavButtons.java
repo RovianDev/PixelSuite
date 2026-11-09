@@ -134,6 +134,7 @@ final class NavButtons {
         if (old != null && old.getParent() instanceof ViewGroup) ((ViewGroup) old.getParent()).removeView(old);
         ViewGroup root = (ViewGroup) handle.getRootView();
         Bar b = new Bar(handle.getContext(), handle);
+        if (old != null) old.closePanels();
         root.addView(b, new FrameLayout.LayoutParams(-1, -1));
         bar = new WeakReference<Bar>(b);
     }
@@ -206,8 +207,27 @@ final class NavButtons {
             getContext().getContentResolver().unregisterContentObserver(observer);
             getViewTreeObserver().removeOnPreDrawListener(follow);
             try { getContext().unregisterReceiver(lockWatch); } catch (Throwable ignored) { }
-            if(leftPanel!=null)leftPanel.close();if(rightPanel!=null)rightPanel.close();
+            closePanels();
             super.onDetachedFromWindow();
+        }
+
+        void closePanels() {
+            if (leftPanel != null) leftPanel.close();
+            if (rightPanel != null) rightPanel.close();
+        }
+
+        boolean handleAtBottom(View hv) {
+            try {
+                if (bar.get() != this || hv == null || !hv.isAttachedToWindow()) return false;
+                android.view.Display d = hv.getDisplay();
+                if (d == null || d.getDisplayId() != android.view.Display.DEFAULT_DISPLAY) return false;
+                android.graphics.Point size = new android.graphics.Point();
+                d.getRealSize(size);
+                int[] at = new int[2];
+                hv.getLocationOnScreen(at);
+                float cy = at[1] + hv.getHeight() / 2f;
+                return size.y <= 0 || cy >= size.y * 0.75f;
+            } catch (Throwable t) { return true; }
         }
 
         void read() {
@@ -282,7 +302,7 @@ final class NavButtons {
                 if (lastRotation != -1 && rotation != lastRotation) { lastRotation = rotation; turned(); return true; }
                 lastRotation = rotation;
                 imeVisible=keyboardUp();left.keyboard(imeVisible);right.keyboard(imeVisible);
-                boolean show = on && hv != null && (imeVisible || (hv.isShown() && hv.getAlpha() > 0.01f)) && (!keyboardOnly || imeVisible) && !locked();
+                boolean show = on && hv != null && (imeVisible || (hv.isShown() && hv.getAlpha() > 0.01f)) && (!keyboardOnly || imeVisible) && !locked() && handleAtBottom(hv);
                 float dens = getResources().getDisplayMetrics().density;
                 int size = Math.round(Math.min(48 * dens, Math.max(28 * dens, getHeight() > 0 ? getHeight() : 48 * dens)));
                 float cy = getHeight() / 2f;

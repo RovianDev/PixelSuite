@@ -167,7 +167,7 @@ for entry in entries:
     if entry.get('page') == 'dark_pages':
         entry['keywords'] = (entry.get('keywords', '') + ' dark mode dark theme night mode dark websites dark web pages black pages super dark pure black schedule timer sunset night automatic chrome extension').strip()
     if entry.get('page') == 'vpn':
-        entry['keywords'] = (entry.get('keywords', '') + ' vpn proxy change country location ip address united states usa united kingdom uk britain japan korea germany vpn gate free servers open source open-source softether quick settings tile patreon chrome only vpn for chrome location gps geolocation google location time zone timezone travel').strip()
+        entry['keywords'] = (entry.get('keywords', '') + ' vpn proxy change country location ip address united states usa united kingdom uk britain japan korea germany vpn gate open source open-source softether quick settings tile patreon chrome only vpn for chrome location gps geolocation google location time zone timezone travel').strip()
     if entry.get('page') == 'google_dialer':
         entry['keywords'] = (entry.get('keywords', '') + ' recording quality hd recording lossless wav call quality').strip()
     page=entry['page'];trail=[];visited=set()

@@ -161,7 +161,7 @@ Couldn't open that picture	آن تصویر باز نشد
 Tap the picture to change it	برای تغییر روی تصویر ضربه بزنید
 Use the website's icon	استفاده از نماد وب‌سایت
 Country	کشور
-Getting the free server list…	درحال دریافت فهرست سرورهای رایگان…
+Getting the open-source server list…	درحال دریافت فهرست سرورهای متن‌باز…
 No servers yet. Pixel Suite loads them when you open this.	هنوز سروری نیست. Pixel Suite وقتی این را باز کنید بارشان می‌کند.
 Unavailable · no servers right now	دردسترس نیست · اکنون سروری نیست
 VPN	VPN
@@ -463,7 +463,7 @@ Couldn't load the server list. Check your connection.	فهرست سرورها ب
 Disconnect	قطع اتصال
 Disconnected	قطع شد
 Finding servers…	درحال یافتن سرورها…
-Free volunteer server	سرور داوطلبانه رایگان
+Open-source volunteer server	سرور داوطلبانه متن‌باز
 No server answered	هیچ سروری پاسخ نداد
 Server stopped answering	سرور دیگر پاسخ نمی‌دهد
 Trying the faster UDP connection (up to 30 s)…	درحال امتحان اتصال سریع‌تر UDP (تا ۳۰ ثانیه)…
@@ -1187,8 +1187,8 @@ Couldn't refresh. Showing the last list.	به‌روزرسانی نشد. آخر�
 Couldn't start the VPN	VPN شروع نشد
 Countries without servers right now show as Unavailable.	کشورهایی که اکنون سرور ندارند «دردسترس نیست» نشان داده می‌شوند.
 Fastest server	سریع‌ترین سرور
-Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.	سرورهای رایگانی که داوطلبان در سراسر جهان اداره می‌کنند. Pixel Suite به سریع‌ترین وصل می‌شود.
-Getting the free server list	درحال دریافت فهرست سرورهای رایگان
+Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.	سرورهای متن‌بازی که داوطلبان در سراسر جهان اداره می‌کنند. Pixel Suite به سریع‌ترین وصل می‌شود.
+Getting the open-source server list	درحال دریافت فهرست سرورهای متن‌باز
 Loading servers…	درحال بار کردن سرورها…
 No servers yet	هنوز سروری نیست
 Not connected	متصل نیست
@@ -1586,3 +1586,7 @@ Reboot to restore Play Integrity	برای بازگرداندن Play Integrity ر
 Pixel Suite removed Google Play services from its LSPosed scope, because it can cost you Device and Strong integrity and is no longer used. Reboot your phone to finish.	Pixel Suite خدمات Google Play را از دامنه LSPosed خود حذف کرد، چون ممکن است یکپارچگی Device و Strong را از بین ببرد و دیگر استفاده نمی‌شود. برای تمام کردن، گوشی را ری‌استارت کنید.
 Server connected but passes no traffic	سرور وصل شد اما هیچ ترافیکی عبور نمی‌دهد
 Server connected but websites don't open ({0})	سرور وصل شد اما وب‌سایت‌ها باز نمی‌شوند ({0})
+Block ads in every app	مسدود کردن تبلیغات در همه برنامه‌ها
+Turn off to block ads only in Chrome and Google News.	برای مسدود کردن تبلیغات فقط در Chrome و Google News خاموشش کنید.
+Ads are blocked only in Chrome and Google News.	تبلیغات فقط در Chrome و Google News مسدود می‌شوند.
+Open-source servers worldwide	سرورهای متن‌باز در سراسر جهان

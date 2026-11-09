@@ -1,3 +1,21 @@
+## v3.1.1
+Sistem genelinde reklam engellemeyi kapatma, daha fazla başlatıcıda arama çubuğunu gizleme, Chrome'un hızlı aramasında daha uzun adlar ve düzeltmeler.
+
+💎 Patreon
+• 🛡️ **Tüm uygulamalarda reklamları engelle**: reklamları yalnızca Chrome ve Google News'te engellemek için kapatın. Telefonunuzun hosts dosyası hemen orijinal haline döner ve root yöneticinizde reklam engelleyici modülünü kaldırmak da artık bunu kapatır. (Patreon › Google uygulamaları)
+• ⭐ **Hızlı arama**: site ve klasör adları artık sütunlarının tamamını kullanıyor, böylece uzun adlar "…" işaretinden önce çok daha fazla görünüyor.
+
+🪄 İnce ayarlar
+• 🗂️ **Uygulama çekmecesi**: kendi yerine geri bıraktığınız bir klasör ya da uygulama artık taşırken olduğu gibi aynı küçük sarsıntıyla yerine oturuyor.
+
+🐞 Hata düzeltmeleri
+• 🔢 **Kilit ekranı**: yeniden başlattıktan sonra PIN'inizi yazmak ekranı kapatabiliyordu. Artık açık kalıyor.
+• 🧹 **Arama çubuğunu gizle**: Pixel Launcher'ın eski sürümleri bunun desteklenmediğini söylüyordu. Artık orada da çalışıyor.
+• 🧭 **Gezinme düğmeleri**: bazı telefonlarda ekranın üstünde ikinci bir düğme çiftinin görünmesini düzeltme denemesi.
+• 📁 **Hızlı arama**: uzun klasör adlarının ilk harfleri kayboluyordu. Artık baştan görünüyorlar.
+
+Mevcut sürümün üzerine kurun ve yeniden başlatın.
+
 ## v3.1.0
 Pixel Suite 14 dilde; Chrome+ ve Gboard+, yerleşik VPN, bekletilen uygulamalar için Yedekleme ve Geri Yükleme, güç düğmesi, ses ve kilit ekranı için yeni seçenekler ve yeni bir simge.
 
@@ -20,7 +38,7 @@ Pixel Suite 14 dilde; Chrome+ ve Gboard+, yerleşik VPN, bekletilen uygulamalar 
 💎 Patreon
 • 🚀 **Chrome+**: Chrome'un kontrolleri aşağı iner; sekmeler, sekme değiştirici ve yeni sekmeler için daha akıcı, elde hazırlanmış animasyonlarla. Sekme değiştiricideki turuncu + gizli sekme açar. (Patreon › Google uygulamaları › Chrome+)
 • 🧩 **Chrome için uzantılar**: VPN, Reklam Engelleyici ve Koyu sayfalar tek bir sayfada, Chrome'un araç çubuğundaki yapboz düğmesinden. Kullanmak için dokunun, araç çubuğuna sabitlemek için basılı tutun.
-• 🌐 **VPN**: dünyanın dört bir yanındaki ücretsiz sunucularla başka bir ülkeden gezinin, tüm telefon için ya da yalnızca Chrome için, en hızlı sunucu önce. Chrome'un konumu VPN'i izler. (Patreon › VPN, ayrıca bir Hızlı Ayarlar kutusu)
+• 🌐 **VPN**: dünyanın dört bir yanındaki açık kaynak sunucularla başka bir ülkeden gezinin, tüm telefon için ya da yalnızca Chrome için, en hızlı sunucu önce. Chrome'un konumu VPN'i izler. (Patreon › VPN, ayrıca bir Hızlı Ayarlar kutusu)
 • ⭐ **Hızlı arama**: Chrome'un yeni sekme sayfasında en fazla 19 web sitesi için yuvarlak simgeler. Taşımak için sürükleyin ya da Süper Karanlık temasını izleyen bir klasör yapmak için birini diğerinin üstüne bırakın. Herhangi bir siteye kendi yuvarlak resminizi verin.
 • 🛡️ **Reklam Engelleyici**: her web sitesi için bir filtreleme düzeyi seçin. Tam düzey çerez bildirimlerini ve açılır pencereleri de gizler, sayfanın herhangi bir bölümünü kendiniz de kaldırabilirsiniz. Uzantılar'daki anahtarıyla tüm web sitelerinde kapatıp açabilirsiniz. (Chrome+ › Uzantılar)
 • 🌙 **Koyu sayfalar**: siteler beyaz parlama olmadan koyu açılır ya da Süper Karanlık ile simsiyah: her zaman, telefonun koyu moduyla ya da bir programla. Fotoğraflar ve videolar renklerini korur. (Chrome+ › Uzantılar)
@@ -60,11 +78,3 @@ Play Integrity için bir düzeltme.
 • Play Integrity: Pixel Suite artık Google Play hizmetlerini kullanmıyor. Yalnızca Ayarlar'dan açılan birkaç Google ekranındaki yumuşak kaydırma kenarları (Buzlu Cam) için kullanılıyordu ve tutmak Device ile Strong bütünlüğünü kaybettirebiliyordu, bu yüzden değmezdi. Pixel Suite'in LSPosed kapsamında işaretliyse Pixel Suite artık işareti sizin yerinize kaldırır. Sorduğunda yeniden başlatmanız yeterli. Fark edip bildirdiği için Telegram'daki Ashray V K'ye teşekkürler 🙏
 
 Mevcut sürümün üzerine kurun ve yeniden başlatın.
-
-## v3.0.3
-Patreon girişi için bir düzeltme.
-
-🐞 Hata düzeltmeleri
-• Patreon: tarayıcınız Pixel Suite'i açamasa bile (örneğin Play Store'un "öğe bulunamadı" sayfasını gösterdiğinde) giriş artık tamamlanıyor. Giriş yaptıktan sonra Pixel Suite'e dönmeniz yeterli, kilidi kendiliğinden açılır.
-
-Mevcut sürümün üzerine kurun.

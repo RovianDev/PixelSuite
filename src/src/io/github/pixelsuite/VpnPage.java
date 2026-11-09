@@ -53,7 +53,7 @@ final class VpnPage {
         refresh.setBackground(background(24,24,true));refresh.setClickable(true);refresh.setOnClickListener(new View.OnClickListener(){public void onClick(View v){load(true);}});
         LinearLayout.LayoutParams rl=new LinearLayout.LayoutParams(-1,-2);rl.bottomMargin=dp(12);page.addView(refresh,rl);
 
-        explanation("Free servers run by volunteers around the world. Pixel Suite connects to the fastest one.");
+        explanation("Open-source servers run by volunteers around the world. Pixel Suite connects to the fastest one.");
         explanation("Countries without servers right now show as Unavailable.");
         explanation("Add the VPN tile to Quick Settings to connect with one tap.");
         explanation("Chrome only: turn on VPN from Chrome's Extensions. Only Chrome uses it, and websites see that country.");
@@ -127,7 +127,7 @@ final class VpnPage {
         if(countries==null)return;countries.removeAllViews();
         List<VpnServers.Server> all=VpnServers.cached(a);String chosen=PixelVpnService.chosen(a);
         if(all.isEmpty()){
-            countries.addView(row("⏳",loading?"Loading servers…":"No servers yet",loading?"Getting the free server list":"Tap Refresh servers",false,null));
+            countries.addView(row("⏳",loading?"Loading servers…":"No servers yet",loading?"Getting the open-source server list":"Tap Refresh servers",false,null));
         }else{
             long best=0;for(VpnServers.Server s:all)best=Math.max(best,s.speed);
             countries.addView(row(VpnServers.flag(VpnServers.FASTEST),"Fastest server","Any country · up to "+VpnServers.speed(best),VpnServers.FASTEST.equals(chosen),VpnServers.FASTEST));

@@ -163,9 +163,9 @@ final class DrawerDrag {
             if(name.equals("onDragExit")){if(!Boolean.TRUE.equals(get(args[0],"dragComplete")))clearHover();return null;}
             if(name.equals("acceptDrop")&&DrawerHomeTarget.overRemove&&stay!=null)return true;
             if(name.equals("acceptDrop")&&stay!=null&&!stay.left)return true;
-            if(name.equals("acceptDrop")&&place!=null){boolean move=place.wouldMove();if(!move)place.restore();return move;}
+            if(name.equals("acceptDrop")&&place!=null){boolean move=place.wouldMove();if(!move){place.restore();DropThud.later(key,120);}return move;}
             if(name.equals("acceptDrop")&&push!=null)return push.active();
-            if(name.equals("acceptDrop"))return LauncherFeatures.on(LauncherFeatures.DRAWER)&&hovered!=null && hovered!=source;
+            if(name.equals("acceptDrop")){boolean on=LauncherFeatures.on(LauncherFeatures.DRAWER);boolean ok=on&&hovered!=null&&hovered!=source;if(on&&!ok)DropThud.later(key,120);return ok;}
             if(name.equals("prepareAccessibilityDrop"))return null;
             if(name.equals("onDrop")&&DrawerHomeTarget.overRemove&&stay!=null){
                 clearHover();setMember(null);set(args[0],"deferDragViewCleanupPostAnimation",false);takeOut();return null;
@@ -175,12 +175,12 @@ final class DrawerDrag {
                 if(reorder!=null){reorder.commit(args[0]);MultiDrag.handledInFolder();return null;}
                 dropInside(m);MultiDrag.drawerDrop();return null;
             }
-            if(name.equals("onDrop")&&place!=null){clearHover();set(args[0],"deferDragViewCleanupPostAnimation",false);if(place.commit(args[0]))MultiDrag.handledInFolder();return null;}
+            if(name.equals("onDrop")&&place!=null){clearHover();set(args[0],"deferDragViewCleanupPostAnimation",false);if(place.commit(args[0]))MultiDrag.handledInFolder();else DropThud.later(key,120);return null;}
             if(name.equals("onDrop")&&push!=null){clearHover();set(args[0],"deferDragViewCleanupPostAnimation",false);push.commit();return null;}
             if(name.equals("onDrop")){
                 if(reorder!=null)reorder.restore();
                 View destination=hovered;clearHover();set(args[0],"deferDragViewCleanupPostAnimation",false);
-                if(destination==null||destination==source)return null;
+                if(destination==null||destination==source){DropThud.later(key,120);return null;}
                 DrawerFolders.DragSource origin=new DrawerFolders.DragSource(key,info,source);
                 Object targetInfo=destination.getTag();
                 int created=DrawerFolders.animateId;String landing=null;
