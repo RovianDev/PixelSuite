@@ -42,13 +42,46 @@ final class PixelStackShare {
         } catch (Throwable t) { return null; }
     }
 
-    static Bitmap card(Context c, int score, int best, boolean newBest, List<float[]> tower, float towerWidth, int ink, int page, boolean dark, int blue, int light, String player) {
+    interface Bottom { void draw(Canvas cv, Paint p, float cx); }
+
+    static Bitmap card(Context c, int score, int best, boolean newBest, final List<float[]> tower, final float towerWidth, int ink, int page, boolean dark, int blue, int light, String player) {
+        return card(c, "Pixel Stack", score, best, newBest, light, player, (cv, p, cx) -> {
+            RectF r = new RectF();
+            float areaTop = 1150, areaBottom = 1268, bh = 16;
+            int n = tower.size();
+            float scale = Math.min(1f, (areaBottom - areaTop) / Math.max(1f, n * bh));
+            float wscale = Math.min(1f, 520f / Math.max(1f, towerWidth)) * .55f;
+            for (int i = 0; i < n; i++) {
+                float[] b = tower.get(i);
+                float y = areaBottom - (i + 1) * bh * scale;
+                r.set(cx + b[0] * wscale, y + 1.5f * scale, cx + b[1] * wscale, y + bh * scale - 1.5f * scale);
+                p.setColor(((int) b[2]) & 0x00FFFFFF | 0xE6000000); float rad = Math.min(6, r.height() / 2);
+                cv.drawRoundRect(r, rad, rad, p);
+            }
+        });
+    }
+
+    static Bitmap arcadeCard(Context c, final int game, String title, int score, int best, boolean newBest, int light, String player) {
+        return card(c, title, score, best, newBest, light, player, game, (cv, p, cx) -> {
+            RectF r = new RectF(cx - 250, 1112, cx + 250, game == ArcadePreview.SIEGE ? 1258 : 1282);
+            Paint st = new Paint(Paint.ANTI_ALIAS_FLAG); st.setStyle(Paint.Style.STROKE);
+            ArcadePreview.draw(cv, game, r, game == ArcadePreview.SIEGE ? 3020 : 2620, 26, 2.6f, true, false, 1f, p, st);
+            st.setStrokeWidth(3); st.setColor(0x55FFFFFF); cv.drawRoundRect(r, 26, 26, st);
+        });
+    }
+
+    static Bitmap card(Context c, String title, int score, int best, boolean newBest, int light, String player, Bottom bottom) { return card(c, title, score, best, newBest, light, player, 0, bottom); }
+
+    static Bitmap card(Context c, String title, int score, int best, boolean newBest, int light, String player, int theme, Bottom bottom) {
+        final boolean siege = theme == ArcadePreview.SIEGE, blast = theme == ArcadePreview.BLAST;
+        if (siege) light = 0xFF8FE3B4; else if (blast) light = 0xFFFFC27A;
         int W = 1080, H = 1350;
         Bitmap bmp = Bitmap.createBitmap(W, H, Bitmap.Config.ARGB_8888);
         Canvas cv = new Canvas(bmp);
         Paint p = new Paint(Paint.ANTI_ALIAS_FLAG);
         float cx = W / 2f;
-        p.setShader(new LinearGradient(0, 0, 0, H, new int[]{0xFF0A1440, 0xFF14307E, 0xFF1846B8}, new float[]{0, .55f, 1}, Shader.TileMode.CLAMP));
+        int[] sky = siege ? new int[]{0xFF06140D, 0xFF0F3322, 0xFF1C6B45} : blast ? new int[]{0xFF160A14, 0xFF46160F, 0xFFD2561A} : new int[]{0xFF0A1440, 0xFF14307E, 0xFF1846B8};
+        p.setShader(new LinearGradient(0, 0, 0, H, sky, new float[]{0, .55f, 1}, Shader.TileMode.CLAMP));
         cv.drawRect(0, 0, W, H, p); p.setShader(null);
         java.util.Random rnd = new java.util.Random(score * 7919L + 17);
         RectF r = new RectF();
@@ -57,26 +90,69 @@ final class PixelStackShare {
             p.setColor((rnd.nextBoolean() ? 0xFFFFFFFF : light) & 0x00FFFFFF | ((10 + rnd.nextInt(22)) << 24));
             r.set(x, y, x + s, y + s); cv.drawRoundRect(r, s * .22f, s * .22f, p);
         }
-        float u = 30, g = 9, ly = 128;
+        if (siege) {
+            for (int band = 0; band < 2; band++) for (int row = 0; row < (band == 0 ? 2 : 1); row++) for (int k = -1; k < 10; k++) {
+                float bw = 120, bh = 44, l = k * bw + (row % 2 == 1 ? bw / 2 : 0), t = band == 0 ? row * bh : H - (row + 1) * bh;
+                boolean steelEnd = k <= 0 && row % 2 == 0 || k >= 8;
+                p.setColor(steelEnd ? 0xFF8C9AB4 : rnd.nextBoolean() ? 0xFFE0774E : 0xFFB85634);
+                r.set(l + 3, t + 3, l + bw - 3, t + bh - 3); cv.drawRoundRect(r, 8, 8, p);
+                p.setColor(0x26FFFFFF); r.set(l + 12, t + 8, l + bw - 12, t + 16); cv.drawRoundRect(r, 4, 4, p);
+            }
+        } else if (blast) {
+            for (int k = 0; k < 12; k++) { p.setColor(k % 2 == 0 ? 0xFF3A2A33 : 0xFF2A1D25); r.set(k * 90, 0, k * 90 + 90, 58); cv.drawRect(r, p); p.setColor(0x18FFFFFF); r.set(k * 90 + 8, 8, k * 90 + 82, 16); cv.drawRoundRect(r, 4, 4, p); }
+            for (int layer = 0; layer < 3; layer++) {
+                android.graphics.Path fl = new android.graphics.Path(); fl.moveTo(0, H);
+                int n = 9 + layer * 3; float w = W / (float) n;
+                for (int k = 0; k < n; k++) { float tip = H - (150 - layer * 42) * (.55f + rnd.nextFloat() * .6f); fl.quadTo(k * w + w * .2f, tip + 30, k * w + w * .5f, tip); fl.quadTo(k * w + w * .8f, tip + 30, (k + 1) * w, H - 20 + layer * 6); }
+                fl.lineTo(W, H); fl.close();
+                p.setColor(layer == 0 ? 0xFFE5532B : layer == 1 ? 0xFFFF9A3D : 0xFFFFE08A); cv.drawPath(fl, p);
+            }
+            for (int i = 0; i < 40; i++) { float s2 = 6 + rnd.nextFloat() * 12, x = rnd.nextFloat() * W, y = 300 + rnd.nextFloat() * 950; p.setColor((rnd.nextBoolean() ? 0xFFFFB347 : 0xFFFFE08A) & 0x00FFFFFF | ((60 + rnd.nextInt(120)) << 24)); r.set(x, y, x + s2, y + s2); cv.drawRect(r, p); }
+        }
+        float u = 30, g = 9, ly = siege || blast ? 168 : 128;
         for (int k = 0; k < 4; k++) {
             int col = k % 2, row = k / 2;
             float l = cx - 170 - u - g / 2 + col * (u + g), t = ly - u - g / 2 + row * (u + g);
             r.set(l, t, l + u, t + u); p.setColor(col == row ? 0xFFFFFFFF : light); cv.drawRoundRect(r, 7, 7, p);
         }
         p.setTextAlign(Paint.Align.LEFT); p.setTypeface(Typeface.create("sans-serif", Typeface.BOLD)); p.setTextSize(64); p.setColor(0xFFFFFFFF);
-        cv.drawText("Pixel Stack", cx - 120, ly + 22, p);
+        cv.drawText(title, cx - 120, ly + 22, p);
         float ty = 470;
         p.setShader(new android.graphics.RadialGradient(cx, ty, 420, new int[]{0x88FFD54F, 0x33FFB300, 0x00FFB300}, new float[]{0, .45f, 1}, Shader.TileMode.CLAMP));
         cv.drawCircle(cx, ty, 420, p); p.setShader(null);
         int save = cv.save();
-        for (int i = 0; i < 14; i++) {
+        if (siege) {
+            p.setStyle(Paint.Style.STROKE); p.setStrokeWidth(3);
+            for (int i = 1; i <= 4; i++) { p.setColor(0x338FE3B4); cv.drawCircle(cx, ty, i * 105, p); }
+            p.setColor(0x228FE3B4); cv.drawLine(cx - 430, ty, cx + 430, ty, p); cv.drawLine(cx, ty - 430, cx, ty + 330, p);
+            p.setStyle(Paint.Style.FILL);
+            p.setShader(new android.graphics.SweepGradient(cx, ty, new int[]{0x008FE3B4, 0x668FE3B4, 0x008FE3B4, 0x008FE3B4}, new float[]{0, .12f, .125f, 1}));
+            cv.rotate(-110, cx, ty); cv.drawCircle(cx, ty, 420, p); p.setShader(null);
+            cv.restoreToCount(save); save = cv.save();
+            p.setColor(0xFFFF6A5C); cv.drawCircle(cx + 250, ty - 190, 9, p); cv.drawCircle(cx - 300, ty + 60, 9, p); cv.drawCircle(cx + 330, ty + 150, 9, p);
+        } else if (blast) {
+            for (int i = 0; i < 16; i++) {
+                float len = i % 2 == 0 ? 470 : 330, wd = i % 2 == 0 ? 60 : 46;
+                android.graphics.Path ray = new android.graphics.Path();
+                ray.moveTo(cx - wd, ty); ray.lineTo(cx, ty - len); ray.lineTo(cx + wd, ty); ray.close();
+                p.setShader(new LinearGradient(cx, ty, cx, ty - len, i % 2 == 0 ? 0x77FF9A3D : 0x77FFE08A, 0x00FF9A3D, Shader.TileMode.CLAMP));
+                cv.drawPath(ray, p); cv.rotate(360f / 16, cx, ty);
+            }
+        } else for (int i = 0; i < 14; i++) {
             android.graphics.Path ray = new android.graphics.Path();
             ray.moveTo(cx, ty); ray.lineTo(cx - 34, ty - 470); ray.lineTo(cx + 34, ty - 470); ray.close();
             p.setShader(new LinearGradient(cx, ty, cx, ty - 470, 0x44FFE082, 0x00FFE082, Shader.TileMode.CLAMP));
             cv.drawPath(ray, p); cv.rotate(360f / 14, cx, ty);
         }
         cv.restoreToCount(save); p.setShader(null);
-        trophy(cv, p, cx, ty, light);
+        trophy(cv, p, cx, ty, light, siege ? new int[]{0xFF0B2A1A, 0xFF2BB673, 0xFF0B2A1A} : blast ? new int[]{0xFF4A1408, 0xFFF28C28, 0xFF4A1408} : new int[]{0xFF0F1E55, 0xFF2A4FB0, 0xFF0F1E55}, siege ? 0xFF1C6B45 : blast ? 0xFFC8501A : 0xFF1846B8);
+        if (siege) {
+            p.setStyle(Paint.Style.STROKE); p.setStrokeWidth(8); p.setStrokeCap(Paint.Cap.ROUND); p.setColor(0xAA8FE3B4);
+            float l = cx - 400, rt = cx + 400, t = 790, b = 990, q = 46;
+            cv.drawLine(l, t, l + q, t, p); cv.drawLine(l, t, l, t + q, p); cv.drawLine(rt, t, rt - q, t, p); cv.drawLine(rt, t, rt, t + q, p);
+            cv.drawLine(l, b, l + q, b, p); cv.drawLine(l, b, l, b - q, p); cv.drawLine(rt, b, rt - q, b, p); cv.drawLine(rt, b, rt, b - q, p);
+            p.setStyle(Paint.Style.FILL);
+        }
         p.setTextAlign(Paint.Align.CENTER);
         p.setTypeface(Typeface.create("sans-serif", Typeface.BOLD)); p.setTextSize(230);
         p.setShadowLayer(24, 0, 10, 0x66000000); p.setColor(0xFFFFFFFF);
@@ -97,23 +173,16 @@ final class PixelStackShare {
         }
         p.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL)); p.setTextSize(42); p.setColor(0xCCFFFFFF);
         cv.drawText(I18n.t("Best") + "  " + best, cx, below + (newBest ? 0 : 20), p);
-        float areaTop = 1150, areaBottom = 1268, bh = 16;
-        int n = tower.size();
-        float scale = Math.min(1f, (areaBottom - areaTop) / Math.max(1f, n * bh));
-        float wscale = Math.min(1f, 520f / Math.max(1f, towerWidth)) * .55f;
-        for (int i = 0; i < n; i++) {
-            float[] b = tower.get(i);
-            float y = areaBottom - (i + 1) * bh * scale;
-            r.set(cx + b[0] * wscale, y + 1.5f * scale, cx + b[1] * wscale, y + bh * scale - 1.5f * scale);
-            p.setColor(((int) b[2]) & 0x00FFFFFF | 0xE6000000); float rad = Math.min(6, r.height() / 2);
-            cv.drawRoundRect(r, rad, rad, p);
-        }
+        p.setStyle(Paint.Style.FILL); p.setShader(null);
+        bottom.draw(cv, p, cx);
+        p.setShader(null); p.setStyle(Paint.Style.FILL); p.setTextAlign(Paint.Align.CENTER);
         p.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL)); p.setTextSize(32); p.setColor(0x99FFFFFF);
-        cv.drawText("Pixel Suite", cx, 1310, p);
+        if (blast) p.setColor(0xDD3A1206);
+        cv.drawText("Pixel Suite", cx, siege ? 1296 : 1310, p);
         return bmp;
     }
 
-    private static void trophy(Canvas cv, Paint p, float cx, float cy, int light) {
+    private static void trophy(Canvas cv, Paint p, float cx, float cy, int light, int[] plinth, int mark) {
         int[] gold = {0xFFB8730A, 0xFFFFD86B, 0xFFFFF3C4, 0xFFFFC531, 0xFFC98410};
         float[] at = {0, .28f, .42f, .7f, 1};
         float top = cy - 200, rim = 170;
@@ -135,7 +204,7 @@ final class PixelStackShare {
         RectF stem = new RectF(cx - 24, top + 262, cx + 24, top + 330); cv.drawRect(stem, p);
         RectF knot = new RectF(cx - 52, top + 300, cx + 52, top + 332); cv.drawRoundRect(knot, 16, 16, p);
         RectF base1 = new RectF(cx - 110, top + 330, cx + 110, top + 372); cv.drawRoundRect(base1, 12, 12, p);
-        p.setShader(new LinearGradient(cx - 150, 0, cx + 150, 0, new int[]{0xFF0F1E55, 0xFF2A4FB0, 0xFF0F1E55}, null, Shader.TileMode.CLAMP));
+        p.setShader(new LinearGradient(cx - 150, 0, cx + 150, 0, plinth, null, Shader.TileMode.CLAMP));
         RectF base2 = new RectF(cx - 150, top + 368, cx + 150, top + 420); cv.drawRoundRect(base2, 14, 14, p);
         p.setShader(null);
         android.graphics.Path shine = new android.graphics.Path();
@@ -147,7 +216,7 @@ final class PixelStackShare {
         for (int k = 0; k < 4; k++) {
             int col = k % 2, row = k / 2;
             float l = cx - u - g / 2 + col * (u + g), t = my - u - g / 2 + row * (u + g);
-            sq.set(l, t, l + u, t + u); p.setColor(col == row ? 0xFF1846B8 : 0xCC1846B8 & 0x00FFFFFF | 0x99000000);
+            sq.set(l, t, l + u, t + u); p.setColor(col == row ? mark : mark & 0x00FFFFFF | 0x99000000);
             cv.drawRoundRect(sq, 8, 8, p);
         }
         p.setColor(0xFFFFFFFF);
@@ -159,7 +228,9 @@ final class PixelStackShare {
         cv.drawPath(st, p);
     }
 
-    static boolean post(Map<String, String> cfg, Bitmap card, int score, String player) {
+    static boolean post(Map<String, String> cfg, Bitmap card, int score, String player) { return post(cfg, card, score, player, "stack"); }
+
+    static boolean post(Map<String, String> cfg, Bitmap card, int score, String player, String game) {
         HttpURLConnection h = null;
         try {
             ByteArrayOutputStream png = new ByteArrayOutputStream();
@@ -171,7 +242,8 @@ final class PixelStackShare {
             OutputStream o = h.getOutputStream();
             field(o, boundary, "score", String.valueOf(score));
             field(o, boundary, "player", player);
-            o.write(("--" + boundary + "\r\nContent-Disposition: form-data; name=\"photo\"; filename=\"pixel-stack.png\"\r\nContent-Type: image/png\r\n\r\n").getBytes("UTF-8"));
+            field(o, boundary, "game", game);
+            o.write(("--" + boundary + "\r\nContent-Disposition: form-data; name=\"photo\"; filename=\"pixel-" + game + ".png\"\r\nContent-Type: image/png\r\n\r\n").getBytes("UTF-8"));
             o.write(png.toByteArray());
             o.write(("\r\n--" + boundary + "--\r\n").getBytes("UTF-8"));
             o.flush(); o.close();

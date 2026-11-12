@@ -30,7 +30,7 @@ final class HomeFolderApps {
                     List<Object> added = new ArrayList<Object>();
                     for (String key : chosen) if (!present.contains(key)) {
                         Object app = find(apps, key); if (app == null) return false;
-                        Object item = LauncherFeatures.call(app, "makeWorkspaceItem", a);
+                        Object item = LauncherFeatures.workspaceItem(app, a);
                         added.add(item);
                     }
                     for(Object item:added)add(folder,info,item);
@@ -69,7 +69,8 @@ final class HomeFolderApps {
         folder.getMethod("addFolderContent",item,int.class,boolean.class);folder.getMethod("removeFolderContent",boolean.class,array);
         folder.getMethod("updateItemLocationsInDatabaseBatch",boolean.class);
         Class<?> callback=callbackType();callback.getMethod("invoke",Object.class);
-        LauncherFeatures.type("model.TransactionContext").getMethod("deleteItemsFromDatabase",String.class,List.class);
+        try { LauncherFeatures.type("model.TransactionContext").getMethod("deleteItemsFromDatabase",String.class,List.class); }
+        catch (Throwable olderLauncher) { }
     }
     static Class<?> callbackType()throws Exception{
         for(java.lang.reflect.Method m:LauncherFeatures.type("model.ModelWriter").getMethods())

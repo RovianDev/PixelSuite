@@ -87,7 +87,7 @@ final class ScopePanel {
   for(final Entry item:current){
    LinearLayout row=new LinearLayout(activity);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(activity,10),dp(activity,8),0,dp(activity,8));
    LinearLayout words=new LinearLayout(activity);words.setOrientation(1);
-   TextView name=new TextView(activity);name.setText(I18n.cs(item.name));name.setTextSize(15);name.setTypeface(Typeface.DEFAULT,Typeface.BOLD);name.setTextColor(ink);words.addView(name);
+   TextView name=new TextView(activity);name.setText(item.name);name.setTextSize(15);name.setTypeface(Typeface.DEFAULT,Typeface.BOLD);name.setTextColor(ink);words.addView(name);
    TextView pkg=new TextView(activity);pkg.setText(I18n.cs(item.pkg));pkg.setTextSize(12);pkg.setTextColor(muted);pkg.setPadding(0,dp(activity,3),0,0);words.addView(pkg);
    row.addView(words,new LinearLayout.LayoutParams(0,-2,1));
    TextView info=new TextView(activity);info.setText(I18n.cs("!"));info.setTextSize(17);info.setTypeface(Typeface.DEFAULT,Typeface.BOLD);info.setTextColor(accent);info.setGravity(Gravity.CENTER);info.setBackground(new SoftSurface(activity,true,accent));info.setLayerType(View.LAYER_TYPE_SOFTWARE,null);info.setClickable(true);info.setFocusable(true);info.setContentDescription(I18n.cs("What "+item.name+" ("+item.pkg+") is used for"));info.setOnClickListener(v->hint.show("**Used for:**\n"+item.detail));

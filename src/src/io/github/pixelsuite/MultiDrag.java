@@ -414,9 +414,9 @@ final class MultiDrag {
 
     private static Object newItem(Activity a, Pick p) {
         try {
-            if (type("model.data.AppInfo").isInstance(p.info)) return call(p.info, "makeWorkspaceItem", a);
+            if (type("model.data.AppInfo").isInstance(p.info)) return LauncherFeatures.workspaceItem(p.info, a);
             Object app = HomeFolderApps.find(LauncherFeatures.apps(), p.key);
-            return app == null ? null : call(app, "makeWorkspaceItem", a);
+            return app == null ? null : LauncherFeatures.workspaceItem(app, a);
         } catch (Throwable error) { return null; }
     }
 

@@ -299,7 +299,7 @@ final class DrawerFolders {
                 }
             }
         }catch(Throwable error){ }
-        Xp.hookAllMethods(type("touch.AllAppsItemCustomActionsListener"),"onStartDrag",new Xp.Callback(){
+        try{Xp.hookAllMethods(type("touch.AllAppsItemCustomActionsListener"),"onStartDrag",new Xp.Callback(){
             protected void beforeHookedMethod(Xp.Param p){
                 View v=(View)p.args[1];if(v==null||!dragEnabled()||LauncherFeatures.privateItem(v.getTag()))return;
                 if(type("model.data.AppInfo").isInstance(v.getTag())){p.setResult(null);closePopup();startDrag(v);}
@@ -310,7 +310,7 @@ final class DrawerFolders {
                 View v=(View)p.args[0];if(v==null||!dragEnabled())return;
                 if(isFolder(v.getTag())||isDrawerMember(v.getTag())){p.setResult(null);closePopup();startDrag(v);}
             }
-        });
+        });}catch(Throwable olderLauncher){ }
         Xp.hookAllMethods(type("BubbleTextView"),"onTouchEvent",new Xp.Callback(){
             protected void beforeHookedMethod(Xp.Param p){touch(p);}
             protected void afterHookedMethod(Xp.Param p){touched(p);}
@@ -436,7 +436,10 @@ final class DrawerFolders {
         boolean wasOpen=!(closed instanceof Long)||(Long)closed<(Long)opened;
         Xp.setAdditionalInstanceField(f,"pixelsuite_closed_at",now);
         if(openFolder.get()==f)openFolder=new java.lang.ref.WeakReference<View>(null);
-        if(wasOpen)folderShutAt=now;
+        if(wasOpen){
+            folderShutAt=now;
+            try{scheduleRebind();}catch(Throwable ignored){}
+        }
     }
     static Boolean openByRecord(View f){
         Object opened=Xp.getAdditionalInstanceField(f,"pixelsuite_opened_at");
@@ -591,7 +594,7 @@ final class DrawerFolders {
         int id=CONTAINER-f.id;set(info,"id",id);set(info,"container",CONTAINER);set(info,"title",f.name);
         List<Object> contents=(List<Object>)get(info,"contents");
         for(String key:FolderSort.shownOrder(f)){Object app=known.get(key);if(app==null)continue;
-            Object member=call(app,"makeWorkspaceItem",context);set(member,"id",CONTAINER-100000-contents.size());
+            Object member=LauncherFeatures.workspaceItem(app,context);set(member,"id",CONTAINER-100000-contents.size());
             set(member,"container",id);set(member,"rank",contents.size());
             synchronized(LauncherFeatures.originals){
                 LauncherFeatures.originals.put(member,LauncherFeatures.originals.containsKey(app)?LauncherFeatures.originals.get(app):(CharSequence)get(app,"title"));

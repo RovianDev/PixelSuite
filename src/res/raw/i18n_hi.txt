@@ -1590,3 +1590,102 @@ Block ads in every app	हर ऐप में विज्ञापन ब्�
 Turn off to block ads only in Chrome and Google News.	सिर्फ़ Chrome और Google News में विज्ञापन ब्लॉक करने के लिए बंद करें।
 Ads are blocked only in Chrome and Google News.	विज्ञापन सिर्फ़ Chrome और Google News में ब्लॉक हो रहे हैं।
 Open-source servers worldwide	दुनिया भर के ओपन-सोर्स सर्वर
+Pixel Arcade	Pixel Arcade
+Choose a game	कोई गेम चुनें
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	ऊँचा बनाते जाएँ
+Defend the logo	लोगो की रक्षा करें
+Blast your way through	धमाके से रास्ता बनाएँ
+Drag to move, tap to fire	चलने के लिए खींचें, फ़ायर के लिए टैप करें
+Drag to move, tap to drop a bomb	चलने के लिए खींचें, बम रखने के लिए टैप करें
+Stage {0}	स्टेज {0}
+Stage clear!	स्टेज पूरा!
+Power up!	पावर-अप!
+Shield	कवच
+Freeze	फ़्रीज़
+Boom!	बूम!
+Fortress	किला
+Extra life	एक और जान
++1 bomb	+1 बम
+Bigger blast	बड़ा धमाका
+Speed up	तेज़ रफ़्तार
+Portal open!	पोर्टल खुल गया!
+Weapon upgrade!	हथियार अपग्रेड!
+Rockets!	रॉकेट!
+Double points	दोगुने पॉइंट
+Poison bombs!	ज़हरीले बम!
+Fire breath!	आग की साँस!
+Laser!	लेज़र!
+Helper drone!	मददगार ड्रोन!
+Shockwave!	शॉकवेव!
+Laser eyes!	लेज़र आँखें!
+Pfft!	फ़्फ़्फ़!
+Split!	बँट गया!
+Level up!	लेवल अप!
+Combo ×{0}!	कॉम्बो ×{0}!
+Kick!	किक!
+Bomb rain!	बम की बारिश!
+Mega bombs!	मेगा बम!
+Glitch King	ग्लिच राजा
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	स्क्रीनशॉट को किसी भी आकार में काटें, एक लाइन तक भी। Pixel Studio ज़रूरी है (Pixel 9 और नए)।
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	स्क्रीनशॉट पर आकृतियां और तीर बनाएं। Pixel Studio ज़रूरी है (Pixel 9 और नए)।
+Needs Pixel Studio (Pixel 9 and newer).	Pixel Studio ज़रूरी है (Pixel 9 और नए)।
+Golden!	सुनहरा!
+On fire!	आग लगा दी!
+Iron Crown	लौह मुकुट
+Storm Turret	तूफ़ानी तोप
+Laser Walker	लेज़र वॉकर
+Crate Golem	बक्सा गोलेम
+Phantom Twins	भूतिया जुड़वाँ
+Nuke	परमाणु बम
+Fart	पाद
+Level {0}	लेवल {0}
+Nice!	बढ़िया!
+Common	सामान्य
+Rare	दुर्लभ
+Legendary	दिग्गज
+Levels up your tank	आपके टैंक का लेवल बढ़ाता है
+Blocks every hit	हर वार रोकता है
+One more try	एक और मौका
+Score counts twice	स्कोर दोगुना गिना जाता है
+Shots chase tanks	गोलियाँ टैंकों का पीछा करती हैं
+Cuts through everything	सब कुछ चीर देता है
+A helper that shoots	गोली चलाने वाला साथी
+Steel walls for the base	बेस के लिए स्टील की दीवारें
+Stops every enemy	हर दुश्मन को रोक देता है
+Wipes the whole map	पूरा नक्शा साफ़ कर देता है
+Drop one more bomb	एक और बम रखें
+Flames reach further	लपटें दूर तक जाती हैं
+Run faster	तेज़ दौड़ें
+Bombs leave poison gas	बम ज़हरीली गैस छोड़ते हैं
+Burn what you face	सामने जो है उसे जलाएँ
+Zap in a straight line	सीधी रेखा में वार
+Kick bombs away	बमों को लात मारकर हटाएँ
+Three huge bombs	तीन विशाल बम
+Makes ghosts slow and dizzy	भूतों को धीमा और चकराया हुआ बनाता है
+Bombs fall on ghosts	भूतों पर बम गिरते हैं
+Airstrike	हवाई हमला
+Missiles on every tank	हर टैंक पर मिसाइल
+Blasts and stuns all tanks	सभी टैंकों को मारता और सुन्न करता है
+Paused	रुका हुआ
+Tap to continue	जारी रखने के लिए टैप करें
+New game	नया गेम
+Evil	दुष्ट
+Angelic	दिव्य
+Cleansed	शुद्ध
+• Pixel Arcade: best scores	• Pixel Arcade: सर्वश्रेष्ठ स्कोर
+• 1 paused game	• 1 रुका हुआ गेम
+• {0} paused games	• {0} रुके हुए गेम
+Distance from the gesture bar	जेस्चर बार से दूरी
+Near	पास
+Normal	सामान्य
+Far	दूर
+Gesture bar	जेस्चर बार
+Shown	दिखे
+Hidden	छिपा
+Swipe gestures still work, also with the gesture bar hidden.	जेस्चर बार छिपा होने पर भी स्वाइप जेस्चर काम करते हैं।
+Hide At a Glance	एक नज़र में छिपाएं
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	होम स्क्रीन के ऊपर से एक नज़र में हटाता है। वह पंक्ति आपके ऐप्लिकेशन, फ़ोल्डर और विजेट के लिए खाली रहती है।
+Hold an app, folder or widget and drop it in the free row.	किसी ऐप्लिकेशन, फ़ोल्डर या विजेट को दबाकर रखें और खाली पंक्ति में छोड़ें।
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 और उससे पुराने वर्शन के लिए। नए वर्शन में एक नज़र में को होम स्क्रीन से ही हटाया जा सकता है।

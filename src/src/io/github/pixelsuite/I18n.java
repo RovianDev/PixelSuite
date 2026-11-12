@@ -170,6 +170,8 @@ final class I18n {
 
     static android.graphics.Typeface medium() {
         String l = lang();
+        android.graphics.Typeface fa = PersianFont.medium();
+        if (fa != null) return fa;
         boolean none = "ar".equals(l) || "fa".equals(l) || "he".equals(l) || "hi".equals(l) || "bn".equals(l);
         return none ? android.graphics.Typeface.create("sans-serif", android.graphics.Typeface.BOLD) : android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.NORMAL);
     }

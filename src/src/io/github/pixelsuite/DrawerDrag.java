@@ -76,7 +76,7 @@ final class DrawerDrag {
             Session s=new Session(a,source,info,key);session=s;DrawerHomeTarget.arm(source);
             DrawerFolders.closePopup();
             Object options=Xp.newInstance(type("dragndrop.DragOptions"));
-            set(options,"isMouseDrag",true);
+            try{set(options,"isMouseDrag",true);}catch(Throwable olderLauncher){}
             Object nativeInfo=info;
             if(!DrawerFolders.isFolder(info)&&DrawerFolders.isDrawerMember(info)){
                 nativeInfo=DrawerFolders.known.get(key);if(nativeInfo==null)throw new IllegalStateException("App is no longer available");
@@ -100,14 +100,14 @@ final class DrawerDrag {
     }
     private static void finish(){
         Session s=session;session=null;DrawerHomeTarget.hide();if(s==null)return;
-        if(s.reorder!=null)s.reorder.restore();if(s.push!=null)s.push.restore();if(s.place!=null)s.place.restore();s.source.setVisibility(View.VISIBLE);s.clearHover();s.setMember(null);if(s.stay!=null)s.stay.stop();
+        if(s.reorder!=null)s.reorder.restore();if(s.push!=null)s.push.restore();if(s.place!=null)s.place.restore();if(!s.landedOut)s.source.setVisibility(View.VISIBLE);s.clearHover();s.setMember(null);if(s.stay!=null)s.stay.stop();
         try{call(s.controller,"removeDropTarget",s.target);}catch(Throwable ignored){}
         if(!s.exited&&LauncherData.saves!=s.savesAtStart&&LauncherFeatures.refreshes==s.refreshesAtStart)LauncherFeatures.refresh();
     }
     private static final class Session implements InvocationHandler {
         final Activity activity;final View source;final Object info;final String key;
         final ViewGroup layer;final Object controller;final Object target;final Object dragSource;
-        final int exitY;boolean exited,indicating,lifted;View hovered;int localX,localY;
+        final int exitY;boolean exited,indicating,lifted,landedOut;View hovered;int localX,localY;
         final int savesAtStart=LauncherData.saves,refreshesAtStart=LauncherFeatures.refreshes;
         FolderDrag.Stay stay;FolderReorder reorder;FolderPush push;DrawerPlace place;View hoverMember;int lastX,lastY;
         Session(Activity a,View v,Object i,String k){
@@ -125,7 +125,7 @@ final class DrawerDrag {
             dragSource=Proxy.newProxyInstance(LauncherFeatures.loader,new Class<?>[]{type("DragSource")},new InvocationHandler(){
                 public Object invoke(Object self,Method method,Object[] args){
                     if(method.getName().equals("onDropCompleted")){
-                        source.setVisibility(View.VISIBLE);
+                        if(!landedOut)source.setVisibility(View.VISIBLE);
                         if(!exited)set(args[1],"deferDragViewCleanupPostAnimation",false);
                         return null;
                     }
@@ -183,13 +183,18 @@ final class DrawerDrag {
                 if(destination==null||destination==source){DropThud.later(key,120);return null;}
                 DrawerFolders.DragSource origin=new DrawerFolders.DragSource(key,info,source);
                 Object targetInfo=destination.getTag();
-                int created=DrawerFolders.animateId;String landing=null;
+                int created=DrawerFolders.animateId;String landing=null;final int savesBefore=LauncherData.saves;
                 if(!DrawerFolders.isFolder(targetInfo)&&!key.startsWith("folder:")&&!inCenter(destination)){if(DrawerFolders.reorder(origin,targetInfo))landing=key;}
                 else if(DrawerFolders.drop(origin,targetInfo)){
                     if(DrawerFolders.isFolder(targetInfo))landing="folder:"+DrawerFolders.folderIds.get(targetInfo);
                     else if(DrawerFolders.animateId!=0&&DrawerFolders.animateId!=created)landing="folder:"+DrawerFolders.animateId;
                 }
                 MultiDrag.drawerDrop();
+                if(stay!=null&&(landing!=null||LauncherData.saves!=savesBefore)){
+                    landedOut=true;source.setVisibility(View.INVISIBLE);
+                    final View gone=source;gone.postDelayed(new Runnable(){public void run(){gone.setVisibility(View.VISIBLE);}},1500);
+                    try{DrawerFolders.closeDrawerFolder(true);}catch(Throwable ignored){}
+                }
                 DropThud.later(landing,120);
                 return null;
             }
@@ -254,7 +259,7 @@ final class DrawerDrag {
                 set(copy,"title",get(info,"title"));set(copy,"user",get(info,"user"));
                 try{set(copy,"id",-1);}catch(Throwable ignored){}
                 List<Object> content=(List<Object>)get(copy,"contents");
-                if(f!=null)for(String appKey:f.apps){Object app=DrawerFolders.known.get(appKey);if(app!=null)content.add(call(app,"makeWorkspaceItem",activity));}
+                if(f!=null)for(String appKey:f.apps){Object app=DrawerFolders.known.get(appKey);if(app!=null)content.add(LauncherFeatures.workspaceItem(app,activity));}
                 set(drag,"dragInfo",copy);set(drag,"originalDragInfo",call(copy,"makeShallowCopy"));
                 PrivacyFolders.draggedToHome(activity,info,copy);
             }

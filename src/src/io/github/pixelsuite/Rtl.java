@@ -39,9 +39,11 @@ final class Rtl {
             @Override public boolean onPreDraw() {
                 if (!dirty[0] || !on()) return true;
                 dirty[0] = false;
+                PersianFont.apply(decor);
                 return !turn(decor);
             }
         });
+        PersianFont.apply(decor);
         turn(decor);
     }
 

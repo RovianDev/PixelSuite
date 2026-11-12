@@ -1590,3 +1590,102 @@ Block ads in every app	Werbung in allen Apps blockieren
 Turn off to block ads only in Chrome and Google News.	Ausschalten, um Werbung nur in Chrome und Google News zu blockieren.
 Ads are blocked only in Chrome and Google News.	Werbung wird nur in Chrome und Google News blockiert.
 Open-source servers worldwide	Open-Source-Server weltweit
+Pixel Arcade	Pixel Arcade
+Choose a game	Wähle ein Spiel
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	Stapel hoch hinaus
+Defend the logo	Verteidige das Logo
+Blast your way through	Spreng dir den Weg frei
+Drag to move, tap to fire	Zum Bewegen ziehen, zum Schießen tippen
+Drag to move, tap to drop a bomb	Zum Bewegen ziehen, für eine Bombe tippen
+Stage {0}	Level {0}
+Stage clear!	Level geschafft!
+Power up!	Power-up!
+Shield	Schild
+Freeze	Einfrieren
+Boom!	Bumm!
+Fortress	Festung
+Extra life	Extraleben
++1 bomb	+1 Bombe
+Bigger blast	Größere Explosion
+Speed up	Schneller
+Portal open!	Portal offen!
+Weapon upgrade!	Waffen-Upgrade!
+Rockets!	Raketen!
+Double points	Doppelte Punkte
+Poison bombs!	Giftbomben!
+Fire breath!	Feueratem!
+Laser!	Laser!
+Helper drone!	Helferdrohne!
+Shockwave!	Schockwelle!
+Laser eyes!	Laseraugen!
+Pfft!	Pfff!
+Split!	Geteilt!
+Level up!	Level-up!
+Combo ×{0}!	Kombo ×{0}!
+Kick!	Kick!
+Bomb rain!	Bombenregen!
+Mega bombs!	Mega-Bomben!
+Glitch King	Glitch-König
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	Screenshots auf jede Größe zuschneiden, sogar auf eine einzelne Zeile. Erfordert Pixel Studio (Pixel 9 und neuer).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	Formen und Pfeile auf Screenshots zeichnen. Erfordert Pixel Studio (Pixel 9 und neuer).
+Needs Pixel Studio (Pixel 9 and newer).	Erfordert Pixel Studio (Pixel 9 und neuer).
+Golden!	Gold!
+On fire!	In Flammen!
+Iron Crown	Eiserne Krone
+Storm Turret	Sturmturm
+Laser Walker	Laser-Läufer
+Crate Golem	Kisten-Golem
+Phantom Twins	Phantom-Zwillinge
+Nuke	Atombombe
+Fart	Pups
+Level {0}	Level {0}
+Nice!	Gut!
+Common	Gewöhnlich
+Rare	Selten
+Legendary	Legendär
+Levels up your tank	Verbessert deinen Panzer
+Blocks every hit	Blockt jeden Treffer
+One more try	Ein Versuch mehr
+Score counts twice	Punkte zählen doppelt
+Shots chase tanks	Schüsse verfolgen Panzer
+Cuts through everything	Durchschneidet alles
+A helper that shoots	Ein Helfer, der schießt
+Steel walls for the base	Stahlwände für die Basis
+Stops every enemy	Stoppt alle Gegner
+Wipes the whole map	Löscht die ganze Karte
+Drop one more bomb	Eine Bombe mehr legen
+Flames reach further	Flammen reichen weiter
+Run faster	Schneller laufen
+Bombs leave poison gas	Bomben hinterlassen Giftgas
+Burn what you face	Verbrenne, was vor dir ist
+Zap in a straight line	Blitz in gerader Linie
+Kick bombs away	Bomben wegkicken
+Three huge bombs	Drei riesige Bomben
+Makes ghosts slow and dizzy	Macht Geister langsam und benommen
+Bombs fall on ghosts	Bomben fallen auf Geister
+Airstrike	Luftangriff
+Missiles on every tank	Raketen auf jeden Panzer
+Blasts and stuns all tanks	Trifft und betäubt alle Panzer
+Paused	Pausiert
+Tap to continue	Tippen zum Fortsetzen
+New game	Neues Spiel
+Evil	Böse
+Angelic	Engelhaft
+Cleansed	Geläutert
+• Pixel Arcade: best scores	• Pixel Arcade: Bestwerte
+• 1 paused game	• 1 pausiertes Spiel
+• {0} paused games	• {0} pausierte Spiele
+Distance from the gesture bar	Abstand zur Gestenleiste
+Near	Nah
+Normal	Normal
+Far	Weit
+Gesture bar	Gestenleiste
+Shown	Sichtbar
+Hidden	Ausgeblendet
+Swipe gestures still work, also with the gesture bar hidden.	Wischgesten funktionieren weiterhin, auch bei ausgeblendeter Gestenleiste.
+Hide At a Glance	„Auf einen Blick“ ausblenden
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Entfernt „Auf einen Blick“ oben auf dem Startbildschirm. Die Zeile ist frei für deine Apps, Ordner und Widgets.
+Hold an app, folder or widget and drop it in the free row.	Halte eine App, einen Ordner oder ein Widget gedrückt und lege es in der freien Zeile ab.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Für Android 16 und älter. Neuere Versionen können „Auf einen Blick“ direkt auf dem Startbildschirm entfernen.

@@ -178,6 +178,7 @@ public class SettingsActivity extends Activity {
                 == Configuration.UI_MODE_NIGHT_YES;
 
         super.onCreate(savedInstanceState);
+        PersianFont.watch(this);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
@@ -363,7 +364,7 @@ public class SettingsActivity extends Activity {
         if(sLanguageFade){sLanguageFade=false;root.setAlpha(0f);root.animate().alpha(1f).setDuration(320).setInterpolator(new android.view.animation.DecelerateInterpolator(1.6f)).start();}
         mSearch=new AppSearch(this,scroll,new AppSearch.Host(){
             public int background(){return mBg;}public int accent(){return mAccent;}public int onAccent(){return mOnAccent;}public int trackOff(){return switchTrackOff();}public int primary(){return mText;}public int secondary(){return mTextSecondary;}
-            public boolean inline(AppSearchIndex.Entry e){return mSearchRootReady&&!searchComplex(e.key)&&!locked(e);}
+            public boolean inline(AppSearchIndex.Entry e){return mSearchRootReady&&!searchComplex(e.key)&&!locked(e)&&!StudioSupport.blocked(SettingsActivity.this,e.key);}
             public boolean updating(){return mUpdating;}
             public boolean locked(AppSearchIndex.Entry e){return !mSearchRootReady||(PatronAccess.protectedKey(e.key)&&!PatronAccess.allowed(SettingsActivity.this,e.key));}
             public boolean checked(String key){Boolean v=sSwitchValues.get(key);return v!=null?v:Feature.on(SettingsActivity.this,key);}
@@ -617,9 +618,9 @@ public class SettingsActivity extends Activity {
 
         new FeaturePage("gestures",ScreenRecordTidy.KEY,"ic_ps_screen_record","Screen recording sheet","A tidier recording sheet. Needs your phone in English."),
 
-        new FeaturePage("gestures",Feature.SCREENSHOT_FREE_CROP,"ic_ps_crop_free","Free screenshot crop","Crop screenshots to any size, even a single line."),
+        new FeaturePage("gestures",Feature.SCREENSHOT_FREE_CROP,"ic_ps_crop_free","Free screenshot crop","Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer)."),
 
-        new FeaturePage("doodles",Feature.SCREENSHOT_DOODLES,"ic_ps_studio_tools","Pixel Studio","Draw shapes and arrows on screenshots."),
+        new FeaturePage("doodles",Feature.SCREENSHOT_DOODLES,"ic_ps_studio_tools","Pixel Studio","Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer)."),
 
         new FeaturePage("doodles",Feature.PHOTOS_DOODLES,"ic_ps_photos_doodles","Google Photos","Draw shapes on photos: Edit → Doodles. They stay editable."),
 
@@ -644,6 +645,8 @@ public class SettingsActivity extends Activity {
         new FeaturePage("launcher",LauncherFeatures.LABEL_SIZE,"ic_ps_label_size","Icon label size","Five text sizes for app names. Icons stay the same size."),
 
         new FeaturePage("launcher",LauncherFeatures.HIDE_SEARCH,"ic_ps_search_bar","Hide search bar","Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space."),
+
+        new FeaturePage("launcher",LauncherHideGlance.KEY,"ic_ps_aod","Hide At a Glance","Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets."),
 
         new FeaturePage("launcher","clear_badge","ic_ps_clear_badge","Clear badge","Hold an app or folder with a notification dot and choose Clear badge."),
 
@@ -879,6 +882,13 @@ public class SettingsActivity extends Activity {
         }
 
         if(f!=null){
+            if(LauncherHideGlance.KEY.equals(f.key)){
+                LinearLayout controls=group(page);row(controls,f.key,f.icon,mAccent,f.title,f.summary);finishGroup(controls);
+                section(page,"How it works");
+                explanation(page,"Hold an app, folder or widget and drop it in the free row.");
+                explanation(page,"For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.");
+                return;
+            }
             if(LauncherFeatures.HIDE_SEARCH.equals(f.key)){
                 LinearLayout controls=group(page);row(controls,f.key,f.icon,mAccent,f.title,f.summary);finishGroup(controls);
                 section(page,"How it works");
@@ -1378,7 +1388,7 @@ public class SettingsActivity extends Activity {
 
                 navigation(features,"Recent Apps","Clear all, locked cards and landscape view","ic_ps_recent_apps",new Runnable(){public void run(){openPage("recents");}});
 
-            }for(final FeaturePage item:PAGES)if(item.group.equals(id)&&(!"themes".equals(id)||SuperDark.KEY.equals(item.key)))navigation(features,item.title,item.summary,item.icon,new Runnable(){public void run(){openPage(item.key);}});finishGroup(features);
+            }for(final FeaturePage item:PAGES)if(item.group.equals(id)&&(!"themes".equals(id)||SuperDark.KEY.equals(item.key))&&(!LauncherHideGlance.KEY.equals(item.key)||LauncherHideGlance.supported()))navigation(features,item.title,item.summary,item.icon,new Runnable(){public void run(){openPage(item.key);}});finishGroup(features);
             if("launcher".equals(id)){
                 section(page,"Toasts");
                 LinearLayout toasts=group(page);
@@ -2009,12 +2019,15 @@ public class SettingsActivity extends Activity {
         navChoice(sides,NavButtons.LEFT,"Left button",labels,values,"back");
         navChoice(sides,NavButtons.RIGHT,"Right button",labels,values,"recent");finishGroup(sides);
         mNavHome=group(mNavBody);navChoice(mNavHome,NavButtons.HOLD_HOME,"Hold Home for",new String[]{"Circle to Search","Gemini","Nothing"},new String[]{"circle","gemini","none"},"circle");finishGroup(mNavHome);
-        explanation(mNavBody,"Swipe gestures still work.");
+        LinearLayout look=group(mNavBody);
+        navChoice(look,NavButtons.GAP,"Distance from the gesture bar",new String[]{"Near","Normal","Far"},new String[]{"near","normal","far"},"normal");
+        navChoice(look,NavButtons.LINE,"Gesture bar",new String[]{"Shown","Hidden"},new String[]{"show","hide"},"show");finishGroup(look);
+        explanation(mNavBody,"Swipe gestures still work, also with the gesture bar hidden.");
         updateNavigationButtons();
     }
     private void navChoice(LinearLayout group,final String key,final String title,final String[] labels,final String[] values,final String fallback){
         String current=navValue(key,fallback);int selected=java.util.Arrays.asList(values).indexOf(current);if(selected<0)selected=java.util.Arrays.asList(values).indexOf(fallback);
-        navigation(group,title,labels[Math.max(0,selected)],SystemToasts.KEY.equals(key)?"ic_ps_toast":NavButtons.LEFT.equals(key)?"ic_ps_nav_left":NavButtons.RIGHT.equals(key)?"ic_ps_nav_right":AodPlus.KEY_SECONDS.equals(key)?"ic_ps_aod_timer":Feature.FLASHLIGHT.equals(key)?"ic_ps_power_double":VolumeCamera.KEY_ACTION.equals(key)?"ic_ps_volume_double":PowerHold.KEY.equals(key)?"ic_ps_power_hold":PowerHold.KEY_LOCKED.equals(key)?"ic_ps_lock_options":"ic_ps_nav_hold",()->{
+        navigation(group,title,labels[Math.max(0,selected)],SystemToasts.KEY.equals(key)?"ic_ps_toast":NavButtons.LEFT.equals(key)?"ic_ps_nav_left":NavButtons.RIGHT.equals(key)?"ic_ps_nav_right":NavButtons.GAP.equals(key)?"ic_ps_nav_gap":NavButtons.LINE.equals(key)?"ic_ps_nav_line":AodPlus.KEY_SECONDS.equals(key)?"ic_ps_aod_timer":Feature.FLASHLIGHT.equals(key)?"ic_ps_power_double":VolumeCamera.KEY_ACTION.equals(key)?"ic_ps_volume_double":PowerHold.KEY.equals(key)?"ic_ps_power_hold":PowerHold.KEY_LOCKED.equals(key)?"ic_ps_lock_options":"ic_ps_nav_hold",()->{
             int choice=java.util.Arrays.asList(values).indexOf(navValue(key,fallback));
             showSettingsDialog(new AlertDialog.Builder(this).setTitle(I18n.cs(title)).setSingleChoiceItems(I18n.all(labels),Math.max(0,choice),(dialog,which)->{
                 dialog.dismiss();mSaves++;final String value=values[which];IO.execute(()->{final boolean ok=Root.run(navCommand(key,value))!=null;mMain.post(()->{if(isFinishing()||isDestroyed())return;if(ok){mNavSaved.put(key,value);mNavLabels.get(key).setText(I18n.cs(labels[which]));updateNavigationButtons();}else{showRootBanner(true);AppToast.makeText(this,I18n.cs("Couldn't save: root access needed"),Toast.LENGTH_SHORT).show();}});});
@@ -2187,7 +2200,7 @@ public class SettingsActivity extends Activity {
 
                             Switch sw = mSwitches.get(keys[i]);
 
-                            if(sw!=null){if(PatronAccess.protectedKey(keys[i])&&!PatronAccess.allowed(SettingsActivity.this,keys[i]))values[i]=0;boolean checked=values[i]==1;sSwitchValues.put(keys[i],checked);if(sw.isChecked()!=checked)sw.setChecked(checked);sw.setVisibility(View.VISIBLE);sw.setEnabled(true);sw.jumpDrawablesToCurrentState();}
+                            if(sw!=null){if(PatronAccess.protectedKey(keys[i])&&!PatronAccess.allowed(SettingsActivity.this,keys[i]))values[i]=0;if(StudioSupport.blocked(SettingsActivity.this,keys[i]))values[i]=0;boolean checked=values[i]==1;sSwitchValues.put(keys[i],checked);if(sw.isChecked()!=checked)sw.setChecked(checked);sw.setVisibility(View.VISIBLE);sw.setEnabled(true);sw.jumpDrawablesToCurrentState();}
 
                             updateChoiceLabel(keys[i],values[i]);
 
@@ -2439,7 +2452,8 @@ public class SettingsActivity extends Activity {
         row.addView(sw, slp);
 
         mSwitches.put(key, sw);
-
+        final boolean noStudio=StudioSupport.blocked(this,key);
+        if(noStudio){badge.setAlpha(0.4f);texts.setAlpha(0.4f);sw.setAlpha(0.4f);sw.setClickable(false);sw.setFocusable(false);}
         row.setTag("search.anchor:"+key);row.setClickable(true);
 
         row.setFocusable(true);
@@ -2450,6 +2464,7 @@ public class SettingsActivity extends Activity {
 
             public void onClick(View v) {
 
+                if(noStudio){AppToast.makeText(SettingsActivity.this,I18n.cs(StudioSupport.NOTE),Toast.LENGTH_SHORT).show();return;}
                 if(PatronUi.intercept(SettingsActivity.this,key))return;
 
                 if (sw.isEnabled()) sw.toggle();

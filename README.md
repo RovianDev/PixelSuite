@@ -1,6 +1,6 @@
 [![Pixel Suite — Your Pixel. Your Way.](assets/pixelsuite-banner-v4.png)](https://github.com/RovianDev/PixelSuite/releases)
 
-# Pixel Suite 3.1.1
+# Pixel Suite 3.1.2
 
 Your Pixel. Your way.
 
@@ -8,7 +8,20 @@ Made by **RovianDev**. An open-source LSPosed module for Pixel phones, in 14 lan
 
 **Open Pixel Suite from your home screen:** touch and hold an empty area, then choose **Pixel Suite settings**.
 
-[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases) · [3.1.1 release notes](RELEASE-NOTES-v3.1.1.md) · [Changelog](CHANGELOG.md)
+[📥 GitHub download](https://github.com/RovianDev/PixelSuite/releases) · [📥 Xposed download](https://github.com/Xposed-Modules-Repo/io.github.roviandev.pixelsuite/releases) · [3.1.2 release notes](RELEASE-NOTES-v3.1.2.md) · [Changelog](CHANGELOG.md)
+
+## What's new in 3.1.2
+
+Two new games land in Pixel Arcade! Plus a reworked Pixel Stack, Hide At a Glance, new Navigation buttons options, and fixes.
+
+- 🕹️ **Pixel Arcade**: hold the logo at the top of Pixel Suite's home page. Two new games, **Pixel Blast** and **Pixel Siege**, join a reworked **Pixel Stack**. Pause any game and carry on later, and share your score with our Telegram community.
+- 🧹 **Hide At a Glance** (Android 16 and older): removes At a Glance from the home screen and frees its row for your apps, folders and widgets.
+- 🧭 **Navigation buttons**: choose how far the buttons sit from the gesture bar, and hide the gesture bar while its swipes keep working.
+- 🌙 **Dark pages** (Patreon): card numbers are readable on payment pages that forced dark text.
+- 🔠 **Persian**: the Vazirmatn font, with more natural wording throughout.
+- 🐞 **Fixes** for Navigation buttons, the App drawer, Android 16's Pixel Launcher, Auto-confirm 4-digit PIN and Hide search bar.
+
+See the [3.1.2 release notes](RELEASE-NOTES-v3.1.2.md).
 
 ## What's new in 3.1.1
 
@@ -307,7 +320,7 @@ Pixel Suite has no ads, analytics or tracking, and the module itself never conne
 
 **Root + LSPosed API 102 required.** Tested on Pixel 11 Pro with Android 17.
 
-1. Install **PixelSuite-v3.1.1.apk** over your current version.
+1. Install **PixelSuite-v3.1.2.apk** over your current version.
 2. Enable Pixel Suite in LSPosed and grant its app root access.
 3. Open Pixel Suite and turn on the features you want. Each feature page has an **LSPosed scope** section listing the apps to select for it.
 4. Select those apps in LSPosed, then reboot.

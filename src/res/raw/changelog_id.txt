@@ -1,3 +1,35 @@
+## v3.1.2
+Dua game baru hadir di Pixel Arcade! Ditambah Pixel Stack yang dirombak, Sembunyikan Sekilas, opsi baru Tombol navigasi, dan perbaikan.
+
+🕹️ Pixel Arcade: dua game lagi ditambahkan!
+• **Tahan logo** di bagian atas halaman utama Pixel Suite lalu pilih game Anda. Setiap kartu menampilkan gamenya sedang dimainkan langsung!
+• **Pixel Blast (baru!)**: ledakkan jalan Anda melewati peti dan hantu! Tendang bom, kumpulkan permata, kalahkan bos setiap 5 level, dan jadilah Evil atau Angelic, masing-masing dengan kekuatan liarnya sendiri.
+• **Pixel Siege (baru!)**: pertahankan logo dengan tank Anda! Tank berkembang lewat lima level, bos datang setiap 5 level, dan hadiah legendaris seperti Airstrike, Shockwave, dan Nuke menunggu di tombol di atas kontrol Anda.
+• **Pixel Stack, dirombak!** Tiga hati, balok emas, gigi lebih cepat setiap 100 poin, dan setiap balok memainkan nada berikutnya dari lagu piano.
+• **Jeda dan lanjutkan**: keluar kapan saja dan lanjutkan tepat di tempat Anda berhenti, bahkan setelah mulai ulang. Cadangan menyimpan skor terbaik dan game yang dijeda.
+• **Pamerkan skor Anda!** Setiap game punya kartu skor sendiri untuk komunitas Telegram kami.
+
+✨ Baru
+• 🧹 **Sembunyikan Sekilas** (Android 16 dan yang lebih lama): menghapus Sekilas dari layar utama dan membebaskan barisnya untuk aplikasi, folder, dan widget Anda. (Peluncur Pixel)
+• 🧭 **Tombol navigasi**: pilih seberapa jauh tombol dari bilah gestur, dan sembunyikan bilah gestur sementara gesturnya tetap berfungsi. (Gestur › Tombol navigasi)
+
+💎 Patreon
+• 🌙 **Halaman gelap**: nomor kartu terbaca di halaman pembayaran yang memaksakan teks gelap.
+
+🪄 Penyempurnaan
+• 🔠 **Persia**: Pixel Suite kini memakai font Vazirmatn, dengan susunan kata yang lebih alami di seluruh aplikasi.
+• ✂️ **Pangkas screenshot bebas dan coretan Pixel Studio**: diredupkan, dengan catatan, di ponsel tanpa editor screenshot (Pixel 9 dan yang lebih baru memilikinya).
+• 🏷️ **Baris cakupan LSPosed**: nama aplikasi tetap seperti yang ditampilkan LSPosed, di setiap bahasa.
+
+🐞 Perbaikan bug
+• 🧭 **Tombol navigasi**: Pixel Launcher bisa mogok di versi yang lebih baru saat tombol aktif, dan tombol tetap di layar pada video lanskap layar penuh.
+• 🗂️ **Panel aplikasi**: aplikasi yang ditarik keluar dari folder yang terbuka masih bisa muncul di folder lama.
+• 📦 **Pixel Launcher Android 16**: memindahkan beberapa aplikasi memunculkan "Tidak ada ruang di halaman ini", dan folder Panel aplikasi tidak berfungsi.
+• 🔢 **Konfirmasi otomatis PIN 4 digit**: kini berfungsi di layar kunci yang lebih baru.
+• 🔍 **Sembunyikan kotak penelusuran**: berfungsi di lebih banyak versi Pixel Launcher yang menyebutnya tidak didukung.
+
+Pasang di atas versi Anda saat ini lalu mulai ulang.
+
 ## v3.1.1
 Matikan pemblokiran iklan di seluruh sistem, Sembunyikan kotak penelusuran di lebih banyak peluncur, nama lebih panjang di speed dial Chrome, dan perbaikan.
 
@@ -68,13 +100,5 @@ Pixel Suite dalam 14 bahasa, Chrome+ dan Gboard+, VPN bawaan, Pencadangan & Pemu
 • ➗ **Gboard+**: di halaman angka, kolom + - * / kini sama seperti tombol lainnya. Tombol spasi dan hapus kembali tampil sebagai tombol dan tidak lagi hilang di mode gelap.
 • 🪟 **Menu layar utama**: dengan Kaca buram, baris ikon di atas menu aplikasi tampil lebih dulu dari bagian lain. Kini muncul bersama menunya.
 • ✅ **Pilih aplikasi**: keyboard tetap terbuka di atas daftar setelah Anda mencentang aplikasi dari penelusuran. Kini keyboard tertutup.
-
-Pasang di atas versi Anda saat ini lalu mulai ulang.
-
-## v3.0.4
-Perbaikan untuk Play Integrity.
-
-🐞 Perbaikan bug
-• Play Integrity: Pixel Suite tidak lagi memakai layanan Google Play. Layanan itu hanya dipakai untuk tepi gulir lembut di beberapa layar Google yang dibuka dari Setelan (Kaca Buram), dan mempertahankannya bisa membuat Anda kehilangan integritas Device dan Strong, jadi tidak sepadan. Jika Anda mencentangnya di cakupan LSPosed Pixel Suite, Pixel Suite kini menghapus centangnya untuk Anda. Cukup mulai ulang saat diminta. Terima kasih kepada Ashray V K di Telegram yang sudah memberi tahu 🙏
 
 Pasang di atas versi Anda saat ini lalu mulai ulang.

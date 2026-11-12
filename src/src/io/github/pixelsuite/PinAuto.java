@@ -65,6 +65,7 @@ final class PinAuto {
     }
 
     static void installSystemUi(ClassLoader cl) {
+        try { installSceneBouncer(cl); } catch (Throwable ignored) { }
         final Class<?> ctl = Xp.findClass("com.android.keyguard.KeyguardPinViewController", cl);
         for (Method m : ctl.getDeclaredMethods()) {
             if (!"onUserInput".equals(m.getName()) || m.getParameterTypes().length != 0) continue;
@@ -76,6 +77,126 @@ final class PinAuto {
         }
         for (Class<?> k = ctl; k != null && k.getName().startsWith("com.android.keyguard."); k = k.getSuperclass())
             for (Method m : k.getDeclaredMethods()) if (!"onUserInput".equals(m.getName()) || k != ctl) Xp.deoptimize(m);
+    }
+
+    private static void installSceneBouncer(ClassLoader cl) throws Exception {
+        final Class<?> vm = Xp.findClass("com.android.systemui.bouncer.ui.viewmodel.PinBouncerViewModel", cl);
+        int hooked = 0;
+        for (Method m : vm.getDeclaredMethods()) {
+            Class<?>[] t = m.getParameterTypes();
+            String n = m.getName();
+            boolean digit = t.length == 1 && t[0] == int.class && ("onPinButtonClicked".equals(n) || n.startsWith("onDigit") || n.startsWith("onNumber"));
+            if (!digit) continue;
+            Xp.hookMethod(m, new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    try { onSceneInput(p.thisObject); } catch (Throwable ignored) { }
+                }
+            });
+            hooked++;
+        }
+        if (hooked == 0) throw new NoSuchMethodException("onPinButtonClicked");
+    }
+
+    private static Object sSceneLpu;
+
+    private static void onSceneInput(Object vm) throws Exception {
+        Context ctx = (Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+        if (ctx == null || Settings.Secure.getInt(ctx.getContentResolver(), KEY, 0) != 1) return;
+        int user = ((Number) Class.forName("android.app.ActivityManager").getMethod("getCurrentUser").invoke(null)).intValue();
+        if (user != 0) return;
+        if (sSceneLpu == null) sSceneLpu = Class.forName("com.android.internal.widget.LockPatternUtils").getConstructor(Context.class).newInstance(ctx);
+        watch(ctx, sSceneLpu);
+        int typed = sceneTyped(vm);
+        if (typed != 4) return;
+        int length = sceneLength(vm, user);
+        int failed = ((Number) Xp.callMethod(sSceneLpu, "getCurrentFailedPasswordAttempts", user)).intValue();
+        if (length != 4 || failed >= 5) return;
+        pressEnter(vm);
+    }
+
+    private static Method sEnter;
+    private static int sEnterKind;
+
+    private static boolean pressEnter(Object vm) throws Exception {
+        if (sEnter == null) {
+            Method list = null, def = null, bool = null;
+            for (Class<?> k = vm.getClass(); k != null && k != Object.class && sEnter == null; k = k.getSuperclass())
+                for (Method m : k.getDeclaredMethods()) {
+                    String n = m.getName(); Class<?>[] t = m.getParameterTypes();
+                    if (t.length == 0 && (n.equals("onAuthenticateButtonClicked") || n.startsWith("onAuthenticateButtonClicked$") || n.startsWith("onAuthenticateKeyClicked"))) { sEnter = m; sEnterKind = 0; break; }
+                    if (!n.startsWith("tryAuthenticate")) continue;
+                    if (n.contains("$default") && java.lang.reflect.Modifier.isStatic(m.getModifiers()) && t.length >= 3 && t[0].isInstance(vm)) def = m;
+                    else if (t.length == 2 && java.util.List.class.isAssignableFrom(t[0]) && t[1] == boolean.class) list = m;
+                    else if (t.length == 1 && t[0] == boolean.class) bool = m;
+                }
+            if (sEnter == null) {
+                if (list != null) { sEnter = list; sEnterKind = 1; }
+                else if (def != null) { sEnter = def; sEnterKind = 2; }
+                else if (bool != null) { sEnter = bool; sEnterKind = 3; }
+            }
+            if (sEnter == null) return false;
+            sEnter.setAccessible(true);
+        }
+        switch (sEnterKind) {
+            case 0: sEnter.invoke(vm); break;
+            case 1: sEnter.invoke(vm, sceneInput(vm), Boolean.FALSE); break;
+            case 2: {
+                Class<?>[] t = sEnter.getParameterTypes();
+                Object[] a = new Object[t.length];
+                a[0] = vm;
+                for (int i = 1; i < t.length; i++) {
+                    if (java.util.List.class.isAssignableFrom(t[i])) a[i] = sceneInput(vm);
+                    else if (t[i] == boolean.class) a[i] = Boolean.FALSE;
+                    else if (t[i] == int.class) a[i] = Integer.valueOf(0);
+                    else a[i] = null;
+                }
+                sEnter.invoke(null, a);
+                break;
+            }
+            default: sEnter.invoke(vm, Boolean.FALSE);
+        }
+        return true;
+    }
+
+    private static Object sceneInput(Object vm) throws Exception {
+        for (Class<?> k = vm.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (Method m : k.getDeclaredMethods())
+                if (m.getParameterTypes().length == 0 && (m.getName().equals("getInput") || m.getName().startsWith("getInput$")) && java.util.List.class.isAssignableFrom(m.getReturnType())) {
+                    m.setAccessible(true); return m.invoke(vm);
+                }
+        Object state = Xp.callMethod(vm, "getPinInput");
+        try { Object v = Xp.callMethod(state, "getValue"); if (v != null) state = v; } catch (Throwable ignored) { }
+        return Xp.callMethod(state, "getPin");
+    }
+
+    private static int sceneTyped(Object vm) {
+        Object state = null;
+        for (String getter : new String[]{"getPinInput", "getMutablePinInput"}) {
+            try { state = Xp.callMethod(vm, getter); break; } catch (Throwable ignored) { }
+        }
+        if (state == null) for (String field : new String[]{"pinInput", "mutablePinInput"}) {
+            try { state = Xp.getObjectField(vm, field); break; } catch (Throwable ignored) { }
+        }
+        if (state == null) return -1;
+        try { Object v = Xp.callMethod(state, "getValue"); if (v != null) state = v; } catch (Throwable ignored) { }
+        try { return ((java.util.List<?>) Xp.callMethod(state, "getPin")).size(); } catch (Throwable ignored) { }
+        try { return ((CharSequence) Xp.callMethod(state, "getPinAsString")).length(); } catch (Throwable ignored) { }
+        return -1;
+    }
+
+    private static int sceneLength(Object vm, int user) {
+        synchronized (sKnown) { Integer k = sKnown.get(vm); if (k != null && k == 4) return 4; }
+        long now = SystemClock.uptimeMillis();
+        synchronized (sAsked) {
+            Long at = sAsked.get(vm);
+            if (at != null && now - at < RECHECK_MS) return -1;
+            sAsked.put(vm, now);
+        }
+        try {
+            int l = ((Number) Xp.callMethod(sSceneLpu, "getPinLength", user)).intValue();
+            if (l == 4) synchronized (sKnown) { sKnown.put(vm, 4); }
+            return l;
+        } catch (Throwable t) { return -1; }
     }
 
     private static void onInput(Object c, Class<?> ctl) throws Exception {

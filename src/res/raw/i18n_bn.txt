@@ -1590,3 +1590,102 @@ Block ads in every app	সব অ্যাপে বিজ্ঞাপন ব্
 Turn off to block ads only in Chrome and Google News.	শুধু Chrome ও Google News-এ বিজ্ঞাপন ব্লক করতে বন্ধ করুন।
 Ads are blocked only in Chrome and Google News.	বিজ্ঞাপন শুধু Chrome ও Google News-এ ব্লক হচ্ছে।
 Open-source servers worldwide	বিশ্বজুড়ে ওপেন-সোর্স সার্ভার
+Pixel Arcade	Pixel Arcade
+Choose a game	একটি গেম বেছে নিন
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	উঁচু করে সাজান
+Defend the logo	লোগো রক্ষা করুন
+Blast your way through	বিস্ফোরণে পথ করে নিন
+Drag to move, tap to fire	সরাতে টেনে ধরুন, গুলি করতে ট্যাপ করুন
+Drag to move, tap to drop a bomb	সরাতে টেনে ধরুন, বোমা রাখতে ট্যাপ করুন
+Stage {0}	পর্যায় {0}
+Stage clear!	পর্যায় শেষ!
+Power up!	শক্তি বাড়ল!
+Shield	ঢাল
+Freeze	জমাট
+Boom!	বুম!
+Fortress	দুর্গ
+Extra life	বাড়তি জীবন
++1 bomb	+১ বোমা
+Bigger blast	বড় বিস্ফোরণ
+Speed up	গতি বাড়ল
+Portal open!	পোর্টাল খুলেছে!
+Weapon upgrade!	অস্ত্র আপগ্রেড!
+Rockets!	রকেট!
+Double points	দ্বিগুণ পয়েন্ট
+Poison bombs!	বিষাক্ত বোমা!
+Fire breath!	আগুনের নিঃশ্বাস!
+Laser!	লেজার!
+Helper drone!	সহকারী ড্রোন!
+Shockwave!	শকওয়েভ!
+Laser eyes!	লেজার চোখ!
+Pfft!	ফুসসস!
+Split!	ভাগ হয়ে গেল!
+Level up!	লেভেল আপ!
+Combo ×{0}!	কম্বো ×{0}!
+Kick!	লাথি!
+Bomb rain!	বোমা বৃষ্টি!
+Mega bombs!	মেগা বোমা!
+Glitch King	গ্লিচ রাজা
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	স্ক্রিনশট যেকোনো আকারে ক্রপ করুন, এমনকি একটি লাইনেও। Pixel Studio লাগবে (Pixel 9 ও নতুন)।
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	স্ক্রিনশটে আকৃতি ও তীর আঁকুন। Pixel Studio লাগবে (Pixel 9 ও নতুন)।
+Needs Pixel Studio (Pixel 9 and newer).	Pixel Studio লাগবে (Pixel 9 ও নতুন)।
+Golden!	সোনালি!
+On fire!	আগুন জ্বলছে!
+Iron Crown	লৌহ মুকুট
+Storm Turret	ঝড়ের কামান
+Laser Walker	লেজার ওয়াকার
+Crate Golem	বাক্স দানব
+Phantom Twins	ভূত যমজ
+Nuke	নিউক
+Fart	পাদ
+Level {0}	লেভেল {0}
+Nice!	দারুণ!
+Common	সাধারণ
+Rare	দুর্লভ
+Legendary	কিংবদন্তি
+Levels up your tank	ট্যাংকের লেভেল বাড়ায়
+Blocks every hit	সব আঘাত আটকায়
+One more try	আরও একবার সুযোগ
+Score counts twice	স্কোর দ্বিগুণ গোনা হয়
+Shots chase tanks	গুলি ট্যাংক তাড়া করে
+Cuts through everything	সব কিছু ভেদ করে
+A helper that shoots	গুলি করা সহকারী
+Steel walls for the base	ঘাঁটির জন্য ইস্পাতের দেয়াল
+Stops every enemy	সব শত্রু থামায়
+Wipes the whole map	পুরো ম্যাপ সাফ করে
+Drop one more bomb	আরও একটি বোমা
+Flames reach further	আগুন আরও দূরে যায়
+Run faster	আরও জোরে দৌড়াও
+Bombs leave poison gas	বোমা বিষাক্ত গ্যাস ছাড়ে
+Burn what you face	সামনের সব পোড়াও
+Zap in a straight line	সোজা লাইনে আঘাত
+Kick bombs away	বোমা লাথি মেরে সরাও
+Three huge bombs	তিনটি বিশাল বোমা
+Makes ghosts slow and dizzy	ভূতদের ধীর ও ঝিমঝিম করে
+Bombs fall on ghosts	ভূতদের ওপর বোমা পড়ে
+Airstrike	বিমান হামলা
+Missiles on every tank	প্রতিটি ট্যাংকে ক্ষেপণাস্ত্র
+Blasts and stuns all tanks	সব ট্যাংকে আঘাত করে ও অচল করে
+Paused	বিরতি
+Tap to continue	চালিয়ে যেতে ট্যাপ করুন
+New game	নতুন খেলা
+Evil	অশুভ
+Angelic	দেবদূত
+Cleansed	শুদ্ধ
+• Pixel Arcade: best scores	• Pixel Arcade: সেরা স্কোর
+• 1 paused game	• ১টি বিরতি দেওয়া খেলা
+• {0} paused games	• {0}টি বিরতি দেওয়া খেলা
+Distance from the gesture bar	জেসচার বার থেকে দূরত্ব
+Near	কাছে
+Normal	স্বাভাবিক
+Far	দূরে
+Gesture bar	জেসচার বার
+Shown	দেখানো
+Hidden	লুকানো
+Swipe gestures still work, also with the gesture bar hidden.	জেসচার বার লুকানো থাকলেও সোয়াইপ জেসচার কাজ করে।
+Hide At a Glance	এক নজরে লুকান
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	হোম স্ক্রিনের উপর থেকে এক নজরে সরায়। সারিটি আপনার অ্যাপ, ফোল্ডার ও উইজেটের জন্য খালি থাকে।
+Hold an app, folder or widget and drop it in the free row.	একটি অ্যাপ, ফোল্ডার বা উইজেট ধরে রেখে খালি সারিতে ছাড়ুন।
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 ও তার আগের সংস্করণের জন্য। নতুন সংস্করণে হোম স্ক্রিন থেকেই এক নজরে সরানো যায়।

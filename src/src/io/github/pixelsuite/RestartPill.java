@@ -93,6 +93,7 @@ final class RestartPill {
                 || key.equals(LauncherFeatures.HIDE_SHORTCUTS) || key.equals(LauncherFeatures.LABEL_SIZE)
                 || key.equals(LauncherFeatures.LABEL_LEVEL) || key.equals(LauncherFeatures.RENAME)
                 || key.equals(Feature.CLEAR_ALL) || key.equals(ClearAll.KEY_ONLY)
+                || key.equals(LauncherHideGlance.KEY)
                 || key.equals(LauncherFeatures.HIDE_SEARCH)) return LAUNCHER;
         return null;
     }

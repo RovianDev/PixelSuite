@@ -1590,3 +1590,102 @@ Block ads in every app	Blokir iklan di semua aplikasi
 Turn off to block ads only in Chrome and Google News.	Matikan untuk memblokir iklan hanya di Chrome dan Google News.
 Ads are blocked only in Chrome and Google News.	Iklan hanya diblokir di Chrome dan Google News.
 Open-source servers worldwide	Server open source di seluruh dunia
+Pixel Arcade	Pixel Arcade
+Choose a game	Pilih game
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	Tumpuk setinggi mungkin
+Defend the logo	Lindungi logonya
+Blast your way through	Ledakkan jalanmu
+Drag to move, tap to fire	Geser untuk bergerak, ketuk untuk menembak
+Drag to move, tap to drop a bomb	Geser untuk bergerak, ketuk untuk menaruh bom
+Stage {0}	Babak {0}
+Stage clear!	Babak selesai!
+Power up!	Tambah kuat!
+Shield	Perisai
+Freeze	Bekukan
+Boom!	Bum!
+Fortress	Benteng
+Extra life	Nyawa tambahan
++1 bomb	+1 bom
+Bigger blast	Ledakan lebih besar
+Speed up	Lebih cepat
+Portal open!	Portal terbuka!
+Weapon upgrade!	Senjata naik level!
+Rockets!	Roket!
+Double points	Poin ganda
+Poison bombs!	Bom racun!
+Fire breath!	Napas api!
+Laser!	Laser!
+Helper drone!	Drone pembantu!
+Shockwave!	Gelombang kejut!
+Laser eyes!	Mata laser!
+Pfft!	Pfft!
+Split!	Membelah!
+Level up!	Naik level!
+Combo ×{0}!	Kombo ×{0}!
+Kick!	Tendang!
+Bomb rain!	Hujan bom!
+Mega bombs!	Bom raksasa!
+Glitch King	Raja Glitch
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	Pangkas screenshot ke ukuran apa pun, bahkan satu baris. Memerlukan Pixel Studio (Pixel 9 dan yang lebih baru).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	Gambar bentuk dan panah di screenshot. Memerlukan Pixel Studio (Pixel 9 dan yang lebih baru).
+Needs Pixel Studio (Pixel 9 and newer).	Memerlukan Pixel Studio (Pixel 9 dan yang lebih baru).
+Golden!	Emas!
+On fire!	Membara!
+Iron Crown	Mahkota Besi
+Storm Turret	Menara Badai
+Laser Walker	Pejalan Laser
+Crate Golem	Golem Peti
+Phantom Twins	Kembar Hantu
+Nuke	Nuklir
+Fart	Kentut
+Level {0}	Level {0}
+Nice!	Bagus!
+Common	Biasa
+Rare	Langka
+Legendary	Legendaris
+Levels up your tank	Menaikkan level tankmu
+Blocks every hit	Menahan semua serangan
+One more try	Satu kesempatan lagi
+Score counts twice	Skor dihitung dua kali
+Shots chase tanks	Tembakan mengejar tank
+Cuts through everything	Menembus segalanya
+A helper that shoots	Pembantu yang menembak
+Steel walls for the base	Tembok baja untuk markas
+Stops every enemy	Menghentikan semua musuh
+Wipes the whole map	Menyapu seluruh peta
+Drop one more bomb	Pasang satu bom lagi
+Flames reach further	Api menjangkau lebih jauh
+Run faster	Lari lebih cepat
+Bombs leave poison gas	Bom meninggalkan gas beracun
+Burn what you face	Bakar yang ada di depanmu
+Zap in a straight line	Tembakan garis lurus
+Kick bombs away	Tendang bom menjauh
+Three huge bombs	Tiga bom raksasa
+Makes ghosts slow and dizzy	Membuat hantu lambat dan pusing
+Bombs fall on ghosts	Bom jatuh ke hantu
+Airstrike	Serangan udara
+Missiles on every tank	Rudal ke setiap tank
+Blasts and stuns all tanks	Menghantam dan melumpuhkan semua tank
+Paused	Dijeda
+Tap to continue	Ketuk untuk lanjut
+New game	Game baru
+Evil	Jahat
+Angelic	Malaikat
+Cleansed	Disucikan
+• Pixel Arcade: best scores	• Pixel Arcade: skor terbaik
+• 1 paused game	• 1 game dijeda
+• {0} paused games	• {0} game dijeda
+Distance from the gesture bar	Jarak dari bilah gestur
+Near	Dekat
+Normal	Normal
+Far	Jauh
+Gesture bar	Bilah gestur
+Shown	Ditampilkan
+Hidden	Disembunyikan
+Swipe gestures still work, also with the gesture bar hidden.	Gestur geser tetap berfungsi, juga saat bilah gestur disembunyikan.
+Hide At a Glance	Sembunyikan Sekilas
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Menghapus Sekilas dari bagian atas layar utama. Barisnya bebas untuk aplikasi, folder, dan widget Anda.
+Hold an app, folder or widget and drop it in the free row.	Tahan aplikasi, folder, atau widget lalu lepaskan di baris yang kosong.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Untuk Android 16 dan yang lebih lama. Versi yang lebih baru dapat menghapus Sekilas langsung dari layar utama.

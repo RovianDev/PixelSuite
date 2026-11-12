@@ -1590,3 +1590,102 @@ Block ads in every app	חסימת מודעות בכל האפליקציות
 Turn off to block ads only in Chrome and Google News.	כבו כדי לחסום מודעות רק ב-Chrome וב-Google News.
 Ads are blocked only in Chrome and Google News.	מודעות נחסמות רק ב-Chrome וב-Google News.
 Open-source servers worldwide	שרתי קוד פתוח בכל העולם
+Pixel Arcade	Pixel Arcade
+Choose a game	בחרו משחק
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	בנו מגדל גבוה
+Defend the logo	הגנו על הלוגו
+Blast your way through	פוצצו לכם את הדרך
+Drag to move, tap to fire	גוררים כדי לזוז, מקישים כדי לירות
+Drag to move, tap to drop a bomb	גוררים כדי לזוז, מקישים כדי להניח פצצה
+Stage {0}	שלב {0}
+Stage clear!	השלב הושלם!
+Power up!	שדרוג!
+Shield	מגן
+Freeze	הקפאה
+Boom!	בום!
+Fortress	מבצר
+Extra life	חיים נוספים
++1 bomb	‎+1 פצצה
+Bigger blast	פיצוץ גדול יותר
+Speed up	מהירות
+Portal open!	השער נפתח!
+Weapon upgrade!	שדרוג נשק!
+Rockets!	טילים!
+Double points	ניקוד כפול
+Poison bombs!	פצצות רעל!
+Fire breath!	נשיפת אש!
+Laser!	לייזר!
+Helper drone!	רחפן עוזר!
+Shockwave!	גל הדף!
+Laser eyes!	עיני לייזר!
+Pfft!	פפפ!
+Split!	התפצל!
+Level up!	עלית שלב!
+Combo ×{0}!	קומבו ×{0}!
+Kick!	בעיטה!
+Bomb rain!	גשם פצצות!
+Mega bombs!	מגה-פצצות!
+Glitch King	מלך הגליצ'ים
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	אפשר לחתוך צילומי מסך לכל גודל, אפילו לשורה אחת. דורש את Pixel Studio ‏(Pixel 9 ומעלה).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	ציור צורות וחצים על צילומי מסך. דורש את Pixel Studio ‏(Pixel 9 ומעלה).
+Needs Pixel Studio (Pixel 9 and newer).	דורש את Pixel Studio ‏(Pixel 9 ומעלה).
+Golden!	זהב!
+On fire!	בוער!
+Iron Crown	כתר הברזל
+Storm Turret	צריח הסערה
+Laser Walker	ההולך הלייזרי
+Crate Golem	גולם הארגזים
+Phantom Twins	תאומי הרפאים
+Nuke	פצצת אטום
+Fart	פלוץ
+Level {0}	רמה {0}
+Nice!	יפה!
+Common	רגיל
+Rare	נדיר
+Legendary	אגדי
+Levels up your tank	משדרג את הטנק שלך
+Blocks every hit	חוסם כל פגיעה
+One more try	עוד ניסיון
+Score counts twice	הניקוד נספר כפול
+Shots chase tanks	יריות רודפות אחרי טנקים
+Cuts through everything	חותך דרך הכול
+A helper that shoots	עוזר שיורה
+Steel walls for the base	חומות פלדה לבסיס
+Stops every enemy	עוצר את כל האויבים
+Wipes the whole map	מוחק את כל המפה
+Drop one more bomb	הנח עוד פצצה
+Flames reach further	הלהבות מגיעות רחוק יותר
+Run faster	רוץ מהר יותר
+Bombs leave poison gas	פצצות משאירות גז רעיל
+Burn what you face	שרוף את מה שמולך
+Zap in a straight line	ירי בקו ישר
+Kick bombs away	בעט בפצצות
+Three huge bombs	שלוש פצצות ענק
+Makes ghosts slow and dizzy	הופך רוחות לאיטיות ומסוחררות
+Bombs fall on ghosts	פצצות נופלות על הרוחות
+Airstrike	תקיפה אווירית
+Missiles on every tank	טילים על כל טנק
+Blasts and stuns all tanks	פוגע ומהמם את כל הטנקים
+Paused	מושהה
+Tap to continue	הקש כדי להמשיך
+New game	משחק חדש
+Evil	מרושע
+Angelic	מלאכי
+Cleansed	טוהרת
+• Pixel Arcade: best scores	• Pixel Arcade: שיאים
+• 1 paused game	• משחק מושהה אחד
+• {0} paused games	• {0} משחקים מושהים
+Distance from the gesture bar	המרחק מסרגל התנועות
+Near	קרוב
+Normal	רגיל
+Far	רחוק
+Gesture bar	סרגל התנועות
+Shown	מוצג
+Hidden	מוסתר
+Swipe gestures still work, also with the gesture bar hidden.	תנועות ההחלקה עדיין פועלות, גם כשסרגל התנועות מוסתר.
+Hide At a Glance	הסתרת ״בקצרה״
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	מסיר את ״בקצרה״ מראש מסך הבית. השורה פנויה לאפליקציות, לתיקיות ולווידג׳טים שלך.
+Hold an app, folder or widget and drop it in the free row.	לוחצים לחיצה ארוכה על אפליקציה, תיקייה או ווידג׳ט ומשחררים בשורה הפנויה.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	ל-Android 16 ולגרסאות ישנות יותר. בגרסאות חדשות יותר אפשר להסיר את ״בקצרה״ ממסך הבית עצמו.

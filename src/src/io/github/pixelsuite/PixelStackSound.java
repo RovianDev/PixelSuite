@@ -23,7 +23,11 @@ final class PixelStackSound {
 
     static final String RISE = "rise", POP = "pop", BOING = "boing", THUD = "thud", DROP = "drop",
             PERFECT = "perfect", CHIP = "chip", OVER = "over", SPARKLE = "sparkle", SUCCESS = "success", FAIL = "fail",
-            BOOP = "boop", SEND = "send", SOFT = "soft";
+            BOOP = "boop", SEND = "send", SOFT = "soft",
+            SHOT = "shot", TING = "ting", BOOM = "boom", FUSE = "fuse", PICK = "pick", FIRE = "fire", FART = "fart", CRUMBLE = "crumble",
+            PIANO = "piano";
+
+    static void note(int n, float volume) { play(PIANO, volume, (float) Math.pow(2, Math.max(-12, Math.min(12, n)) / 12.0)); }
 
     static void prepare(Context c) {
         if (sPool != null || sPreparing) return;
@@ -31,13 +35,13 @@ final class PixelStackSound {
         sApp = c.getApplicationContext();
         new Thread(() -> {
             try {
-                SoundPool pool = new SoundPool.Builder().setMaxStreams(10)
+                SoundPool pool = new SoundPool.Builder().setMaxStreams(14)
                         .setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build();
                 pool.setOnLoadCompleteListener((p, id, status) -> { synchronized (sReady) { sReady.put(id, status == 0); } });
-                File dir = new File(sApp.getCacheDir(), "pixelstack-sounds-4");
-                for (String was : new String[]{"pixelstack-sounds-1", "pixelstack-sounds-2", "pixelstack-sounds-3"}) { File old = new File(sApp.getCacheDir(), was); File[] gone = old.listFiles(); if (gone != null) for (File g : gone) g.delete(); old.delete(); }
+                File dir = new File(sApp.getCacheDir(), "pixelstack-sounds-8");
+                for (String was : new String[]{"pixelstack-sounds-1", "pixelstack-sounds-2", "pixelstack-sounds-3", "pixelstack-sounds-4", "pixelstack-sounds-5", "pixelstack-sounds-6", "pixelstack-sounds-7"}) { File old = new File(sApp.getCacheDir(), was); File[] gone = old.listFiles(); if (gone != null) for (File g : gone) g.delete(); old.delete(); }
                 dir.mkdirs();
-                for (String name : new String[]{RISE, POP, BOING, THUD, DROP, PERFECT, CHIP, OVER, SPARKLE, SUCCESS, FAIL, BOOP, SEND, SOFT}) {
+                for (String name : new String[]{RISE, POP, BOING, THUD, DROP, PERFECT, CHIP, OVER, SPARKLE, SUCCESS, FAIL, BOOP, SEND, SOFT, SHOT, TING, BOOM, FUSE, PICK, FIRE, FART, PIANO, CRUMBLE}) {
                     File f = new File(dir, name + ".wav");
                     if (!f.exists() || f.length() < 100) wav(f, make(name));
                     int id = pool.load(f.getAbsolutePath(), 1);
@@ -49,8 +53,13 @@ final class PixelStackSound {
         }, "PixelStackSound").start();
     }
 
+    private static boolean sAllowed; private static long sAllowedAt = -10000;
     private static boolean allowed() {
-        try { return ((AudioManager) sApp.getSystemService(Context.AUDIO_SERVICE)).getRingerMode() == AudioManager.RINGER_MODE_NORMAL; } catch (Throwable t) { return false; }
+        long now = android.os.SystemClock.uptimeMillis();
+        if (now - sAllowedAt < 1000) return sAllowed;
+        sAllowedAt = now;
+        try { sAllowed = ((AudioManager) sApp.getSystemService(Context.AUDIO_SERVICE)).getRingerMode() == AudioManager.RINGER_MODE_NORMAL; } catch (Throwable t) { sAllowed = false; }
+        return sAllowed;
     }
 
     static int play(String name, float volume, float rate) {
@@ -131,6 +140,19 @@ final class PixelStackSound {
                 tone(b, 0, .22f, 170, 80, 0, .5f, .005f, 16);
                 noise(b, 0, .03f, .12f, .04f, .06f, false, 90, 13);
                 break;
+            case PIANO: {
+                b = buf(1.9f);
+                float f = 261.63f;
+                float[] amps = {.2f, .12f, .07f, .042f, .027f, .015f, .009f};
+                for (int h = 1; h <= amps.length; h++) {
+                    float fh = f * h * (1 + .00035f * h * h);
+                    float decay = 1.9f + .85f * h;
+                    tone(b, 0, 1.88f, fh, fh, 0, amps[h - 1], .003f, decay);
+                    tone(b, 0, 1.88f, fh * 1.0012f, fh * 1.0012f, 0, amps[h - 1] * .55f, .004f, decay * 1.08f);
+                }
+                noise(b, 0, .02f, .5f, .2f, .05f, false, 180, 7);
+                break;
+            }
             case DROP:
                 b = buf(.3f);
                 tone(b, 0, .28f, 523, 520, 1, .45f, .002f, 14);
@@ -148,6 +170,14 @@ final class PixelStackSound {
                 b = buf(.08f);
                 noise(b, 0, .06f, .8f, .4f, .4f, false, 70, 17);
                 tone(b, 0, .05f, 1900, 1200, 0, .2f, .001f, 60);
+                break;
+            case CRUMBLE:
+                b = buf(.26f);
+                noise(b, 0, .2f, .16f, .04f, .3f, false, 15, 31);
+                tone(b, 0, .09f, 170, 85, 0, .2f, .004f, 26);
+                tone(b, .055f, .09f, 130, 70, 0, .13f, .004f, 28);
+                noise(b, .09f, .04f, .28f, .12f, .07f, false, 60, 33);
+                noise(b, .15f, .04f, .22f, .1f, .05f, false, 60, 35);
                 break;
             case OVER:
                 b = buf(1.05f);
@@ -178,6 +208,48 @@ final class PixelStackSound {
                 b = buf(.22f);
                 tone(b, 0, .2f, 620, 700, 0, .32f, .018f, 12);
                 tone(b, 0, .16f, 1240, 1400, 0, .05f, .02f, 16);
+                break;
+            case SHOT:
+                b = buf(.14f);
+                tone(b, 0, .12f, 880, 420, 0, .34f, .004f, 22);
+                tone(b, 0, .08f, 1760, 840, 0, .05f, .004f, 30);
+                break;
+            case TING:
+                b = buf(.22f);
+                tone(b, 0, .2f, 1568, 1560, 0, .22f, .001f, 18);
+                tone(b, 0, .12f, 3136, 3130, 0, .05f, .001f, 30);
+                break;
+            case BOOM:
+                b = buf(.6f);
+                tone(b, 0, .5f, 120, 46, 0, .55f, .004f, 6.5f);
+                tone(b, 0, .25f, 240, 90, 0, .16f, .004f, 12);
+                noise(b, 0, .45f, .3f, .03f, .22f, false, 7.5f, 21);
+                break;
+            case FUSE:
+                b = buf(.06f);
+                tone(b, 0, .05f, 1320, 1180, 0, .16f, .001f, 70);
+                break;
+            case FIRE:
+                b = buf(.3f);
+                noise(b, 0, .28f, .05f, .02f, .18f, true, 0, 31);
+                noise(b, .02f, .2f, .5f, .3f, .03f, false, 22, 37);
+                tone(b, 0, .26f, 140, 110, 0, .08f, .03f, 6);
+                break;
+            case FART:
+                b = buf(.55f);
+                for (int i = 0; i < b.length; i++) {
+                    float t = i / (float) RATE, k = t / .55f;
+                    double f = 120 - 50 * k + 14 * Math.sin(2 * Math.PI * 22 * t);
+                    float env = Math.min(1f, t / .03f) * (float) Math.pow(1 - k, 1.4);
+                    double v = Math.sin(2 * Math.PI * f * t) + .45 * Math.sin(4 * Math.PI * f * t) + .2 * Math.sin(6 * Math.PI * f * t);
+                    b[i] += (float) (v * env * .28);
+                }
+                noise(b, 0, .5f, .06f, .02f, .05f, true, 0, 41);
+                break;
+            case PICK:
+                b = buf(.36f);
+                float[] pick = {659.25f, 880f, 1318.5f};
+                for (int i = 0; i < 3; i++) tone(b, i * .05f, .26f, pick[i], pick[i], 0, .26f, .003f, 10);
                 break;
             case SEND: default:
                 b = buf(.3f);

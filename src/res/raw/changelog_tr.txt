@@ -1,3 +1,35 @@
+## v3.1.2
+Pixel Arcade'e iki yeni oyun geldi! Ayrıca yenilenen Pixel Stack, Bir Bakışta'yı gizle, Gezinme düğmeleri için yeni seçenekler ve düzeltmeler.
+
+🕹️ Pixel Arcade: iki oyun daha eklendi!
+• Pixel Suite ana sayfasının üstündeki **logoyu basılı tutun** ve oyununuzu seçin. Her kart kendi oyununu canlı oynatır!
+• **Pixel Blast (yeni!)**: sandıkların ve hayaletlerin arasından bombalarla yol açın! Bombalara tekme atın, mücevher toplayın, her 5 seviyede bir patronu yenin ve Evil ya da Angelic olun; her birinin kendine özgü çılgın güçleri var.
+• **Pixel Siege (yeni!)**: logoyu tankınızla savunun! Tank beş seviye boyunca gelişir, her 5 seviyede bir patron gelir ve Airstrike, Shockwave ve Nuke gibi efsanevi ödüller kontrollerinizin üstündeki düğmelerde bekler.
+• **Pixel Stack, yenilendi!** Üç kalp, altın bloklar, her 100 puanda daha hızlı bir vites ve her blok bir piyano ezgisinin sıradaki notasını çalar.
+• **Duraklat ve devam et**: istediğiniz zaman çıkın ve yeniden başlatmadan sonra bile tam kaldığınız yerden sürdürün. Yedekler en iyi skorlarınızı ve duraklatılmış oyunlarınızı saklar.
+• **Skorunuzu gösterin!** Her oyunun Telegram topluluğumuz için kendi skor kartı var.
+
+✨ Yeni
+• 🧹 **Bir Bakışta'yı gizle** (Android 16 ve öncesi): Bir Bakışta'yı ana ekrandan kaldırır ve satırını uygulamalarınız, klasörleriniz ve widget'larınız için boşaltır. (Pixel Başlatıcı)
+• 🧭 **Gezinme düğmeleri**: düğmelerin hareket çubuğuna uzaklığını seçin ve hareket çubuğunu gizleyin; kaydırma hareketleri çalışmaya devam eder. (Hareketler › Gezinme düğmeleri)
+
+💎 Patreon
+• 🌙 **Koyu sayfalar**: koyu metni zorlayan ödeme sayfalarında kart numaraları artık okunuyor.
+
+🪄 İnce ayarlar
+• 🔠 **Farsça**: Pixel Suite artık Vazirmatn yazı tipini kullanıyor ve her yerde daha doğal bir dil var.
+• ✂️ **Serbest ekran görüntüsü kırpma ve Pixel Studio karalamaları**: ekran görüntüsü düzenleyicisi olmayan telefonlarda bir notla birlikte soluk gösterilir (Pixel 9 ve sonrasında bulunur).
+• 🏷️ **LSPosed kapsam satırları**: uygulama adları her dilde LSPosed'in gösterdiği gibi kalır.
+
+🐞 Hata düzeltmeleri
+• 🧭 **Gezinme düğmeleri**: düğmeler açıkken Pixel Launcher yeni sürümlerde çökebiliyordu ve düğmeler yatay tam ekran videoda ekranda kalıyordu.
+• 🗂️ **Uygulama çekmecesi**: açık bir klasörden sürüklenip çıkarılan uygulama eski klasörde görünmeye devam edebiliyordu.
+• 📦 **Android 16'nın Pixel Launcher'ı**: birkaç uygulamayı taşırken "Bu sayfada yer yok" diyordu ve uygulama çekmecesi klasörleri çalışmıyordu.
+• 🔢 **4 haneli PIN'i otomatik onayla**: artık yeni kilit ekranında da çalışıyor.
+• 🔍 **Arama çubuğunu gizle**: desteklenmediğini söyleyen daha fazla Pixel Launcher sürümünde çalışıyor.
+
+Mevcut sürümün üzerine kurun ve yeniden başlatın.
+
 ## v3.1.1
 Sistem genelinde reklam engellemeyi kapatma, daha fazla başlatıcıda arama çubuğunu gizleme, Chrome'un hızlı aramasında daha uzun adlar ve düzeltmeler.
 
@@ -68,13 +100,5 @@ Pixel Suite 14 dilde; Chrome+ ve Gboard+, yerleşik VPN, bekletilen uygulamalar 
 • ➗ **Gboard+**: sayı sayfasında + - * / sütunu artık diğer tuşlarla aynı görünüyor. Boşluk ve silme tuşları yeniden tuş gibi görünüyor ve koyu modda artık kaybolmuyor.
 • 🪟 **Ana ekran menüleri**: Buzlu cam açıkken bir uygulama menüsünün üstündeki simge satırı menünün geri kalanından önce görünüyordu. Artık menüyle birlikte beliriyor.
 • ✅ **Uygulama seçin**: aramadan bir uygulamayı işaretledikten sonra klavye listenin üstünde açık kalıyordu. Artık kapanıyor.
-
-Mevcut sürümün üzerine kurun ve yeniden başlatın.
-
-## v3.0.4
-Play Integrity için bir düzeltme.
-
-🐞 Hata düzeltmeleri
-• Play Integrity: Pixel Suite artık Google Play hizmetlerini kullanmıyor. Yalnızca Ayarlar'dan açılan birkaç Google ekranındaki yumuşak kaydırma kenarları (Buzlu Cam) için kullanılıyordu ve tutmak Device ile Strong bütünlüğünü kaybettirebiliyordu, bu yüzden değmezdi. Pixel Suite'in LSPosed kapsamında işaretliyse Pixel Suite artık işareti sizin yerinize kaldırır. Sorduğunda yeniden başlatmanız yeterli. Fark edip bildirdiği için Telegram'daki Ashray V K'ye teşekkürler 🙏
 
 Mevcut sürümün üzerine kurun ve yeniden başlatın.

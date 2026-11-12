@@ -1590,3 +1590,102 @@ Block ads in every app	Tüm uygulamalarda reklamları engelle
 Turn off to block ads only in Chrome and Google News.	Reklamları yalnızca Chrome ve Google Haberler'de engellemek için kapatın.
 Ads are blocked only in Chrome and Google News.	Reklamlar yalnızca Chrome ve Google Haberler'de engelleniyor.
 Open-source servers worldwide	Dünya genelinde açık kaynak sunucular
+Pixel Arcade	Pixel Arcade
+Choose a game	Bir oyun seçin
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	Olabildiğince yükseğe diz
+Defend the logo	Logoyu savun
+Blast your way through	Yolunu patlatarak aç
+Drag to move, tap to fire	Hareket için sürükleyin, ateş için dokunun
+Drag to move, tap to drop a bomb	Hareket için sürükleyin, bomba için dokunun
+Stage {0}	Bölüm {0}
+Stage clear!	Bölüm tamam!
+Power up!	Güçlendirme!
+Shield	Kalkan
+Freeze	Dondur
+Boom!	Bum!
+Fortress	Kale
+Extra life	Ekstra can
++1 bomb	+1 bomba
+Bigger blast	Daha büyük patlama
+Speed up	Hız arttı
+Portal open!	Geçit açıldı!
+Weapon upgrade!	Silah yükseltildi!
+Rockets!	Roketler!
+Double points	Çift puan
+Poison bombs!	Zehirli bombalar!
+Fire breath!	Ateş nefesi!
+Laser!	Lazer!
+Helper drone!	Yardımcı drone!
+Shockwave!	Şok dalgası!
+Laser eyes!	Lazer gözler!
+Pfft!	Pırt!
+Split!	Bölündü!
+Level up!	Seviye atladın!
+Combo ×{0}!	Kombo ×{0}!
+Kick!	Tekme!
+Bomb rain!	Bomba yağmuru!
+Mega bombs!	Mega bombalar!
+Glitch King	Glitch Kral
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	Ekran görüntülerini herhangi bir boyuta, tek bir satıra bile kırpın. Pixel Studio gerekir (Pixel 9 ve sonrası).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	Ekran görüntülerine şekil ve ok çizin. Pixel Studio gerekir (Pixel 9 ve sonrası).
+Needs Pixel Studio (Pixel 9 and newer).	Pixel Studio gerekir (Pixel 9 ve sonrası).
+Golden!	Altın!
+On fire!	Alev aldı!
+Iron Crown	Demir Taç
+Storm Turret	Fırtına Kulesi
+Laser Walker	Lazer Yürüteç
+Crate Golem	Sandık Golemi
+Phantom Twins	Hayalet İkizler
+Nuke	Nükleer
+Fart	Osuruk
+Level {0}	Seviye {0}
+Nice!	Güzel!
+Common	Sıradan
+Rare	Nadir
+Legendary	Efsanevi
+Levels up your tank	Tankının seviyesini yükseltir
+Blocks every hit	Her vuruşu engeller
+One more try	Bir deneme daha
+Score counts twice	Puan iki kat sayılır
+Shots chase tanks	Atışlar tankları kovalar
+Cuts through everything	Her şeyi delip geçer
+A helper that shoots	Ateş eden bir yardımcı
+Steel walls for the base	Üs için çelik duvarlar
+Stops every enemy	Tüm düşmanları durdurur
+Wipes the whole map	Tüm haritayı temizler
+Drop one more bomb	Bir bomba daha bırak
+Flames reach further	Alevler daha uzağa ulaşır
+Run faster	Daha hızlı koş
+Bombs leave poison gas	Bombalar zehirli gaz bırakır
+Burn what you face	Önündekini yak
+Zap in a straight line	Düz çizgide ışın
+Kick bombs away	Bombaları tekmele
+Three huge bombs	Üç dev bomba
+Makes ghosts slow and dizzy	Hayaletleri yavaş ve sersem yapar
+Bombs fall on ghosts	Hayaletlerin üstüne bomba yağar
+Airstrike	Hava saldırısı
+Missiles on every tank	Her tanka füze
+Blasts and stuns all tanks	Tüm tankları vurur ve sersemletir
+Paused	Duraklatıldı
+Tap to continue	Devam etmek için dokun
+New game	Yeni oyun
+Evil	Kötü
+Angelic	Melek
+Cleansed	Arındın
+• Pixel Arcade: best scores	• Pixel Arcade: en iyi skorlar
+• 1 paused game	• 1 duraklatılmış oyun
+• {0} paused games	• {0} duraklatılmış oyun
+Distance from the gesture bar	Hareket çubuğuna uzaklık
+Near	Yakın
+Normal	Normal
+Far	Uzak
+Gesture bar	Hareket çubuğu
+Shown	Görünür
+Hidden	Gizli
+Swipe gestures still work, also with the gesture bar hidden.	Kaydırma hareketleri, hareket çubuğu gizliyken de çalışmaya devam eder.
+Hide At a Glance	Bir Bakışta'yı gizle
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Bir Bakışta'yı ana ekranın üstünden kaldırır. Satır; uygulamalarınız, klasörleriniz ve widget'larınız için boş kalır.
+Hold an app, folder or widget and drop it in the free row.	Bir uygulamayı, klasörü veya widget'ı basılı tutup boş satıra bırakın.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 ve öncesi için. Daha yeni sürümlerde Bir Bakışta doğrudan ana ekrandan kaldırılabilir.

@@ -31,6 +31,20 @@ final class NavButtons {
     static final String RIGHT="pixelsuite_navbuttons_right";
     static final String SHOW="pixelsuite_navbuttons_show";
     static final String HOLD_HOME="pixelsuite_navbuttons_hold_home";
+    static final String GAP="pixelsuite_navbuttons_gap";
+    static final String LINE="pixelsuite_navbuttons_line";
+    static volatile boolean lineHidden;
+    private static volatile boolean lastDark = true;
+
+    static void applyLine(View hv) {
+        try {
+            if (hv == null) return;
+            android.graphics.drawable.Drawable bg = hv.getBackground();
+            boolean clear = bg instanceof android.graphics.drawable.ColorDrawable && android.graphics.Color.alpha(((android.graphics.drawable.ColorDrawable) bg).getColor()) == 0;
+            if (lineHidden) { if (bg != null && !clear) hv.setBackgroundColor(0x00000000); }
+            else if (clear) { Field f = hv.getClass().getField(lastDark ? "mStashedHandleLightColor" : "mStashedHandleDarkColor"); hv.setBackgroundColor(f.getInt(hv)); }
+        } catch (Throwable ignored) { }
+    }
     static final int HOME = 0, BACK = 1, RECENT = 2, HIDE = 3;
 
     private static boolean installed;
@@ -75,8 +89,23 @@ final class NavButtons {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     Bar b = bar.get();
                     if (b != null && b.handle.get() == p.thisObject && p.args.length >= 2) b.colour((Boolean) p.args[0], (Boolean) p.args[1]);
+                    try { if (p.args.length >= 1 && p.args[0] instanceof Boolean) lastDark = (Boolean) p.args[0]; } catch (Throwable ignored) { }
+                    if (lineHidden) applyLine((View) p.thisObject);
                 }
             });
+            try {
+                Xp.hookAllMethods(handle, "onDraw", new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) { if (lineHidden) p.setResult(null); }
+                });
+            } catch (Throwable ignored) { }
+            try {
+                Xp.hookAllMethods(Xp.findClass("com.android.launcher3.taskbar.NavbarButtonsViewController", cl), "updateStateForSysuiFlags", new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) {
+                        Bar b=bar.get();
+                        if(b!=null&&b.isAttachedToWindow())b.follow.onPreDraw();
+                    }
+                });
+            } catch(Throwable ignored) { }
             try {
                 Xp.hookAllMethods(Xp.findClass("com.android.launcher3.taskbar.NavbarButtonsViewController", cl), "updateStateForFlag", new Xp.Callback() {
                     @Override protected void afterHookedMethod(Xp.Param p) {
@@ -155,11 +184,13 @@ final class NavButtons {
         final WeakReference<View> handle;
         final Button left, right;
         boolean on, keyboardOnly, imeVisible;
+        float leftAt = 0.21f, rightAt = 0.79f;
         String hold = "circle";
         int colour = 0xffffffff;
         ValueAnimator colourAnim;
-        private final ContentObserver observer;
+        private ContentObserver observer;
         private final Handler actionHandler=new Handler(Looper.getMainLooper());
+        private Handler ui;
         Panel leftPanel,rightPanel;final int[] handleScreen=new int[2];
 
         Bar(Context c, View h) {
@@ -170,7 +201,8 @@ final class NavButtons {
             left = new Button(c, this); right = new Button(c, this);
             addView(left, new LayoutParams(0, 0, Gravity.TOP | Gravity.START));
             addView(right, new LayoutParams(0, 0, Gravity.TOP | Gravity.START));
-            observer = new ContentObserver(new Handler(Looper.getMainLooper())) {
+            ui = new Handler(Looper.myLooper() != null ? Looper.myLooper() : Looper.getMainLooper());
+            observer = new ContentObserver(ui) {
                 @Override public void onChange(boolean self) { read(); }
             };
             read();
@@ -179,12 +211,17 @@ final class NavButtons {
         @Override protected void onAttachedToWindow() {
             super.onAttachedToWindow();
             ContentResolver cr = getContext().getContentResolver();
-            for (String k : new String[]{KEY, LEFT, RIGHT, SHOW, HOLD_HOME}) cr.registerContentObserver(Settings.Secure.getUriFor(k), false, observer);
+            Handler mine = getHandler();
+            if (mine != null && mine.getLooper() != ui.getLooper()) {
+                ui = new Handler(mine.getLooper());
+                observer = new ContentObserver(ui) { @Override public void onChange(boolean self) { read(); } };
+            }
+            for (String k : new String[]{KEY, LEFT, RIGHT, SHOW, HOLD_HOME, GAP, LINE}) cr.registerContentObserver(Settings.Secure.getUriFor(k), false, observer);
             getViewTreeObserver().addOnPreDrawListener(follow);
             try {
                 android.content.IntentFilter f = new android.content.IntentFilter();
                 f.addAction(android.content.Intent.ACTION_SCREEN_OFF); f.addAction(android.content.Intent.ACTION_SCREEN_ON); f.addAction(android.content.Intent.ACTION_USER_PRESENT);
-                getContext().registerReceiver(lockWatch, f);
+                getContext().registerReceiver(lockWatch, f, null, ui);
             } catch (Throwable t) { }
         }
 
@@ -238,6 +275,10 @@ final class NavButtons {
             keyboardOnly = false;
             String h = Settings.Secure.getString(cr, HOLD_HOME);
             hold = h == null ? "circle" : h;
+            String gap = Settings.Secure.getString(cr, GAP);
+            leftAt = "near".equals(gap) ? 0.29f : "far".equals(gap) ? 0.12f : 0.21f; rightAt = 1f - leftAt;
+            lineHidden = on && "hide".equals(Settings.Secure.getString(cr, LINE));
+            applyLine(handle.get());
             left.invalidate(); right.invalidate();
             requestLayout(); invalidate();
             View hv = handle.get();
@@ -288,6 +329,14 @@ final class NavButtons {
             }
         };
 
+        boolean navHidden() {
+            try {
+                Object nav = Xp.getObjectField(controllers(), "navbarButtonsViewController");
+                Object flags = Xp.getObjectField(nav, "mSysuiStateFlags");
+                return flags instanceof Number && (((Number) flags).longValue() & 2L) != 0;
+            } catch (Throwable t) { return false; }
+        }
+
         boolean keyboardUp() {
             try {
                 Object nav = Xp.getObjectField(controllers(), "navbarButtonsViewController");
@@ -302,7 +351,8 @@ final class NavButtons {
                 if (lastRotation != -1 && rotation != lastRotation) { lastRotation = rotation; turned(); return true; }
                 lastRotation = rotation;
                 imeVisible=keyboardUp();left.keyboard(imeVisible);right.keyboard(imeVisible);
-                boolean show = on && hv != null && (imeVisible || (hv.isShown() && hv.getAlpha() > 0.01f)) && (!keyboardOnly || imeVisible) && !locked() && handleAtBottom(hv);
+                boolean show = on && hv != null && (imeVisible || (hv.isShown() && hv.getAlpha() > 0.01f)) && (!keyboardOnly || imeVisible) && !locked() && handleAtBottom(hv) && (imeVisible || !navHidden());
+                if (lineHidden) applyLine(hv);
                 float dens = getResources().getDisplayMetrics().density;
                 int size = Math.round(Math.min(48 * dens, Math.max(28 * dens, getHeight() > 0 ? getHeight() : 48 * dens)));
                 float cy = getHeight() / 2f;
@@ -311,8 +361,8 @@ final class NavButtons {
                     hv.getLocationInWindow(a); getLocationInWindow(b);
                     cy = a[1] - b[1] + hv.getHeight() / 2f;
                 }
-                place(left, show && left.kind != HIDE, 0.21f, cy, size, hv);
-                place(right, show && right.kind != HIDE, 0.79f, cy, size, hv);
+                place(left, show && left.kind != HIDE, leftAt, cy, size, hv);
+                place(right, show && right.kind != HIDE, rightAt, cy, size, hv);
                 return true;
             }
         };

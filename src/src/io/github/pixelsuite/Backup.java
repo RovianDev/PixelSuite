@@ -74,7 +74,56 @@ final class Backup {
             }
         }
         o.put("files", files);
+        try { o.put("arcade", arcade(c)); } catch (Throwable ignored) { }
         return o.toString();
+    }
+
+    private static JSONObject arcade(Context c) throws Exception {
+        JSONObject a = new JSONObject(), best = new JSONObject();
+        for (String p : GameMenu.PREFS) { int b = c.getSharedPreferences(p, 0).getInt("best", 0); if (b > 0) best.put(p, b); }
+        a.put("best", best);
+        String name = c.getSharedPreferences("pixelstack", 0).getString("name", "");
+        if (name != null && name.length() > 0) a.put("name", name);
+        JSONArray runs = new JSONArray();
+        for (int id = 0; id < GameMenu.PREFS.length; id++) {
+            File f = GameSave.file(c, id);
+            if (!GameSave.has(c, id) || f.length() > 4000000) continue;
+            byte[] data = new byte[(int) f.length()];
+            java.io.DataInputStream in = new java.io.DataInputStream(new java.io.FileInputStream(f));
+            try { in.readFully(data); } finally { in.close(); }
+            JSONObject r = new JSONObject(); r.put("game", id); r.put("data", android.util.Base64.encodeToString(data, android.util.Base64.NO_WRAP));
+            runs.put(r);
+        }
+        a.put("runs", runs);
+        return a;
+    }
+
+    private static void restoreArcade(Context c, JSONObject a) {
+        if (a == null) return;
+        try {
+            JSONObject best = a.optJSONObject("best");
+            if (best != null) for (String p : GameMenu.PREFS) {
+                int b = best.optInt(p, 0); android.content.SharedPreferences sp = c.getSharedPreferences(p, 0);
+                if (b > sp.getInt("best", 0)) sp.edit().putInt("best", b).apply();
+            }
+            String name = a.optString("name", "");
+            android.content.SharedPreferences names = c.getSharedPreferences("pixelstack", 0);
+            if (name.length() > 0 && names.getString("name", "").length() == 0) names.edit().putString("name", name).apply();
+            JSONArray runs = a.optJSONArray("runs");
+            if (runs != null) for (int i = 0; i < runs.length(); i++) {
+                JSONObject r = runs.optJSONObject(i);
+                if (r == null) continue;
+                int id = r.optInt("game", -1);
+                if (id < 0 || id >= GameMenu.PREFS.length) continue;
+                byte[] data = android.util.Base64.decode(r.optString("data"), android.util.Base64.DEFAULT);
+                File tmp = new File(c.getFilesDir(), "arcade-run-" + id + ".tmp"), f = GameSave.file(c, id);
+                FileOutputStream out = new FileOutputStream(tmp);
+                try { out.write(data); } finally { out.close(); }
+                if (!tmp.renameTo(f)) { f.delete(); tmp.renameTo(f); }
+                GameKit.Game.kept[id] = null;
+                if (id == 0) PixelStack.forgetAll();
+            }
+        } catch (Throwable ignored) { }
     }
 
     static JSONObject read(String text) {
@@ -107,6 +156,12 @@ final class Backup {
         if (launcher) b.append("• Pixel Launcher setup: drawer folders, sorting, renames and locks\n");
         if (icons > 0) b.append("• ").append(icons).append(icons == 1 ? " custom icon\n" : " custom icons\n");
         if (share) b.append("• Share menu: pinned order and hidden apps\n");
+        JSONObject arcade = o.optJSONObject("arcade");
+        if (arcade != null) {
+            JSONObject best = arcade.optJSONObject("best"); JSONArray runs = arcade.optJSONArray("runs");
+            if (best != null && best.length() > 0) b.append("• Pixel Arcade: best scores\n");
+            if (runs != null && runs.length() > 0) b.append(runs.length() == 1 ? "• 1 paused game\n" : "• " + runs.length() + " paused games\n");
+        }
         b.append("\nYour current Pixel Suite setup will be replaced. Pixel Launcher restarts once.");
         return b.toString();
     }
@@ -154,6 +209,7 @@ final class Backup {
             }
             cmd.append("true");
             boolean ok = Root.run(cmd.toString()) != null;
+            if (ok) restoreArcade(c, o.optJSONObject("arcade"));
             if (!patron) {
                 try { AdBlock.stop(c); } catch (Throwable ignored) { }
                 try { PatronAccess.reconcile(c); } catch (Throwable ignored) { }

@@ -89,9 +89,12 @@ final class LauncherHideSearch {
                 protected void afterHookedMethod(Xp.Param p){Build b=builds.get();if(b!=null){restoreSpace(b);if(b.previous==null)builds.remove();else builds.set(b.previous);}
                     if(b!=null&&b.hidden&&p.getResult()!=null&&!Boolean.TRUE.equals(stock.get()))keepDrawer(p.thisObject,p.getResult());}
             }).isEmpty())throw new IllegalStateException("profile builder unavailable");
-            if(Xp.hookAllConstructors(properties,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p)throws Throwable{
-                Build b=builds.get();if(b!=null&&((Integer)get(p.thisObject,"widthPx"))>0){b.properties=p.thisObject;if(legacy)zeroSpace(b);}
-            }}).isEmpty())throw new IllegalStateException("device properties hook unavailable");
+            int propertyHooks=Xp.hookAllConstructors(properties,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p)throws Throwable{seen(p.thisObject);}}).size();
+            try{
+                Class<?> made=Xp.findClass("com.android.launcher3.deviceprofile.DeviceProperties$Factory",cl);
+                for(Method m:made.getDeclaredMethods())if(m.getReturnType()==properties&&Xp.hookMethod(m,new Xp.Callback(){protected void afterHookedMethod(Xp.Param p)throws Throwable{seen(p.getResult());}})!=null)propertyHooks++;
+            }catch(Throwable noFactory){}
+            if(propertyHooks==0)throw new IllegalStateException("device properties hook unavailable");
             boolean initial;try{Xp.findClass("com.android.launcher3.deviceprofile.HotseatProfileInitialValues",cl);initial=!onePass;}catch(Throwable none){initial=false;}
             Class<?> factory=null;try{factory=Xp.findClass("com.android.launcher3.qsb.QsbWidgetFactory",cl);}catch(Throwable none){}
             legacy=!onePass&&!initial&&factory==null;
@@ -107,6 +110,11 @@ final class LauncherHideSearch {
             Xp.deoptimizeAll(builder,"build");
             ready=true;
         }catch(Throwable t){ready=false;warn(t);}
+    }
+
+    private static void seen(Object props)throws Throwable{
+        Build b=builds.get();
+        if(b!=null&&props!=null&&((Integer)get(props,"widthPx"))>0){b.properties=props;if(legacy)zeroSpace(b);}
     }
 
     private static void installInitialValues(ClassLoader cl)throws Exception {

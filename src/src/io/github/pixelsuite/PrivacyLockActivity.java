@@ -36,7 +36,7 @@ public class PrivacyLockActivity extends Activity {
             || PrivacyLock.REASON_UNINSTALL_CORE.equals(r) || PrivacyLock.REASON_DISABLE_CORE.equals(r) ? r : null; }
 
     @Override protected void onCreate(Bundle state) {
-        super.onCreate(state); Rtl.activity(this);
+        super.onCreate(state); Rtl.activity(this); PersianFont.watch(this);
         quiet();
         Intent i = getIntent();
         mode = i.getStringExtra(PrivacyLock.EXTRA_MODE);

@@ -150,7 +150,7 @@ final class DrawerFolderAlignment {
             Xp.setAdditionalInstanceField(icon,"pixelsuite_drawer_preview_top",top);
             Object manager=LauncherFeatures.get(icon,"mPreviewItemManager");
             LauncherFeatures.set(manager,"mTotalWidth",-1);
-            LauncherFeatures.call(manager,"recomputePreviewDrawingParams");
+            try{LauncherFeatures.call(manager,"recomputePreviewDrawingParams");}catch(Throwable olderLauncher){}
             icon.invalidate();changed=true;
         }
         Xp.setAdditionalInstanceField(frame,"pixelsuite_last_alignment",new int[]{size,top,Math.round(label.getTranslationY())});

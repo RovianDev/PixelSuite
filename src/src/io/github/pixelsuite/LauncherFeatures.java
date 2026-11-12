@@ -73,6 +73,7 @@ final class LauncherFeatures {
     static void install(ClassLoader cl) {
         loader = cl;
         LauncherHideSearch.install(cl);
+        Safe.run(() -> LauncherHideGlance.install(cl));
         Safe.run(() -> {
             Xp.hookAllMethods(type("Launcher"), "onCreate", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
@@ -167,6 +168,11 @@ final class LauncherFeatures {
     static Object get(Object o, String name) { return Xp.getObjectField(o, name); }
     static void set(Object o, String name, Object v) { Xp.setObjectField(o, name, v); }
     static Object call(Object o, String name, Object... args) { return Xp.callMethod(o, name, args); }
+
+    static Object workspaceItem(Object app, android.content.Context c) {
+        try { return Xp.callMethod(app, "makeWorkspaceItem", c); }
+        catch (Throwable withContext) { return Xp.callMethod(app, "makeWorkspaceItem"); }
+    }
     static String identity(Object info) {
         try {
             ComponentName component = (ComponentName) call(info, "getTargetComponent");
@@ -419,6 +425,7 @@ final class LauncherFeatures {
                 if(color!=null)set(p.thisObject,"mBgColor",color);
             }
         });
+        try {
         for (Method m : type("folder.FolderAnimationSpringBuilderManager").getDeclaredMethods()) {
             if (!m.getName().equals("createAnimatorSet")) continue;
             Xp.x().hook(m).intercept(new XposedInterface.Hooker() {
@@ -454,6 +461,7 @@ final class LauncherFeatures {
                 }
             });
         }
+        } catch (Throwable olderLauncher) { }
         Xp.hookAllMethods(type("icons.GraphicsUtils"),"getAttrColor",new Xp.Callback(){protected void beforeHookedMethod(Xp.Param p){
             if((activeFolderColors.get()==null&&activePreviewColor.get()==null)||p.args.length!=2||!(p.args[1] instanceof Context))return;
             Context c=(Context)p.args[1];int attr=((Number)p.args[0]).intValue();

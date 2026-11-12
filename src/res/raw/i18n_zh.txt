@@ -1590,3 +1590,102 @@ Block ads in every app	在所有应用中拦截广告
 Turn off to block ads only in Chrome and Google News.	关闭后只在 Chrome 和 Google 新闻中拦截广告。
 Ads are blocked only in Chrome and Google News.	目前只在 Chrome 和 Google 新闻中拦截广告。
 Open-source servers worldwide	遍布全球的开源服务器
+Pixel Arcade	Pixel Arcade
+Choose a game	选择一款游戏
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	越堆越高
+Defend the logo	守护标志
+Blast your way through	炸出一条路
+Drag to move, tap to fire	拖动移动，点按开火
+Drag to move, tap to drop a bomb	拖动移动，点按放置炸弹
+Stage {0}	第 {0} 关
+Stage clear!	过关了！
+Power up!	火力升级！
+Shield	护盾
+Freeze	冰冻
+Boom!	轰！
+Fortress	堡垒
+Extra life	额外生命
++1 bomb	炸弹 +1
+Bigger blast	爆炸范围变大
+Speed up	速度提升
+Portal open!	传送门已开启！
+Weapon upgrade!	武器升级！
+Rockets!	火箭弹！
+Double points	双倍得分
+Poison bombs!	毒气炸弹！
+Fire breath!	喷火！
+Laser!	激光！
+Helper drone!	助手无人机！
+Shockwave!	冲击波！
+Laser eyes!	激光眼！
+Pfft!	噗～！
+Split!	分裂了！
+Level up!	升级了！
+Combo ×{0}!	连击 ×{0}！
+Kick!	踢！
+Bomb rain!	炸弹雨！
+Mega bombs!	巨型炸弹！
+Glitch King	故障之王
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	将屏幕截图剪裁为任意大小，甚至只有一行。需要 Pixel Studio（Pixel 9 及更新机型）。
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	在屏幕截图上绘制形状和箭头。需要 Pixel Studio（Pixel 9 及更新机型）。
+Needs Pixel Studio (Pixel 9 and newer).	需要 Pixel Studio（Pixel 9 及更新机型）。
+Golden!	金块！
+On fire!	着火了！
+Iron Crown	铁之王冠
+Storm Turret	风暴炮塔
+Laser Walker	激光行者
+Crate Golem	箱子魔像
+Phantom Twins	幻影双子
+Nuke	核弹
+Fart	屁
+Level {0}	等级 {0}
+Nice!	不错！
+Common	普通
+Rare	稀有
+Legendary	传说
+Levels up your tank	提升坦克等级
+Blocks every hit	挡住所有攻击
+One more try	多一次机会
+Score counts twice	得分翻倍
+Shots chase tanks	子弹追踪坦克
+Cuts through everything	穿透一切
+A helper that shoots	会开火的帮手
+Steel walls for the base	为基地筑起钢墙
+Stops every enemy	冻住所有敌人
+Wipes the whole map	清空整张地图
+Drop one more bomb	多放一颗炸弹
+Flames reach further	火焰延伸更远
+Run faster	跑得更快
+Bombs leave poison gas	炸弹留下毒气
+Burn what you face	烧掉面前的一切
+Zap in a straight line	直线射击
+Kick bombs away	把炸弹踢开
+Three huge bombs	三颗巨型炸弹
+Makes ghosts slow and dizzy	让幽灵变慢并晕眩
+Bombs fall on ghosts	炸弹落向幽灵
+Airstrike	空袭
+Missiles on every tank	导弹轰炸每辆坦克
+Blasts and stuns all tanks	冲击并击晕所有坦克
+Paused	已暂停
+Tap to continue	点击继续
+New game	新游戏
+Evil	邪恶
+Angelic	天使
+Cleansed	已净化
+• Pixel Arcade: best scores	• Pixel Arcade：最高分
+• 1 paused game	• 1 个暂停的游戏
+• {0} paused games	• {0} 个暂停的游戏
+Distance from the gesture bar	与手势栏的距离
+Near	近
+Normal	正常
+Far	远
+Gesture bar	手势栏
+Shown	显示
+Hidden	隐藏
+Swipe gestures still work, also with the gesture bar hidden.	即使隐藏手势栏，滑动手势仍可使用。
+Hide At a Glance	隐藏“概览”
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	移除主屏幕顶部的“概览”。这一行可用于放置应用、文件夹和微件。
+Hold an app, folder or widget and drop it in the free row.	按住应用、文件夹或微件，然后拖放到空出的那一行。
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	适用于 Android 16 及更低版本。较新版本可直接在主屏幕上移除“概览”。

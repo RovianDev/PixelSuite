@@ -1590,3 +1590,102 @@ Block ads in every app	すべてのアプリで広告をブロック
 Turn off to block ads only in Chrome and Google News.	オフにすると Chrome と Google News だけで広告をブロックします。
 Ads are blocked only in Chrome and Google News.	広告は Chrome と Google News だけでブロックされています。
 Open-source servers worldwide	世界中のオープンソースのサーバー
+Pixel Arcade	Pixel Arcade
+Choose a game	ゲームを選択
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	高く積み上げよう
+Defend the logo	ロゴを守り抜こう
+Blast your way through	爆発で道を切り開こう
+Drag to move, tap to fire	ドラッグで移動、タップで発射
+Drag to move, tap to drop a bomb	ドラッグで移動、タップで爆弾を置く
+Stage {0}	ステージ {0}
+Stage clear!	ステージクリア！
+Power up!	パワーアップ！
+Shield	シールド
+Freeze	フリーズ
+Boom!	ドカン！
+Fortress	要塞
+Extra life	残機アップ
++1 bomb	爆弾 +1
+Bigger blast	爆発が大きく
+Speed up	スピードアップ
+Portal open!	ポータルが開いた！
+Weapon upgrade!	武器がパワーアップ！
+Rockets!	ロケット！
+Double points	ポイント2倍
+Poison bombs!	毒の爆弾！
+Fire breath!	火炎ブレス！
+Laser!	レーザー！
+Helper drone!	おたすけドローン！
+Shockwave!	衝撃波！
+Laser eyes!	レーザーアイ！
+Pfft!	ぷぅ〜！
+Split!	分裂！
+Level up!	レベルアップ！
+Combo ×{0}!	コンボ ×{0}！
+Kick!	キック！
+Bomb rain!	爆弾の雨！
+Mega bombs!	メガ爆弾！
+Glitch King	グリッチキング
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	スクリーンショットを好きなサイズに切り抜けます。1 行だけでも OK。Pixel Studio が必要です（Pixel 9 以降）。
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	スクリーンショットに図形や矢印を描画。Pixel Studio が必要です（Pixel 9 以降）。
+Needs Pixel Studio (Pixel 9 and newer).	Pixel Studio が必要です（Pixel 9 以降）。
+Golden!	ゴールド！
+On fire!	絶好調！
+Iron Crown	アイアンクラウン
+Storm Turret	ストームタレット
+Laser Walker	レーザーウォーカー
+Crate Golem	クレートゴーレム
+Phantom Twins	ファントムツインズ
+Nuke	核爆弾
+Fart	おなら
+Level {0}	レベル{0}
+Nice!	ナイス！
+Common	コモン
+Rare	レア
+Legendary	レジェンド
+Levels up your tank	戦車をレベルアップ
+Blocks every hit	すべての攻撃を防ぐ
+One more try	もう一回挑戦
+Score counts twice	スコアが2倍
+Shots chase tanks	弾が戦車を追尾
+Cuts through everything	すべてを貫通
+A helper that shoots	撃ってくれる助っ人
+Steel walls for the base	基地に鋼鉄の壁
+Stops every enemy	敵をすべて止める
+Wipes the whole map	マップ全体を一掃
+Drop one more bomb	爆弾をもう1個置ける
+Flames reach further	炎がより遠くへ
+Run faster	足が速くなる
+Bombs leave poison gas	爆弾が毒ガスを残す
+Burn what you face	目の前を焼き払う
+Zap in a straight line	まっすぐビーム
+Kick bombs away	爆弾を蹴り飛ばす
+Three huge bombs	巨大爆弾を3個
+Makes ghosts slow and dizzy	ゴーストを遅く、ふらふらに
+Bombs fall on ghosts	ゴーストに爆弾が降る
+Airstrike	空爆
+Missiles on every tank	すべての戦車にミサイル
+Blasts and stuns all tanks	全戦車を攻撃して気絶させる
+Paused	一時停止中
+Tap to continue	タップして再開
+New game	新しいゲーム
+Evil	邪悪
+Angelic	天使
+Cleansed	浄化
+• Pixel Arcade: best scores	• Pixel Arcade: ベストスコア
+• 1 paused game	• 一時停止中のゲーム 1件
+• {0} paused games	• 一時停止中のゲーム {0}件
+Distance from the gesture bar	ジェスチャー バーからの距離
+Near	近い
+Normal	標準
+Far	遠い
+Gesture bar	ジェスチャー バー
+Shown	表示
+Hidden	非表示
+Swipe gestures still work, also with the gesture bar hidden.	ジェスチャー バーを非表示にしても、スワイプ操作は引き続き使えます。
+Hide At a Glance	スナップショットを非表示
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	ホーム画面上部のスナップショットを取り除きます。その行はアプリ、フォルダ、ウィジェットに使えます。
+Hold an app, folder or widget and drop it in the free row.	アプリ、フォルダ、ウィジェットを長押しして、空いた行にドロップします。
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 以前向けです。新しいバージョンでは、ホーム画面からスナップショットを削除できます。

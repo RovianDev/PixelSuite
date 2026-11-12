@@ -3901,7 +3901,12 @@ final class GboardPlus {
 
     private static Class<?> sKeyDef, sActionDef;
     private static Field sDefActions, sActData, sActType, sActLabels, sActIcons, sActDesc, sDataText;
-    private static Object sHamzaData, sHamzaType, sLongTemplate;
+    private static Object sHamzaData, sHamzaType, sLongTemplate, sLongOne, sPressType;
+    private static Class<?> sList;
+    private static Method sListOf;
+    private static String sNoLabel;
+    private static final List<Field> sDefLists = new ArrayList<Field>(), sActLists = new ArrayList<Field>();
+    private static final List<Field> sDataTexts = new ArrayList<Field>();
     private static volatile boolean sWawDone;
     private static final Map<Object, Boolean> sWawDefs = new WeakHashMap<Object, Boolean>();
     private static final Map<View, Boolean> sHiddenKeys = new WeakHashMap<View, Boolean>();
@@ -3912,22 +3917,44 @@ final class GboardPlus {
         sKeyDef = cl.loadClass("com.google.android.libraries.inputmethod.metadata.SoftKeyDef");
         sActionDef = cl.loadClass("com.google.android.libraries.inputmethod.metadata.ActionDef");
         for (Field f : sKeyDef.getDeclaredFields()) if (!Modifier.isStatic(f.getModifiers()) && f.getType().isArray() && f.getType().getComponentType() == sActionDef) sDefActions = f;
-        Class<?> type = null, data = null;
+        Class<?> type = null, data = null, list = null;
         for (Constructor<?> k : sActionDef.getDeclaredConstructors()) {
             Class<?>[] t = k.getParameterTypes();
-            if (t.length >= 10 && t[1].isArray() && !t[1].getComponentType().isPrimitive()) { type = t[0]; data = t[1].getComponentType(); }
+            if (t.length < 10) continue;
+            if (t[1].isArray() && !t[1].getComponentType().isPrimitive()) { type = t[0]; data = t[1].getComponentType(); }
+            else if (data == null && List.class.isAssignableFrom(t[1])) { type = t[0]; list = t[1]; }
         }
-        if (sDefActions == null || type == null) return;
-        for (Field f : sActionDef.getDeclaredFields()) {
-            if (Modifier.isStatic(f.getModifiers())) continue;
-            if (f.getType() == type) sActType = f;
-            else if (f.getType().isArray() && f.getType().getComponentType() == data) sActData = f;
-            else if (f.getType() == String[].class) sActLabels = f;
-            else if (f.getType() == int[].class) sActIcons = f;
-            else if (f.getType() == String.class) sActDesc = f;
-        }
-        for (Field f : data.getDeclaredFields()) if (!Modifier.isStatic(f.getModifiers()) && f.getType() == Object.class) sDataText = f;
-        if (sActType == null || sActData == null || sActLabels == null || sDataText == null) return;
+        if (type == null) { return; }
+        if (sDefActions != null && data != null) {
+            for (Field f : sActionDef.getDeclaredFields()) {
+                if (Modifier.isStatic(f.getModifiers())) continue;
+                if (f.getType() == type) sActType = f;
+                else if (f.getType().isArray() && f.getType().getComponentType() == data) sActData = f;
+                else if (f.getType() == String[].class) sActLabels = f;
+                else if (f.getType() == int[].class) sActIcons = f;
+                else if (f.getType() == String.class) sActDesc = f;
+            }
+            for (Field f : data.getDeclaredFields()) if (!Modifier.isStatic(f.getModifiers()) && f.getType() == Object.class) { sDataText = f; f.setAccessible(true); sDataTexts.add(f); }
+            if (sActType == null || sActData == null || sActLabels == null || sDataText == null) { return; }
+        } else if (list != null) {
+            sList = list;
+            for (Field f : sKeyDef.getDeclaredFields()) if (!Modifier.isStatic(f.getModifiers()) && f.getType() == list) { f.setAccessible(true); sDefLists.add(f); }
+            for (Field f : sActionDef.getDeclaredFields()) {
+                if (Modifier.isStatic(f.getModifiers())) {
+                    if (f.getType() == String.class && sNoLabel == null) try { f.setAccessible(true); Object v = f.get(null); if (v instanceof String) sNoLabel = (String) v; } catch (Throwable ignored) { }
+                    continue;
+                }
+                if (f.getType() == type) sActType = f;
+                else if (f.getType() == list) { f.setAccessible(true); sActLists.add(f); }
+                else if (f.getType() == int[].class) sActIcons = f;
+                else if (f.getType() == String.class) sActDesc = f;
+            }
+            for (Method m : list.getDeclaredMethods()) {
+                Class<?>[] t = m.getParameterTypes();
+                if (Modifier.isStatic(m.getModifiers()) && Modifier.isPublic(m.getModifiers()) && t.length == 1 && t[0] == java.util.Collection.class && m.getReturnType() == list) { m.setAccessible(true); sListOf = m; }
+            }
+            if (sDefLists.isEmpty() || sActLists.size() < 2 || sActType == null || sListOf == null) { return; }
+        } else { return; }
         for (Field f : new Field[] { sDefActions, sActType, sActData, sActLabels, sActIcons, sActDesc, sDataText }) if (f != null) f.setAccessible(true);
         Method bind = null;
         Class<?> key = cl.loadClass(SOFT_KEY);
@@ -3954,13 +3981,93 @@ final class GboardPlus {
         });
     }
 
-    private static Object[] actions(Object def) throws Throwable { Object a = sDefActions.get(def); return a instanceof Object[] ? (Object[]) a : new Object[0]; }
+    private static Object[] actions(Object def) throws Throwable {
+        if (sList == null) { Object a = sDefActions.get(def); return a instanceof Object[] ? (Object[]) a : new Object[0]; }
+        Field f = sDefActions;
+        if (f == null) {
+            for (Field c : sDefLists) { Object v = c.get(def); if (v instanceof List && !((List<?>) v).isEmpty() && sActionDef.isInstance(((List<?>) v).get(0))) { sDefActions = f = c; break; } }
+            if (f == null) return new Object[0];
+        }
+        Object v = f.get(def);
+        return v instanceof List ? ((List<?>) v).toArray() : new Object[0];
+    }
+    private static Object listOf(Object[] items) throws Throwable { return sListOf.invoke(null, java.util.Arrays.asList(items)); }
+    private static void setActions(Object def, Object[] acts) throws Throwable {
+        Field f = sDefActions;
+        if (sList == null) { Object typed = java.lang.reflect.Array.newInstance(sActionDef, acts.length); System.arraycopy(acts, 0, typed, 0, acts.length); f.set(def, typed); return; }
+        if (f == null) { actions(def); f = sDefActions; }
+        if (f != null) f.set(def, listOf(acts));
+    }
+    private static boolean actFields(Object action) throws Throwable {
+        if (sActData != null) return true;
+        if (sList == null) return false;
+        for (Field c : sActLists) {
+            Object v = c.get(action);
+            if (!(v instanceof List) || ((List<?>) v).isEmpty() || ((List<?>) v).get(0) instanceof CharSequence) continue;
+            for (Field o : sActLists) if (o != c) { sActLabels = o; break; }
+            sActData = c;
+            return true;
+        }
+        return false;
+    }
+    private static Object[] datas(Object action) throws Throwable {
+        Field f = sActData;
+        if (sList == null) { Object d = f.get(action); return d instanceof Object[] ? (Object[]) d : null; }
+        if (!actFields(action)) return null;
+        f = sActData;
+        Object v = f.get(action);
+        return v instanceof List ? ((List<?>) v).toArray() : null;
+    }
+    private static Object[] newDatas(int n) {
+        Field f = sActData;
+        return sList == null ? (Object[]) java.lang.reflect.Array.newInstance(f.getType().getComponentType(), n) : new Object[n];
+    }
+    private static void setDatas(Object action, Object[] d) throws Throwable {
+        Field f = sActData;
+        if (sList == null) { f.set(action, d); return; }
+        if (f != null) f.set(action, listOf(d));
+    }
+    private static String[] labelsOf(Object action) throws Throwable {
+        Field f = sActLabels;
+        if (sList == null) { Object l = f.get(action); return l instanceof String[] ? (String[]) l : null; }
+        if (!actFields(action)) return null;
+        f = sActLabels;
+        Object v = f == null ? null : f.get(action);
+        if (!(v instanceof List) || ((List<?>) v).isEmpty()) return null;
+        Object[] in = ((List<?>) v).toArray();
+        String[] out = new String[in.length];
+        for (int k = 0; k < in.length; k++) out[k] = in[k] == sNoLabel || !(in[k] instanceof String) ? null : (String) in[k];
+        return out;
+    }
+    private static void setLabels(Object action, String[] l) throws Throwable {
+        Field f = sActLabels;
+        if (sList == null) { f.set(action, l); return; }
+        if (f == null) return;
+        Object[] in = new Object[l == null ? 0 : l.length];
+        for (int k = 0; k < in.length; k++) in[k] = l[k] != null ? l[k] : sNoLabel != null ? sNoLabel : "";
+        f.set(action, listOf(in));
+    }
 
     private static String text(Object action) throws Throwable {
-        Object d = sActData.get(action);
+        Object d = datas(action);
         if (!(d instanceof Object[]) || ((Object[]) d).length == 0 || ((Object[]) d)[0] == null) return null;
-        Object v = sDataText.get(((Object[]) d)[0]);
-        return v instanceof CharSequence ? v.toString() : null;
+        return dataText(((Object[]) d)[0]);
+    }
+
+    private static String dataText(Object data) {
+        if (data == null) return null;
+        String code = null;
+        if (sDataTexts.isEmpty()) synchronized (sDataTexts) {
+            if (sDataTexts.isEmpty()) for (Field f : data.getClass().getDeclaredFields()) if (!Modifier.isStatic(f.getModifiers()) && f.getType() == Object.class) { f.setAccessible(true); sDataTexts.add(f); }
+        }
+        for (Field f : sDataTexts) {
+            try {
+                Object v = f.get(data);
+                if (v instanceof CharSequence && ((CharSequence) v).length() > 0) return v.toString();
+                if (code == null && v instanceof Integer && (Integer) v > 0x20 && Character.isValidCodePoint((Integer) v)) code = new String(Character.toChars((Integer) v));
+            } catch (Throwable ignored) { }
+        }
+        return code;
     }
 
     private static Method sBind;
@@ -3996,33 +4103,73 @@ final class GboardPlus {
         Object pressAct = null;
         for (Object a : acts) { String t = text(a); if (t != null) { press = t; pressAct = a; break; } }
         if (press == null) return;
+        if (sPressType == null) sPressType = sActType.get(pressAct);
         if ("ؤ".equals(press) && sHamzaData == null) {
-            sHamzaData = ((Object[]) sActData.get(pressAct))[0];
+            sHamzaData = datas(pressAct)[0];
             sHamzaType = sActType.get(pressAct);
         }
         if ("ؤ".equals(press)) sHamzaKey = new WeakReference<View>(key);
-        if (sLongTemplate == null && sHamzaType != null)
+        if (sLongTemplate == null)
             for (Object a : acts) {
-                Object d = sActData.get(a);
-                if (sActType.get(a) != sHamzaType && d instanceof Object[] && ((Object[]) d).length >= 2 && sActLabels.get(a) != null) { sLongTemplate = a; break; }
+                Object d = datas(a);
+                if (a == pressAct || sActType.get(a) == sPressType || !(d instanceof Object[]) || (sList == null && labelsOf(a) == null)) continue;
+                int n = ((Object[]) d).length;
+                if (n >= 2) { sLongTemplate = a; break; }
+                if (n == 1 && sLongOne == null) { sLongOne = a; }
             }
         if ("و".equals(press)) synchronized (sWawDefs) { sWawDefs.put(def, Boolean.TRUE); }
-        if (sHamzaData == null || sLongTemplate == null) return;
+        if ("ؤ".equals(press) || "و".equals(press)) settleSoon();
+        if (sHamzaData == null || (sLongTemplate == null && sLongOne == null)) return;
+        applyHamza();
+    }
+
+    private static void applyHamza() throws Throwable {
         List<Object> pending;
         synchronized (sWawDefs) { pending = new ArrayList<Object>(sWawDefs.keySet()); }
         for (Object w : pending) { if (giveHamza(w)) sWawDone = true; }
         if (sWawDone) hideHamza();
     }
 
+    private static volatile boolean sSettlePosted;
+    private static void settleSoon() {
+        if (sSettlePosted) return;
+        sSettlePosted = true;
+        MAIN.postDelayed(new Runnable() { public void run() {
+            sSettlePosted = false;
+            try {
+                if (!on(KEY_KEYS) || sHamzaData == null) return;
+                if (sLongTemplate == null) {
+                    List<Object> defs;
+                    synchronized (sLastDef) { defs = new ArrayList<Object>(sLastDef.values()); }
+                    for (Object def : defs) {
+                        if (def == null || sLongTemplate != null) continue;
+                        for (Object a : actions(def)) {
+                            Object d = datas(a);
+                            if (sActType.get(a) == sPressType || !(d instanceof Object[]) || (sList == null && labelsOf(a) == null)) continue;
+                            int n = ((Object[]) d).length;
+                            if (n >= 2) { sLongTemplate = a; break; }
+                            if (n == 1 && sLongOne == null) { sLongOne = a; }
+                        }
+                    }
+                }
+                if (sLongTemplate == null && sLongOne == null) { return; }
+                boolean any;
+                synchronized (sWawDefs) { any = !sWawDefs.isEmpty(); }
+                if (!any) { return; }
+                applyHamza();
+            } catch (Throwable ignored) { }
+        }}, 120);
+    }
+
     private static boolean giveHamza(Object wawDef) throws Throwable {
         Object[] acts = actions(wawDef);
         for (Object a : acts) {
-            Object d = sActData.get(a);
-            if (d instanceof Object[]) for (Object x : (Object[]) d) if (x != null && "ؤ".equals(String.valueOf(sDataText.get(x)))) return true;
+            Object d = datas(a);
+            if (d instanceof Object[]) for (Object x : (Object[]) d) if (x != null && "ؤ".equals(dataText(x))) return true;
         }
         Object[] grown = hamzaActions(acts);
-        if (grown == null) return false;
-        sDefActions.set(wawDef, grown);
+        if (grown == null) { return false; }
+        setActions(wawDef, grown);
                 return true;
     }
 
@@ -4046,7 +4193,7 @@ final class GboardPlus {
         Object[] acts = menuActions(def);
         if (acts == null) return null;
         c = copy(def);
-        sDefActions.set(c, acts);
+        setActions(c, acts);
         synchronized (sMenuCopies) { sMenuCopies.put(def, c); }
         return c;
     }
@@ -4062,9 +4209,16 @@ final class GboardPlus {
         int icon = 0;
         Object icons = sDefIcons == null ? null : sDefIcons.get(def);
         if (icons instanceof Object[]) for (Object o : (Object[]) icons) { icon = drawableId(o); if (icon != 0) break; }
+        if (icon == 0 && sList != null)
+            for (Field f : sDefLists) {
+                Object v = f.get(def);
+                if (!(v instanceof List)) continue;
+                for (Object o : (List<?>) v) { if (o == null || o instanceof CharSequence || sActionDef.isInstance(o)) continue; icon = drawableId(o); if (icon != 0) break; }
+                if (icon != 0) break;
+            }
         Object data = null;
         for (Object a : actions(def)) {
-            Object d = sActData.get(a);
+            Object d = datas(a);
             if (d instanceof Object[] && ((Object[]) d).length > 0 && ((Object[]) d)[0] != null) { data = ((Object[]) d)[0]; break; }
         }
         if (data == null || icon == 0) return;
@@ -4098,7 +4252,7 @@ final class GboardPlus {
         for (Object a : acts) { String t = text(a); if (",".equals(t) || "،".equals(t)) comma = true; }
         if (!comma) return -1;
         for (int i = 0; i < acts.length; i++) {
-            Object d = sActData.get(acts[i]), ic = sActIcons.get(acts[i]);
+            Object d = datas(acts[i]), ic = sActIcons.get(acts[i]);
             if (!(d instanceof Object[]) || !(ic instanceof int[])) continue;
             int[] icons = (int[]) ic;
             if (icons.length >= 2 && icons.length == ((Object[]) d).length && icons[icons.length - 1] != 0) return i;
@@ -4111,33 +4265,33 @@ final class GboardPlus {
         int at = -1;
         if (sActIcons == null) return null;
         for (int i = 0; i < acts.length && at < 0; i++) {
-            Object d = sActData.get(acts[i]), ic = sActIcons.get(acts[i]);
+            Object d = datas(acts[i]), ic = sActIcons.get(acts[i]);
             if (d instanceof Object[] && ic instanceof int[] && ((int[]) ic).length >= 2 && ((int[]) ic).length == ((Object[]) d).length) at = i;
         }
         if (at < 0) return null;
-        Object[] data = (Object[]) sActData.get(acts[at]);
+        Object[] data = datas(acts[at]);
         for (Object x : data) if (x == sMenuData) return null;
         int[] icons = (int[]) sActIcons.get(acts[at]);
         int[] from;
         if (data.length == 3) from = new int[] { 0, -1, 2, 1 };
         else { from = new int[data.length + 1]; for (int i = 0, j = 0; i < from.length; i++) from[i] = i == 1 ? -1 : j++; }
-        Object grown = java.lang.reflect.Array.newInstance(sActData.getType().getComponentType(), from.length);
+        Object[] grown = newDatas(from.length);
         int[] grownIcons = new int[from.length];
         for (int i = 0; i < from.length; i++) {
             java.lang.reflect.Array.set(grown, i, from[i] < 0 ? sMenuData : data[from[i]]);
             grownIcons[i] = from[i] < 0 ? sMenuIcon : icons[from[i]];
         }
         Object hold = copy(acts[at]);
-        sActData.set(hold, grown);
+        setDatas(hold, grown);
         sActIcons.set(hold, grownIcons);
-        Object labels = sActLabels.get(acts[at]);
+        Object labels = labelsOf(acts[at]);
         if (labels instanceof String[] && ((String[]) labels).length == data.length) {
             String[] l = (String[]) labels, gl = new String[from.length];
             boolean words = false;
             for (String x : l) if (x != null && !x.isEmpty()) words = true;
             String mine = !words ? (l.length > 0 ? l[l.length - 1] : null) : (sMenuDesc == null ? "Menu" : sMenuDesc);
             for (int i = 0; i < gl.length; i++) gl[i] = from[i] < 0 ? mine : l[from[i]];
-            sActLabels.set(hold, gl);
+            setLabels(hold, gl);
         }
         Object[] out = (Object[]) java.lang.reflect.Array.newInstance(sActionDef, acts.length);
         System.arraycopy(acts, 0, out, 0, acts.length);
@@ -4147,17 +4301,38 @@ final class GboardPlus {
 
     private static Object[] hamzaActions(Object[] acts) throws Throwable {
         for (Object a : acts) {
-            Object d = sActData.get(a);
-            if (d instanceof Object[]) for (Object x : (Object[]) d) if (x != null && "ؤ".equals(String.valueOf(sDataText.get(x)))) return null;
+            Object d = datas(a);
+            if (d instanceof Object[]) for (Object x : (Object[]) d) if (x != null && "ؤ".equals(dataText(x))) return null;
         }
-        Object tpl = sLongTemplate;
-        for (Object a : acts) if (sActType.get(a) == sActType.get(tpl)) return null;
+        Object tpl = sLongTemplate != null ? sLongTemplate : sLongOne;
+        if (tpl == null) return null;
+        for (int at = 0; at < acts.length; at++) {
+            if (sActType.get(acts[at]) != sActType.get(tpl)) continue;
+            Object d = datas(acts[at]);
+            if (!(d instanceof Object[])) return null;
+            Object[] old = (Object[]) d;
+            Object[] more = newDatas(old.length + 1);
+            for (int i = 0; i < old.length; i++) java.lang.reflect.Array.set(more, i, old[i]);
+            java.lang.reflect.Array.set(more, old.length, sHamzaData);
+            Object joined = copy(acts[at]);
+            setDatas(joined, more);
+            Object l = labelsOf(acts[at]);
+            String[] labels = new String[old.length + 1];
+            for (int i = 0; i < old.length; i++) { String t = l instanceof String[] && ((String[]) l).length == old.length ? ((String[]) l)[i] : null; labels[i] = t != null ? t : dataText(old[i]); }
+            labels[old.length] = "ؤ";
+            setLabels(joined, labels);
+            if (sActIcons != null) { Object ic = sActIcons.get(acts[at]); if (ic instanceof int[] && ((int[]) ic).length == old.length) { int[] g = java.util.Arrays.copyOf((int[]) ic, old.length + 1); sActIcons.set(joined, g); } }
+            Object[] out = (Object[]) java.lang.reflect.Array.newInstance(sActionDef, acts.length);
+            System.arraycopy(acts, 0, out, 0, acts.length);
+            out[at] = joined;
+            return out;
+        }
         Object hold = copy(tpl);
-        Object arr = java.lang.reflect.Array.newInstance(sActData.getType().getComponentType(), 1);
+        Object[] arr = newDatas(1);
         java.lang.reflect.Array.set(arr, 0, sHamzaData);
-        sActData.set(hold, arr);
-        sActLabels.set(hold, new String[] { "ؤ" });
-        if (sActIcons != null) sActIcons.set(hold, null);
+        setDatas(hold, arr);
+        setLabels(hold, new String[] { "ؤ" });
+        if (sActIcons != null) sActIcons.set(hold, sList == null ? null : new int[1]);
         if (sActDesc != null) sActDesc.set(hold, null);
         Object[] grown = (Object[]) java.lang.reflect.Array.newInstance(sActionDef, acts.length + 1);
         System.arraycopy(acts, 0, grown, 0, acts.length);
@@ -4237,7 +4412,7 @@ final class GboardPlus {
         Runnable apply = new Runnable() { public void run() {
             try {
                 if (hz.getVisibility() != View.GONE) hz.setVisibility(View.GONE);
-                if (!(hz.getParent() instanceof android.widget.LinearLayout)) return;
+                if (!(hz.getParent() instanceof android.widget.LinearLayout)) { return; }
                 android.widget.LinearLayout row = (android.widget.LinearLayout) hz.getParent();
                 View del = null;
                 float sum = 0;
@@ -4247,7 +4422,7 @@ final class GboardPlus {
                     if ("key_pos_del".equals(idName(c))) { del = c; continue; }
                     if (c.getLayoutParams() instanceof android.widget.LinearLayout.LayoutParams) sum += ((android.widget.LinearLayout.LayoutParams) c.getLayoutParams()).weight;
                 }
-                if (del == null || sum <= 0 || !(del.getLayoutParams() instanceof android.widget.LinearLayout.LayoutParams)) return;
+                if (del == null || sum <= 0 || !(del.getLayoutParams() instanceof android.widget.LinearLayout.LayoutParams)) { return; }
                 float r = sDelRatio > 0.05f && sDelRatio < 0.3f ? sDelRatio : 0.135f;
                 android.widget.LinearLayout.LayoutParams lp = (android.widget.LinearLayout.LayoutParams) del.getLayoutParams();
                 float total = row.getWeightSum();

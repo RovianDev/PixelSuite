@@ -1590,3 +1590,102 @@ Block ads in every app	حظر الإعلانات في كل التطبيقات
 Turn off to block ads only in Chrome and Google News.	أوقفه لحظر الإعلانات في Chrome وGoogle News فقط.
 Ads are blocked only in Chrome and Google News.	تُحظر الإعلانات في Chrome وGoogle News فقط.
 Open-source servers worldwide	خوادم مفتوحة المصدر حول العالم
+Pixel Arcade	Pixel Arcade
+Choose a game	اختر لعبة
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	ابنِ أعلى برج
+Defend the logo	احمِ الشعار
+Blast your way through	فجّر طريقك
+Drag to move, tap to fire	اسحب للتحرك، واضغط للإطلاق
+Drag to move, tap to drop a bomb	اسحب للتحرك، واضغط لوضع قنبلة
+Stage {0}	المرحلة {0}
+Stage clear!	اكتملت المرحلة!
+Power up!	قوة إضافية!
+Shield	درع
+Freeze	تجميد
+Boom!	بوم!
+Fortress	حصن
+Extra life	حياة إضافية
++1 bomb	+1 قنبلة
+Bigger blast	انفجار أكبر
+Speed up	سرعة أكبر
+Portal open!	فُتحت البوابة!
+Weapon upgrade!	ترقية السلاح!
+Rockets!	صواريخ!
+Double points	نقاط مضاعفة
+Poison bombs!	قنابل سامّة!
+Fire breath!	نفَس ناري!
+Laser!	ليزر!
+Helper drone!	طائرة مساعدة!
+Shockwave!	موجة صدمة!
+Laser eyes!	عيون ليزر!
+Pfft!	بفف!
+Split!	انقسام!
+Level up!	مستوى أعلى!
+Combo ×{0}!	كومبو ×{0}!
+Kick!	ركلة!
+Bomb rain!	مطر القنابل!
+Mega bombs!	قنابل عملاقة!
+Glitch King	ملك الأشباح
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	اقتصاص لقطات الشاشة إلى أي حجم، حتى سطر واحد. يتطلب Pixel Studio (Pixel 9 والأحدث).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	ارسم أشكالاً وأسهمًا على لقطات الشاشة. يتطلب Pixel Studio (Pixel 9 والأحدث).
+Needs Pixel Studio (Pixel 9 and newer).	يتطلب Pixel Studio (Pixel 9 والأحدث).
+Golden!	ذهبي!
+On fire!	مشتعل!
+Iron Crown	التاج الحديدي
+Storm Turret	برج العاصفة
+Laser Walker	الماشي الليزري
+Crate Golem	غولم الصناديق
+Phantom Twins	التوأمان الشبحيان
+Nuke	نووية
+Fart	ضرطة
+Level {0}	المستوى {0}
+Nice!	جميل!
+Common	عادي
+Rare	نادر
+Legendary	أسطوري
+Levels up your tank	يرقّي دبابتك
+Blocks every hit	يصدّ كل ضربة
+One more try	محاولة إضافية
+Score counts twice	النقاط تُحسب مرتين
+Shots chase tanks	طلقات تلاحق الدبابات
+Cuts through everything	يخترق كل شيء
+A helper that shoots	مساعد يطلق النار
+Steel walls for the base	جدران فولاذية للقاعدة
+Stops every enemy	يوقف كل الأعداء
+Wipes the whole map	يمسح الخريطة كلها
+Drop one more bomb	قنبلة إضافية
+Flames reach further	اللهب يصل أبعد
+Run faster	اركض أسرع
+Bombs leave poison gas	القنابل تترك غازاً ساماً
+Burn what you face	احرق ما أمامك
+Zap in a straight line	صعقة في خط مستقيم
+Kick bombs away	اركل القنابل بعيداً
+Three huge bombs	ثلاث قنابل ضخمة
+Makes ghosts slow and dizzy	يجعل الأشباح بطيئة ودائخة
+Bombs fall on ghosts	قنابل تسقط على الأشباح
+Airstrike	غارة جوية
+Missiles on every tank	صواريخ على كل دبابة
+Blasts and stuns all tanks	يضرب ويشلّ كل الدبابات
+Paused	متوقف مؤقتاً
+Tap to continue	اضغط للمتابعة
+New game	لعبة جديدة
+Evil	شرير
+Angelic	ملائكي
+Cleansed	تطهّرت
+• Pixel Arcade: best scores	• Pixel Arcade: أفضل النتائج
+• 1 paused game	• لعبة متوقفة واحدة
+• {0} paused games	• {0} ألعاب متوقفة
+Distance from the gesture bar	المسافة عن شريط الإيماءات
+Near	قريبة
+Normal	عادية
+Far	بعيدة
+Gesture bar	شريط الإيماءات
+Shown	ظاهر
+Hidden	مخفي
+Swipe gestures still work, also with the gesture bar hidden.	تظل إيماءات التمرير تعمل، حتى مع إخفاء شريط الإيماءات.
+Hide At a Glance	إخفاء «نظرة سريعة»
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	يزيل «نظرة سريعة» من أعلى الشاشة الرئيسية. يصبح الصف متاحًا لتطبيقاتك ومجلداتك وأدواتك.
+Hold an app, folder or widget and drop it in the free row.	اضغط مع الاستمرار على تطبيق أو مجلد أو أداة وأفلته في الصف الفارغ.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	لنظام Android 16 والإصدارات الأقدم. الإصدارات الأحدث تتيح إزالة «نظرة سريعة» من الشاشة الرئيسية نفسها.

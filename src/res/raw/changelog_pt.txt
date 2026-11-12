@@ -1,3 +1,35 @@
+## v3.1.2
+Dois jogos novos chegam ao Pixel Arcade! Além de um Pixel Stack reformulado, Ocultar Resumo, novas opções dos botões de navegação e correções.
+
+🕹️ Pixel Arcade: mais dois jogos!
+• **Toque e segure o logo** no topo da página inicial do Pixel Suite e escolha seu jogo. Cada cartão mostra o jogo rodando ao vivo!
+• **Pixel Blast (novo!)**: abra caminho com bombas entre caixas e fantasmas! Chute bombas, pegue gemas, derrote um chefe a cada 5 níveis e vire Evil ou Angelic, cada um com poderes insanos próprios.
+• **Pixel Siege (novo!)**: defenda o logo com seu tanque! Ele evolui por cinco níveis, um chefe chega a cada 5 níveis, e prêmios lendários como Airstrike, Shockwave e a Nuke esperam em botões acima dos seus controles.
+• **Pixel Stack, reformulado!** Três corações, blocos dourados, uma marcha mais rápida a cada 100 pontos, e cada bloco toca a próxima nota de uma melodia de piano.
+• **Pause e continue**: saia quando quiser e retome exatamente de onde parou, mesmo depois de reiniciar. Os backups guardam seus melhores placares e jogos pausados.
+• **Mostre seu placar!** Cada jogo tem seu próprio cartão de placar para a nossa comunidade no Telegram.
+
+✨ Novidades
+• 🧹 **Ocultar Resumo** (Android 16 e anteriores): remove o Resumo da tela inicial e libera a linha dele para seus apps, pastas e widgets. (Inicializador Pixel)
+• 🧭 **Botões de navegação**: escolha a distância dos botões até a barra de gestos, e oculte a barra de gestos enquanto os gestos dela continuam funcionando. (Gestos › Botões de navegação)
+
+💎 Patreon
+• 🌙 **Páginas escuras**: os números de cartão ficam legíveis em páginas de pagamento que forçavam texto escuro.
+
+🪄 Refinamentos
+• 🔠 **Persa**: o Pixel Suite agora usa a fonte Vazirmatn, com um texto mais natural em todo o app.
+• ✂️ **Corte livre de capturas de tela e rabiscos do Pixel Studio**: esmaecidos, com um aviso, em celulares sem o editor de capturas (o Pixel 9 e mais novos têm).
+• 🏷️ **Linhas do escopo do LSPosed**: os nomes dos apps ficam como o LSPosed mostra, em todos os idiomas.
+
+🐞 Correções
+• 🧭 **Botões de navegação**: o Pixel Launcher podia travar em versões mais novas com os botões ativados, e os botões continuavam na tela em um vídeo em tela cheia na horizontal.
+• 🗂️ **Gaveta de apps**: um app arrastado para fora de uma pasta aberta ainda podia aparecer na pasta antiga.
+• 📦 **Pixel Launcher do Android 16**: mover vários apps dizia "Sem espaço nesta página", e as pastas da gaveta de apps não funcionavam.
+• 🔢 **Confirmar automaticamente PIN de 4 dígitos**: agora funciona na tela de bloqueio mais nova.
+• 🔍 **Ocultar barra de pesquisa**: funciona em mais versões do Pixel Launcher que diziam não ter suporte.
+
+Instale por cima da sua versão atual e reinicie.
+
 ## v3.1.1
 Desative o bloqueio de anúncios em todo o sistema, Ocultar barra de pesquisa em mais inicializadores, nomes mais longos na discagem rápida do Chrome e correções.
 
@@ -68,13 +100,5 @@ Pixel Suite em 14 idiomas, Chrome+ e Gboard+, uma VPN integrada, Backup e restau
 • ➗ **Gboard+**: na página de números, a coluna + - * / agora é igual às outras teclas. As teclas de espaço e apagar voltam a parecer teclas e não somem mais no modo escuro.
 • 🪟 **Menus da tela inicial**: com o Vidro fosco, a fileira de ícones no topo do menu de um app aparecia antes do resto. Agora ela surge junto com o menu.
 • ✅ **Selecionar apps**: o teclado ficava aberto sobre a lista depois de marcar um app pela pesquisa. Agora ele fecha.
-
-Instale por cima da sua versão atual e reinicie.
-
-## v3.0.4
-Uma correção para o Play Integrity.
-
-🐞 Correções
-• Play Integrity: o Pixel Suite não usa mais o Google Play Services. Ele só era usado para as bordas de rolagem suaves em algumas telas do Google abertas pelas Configurações (Vidro fosco), e mantê-lo podia custar a integridade Device e Strong, então não valia a pena. Se você o tinha marcado no escopo do LSPosed do Pixel Suite, o Pixel Suite agora desmarca para você. É só reiniciar quando ele pedir. Obrigado a Ashray V K no Telegram por avisar 🙏
 
 Instale por cima da sua versão atual e reinicie.

@@ -1590,3 +1590,102 @@ Block ads in every app	Bloquer les pubs dans toutes les applis
 Turn off to block ads only in Chrome and Google News.	Désactivez pour bloquer les pubs seulement dans Chrome et Google News.
 Ads are blocked only in Chrome and Google News.	Les pubs sont bloquées seulement dans Chrome et Google News.
 Open-source servers worldwide	Serveurs open source dans le monde entier
+Pixel Arcade	Pixel Arcade
+Choose a game	Choisissez un jeu
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	Empilez le plus haut
+Defend the logo	Défendez le logo
+Blast your way through	Frayez-vous un chemin à coups de bombes
+Drag to move, tap to fire	Faites glisser pour bouger, touchez pour tirer
+Drag to move, tap to drop a bomb	Faites glisser pour bouger, touchez pour poser une bombe
+Stage {0}	Niveau {0}
+Stage clear!	Niveau terminé !
+Power up!	Bonus !
+Shield	Bouclier
+Freeze	Gel
+Boom!	Boum !
+Fortress	Forteresse
+Extra life	Vie en plus
++1 bomb	+1 bombe
+Bigger blast	Explosion plus grande
+Speed up	Plus rapide
+Portal open!	Portail ouvert !
+Weapon upgrade!	Arme améliorée !
+Rockets!	Roquettes !
+Double points	Points doublés
+Poison bombs!	Bombes toxiques !
+Fire breath!	Souffle de feu !
+Laser!	Laser !
+Helper drone!	Drone allié !
+Shockwave!	Onde de choc !
+Laser eyes!	Yeux laser !
+Pfft!	Pfff !
+Split!	Divisé !
+Level up!	Niveau supérieur !
+Combo ×{0}!	Combo ×{0} !
+Kick!	Coup de pied !
+Bomb rain!	Pluie de bombes !
+Mega bombs!	Méga-bombes !
+Glitch King	Roi des Glitchs
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	Recadrez les captures d'écran à n'importe quelle taille, même une seule ligne. Nécessite Pixel Studio (Pixel 9 et plus récents).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	Dessinez des formes et des flèches sur les captures d'écran. Nécessite Pixel Studio (Pixel 9 et plus récents).
+Needs Pixel Studio (Pixel 9 and newer).	Nécessite Pixel Studio (Pixel 9 et plus récents).
+Golden!	Doré !
+On fire!	En feu !
+Iron Crown	Couronne de fer
+Storm Turret	Tourelle tempête
+Laser Walker	Marcheur laser
+Crate Golem	Golem de caisses
+Phantom Twins	Jumeaux fantômes
+Nuke	Bombe nucléaire
+Fart	Prout
+Level {0}	Niveau {0}
+Nice!	Bien !
+Common	Commun
+Rare	Rare
+Legendary	Légendaire
+Levels up your tank	Améliore ton char
+Blocks every hit	Bloque tous les coups
+One more try	Un essai de plus
+Score counts twice	Le score compte double
+Shots chase tanks	Les tirs poursuivent les chars
+Cuts through everything	Traverse tout
+A helper that shoots	Un allié qui tire
+Steel walls for the base	Murs d'acier pour la base
+Stops every enemy	Arrête tous les ennemis
+Wipes the whole map	Rase toute la carte
+Drop one more bomb	Pose une bombe de plus
+Flames reach further	Les flammes vont plus loin
+Run faster	Cours plus vite
+Bombs leave poison gas	Les bombes laissent du gaz toxique
+Burn what you face	Brûle ce qui est devant toi
+Zap in a straight line	Rayon en ligne droite
+Kick bombs away	Shoote dans les bombes
+Three huge bombs	Trois bombes énormes
+Makes ghosts slow and dizzy	Rend les fantômes lents et étourdis
+Bombs fall on ghosts	Des bombes tombent sur les fantômes
+Airstrike	Frappe aérienne
+Missiles on every tank	Des missiles sur chaque char
+Blasts and stuns all tanks	Frappe et étourdit tous les chars
+Paused	En pause
+Tap to continue	Touchez pour continuer
+New game	Nouvelle partie
+Evil	Maléfique
+Angelic	Angélique
+Cleansed	Purifié
+• Pixel Arcade: best scores	• Pixel Arcade : meilleurs scores
+• 1 paused game	• 1 partie en pause
+• {0} paused games	• {0} parties en pause
+Distance from the gesture bar	Distance de la barre de gestes
+Near	Près
+Normal	Normale
+Far	Loin
+Gesture bar	Barre de gestes
+Shown	Affichée
+Hidden	Masquée
+Swipe gestures still work, also with the gesture bar hidden.	Les gestes de balayage fonctionnent toujours, même avec la barre de gestes masquée.
+Hide At a Glance	Masquer Aperçu
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Retire Aperçu du haut de l'écran d'accueil. La ligne est libre pour vos applis, dossiers et widgets.
+Hold an app, folder or widget and drop it in the free row.	Maintenez une appli, un dossier ou un widget et déposez-le dans la ligne libre.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Pour Android 16 et versions antérieures. Les versions plus récentes permettent de retirer Aperçu depuis l'écran d'accueil.

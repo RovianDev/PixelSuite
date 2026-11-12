@@ -34,6 +34,7 @@ final class PixelStack {
             sOpen = false;
         }
         PixelStackSound.prepare(a);
+        GameMenu.warm(a);
         final int slop = ViewConfiguration.get(a).getScaledTouchSlop();
         final long charge = 700;
         final float[] down = new float[2];
@@ -54,7 +55,7 @@ final class PixelStack {
                     holding[0] = false; fired[0] = true;
                     PixelStackSound.stop(sRise); PixelStackSound.play(PixelStackSound.POP, .72f, 1f);
                     buzz(a, new int[]{1, 7}, new float[]{1f, .8f}, new int[]{0, 25}, new long[]{0, 18, 25, 12}, new int[]{0, 255, 0, 160});
-                    open(a, logo, mark, left, right, ink, page, dark, black);
+                    GameMenu.open(a, logo, mark, left, right, ink, page, dark, black);
                     return;
                 }
                 logo.postOnAnimation(this);
@@ -236,26 +237,45 @@ final class PixelStack {
     static float ease(float t) { t = Math.max(0f, Math.min(1f, t)); return 1 - (1 - t) * (1 - t) * (1 - t); }
     static float easeIn(float t) { t = Math.max(0f, Math.min(1f, t)); return t * t * t; }
 
+    private static java.lang.reflect.Method sAllPrims, sStart, sAdd, sCompose, sVibrate, sWave; private static Vibrator sVib; private static boolean sLooked, sHas;
+    private static synchronized void lookUp(Context c) {
+        if (sLooked) return; sLooked = true;
+        try {
+            sVib = (Vibrator) c.getApplicationContext().getSystemService(Context.VIBRATOR_SERVICE);
+            sHas = sVib != null && sVib.hasVibrator();
+            Class<?> fx = Class.forName("android.os.VibrationEffect");
+            sVibrate = Vibrator.class.getMethod("vibrate", fx);
+            sWave = fx.getMethod("createWaveform", long[].class, int[].class, int.class);
+            if (android.os.Build.VERSION.SDK_INT >= 30) {
+                sAllPrims = Vibrator.class.getMethod("areAllPrimitivesSupported", int[].class);
+                sStart = fx.getMethod("startComposition");
+                Class<?> comp = Class.forName("android.os.VibrationEffect$Composition");
+                sAdd = comp.getMethod("addPrimitive", int.class, float.class, int.class);
+                sCompose = comp.getMethod("compose");
+            }
+        } catch (Throwable ignored) { }
+    }
+    private static final java.util.Map<String, Boolean> sPrimsOk = new java.util.HashMap<String, Boolean>();
+
     static void buzz(Context c, int[] prims, float[] scales, int[] delays, long[] timings, int[] amps) {
         try {
-            Vibrator v = (Vibrator) c.getSystemService(Context.VIBRATOR_SERVICE);
-            if (v == null || !v.hasVibrator()) return;
-            Class<?> fx = Class.forName("android.os.VibrationEffect");
-            if (android.os.Build.VERSION.SDK_INT >= 30) {
+            lookUp(c);
+            Vibrator v = sVib;
+            if (v == null || sVibrate == null || !sHas) return;
+            if (sStart != null && sAllPrims != null) {
                 try {
-                    boolean all = (Boolean) Vibrator.class.getMethod("areAllPrimitivesSupported", int[].class).invoke(v, (Object) prims);
+                    String key = java.util.Arrays.toString(prims);
+                    Boolean all = sPrimsOk.get(key);
+                    if (all == null) { all = (Boolean) sAllPrims.invoke(v, (Object) prims); sPrimsOk.put(key, all); }
                     if (all) {
-                        Object comp = fx.getMethod("startComposition").invoke(null);
-                        java.lang.reflect.Method add = comp.getClass().getMethod("addPrimitive", int.class, float.class, int.class);
-                        for (int i = 0; i < prims.length; i++) add.invoke(comp, prims[i], scales[i], delays[i]);
-                        Object effect = comp.getClass().getMethod("compose").invoke(comp);
-                        Vibrator.class.getMethod("vibrate", fx).invoke(v, effect);
+                        Object comp = sStart.invoke(null);
+                        for (int i = 0; i < prims.length; i++) sAdd.invoke(comp, prims[i], scales[i], delays[i]);
+                        sVibrate.invoke(v, sCompose.invoke(comp));
                         return;
                     }
                 } catch (Throwable ignored) { }
             }
-            Object wave = fx.getMethod("createWaveform", long[].class, int[].class, int.class).invoke(null, timings, amps, -1);
-            Vibrator.class.getMethod("vibrate", fx).invoke(v, wave);
+            sVibrate.invoke(v, sWave.invoke(null, timings, amps, -1));
         } catch (Throwable ignored) { }
     }
     private static void tickBuzz(Context c, float strength) { buzz(c, new int[]{7}, new float[]{strength}, new int[]{0}, new long[]{0, 12}, new int[]{0, Math.round(80 + 170 * strength)}); }
@@ -323,6 +343,79 @@ final class PixelStack {
 
     }
 
+    static void arcadeOpen(Dialog d, Activity a) {
+        sOpen = d != null;
+        sDialog = d == null ? null : new java.lang.ref.WeakReference<Dialog>(d);
+        sOwner = a == null ? null : new java.lang.ref.WeakReference<Activity>(a);
+    }
+
+    static void handOff(final View logo, final ImageView mark, final View left, final View right) {
+        Object mk = logo.getTag(TAG_MARK);
+        if (mk instanceof HoldMark) { ((HoldMark) mk).e = 0f; try { logo.getRootView().getOverlay().remove((HoldMark) mk); } catch (Throwable ignored) { } logo.setTag(TAG_MARK, null); }
+        logo.setAlpha(0f);
+        final long w0 = SystemClock.uptimeMillis();
+        final float from0 = left.getTranslationX();
+        left.postOnAnimation(new Runnable() { public void run() {
+            float t = Math.min(1f, (SystemClock.uptimeMillis() - w0) / 600f), k = 1f - spring(t);
+            left.setTranslationX(from0 * k); right.setTranslationX(-from0 * k); left.setAlpha(1f - .25f * k); right.setAlpha(1f - .25f * k);
+            if (t < 1f) left.postOnAnimation(this); else apply(logo, mark, left, right, 0f, 0f, false);
+        } });
+    }
+
+    static void landHome(Context a, final View logo, ImageView mark, View left, View right) {
+        apply(logo, mark, left, right, 0f, 0f, false);
+        logo.setRotation(0);
+        if (mark.getDrawable() instanceof SuiteIcon) ((SuiteIcon) mark.getDrawable()).spread(0f);
+        final long t0 = SystemClock.uptimeMillis();
+        logo.postOnAnimation(new Runnable() { public void run() {
+            float t = Math.min(1f, (SystemClock.uptimeMillis() - t0) / 300f), k = ease(t), s = 1.1f - .1f * k;
+            logo.setAlpha(Math.min(1f, t * 1.6f)); logo.setScaleX(s); logo.setScaleY(s); if (t < 1f) logo.postOnAnimation(this);
+        } });
+        tickBuzz(a, .45f);
+        PixelStackSound.play(PixelStackSound.BOOP, .45f, .9f);
+    }
+
+    static void playFrom(final Activity a, RectF home, RectF[] squares, int ink, int page, boolean dark, boolean black, Runnable gone) { playFrom(a, home, squares, ink, page, dark, black, gone, null); }
+
+    static void playFrom(final Activity a, RectF home, RectF[] squares, int ink, int page, boolean dark, boolean black, Runnable gone, RectF card) {
+        if (a.isFinishing()) return;
+        final Game game = new Game(a, home, ink, page, dark, black);
+        if (card != null) game.cardScreen = new RectF(card);
+        for (int k = 0; k < 4; k++) game.startAt[k] = new RectF(squares[k]);
+        present(a, game, gone);
+    }
+
+    private static void present(final Activity a, final Game game, Runnable gone) {
+        final boolean dark = game.dark, black = game.black; final int ink = game.ink;
+        final Dialog d = new Dialog(a, android.R.style.Theme_DeviceDefault_NoActionBar) {
+            @Override public void onBackPressed() {
+                if (game.typing()) { game.closeKeyboard(); if (game.fieldUp) game.fieldMove(false); return; }
+                game.exit();
+            }
+        };
+        game.dialog = d;
+        game.onGone = gone;
+        android.widget.FrameLayout root = new android.widget.FrameLayout(a);
+        root.addView(game, new android.widget.FrameLayout.LayoutParams(-1, -1));
+        game.field = nameField(a, game, ink, dark || black);
+        root.addView(game.field, new android.widget.FrameLayout.LayoutParams(1, 1, android.view.Gravity.TOP | android.view.Gravity.LEFT));
+        d.setContentView(root);
+        Window w = d.getWindow();
+        if (w != null) {
+            w.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(0));
+            w.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+            w.addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            w.setWindowAnimations(0); w.setDimAmount(0f);
+            w.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+            w.setStatusBarColor(0); w.setNavigationBarColor(0);
+            if (!dark && !black) w.getDecorView().setSystemUiVisibility(0x2000 | 0x10 | 0x400 | 0x200 | 0x100); else w.getDecorView().setSystemUiVisibility(0x400 | 0x200 | 0x100);
+            try { Window.class.getMethod("setDecorFitsSystemWindows", boolean.class).invoke(w, false); } catch (Throwable ignored) { }
+            try { WindowManager.LayoutParams lp = w.getAttributes(); lp.getClass().getField("layoutInDisplayCutoutMode").setInt(lp, 3); w.setAttributes(lp); } catch (Throwable ignored) { }
+        }
+        d.setCancelable(true);
+        d.show();
+    }
+
     static final float BAR_UP = 160;
 
     private static android.widget.EditText nameField(Context c, final Game game, int ink, boolean dark) {
@@ -364,11 +457,36 @@ final class PixelStack {
         return f;
     }
 
-    private static final class Block { float l, r; int level; Block(float l, float r, int level) { this.l = l; this.r = r; this.level = level; } }
+    private static final class Block { float l, r; int level; boolean gold; Block() { } Block(float l, float r, int level) { this.l = l; this.r = r; this.level = level; } }
+    private static final int GOLD = 0xFFFFC531, FIRE = 0xFFFF7A3D;
     private static final class Bit { float l, t, r, b, vx, vy, rot, vr, life; int colour; boolean square; }
     private static final class Pop { String text; float x, y; long at; int colour; float size; }
 
-    private static final int INTRO = 0, READY = 1, MERGE = 2, PLAY = 3, OVER = 4, EXIT = 5, REFORM = 6;
+    private static final int INTRO = 0, READY = 1, MERGE = 2, PLAY = 3, OVER = 4, EXIT = 5, REFORM = 6, PAUSED = 7;
+
+    private static Game kept;
+    static boolean paused(Activity act) { return kept != null && kept.a == act && !act.isFinishing(); }
+    static boolean resumeSaved(final Activity a, RectF home, RectF[] squares, int ink, int page, boolean dark, boolean black, Runnable gone, RectF card) {
+        if (a.isFinishing() || !GameSave.has(a, ArcadePreview.STACK)) return false;
+        final Game game = new Game(a, home, ink, page, dark, black);
+        if (!GameSave.load(a, ArcadePreview.STACK, game) || game.blocks.isEmpty()) { GameSave.drop(a, ArcadePreview.STACK); return false; }
+        if (card != null) game.cardScreen = new RectF(card);
+        for (int k = 0; k < 4; k++) game.startAt[k] = new RectF(squares[k]);
+        game.firstFrame = true;
+        kept = game;
+        resume(card, gone);
+        return true;
+    }
+    static void forget(Activity act) { if (kept != null && kept.a == act) kept = null; }
+    static void forgetAll() { kept = null; }
+    static void resume(RectF card, Runnable gone) {
+        Game g = kept; if (g == null) { if (gone != null) gone.run(); return; }
+        g.landedHome = false; g.keep = false;
+        try { if (g.getParent() instanceof android.view.ViewGroup) ((android.view.ViewGroup) g.getParent()).removeView(g); } catch (Throwable ignored) { }
+        g.go(PAUSED);
+        try { present(g.a, g, gone); } catch (Throwable t) { kept = null; if (gone != null) gone.run(); return; }
+        g.invalidate();
+    }
     private static final class Cell { float sx, sy, tx, ty, size, x, y, now; int colour, col; float delay; }
 
     private static final class Game extends View {
@@ -381,6 +499,24 @@ final class PixelStack {
         final ArrayList<Bit> bits = new ArrayList<Bit>();
         final ArrayList<Pop> pops = new ArrayList<Pop>();
         int state = INTRO, score, best, combo; boolean newBest;
+        boolean curGold; int fever, lastGold = -100; long feverAt = -10000;
+        int hearts = 3; long heartAt = -10000;
+        static final int[][] TUNES = {
+            {-12, -8, -5, 0, 4, -5, 0, 4, -12, -8, -5, 0, 4, -5, 0, 4, -12, -10, -3, 2, 5, -3, 2, 5, -12, -10, -3, 2, 5, -3, 2, 5,
+             -12, -8, -5, 0, 4, -5, 0, 4, -12, -8, -5, 0, 4, -5, 0, 4, -12, -8, -3, 4, 9, -3, 4, 9, -12, -8, -3, 4, 9, -3, 4, 9},
+            {4, 3, 4, 3, 4, -1, 2, 0, -3, -12, -8, -3, -1, -8, -4, -1, 0, -8, 4, 3, 4, 3, 4, -1, 2, 0, -3, -12, -8, -3, -1, -8, 0, -1, -3},
+            {4, 4, 6, 7, 6, 4, 3, 4, -1, 4, 6, 7, 9, 7, 6, 4, 4, 4, 6, 7, 6, 4, 3, 4, -1, 3, 4, 6, 3, -1, 4},
+            {-5, -10, -5, -10, -5, -10, -5, -1, 2, 0, -3, 0, -3, 0, -3, -6, -3, -10},
+            {2, -5, -3, -1, 0, 2, -5, -5, 4, 0, 2, 4, 6, 7, -5, -5, 0, 2, 0, -1, -3, -1, 0, -1, -3, -5, -6, -5, -3, -1, -5, -1, -3}};
+        static int sTune;
+        int tune, noteAt;
+        int nextNote() {
+            if (noteAt >= TUNES[tune].length) { tune = (tune + 1) % TUNES.length; noteAt = 0; }
+            return TUNES[tune][noteAt++];
+        }
+        void phrase(final int[] notes, final int[] at, final float volume, final int during) {
+            for (int i = 0; i < notes.length; i++) { final int n = notes[i]; postDelayed(() -> { if (state == during) PixelStackSound.note(n, volume); }, at[i]); }
+        }
         final java.util.Map<String, String> share;
         final RectF shareAt = new RectF(), barAt = new RectF();
         private float shareW;
@@ -390,6 +526,8 @@ final class PixelStack {
         float curL, curR, dir = 1, speed, cam, camTarget, zoom = 1f, bh, baseW, baseY, introSize;
         final RectF[] logoAt = new RectF[4], bigAt = new RectF[4], startAt = new RectF[4];
         RectF popAt;
+        RectF cardScreen, cardAt; final RectF scene = new RectF();
+        static final float CARD_IN_MS = 640, CARD_OUT_MS = 560;
         boolean introSound;
         final float[] drops = new float[48];
 
@@ -447,6 +585,7 @@ final class PixelStack {
             bh = 30 * d; baseW = Math.min(w * .62f, 300 * d);
             baseY = h * .72f;
             introSize = Math.min(w, h) * .42f;
+            if (cardScreen != null) { int[] at = new int[2]; getLocationOnScreen(at); cardAt = new RectF(cardScreen); cardAt.offset(-at[0], -at[1]); }
             squaresOf(from, logoAt);
             if (startAt[0] != null) for (int k = 0; k < 4; k++) logoAt[k] = new RectF(startAt[k]);
             float cx = w / 2f, cy = h * .4f;
@@ -454,7 +593,14 @@ final class PixelStack {
         }
 
         private long since() { return SystemClock.uptimeMillis() - stateAt; }
-        private void go(int s) { state = s; stateAt = SystemClock.uptimeMillis(); }
+        private void go(int s) { state = s; stateAt = SystemClock.uptimeMillis(); if (s == OVER && cardAt != null) GameSave.drop(a, ArcadePreview.STACK); }
+
+        @Override public void onWindowFocusChanged(boolean has) {
+            super.onWindowFocusChanged(has);
+            if (has || cardAt == null || state != PLAY) return;
+            go(PAUSED);
+            GameSave.save(a, ArcadePreview.STACK, this);
+        }
         private float sp(float v) { return v * getResources().getDisplayMetrics().scaledDensity; }
 
         private static final float[] AT = {1f, .85f, .7f, .55f, .4f, .27f, .15f};
@@ -466,8 +612,8 @@ final class PixelStack {
             return RAINBOW[RAINBOW.length - 1];
         }
         private int blockColour(int level) {
-            if (level >= 0 && level < blocks.size()) { Block b = blocks.get(level); return widthColour(b.r - b.l); }
-            if (state == PLAY && level == blocks.size()) return widthColour(curR - curL);
+            if (level >= 0 && level < blocks.size()) { Block b = blocks.get(level); return b.gold ? GOLD : widthColour(b.r - b.l); }
+            if (state == PLAY && level == blocks.size()) return curGold ? GOLD : widthColour(curR - curL);
             return blocks.isEmpty() ? RAINBOW[0] : blockColour(blocks.size() - 1);
         }
         private static int mix(int x, int y, float t) {
@@ -481,10 +627,23 @@ final class PixelStack {
         private int alpha(int c, float f) { return (Math.round(((c >>> 24) & 255) * Math.max(0f, Math.min(1f, f))) << 24) | (c & 0xFFFFFF); }
 
         @Override public boolean onTouchEvent(MotionEvent e) {
+            if (state == INTRO || state == READY || state == PAUSED) {
+                int act = e.getActionMasked();
+                if (act == MotionEvent.ACTION_DOWN) { tapX = e.getX(); tapY = e.getY(); tapOk = tapX > 34 * d && tapX < getWidth() - 34 * d; }
+                else if (act == MotionEvent.ACTION_MOVE) { if (Math.hypot(e.getX() - tapX, e.getY() - tapY) > 14 * d) tapOk = false; }
+                else if (act == MotionEvent.ACTION_CANCEL) tapOk = false;
+                else if (act == MotionEvent.ACTION_UP) {
+                    boolean ok = tapOk && e.getEventTime() - e.getDownTime() < 700; tapOk = false;
+                    if (!ok) return true;
+                    if (state == PAUSED) { if (newGameAt.contains(e.getX(), e.getY())) restart(); else { go(PLAY); tickBuzz(a, .6f); PixelStackSound.play(PixelStackSound.SOFT, .34f, 1.2f); } }
+                    else if (state == READY || cardAt != null) start();
+                    else if (since() > 450) go(READY);
+                }
+                return true;
+            }
             if (e.getActionMasked() != MotionEvent.ACTION_DOWN) return true;
+            if (state == OVER && (e.getX() < 34 * d || e.getX() > getWidth() - 34 * d)) return true;
             switch (state) {
-                case INTRO: if (since() > 450) { go(READY); } break;
-                case READY: start(); break;
                 case PLAY: drop(); break;
                 case OVER:
                     if (field != null && field.hasFocus()) { closeKeyboard(); if (!hit(shareAt, e)) break; }
@@ -592,7 +751,9 @@ final class PixelStack {
         }
 
         private void begin() {
-            blocks.clear(); score = 0; combo = 0; newBest = false; cam = camTarget = 0; zoom = 1f;
+            if (cardAt != null) GameSave.drop(a, ArcadePreview.STACK);
+            blocks.clear(); score = 0; combo = 0; newBest = false; cam = camTarget = 0; zoom = 1f; fever = 0; lastGold = -100; curGold = false; hearts = 3;
+            tune = (sTune++) % TUNES.length; noteAt = 0;
             float l = getWidth() / 2f - baseW / 2f;
             blocks.add(new Block(l, l + baseW, 0));
             next();
@@ -605,7 +766,13 @@ final class PixelStack {
             dir = blocks.size() % 2 == 0 ? -1 : 1;
             float min = -w * .3f, max = getWidth() - w * .7f;
             curL = dir > 0 ? min : max; curR = curL + w;
-            speed = getWidth() * Math.min(1.45f, .62f + .035f * score);
+            int lv = blocks.size() - 1;
+            int tier = score / 100;
+            speed = getWidth() * Math.min(1.15f, .5f + .024f * lv) * (1 + .2f * Math.min(tier, 5));
+            if (tier >= 1) speed *= .85f + rnd.nextFloat() * .3f;
+            if (tier >= 2 && rnd.nextFloat() < .35f) { dir = -dir; float w0 = curR - curL; curL = dir > 0 ? min : max; curR = curL + w0; }
+            curGold = blocks.size() >= 4 && blocks.size() - lastGold > 4 && rnd.nextFloat() < .3f;
+            if (curGold) lastGold = blocks.size();
         }
 
         private void drop() {
@@ -615,34 +782,90 @@ final class PixelStack {
             float y = baseY - (level + 1) * bh;
             if (R - L <= 0) {
                 bits.add(piece(curL, y, curR, y + bh, blockColour(level), (curL < top.l ? -1 : 1) * 60 * d));
+                if (hearts > 1) {
+                    hearts--; heartAt = SystemClock.uptimeMillis(); combo = 0; shakeAt = heartAt - 150;
+                    PixelStackSound.play(PixelStackSound.THUD, .6f, .8f);
+                    buzz(a, new int[]{2, 6}, new float[]{.9f, .5f}, new int[]{0, 40}, new long[]{0, 60, 40, 30}, new int[]{0, 220, 0, 120});
+                    next();
+                    return;
+                }
+                hearts = 0;
                 over();
                 return;
             }
             float off = curL - top.l;
-            if (Math.abs(off) <= 4.5f * d) {
-                combo++;
+            int gain = 1; boolean gold = curGold;
+            if (Math.abs(off) <= (fever > 0 ? 8f : 6f) * d - Math.min(2, score / 100) * .75f * d) {
+                combo++; gain++;
                 float l = top.l, r = top.r;
-                if (combo >= 3) { float grow = Math.min(5 * d, (baseW - (r - l)) / 2f); l -= grow; r += grow; }
-                blocks.add(new Block(l, r, level));
+                if (combo >= 2) { float grow = Math.min((combo >= 4 ? 8 : 4) * d, (baseW - (r - l)) / 2f); l -= grow; r += grow; }
+                if (gold) {
+                    float mid = (l + r) / 2f; l = mid - baseW / 2f; r = mid + baseW / 2f;
+                    gain += 5;
+                    if (hearts < 3) { hearts++; heartAt = SystemClock.uptimeMillis(); }
+                }
+                Block nb = new Block(l, r, level); nb.gold = gold;
+                blocks.add(nb);
                 flashAt = SystemClock.uptimeMillis();
                 Pop p = new Pop(); p.text = I18n.t("Perfect!") + (combo > 1 ? "  ×" + combo : ""); p.x = (l + r) / 2f; p.y = y - 10 * d; p.at = flashAt; p.colour = LIGHT; p.size = 18;
+                if (gold) { p.text = I18n.t("Golden!") + "  +" + (fever > 0 ? gain * 2 : gain); p.colour = GOLD; p.size = 22; }
                 pops.add(p);
-                sparkle((l + r) / 2f, y + bh / 2f, r - l, 6 + Math.min(10, combo * 2));
+                sparkle((l + r) / 2f, y + bh / 2f, r - l, 6 + Math.min(10, combo * 2) + (gold ? 18 : 0));
                 tickBuzz(a, 1f);
                 PixelStackSound.play(PixelStackSound.PERFECT, .6f, 1f + .06f * Math.min(combo - 1, 6));
+                if (gold) { PixelStackSound.play(PixelStackSound.SUCCESS, .5f, 1.2f); shakeAt = SystemClock.uptimeMillis() - 200; }
+                if (combo == 5 || (combo > 5 && combo % 5 == 0)) {
+                    fever = 6; feverAt = SystemClock.uptimeMillis();
+                    Pop f = new Pop(); f.text = I18n.t("On fire!") + "  ×2"; f.x = getWidth() / 2f; f.y = y - 46 * d; f.at = feverAt + 120; f.colour = FIRE; f.size = 24;
+                    pops.add(f);
+                    PixelStackSound.play(PixelStackSound.SUCCESS, .55f, 1f);
+                    buzz(a, new int[]{3, 7, 7}, new float[]{.6f, .8f, 1f}, new int[]{0, 60, 60}, new long[]{0, 20, 60, 20, 60, 20}, new int[]{0, 160, 0, 200, 0, 255});
+                    gain *= 2; fever--;
+                    gold = false;
+                } else if (fever > 0) { gain *= 2; fever--; }
+            } else if (Math.abs(off) <= 10.5f * d) {
+                Block nb = new Block(top.l, top.r, level); nb.gold = gold;
+                blocks.add(nb);
+                Pop p = new Pop(); p.text = I18n.t("Nice!"); p.x = (top.l + top.r) / 2f; p.y = y - 10 * d; p.at = SystemClock.uptimeMillis(); p.colour = dark || black ? 0xFFFFFFFF : BLUE; p.size = 15;
+                if (gold) { gain += 2; p.text = "+" + (fever > 0 ? gain * 2 : gain); p.colour = GOLD; p.size = 18; }
+                pops.add(p);
+                if (fever > 0) { gain *= 2; fever--; }
+                tickBuzz(a, .6f);
+                PixelStackSound.play(PixelStackSound.DROP, .5f, 1f);
             } else {
                 combo = 0;
                 if (curL < L) bits.add(piece(curL, y, L, y + bh, blockColour(level), -40 * d));
                 if (curR > R) bits.add(piece(R, y, curR, y + bh, blockColour(level), 40 * d));
-                blocks.add(new Block(L, R, level));
+                Block nb = new Block(L, R, level); nb.gold = gold;
+                blocks.add(nb);
+                if (gold) {
+                    gain += 2;
+                    Pop p = new Pop(); p.text = "+" + (fever > 0 ? gain * 2 : gain); p.x = (L + R) / 2f; p.y = y - 10 * d; p.at = SystemClock.uptimeMillis(); p.colour = GOLD; p.size = 18;
+                    pops.add(p);
+                }
+                if (fever > 0) { gain *= 2; fever--; }
                 tickBuzz(a, .45f);
                 PixelStackSound.play(PixelStackSound.CHIP, .45f, .9f + rnd.nextFloat() * .3f);
             }
-            int[] steps = {0, 2, 4, 7, 9, 12, 14};
-            PixelStackSound.play(PixelStackSound.DROP, .6f, (float) (.8 * Math.pow(2, steps[score % steps.length] / 12.0)));
-            score++;
+            int n = nextNote();
+            PixelStackSound.note(n, .62f);
+            if (combo > 0) PixelStackSound.note(n + 7 <= 12 ? n + 7 : n - 5, .26f);
+            int before = score;
+            score += gain;
+            if (score / 25 > before / 25) {
+                Block t2 = blocks.get(blocks.size() - 1);
+                sparkle((t2.l + t2.r) / 2f, y + bh / 2f, getWidth() * .8f, 30);
+                PixelStackSound.play(PixelStackSound.SPARKLE, .45f, 1.1f);
+            }
             float topY = baseY - (blocks.size()) * bh;
             camTarget = Math.max(0f, getHeight() * .42f - topY);
+            if (score / 100 > before / 100) {
+                long at = SystemClock.uptimeMillis(); flashAt = at; shakeAt = at - 200;
+                Pop p = new Pop(); p.text = I18n.t("Speed up") + "  ×" + (score / 100 + 1); p.x = getWidth() / 2f; p.y = y - 50 * d; p.at = at; p.colour = FIRE; p.size = 26; pops.add(p);
+                sparkle(getWidth() / 2f, y, getWidth() * .9f, 40);
+                PixelStackSound.play(PixelStackSound.SUCCESS, .6f, 1f);
+                buzz(a, new int[]{3, 7, 7}, new float[]{.6f, .8f, 1f}, new int[]{0, 60, 60}, new long[]{0, 20, 60, 20, 60, 20}, new int[]{0, 160, 0, 200, 0, 255});
+            }
             next();
         }
 
@@ -668,9 +891,13 @@ final class PixelStack {
             shakeAt = SystemClock.uptimeMillis();
             if (score > best) { best = score; newBest = true; try { prefs.edit().putInt("best", best).apply(); } catch (Throwable ignored) { } }
             buzz(a, new int[]{2, 6}, new float[]{1f, .7f}, new int[]{0, 40}, new long[]{0, 70, 50, 40}, new int[]{0, 255, 0, 140});
-            PixelStackSound.play(PixelStackSound.OVER, .55f, 1f);
+            PixelStackSound.play(PixelStackSound.OVER, .4f, 1f);
             if (newBest && score > 0) {
-                postDelayed(() -> PixelStackSound.play(PixelStackSound.SUCCESS, .55f, 1.12f), 900);
+                phrase(new int[]{4, 4, 5, 7, 7, 5, 4, 2, 0, 0, 2, 4, 4, 2, 2}, new int[]{700, 900, 1100, 1300, 1500, 1700, 1900, 2100, 2300, 2500, 2700, 2900, 3100, 3400, 3500}, .5f, OVER);
+            } else {
+                phrase(new int[]{-2, -2, -2, -2, 1, 0, 0, -2, -2, -3, -2}, new int[]{700, 1260, 1680, 1820, 2380, 2800, 2940, 3360, 3500, 3920, 4060}, .42f, OVER);
+            }
+            if (newBest && score > 0) {
                 Block top = blocks.get(blocks.size() - 1);
                 sparkle((top.l + top.r) / 2f, baseY - blocks.size() * bh, top.r - top.l, 28);
                 postDelayed(() -> buzz(a, new int[]{3, 7, 7}, new float[]{.6f, .8f, 1f}, new int[]{0, 60, 60}, new long[]{0, 20, 60, 20, 60, 20}, new int[]{0, 160, 0, 200, 0, 255}), 350);
@@ -919,9 +1146,13 @@ final class PixelStack {
             begin();
         }
 
+        int exitFrom; float gateFrom;
         void exit() {
             if (state == EXIT) return;
             homeAt();
+            gateFrom = state == INTRO && cardAt != null ? GameKit.clamp(1 - since() / ArcadeCurtain.EXTRAS_MS) : 0f;
+            keep = cardAt != null && (state == PLAY || state == PAUSED);
+            exitFrom = state;
             go(EXIT);
             tickBuzz(a, .5f);
             PixelStackSound.play(PixelStackSound.SOFT, .3f, 1.12f); postDelayed(() -> PixelStackSound.play(PixelStackSound.SOFT, .26f, .9f), 120);
@@ -934,24 +1165,40 @@ final class PixelStack {
             float t = since();
             if (field != null && state != OVER && field.getVisibility() == View.VISIBLE) { if (field.hasFocus()) closeKeyboard(); field.setVisibility(View.GONE); }
 
-            float shown = state == INTRO ? ease(t / 320f) : state == EXIT ? 1 - ease((t - 80) / 420f) : 1f;
+            if (!firstFrame) { firstFrame = true; if (state == INTRO) { stateAt = now; t = 0; } }
+            boolean arcade = cardAt != null;
+            float leave = arcade && state == EXIT ? (motion ? ease(GameKit.clamp(gateFrom + t / ArcadeCurtain.LEAVE_MS)) : 1f) : 0f;
+            boolean fromTitle = exitFrom == READY || exitFrom == INTRO;
+            float shown = arcade ? 1f : state == INTRO ? ease(t / 320f) : state == EXIT ? 1 - ease((t - 80) / 420f) : 1f;
             fill.setShader(null);
             fill.setColor(alpha(black ? 0xFF000000 : page, shown));
             c.drawRect(0, 0, W, H, fill);
 
             if (state == INTRO && !introSound) { introSound = true; PixelStackSound.play(PixelStackSound.SOFT, .34f, 1f); postDelayed(() -> PixelStackSound.play(PixelStackSound.SOFT, .3f, 1.26f), 110); }
             if (state == INTRO && popAt != null && t < 420) drawPop(c, t);
-            if (state == INTRO && t > 820) { go(READY); t = 0; homeAt(); }
-            if (state == INTRO || state == READY) drawLogo(c, state == INTRO ? t : 99999, 1f);
-            if (state == READY) drawTitle(c, t, 1f);
+            float introT = t;
+            if (state == INTRO && t > (arcade ? ArcadeCurtain.EXTRAS_MS : 820)) { go(READY); t = 0; homeAt(); }
+            boolean title = state == INTRO || state == READY || (state == EXIT && fromTitle);
+            if (arcade) {
+                if (title) ArcadePreview.window(c, ArcadePreview.STACK, sceneRect(), sceneRect(), 1f, 24 * d, 24 * d, motion ? now : 1500, d, dark || black, black, 1f, fill, stroke);
+                if (state == MERGE && t < 300) {
+                    float k = 1 - ease(t / 300f), sc = .94f + .06f * k; int sv = c.save(); c.scale(sc, sc, sceneRect().centerX(), sceneRect().centerY());
+                    ArcadePreview.window(c, ArcadePreview.STACK, sceneRect(), sceneRect(), 1f, 24 * d, 24 * d, motion ? now : 1500, d, dark || black, black, k, fill, stroke);
+                    c.restoreToCount(sv);
+                }
+                if (title) drawTitleArcade(c, 1f, state == INTRO ? (motion ? ease(introT / ArcadeCurtain.EXTRAS_MS) : 1f) : state == EXIT ? 1 - leave : 1f);
+            } else {
+                if (state == INTRO || state == READY) drawLogo(c, state == INTRO ? t : 99999, 1f);
+                if (state == READY) drawTitle(c, t, 1f);
+            }
             if (state == MERGE) {
                 drawTitle(c, 99999, 1 - ease(t / 180f));
-                drawMerge(c, motion ? t : 99999);
-                if (t >= (motion ? MERGE_MS : 0)) begin();
+                if (arcade) { drawFirstDrop(c, motion ? t : 99999); if (t >= (motion ? DROP_MS : 0)) begin(); }
+                else { drawMerge(c, motion ? t : 99999); if (t >= (motion ? MERGE_MS : 0)) begin(); }
             }
-            if (state == PLAY || state == OVER || (state == EXIT && !blocks.isEmpty())) {
+            if (state == PLAY || state == OVER || state == PAUSED || (state == EXIT && !blocks.isEmpty() && !(arcade && fromTitle))) {
                 step(dt);
-                float fade = state == EXIT ? 1 - ease(t / 160f) : 1f;
+                float fade = state == EXIT ? (arcade ? 1 - leave : 1 - ease(t / 160f)) : state == PAUSED && motion ? ease(t / 240f) : 1f;
                 float towerFade = fade;
                 if (state == OVER && since() >= GO_AT && blocks.size() > 0) { if (cells == null) buildCells(); towerFade = fade * (1 - ease((since() - GO_AT) / 220f)); }
                 if (state == EXIT && cells != null) towerFade = 0;
@@ -966,7 +1213,17 @@ final class PixelStack {
             }
             drawBits(c, dt);
             drawPops(c, now);
-            if (state == EXIT) {
+            if (state == PAUSED) drawPaused(c, t, now);
+            if (state == EXIT && arcade && !fromTitle) {
+                if (exitFrom == PAUSED && leave < 1) { int layer = c.saveLayerAlpha(0, 0, W, H, Math.round(255 * (1 - leave)), Canvas.ALL_SAVE_FLAG); drawPaused(c, 99999, now); c.restoreToCount(layer); }
+                ArcadePreview.window(c, ArcadePreview.STACK, sceneRect(), sceneRect(), 1f, 24 * d, 24 * d, motion ? now : 1500, d, dark || black, black, leave, fill, stroke);
+                drawTitleArcade(c, leave, 0f);
+            }
+            if (state == EXIT && arcade) {
+                float shut = (1 - gateFrom) * ArcadeCurtain.LEAVE_MS;
+                if (!landedHome && t >= shut + 30) { landedHome = true; if (onGone != null) onGone.run(); }
+                if (t >= shut + 90) { finish(); return; }
+            } else if (state == EXIT) {
                 drawHome(c, t);
                 if (!landedHome && t >= HOME_MS * .78f) { landedHome = true; if (onGone != null) onGone.run(); }
                 if (t >= HOME_MS) { finish(); return; }
@@ -976,7 +1233,10 @@ final class PixelStack {
 
         static final float HOME_MS = 660;
         private boolean landedHome;
+        boolean keep, tapOk; float tapX, tapY; final RectF newGameAt = new RectF();
         private void finish() {
+            if (keep) { kept = this; GameKit.Game.whenClosed(a); GameSave.save(a, ArcadePreview.STACK, this); }
+            else if (kept == this) kept = null;
             try { if (dialog != null) dialog.dismiss(); } catch (Throwable ignored) { }
             if (!landedHome && onGone != null) { landedHome = true; onGone.run(); }
         }
@@ -1036,7 +1296,18 @@ final class PixelStack {
                 float y = baseY - (level + 1) * bh;
                 int colour = blockColour(level);
                 if ((curR - curL) / Math.max(1f, baseW) < .2f) colour = mix(colour, 0xFFFFFFFF, .28f * (float) (.5 + .5 * Math.sin(now / 110.0)));
+                if (fever > 0) {
+                    float q = (float) (.5 + .5 * Math.sin(now / 70.0)), g = (6 + 3 * q) * d;
+                    box.set(curL - g, y - g * .6f, curR + g, y + bh + g * .6f);
+                    fill.setShader(null); fill.setColor(alpha(FIRE, fade * (.22f + .12f * q))); c.drawRoundRect(box, 12 * d, 12 * d, fill);
+                    if (motion && rnd.nextFloat() < .5f) { Bit f = new Bit(); float s0 = (3 + rnd.nextFloat() * 4) * d, x0 = curL + rnd.nextFloat() * (curR - curL); f.l = x0 - s0 / 2; f.r = x0 + s0 / 2; f.t = y - s0 / 2; f.b = y + s0 / 2; f.square = true; f.vx = (rnd.nextFloat() - .5f) * 40 * d; f.vy = -(260 + rnd.nextFloat() * 220) * d; f.vr = (rnd.nextFloat() - .5f) * 400; f.life = .6f; f.colour = rnd.nextBoolean() ? FIRE : 0xFFFFE27A; bits.add(f); }
+                }
+                if (curGold) colour = mix(GOLD, 0xFFFFF3C4, .35f * (float) (.5 + .5 * Math.sin(now / 90.0)));
                 block(c, curL, y + 1.5f * d, curR, y + bh - 1.5f * d, colour, fade);
+                if (curGold) {
+                    float gx = curL + (curR - curL) * ((now % 900) / 900f);
+                    fill.setColor(alpha(0x88FFFFFF, fade)); box.set(gx - 4 * d, y + 3 * d, gx + 4 * d, y + bh - 3 * d); c.drawRoundRect(box, 3 * d, 3 * d, fill);
+                }
             }
             c.restoreToCount(save);
         }
@@ -1050,6 +1321,24 @@ final class PixelStack {
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
             text.setTextSize(sp(15)); text.setColor(alpha(ink, fade * .8f));
             c.drawText(I18n.t("Best") + "  " + best, W / 2f, y + 28 * d, text);
+            if (state == PLAY) {
+                float hy = y + 50 * d, hs = 7 * d, since = now - heartAt;
+                for (int i = 0; i < 3; i++) {
+                    float hx = W / 2f + (i - 1) * 22 * d; boolean has = i < hearts;
+                    float sc = 1f; if (since < 400 && i == (has ? hearts - 1 : hearts)) sc = has ? spring(since / 400f) : 1f + .5f * (1 - ease(since / 400f));
+                    int col = has ? 0xFFFF5C7A : (dark || black ? 0x33FFFFFF : 0x22000000);
+                    fill.setShader(null); fill.setColor(alpha(col, fade));
+                    float q = hs * sc;
+                    c.drawCircle(hx - q * .5f, hy - q * .3f, q * .58f, fill); c.drawCircle(hx + q * .5f, hy - q * .3f, q * .58f, fill);
+                    android.graphics.Path hp = new android.graphics.Path(); hp.moveTo(hx - q * 1.05f, hy - q * .05f); hp.lineTo(hx + q * 1.05f, hy - q * .05f); hp.lineTo(hx, hy + q * 1.1f); hp.close(); c.drawPath(hp, fill);
+                }
+            }
+            if (state == PLAY && fever > 0) {
+                float q = (float) (.5 + .5 * Math.sin(now / 90.0));
+                text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD)); text.setTextSize(sp(16));
+                text.setColor(alpha(FIRE, fade * (.7f + .3f * q)));
+                c.drawText(I18n.t("On fire!") + "  ×2", W / 2f, y + 82 * d, text);
+            }
             if (state == OVER) {
                 float k = ease((since() - 500) / 400f);
                 if (newBest && score > 0) {
@@ -1114,6 +1403,46 @@ final class PixelStack {
             }
         }
 
+        RectF sceneRect() {
+            int W = getWidth(), H = getHeight();
+            return ArcadeCurtain.scene(ArcadePreview.STACK, W, H, d, 0, scene);
+        }
+
+        private void drawTitleArcade(Canvas c, float nameA, float extrasA) {
+            int W = getWidth(), H = getHeight();
+            float y = ArcadeCurtain.titleY(ArcadePreview.STACK, W, H, d, 0, sceneRect());
+            text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            text.setTextSize(sp(30)); text.setColor(alpha(ink, nameA));
+            if (nameA > 0) c.drawText(I18n.t("Pixel Stack"), W / 2f, y, text);
+            float k = extrasA; if (k <= 0) return;
+            text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
+            text.setTextSize(sp(15)); text.setColor(alpha(soft, k * 1.6f));
+            c.drawText(I18n.t("Best") + "  " + best, W / 2f, y + 28 * d + (1 - k) * 10 * d, text);
+            float pulse = .5f + .5f * (float) (.5 + .5 * Math.cos(SystemClock.uptimeMillis() / 300.0));
+            text.setTextSize(sp(16)); text.setColor(alpha(ink, k * pulse));
+            c.drawText(I18n.t("Tap to start"), W / 2f, H - 64 * d, text);
+        }
+
+        private void drawPaused(Canvas c, float t, long now) {
+            int W = getWidth(), H = getHeight();
+            float in = motion ? ease(t / 240f) : 1f;
+            fill.setShader(null); fill.setColor(alpha(black ? 0xFF000000 : dark ? 0xFF0B0E14 : 0xFFFFFFFF, .62f * in)); c.drawRect(0, 0, W, H, fill);
+            float y = H * .46f;
+            fill.setColor(alpha(dark || black ? LIGHT : BLUE, in));
+            box.set(W / 2f - 17 * d, y - 78 * d, W / 2f - 5 * d, y - 40 * d); c.drawRoundRect(box, 4 * d, 4 * d, fill);
+            box.set(W / 2f + 5 * d, y - 78 * d, W / 2f + 17 * d, y - 40 * d); c.drawRoundRect(box, 4 * d, 4 * d, fill);
+            text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD)); text.setTextSize(sp(30)); text.setColor(alpha(ink, in));
+            c.drawText(I18n.t("Paused"), W / 2f, y, text);
+            float pulse = .5f + .5f * (float) (.5 + .5 * Math.cos(now / 300.0));
+            text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL)); text.setTextSize(sp(16)); text.setColor(alpha(ink, in * pulse));
+            c.drawText(I18n.t("Tap to continue"), W / 2f, y + 40 * d, text);
+            text.setTextSize(sp(14));
+            String ng = I18n.t("New game"); float bw = text.measureText(ng) + 36 * d, by2 = H - 110 * d;
+            newGameAt.set(W / 2f - bw / 2, by2, W / 2f + bw / 2, by2 + 40 * d);
+            stroke.setStrokeWidth(1.4f * d); stroke.setColor(alpha(soft, in * 1.4f)); c.drawRoundRect(newGameAt, 20 * d, 20 * d, stroke);
+            text.setColor(alpha(ink, in * .9f)); c.drawText(ng, W / 2f, newGameAt.centerY() + 5 * d, text);
+        }
+
         private void drawTitle(Canvas c, float t, float fade) {
             int W = getWidth(), H = getHeight();
             float k = ease((t - 200) / 380f) * fade;
@@ -1121,7 +1450,7 @@ final class PixelStack {
             float lift = (1 - k) * 14 * d;
             text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             text.setTextSize(sp(30)); text.setColor(alpha(ink, k));
-            float y = H * .4f + introSize / 2f + 58 * d + lift;
+            float y = (cardAt != null ? sceneRect().bottom + 50 * d : H * .4f + introSize / 2f + 58 * d) + lift;
             c.drawText(I18n.t("Pixel Stack"), W / 2f, y, text);
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
             text.setTextSize(sp(15)); text.setColor(alpha(soft, k * 1.6f));
@@ -1131,8 +1460,32 @@ final class PixelStack {
             c.drawText(I18n.t("Tap to start"), W / 2f, H - 64 * d, text);
         }
 
-        static final float MERGE_MS = 980;
-        private boolean landed;
+        static final float MERGE_MS = 980, DROP_MS = 640;
+        private boolean landed, firstFrame;
+        private void drawFirstDrop(Canvas c, float t) {
+            float l = getWidth() / 2f - baseW / 2f, y = baseY - bh, fall = 400;
+            if (t < 30) landed = false;
+            float w = baseW, h = bh - 3 * d, bottom = y + bh - 1.5f * d; int colour = blockColour(0);
+            if (t < fall) {
+                float k = easeIn(t / fall);
+                bottom = -bh + (bottom + bh) * k; h *= 1 + .5f * (float) Math.sin(Math.PI * k); w *= 1 - .08f * (float) Math.sin(Math.PI * k);
+            } else {
+                float k = Math.min(1f, (t - fall) / (DROP_MS - fall)), sq = (float) Math.sin(Math.PI * Math.min(1f, k * 1.6f)) * (1 - k);
+                w *= 1 + .06f * sq; h *= 1 - .3f * sq; colour = mix(colour, 0xFFFFFFFF, .5f * (1 - ease(k)));
+            }
+            block(c, getWidth() / 2f - w / 2, bottom - h, getWidth() / 2f + w / 2, bottom, colour, 1f);
+            if (!landed && t >= fall) {
+                landed = true;
+                PixelStackSound.play(PixelStackSound.THUD, .75f, 1f);
+                buzz(a, new int[]{2, 7}, new float[]{1f, .6f}, new int[]{0, 30}, new long[]{0, 55}, new int[]{0, 230});
+                for (int i = 0; i < 18; i++) {
+                    Bit p = new Bit(); float s = (3 + rnd.nextFloat() * 4) * d, x = l + rnd.nextFloat() * baseW;
+                    p.l = x - s / 2; p.r = x + s / 2; p.t = baseY - s; p.b = baseY; p.square = true;
+                    p.vx = (x - getWidth() / 2f) * 2.2f + (rnd.nextFloat() - .5f) * 120 * d; p.vy = -(120 + rnd.nextFloat() * 220) * d;
+                    p.vr = (rnd.nextFloat() - .5f) * 720; p.life = 1f; p.colour = rnd.nextBoolean() ? LIGHT : BLUE; bits.add(p);
+                }
+            }
+        }
         private void drawMerge(Canvas c, float t) {
             float l = getWidth() / 2f - baseW / 2f, q = baseW / 4f, y = baseY - bh;
             if (t < 30) landed = false;

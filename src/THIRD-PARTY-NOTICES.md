@@ -23,3 +23,7 @@ The Ad blocker downloads HaGeZi's Multi LIGHT hosts list (https://github.com/hag
 ## VPN servers
 
 The VPN downloads the public server list of the VPN Gate Academic Experiment Project (https://www.vpngate.net, University of Tsukuba) when you use it, and connects to the volunteer server you pick. The list is not included in the APK, and Pixel Suite's VPN client is its own code.
+
+## Persian font
+
+Persian texts use Vazirmatn (https://github.com/rastikerdar/vazirmatn), Copyright 2015 The Vazirmatn Project Authors, licensed under the SIL Open Font License 1.1 (https://openfontlicense.org). It is included unchanged as `res/raw/vazirmatn.ttf`.

@@ -1,3 +1,35 @@
+## v3.1.2
+¡Dos juegos nuevos llegan a Pixel Arcade! Además, un Pixel Stack renovado, Ocultar De un vistazo, nuevas opciones para los botones de navegación y correcciones.
+
+🕹️ Pixel Arcade: ¡dos juegos más!
+• **Mantén pulsado el logo** en la parte superior de la página de inicio de Pixel Suite y elige tu juego. ¡Cada tarjeta muestra su juego en directo!
+• **Pixel Blast (¡nuevo!)**: ¡ábrete paso con bombas entre cajas y fantasmas! Patea bombas, recoge gemas, derrota a un jefe cada 5 niveles y vuélvete Evil o Angelic, cada uno con poderes salvajes propios.
+• **Pixel Siege (¡nuevo!)**: ¡defiende el logo con tu tanque! Crece a lo largo de cinco niveles, un jefe llega cada 5 niveles, y premios legendarios como Airstrike, Shockwave y la Nuke esperan en botones sobre tus controles.
+• **¡Pixel Stack, renovado!** Tres corazones, bloques dorados, una marcha más rápida cada 100 puntos, y cada bloque toca la siguiente nota de una melodía de piano.
+• **Pausa y continúa**: sal cuando quieras y sigue justo donde lo dejaste, incluso tras reiniciar. Las copias de seguridad guardan tus mejores puntuaciones y partidas en pausa.
+• **¡Presume de puntuación!** Cada juego tiene su propia tarjeta de puntuación para nuestra comunidad de Telegram.
+
+✨ Novedades
+• 🧹 **Ocultar De un vistazo** (Android 16 y anteriores): quita De un vistazo de la pantalla de inicio y deja su fila libre para tus apps, carpetas y widgets. (Lanzador Pixel)
+• 🧭 **Botones de navegación**: elige a qué distancia quedan los botones de la barra de gestos, y oculta la barra de gestos mientras sus gestos siguen funcionando. (Gestos › Botones de navegación)
+
+💎 Patreon
+• 🌙 **Páginas oscuras**: los números de tarjeta se leen en las páginas de pago que forzaban texto oscuro.
+
+🪄 Pulido
+• 🔠 **Persa**: Pixel Suite usa ahora la fuente Vazirmatn, con una redacción más natural en todas partes.
+• ✂️ **Recorte libre de capturas y garabatos de Pixel Studio**: atenuados, con una nota, en teléfonos sin el editor de capturas (lo tienen los Pixel 9 y posteriores).
+• 🏷️ **Filas del ámbito de LSPosed**: los nombres de las apps se quedan como los muestra LSPosed, en todos los idiomas.
+
+🐞 Correcciones
+• 🧭 **Botones de navegación**: Pixel Launcher podía cerrarse en versiones más nuevas con los botones activados, y los botones seguían en pantalla en un vídeo horizontal a pantalla completa.
+• 🗂️ **Cajón de apps**: una app arrastrada fuera de una carpeta abierta podía seguir apareciendo en la carpeta anterior.
+• 📦 **Pixel Launcher de Android 16**: al mover varias apps decía "No hay espacio en esta página", y las carpetas del cajón de apps no funcionaban.
+• 🔢 **Confirmar automáticamente un PIN de 4 dígitos**: ahora funciona en la pantalla de bloqueo más reciente.
+• 🔍 **Ocultar barra de búsqueda**: funciona en más versiones de Pixel Launcher que decían que no era compatible.
+
+Instala sobre tu versión actual y reinicia.
+
 ## v3.1.1
 Desactiva el bloqueo de anuncios en todo el sistema, Ocultar barra de búsqueda en más launchers, nombres más largos en la marcación rápida de Chrome y correcciones.
 
@@ -68,13 +100,5 @@ Pixel Suite en 14 idiomas, Chrome+ y Gboard+, una VPN integrada, Copia y restaur
 • ➗ **Gboard+**: en la página de números, la columna + - * / ahora es igual que las demás teclas. Las teclas de espacio y borrar vuelven a verse como teclas y ya no desaparecen en el modo oscuro.
 • 🪟 **Menús de la pantalla de inicio**: con Vidrio esmerilado, la fila de iconos de arriba del menú de una app aparecía antes que el resto. Ahora aparece junto con el menú.
 • ✅ **Seleccionar apps**: el teclado seguía abierto sobre la lista después de marcar una app desde la búsqueda. Ahora se cierra.
-
-Instala sobre tu versión actual y reinicia.
-
-## v3.0.4
-Una corrección para Play Integrity.
-
-🐞 Correcciones
-• Play Integrity: Pixel Suite ya no usa los servicios de Google Play. Solo se usaba para los bordes de desplazamiento suaves en algunas pantallas de Google abiertas desde Ajustes (Cristal esmerilado), y mantenerlo podía costarte la integridad Device y Strong, así que no valía la pena. Si lo tenías marcado en el ámbito de LSPosed de Pixel Suite, Pixel Suite ahora lo desmarca por ti. Reinicia cuando te lo pida. Gracias a Ashray V K en Telegram por avisar 🙏
 
 Instala sobre tu versión actual y reinicia.

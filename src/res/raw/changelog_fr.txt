@@ -1,3 +1,35 @@
+## v3.1.2
+Deux nouveaux jeux débarquent dans Pixel Arcade ! Avec un Pixel Stack retravaillé, Masquer Aperçu, de nouvelles options pour les boutons de navigation, et des corrections.
+
+🕹️ Pixel Arcade : deux jeux de plus !
+• **Maintenez le logo** en haut de la page d'accueil de Pixel Suite et choisissez votre jeu. Chaque carte montre son jeu en direct !
+• **Pixel Blast (nouveau !)** : frayez-vous un chemin à la bombe entre caisses et fantômes ! Shootez dans les bombes, ramassez des gemmes, battez un boss tous les 5 niveaux, et devenez Evil ou Angelic, chacun avec ses pouvoirs déchaînés.
+• **Pixel Siege (nouveau !)** : défendez le logo avec votre tank ! Il évolue sur cinq niveaux, un boss arrive tous les 5 niveaux, et des prix légendaires comme Airstrike, Shockwave et la Nuke attendent sur des boutons au-dessus de vos commandes.
+• **Pixel Stack, retravaillé !** Trois cœurs, des blocs dorés, une vitesse supérieure tous les 100 points, et chaque bloc joue la note suivante d'un air de piano.
+• **Pause et reprise** : quittez quand vous voulez et reprenez exactement où vous en étiez, même après un redémarrage. Les sauvegardes gardent vos meilleurs scores et vos parties en pause.
+• **Affichez votre score !** Chaque jeu a sa propre carte de score pour notre communauté Telegram.
+
+✨ Nouveautés
+• 🧹 **Masquer Aperçu** (Android 16 et versions antérieures) : retire Aperçu de l'écran d'accueil et libère sa ligne pour vos applis, dossiers et widgets. (Lanceur Pixel)
+• 🧭 **Boutons de navigation** : choisissez la distance entre les boutons et la barre de gestes, et masquez la barre de gestes tandis que ses gestes continuent de fonctionner. (Gestes › Boutons de navigation)
+
+💎 Patreon
+• 🌙 **Pages sombres** : les numéros de carte sont lisibles sur les pages de paiement qui imposaient un texte sombre.
+
+🪄 Finitions
+• 🔠 **Persan** : Pixel Suite utilise désormais la police Vazirmatn, avec des formulations plus naturelles partout.
+• ✂️ **Recadrage libre des captures d'écran et griffonnages Pixel Studio** : grisés, avec une note, sur les téléphones sans l'éditeur de captures (les Pixel 9 et plus récents l'ont).
+• 🏷️ **Lignes du champ d'application LSPosed** : les noms des applis restent tels que LSPosed les affiche, dans toutes les langues.
+
+🐞 Corrections
+• 🧭 **Boutons de navigation** : Pixel Launcher pouvait planter sur les versions récentes avec les boutons activés, et les boutons restaient à l'écran dans une vidéo plein écran en paysage.
+• 🗂️ **Panneau des applis** : une appli sortie d'un dossier ouvert pouvait encore apparaître dans l'ancien dossier.
+• 📦 **Pixel Launcher d'Android 16** : déplacer plusieurs applis affichait « Pas de place sur cette page », et les dossiers du panneau des applis ne fonctionnaient pas.
+• 🔢 **Confirmer automatiquement un code à 4 chiffres** : fonctionne désormais sur le nouvel écran de verrouillage.
+• 🔍 **Masquer la barre de recherche** : fonctionne sur davantage de versions de Pixel Launcher qui l'annonçaient comme non pris en charge.
+
+Installez par-dessus votre version actuelle et redémarrez.
+
 ## v3.1.1
 Le blocage des pubs dans tout le système peut s'éteindre, Masquer la barre de recherche sur plus de lanceurs, des noms plus longs dans l'accès rapide de Chrome, et des corrections.
 
@@ -68,13 +100,5 @@ Pixel Suite en 14 langues, Chrome+ et Gboard+, un VPN intégré, Sauvegarde et r
 • ➗ **Gboard+** : sur la page des chiffres, la colonne + - * / ressemble maintenant aux autres touches. Les touches espace et effacer redeviennent des touches et ne disparaissent plus en mode sombre.
 • 🪟 **Menus de l'écran d'accueil** : avec le Verre dépoli, la rangée d'icônes en haut du menu d'une appli s'affichait avant le reste. Elle apparaît maintenant en fondu avec le menu.
 • ✅ **Sélectionner des applis** : le clavier restait ouvert sur la liste après avoir coché une appli depuis la recherche. Il se ferme maintenant.
-
-Installez par-dessus votre version actuelle et redémarrez.
-
-## v3.0.4
-Un correctif pour Play Integrity.
-
-🐞 Corrections
-• Play Integrity : Pixel Suite n'utilise plus les services Google Play. Ils ne servaient qu'aux bords de défilement doux de quelques écrans Google ouverts depuis Paramètres (Verre dépoli), et les garder pouvait vous coûter l'intégrité Device et Strong : ça n'en valait pas la peine. Si vous les aviez cochés dans la portée LSPosed de Pixel Suite, Pixel Suite les décoche maintenant pour vous. Redémarrez simplement quand il le demande. Merci à Ashray V K sur Telegram de l'avoir signalé 🙏
 
 Installez par-dessus votre version actuelle et redémarrez.

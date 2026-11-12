@@ -1590,3 +1590,102 @@ Block ads in every app	Блокировать рекламу во всех пр�
 Turn off to block ads only in Chrome and Google News.	Выключите, чтобы блокировать рекламу только в Chrome и Google Новостях.
 Ads are blocked only in Chrome and Google News.	Реклама блокируется только в Chrome и Google Новостях.
 Open-source servers worldwide	Серверы с открытым кодом по всему миру
+Pixel Arcade	Pixel Arcade
+Choose a game	Выберите игру
+Pixel Siege	Pixel Siege
+Pixel Blast	Pixel Blast
+Stack it high	Стройте выше
+Defend the logo	Защитите логотип
+Blast your way through	Пробейте себе путь
+Drag to move, tap to fire	Ведите для движения, нажмите для выстрела
+Drag to move, tap to drop a bomb	Ведите для движения, нажмите, чтобы поставить бомбу
+Stage {0}	Уровень {0}
+Stage clear!	Уровень пройден!
+Power up!	Усиление!
+Shield	Щит
+Freeze	Заморозка
+Boom!	Бум!
+Fortress	Крепость
+Extra life	Доп. жизнь
++1 bomb	+1 бомба
+Bigger blast	Взрыв больше
+Speed up	Быстрее
+Portal open!	Портал открыт!
+Weapon upgrade!	Оружие улучшено!
+Rockets!	Ракеты!
+Double points	Двойные очки
+Poison bombs!	Ядовитые бомбы!
+Fire breath!	Огненное дыхание!
+Laser!	Лазер!
+Helper drone!	Дрон-помощник!
+Shockwave!	Ударная волна!
+Laser eyes!	Лазерные глаза!
+Pfft!	Пфф!
+Split!	Делится!
+Level up!	Новый уровень!
+Combo ×{0}!	Комбо ×{0}!
+Kick!	Пинок!
+Bomb rain!	Бомбопад!
+Mega bombs!	Мегабомбы!
+Glitch King	Король глитчей
+Crop screenshots to any size, even a single line. Needs Pixel Studio (Pixel 9 and newer).	Обрезайте скриншоты до любого размера, даже до одной строки. Нужен Pixel Studio (Pixel 9 и новее).
+Draw shapes and arrows on screenshots. Needs Pixel Studio (Pixel 9 and newer).	Рисуйте фигуры и стрелки на скриншотах. Нужен Pixel Studio (Pixel 9 и новее).
+Needs Pixel Studio (Pixel 9 and newer).	Нужен Pixel Studio (Pixel 9 и новее).
+Golden!	Золотой!
+On fire!	В ударе!
+Iron Crown	Железная корона
+Storm Turret	Штормовая турель
+Laser Walker	Лазерный ходок
+Crate Golem	Ящичный голем
+Phantom Twins	Призрачные близнецы
+Nuke	Ядерный удар
+Fart	Пук
+Level {0}	Уровень {0}
+Nice!	Хорошо!
+Common	Обычный
+Rare	Редкий
+Legendary	Легендарный
+Levels up your tank	Повышает уровень танка
+Blocks every hit	Блокирует любой удар
+One more try	Ещё одна попытка
+Score counts twice	Очки считаются вдвойне
+Shots chase tanks	Снаряды преследуют танки
+Cuts through everything	Пробивает всё
+A helper that shoots	Помощник, который стреляет
+Steel walls for the base	Стальные стены для базы
+Stops every enemy	Останавливает всех врагов
+Wipes the whole map	Сметает всю карту
+Drop one more bomb	Ещё одна бомба
+Flames reach further	Пламя достаёт дальше
+Run faster	Бегите быстрее
+Bombs leave poison gas	Бомбы оставляют ядовитый газ
+Burn what you face	Жгите всё перед собой
+Zap in a straight line	Луч по прямой
+Kick bombs away	Отбрасывайте бомбы ногой
+Three huge bombs	Три огромные бомбы
+Makes ghosts slow and dizzy	Делает призраков медленными и шаткими
+Bombs fall on ghosts	Бомбы падают на призраков
+Airstrike	Авиаудар
+Missiles on every tank	Ракеты по каждому танку
+Blasts and stuns all tanks	Бьёт и оглушает все танки
+Paused	Пауза
+Tap to continue	Нажмите, чтобы продолжить
+New game	Новая игра
+Evil	Зло
+Angelic	Ангел
+Cleansed	Очищен
+• Pixel Arcade: best scores	• Pixel Arcade: лучшие результаты
+• 1 paused game	• 1 игра на паузе
+• {0} paused games	• Игр на паузе: {0}
+Distance from the gesture bar	Расстояние от панели жестов
+Near	Близко
+Normal	Обычное
+Far	Далеко
+Gesture bar	Панель жестов
+Shown	Показана
+Hidden	Скрыта
+Swipe gestures still work, also with the gesture bar hidden.	Жесты смахивания продолжают работать, даже когда панель жестов скрыта.
+Hide At a Glance	Скрыть «Самое важное»
+Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Убирает «Самое важное» с верхней части главного экрана. Строка свободна для ваших приложений, папок и виджетов.
+Hold an app, folder or widget and drop it in the free row.	Удерживайте приложение, папку или виджет и перетащите в свободную строку.
+For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Для Android 16 и более ранних версий. В более новых версиях «Самое важное» можно убрать прямо на главном экране.
