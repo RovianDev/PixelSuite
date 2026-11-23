@@ -67,8 +67,14 @@ final class VpnPage {
 
     private boolean premium(){return PixelVpnService.premium(a);}
 
+    private boolean allowAction(){
+        if(premium())return true;
+        PatronPaper.open(a,0,null);
+        return false;
+    }
+
     private void toggle(){
-        if(!premium()){PatronPaper.open(a,0,null);return;}
+        if(!allowAction())return;
         if(PixelVpnService.state()!=PixelVpnService.OFF){
             if(PixelVpnService.scope()==PixelVpnService.CHROME_ONLY)PixelVpnService.phone(a,PixelVpnService.chosen(a));else PixelVpnService.stop(a);
             return;}
@@ -82,7 +88,8 @@ final class VpnPage {
     }
 
     private void pick(String code){
-        if(premium())PixelVpnService.switchCountry(a,code);else PixelVpnService.choose(a,code);
+        if(!allowAction())return;
+        PixelVpnService.switchCountry(a,code);
         showCountries();showStatus();
     }
 
@@ -110,6 +117,7 @@ final class VpnPage {
     }
 
     private void load(final boolean force){
+        if(force&&!allowAction())return;
         if(loading)return;loading=true;if(force)updated.setText(I18n.cs("Refreshing…"));
         new Thread(new Runnable(){public void run(){
             String error=null;

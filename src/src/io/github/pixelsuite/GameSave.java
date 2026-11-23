@@ -23,8 +23,10 @@ final class GameSave {
     private static final int MAGIC = 0x50534731;
     private static final String OURS = "io.github.pixelsuite";
 
-    private static final java.util.HashSet<String> SCREEN = new java.util.HashSet<String>(java.util.Arrays.asList(
-            "night", "black", "dark", "ink", "page", "soft", "plate", "motion", "d", "topInset", "bottomInset", "best", "last", "introSize", "cardScreen", "cardAt", "home", "startAt"));
+    static final java.util.HashSet<String> SCREEN = new java.util.HashSet<String>(java.util.Arrays.asList(
+            "night", "black", "dark", "ink", "page", "soft", "plate", "motion", "d", "topInset", "bottomInset", "best", "last", "introSize", "cardScreen", "cardAt", "home", "startAt",
+            "land", "leftInset", "rightInset", "sideL", "sideR", "turnAt", "fieldPic",
+            "barH", "barK", "iconFrom", "iconTo", "iconAt", "btnAt", "btnDown", "btnPtr", "btnFired", "pauseAt", "exitAt"));
 
     static File file(Context c, int id) { return new File(c.getFilesDir(), "arcade-run-" + id + ".bin"); }
     static boolean has(Context c, int id) { try { return file(c, id).length() > 16; } catch (Throwable t) { return false; } }
@@ -55,7 +57,8 @@ final class GameSave {
             DataOutputStream out = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(tmp)));
             try {
                 android.util.DisplayMetrics m = c.getResources().getDisplayMetrics();
-                out.writeInt(MAGIC); out.writeInt(m.widthPixels); out.writeInt(m.heightPixels); out.writeLong(SystemClock.uptimeMillis());
+
+                out.writeInt(MAGIC); out.writeInt(Math.min(m.widthPixels, m.heightPixels)); out.writeInt(Math.max(m.widthPixels, m.heightPixels)); out.writeLong(SystemClock.uptimeMillis());
                 IdentityHashMap<Object, Integer> seen = new IdentityHashMap<Object, Integer>();
                 writeFields(out, game, seen);
             } finally { out.close(); }
@@ -114,14 +117,47 @@ final class GameSave {
             DataInputStream in = new DataInputStream(new BufferedInputStream(new FileInputStream(f)));
             try {
                 android.util.DisplayMetrics m = c.getResources().getDisplayMetrics();
-                if (in.readInt() != MAGIC || in.readInt() != m.widthPixels || in.readInt() != m.heightPixels) throw new IllegalStateException("another screen");
+                if (in.readInt() != MAGIC) throw new IllegalStateException("another screen");
+                int w0 = in.readInt(), h0 = in.readInt(), lo = Math.min(m.widthPixels, m.heightPixels), hi = Math.max(m.widthPixels, m.heightPixels);
+                if (!((w0 == lo && h0 == hi) || (w0 == m.widthPixels && h0 == m.heightPixels) || (w0 == m.heightPixels && h0 == m.widthPixels))) throw new IllegalStateException("another screen");
                 in.readLong();
                 ArrayList<Object> seen = new ArrayList<Object>();
                 readFields(in, game, seen);
             } finally { in.close(); }
             for (Field d : fields(game)) if (d.getType() == boolean.class && d.getName().endsWith("Dirty")) d.setBoolean(game, true);
+            rebase(game);
             return true;
         } catch (Throwable t) { drop(c, id); return false; }
+    }
+
+    static void rebase(Object game) {
+        try {
+            long now = SystemClock.uptimeMillis();
+            long[] most = { Long.MIN_VALUE };
+            moments(game, 0L, most, new IdentityHashMap<Object, Boolean>(), 0);
+            if (most[0] <= now + 600000L) return;
+            long by = now - 5000L - most[0];
+            moments(game, by, null, new IdentityHashMap<Object, Boolean>(), 0);
+        } catch (Throwable ignored) { }
+    }
+
+    private static void moments(Object o, long by, long[] most, IdentityHashMap<Object, Boolean> seen, int depth) throws Exception {
+        if (o == null || depth > 4 || seen.put(o, Boolean.TRUE) != null) return;
+        if (o instanceof java.util.List) { for (Object e : (java.util.List<?>) o) moments(e, by, most, seen, depth + 1); return; }
+        if (o instanceof Object[]) { for (Object e : (Object[]) o) moments(e, by, most, seen, depth + 1); return; }
+        if (o instanceof long[]) {
+            long[] ls = (long[]) o;
+            for (int i = 0; i < ls.length; i++) if (ls[i] > 100000L) { if (most != null) most[0] = Math.max(most[0], ls[i]); else ls[i] += by; }
+            return;
+        }
+        if (!(o instanceof View) && !data(o.getClass())) return;
+        for (Field f : fields(o)) {
+            Class<?> ty = f.getType();
+            if (ty == long.class) {
+                long v = f.getLong(o);
+                if (v > 100000L) { if (most != null) most[0] = Math.max(most[0], v); else f.setLong(o, v + by); }
+            } else if (!ty.isPrimitive()) moments(f.get(o), by, most, seen, depth + 1);
+        }
     }
 
     private static void readFields(DataInputStream in, Object o, ArrayList<Object> seen) throws Exception {
@@ -188,7 +224,7 @@ final class GameSave {
     }
 
     private static Object make(Class<?> k) throws Exception {
-        try { java.lang.reflect.Constructor<?> c0 = k.getDeclaredConstructor(); c0.setAccessible(true); return c0.newInstance(); } catch (NoSuchMethodException none) { }
+        try { java.lang.reflect.Constructor<?> c0 = k.getDeclaredConstructor(); c0.setAccessible(true); return c0.newInstance(); } catch (NoSuchMethodException ignored) { }
         Class<?> u = Class.forName("sun.misc.Unsafe"); Field th = u.getDeclaredField("theUnsafe"); th.setAccessible(true);
         return u.getMethod("allocateInstance", Class.class).invoke(th.get(null), k);
     }

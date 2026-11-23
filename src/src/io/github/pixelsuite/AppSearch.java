@@ -29,7 +29,7 @@ final class AppSearch extends FrameLayout implements Choreographer.FrameCallback
     private final Map<String,Switch> switches=new HashMap<String,Switch>();
     private final Map<String,View> liveActions=new HashMap<String,View>();
     private final List<AppSearchIndex.Entry> liveEntries=new ArrayList<AppSearchIndex.Entry>();
-    private final Paint paint=new Paint(3);private final RectF rect=new RectF();
+    private final Paint paint=new Paint(3);
     private float fraction,velocity,target;private long frame;private boolean ticking,opened,disposed;
     private int nav,status,ime;private float downX,downY;private int resultsHeight;private boolean barGesture,resultsGesture,keyboardDismissRequested;
     private Runnable afterClose;
@@ -82,7 +82,6 @@ input.setImeOptions(EditorInfo.IME_ACTION_SEARCH);input.setInputType(1|android.t
         bar.setContentDescription(null);performHapticFeedback(6);spring(1);
         if(first&&input.length()>0)update();
         if(index==null){final Context c=activity.getApplicationContext();io.execute(()->{try{final AppSearchIndex found=AppSearchIndex.load(c);main.post(()->{if(!disposed){index=found;if(opened)update();}});}catch(Exception e){main.post(()->{if(opened){rows.removeAllViews();rows.addView(text("Search unavailable",15,host.secondary()));}});}});}
-
     }
     boolean back(){
         if(!isOpen())return false;
@@ -179,12 +178,14 @@ input.setImeOptions(EditorInfo.IME_ACTION_SEARCH);input.setInputType(1|android.t
     }
     protected void onMeasure(int w,int h){
         int width=MeasureSpec.getSize(w),height=MeasureSpec.getSize(h);setMeasuredDimension(width,height);
-        bar.measure(MeasureSpec.makeMeasureSpec(Math.max(1,width-dp(24)),MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(dp(56)+Math.max(0,Math.round((getResources().getConfiguration().fontScale-1)*dp(20))),MeasureSpec.EXACTLY));
+        int side=AppColumn.side(getContext(),width);
+        bar.measure(MeasureSpec.makeMeasureSpec(Math.max(1,width-dp(24)-2*side),MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(dp(56)+Math.max(0,Math.round((getResources().getConfiguration().fontScale-1)*dp(20))),MeasureSpec.EXACTLY));
         int available=Math.max(1,height-nav-bar.getMeasuredHeight()-dp(44)-status);
-        results.measure(MeasureSpec.makeMeasureSpec(Math.max(1,width-dp(24)),MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(available,MeasureSpec.EXACTLY));resultsHeight=available;
+        results.measure(MeasureSpec.makeMeasureSpec(Math.max(1,width-dp(24)-2*side),MeasureSpec.EXACTLY),MeasureSpec.makeMeasureSpec(available,MeasureSpec.EXACTLY));resultsHeight=available;
     }
     protected void onLayout(boolean changed,int l,int t,int r,int b){
-        bar.layout(dp(12),0,getWidth()-dp(12),bar.getMeasuredHeight());results.layout(dp(12),status+dp(12),getWidth()-dp(12),status+dp(12)+resultsHeight);extentTarget=hasQuery?rows.getMeasuredHeight():0;render();
+        int side=AppColumn.side(getContext(),getWidth());
+        bar.layout(dp(12)+side,0,getWidth()-dp(12)-side,bar.getMeasuredHeight());results.layout(dp(12)+side,status+dp(12),getWidth()-dp(12)-side,status+dp(12)+resultsHeight);extentTarget=hasQuery?rows.getMeasuredHeight():0;render();
     }
     private void position(){if(bar==null)return;
         float y=getHeight()-nav-dp(12)-keyboard-bar.getHeight();bar.setTranslationY(y);

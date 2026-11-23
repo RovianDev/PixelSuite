@@ -71,7 +71,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class SettingsActivity extends Activity {
-
     private boolean mDark;
 
     private boolean mAppSuperDark;
@@ -150,8 +149,6 @@ public class SettingsActivity extends Activity {
 
     private final TextView[] mLabelStops=new TextView[5];
 
-    private FeaturePreview mFeaturePreview;
-
     private RestartPill mRestart;
 
     private ImageView mDeveloperGear;
@@ -198,7 +195,6 @@ public class SettingsActivity extends Activity {
         if("google_apps".equals(pageId))page.setPadding(dp(16),dp(8),dp(16),dp(16));
 
         if (pageId != null && !pageId.equals("home")) {
-
             TextView back = text("\u2039  Back", 17, mAccent, true);
 
             back.setPadding(dp(8),dp(12),dp(8),dp(8));back.setMinimumHeight(dp(48));
@@ -206,16 +202,13 @@ public class SettingsActivity extends Activity {
             back.setOnClickListener(new View.OnClickListener(){public void onClick(View v){finish();}});
 
             page.addView(back);
-
         }
 
         LinearLayout heading=page;
 
         if(pageId==null||"home".equals(pageId)){
-
             heading=new LinearLayout(this);heading.setOrientation(LinearLayout.VERTICAL);heading.setGravity(Gravity.START);
             page.addView(heading,new LinearLayout.LayoutParams(-1,-2));
-
         }
 
         if(pageId==null||"home".equals(pageId)){
@@ -230,7 +223,6 @@ public class SettingsActivity extends Activity {
         if(pageId==null||"home".equals(pageId))heading.addView(new PatronIdentity(this,mText));
 
         if(pageId==null||"home".equals(pageId)){
-
             title.setPadding(0,0,0,0);title.setIncludeFontPadding(false);title.setSingleLine(true);
 
             LinearLayout titleLine=new LinearLayout(this){
@@ -251,7 +243,6 @@ public class SettingsActivity extends Activity {
             LinearLayout.LayoutParams logoSize=new LinearLayout.LayoutParams(dp(30),dp(30));logoSize.leftMargin=dp(7);titleLine.addView(suiteLogo,logoSize);
 
             heading.addView(titleLine);
-
         }else if(premiumPage(pageId)){
             title.setIncludeFontPadding(false);
             LinearLayout titleLine=new LinearLayout(this){
@@ -277,11 +268,9 @@ public class SettingsActivity extends Activity {
         if(pageId==null||"home".equals(pageId)){subtitle.setGravity(Gravity.START);subtitle.setTranslationX(0);subtitle.setPadding(dp(8),0,dp(8),dp(32));}
 
         if(subtitle.length()>0)heading.addView(subtitle);
-
         }
 
         if("changelog".equals(pageId)){
-
             TextView version = text("  " + versionName() + "  \u00b7  RovianDev  ", 12, mAccent, true);
 
             GradientDrawable chip = AppSurfaces.card(this,18);
@@ -291,7 +280,6 @@ public class SettingsActivity extends Activity {
             LinearLayout.LayoutParams chipParams = new LinearLayout.LayoutParams(-2,-2); chipParams.leftMargin=dp(8);chipParams.bottomMargin=dp(20);
 
             heading.addView(version,chipParams);
-
         }
 
         mBanner = banner();
@@ -317,21 +305,19 @@ public class SettingsActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         scroll.setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener() {
-
             @Override
 
             @SuppressWarnings("deprecation")
 
             public WindowInsets onApplyWindowInsets(View v, WindowInsets insets) {
+                int side=AppColumn.side(SettingsActivity.this,getResources().getDisplayMetrics().widthPixels-insets.getSystemWindowInsetLeft()-insets.getSystemWindowInsetRight());
 
-                v.setPadding(insets.getSystemWindowInsetLeft(), insets.getSystemWindowInsetTop(),
+                v.setPadding(insets.getSystemWindowInsetLeft()+side, insets.getSystemWindowInsetTop(),
 
-                        insets.getSystemWindowInsetRight(), insets.getSystemWindowInsetBottom());
+                        insets.getSystemWindowInsetRight()+side, insets.getSystemWindowInsetBottom());
 
                 return insets;
-
             }
-
         });
 
         FrameLayout root = new FrameLayout(this);
@@ -341,13 +327,11 @@ public class SettingsActivity extends Activity {
         mRestart = new RestartPill(this, root, mAccent, mOnAccent);
 
         if("privacy".equals(pageId)){
-
             mPrivacyGate=new PrivacyPageGate();mPrivacyContent=root;
 
             root.setVisibility(View.INVISIBLE);
 
             getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_SECURE);
-
         }
 
         setContentView(root);Rtl.activity(this);mAppRoot=root;root.setBackgroundColor(mBg);TapFeedback.watch(root);
@@ -392,11 +376,9 @@ public class SettingsActivity extends Activity {
         if(mStoreBlockedCount!=null)mInitialReads.add("blocker_summary");
 
         root.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener(){public boolean onPreDraw(){
-
             if(!mInitialReads.isEmpty())return false;
 
             root.getViewTreeObserver().removeOnPreDrawListener(this);return true;
-
         }});
 
         mPaletteObserver=new android.database.ContentObserver(mMain){@Override public void onChange(boolean self){SurfaceStyle.refresh();refreshAppSurfaces();if(mSearch!=null)mSearch.palette();if(mLanguage!=null)mLanguage.palette();}};
@@ -412,13 +394,11 @@ public class SettingsActivity extends Activity {
         PatronAccess.watch(mPatronChanged);
 
         scroll.requestApplyInsets();
-
     }
 
     private PatronMembershipRefresh mPatronMembershipRefresh;
     @Override
     protected void onResume() {
-
         super.onResume();mPageResumed=true;mPageNavigation=false;animatePageIn();refreshAppSurfaces();startDeveloperGear();EsimPurchase.resume(this);
         if(getIntent().hasExtra("esim_code")){final String code=getIntent().getStringExtra("esim_code");getIntent().removeExtra("esim_code");mMain.post(()->EsimPurchase.open(SettingsActivity.this,code));}
 
@@ -439,7 +419,6 @@ public class SettingsActivity extends Activity {
 
         resumeSettingsContent();
         if(!GmsScope.checked){GmsScope.checked=true;GmsScope.onRemoved=new Runnable(){public void run(){mMain.post(new Runnable(){public void run(){showGmsScopeDialog(true);}});}};IO.execute(new Runnable(){public void run(){final boolean reboot=GmsScope.needsReboot(SettingsActivity.this);final boolean scoped=!reboot&&GmsScope.scoped(SettingsActivity.this);if(reboot||scoped)mMain.postDelayed(new Runnable(){public void run(){showGmsScopeDialog(reboot);}},1500);}});}
-
     }
 
     private void resumeSettingsContent(){
@@ -454,6 +433,7 @@ public class SettingsActivity extends Activity {
         if(firstEntitlement)mInitialReads.add("entitlement");
 
         PatronAccess.resume(getApplicationContext(),firstEntitlement?new Runnable(){public void run(){mInitialReads.add("settings");mPatronChanged.run();initialReadDone("entitlement");}}:null);
+        PatronTiles.watch(this);
 
         load();if(mIconPackPage!=null)mIconPackPage.refresh();if(mCallRecordingSettings!=null)mCallRecordingSettings.reload();if(mStoreBlockerPage!=null)mStoreBlockerPage.resume();if(mBackupPage!=null)mBackupPage.resume();if(mBackupSummary!=null)BackupRestorePage.summarize(this,STORE_IO,mBackupSummary);refreshBlockerSummary();
 
@@ -464,7 +444,6 @@ public class SettingsActivity extends Activity {
         if(!sPropChecked&&Feature.on(this,SuperDark.KEY)){sPropChecked=true;
 
             IO.execute(new Runnable(){public void run(){Root.run("[ \"$(getprop "+SuperDark.PROP+")\" = 1 ] || setprop "+SuperDark.PROP+" 1");}});}
-
     }
 
     @Override protected void onPause(){
@@ -478,33 +457,26 @@ public class SettingsActivity extends Activity {
         if(mPrivacyGate!=null){mPrivacyGate.pause();mPrivacyContent.setVisibility(View.INVISIBLE);}
 
         for(FeaturePreview preview:mPreviews)preview.setHostActive(false);super.onPause();
-
     }
 
     @Override protected void onStop(){
-
         if(mPrivacyGate!=null){mPrivacyGate.stop();if(mPrivacyAuthSignal!=null)mPrivacyAuthSignal.cancel();}
 
         super.onStop();
-
     }
 
     private void authenticatePrivacy(){
-
         final int attempt=mPrivacyGate.begin();if(attempt==0)return;
 
         android.app.KeyguardManager lock=(android.app.KeyguardManager)getSystemService(KEYGUARD_SERVICE);
 
         if(lock==null||!lock.isDeviceSecure()){
-
             AppToast.makeText(this,I18n.cs("Set a phone screen lock first"),Toast.LENGTH_LONG).show();finish();return;
-
         }
 
         mPrivacyFailures=0;
 
         try{
-
             android.hardware.biometrics.BiometricPrompt.Builder b=privacyPrompt();
 
             b.setAllowedAuthenticators(0x00ff);b.setConfirmationRequired(false);
@@ -514,37 +486,28 @@ public class SettingsActivity extends Activity {
             mPrivacyAuthSignal=new android.os.CancellationSignal();
 
             b.build().authenticate(mPrivacyAuthSignal,privacyExecutor(),new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
-
                 @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){privacyAuthenticated(attempt);}
 
                 @Override public void onAuthenticationFailed(){if(mPrivacyGate.isPending(attempt)&&++mPrivacyFailures>=3)privacyCredentialLater(attempt);}
 
                 @Override public void onAuthenticationError(int code,CharSequence message){
-
                     if(code==13||code==7||code==9||code==11||code==12||code==1)privacyCredentialLater(attempt);
 
                     else privacyAuthFailed(attempt);
-
                 }
-
             });
-
         }catch(Throwable error){privacyCredentialLater(attempt);}
-
     }
 
     private android.hardware.biometrics.BiometricPrompt.Builder privacyPrompt(){
-
         android.hardware.biometrics.BiometricPrompt.Builder b=new android.hardware.biometrics.BiometricPrompt.Builder(this);
 
         b.setTitle(I18n.cs("Privacy & Security"));b.setDescription("Confirm it's you to change privacy settings");return b;
-
     }
 
     private java.util.concurrent.Executor privacyExecutor(){return new java.util.concurrent.Executor(){public void execute(Runnable r){mMain.post(r);}};}
 
     private void privacyCredentialLater(int attempt){
-
         final int next=mPrivacyGate.replace(attempt);
 
         if(next==0){mPrivacyGate.error(attempt);return;}
@@ -552,35 +515,26 @@ public class SettingsActivity extends Activity {
         if(mPrivacyAuthSignal!=null)mPrivacyAuthSignal.cancel();
 
         mMain.postDelayed(new Runnable(){public void run(){
-
             if(isFinishing()||isDestroyed()||!mPrivacyGate.isPending(next)){mPrivacyGate.error(next);return;}
 
             try{
-
                 android.hardware.biometrics.BiometricPrompt.Builder b=privacyPrompt();b.setAllowedAuthenticators(0x8000);
 
                 mPrivacyAuthSignal=new android.os.CancellationSignal();
 
                 b.build().authenticate(mPrivacyAuthSignal,privacyExecutor(),new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
-
                     @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult result){privacyAuthenticated(next);}
 
                     @Override public void onAuthenticationError(int code,CharSequence message){privacyAuthFailed(next);}
-
                 });
-
             }catch(Throwable error){privacyAuthFailed(next);}
-
         }},250);
-
     }
 
     private void privacyAuthenticated(int attempt){
-
         if(isFinishing()||isDestroyed()||!mPrivacyGate.success(attempt))return;
 
         mPrivacyContent.setVisibility(View.VISIBLE);resumeSettingsContent();
-
     }
 
     private void privacyAuthFailed(int attempt){if(mPrivacyGate.error(attempt)&&!isFinishing())finish();}
@@ -599,15 +553,12 @@ public class SettingsActivity extends Activity {
     private static boolean sPropChecked;
 
     private static final class FeaturePage {
-
         final String group,key,icon,title,summary;
 
         FeaturePage(String group,String key,String icon,String title,String summary){this.group=group;this.key=key;this.icon=icon;this.title=title;this.summary=summary;}
-
     }
 
     private static final FeaturePage[] PAGES={
-
         new FeaturePage("buttons",Feature.FLASHLIGHT,"ic_ps_power_double","Double-press power button","Turn the flashlight on or off, open the camera (stock), or do nothing."),
 
         new FeaturePage("buttons",Feature.VOLDOWN_CAMERA,"ic_ps_volume_double","Double-press volume down","With the screen off, open the camera or turn the flashlight on or off."),
@@ -626,7 +577,7 @@ public class SettingsActivity extends Activity {
 
         new FeaturePage("gestures",Feature.DOUBLE_TAP_SLEEP,"ic_ps_sleep","Double tap to sleep","Double-tap an empty spot on the home screen to lock your phone."),
 
-        new FeaturePage("gestures",Feature.TAP_CHECK,"ic_ps_tapwake_toggle","Tap to wake","Wake your phone with a tap, with pocket protection."),
+        new FeaturePage("gestures",Feature.TAP_CHECK,"ic_ps_tapwake_toggle","Tap or Double-tap to wake","Wake your phone with a tap or a double tap, with pocket protection."),
 
         new FeaturePage("launcher",LauncherFeatures.GRID,"ic_ps_folder_grid","Folder grid","Folders grow with the number of apps inside. Pick a grid from each folder's three-dot menu."),
 
@@ -646,7 +597,7 @@ public class SettingsActivity extends Activity {
 
         new FeaturePage("launcher",LauncherFeatures.HIDE_SEARCH,"ic_ps_search_bar","Hide search bar","Removes the search bar from the bottom of the home screen. The dock moves down and the apps use the space."),
 
-        new FeaturePage("launcher",LauncherHideGlance.KEY,"ic_ps_aod","Hide At a Glance","Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets."),
+        new FeaturePage("launcher",LauncherHideGlance.KEY,"ic_ps_hide_glance","Hide At a Glance","Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets."),
 
         new FeaturePage("launcher","clear_badge","ic_ps_clear_badge","Clear badge","Hold an app or folder with a notification dot and choose Clear badge."),
 
@@ -660,7 +611,6 @@ public class SettingsActivity extends Activity {
 
         new FeaturePage("files",Feature.FILES_SORT,"ic_ps_files","Newest first","Folders first, then your newest files."),
         new FeaturePage("gestures",NavButtons.KEY,"ic_ps_navigation","Navigation buttons","Choose Back, Home or Recent beside the gesture bar. Hold Home for Circle to Search or Gemini.")
-
     };
 
     private final Map<String,TextView> mChoiceLabels=new LinkedHashMap<String,TextView>();
@@ -675,16 +625,17 @@ public class SettingsActivity extends Activity {
 
     private static boolean premiumPage(String id){
         return "gboard".equals(id)||"gboard_autocorrect".equals(id)||"chrome".equals(id)||"extensions".equals(id)||"ad_blocker".equals(id)
-                ||"vpn".equals(id)||"dark_pages".equals(id)||"google_dialer".equals(id)||"google_app".equals(id);
+                ||"vpn".equals(id)||"dark_pages".equals(id)||"google_dialer".equals(id)||"google_app".equals(id)||WidgetPanel.KEY.equals(id);
     }
+
     private static void dropRowBadges(View v){
         if(!(v instanceof ViewGroup))return;
         ViewGroup g=(ViewGroup)v;
         for(int i=g.getChildCount()-1;i>=0;i--){View c=g.getChildAt(i);if("patron.badge".equals(c.getTag()))g.removeViewAt(i);else dropRowBadges(c);}
     }
+
     int pageColor(){return mBg;}
     private String pageTitle(String id){
-
         FeaturePage f=feature(id);if(f!=null)return f.title;
 
         if("buttons".equals(id))return "Buttons";if("gestures".equals(id))return "Gestures";
@@ -699,7 +650,7 @@ public class SettingsActivity extends Activity {
         if("do_not_annoy".equals(id))return "Do Not Annoy";
         if("share_menu".equals(id))return "Share menu";
 
-        if("recents".equals(id))return "Recent Apps";
+        if("recents".equals(id))return "Recent apps";
 
         if("blockers".equals(id))return "OTA & Store blocker";
 
@@ -723,16 +674,16 @@ public class SettingsActivity extends Activity {
 
         if("pixel_watch".equals(id))return "Pixel watch";
 
+        if("pixelsuite_widget_panel".equals(id))return "Widgets feed";
+        if("otp".equals(id))return "Autofill OTP";
         if("miscellaneous".equals(id))return "Miscellaneous";
 
         if("changelog".equals(id))return "Changelog";
 
         if("updates".equals(id))return "Updates";if("about".equals(id))return "About and support";return "Pixel Suite";
-
     }
 
     private String pageSubtitle(String id){
-
         if(feature(id)!=null)return "Make it work your way.";
 
         if("buttons".equals(id))return "Quick actions from your phone's buttons.";
@@ -775,12 +726,13 @@ public class SettingsActivity extends Activity {
 
         if("pixel_watch".equals(id))return "eSIM setup with a QR code";
 
+        if("pixelsuite_widget_panel".equals(id))return "A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.";
+        if("otp".equals(id))return "One-time codes, filled in for you.";
         if("miscellaneous".equals(id))return "Small fixes, simple controls.";
 
         if("changelog".equals(id))return "What's new";
 
         if("updates".equals(id))return "";if("about".equals(id))return "Made by RovianDev";return HomeLayout.TAGLINE;
-
     }
 
     private boolean mPageResumed,mPageNavigation,mPageClosing;
@@ -828,7 +780,6 @@ public class SettingsActivity extends Activity {
     private void openPage(String id){startActivity(new Intent(this,SettingsActivity.class).putExtra("page",id));}
 
     private void buildPage(LinearLayout page){
-
         String id=getIntent().getStringExtra("page");FeaturePage f=feature(id);
         if(NavButtons.KEY.equals(id)){buildNavigationButtons(page);return;}
         if("aod".equals(id)){
@@ -841,6 +792,7 @@ public class SettingsActivity extends Activity {
             finishGroup(timing);
             extraPreview(page,"aod_charging","AOD while charging");
             extraPreview(page,"aod_after","AOD after screen off");
+            mPreviews.get(mPreviews.size()-1).syncWith(mPreviews.get(mPreviews.size()-2));
             section(page,"How it works");
             explanation(page,"Your own Always-on display setting isn't changed.");
             explanation(page,"With Always-on display off, the power button turns the screen off into the always-on display. It goes off after the time you choose.");
@@ -871,6 +823,7 @@ public class SettingsActivity extends Activity {
         if(PowerHold.KEY.equals(id)){
             LinearLayout choices=group(page);
             navChoice(choices,PowerHold.KEY,"Hold power button",new String[]{"Off","Gemini (stock)","Circle to Search","Take a screenshot","Silence","Do Not Disturb","Do Not Annoy","No Annoyance"},new String[]{PowerHold.OFF,PowerHold.GEMINI,PowerHold.CIRCLE,PowerHold.SCREENSHOT,PowerHold.SILENCE,PowerHold.DND,PowerHold.DNA,PowerHold.ALL},PowerHold.GEMINI);
+
             navChoice(choices,PowerHold.KEY_LOCKED,"Hold power button when locked",new String[]{"Gemini (stock)","Silence","Do Not Disturb","Do Not Annoy","No Annoyance"},new String[]{PowerHold.GEMINI,PowerHold.SILENCE,PowerHold.DND,PowerHold.DNA,PowerHold.ALL},PowerHold.lockedChoice(getContentResolver()));
             finishGroup(choices);
             section(page,"How it works");
@@ -894,6 +847,7 @@ public class SettingsActivity extends Activity {
                 section(page,"How it works");
                 explanation(page,"You can also hold the search bar and choose Hide widget. It hides right away.");
                 explanation(page,"Search stays in the app drawer.");
+                featurePreview(page,f);
                 return;
             }
             if("clear_badge".equals(f.key)){
@@ -905,10 +859,23 @@ public class SettingsActivity extends Activity {
 
             LinearLayout controls=group(page);row(controls,f.key,Feature.TAP_CHECK.equals(f.key)?"ic_ps_tapwake_toggle":f.icon,mAccent,(Feature.SCREENSHOT_DOODLES.equals(f.key)||Feature.PHOTOS_DOODLES.equals(f.key)?"Use Doodles":LauncherFeatures.HIDE_SHORTCUTS.equals(f.key)?"Hide app shortcuts":LauncherFeatures.ICONS.equals(f.key)?"Use custom app icons":LauncherFeatures.LABEL_SIZE.equals(f.key)?"Customize icon labels":SuperDark.KEY.equals(f.key)?"Use Super Dark-Mode":"Use "+(I18n.on()?f.title:f.title.toLowerCase(java.util.Locale.ROOT))),"Turn this feature on or off.");if(LauncherFeatures.ICONS.equals(f.key))row(controls,DrawerIconColors.KEY,"ic_ps_drawer",mAccent,"Colorful icons in the app drawer (Stock)","With themed icons on, the app drawer keeps each app's own colors.");finishGroup(controls);
 
-            section(page,"How it works");
+            if(Feature.TAP_CHECK.equals(f.key)){
+                LinearLayout options=group(page);
+                choice(options,Feature.DOUBLE_TAP_WAKE,"Wake gesture",new String[]{"Single tap","Double tap"});
+                choice(options,Feature.LOCK_SHORTCUTS,"Lock-screen behavior",new String[]{"Pixel Suite","Stock"});
+                finishGroup(options);
+
+                featurePreview(page,f);
+
+                section(page,"How it works");
+                explanation(page,f.summary);
+                explanation(page,"If a double tap doesn't register, tap once more within three seconds.");
+                explanation(page,"Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.");
+            }
+
+            if(!Feature.TAP_CHECK.equals(f.key))section(page,"How it works");
 
             if(LauncherFeatures.DRAWER.equals(f.key)){
-
                 explanation(page,"Hold a folder and drag it anywhere among your apps.");
                 explanation(page,"Drag a folder onto Move to bottom to scroll; push deeper to go faster.");
                 explanation(page,"Hold an app or folder with a dot and choose Clear badge.");
@@ -925,48 +892,26 @@ public class SettingsActivity extends Activity {
                 extraPreview(page,"folder_sort","Sorting and custom order");
 
                 explanation(page,"Hold a folder to rename, sort or remove it. Removing it doesn't uninstall its apps.");
-
-            }else{
-
+            }else if(!Feature.TAP_CHECK.equals(f.key)){
                 explanation(page,f.summary);
 
                 if(!LauncherFeatures.LABEL_SIZE.equals(f.key))featurePreview(page,f);
-
             }
 
             if(SuperDark.KEY.equals(f.key)){
-
                 section(page,"Dark theme and schedules");
 
                 explanation(page,"Follows your dark theme schedule. In light theme, normal colors and blur come back.");
-
             }
 
             if(LauncherFeatures.GRID.equals(f.key))extraPreview(page,"folder_sort","Folder sorting");
 
             if(LauncherFeatures.LABEL_SIZE.equals(f.key)){
-
                 section(page,"Text size");LinearLayout options=group(page);labelSize(options);finishGroup(options);
 
                 explanation(page,"Applies right away. Open folders and search keep the usual size.");
-
             }
 
-            if(Feature.TAP_CHECK.equals(f.key)){
-
-                section(page,"Wake the screen");LinearLayout wake=group(page);
-
-                choice(wake,Feature.DOUBLE_TAP_WAKE,"Wake gesture",new String[]{"Single tap","Double tap"});finishGroup(wake);
-
-                explanation(page,"If a double tap doesn't register, tap once more within three seconds.");
-
-                section(page,"Lock-screen taps");LinearLayout lock=group(page);
-
-                choice(lock,Feature.LOCK_SHORTCUTS,"Lock-screen behavior",new String[]{"Pixel Suite","Stock"});finishGroup(lock);
-
-                explanation(page,"Pixel Suite: double-tapping a lock-screen card turns the screen off without opening it.");
-
-            }
 
             if(LauncherFeatures.GRID.equals(f.key))explanation(page,"Pick 3×3, 4×4 or 5×5 from a folder's three-dot menu. Bigger grids appear as the folder fills up.");
 
@@ -985,21 +930,21 @@ public class SettingsActivity extends Activity {
             if(LauncherFeatures.ICONS.equals(f.key))explanation(page,"Shows right away everywhere. Tap the reset arrow for the original icon.");
 
             return;
-
         }
 
         if("do_not_annoy".equals(id)){
             try{getPackageManager().getPackageInfo("com.android.imsstack",0);mDnaPixelStack=true;}catch(android.content.pm.PackageManager.NameNotFoundException absent){mDnaPixelStack=false;}
             LinearLayout controls=group(page);
             row(controls,DoNotAnnoy.KEY,"ic_ps_do_not_annoy",mAccent,"Do Not Annoy","Silences calls and keeps you connected. Add its Quick Settings tile.");
-            row(controls,"pixelsuite_dna_watch","ic_ps_watch",mAccent,"Pixel Watch with LTE","For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.");finishGroup(controls);
+            row(controls,"pixelsuite_dna_watch","ic_ps_watch",mAccent,"Pixel Watch with LTE","For a Pixel Watch with its own mobile plan: its network goes off too. Needs the Pixel Suite watch app.");
+            row(controls,DoNotAnnoyWhatsApp.KEY,"ic_ps_dna_wa",mAccent,"Block WhatsApp calls","While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.");
+            finishGroup(controls);
             explanation(page,mDnaPixelStack?"Callers hear that you're unavailable. You get a notification with a Call button for each missed call. Emergency calls always come through.":"Calls are declined before your phone rings. You get a notification with a Call button for each missed call. Emergency calls always come through.");
             explanation(page,"No LTE Pixel Watch? Leave this off.");
             explanation(page,"Get the Pixel Suite watch app from the developer on Telegram.");
             extraPreview(page,mDnaPixelStack?"209_do_not_annoy":"209_do_not_annoy_decline","Keep calls quiet and stay connected");return;
         }
         if("blockers".equals(id)){
-
             LinearLayout controls=group(page);
 
             navigation(controls,"Play Store blocker","Loading…","ic_ps_store_blocker",new Runnable(){public void run(){openPage("store_blocker");}});
@@ -1009,16 +954,14 @@ public class SettingsActivity extends Activity {
             navigation(controls,"OTA blocker","Off","ic_ps_ota_blocker",new Runnable(){public void run(){openPage("ota_blocker");}});
 
             mOtaStatus=navigationSummary(controls);finishGroup(controls);return;
-
         }
 
         if("store_blocker".equals(id)){
-
             LinearLayout controls=group(page);
 
-            row(controls,StoreBlocker.UNLOCK_KEY,"ic_ps_store_blocker",mAccent,"Unlock OEM apps","Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.");finishGroup(controls);
+            row(controls,StoreBlocker.UNLOCK_KEY,"ic_ps_oem_unlock",mAccent,"Unlock OEM apps","Updating these core apps from the Play Store may break Pixel Suite features. Pixel Suite updates them for you with each release.");finishGroup(controls);
 
-            navigation(controls=group(page),"Select apps","Loading…","ic_ps_drawer",new Runnable(){public void run(){mStoreBlockerPage.show();}});
+            navigation(controls=group(page),"Select apps","Loading…","ic_ps_apps_select",new Runnable(){public void run(){mStoreBlockerPage.show();}});
 
             TextView selectedCount=navigationSummary(controls);finishGroup(controls);
 
@@ -1031,33 +974,32 @@ public class SettingsActivity extends Activity {
             explanation(page,"When you untick apps, Back up saves their current versions first.");
             explanation(page,"The green button puts a saved version back, with its data and sign-ins.");
             explanation(page,"Backup & Restore keeps every saved version, also of uninstalled apps.");
+            explanation(page,"Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.");
 
             mStoreBlockerPage=new StoreBlockerPage(this,STORE_IO,mText,mTextSecondary,mAccent,mOnAccent,mSwitches.get(StoreBlocker.UNLOCK_KEY),selectedCount);
 
             extraPreview(page,"209_store","Hold back app updates");
 
             return;
-
         }
 
         if("ota_blocker".equals(id)){
-
             LinearLayout controls=group(page);
 
-            row(controls,OtaBlocker.KEY,"ic_ps_update",mAccent,"OTA blocker","Stops system updates and hides Software updates in Settings.");
+            row(controls,OtaBlocker.KEY,"ic_ps_ota_block",mAccent,"OTA blocker","Stops system updates and hides Software updates in Settings.");
 
-            row(controls,OtaBlocker.RESET_KEY,"ic_ps_privacy",mAccent,"Lock factory reset","Erase all data is greyed out in Settings while OTA blocker is on.");finishGroup(controls);
+            row(controls,OtaBlocker.RESET_KEY,"ic_ps_reset_lock",mAccent,"Lock factory reset","Erase all data is greyed out in Settings while OTA blocker is on.");finishGroup(controls);
 
             updateMiscPicker();explanation(page,"Reopen Settings to see the change.");
 
             extraPreview(page,"209_ota","System updates and factory reset");
 
             return;
-
         }
 
         if("store_backups".equals(id)){
             mBackupPage=new BackupRestorePage(this,page,IO,mText,mTextSecondary,mAccent,mDark);
+
             section(page,"How it works");
             explanation(page,"App and data saves everything (sign-ins, chats, settings and files) and restores it exactly as it was. App only saves just the app.");
             explanation(page,"Held-back apps are saved automatically before they update.");
@@ -1076,6 +1018,7 @@ public class SettingsActivity extends Activity {
 
         if("extensions".equals(id)){
             LinearLayout list=group(page);
+
             final String vpnPage="vpn";
             navigation(list,"Ad Blocker","Block ads, with filtering per site","ic_ps_cr_adblock",new Runnable(){public void run(){openPage("ad_blocker");}});
             PatronUi.navigationBadge(this,(LinearLayout)list.getChildAt(list.getChildCount()-1),"Ad Blocker");
@@ -1084,6 +1027,7 @@ public class SettingsActivity extends Activity {
             navigation(list,"Dark pages","Dark websites, always, with dark mode or on a schedule","ic_ps_cr_dark",new Runnable(){public void run(){openPage("dark_pages");}});
             PatronUi.navigationBadge(this,(LinearLayout)list.getChildAt(list.getChildCount()-1),"Dark pages");
             finishGroup(list);
+            extraPreview(page,"chrome_extensions","What each extension does");
             explanation(page,"Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.");
             explanation(page,"More to come.");
             return;
@@ -1110,7 +1054,6 @@ public class SettingsActivity extends Activity {
         }
 
         if("google_apps".equals(id)){
-
             LinearLayout apps=group(page);
 
             appNavigation(apps,"Google dialer+","Call recording","com.google.android.dialer","ic_ps_call_recording","google_dialer");
@@ -1123,7 +1066,6 @@ public class SettingsActivity extends Activity {
             finishGroup(apps);
 
             AdBlockCard protection=new AdBlockCard(this,mText,mTextSecondary,mAccent,mOnAccent,switchTrackOff());LinearLayout.LayoutParams protectionLayout=new LinearLayout.LayoutParams(-1,-2);protectionLayout.topMargin=dp(8);protectionLayout.bottomMargin=0;page.addView(protection,protectionLayout);return;
-
         }
 
         if("chrome".equals(id)){
@@ -1154,7 +1096,6 @@ public class SettingsActivity extends Activity {
             extraPreview(page,news?"209_google_news":"209_chrome",news?"Cleaner news articles":"Browse without empty ad boxes");return;
         }
         if("pixel_watch".equals(id)){
-
             LinearLayout controls=group(page);
 
             row(controls,WatchEsim.KEY,"ic_ps_google_apps",mAccent,"eSIM setup with a QR code","Adds Scan QR code to Mobile network when your carrier isn't listed");
@@ -1162,7 +1103,6 @@ public class SettingsActivity extends Activity {
             try{FrameLayout badge=(FrameLayout)((LinearLayout)controls.getChildAt(0)).getChildAt(0);((ImageView)badge.getChildAt(0)).setImageDrawable(AppBrandIcons.load(this,WatchEsim.PACKAGE,sectionInk("ic_ps_google_apps")));}catch(Exception missing){}
 
             finishGroup(controls);extraPreview(page,"209_watch","Set up eSIM with a QR code");return;
-
         }
 
         if("gboard".equals(id)){
@@ -1170,14 +1110,17 @@ public class SettingsActivity extends Activity {
             row(mainGroup,GboardMain.KEY,"ic_ps_gb_power",mAccent,"Use Gboard+","All of Gboard+ at once. Your choices are kept while it's off");
             finishGroup(mainGroup);
             Lockable options=new Lockable(this);page.addView(options,new LinearLayout.LayoutParams(-1,-2));mGboardOptions=options;
+
             LinearLayout look=group(options);
             row(look,GboardFrost.KEY,"ic_ps_gb_frost",mAccent,"Frosted Gboard","See-through keyboard background, with rims");
             finishGroup(look);
+
             explanation(options,"In some apps, like Chrome, the keyboard's top corners look white. Those apps end their page where the keyboard starts, so there's nothing behind the corners to show.");
             section(options,"Toolbar");
             LinearLayout controls=group(options);
+
             navigation(controls,"Edit toolbar shortcuts",gboardBarSummary(),"ic_ps_gb_toolbar",new Runnable(){public void run(){gboardBarEditor();}});
-            row(controls,GboardPlus.KEY_HIDE_CHIPS,"ic_ps_gb_chips",mAccent,"Hide suggestion chips","Keeps chips like Screenshot off the toolbar");
+            row(controls,GboardPlus.KEY_HIDE_CHIPS,"ic_ps_gb_chips",mAccent,"Hide suggestion chips","Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.");
             finishGroup(controls);
             section(options,"Keys");
             controls=group(options);
@@ -1187,7 +1130,7 @@ public class SettingsActivity extends Activity {
             finishGroup(controls);
             section(options,"Typing and clipboard");
             controls=group(options);
-            navigation(controls,"Auto-correction",gboardAutoSummary(),"ic_ps_gb_autocorrect",new Runnable(){public void run(){if(!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}openPage("gboard_autocorrect");}});
+            navigation(controls,"Auto-correction",gboardAutoSummary(),"ic_ps_gb_autocorrect",new Runnable(){public void run(){openPage("gboard_autocorrect");}});
             row(controls,GboardPlus.KEY_DICTATION,"ic_ps_gb_voice",mAccent,"Voice typing with checkmark","Speak, then tap the checkmark to add your words");
             row(controls,GboardPlus.KEY_CLIP,"ic_ps_gb_clipboard",mAccent,"Clipboard in one column","One clip per row, exactly as you copied it");
             finishGroup(controls);
@@ -1207,7 +1150,6 @@ public class SettingsActivity extends Activity {
             return;
         }
         if("google_app".equals(id)){
-
             LinearLayout controls=group(page);
 
             row(controls,GoogleFeedAds.KEY,"ic_ps_google_apps",mAccent,"Hide ads in Google feed","Removes sponsored cards from your feed, with no gaps left");
@@ -1215,11 +1157,9 @@ public class SettingsActivity extends Activity {
             try{LinearLayout toggle=(LinearLayout)controls.getChildAt(0);FrameLayout badge=(FrameLayout)toggle.getChildAt(0);((ImageView)badge.getChildAt(0)).setImageDrawable(googleIcon(sectionInk("ic_ps_google_apps")));}catch(Exception unavailable){}
 
             finishGroup(controls);extraPreview(page,"209_feed","A feed without sponsored gaps");return;
-
         }
 
         if("google_dialer".equals(id)){
-
             LinearLayout controls=group(page);
 
             row(controls,CallRecording.KEY,"ic_ps_call_recording",mAccent,"Call recording","Record calls in the Phone app, in any country, without the announcement");
@@ -1230,7 +1170,7 @@ public class SettingsActivity extends Activity {
 
             TextView modeSummary=(TextView)((LinearLayout)((LinearLayout)modeRow).getChildAt(1)).getChildAt(1);
 
-            navigation(controls,"Recording quality","HD: clearer voice (default)","ic_ps_recording_mode",new Runnable(){public void run(){if(mCallRecordingSettings!=null)mCallRecordingSettings.chooseQuality();}});
+            navigation(controls,"Recording quality","HD: clearer voice (default)","ic_ps_recording_quality",new Runnable(){public void run(){if(mCallRecordingSettings!=null)mCallRecordingSettings.chooseQuality();}});
 
             View qualityRow=controls.getChildAt(controls.getChildCount()-1);
 
@@ -1251,14 +1191,12 @@ public class SettingsActivity extends Activity {
             extraPreview(page,"209_recording","Record and save calls");
 
             return;
-
         }
 
         if("share_menu".equals(id)){
-
             LinearLayout controls=group(page);
 
-            row(controls,ShareSheet.KEY,"ic_ps_share_sheet",mAccent,"Share sheet tools","Pin, reorder and hide sharing apps");finishGroup(controls);
+            row(controls,ShareSheet.KEY,"ic_ps_share_tools",mAccent,"Share sheet tools","Pin, reorder and hide sharing apps");finishGroup(controls);
 
             section(page,"How it works");
             explanation(page,"• Drag an app into the top row to pin it, then drag to reorder.\n\n• Hold an app or contact to pin or hide it.\n\n• Hidden items are under Hidden apps and Hidden contacts. Hold one to unhide it.");
@@ -1266,26 +1204,69 @@ public class SettingsActivity extends Activity {
             extraPreview(page,"209_share_combined","Pin, reorder, hide and restore sharing apps and contacts");
 
             return;
-
         }
 
-        if("miscellaneous".equals(id)){
+        if(WidgetPanel.KEY.equals(id)){
+            section(page,"Home screen");
+            feedPreview(page,FeedPreview.HOME);
 
+            LinearLayout homeOpacity=group(page);widgetPanelOpacity(homeOpacity,WidgetPanel.OPACITY_KEY,"How much of the feed's background shows. The status bar and home bar follow it.");finishGroup(homeOpacity);
+            LinearLayout home=group(page);
+            row(home,WidgetPanel.KEY,"ic_ps_widget_home",mAccent,"Widgets feed","Your widgets, the weather and the date, one swipe from your home screen.");
+            feedSide(home,WidgetPanel.SIDE_KEY,"ic_ps_feed_side","Side","The feed comes in from this side of your home screen.");
+            feedGoogle(home,WidgetPanel.NO_GOOGLE_KEY,"ic_ps_feed_google","Keep the Google feed","Swipe the other way for the Google feed.");
+            row(home,WidgetPanel.HEADER_KEY,"ic_ps_widget_header",mAccent,"Hide weather and date","Your widgets start at the top of the feed.");finishGroup(home);
+            section(page,"Lock screen");
+            feedPreview(page,FeedPreview.LOCK);
+            LinearLayout lockOpacity=group(page);widgetPanelOpacity(lockOpacity,WidgetPanel.LOCK_OPACITY_KEY,"How much of the feed's background shows.");finishGroup(lockOpacity);
+            LinearLayout lock=group(page);
+            row(lock,WidgetPanel.LOCK_KEY,"ic_ps_widget_lock",mAccent,"Widgets feed","Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.");
+            feedSide(lock,WidgetPanel.LOCK_SIDE_KEY,"ic_ps_feed_side_lock","Side","The feed comes in from this side of the lock screen.");
+            row(lock,WidgetPanel.LOCK_HEADER_KEY,"ic_ps_widget_header_lock",mAccent,"Hide weather and date","Your widgets start at the top of the feed.");
+            row(lock,WidgetPanel.LOCK_OPEN_KEY,"ic_ps_open_unlocked",mAccent,"Open apps without unlocking","Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.");
+            navigation(lock,"Apps that open without unlocking","Choose which apps open from the lock screen","ic_ps_apps_unlocked",new Runnable(){public void run(){
+                MiscAppPicker.showFor(SettingsActivity.this,IO,mText,mTextSecondary,mAccent,WidgetPanel.LOCK_APPS_KEY,"Apps that open without unlocking","Saved.",new MiscAppPicker.Presenter(){public void show(AlertDialog dialog){showSettingsDialog(dialog);}});
+            }});finishGroup(lock);
+            section(page,"How it works");
+            explanation(page,"Choose the side for each feed. On the home screen, the Google feed can stay on the other side.");
+            explanation(page,"Tap + to add a widget. Tap a widget to open its app.");
+            explanation(page,"Hold a widget to move, resize or remove widgets, then tap the check mark.");
+            explanation(page,"Tap the date for your calendar and the weather for the forecast.");
+            explanation(page,"To close a feed, swipe it back the way it came.");
+            explanation(page,"On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.");
+            explanation(page,"Pixel Suite and Settings always ask to unlock.");
+            explanation(page,"Each feed keeps its own widgets.");
+            return;
+        }
+        if("otp".equals(id)){
+            LinearLayout controls=group(page);
+            row(controls,OtpFill.KEY,"ic_ps_otp_fill",mAccent,"Code autofill","One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.");
+            row(controls,OtpFill.AUTO_KEY,"ic_ps_otp_auto",mAccent,"Fill codes automatically","Types the code for you when an empty box is waiting for one.");
+            finishGroup(controls);
+            section(page,"How it works");
+            explanation(page,"• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.");
+            extraPreview(page,"otp_fill","Autofill OTP");
+            return;
+        }
+        if("miscellaneous".equals(id)){
             LinearLayout controls=group(page);
 
             row(controls,ScreenshotWarm.KEY,"ic_ps_fast_screenshot",mAccent,"Reduce screenshot delay","Screenshots appear instantly. Uses a little extra memory.");
+
+            row(controls,UsbTop.KEY,"ic_ps_usb_top",mAccent,"USB on top","The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.");
+
+            LinearLayout usbMore=dropdown(controls,"usb_more_open","More USB options");
+            row(usbMore,UsbQuick.KEY,"ic_ps_usb_quick",mAccent,"Quick USB modes","Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.");
 
             row(controls,MiscSystem.SECURE_KEY,"ic_ps_secure_capture",mAccent,"Allow screenshots of secure screens","Screenshots and recordings in apps that block them.\nTurn off other modules that do this first.");
 
             row(controls,MiscSystem.A11Y_KEY,"ic_ps_accessibility",mAccent,"Hide accessibility from apps","Apps you choose can't see your accessibility services.\nTurn off other modules that do this first.");
 
-            navigation(controls,"Choose apps","Choose which apps can't see your accessibility services","ic_ps_drawer",new Runnable(){public void run(){
-
+            navigation(controls,"Choose apps","Choose which apps can't see your accessibility services","ic_ps_apps_hidden",new Runnable(){public void run(){
                 MiscAppPicker.show(SettingsActivity.this,IO,mText,mTextSecondary,mAccent,new MiscAppPicker.Presenter(){public void show(AlertDialog dialog){showSettingsDialog(dialog);}});
-
             }});
 
-            mMiscChooseApps=controls.getChildAt(controls.getChildCount()-1);updateMiscPicker();
+            mMiscChooseApps=controls.getChildAt(controls.getChildCount()-1);mSubRows.add(mMiscChooseApps);updateMiscPicker();
 
             row(controls,KeyboardBarTweak.KEY,"ic_ps_keyboard",mAccent,"Keyboard bar tweak","Hides the globe under your keyboard and moves the arrow to the right");
 
@@ -1298,11 +1279,9 @@ public class SettingsActivity extends Activity {
             finishGroup(controls);
 
             return;
-
         }
 
         if("recents".equals(id)){
-
             LinearLayout controls=group(page);
 
             row(controls,Feature.CLEAR_ALL,"ic_ps_clearall",mAccent,"Always show Clear all","Keeps Clear all next to Screenshot and Select.");
@@ -1319,13 +1298,12 @@ public class SettingsActivity extends Activity {
             explanation(page,"Turn your phone sideways in recents for a cleaner view.");
 
             extraPreview(page,"recents_landscape","Landscape recent apps");
+            mPreviews.get(mPreviews.size()-1).turns(new float[]{.9f,1.8f,5.3f,6.2f},new float[]{0f,90f,90f,0f},90f);
 
             return;
-
         }
 
         if("privacy".equals(id)){
-
             LinearLayout protection=group(page);
 
             row(protection,PrivacyLock.ENABLED_KEY,"ic_ps_app_folder_lock",mAccent,"App & folder lock","Fingerprint or PIN before locked apps and folders open");
@@ -1345,13 +1323,11 @@ public class SettingsActivity extends Activity {
             explanation(page,"Auto-confirm works with a 4-digit PIN, from your next unlock.");
 
             return;
-
         }
 
         if("updates".equals(id)){buildUpdates(page);return;}
 
         if("about".equals(id)){
-
             explanation(page,"To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.");
 
             section(page,"Backup");LinearLayout backup=group(page);
@@ -1362,43 +1338,39 @@ public class SettingsActivity extends Activity {
             section(page,"Community and support");communityActions(page);
 
             return;
-
         }
 
         if("changelog".equals(id)){
-
-            LinearLayout history=group(page);navigation(history,"Full changelog on GitHub","Every feature, fix and release","ic_ps_changelog",new Runnable(){public void run(){startActivity(new Intent(Intent.ACTION_VIEW,android.net.Uri.parse("https://github.com/RovianDev/PixelSuite/releases")));}});finishGroup(history);
+            LinearLayout history=group(page);navigation(history,"Full changelog on GitHub","Every feature, fix and release","ic_ps_changelog_full",new Runnable(){public void run(){startActivity(new Intent(Intent.ACTION_VIEW,android.net.Uri.parse("https://github.com/RovianDev/PixelSuite/releases")));}});finishGroup(history);
 
             String[] entries=Changelog.read(this).split("(?m)^## ");int shown=0;
 
             for(String entry:entries){if(entry.trim().isEmpty())continue;if(shown++>=3)break;int end=entry.indexOf('\n');String heading=end<0?entry.trim():entry.substring(0,end).trim();String body=end<0?"":entry.substring(end+1).trim();int introEnd=body.indexOf("\n\n");if(introEnd>=0&&!body.startsWith("✨")&&!body.startsWith("•")&&!body.startsWith("-"))body=body.substring(introEnd+2).trim();changelogEntry(page,heading,body);}
 
             return;
-
         }
 
         boolean category="buttons".equals(id)||"gestures".equals(id)||"doodles".equals(id)||"launcher".equals(id)||"drawer".equals(id)||"files".equals(id)||"themes".equals(id);
 
         if(category){
-            if("themes".equals(id)){section(page,"Surfaces and blur");LinearLayout style=group(page);surfaceStyle(style);finishGroup(style);}
+            if("themes".equals(id)){
+                section(page,"Surfaces and blur");
+                LinearLayout style=group(page);
+                surfaceStyle(style);
+                finishGroup(style);
+                surfaceStylePreview(page);
+            }
 
             LinearLayout features=group(page);if("launcher".equals(id)){
-
                 navigation(features,"App drawer","Folders, dragging and app shortcuts","ic_ps_drawer",new Runnable(){public void run(){openPage("drawer");}});
 
-                navigation(features,"Recent Apps","Clear all, locked cards and landscape view","ic_ps_recent_apps",new Runnable(){public void run(){openPage("recents");}});
-
-            }for(final FeaturePage item:PAGES)if(item.group.equals(id)&&(!"themes".equals(id)||SuperDark.KEY.equals(item.key))&&(!LauncherHideGlance.KEY.equals(item.key)||LauncherHideGlance.supported()))navigation(features,item.title,item.summary,item.icon,new Runnable(){public void run(){openPage(item.key);}});finishGroup(features);
-            if("launcher".equals(id)){
-                section(page,"Toasts");
-                LinearLayout toasts=group(page);
-                navChoice(toasts,SystemToasts.KEY,"Show toasts",new String[]{"Top","Middle","Bottom (Stock)"},new String[]{"top","middle","bottom"},"top");
-                finishGroup(toasts);
-            }
+                navigation(features,"Recent apps","Clear all, locked cards and landscape view","ic_ps_recent_apps",new Runnable(){public void run(){openPage("recents");}});
+            }for(final FeaturePage item:PAGES)if(item.group.equals(id)&&(!"themes".equals(id)||SuperDark.KEY.equals(item.key))&&(!LauncherHideGlance.KEY.equals(item.key)||LauncherHideGlance.supported()))navigation(features,item.title,item.summary,item.icon,new Runnable(){public void run(){openPage(item.key);}});
+            if("launcher".equals(id)){navChoice(features,SystemToasts.KEY,"Show toasts",new String[]{"Top","Middle","Bottom (Stock)"},new String[]{"top","middle","bottom"},"top");}
+            finishGroup(features);
             if("themes".equals(id))((LinearLayout.LayoutParams)features.getLayoutParams()).bottomMargin=dp(6);
 
             if("themes".equals(id)){
-
                 LinearLayout iconPacks=group(page);
                 for(final FeaturePage item:PAGES)if(LauncherFeatures.ICONS.equals(item.key))navigation(iconPacks,item.title,item.summary,item.icon,new Runnable(){public void run(){openPage(item.key);}});
                 navigation(iconPacks,"Choose Icon pack","Loading…","ic_ps_icon_pack",new Runnable(){public void run(){if(mIconPackPage!=null)mIconPackPage.show();}});
@@ -1416,11 +1388,9 @@ public class SettingsActivity extends Activity {
                 section(page,"The three styles");
 
                 explanation(page,"Blur Off\nNo blur, solid surfaces.\n\nStock\nThe system's own look.\n\nFrosted Glass (Default)\nBlurs what's behind folders, menus and messages.");
-
             }
 
             return;
-
         }
 
         LinearLayout categories=homeSection(page,"Shortcuts");
@@ -1457,6 +1427,8 @@ public class SettingsActivity extends Activity {
 
         googleNavigationIcon(categories);
 
+        navigation(categories,"Widgets feed","Your own widgets, left or right.","ic_ps_widget_panel",new Runnable(){public void run(){openPage("pixelsuite_widget_panel");}});
+
         navigation(categories,"VPN","Open-source servers worldwide","ic_ps_vpn",new Runnable(){public void run(){openPage("vpn");}});
 
         PatronUi.navigationBadge(this,(LinearLayout)categories.getChildAt(categories.getChildCount()-1),"VPN");
@@ -1473,27 +1445,23 @@ public class SettingsActivity extends Activity {
         finishGroup(categories);
 
         categories=homeSection(page,"More");
+        navigation(categories,"Autofill OTP","Codes from your messages, right above the keyboard","ic_ps_otp",new Runnable(){public void run(){openPage("otp");}});
 
         navigation(categories,"Miscellaneous","Screenshots, accessibility, keyboard and developer options","ic_ps_miscellaneous",new Runnable(){public void run(){openPage("miscellaneous");}});
 
         finishGroup(categories);
 
         section(page,"Pixel Suite");LinearLayout about=group(page);navigation(about,"Changelog","What's new","ic_ps_changelog",new Runnable(){public void run(){openPage("changelog");}});navigation(about,"Updates","Check for updates","ic_ps_update",new Runnable(){public void run(){openPage("updates");}});navigation(about,"About and support","Setup, community and support","ic_ps_info",new Runnable(){public void run(){openPage("about");}});finishGroup(about);
-
     }
 
     private ImageView brandIcon(int index){
-
         ImageView icon=new ImageView(this);icon.setImageDrawable(drawable(CommunityLinks.ICONS[index]));icon.setScaleType(ImageView.ScaleType.FIT_CENTER);icon.setPadding(dp(10),dp(10),dp(10),dp(10));GradientDrawable bg=new GradientDrawable();bg.setColor(CommunityLinks.BADGES[index]);bg.setCornerRadius(dp(16));icon.setBackground(bg);icon.setImportantForAccessibility(View.IMPORTANT_FOR_ACCESSIBILITY_NO);return icon;
-
     }
 
     private void communityActions(LinearLayout page){
-
         LinearLayout actions=new LinearLayout(this);actions.setOrientation(LinearLayout.VERTICAL);LinearLayout.LayoutParams outer=new LinearLayout.LayoutParams(-1,-2);outer.bottomMargin=dp(12);page.addView(actions,outer);
 
         int[] order={0,2,1};for(int position=0;position<order.length;position++){
-
             final int index=order[position];LinearLayout button=new LinearLayout(this);button.setOrientation(LinearLayout.HORIZONTAL);button.setGravity(Gravity.CENTER_VERTICAL);button.setPadding(dp(18),dp(16),dp(18),dp(16));button.setMinimumHeight(dp(80));button.setBackground(rowBackground(dp(24),dp(24)));
 
             LinearLayout.LayoutParams iconParams=new LinearLayout.LayoutParams(dp(48),dp(48));iconParams.rightMargin=dp(16);button.addView(brandIcon(index),iconParams);
@@ -1505,9 +1473,7 @@ public class SettingsActivity extends Activity {
             button.setClickable(true);button.setFocusable(true);button.setContentDescription(I18n.cs(CommunityLinks.NAMES[index]+". "+CommunityLinks.CAPTIONS[index]+". Opens an external app."));button.setOnClickListener(new View.OnClickListener(){public void onClick(View v){CommunityLinks.open(SettingsActivity.this,index);}});
 
             LinearLayout.LayoutParams bp=new LinearLayout.LayoutParams(-1,-2,0);if(position>0)bp.topMargin=dp(8);actions.addView(button,bp);
-
         }
-
     }
 
     private void updateAdProtectionStatus(){
@@ -1531,7 +1497,7 @@ public class SettingsActivity extends Activity {
         for(PreviewEntry entry:mPreviewEntries){entry.card.removeView(entry.preview);page.removeView(entry.heading);page.removeView(entry.card);}
         int at=anchor==null?page.getChildCount():page.indexOfChild(anchor);
         TextView heading=text("Features preview",14,mTextSecondary,true);heading.setPadding(dp(8),dp(4),dp(8),dp(8));page.addView(heading,at++);
-        LinearLayout card=new LinearLayout(this);card.setOrientation(1);card.setPadding(dp(8),dp(12),dp(8),dp(12));card.setBackground(AppSurfaces.card(this,24));
+        LinearLayout card=new LinearLayout(this);card.setOrientation(1);
         LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.bottomMargin=dp(16);page.addView(card,at,cp);
         for(int i=0;i<mPreviewEntries.size();i+=2){
             LinearLayout phones=new LinearLayout(this);phones.setOrientation(0);phones.setBaselineAligned(false);card.addView(phones,new LinearLayout.LayoutParams(-1,-2));
@@ -1539,17 +1505,169 @@ public class SettingsActivity extends Activity {
                 PreviewEntry entry=mPreviewEntries.get(j);LinearLayout column=new LinearLayout(this);column.setOrientation(1);
                 LinearLayout.LayoutParams col=new LinearLayout.LayoutParams(0,-2,1);if(j>i)col.leftMargin=dp(8);phones.addView(column,col);
                 TextView label=text(entry.title,12,mTextSecondary,false);label.setGravity(Gravity.CENTER);label.setMaxLines(2);label.setMinimumHeight(dp(38));column.addView(label,new LinearLayout.LayoutParams(-1,dp(38)));
-                entry.preview.setCompact(true);column.addView(entry.preview,new LinearLayout.LayoutParams(-1,dp(280)));
+                column.addView(entry.preview,new LinearLayout.LayoutParams(-1,dp(280)));
             }
         }
     }
     private void featurePreview(LinearLayout page,FeaturePage feature){
+        section(page,"Feature preview");
+        View previewHeading=page.getChildAt(page.getChildCount()-1);
+        LinearLayout card=new LinearLayout(this);
+        card.setOrientation(1);
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(-1,-2);
+        params.bottomMargin=dp(16);
+        page.addView(card,params);
 
-        section(page,"Feature preview");View previewHeading=page.getChildAt(page.getChildCount()-1);LinearLayout card=new LinearLayout(this);card.setOrientation(1);card.setPadding(dp(12),dp(12),dp(12),dp(12));card.setBackground(AppSurfaces.card(this,24));LinearLayout.LayoutParams cp=new LinearLayout.LayoutParams(-1,-2);cp.bottomMargin=dp(16);page.addView(card,cp);
-
-        mFeaturePreview=new FeaturePreview(this,feature.key,mAccent,mOnAccent,mText,mTextSecondary,mCard,mDark);mFeaturePreview.setContentDescription(I18n.cs(feature.title+". A looping demo. It doesn't change your settings."));card.addView(mFeaturePreview,new LinearLayout.LayoutParams(-1,dp("chrome_plus_transform".equals(feature.key)?360:"privacy_combined".equals(feature.key)?400:(SuperDark.KEY.equals(feature.key)||LauncherFeatures.DRAWER.equals(feature.key)||LauncherFeatures.GRID.equals(feature.key)||"folder_sort".equals(feature.key)||FolderDrag.TWO_FINGER.equals(feature.key)||MultiDrag.KEY.equals(feature.key))?330:300)));mPreviews.add(mFeaturePreview);mPreviewEntries.add(new PreviewEntry(previewHeading,card,mFeaturePreview,feature.title));
-
+        String key=feature.key;
+        int height="chrome_plus_transform".equals(key)||"chrome_extensions".equals(key)?360:"privacy_combined".equals(key)?400:
+                (SuperDark.KEY.equals(key)||LauncherFeatures.DRAWER.equals(key)||LauncherFeatures.GRID.equals(key)
+                ||"folder_sort".equals(key)||FolderDrag.TWO_FINGER.equals(key)||MultiDrag.KEY.equals(key))?330:300;
+        FeaturePreview preview=new FeaturePreview(this,key);
+        preview.setContentDescription(I18n.cs(feature.title+". A looping demo. It doesn't change your settings."));
+        card.addView(preview,new LinearLayout.LayoutParams(-1,dp(height)));
+        mPreviews.add(preview);
+        mPreviewEntries.add(new PreviewEntry(previewHeading,card,preview,feature.title));
     }
+
+    private void feedPreview(LinearLayout page,int mode){
+        FeedPreview preview=new FeedPreview(this,mode,mText,mTextSecondary,mBg,mDark);
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(-1,dp(318));
+        params.bottomMargin=dp(6);
+        page.addView(preview,params);
+    }
+
+    private View mFeedGoogle;
+
+    private LinearLayout feedRow(String icon,String title,String summary){
+        LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);
+        row.setPadding(dp(18),dp(16),dp(16),dp(16));row.setMinimumHeight(dp(72));
+        FrameLayout badge=new FrameLayout(this);
+        GradientDrawable circle=new GradientDrawable();circle.setShape(GradientDrawable.OVAL);circle.setColor(sectionColor(icon));badge.setBackground(circle);
+        ImageView iv=new ImageView(this);Drawable d=drawable(icon);
+        if(d!=null){d=d.mutate();d.setTint(sectionInk(icon));iv.setImageDrawable(d);}
+        badge.addView(iv,new FrameLayout.LayoutParams(dp(22),dp(22),Gravity.CENTER));
+        LinearLayout.LayoutParams blp=new LinearLayout.LayoutParams(dp(40),dp(40));blp.rightMargin=dp(16);row.addView(badge,blp);
+        LinearLayout texts=new LinearLayout(this);texts.setOrientation(LinearLayout.VERTICAL);
+        texts.addView(text(title,17,mText,false));
+        TextView s=text(summary,14,mTextSecondary,false);s.setPadding(0,dp(2),0,0);texts.addView(s);
+        row.addView(texts,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1f));
+        row.setContentDescription(I18n.cs(title));
+        return row;
+    }
+
+    private View feedPaid(LinearLayout group,View row,final String gate){
+        FrameLayout control=new FrameLayout(this);
+        control.setTag("paid.row:"+gate);
+        control.addView(row,new FrameLayout.LayoutParams(-1,-2));
+        View cover=new View(this);
+        cover.setTag("patron.cover");
+        cover.setContentDescription(I18n.cs("Unlock this feature with Patreon"));
+        cover.setFocusable(true);
+        cover.setOnClickListener(v->PatronUi.intercept(this,gate));
+        control.addView(cover,new FrameLayout.LayoutParams(-1,-1));
+        PatronUi.apply(control);
+        group.addView(control,new LinearLayout.LayoutParams(-1,-2));
+        return control;
+    }
+
+    private int secureNow(String key,int fallback){try{return android.provider.Settings.Secure.getInt(getContentResolver(),key,fallback);}catch(Throwable t){return fallback;}}
+
+    private void feedSide(LinearLayout group,final String key,String icon,String title,String summary){
+        final boolean lock=WidgetPanel.LOCK_SIDE_KEY.equals(key);
+        final String gate=lock?WidgetPanel.LOCK_KEY:WidgetPanel.KEY;
+        final boolean rtl=FeedPreview.systemRtl();
+        LinearLayout row=feedRow(icon,title,summary);
+        row.setTag("search.anchor:"+key);
+        final FeedPreview.Sides sides=new FeedPreview.Sides(this,mAccent,mOnAccent,mText,mDark?0x26ffffff:0x14000000);
+        sides.setContentDescription(I18n.cs(title));
+        final int[] now={secureNow(key,0)==1?1:0};
+
+        final boolean[] map={lock?!rtl:rtl};
+        sides.set(now[0]==1?!map[0]:map[0],false);
+        sides.listen(new FeedPreview.Sides.Listener(){public void picked(final boolean right){
+            if(PatronUi.intercept(SettingsActivity.this,gate))return;
+            final int value=right==map[0]?0:1;
+            final int before=now[0];
+            sides.set(right,true);
+            if(value==before)return;
+            now[0]=value;
+            FeedPreview.live(key,value);
+            if(!lock)feedGoogleShown(value==1,true);
+            IO.execute(new Runnable(){public void run(){
+                final boolean ok=Root.run("settings put secure "+key+" "+value)!=null;
+                mMain.post(new Runnable(){public void run(){
+                    if(isFinishing()||isDestroyed())return;
+                    if(ok)return;
+                    now[0]=before;sides.set(!right,true);FeedPreview.live(key,before);if(!lock)feedGoogleShown(before==1,true);showRootBanner(true);
+                }});
+            }});
+        }});
+        LinearLayout.LayoutParams slp=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);slp.leftMargin=dp(12);
+        row.addView(sides,slp);
+        feedPaid(group,row,gate);
+    }
+
+    private void feedGoogle(LinearLayout group,final String key,String icon,final String title,String summary){
+        LinearLayout row=feedRow(icon,title,summary);
+        row.setTag("search.anchor:"+key);
+        final Switch sw=new Switch(this);
+        sw.setThumbTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{mAccent,mTextSecondary}));
+        tintSwitchTrack(key,sw);
+        sw.setContentDescription(I18n.cs(title));
+        sw.setChecked(secureNow(key,0)==0);sw.jumpDrawablesToCurrentState();
+        final boolean[] quiet={false};
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){public void onCheckedChanged(CompoundButton b,final boolean keep){
+            if(quiet[0])return;
+            if(PatronUi.intercept(SettingsActivity.this,WidgetPanel.KEY)){quiet[0]=true;sw.setChecked(!keep);quiet[0]=false;return;}
+            final int value=keep?0:1;
+            FeedPreview.live(key,value);
+            IO.execute(new Runnable(){public void run(){
+                final boolean ok=Root.run("settings put secure "+key+" "+value)!=null;
+                mMain.post(new Runnable(){public void run(){
+                    if(isFinishing()||isDestroyed()||ok)return;
+                    quiet[0]=true;sw.setChecked(!keep);quiet[0]=false;FeedPreview.live(key,keep?1:0);showRootBanner(true);
+                }});
+            }});
+        }});
+        LinearLayout.LayoutParams slp=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);slp.leftMargin=dp(12);
+        row.addView(sw,slp);
+        row.setClickable(true);row.setFocusable(true);
+        row.setOnClickListener(new View.OnClickListener(){public void onClick(View v){if(PatronUi.intercept(SettingsActivity.this,WidgetPanel.KEY))return;if(sw.isEnabled())sw.toggle();}});
+        mFeedGoogle=feedPaid(group,row,WidgetPanel.KEY);
+        feedGoogleShown(secureNow(WidgetPanel.SIDE_KEY,0)==1,false);
+    }
+
+    private void feedGoogleShown(final boolean show,boolean animate){
+        final View v=mFeedGoogle;if(v==null)return;
+        boolean shown=v.getVisibility()==View.VISIBLE;
+        if(mFeedGoogleAnim!=null){mFeedGoogleAnim.cancel();mFeedGoogleAnim=null;}
+        final ViewGroup.LayoutParams lp=v.getLayoutParams();
+        if(!animate||v.getParent()==null||((View)v.getParent()).getWidth()==0){lp.height=ViewGroup.LayoutParams.WRAP_CONTENT;v.setAlpha(1f);v.setVisibility(show?View.VISIBLE:View.GONE);v.requestLayout();return;}
+        if(show==shown&&lp.height==ViewGroup.LayoutParams.WRAP_CONTENT)return;
+        int width=((View)v.getParent()).getWidth();
+        v.measure(View.MeasureSpec.makeMeasureSpec(width,View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED));
+        final int full=Math.max(1,v.getMeasuredHeight());
+        final float from=shown?(lp.height>=0?lp.height/(float)full:1f):0f;
+        v.setVisibility(View.VISIBLE);
+        lp.height=Math.max(1,Math.round(full*from));v.requestLayout();
+        final android.animation.ValueAnimator a=android.animation.ValueAnimator.ofFloat(from,show?1f:0f);
+        a.setDuration(Math.round(340*Math.abs((show?1f:0f)-from)));
+        a.setInterpolator(new android.view.animation.DecelerateInterpolator(1.6f));
+        a.addUpdateListener(new android.animation.ValueAnimator.AnimatorUpdateListener(){public void onAnimationUpdate(android.animation.ValueAnimator an){
+            float k=(Float)an.getAnimatedValue();lp.height=Math.max(1,Math.round(full*k));v.setAlpha(Math.max(0f,Math.min(1f,k*k)));v.requestLayout();
+        }});
+        a.addListener(new android.animation.AnimatorListenerAdapter(){
+            boolean cancelled;
+            @Override public void onAnimationCancel(android.animation.Animator x){cancelled=true;}
+            @Override public void onAnimationEnd(android.animation.Animator x){
+                if(mFeedGoogleAnim==a)mFeedGoogleAnim=null;if(cancelled)return;
+                v.setAlpha(1f);lp.height=ViewGroup.LayoutParams.WRAP_CONTENT;v.setVisibility(show?View.VISIBLE:View.GONE);v.requestLayout();
+            }});
+        mFeedGoogleAnim=a;
+        a.start();
+    }
+
+    private android.animation.ValueAnimator mFeedGoogleAnim;
 
     private void extraPreview(LinearLayout page,String key,String title){featurePreview(page,new FeaturePage("launcher",key,"ic_ps_folder_grid",title,""));}
 
@@ -1558,17 +1676,13 @@ public class SettingsActivity extends Activity {
     private android.widget.ProgressBar mUpdateProgress;
 
     private void beginUpdateInstall(){
-
         UpdateInstaller.start(this,new UpdateInstaller.Progress(){public void show(String message,int percent){
-
             if(isDestroyed()||isFinishing())return;
 
             if(mUpdateStatus!=null)mUpdateStatus.setText(I18n.cs(message));
 
             if(mUpdateProgress!=null){mUpdateProgress.setVisibility(View.VISIBLE);mUpdateProgress.setIndeterminate(percent<0&&message.contains("Verifying"));if(percent>=0){mUpdateProgress.setIndeterminate(false);mUpdateProgress.setProgress(percent);}else if(!message.contains("Verifying"))mUpdateProgress.setVisibility(View.GONE);}
-
         }});
-
     }
 
     private void startBackup(){
@@ -1600,10 +1714,9 @@ public class SettingsActivity extends Activity {
     @Override protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if((request==Backup.SAVE||request==Backup.OPEN)&&result==RESULT_OK){backupResult(request,data);return;}if(request==CallRecordingSettings.PICK_FOLDER&&mCallRecordingSettings!=null){mCallRecordingSettings.result(result,data);return;}if(request==202&&getIntent().getBooleanExtra("resume_update_install",false)){getIntent().removeExtra("resume_update_install");try{if((Boolean)getPackageManager().getClass().getMethod("canRequestPackageInstalls").invoke(getPackageManager()))beginUpdateInstall();else if(mUpdateStatus!=null)mUpdateStatus.setText(I18n.cs("Installation permission was not enabled. Tap Download and install when ready."));}catch(Exception unavailable){}}}
 
     private void buildUpdates(LinearLayout page){
-
         explanation(page,"Pixel Suite checks for updates and installs them right here.");
 
-        final android.widget.Switch automatic=new android.widget.Switch(this);automatic.setText(I18n.cs("Check for updates automatically"));android.graphics.drawable.Drawable updateIcon=drawable("ic_ps_update");if(updateIcon!=null){updateIcon=updateIcon.mutate();updateIcon.setTint(mAccent);updateIcon.setBounds(0,0,dp(24),dp(24));automatic.setCompoundDrawables(updateIcon,null,null,null);automatic.setCompoundDrawablePadding(dp(12));}automatic.setTextColor(mText);automatic.setChecked(ReleaseUpdates.enabled(this));automatic.setPadding(dp(18),dp(16),dp(18),dp(16));page.addView(automatic);
+        final android.widget.Switch automatic=new android.widget.Switch(this);automatic.setText(I18n.cs("Check for updates automatically"));android.graphics.drawable.Drawable updateIcon=drawable("ic_ps_update_auto");if(updateIcon!=null){updateIcon=updateIcon.mutate();updateIcon.setTint(mAccent);updateIcon.setBounds(0,0,dp(24),dp(24));automatic.setCompoundDrawables(updateIcon,null,null,null);automatic.setCompoundDrawablePadding(dp(12));}automatic.setTextColor(mText);automatic.setChecked(ReleaseUpdates.enabled(this));automatic.setPadding(dp(18),dp(16),dp(18),dp(16));page.addView(automatic);
 
         automatic.setOnCheckedChangeListener(new android.widget.CompoundButton.OnCheckedChangeListener(){public void onCheckedChanged(android.widget.CompoundButton v,boolean checked){ReleaseUpdates.prefs(SettingsActivity.this).edit().putBoolean("enabled",checked).apply();ReleaseUpdates.schedule(SettingsActivity.this);if(checked)ReleaseUpdates.check(SettingsActivity.this,false,null);}});
 
@@ -1611,14 +1724,13 @@ public class SettingsActivity extends Activity {
 
         LinearLayout actions=group(page);
 
-        navigation(actions,"Check now","Check for updates now","ic_ps_update",new Runnable(){public void run(){status.setText(I18n.cs("Checking for updates…"));ReleaseUpdates.check(SettingsActivity.this,true,new ReleaseUpdates.Result(){public void done(String message){if(!isDestroyed())status.setText(I18n.cs(message));}});}});
+        navigation(actions,"Check now","Check for updates now","ic_ps_update_check",new Runnable(){public void run(){status.setText(I18n.cs("Checking for updates…"));ReleaseUpdates.check(SettingsActivity.this,true,new ReleaseUpdates.Result(){public void done(String message){if(!isDestroyed())status.setText(I18n.cs(message));}});}});
 
-        navigation(actions,"Allow update notifications","Turn on notifications in Android settings","ic_ps_update",new Runnable(){public void run(){if(android.os.Build.VERSION.SDK_INT>=33&&checkSelfPermission("android.permission.POST_NOTIFICATIONS")!=0)requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"},201);else{Intent settings=new Intent("android.settings.APP_NOTIFICATION_SETTINGS");settings.putExtra("android.provider.extra.APP_PACKAGE",getPackageName());try{startActivity(settings);}catch(Exception unavailable){AppToast.makeText(SettingsActivity.this,I18n.cs("Open Android app settings to manage notifications."),0).show();}}}});
+        navigation(actions,"Allow update notifications","Turn on notifications in Android settings","ic_ps_update_bell",new Runnable(){public void run(){if(android.os.Build.VERSION.SDK_INT>=33&&checkSelfPermission("android.permission.POST_NOTIFICATIONS")!=0)requestPermissions(new String[]{"android.permission.POST_NOTIFICATIONS"},201);else{Intent settings=new Intent("android.settings.APP_NOTIFICATION_SETTINGS");settings.putExtra("android.provider.extra.APP_PACKAGE",getPackageName());try{startActivity(settings);}catch(Exception unavailable){AppToast.makeText(SettingsActivity.this,I18n.cs("Open Android app settings to manage notifications."),0).show();}}}});
 
-        navigation(actions,"Download and install","Download and install the update in Pixel Suite","ic_ps_update",new Runnable(){public void run(){beginUpdateInstall();}});
+        navigation(actions,"Download and install","Download and install the update in Pixel Suite","ic_ps_update_install",new Runnable(){public void run(){beginUpdateInstall();}});
 
         finishGroup(actions);
-
     }
 
     private boolean mGmsScopeShown;
@@ -1632,7 +1744,6 @@ public class SettingsActivity extends Activity {
     private final java.util.List<AlertDialog> mSettingsDialogs=new java.util.ArrayList<AlertDialog>();
 
     private void showSettingsDialog(final AlertDialog dialog){
-
         dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(true);dialog.show();Rtl.dialog(dialog);mSettingsDialogs.add(dialog);dialog.setOnDismissListener(new DialogInterface.OnDismissListener(){public void onDismiss(DialogInterface d){mSettingsDialogs.remove(dialog);}});
 
         Window window=dialog.getWindow();if(window==null)return;TapFeedback.watch(window.getDecorView());
@@ -1641,9 +1752,7 @@ public class SettingsActivity extends Activity {
         AppPanelBounds.fit(this,window,window.getAttributes().width,-2);
 
         for(String name:new String[]{"parentPanel","topPanel","contentPanel","buttonPanel"}){
-
             int id=getResources().getIdentifier(name,"id","android");View panel=window.getDecorView().findViewById(id);if(panel!=null)panel.setBackgroundColor(Color.TRANSPARENT);
-
         }
 
         ToastMotion.watchScroll(window.getDecorView());colorSettingsDialog(window.getDecorView());
@@ -1651,11 +1760,9 @@ public class SettingsActivity extends Activity {
         if(dialog.getListView()!=null)dialog.getListView().setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener(){public void onChildViewAdded(View parent,View child){colorSettingsDialog(child);}public void onChildViewRemoved(View parent,View child){}});
 
         for(int which:new int[]{AlertDialog.BUTTON_POSITIVE,AlertDialog.BUTTON_NEGATIVE,AlertDialog.BUTTON_NEUTRAL})if(dialog.getButton(which)!=null)dialog.getButton(which).setTextColor(mAccent);
-
     }
 
     private void styleSettingsWindow(Window window){
-
         if(window==null)return;TapFeedback.watch(window.getDecorView());
 
         if(AppSurfaces.active(this)){window.setBackgroundDrawable(AppSurfaces.dialog(this,28));AppSurfaces.dim(window,.0f);}
@@ -1665,23 +1772,18 @@ public class SettingsActivity extends Activity {
         else{GradientDrawable fill=new GradientDrawable();fill.setColor(mBg);fill.setCornerRadius(dp(28));window.setBackgroundDrawable(fill);window.setDimAmount(0f);}
 
         AppSurfaces.invalidateTree(window.getDecorView());
-
     }
 
     private void colorSettingsDialog(View view){
-
         if(view instanceof TextView)((TextView)view).setTextColor(mText);
 
         if(view instanceof android.widget.CheckedTextView){
-
             ColorStateList checks=new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{mAccent,mTextSecondary});
 
             ((android.widget.CheckedTextView)view).setCheckMarkTintList(checks);
-
         }
 
         if(view instanceof ViewGroup){ViewGroup group=(ViewGroup)view;for(int i=0;i<group.getChildCount();i++)colorSettingsDialog(group.getChildAt(i));}
-
     }
 
     private void consolidateExplanations(LinearLayout page,String id){
@@ -1742,6 +1844,7 @@ public class SettingsActivity extends Activity {
 
     private void changelogEntry(LinearLayout page,String heading,String body){
         section(page,heading);
+
         LinearLayout card=new LinearLayout(this);card.setOrientation(LinearLayout.VERTICAL);card.setPadding(dp(18),dp(16),dp(18),dp(18));card.setBackground(AppSurfaces.card(this,20));
         String[] blocks=body.trim().split("\\n\\s*\\n");
         boolean any=false;
@@ -1780,13 +1883,11 @@ public class SettingsActivity extends Activity {
     }
 
     private void explanation(LinearLayout page,String value){
-
         TextView t=text(value,15,mTextSecondary,false);t.setTag("ps_explanation");t.setPadding(dp(18),dp(16),dp(18),dp(18));t.setLineSpacing(dp(3),1);
 
         GradientDrawable bg=AppSurfaces.card(this,20);t.setBackground(bg);
 
         LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(-1,-2);lp.bottomMargin=dp(12);page.addView(t,lp);
-
     }
 
     private java.util.List<String> gboardBarChoice(){
@@ -1797,6 +1898,7 @@ public class SettingsActivity extends Activity {
     private String gboardBarLabel(String id){return GboardBarEditor.label(id);}
     private String gboardBarSummary(){
         java.util.List<String> c=gboardBarChoice();
+
         StringBuilder x=new StringBuilder();
         if(gboardSecure(GboardPlus.KEY_ROWS))x.append(gboardSecure(GboardPlus.KEY_ROWS_TOP)?" · Two rows, shortcuts on top":" · Two rows");
         if(gboardSecure(GboardPlus.KEY_HIDE_MENU)&&gboardSecure(GboardPlus.KEY_HIDE_RIGHT))x.append(" · Side buttons hidden");
@@ -1806,12 +1908,14 @@ public class SettingsActivity extends Activity {
         StringBuilder b=new StringBuilder();for(String id:c){if(b.length()>0)b.append(", ");b.append(gboardBarLabel(id));}return b.append(x).toString();
     }
     private boolean gboardSecure(String key){try{return android.provider.Settings.Secure.getInt(getContentResolver(),key,0)==1;}catch(Throwable t){return false;}}
+
     private float[] gboardGeo(){
         float[] g={1f,0.5f,1f,0f};
         try{String v=android.provider.Settings.Secure.getString(getContentResolver(),GboardPlus.KEY_GEO);
             if(v!=null&&!v.trim().isEmpty()){String[] f=v.split(",");for(int i=0;i<4&&i<f.length;i++)g[i]=Float.parseFloat(f[i].trim());}}catch(Throwable ignored){}
         return g;
     }
+
     private String gboardAutoSummary(){return "Per language";}
     private String gboardGeoSummary(){
         float[] g=gboardGeo();
@@ -1823,23 +1927,25 @@ public class SettingsActivity extends Activity {
         float[] g=gboardGeo();
         final boolean[] saved={false};
         GboardResizer.open(this,g[0],g[1],g[2],Math.round(g[3]),mDark,mBg,mCard,mText,mTextSecondary,mAccent,new GboardResizer.Saver(){public void save(float w,float cx,float h,int up){
+            if(!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}
             final String cmd="settings put secure "+GboardPlus.KEY_GEO+" "+GboardResizer.value(w,cx,h,up)+" && settings put secure "+GboardPlus.KEY_FREE+" 0 && am force-stop "+SuperDarkApps.GBOARD;
             IO.execute(new Runnable(){public void run(){final boolean ok=Root.run(cmd)!=null;mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;if(ok)saved[0]=true;android.widget.Toast.makeText(SettingsActivity.this,I18n.cs(ok?"Saved. Gboard restarts with the new size":"Couldn't save (root)"),android.widget.Toast.LENGTH_SHORT).show();}});}});
         }},new Runnable(){public void run(){if(saved[0]&&!isFinishing()&&!isDestroyed())recreate();}});
     }
     private void gboardBarEditor(){
         if(!PatronAccess.unlocked()){PatronPaper.open(this,0,null);return;}
+
         IO.execute(new Runnable(){public void run(){java.util.List<String> lines=Root.run("cat /data/data/"+SuperDarkApps.GBOARD+"/cache/pixelsuite_gboard_ids 2>/dev/null");final String list=lines==null?null:android.text.TextUtils.join("\n",lines);mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;GboardBarEditor.gboardList(list);gboardBarEditorOpen();}});}});
     }
     private void gboardBarEditorOpen(){
         GboardBarEditor.open(this,gboardBarChoice(),gboardSecure(GboardPlus.KEY_HIDE_MENU),gboardSecure(GboardPlus.KEY_HIDE_RIGHT),gboardSecure(GboardPlus.KEY_ROWS),gboardSecure(GboardPlus.KEY_ROWS_TOP),mDark,mBg,mCard,mText,mTextSecondary,mAccent,new GboardBarEditor.Saver(){public void save(java.util.List<String> order,boolean hideMenu,boolean hideRight,boolean rows,boolean rowsTop){
+            if(!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}
             StringBuilder v=new StringBuilder(String.valueOf(System.currentTimeMillis())).append(':');for(int i=0;i<order.size();i++){if(i>0)v.append(',');v.append(order.get(i));}
             final String cmd="settings put secure "+GboardPlus.KEY_BAR+" "+v+" && settings put secure "+GboardPlus.KEY_HIDE_MENU+" "+(hideMenu?1:0)+" && settings put secure "+GboardPlus.KEY_HIDE_RIGHT+" "+(hideRight?1:0)+" && settings put secure "+GboardPlus.KEY_ROWS+" "+(rows?1:0)+" && settings put secure "+GboardPlus.KEY_ROWS_TOP+" "+(rowsTop?1:0)+" && am force-stop "+SuperDarkApps.GBOARD;
             IO.execute(new Runnable(){public void run(){final boolean ok=Root.run(cmd)!=null;mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;android.widget.Toast.makeText(SettingsActivity.this,I18n.cs(ok?"Saved. Gboard restarts with your toolbar":"Couldn't save (root)"),android.widget.Toast.LENGTH_SHORT).show();if(ok)recreate();}});}});
         }});
     }
     private void navigation(LinearLayout group,String title,String summary,String icon,final Runnable action){
-
         LinearLayout row=new LinearLayout(this);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(18),dp(18),dp(18),dp(18));row.setMinimumHeight(dp(80));
 
         ImageView image=new ImageView(this);Drawable drawable=drawable(icon);if(drawable!=null){drawable=drawable.mutate();drawable.setTint(sectionInk(icon));image.setImageDrawable(drawable);}
@@ -1854,14 +1960,12 @@ public class SettingsActivity extends Activity {
 
         row.addView(labels,new LinearLayout.LayoutParams(0,-2,1));TextView arrow=text("\u203a",28,mTextSecondary,false);arrow.setPadding(dp(12),0,0,0);row.addView(arrow);
 
-        if("Google apps".equals(title)||"google_apps".equals(getIntent().getStringExtra("page")))PatronUi.navigationBadge(this,row,title);
+        if("Google apps".equals(title)||("Widgets feed".equals(title)&&"ic_ps_widget_panel".equals(icon))||"google_apps".equals(getIntent().getStringExtra("page")))PatronUi.navigationBadge(this,row,title);
 
         row.setClickable(true);row.setFocusable(true);row.setContentDescription(I18n.cs(title));row.setTag("search.anchor:"+title);row.setOnClickListener(new View.OnClickListener(){public void onClick(View v){if(PatronAccess.protectedPage(getIntent().getStringExtra("page"))&&!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}action.run();}});group.addView(row,new LinearLayout.LayoutParams(-1,-2));
-
     }
 
     private void updateChoiceLabel(String key,int value){
-
         TextView label=mChoiceLabels.get(key);String[] items=mChoiceItems.get(key);Integer offset=mChoiceOffsets.get(key);
 
         if(label!=null&&items!=null)label.setText(I18n.cs(items[Math.max(0,Math.min(items.length-1,value-(offset==null?0:offset)))]));
@@ -1874,17 +1978,13 @@ public class SettingsActivity extends Activity {
         ImageView icon=mChoiceIcons.get(key);
 
         if(icon!=null){
-
             String name=folderGridKey(key)?gridIcon(key):Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":DarkPages.KEY_STYLE.equals(key)?"ic_ps_cr_dark":DarkPages.KEY_WHEN.equals(key)?"ic_ps_cr_schedule":value==1?"ic_ps_double_tap":"ic_ps_single_tap";
 
-            Drawable d=drawable(name);if(d!=null){d=d.mutate();d.setTint(mAccent);icon.setImageDrawable(d);}
-
+            Drawable d=drawable(name);if(d!=null){d=d.mutate();d.setTint(badgedChoice(key)?sectionInk(Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":"ic_ps_single_tap"):mAccent);icon.setImageDrawable(d);}
         }
-
     }
 
     private void showLabelSize(int value){
-
         int level=IconLabelScale.level(value);
 
         TextView meter=mChoiceLabels.get(LauncherFeatures.LABEL_LEVEL);
@@ -1894,13 +1994,12 @@ public class SettingsActivity extends Activity {
         if(mLabelPreview!=null)mLabelPreview.setTextSize(16*IconLabelScale.factor(level));
 
         for(int i=0;i<5;i++)if(mLabelStops[i]!=null){mLabelStops[i].setTextColor(i==level?mAccent:mTextSecondary);mLabelStops[i].setTypeface(null,i==level?Typeface.BOLD:Typeface.NORMAL);}
-
     }
 
     private void showStyle(int value){
         TextView meter=mChoiceLabels.get(SurfaceStyle.KEY);
         if(meter!=null)meter.setText(I18n.cs(STYLE_LABELS[value]));
-        if(mStylePreview!=null)mStylePreview.setStyle(value);
+        if(mStylePreview!=null)mStylePreview.show(value,true);
         for(int i=0;i<3;i++)if(mStyleStops[i]!=null){
             mStyleNames[i].setTextColor(i==value?mAccent:mText);
             mStyleNames[i].setTypeface((i==value?Typeface.create("sans-serif",Typeface.BOLD):I18n.medium()));
@@ -1926,26 +2025,33 @@ public class SettingsActivity extends Activity {
             mStyleStops[i]=column;mStyleNames[i]=name;mStyleDescriptions[i]=description;stops.addView(column,new LinearLayout.LayoutParams(0,-2,1));
         }
         box.addView(stops,new LinearLayout.LayoutParams(-1,-2));
-        mStylePreview=new SurfacePreview(this,mDark,mAccent,mText);mStylePreview.setContentDescription(I18n.cs("Preview of the chosen surface style on a folder over a wallpaper"));
-        LinearLayout.LayoutParams pp=new LinearLayout.LayoutParams(-1,dp(220));pp.topMargin=dp(12);box.addView(mStylePreview,pp);
+        mStylePreview=new SurfacePreview(this,mSavedStyle,mDark,mText);
+        mStylePreview.setContentDescription(I18n.cs("Preview of the chosen surface style on a folder over a wallpaper"));
         mStyleSuperDarkNote=text("With Super Dark-Mode, panels stay black.",15,mTextSecondary,false);mStyleSuperDarkNote.setLineSpacing(dp(3),1);mStyleSuperDarkNote.setVisibility(View.GONE);LinearLayout.LayoutParams noteSize=new LinearLayout.LayoutParams(-1,-2);noteSize.topMargin=dp(12);box.addView(mStyleSuperDarkNote,noteSize);
         mStyleSlider.setOnSeekBarChangeListener(new android.widget.SeekBar.OnSeekBarChangeListener(){
-            public void onStartTrackingTouch(android.widget.SeekBar slider){if(mStylePreview!=null){mStylePreview.setInteracting(true);mStylePreview.setStyle(slider.getProgress());}}
-            public void onStopTrackingTouch(android.widget.SeekBar slider){if(mStylePreview!=null){mStylePreview.setStyle(slider.getProgress());mStylePreview.setInteracting(false);}}
+            public void onStartTrackingTouch(android.widget.SeekBar slider){}
+            public void onStopTrackingTouch(android.widget.SeekBar slider){}
             public void onProgressChanged(android.widget.SeekBar slider,int value,boolean user){showStyle(value);if(user&&!mUpdating)saveStyle(value);}
         });
         group.addView(box,new LinearLayout.LayoutParams(-1,-2));
+    }
+
+    private void surfaceStylePreview(LinearLayout page){
+        LinearLayout.LayoutParams params=new LinearLayout.LayoutParams(-1,dp(330));
+        params.topMargin=dp(12);
+        params.bottomMargin=dp(16);
+        page.addView(mStylePreview,params);
     }
 
     private void updateStyleControls(){
         if(mStyleSlider==null)return;
         mStyleSlider.setEnabled(mStyleLoaded);mStyleSlider.setAlpha(mStyleLoaded?1f:.42f);mStyleSlider.setContentDescription(I18n.cs("Surface style, three options"));
         if(mStyleSuperDarkNote!=null){boolean dark=(getResources().getConfiguration().uiMode&Configuration.UI_MODE_NIGHT_MASK)==Configuration.UI_MODE_NIGHT_YES;mStyleSuperDarkNote.setVisibility(dark&&mStyleSuperDark?View.VISIBLE:View.GONE);}
+        if(mStylePreview!=null)mStylePreview.refresh();
         mStyleSlider.setProgress(mSavedStyle);showStyle(mSavedStyle);
     }
 
     private void saveStyle(final int value){
-
         if(!mStyleLoaded)return;
 
         mSavedStyle=value;showStyle(value);mSaves++;
@@ -1955,11 +2061,57 @@ public class SettingsActivity extends Activity {
         final String cmd="settings put secure "+SurfaceStyle.KEY+" "+value+"; settings put global disable_window_blurs "+(blurOff?1:0)+"; am force-stop "+PhotosEditor.PACKAGE+" >/dev/null 2>&1; true";
 
         IO.execute(new Runnable(){public void run(){final boolean ok=Root.run(cmd)!=null;mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;if(ok){SurfaceStyle.refresh();RestartPill.changed(SurfaceStyle.KEY);if(mRestart!=null)mRestart.refresh();}if(!ok){showRootBanner(true);AppToast.makeText(SettingsActivity.this,I18n.cs("Could not save the surface style"),Toast.LENGTH_SHORT).show();load();}}});}});
-
     }
 
-    private void labelSize(LinearLayout group){
+    private void widgetPanelOpacity(LinearLayout group,final String key,String about){
+        LinearLayout box=new LinearLayout(this);box.setOrientation(1);box.setPadding(dp(18),dp(12),dp(18),dp(16));
+        final OpacitySlider slider=new OpacitySlider(this,mAccent,mDark?0x33ffffff:0x22000000);
+        slider.show(widgetPanelOpacityNow(key),false);slider.setContentDescription(I18n.cs("Background opacity"));
+        box.addView(slider,new LinearLayout.LayoutParams(-1,dp(48)));
+        LinearLayout ends=new LinearLayout(this);ends.setOrientation(0);
+        TextView low=text("Invisible",13,mTextSecondary,false);ends.addView(low,new LinearLayout.LayoutParams(0,-2,1));
+        TextView high=text("Solid",13,mTextSecondary,false);high.setGravity(Gravity.END);ends.addView(high,new LinearLayout.LayoutParams(0,-2,1));
+        box.addView(ends,new LinearLayout.LayoutParams(-1,-2));
+        TextView note=text(about,13,mTextSecondary,false);note.setGravity(Gravity.CENTER);note.setPadding(0,dp(12),0,0);box.addView(note,new LinearLayout.LayoutParams(-1,-2));
 
+        final int[] want={-1};final boolean[] busy={false};final long[] wrote={0};
+        slider.listen(new OpacitySlider.Listener(){public void changed(int percent){
+            if(!PatronAccess.allowed(SettingsActivity.this,key))return;
+            FeedPreview.live(key,percent);
+            synchronized(want){want[0]=percent;if(busy[0])return;busy[0]=true;}
+            IO.execute(new Runnable(){public void run(){
+                boolean ok=true;
+                while(true){int v;synchronized(want){v=want[0];want[0]=-1;if(v<0){busy[0]=false;break;}}
+                    wrote[0]=android.os.SystemClock.uptimeMillis();
+                    if(!PatronAccess.allowed(SettingsActivity.this,key)){synchronized(want){want[0]=-1;busy[0]=false;}break;}
+                    ok=Root.run("settings put secure "+key+" "+v)!=null;if(!ok){synchronized(want){want[0]=-1;busy[0]=false;}break;}}
+                if(!ok)mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;showRootBanner(true);}});
+            }});
+        }});
+
+        final android.database.ContentObserver watch=new android.database.ContentObserver(mMain){public void onChange(boolean self){
+            if(slider.held()||android.os.SystemClock.uptimeMillis()-wrote[0]<600)return;
+            synchronized(want){if(busy[0])return;}
+            slider.show(widgetPanelOpacityNow(key),true);
+        }};
+        slider.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener(){
+            public void onViewAttachedToWindow(View v){try{getContentResolver().registerContentObserver(android.provider.Settings.Secure.getUriFor(key),false,watch);}catch(Throwable ignored){}slider.show(widgetPanelOpacityNow(key),false);}
+            public void onViewDetachedFromWindow(View v){try{getContentResolver().unregisterContentObserver(watch);}catch(Throwable ignored){}}
+        });
+        FrameLayout control=new FrameLayout(this);
+        control.setTag("paid.row:"+key);
+        control.addView(box,new FrameLayout.LayoutParams(-1,-2));
+        View cover=new View(this);
+        cover.setTag("patron.cover");
+        cover.setContentDescription(I18n.cs("Unlock this feature with Patreon"));
+        cover.setFocusable(true);
+        cover.setOnClickListener(v->PatronUi.intercept(this,key));
+        control.addView(cover,new FrameLayout.LayoutParams(-1,-1));
+        PatronUi.apply(control);
+        group.addView(control,new LinearLayout.LayoutParams(-1,-2));
+    }
+    private int widgetPanelOpacityNow(String key){try{return Math.max(1,Math.min(100,android.provider.Settings.Secure.getInt(getContentResolver(),key,100)));}catch(Throwable t){return 100;}}
+    private void labelSize(LinearLayout group){
         LinearLayout box=new LinearLayout(this);box.setOrientation(1);box.setPadding(dp(18),dp(12),dp(18),dp(20));
 
         TextView meter=text("Loading…",18,mAccent,true);meter.setGravity(Gravity.CENTER);box.addView(meter,new LinearLayout.LayoutParams(-1,-2));
@@ -1995,15 +2147,12 @@ public class SettingsActivity extends Activity {
         mLabelSlider.setOnSeekBarChangeListener(new android.widget.SeekBar.OnSeekBarChangeListener(){public void onStartTrackingTouch(android.widget.SeekBar s){}public void onStopTrackingTouch(android.widget.SeekBar s){}public void onProgressChanged(android.widget.SeekBar s,int value,boolean user){showLabelSize(value);if(user&&!mUpdating)saveLabelSize(value);}});
 
         group.addView(box,new LinearLayout.LayoutParams(-1,-2));
-
     }
 
     private void saveLabelSize(final int value){
-
         showLabelSize(value);mSaves++;
 
         IO.execute(new Runnable(){public void run(){final boolean ok=Root.run("settings put secure "+LauncherFeatures.LABEL_LEVEL+" "+IconLabelScale.level(value))!=null;mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;if(ok){RestartPill.changed(LauncherFeatures.LABEL_LEVEL);if(mRestart!=null)mRestart.refresh();}if(!ok){showRootBanner(true);AppToast.makeText(SettingsActivity.this,I18n.cs("Could not save text size"),Toast.LENGTH_SHORT).show();load();}}});}});
-
     }
 
     private LinearLayout mNavBody,mNavHome;
@@ -2023,6 +2172,7 @@ public class SettingsActivity extends Activity {
         navChoice(look,NavButtons.GAP,"Distance from the gesture bar",new String[]{"Near","Normal","Far"},new String[]{"near","normal","far"},"normal");
         navChoice(look,NavButtons.LINE,"Gesture bar",new String[]{"Shown","Hidden"},new String[]{"show","hide"},"show");finishGroup(look);
         explanation(mNavBody,"Swipe gestures still work, also with the gesture bar hidden.");
+        featurePreview(page,feature(NavButtons.KEY));
         updateNavigationButtons();
     }
     private void navChoice(LinearLayout group,final String key,final String title,final String[] labels,final String[] values,final String fallback){
@@ -2034,8 +2184,10 @@ public class SettingsActivity extends Activity {
             }).create());
         });mNavLabels.put(key,navigationSummary(group));
     }
+
     private static String navCommand(String key,String value){
         String put="settings put secure "+key+" "+value;
+
         if(Feature.FLASHLIGHT.equals(key))return put+"; settings put secure "+Flashlight.KEY_TARGET+" 0; settings put secure "+Flashlight.KEY_ENABLED+" "+("2".equals(value)?0:1)+"; settings put secure camera_double_tap_power_gesture_disabled "+("2".equals(value)?1:0);
         if(VolumeCamera.KEY_ACTION.equals(key))return put+"; settings put secure "+Feature.VOLDOWN_CAMERA+" "+("off".equals(value)?0:1);
         return put;
@@ -2051,6 +2203,7 @@ public class SettingsActivity extends Activity {
         if(mDarkFrom!=null)mDarkFrom.setText(I18n.cs(DarkPages.time(this,darkSetting(DarkPages.KEY_FROM,DarkPages.DEFAULT_FROM))));
         if(mDarkTo!=null)mDarkTo.setText(I18n.cs(DarkPages.time(this,darkSetting(DarkPages.KEY_TO,DarkPages.DEFAULT_TO))));
     }
+
     private void pickDarkTime(final String key,String title){
         if(!PatronAccess.unlocked()){PatronPaper.open(this,0,null);return;}
         final int current=darkSetting(key,DarkPages.KEY_FROM.equals(key)?DarkPages.DEFAULT_FROM:DarkPages.DEFAULT_TO);
@@ -2067,6 +2220,7 @@ public class SettingsActivity extends Activity {
         LinearLayout.LayoutParams wheel=new LinearLayout.LayoutParams(-2,-2);wheel.leftMargin=dp(6);wheel.rightMargin=dp(6);
         wheels.addView(hours,wheel);TextView colon=text(":",22,mText,true);wheels.addView(colon);wheels.addView(minutes,wheel);if(!h24)wheels.addView(half,wheel);
         showSettingsDialog(new AlertDialog.Builder(this).setTitle(I18n.cs(title)).setView(wheels).setNegativeButton(I18n.cs("Cancel"),null).setPositiveButton(I18n.cs("Set"),new DialogInterface.OnClickListener(){public void onClick(DialogInterface dialog,int which){
+            if(!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}
             int hour=h24?hours.getValue():(hours.getValue()%12)+(half.getValue()==1?12:0);
             final int value=hour*60+minutes.getValue();mSaves++;
             IO.execute(new Runnable(){public void run(){final boolean ok=Root.run("settings put secure "+key+" "+value)!=null;mMain.post(new Runnable(){public void run(){
@@ -2078,13 +2232,21 @@ public class SettingsActivity extends Activity {
 
     private void choice(LinearLayout group,String key,String title,String[] items){choice(group,key,title,items,0);}
 
-    private void choice(LinearLayout group,final String key,final String title,final String[] items,final int offset){
+    private static boolean badgedChoice(String key){return Feature.DOUBLE_TAP_WAKE.equals(key)||Feature.LOCK_SHORTCUTS.equals(key);}
 
+    private void choice(LinearLayout group,final String key,final String title,final String[] items,final int offset){
         LinearLayout row=new LinearLayout(this);row.setOrientation(0);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(18),dp(22),dp(18),dp(22));row.setMinimumHeight(dp(96));
 
         ImageView icon=new ImageView(this);Drawable d=drawable(folderGridKey(key)?gridIcon(key):Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":DarkPages.KEY_STYLE.equals(key)?"ic_ps_cr_dark":DarkPages.KEY_WHEN.equals(key)?"ic_ps_cr_schedule":"ic_ps_single_tap");if(d!=null){d=d.mutate();d.setTint(mAccent);icon.setImageDrawable(d);}
 
-        LinearLayout.LayoutParams iconParams=new LinearLayout.LayoutParams(dp(28),dp(28));iconParams.rightMargin=dp(18);row.addView(icon,iconParams);mChoiceIcons.put(key,icon);
+        if(badgedChoice(key)){
+            String name=Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":"ic_ps_single_tap";
+            if(d!=null)d.setTint(sectionInk(name));
+            FrameLayout badge=new FrameLayout(this);GradientDrawable circle=new GradientDrawable();circle.setShape(GradientDrawable.OVAL);circle.setColor(sectionColor(name));badge.setBackground(circle);
+            badge.addView(icon,new FrameLayout.LayoutParams(dp(22),dp(22),Gravity.CENTER));
+            LinearLayout.LayoutParams badgeParams=new LinearLayout.LayoutParams(dp(40),dp(40));badgeParams.rightMargin=dp(16);row.addView(badge,badgeParams);
+        }else{LinearLayout.LayoutParams iconParams=new LinearLayout.LayoutParams(dp(28),dp(28));iconParams.rightMargin=dp(18);row.addView(icon,iconParams);}
+        mChoiceIcons.put(key,icon);
 
         LinearLayout labels=new LinearLayout(this);labels.setOrientation(1);labels.addView(text(title,15,mTextSecondary,true));
 
@@ -2094,34 +2256,26 @@ public class SettingsActivity extends Activity {
 
         mChoiceLabels.put(key,value);mChoiceItems.put(key,items);mChoiceOffsets.put(key,offset);
 
+        if(PatronAccess.protectedKey(key))row.setTag("paid.row:"+key);
         row.setClickable(true);row.setFocusable(true);row.setOnClickListener(new View.OnClickListener(){public void onClick(View v){
-
+            if(PatronUi.intercept(SettingsActivity.this,key))return;
             IO.execute(new Runnable(){public void run(){final int[] current=Root.readSecure(new String[]{key});mMain.post(new Runnable(){public void run(){
-
                 if(isFinishing()||isDestroyed())return;if(current==null){showRootBanner(true);return;}
 
                 showSettingsDialog(new AlertDialog.Builder(SettingsActivity.this).setTitle(I18n.cs(title)).setSingleChoiceItems(I18n.all(items),Math.max(0,Math.min(items.length-1,current[0]-offset)),new DialogInterface.OnClickListener(){public void onClick(DialogInterface dialog,final int which){
-
-                    dialog.dismiss();mSaves++;IO.execute(new Runnable(){public void run(){
-
+                    dialog.dismiss();if(PatronUi.intercept(SettingsActivity.this,key))return;mSaves++;IO.execute(new Runnable(){public void run(){
                         String command="settings put secure "+key+" "+(which+offset);
 
                         if(Feature.DOUBLE_TAP_WAKE.equals(key))command+="; settings put secure doze_tap_gesture 1";
 
                         final boolean ok=Root.run(command)!=null;mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;if(ok){updateChoiceLabel(key,which+offset);RestartPill.changed(key);if(mRestart!=null)mRestart.refresh();}else{showRootBanner(true);AppToast.makeText(SettingsActivity.this,I18n.cs("Could not save this option"),0).show();}}});
-
                     }});
-
                 }}).setNegativeButton(I18n.cs("Cancel"),null).create());
-
             }});}});
-
         }});group.addView(row,new LinearLayout.LayoutParams(-1,-2));
-
     }
 
     private void load() {
-
         java.util.LinkedHashSet<String> allKeys=new java.util.LinkedHashSet<String>(mSwitches.keySet());
 
         allKeys.addAll(mChoiceLabels.keySet());if(mStyleSlider!=null)allKeys.add(SuperDark.KEY);
@@ -2133,49 +2287,34 @@ public class SettingsActivity extends Activity {
         final int savesBefore = mSaves;
 
         IO.execute(new Runnable() {
-
             @Override
 
             public void run() {
-
                 final int[] values = Root.readSecure(keys);
 
                 if(values!=null)for(int i=0;i<keys.length;i++)if(PrivacyLock.GRACE_KEY.equals(keys[i])){
-
                     try{values[i]=PrivacyLock.graceOn(android.provider.Settings.Secure.getString(getContentResolver(),PrivacyLock.GRACE_KEY))?1:0;}catch(Throwable ignored){}
-
                 }else if(GboardMain.KEY.equals(keys[i])){
-
                     try{values[i]=GboardMain.on(getContentResolver())?1:0;}catch(Throwable ignored){}
-
                 }else if(MiscOptions.defaultOff(keys[i])){
-
                     try{values[i]="1".equals(android.provider.Settings.Secure.getString(getContentResolver(),keys[i]))?1:0;}catch(Throwable ignored){}
-
                 }else if(PrivacyLock.ENABLED_KEY.equals(keys[i])||PrivacyLock.PROTECT_KEY.equals(keys[i])){
-
                     try{values[i]=PrivacyLock.onValue(android.provider.Settings.Secure.getString(getContentResolver(),keys[i]))?1:0;}catch(Throwable ignored){}
-
                 }
 
                 mMain.post(new Runnable() {
-
                     @Override
 
                     public void run() {
-
                         if (isFinishing() || isDestroyed()) return;
 
                         if (mSaves != savesBefore && values != null) {
-
                             load();
 
                             return;
-
                         }
 
                         if (values == null) {
-
                             showRootBanner(true);
 
                             for (Switch sw : mSwitches.values()) sw.setEnabled(false);
@@ -2187,7 +2326,6 @@ public class SettingsActivity extends Activity {
                             if(mStyleSlider!=null){mStyleLoaded=false;updateStyleControls();}
 
                             initialReadDone("settings");return;
-
                         }
 
                         showRootBanner(false);
@@ -2197,31 +2335,23 @@ public class SettingsActivity extends Activity {
                         for(int j=0;j<keys.length;j++)if(SuperDark.KEY.equals(keys[j]))mStyleSuperDark=values[j]==1;
 
                         for (int i = 0; i < keys.length; i++) {
-
                             Switch sw = mSwitches.get(keys[i]);
 
                             if(sw!=null){if(PatronAccess.protectedKey(keys[i])&&!PatronAccess.allowed(SettingsActivity.this,keys[i]))values[i]=0;if(StudioSupport.blocked(SettingsActivity.this,keys[i]))values[i]=0;boolean checked=values[i]==1;sSwitchValues.put(keys[i],checked);if(sw.isChecked()!=checked)sw.setChecked(checked);sw.setVisibility(View.VISIBLE);sw.setEnabled(true);sw.jumpDrawablesToCurrentState();}
 
                             updateChoiceLabel(keys[i],values[i]);
-
                         }
 
                         updateMiscPicker();
 
                         mUpdating = false;if(mAppRoot!=null)PatronUi.apply(mAppRoot);initialReadDone("settings");
-
                     }
-
                 });
-
             }
-
         });
-
     }
 
     private void save(final String key, final boolean on, final Switch sw) {
-
         if(mPrivacyGate!=null&&!mPrivacyGate.isOpen())return;
 
         if(PatronUi.intercept(this,key)){mUpdating=true;sw.setChecked(false);mUpdating=false;return;}
@@ -2234,27 +2364,21 @@ public class SettingsActivity extends Activity {
         mSaves++;
 
         IO.execute(new Runnable() {
-
             @Override
 
             public void run() {
-
                 final boolean ok = Root.run(command(key, on)) != null;
 
                 if(ok&&MiscSystem.A11Y_KEY.equals(key)){
-
                     java.util.List<String> apps=Root.run("settings get secure "+MiscSystem.A11Y_APPS_KEY);
 
                     if(apps!=null&&!apps.isEmpty())Root.run("true"+MiscOptions.stopCommands(MiscOptions.parse(apps.get(0))));
-
                 }
 
                 mMain.post(new Runnable() {
-
                     @Override
 
                     public void run() {
-
                         if (isFinishing() || isDestroyed()) return;
 
                         if (ok) {searchSaved(key,on);if(DoNotAnnoy.KEY.equals(key)){DoNotAnnoyTile.refresh(SettingsActivity.this);if(on)DoNotAnnoyPermissions.request(SettingsActivity.this);}updateMiscPicker();if(MiscSystem.DEV_KEY.equals(key))AppToast.makeText(SettingsActivity.this,I18n.cs("Reopen apps that were already open."),Toast.LENGTH_LONG).show();if(MiscSystem.A11Y_KEY.equals(key))AppToast.makeText(SettingsActivity.this,I18n.cs("Changes apply the next time the chosen apps open."),Toast.LENGTH_LONG).show();RestartPill.changed(key); if (mRestart != null) mRestart.refresh(); return; }
@@ -2272,19 +2396,13 @@ public class SettingsActivity extends Activity {
                         AppToast.makeText(SettingsActivity.this, I18n.cs("Couldn't save: root access needed"),
 
                                 Toast.LENGTH_SHORT).show();
-
                     }
-
                 });
-
             }
-
         });
-
     }
 
     private static String command(String key, boolean on) {
-
         if(KeyboardBarTweak.KEY.equals(key))return MiscOptions.keyboardCommand(on);
 
         String put = "settings put secure " + key + " " + (on ? 1 : 0);
@@ -2299,11 +2417,9 @@ public class SettingsActivity extends Activity {
         if(WatchEsim.KEY.equals(key))return put+" && am force-stop "+WatchEsim.PACKAGE;
 
         if (Feature.FLASHLIGHT.equals(key) && on) {
-
             return put + "; settings put secure " + Flashlight.KEY_TARGET + " 0"
 
                     + "; settings put secure " + Flashlight.KEY_ENABLED + " 1";
-
         }
 
         if (Feature.FILES_SORT.equals(key)) return put + "; am force-stop " + RestartPill.FILES + "; am force-stop com.google.android.documentsui; am force-stop com.android.documentsui; true";
@@ -2315,19 +2431,15 @@ public class SettingsActivity extends Activity {
         if (Feature.TAP_CHECK.equals(key) && on) return put + "; settings put secure doze_tap_gesture 1";
 
         if (Feature.SCREENSHOT_DOODLES.equals(key) || Feature.SCREENSHOT_FREE_CROP.equals(key)) {
-
             return put + "; am force-stop " + ScreenshotEditor.PACKAGE;
-
         }
 
         return put;
-
     }
 
     private void row(LinearLayout group, final String key, String icon, int iconColor,
 
                      String title, String summary) {
-
         LinearLayout row = new LinearLayout(this);
 
         row.setOrientation(LinearLayout.HORIZONTAL);
@@ -2361,7 +2473,6 @@ public class SettingsActivity extends Activity {
         blp.rightMargin = dp(16);
 
         if(MiscSystem.DEV_KEY.equals(key)){
-
             row.setPadding(dp(10),dp(16),dp(16),dp(16));
 
             FrameLayout target=new FrameLayout(this);target.setMinimumHeight(dp(48));
@@ -2383,7 +2494,6 @@ public class SettingsActivity extends Activity {
             target.setOnClickListener(new View.OnClickListener(){public void onClick(View v){openDeveloperOptions();}});
 
             mDeveloperGear=iv;
-
         }else row.addView(badge, blp);
 
         LinearLayout texts = new LinearLayout(this);
@@ -2395,6 +2505,7 @@ public class SettingsActivity extends Activity {
         final TextView s = text(summary, 14, mTextSecondary, false);
         if(DoNotAnnoy.KEY.equals(key)){
             s.setLines(2);s.setHorizontallyScrolling(true);
+
             {String all=s.getText().toString();java.util.regex.Matcher end=java.util.regex.Pattern.compile("[.\u0964!?\u061f]\\s+|\u3002").matcher(all);
              if(all.indexOf('\n')<0&&end.find()&&end.end()<all.length())s.setText(all.substring(0,end.start()+1).trim()+"\n"+all.substring(end.end()).trim());}
             s.addOnLayoutChangeListener(new View.OnLayoutChangeListener(){public void onLayoutChange(View v,int l,int t,int r,int b,int oldL,int oldT,int oldR,int oldB){
@@ -2432,15 +2543,11 @@ public class SettingsActivity extends Activity {
         sw.setEnabled(known!=null);
 
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-
             @Override
 
             public void onCheckedChanged(CompoundButton b, boolean on) {
-
-                if (!mUpdating) {sSwitchValues.put(key,on);save(key, on, sw);updateMiscPicker();}
-
+                if (!mUpdating) {sSwitchValues.put(key,on);save(key, on, sw);updateMiscPicker();FeedPreview.live(key,on?1:0);}
             }
-
         });
 
         LinearLayout.LayoutParams slp = new LinearLayout.LayoutParams(
@@ -2452,6 +2559,7 @@ public class SettingsActivity extends Activity {
         row.addView(sw, slp);
 
         mSwitches.put(key, sw);
+
         final boolean noStudio=StudioSupport.blocked(this,key);
         if(noStudio){badge.setAlpha(0.4f);texts.setAlpha(0.4f);sw.setAlpha(0.4f);sw.setClickable(false);sw.setFocusable(false);}
         row.setTag("search.anchor:"+key);row.setClickable(true);
@@ -2459,18 +2567,14 @@ public class SettingsActivity extends Activity {
         row.setFocusable(true);
 
         row.setOnClickListener(new View.OnClickListener() {
-
             @Override
 
             public void onClick(View v) {
-
                 if(noStudio){AppToast.makeText(SettingsActivity.this,I18n.cs(StudioSupport.NOTE),Toast.LENGTH_SHORT).show();return;}
                 if(PatronUi.intercept(SettingsActivity.this,key))return;
 
                 if (sw.isEnabled()) sw.toggle();
-
             }
-
         });
 
         row.setContentDescription(I18n.cs(title));
@@ -2480,11 +2584,9 @@ public class SettingsActivity extends Activity {
         group.addView(row, new LinearLayout.LayoutParams(
 
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-
     }
 
     private void startDeveloperGear(){
-
         if(mDeveloperGear==null||mGearRotation!=null)return;
 
         float angle=mDeveloperGear.getRotation();
@@ -2498,39 +2600,30 @@ public class SettingsActivity extends Activity {
         mGearRotation.setRepeatCount(android.animation.ValueAnimator.INFINITE);
 
         mGearRotation.start();
-
     }
 
     private void stopDeveloperGear(){
-
         if(mGearRotation==null)return;
 
         mGearRotation.cancel();mGearRotation=null;
 
         if(mDeveloperGear!=null)mDeveloperGear.setRotation(mDeveloperGear.getRotation()%360f);
-
     }
 
     private void openDeveloperOptions(){
-
         try{startActivity(new Intent("android.settings.APPLICATION_DEVELOPMENT_SETTINGS"));}
 
         catch(android.content.ActivityNotFoundException unavailable){
-
             AppToast.makeText(this,I18n.cs("Developer options aren't available on this device."),Toast.LENGTH_SHORT).show();
-
         }
-
     }
 
     private TextView navigationSummary(LinearLayout group){return (TextView)((LinearLayout)((LinearLayout)group.getChildAt(group.getChildCount()-1)).getChildAt(1)).getChildAt(1);}
 
     private void refreshBlockerSummary(){
-
         if(mStoreBlockedCount==null)return;
 
         IO.execute(new Runnable(){public void run(){
-
             final java.util.List<String> values=Root.run("settings get secure "+StoreBlocker.KEY+"; settings get secure "+OtaBlocker.KEY+"; settings get secure "+StoreBlocker.UNLOCK_KEY);
             final java.util.Set<String> rooted=new java.util.HashSet<String>();try{rooted.addAll(RootApps.scan().packages);}catch(Throwable ignored){}
 
@@ -2539,14 +2632,102 @@ public class SettingsActivity extends Activity {
                 java.util.Set<String> blocked="null".equals(values.get(0))?new java.util.HashSet<String>(java.util.Arrays.asList(StoreBlocker.CORE)):MiscOptions.parse(values.get(0));
 
                 if(!"1".equals(values.get(2)))blocked.addAll(java.util.Arrays.asList(StoreBlocker.CORE));
+                blocked.addAll(StoreBlocker.featureApps(getContentResolver()).keySet());
+
                 int count=0;for(String pkg:blocked)if(rooted.contains(pkg))count++;else try{getPackageManager().getApplicationInfo(pkg,0);count++;}catch(Exception missing){}
 
                 mStoreBlockedCount.setText(I18n.cs(count+" apps protected from updates"));mOtaStatus.setText(I18n.cs("1".equals(values.get(1))?"On":"Off"));initialReadDone("blocker_summary");
-
             }});
-
         }});
+    }
 
+    private FrameLayout mDropPanel; private DropChevron mDropChevron; private String mDropPref;
+    private android.animation.ValueAnimator mDropAnim;
+
+    private LinearLayout dropdown(LinearLayout group,String pref,String label){
+        final LinearLayout holder=new LinearLayout(this);holder.setOrientation(LinearLayout.VERTICAL);
+        final FrameLayout panel=new FrameLayout(this);panel.setClipChildren(true);panel.setClipToPadding(true);
+        panel.addView(holder,new FrameLayout.LayoutParams(-1,-2));
+        View above=group.getChildCount()>0?group.getChildAt(group.getChildCount()-1):null;
+        group.addView(panel,new LinearLayout.LayoutParams(-1,-2));
+        final DropChevron chev=new DropChevron(this,mAccent);
+        chev.setContentDescription(I18n.cs(label));chev.setClickable(true);chev.setFocusable(true);
+        if(above instanceof LinearLayout){
+            LinearLayout row=(LinearLayout)above;int at=row.getChildCount();
+            for(int i=0;i<row.getChildCount();i++)if(row.getChildAt(i) instanceof Switch){at=i;break;}
+            LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(dp(36),dp(36));lp.leftMargin=dp(8);
+            row.addView(chev,at,lp);
+        }
+        mDropPanel=panel;mDropChevron=chev;mDropPref=pref;
+        boolean open=getSharedPreferences("pixelsuite_ui",MODE_PRIVATE).getBoolean(pref,false);
+        panel.setVisibility(open?View.VISIBLE:View.GONE);chev.turn(open?1f:0f);
+        chev.setOnClickListener(new View.OnClickListener(){public void onClick(View v){dropTo(mDropPanel.getVisibility()!=View.VISIBLE||mDropOpening==Boolean.FALSE,true);}});
+        return holder;
+    }
+
+    private Boolean mDropOpening;
+
+    private void dropTo(final boolean open,boolean animate){
+        final FrameLayout panel=mDropPanel;final DropChevron chev=mDropChevron;if(panel==null)return;
+        if(mDropAnim!=null){mDropAnim.cancel();mDropAnim=null;}
+        try{getSharedPreferences("pixelsuite_ui",MODE_PRIVATE).edit().putBoolean(mDropPref,open).apply();}catch(Throwable ignored){}
+        final View holder=panel.getChildAt(0);
+        boolean motion=true;try{motion=android.provider.Settings.Global.getFloat(getContentResolver(),"animator_duration_scale",1f)>0f;}catch(Throwable ignored){}
+        if(!animate||!motion){
+            mDropOpening=null;dropJoined(open);panel.getLayoutParams().height=ViewGroup.LayoutParams.WRAP_CONTENT;panel.setVisibility(open?View.VISIBLE:View.GONE);
+            holder.setAlpha(1f);holder.setTranslationY(0);chev.turn(open?1f:0f);panel.requestLayout();return;
+        }
+        int width=panel.getWidth()>0?panel.getWidth():((View)panel.getParent()).getWidth();
+        holder.measure(View.MeasureSpec.makeMeasureSpec(Math.max(1,width),View.MeasureSpec.EXACTLY),View.MeasureSpec.makeMeasureSpec(0,View.MeasureSpec.UNSPECIFIED));
+        final int full=holder.getMeasuredHeight();
+        final int from=panel.getVisibility()==View.VISIBLE?(panel.getHeight()>0?panel.getHeight():full):0,to=open?full:0;
+        final float turnFrom=chev.turned();
+        mDropOpening=open;if(open)dropJoined(true);
+        panel.getLayoutParams().height=from;panel.setVisibility(View.VISIBLE);panel.requestLayout();
+        final android.animation.ValueAnimator a=android.animation.ValueAnimator.ofFloat(0f,1f);
+        a.setDuration(open?340:260);a.setInterpolator(new android.view.animation.PathInterpolator(.2f,0f,0f,1f));
+        a.addUpdateListener(new android.animation.ValueAnimator.AnimatorUpdateListener(){public void onAnimationUpdate(android.animation.ValueAnimator v){
+            float k=(Float)v.getAnimatedValue();
+            panel.getLayoutParams().height=Math.round(from+(to-from)*k);panel.requestLayout();
+            float shown=full<=0?1f:panel.getLayoutParams().height/(float)full;
+            holder.setAlpha(Math.max(0f,Math.min(1f,open?(k-.15f)/.85f:1f-k*1.4f)));
+            holder.setTranslationY(-(1f-shown)*dp(14));
+
+            float t=open?turnFrom+(1f-turnFrom)*overshoot(k):turnFrom*(1f-k);
+            chev.turn(t);
+        }});
+        a.addListener(new android.animation.AnimatorListenerAdapter(){
+            boolean cancelled;
+            @Override public void onAnimationCancel(android.animation.Animator x){cancelled=true;}
+            @Override public void onAnimationEnd(android.animation.Animator x){
+                if(cancelled)return;mDropAnim=null;mDropOpening=null;if(!open)dropJoined(false);
+                panel.getLayoutParams().height=ViewGroup.LayoutParams.WRAP_CONTENT;panel.setVisibility(open?View.VISIBLE:View.GONE);
+                holder.setAlpha(1f);holder.setTranslationY(0);chev.turn(open?1f:0f);panel.requestLayout();
+            }
+        });
+        mDropAnim=a;a.start();
+    }
+
+    private static float overshoot(float k){float s=1.6f,t=k-1f;return t*t*((s+1)*t+s)+1f;}
+
+    private static final class DropChevron extends View {
+        private final android.graphics.Paint fill=new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG),line=new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+        private final android.graphics.Path path=new android.graphics.Path();private float turned;
+        DropChevron(android.content.Context c,int accent){
+            super(c);fill.setColor((accent&0xFFFFFF)|0x24000000);
+            line.setStyle(android.graphics.Paint.Style.STROKE);line.setStrokeCap(android.graphics.Paint.Cap.ROUND);line.setStrokeJoin(android.graphics.Paint.Join.ROUND);line.setColor(accent);
+        }
+        void turn(float t){turned=t;invalidate();}
+        float turned(){return turned;}
+        @Override public void setPressed(boolean p){super.setPressed(p);animate().scaleX(p?.88f:1f).scaleY(p?.88f:1f).setDuration(p?90:220).setInterpolator(new android.view.animation.OvershootInterpolator(p?0f:2.4f)).start();}
+        @Override protected void onDraw(android.graphics.Canvas c){
+            float w=getWidth(),h=getHeight(),r=Math.min(w,h)/2f,cx=w/2f,cy=h/2f,d=getResources().getDisplayMetrics().density;
+            c.drawCircle(cx,cy,r,fill);
+            line.setStrokeWidth(2f*d);
+            int save=c.save();c.rotate(180f*turned,cx,cy);
+            float a=r*.36f;path.rewind();path.moveTo(cx-a,cy-a*.42f);path.lineTo(cx,cy+a*.5f);path.lineTo(cx+a,cy-a*.42f);
+            c.drawPath(path,line);c.restoreToCount(save);
+        }
     }
 
     private void updateMiscPicker(){
@@ -2567,12 +2748,11 @@ public class SettingsActivity extends Activity {
 
         boolean enabled=toggle!=null&&toggle.isEnabled()&&toggle.isChecked();
 
-        mMiscChooseApps.setEnabled(enabled);mMiscChooseApps.setClickable(enabled);mMiscChooseApps.setAlpha(enabled?1f:.4f);
-
+        mMiscChooseApps.setEnabled(enabled);mMiscChooseApps.setClickable(enabled);
+        if(mMiscChooseApps instanceof ViewGroup){ViewGroup parts=(ViewGroup)mMiscChooseApps;for(int k=0;k<parts.getChildCount();k++)parts.getChildAt(k).setAlpha(enabled?1f:.4f);}else mMiscChooseApps.setAlpha(enabled?1f:.4f);
     }
 
     private TextView banner() {
-
         TextView b = text("Pixel Suite needs root. Allow it in your root manager, then reopen this screen.", 14, mDark ? 0xFFFFB4AB : 0xFF8C1D18, false);
 
         GradientDrawable bg = new GradientDrawable();
@@ -2594,7 +2774,6 @@ public class SettingsActivity extends Activity {
         b.setLayoutParams(lp);
 
         return b;
-
     }
 
     private static String gridIcon(String key){return LauncherFeatures.DRAWER_GRID_SIZE.equals(key)?"ic_ps_drawer_grid":"ic_ps_home_grid";}
@@ -2602,19 +2781,15 @@ public class SettingsActivity extends Activity {
     private static boolean folderGridKey(String key){return LauncherFeatures.GRID_SIZE.equals(key)||LauncherFeatures.DRAWER_GRID_SIZE.equals(key);}
 
     private void showRootBanner(boolean show) {
-
         mBanner.setVisibility(show ? View.VISIBLE : View.GONE);
-
     }
 
     private LinearLayout homeSection(LinearLayout page,String label){
-
         TextView heading=text(label,14,mTextSecondary,true);
 
         heading.setPadding(dp(8),dp(4),dp(8),dp(8));page.addView(heading);
 
         return group(page);
-
     }
 
     private Lockable mGboardOptions;
@@ -2622,7 +2797,7 @@ public class SettingsActivity extends Activity {
     private void updateGboardMain(){
         if(mGboardOptions==null)return;
         Boolean on=sSwitchValues.get(GboardMain.KEY);
-        mGboardOptions.lock(on!=null&&!on);
+        mGboardOptions.lock(PatronAccess.allowed(this,GboardMain.KEY)&&on!=null&&!on);
     }
 
     private static final class Lockable extends LinearLayout {
@@ -2642,17 +2817,14 @@ public class SettingsActivity extends Activity {
     }
 
     private void section(LinearLayout page, String label) {
-
         TextView t = text(label, 14, mAccent, true);
 
         t.setPadding(dp(8), dp(16), dp(8), dp(8));
 
         t.setTag("ps_section");page.addView(t);
-
     }
 
     private LinearLayout group(LinearLayout page) {
-
         LinearLayout g = new LinearLayout(this);
 
         g.setOrientation(LinearLayout.VERTICAL);
@@ -2662,15 +2834,12 @@ public class SettingsActivity extends Activity {
         page.addView(g,layout);
 
         return g;
-
     }
 
     private void finishGroup(LinearLayout g) {
-
         int n = g.getChildCount();
 
         for (int i = 0; i < n; i++) {
-
             float big = dp(24), small = dp(6);
 
             float top = i == 0 ? big : small;
@@ -2679,20 +2848,56 @@ public class SettingsActivity extends Activity {
 
             View row = g.getChildAt(i);
 
-            row.setBackground(rowBackground(top, bottom));
+            if (row == mDropPanel && mDropPanel.getChildAt(0) instanceof ViewGroup) {
+                ViewGroup in = (ViewGroup) mDropPanel.getChildAt(0);
+                int m = in.getChildCount();
+                for (int j = 0; j < m; j++) { View r = in.getChildAt(j); r.setBackground(subRowBackground(j == 0 ? dp(18) : dp(4), j == m - 1 ? dp(18) : dp(4))); if (j > 0) ((LinearLayout.LayoutParams) r.getLayoutParams()).topMargin = dp(2); }
+                in.setPaddingRelative(dp(16), dp(2), dp(12), dp(12));
+                row.setBackground(rowBackground(0, bottom));
+                mDropParent = i > 0 ? g.getChildAt(i - 1) : null; mDropParentTop = i - 1 == 0 ? big : small; mDropParentBottom = small;
+            } else if (i > 0 && mSubRows.contains(row)) {
+                row.setBackground(subRowCard(bottom));
+                row.setPaddingRelative(row.getPaddingStart() + dp(16), row.getPaddingTop() + dp(2), row.getPaddingEnd() + dp(12), row.getPaddingBottom() + dp(12));
+                g.getChildAt(i - 1).setBackground(rowBackground(i - 1 == 0 ? big : small, 0));
+            } else row.setBackground(rowBackground(top, bottom));
 
             if (i > 0) {
-
-                ((LinearLayout.LayoutParams) row.getLayoutParams()).topMargin = dp(3);
-
+                ((LinearLayout.LayoutParams) row.getLayoutParams()).topMargin = row == mDropPanel || mSubRows.contains(row) ? 0 : dp(3);
             }
-
+            if (row == mDropPanel || (i > 0 && mSubRows.contains(row))) ((LinearLayout.LayoutParams) row.getLayoutParams()).bottomMargin = i == n - 1 ? 0 : dp(7);
         }
+        if (mDropPanel != null && mDropPanel.getParent() == g) dropJoined(mDropPanel.getVisibility() == View.VISIBLE);
+    }
 
+    private View mDropParent; private float mDropParentTop, mDropParentBottom;
+    private final java.util.Set<View> mSubRows = new java.util.HashSet<View>();
+
+    private Drawable subRowCard(float bottom) {
+        GradientDrawable outer = AppSurfaces.card(this, 24);
+        outer.setColor(mCard);
+        outer.setCornerRadii(new float[]{0, 0, 0, 0, bottom, bottom, bottom, bottom});
+        android.graphics.drawable.LayerDrawable card = new android.graphics.drawable.LayerDrawable(new Drawable[]{outer, subRowBackground(dp(18), dp(18))});
+        card.setLayerInsetRelative(1, dp(16), dp(2), dp(12), dp(12));
+        return card;
+    }
+
+    private void dropJoined(boolean joined) {
+        if (mDropParent != null) mDropParent.setBackground(rowBackground(mDropParentTop, joined ? 0 : mDropParentBottom));
+    }
+
+    private Drawable subRowBackground(float top, float bottom) {
+        GradientDrawable shape = new GradientDrawable();
+        int r = (Color.red(mCard) * 2 + Color.red(mBg) * 3) / 5, gr = (Color.green(mCard) * 2 + Color.green(mBg) * 3) / 5, b = (Color.blue(mCard) * 2 + Color.blue(mBg) * 3) / 5;
+        shape.setColor(Color.rgb(r, gr, b));
+        float[] radii = {top, top, top, top, bottom, bottom, bottom, bottom};
+        shape.setCornerRadii(radii);
+        GradientDrawable mask = new GradientDrawable();
+        mask.setColor(Color.WHITE);
+        mask.setCornerRadii(radii);
+        return new RippleDrawable(ColorStateList.valueOf(mDark ? 0x33FFFFFF : 0x1F000000), shape, mask);
     }
 
     private Drawable rowBackground(float top, float bottom) {
-
         GradientDrawable shape = AppSurfaces.card(this,24);
 
         shape.setColor(mCard);
@@ -2708,11 +2913,9 @@ public class SettingsActivity extends Activity {
         int ripple = mDark ? 0x33FFFFFF : 0x1F000000;
 
         return new RippleDrawable(ColorStateList.valueOf(ripple), shape, mask);
-
     }
 
     private TextView text(String s, float sp, int color, boolean medium) {
-
         TextView t = new TextView(this);
 
         t.setText(I18n.cs(SettingsText.format(s)));
@@ -2724,15 +2927,12 @@ public class SettingsActivity extends Activity {
         if (medium) t.setTypeface(I18n.medium());
 
         return t;
-
     }
 
     private void resolvePalette() {
-
         AppSurfaces.refresh(this);mAppSuperDark=AppSurfaces.active(this);
 
         if (mDark) {
-
             mBg = sys("system_surface_container_dark", 0xFF211F26);
 
             mCard = sys("system_surface_container_high_dark", 0xFF2B2930);
@@ -2744,9 +2944,7 @@ public class SettingsActivity extends Activity {
             mAccent = sys("system_primary_dark", 0xFFD0BCFF);
 
             mOnAccent = sys("system_on_primary_dark", 0xFF381E72);
-
         } else {
-
             mBg = sys("system_surface_container_light", 0xFFF3EDF7);
 
             mCard = sys("system_surface_bright_light", 0xFFFEF7FF);
@@ -2758,19 +2956,15 @@ public class SettingsActivity extends Activity {
             mAccent = sys("system_primary_light", 0xFF6750A4);
 
             mOnAccent = sys("system_on_primary_light", 0xFFFFFFFF);
-
         }
 
         if(mAppSuperDark){mBg=0xff000000;mCard=0xff0b0b0b;}
-
     }
 
     private int sectionFamily(String icon){
-
         String page=getIntent().getStringExtra("page");FeaturePage f=feature(page);if(f!=null)page=f.group;
 
         return SectionColors.family(page,icon);
-
     }
 
     private int sectionColor(String icon){return SectionColors.background(sectionFamily(icon),mDark);}
@@ -2778,31 +2972,23 @@ public class SettingsActivity extends Activity {
     private int sectionInk(String icon){return SectionColors.ink(sectionFamily(icon));}
 
     private Drawable googleIcon(int color) throws android.content.pm.PackageManager.NameNotFoundException {
-
         return AppBrandIcons.load(this,GoogleFeedAds.PACKAGE,color);
-
     }
 
     private void googleNavigationIcon(LinearLayout group){
-
         try{((ImageView)((LinearLayout)group.getChildAt(group.getChildCount()-1)).getChildAt(0)).setImageDrawable(googleIcon(sectionInk("ic_ps_google_apps")));}catch(Exception missing){}
-
     }
 
     private void appNavigation(LinearLayout group,String title,String summary,String pkg,String fallback,final String page){
-
         navigation(group,title,summary,fallback,new Runnable(){public void run(){openPage(page);}});
 
         try{ImageView icon=(ImageView)((LinearLayout)group.getChildAt(group.getChildCount()-1)).getChildAt(0);
 
             icon.setScaleType(ImageView.ScaleType.FIT_CENTER);icon.setImageDrawable(AppBrandIcons.load(this,pkg,sectionInk(fallback)));
-
         }catch(Exception missing){}
-
     }
 
     private final class OemSwitchTrack extends Drawable {
-
         private final Drawable original;
 
         private final android.graphics.Paint paint=new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
@@ -2822,7 +3008,6 @@ public class SettingsActivity extends Activity {
         @Override public boolean getPadding(android.graphics.Rect padding){return original!=null&&original.getPadding(padding);}
 
         @Override public void draw(android.graphics.Canvas canvas){
-
             boolean checked=false;for(int state:getState())if(state==android.R.attr.state_checked)checked=true;
 
             paint.setColor(checked?0xffff0000:mAppSuperDark?0xff1a1a1a:mDark?0xff49454f:0xffcac4d0);
@@ -2830,7 +3015,6 @@ public class SettingsActivity extends Activity {
             android.graphics.Rect bounds=getBounds();float half=dp(6);bar.set(bounds.left,bounds.exactCenterY()-half,bounds.right,bounds.exactCenterY()+half);
 
             canvas.drawRoundRect(bar,half,half,paint);
-
         }
 
         @Override public void setAlpha(int alpha){paint.setAlpha(alpha);invalidateSelf();}
@@ -2838,27 +3022,22 @@ public class SettingsActivity extends Activity {
         @Override public void setColorFilter(android.graphics.ColorFilter filter){}
 
         @Override public int getOpacity(){return android.graphics.PixelFormat.TRANSLUCENT;}
-
     }
 
     int switchTrackOff(){return mAppSuperDark?0xff1a1a1a:mDark?0xff49454f:0xffcac4d0;}
 
     private void tintSwitchTrack(String key,Switch sw){
-
         if(!StoreBlocker.UNLOCK_KEY.equals(key)){SwitchStyle.apply(sw,mAccent,switchTrackOff(),mOnAccent,mTextSecondary);return;}
 
         sw.setThumbTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{mOnAccent,mTextSecondary}));
 
         if(StoreBlocker.UNLOCK_KEY.equals(key)){
-
             if(!(sw.getTrackDrawable() instanceof OemSwitchTrack)){sw.setTrackTintList(null);sw.setTrackDrawable(new OemSwitchTrack(sw.getTrackDrawable()));}
 
             sw.getTrackDrawable().setState(sw.getDrawableState());sw.invalidate();return;
-
         }
 
         sw.setTrackTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{mAccent,switchTrackOff()}));
-
     }
 
     private boolean searchComplex(String key){
@@ -2889,6 +3068,7 @@ public class SettingsActivity extends Activity {
         mUpdating=true;Switch original=mSwitches.get(key);if(original!=null&&original.isChecked()!=on)original.setChecked(on);mUpdating=false;
         if(mSearch!=null)mSearch.stateChanged(key);
     }
+
     private boolean mPanelTouch,mPanelEdge;private float mPanelX,mPanelY;
     @Override public boolean dispatchTouchEvent(android.view.MotionEvent e){
         int action=e.getActionMasked();
@@ -2908,6 +3088,7 @@ public class SettingsActivity extends Activity {
     }
     private void closePanels(){if(mRestart!=null&&mRestart.whyOpen())mRestart.closeWhy();else if(mLanguage!=null&&mLanguage.isOpen())mLanguage.close();}
     @Override public void onBackPressed(){if(mRestart!=null&&mRestart.back())return;if(mLanguage!=null&&mLanguage.back())return;if(mSearch!=null&&mSearch.back())return;super.onBackPressed();}
+
     private LanguagePill mLanguage;private static boolean sLanguageFade;
     private void languagePicked(final String code){
         I18n.pick(this,code);AppSearchIndex.forget();
@@ -2915,6 +3096,12 @@ public class SettingsActivity extends Activity {
         new Thread(()->{final boolean ok=Root.run("settings put secure "+I18n.KEY+" "+code)!=null;if(!ok)mMain.post(()->AppToast.makeText(app,I18n.cs("Couldn't save the language"),0).show());},"pixelsuite-language").start();
         sLanguageFade=true;
         if(mAppRoot!=null)mAppRoot.animate().alpha(0f).setDuration(170).withEndAction(this::recreate).start();else recreate();
+    }
+
+    @Override public void onConfigurationChanged(Configuration c){
+        super.onConfigurationChanged(c);
+        if(PixelStack.arcadeShowing(this)){if(mPageScroll!=null)mPageScroll.requestApplyInsets();return;}
+        recreate();
     }
     @Override protected void onSaveInstanceState(Bundle out){super.onSaveInstanceState(out);if(mSearch!=null){out.putBoolean("search_open",mSearch.isOpen());out.putString("search_query",mSearch.query());}}
     @Override public void onWindowFocusChanged(boolean focus){
@@ -2937,6 +3124,7 @@ public class SettingsActivity extends Activity {
     }
     private void revealView(View found){
         if(found==null||mPageScroll==null)return;
+        if(mDropPanel!=null&&mDropPanel.getVisibility()!=View.VISIBLE)for(View v=found;v!=null;v=v.getParent() instanceof View?(View)v.getParent():null)if(v==mDropPanel){dropTo(true,false);break;}
         java.util.List<View> chain=new java.util.ArrayList<View>();
         for(View v=found;v!=null&&v!=mPageScroll;v=v.getParent() instanceof View?(View)v.getParent():null)chain.add(v);
         View row=chain.size()>=3?chain.get(chain.size()-3):found;
@@ -2960,7 +3148,6 @@ public class SettingsActivity extends Activity {
     }
 
     private void refreshAppSurfaces(){
-
         AppSurfaces.refresh(this);boolean now=AppSurfaces.active(this);if(now==mAppSuperDark)return;
 
         resolvePalette();styleWindow();if(mAppRoot!=null){mAppRoot.setBackgroundColor(mBg);if(mPageScroll!=null)mPageScroll.setBackgroundColor(mBg);AppSurfaces.invalidateTree(mAppRoot);}
@@ -2970,13 +3157,11 @@ public class SettingsActivity extends Activity {
         for(AlertDialog dialog:new java.util.ArrayList<AlertDialog>(mSettingsDialogs))if(dialog.isShowing())styleSettingsWindow(dialog.getWindow());
 
         if(mRestart!=null)mRestart.refreshPalette();if(mSearch!=null)mSearch.palette();
-
     }
 
     @SuppressWarnings("deprecation")
 
     private void styleWindow() {
-
         Window w = getWindow();
 
         w.setBackgroundDrawable(new ColorDrawable(mBg));
@@ -2992,63 +3177,43 @@ public class SettingsActivity extends Activity {
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
 
         if (!mDark) {
-
             flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
 
             flags |= 0x00000010;
-
         }
 
         decor.setSystemUiVisibility(flags);
-
     }
 
     private int sys(String name, int fallback) {
-
         try {
-
             int id = getResources().getIdentifier(name, "color", "android");
 
             if (id != 0) return getResources().getColor(id, getTheme());
-
         } catch (Throwable ignored) { }
 
         return fallback;
-
     }
 
     private Drawable drawable(String name) {
-
         try {
-
             int id = getResources().getIdentifier(name, "drawable", getPackageName());
 
             if (id != 0) return getResources().getDrawable(id, getTheme());
-
         } catch (Throwable ignored) { }
 
         return null;
-
     }
 
     private String versionName() {
-
         try {
-
             return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-
         } catch (Throwable t) {
-
             return "";
-
         }
-
     }
 
     private int dp(float v) {
-
         return Math.round(v * mDp);
-
     }
-
 }

@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.graphics.Typeface;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
@@ -31,9 +30,11 @@ final class GameMenu extends View {
     final RectF[] views = {new RectF(), new RectF(), new RectF()};
     int pressed = -1, chosen = -1; long pressAt;
     final RectF[] landFrom = new RectF[4]; long backAt;
-    float topInset, bottomInset;
+    float topInset, bottomInset, leftInset, rightInset;
+
+    boolean land; float headX;
     boolean landed;
-    final float[] drops = new float[48];
+    final float[] drops = new float[64];
     final java.util.Random rnd = new java.util.Random();
 
     static final String[] NAMES = {"Pixel Stack", "Pixel Siege", "Pixel Blast"};
@@ -76,7 +77,7 @@ final class GameMenu extends View {
         final GameMenu m = new GameMenu(a, logo, mark, left, right, ink, page, dark, black, held);
         android.widget.FrameLayout root = new android.widget.FrameLayout(a);
         root.addView(m, new android.widget.FrameLayout.LayoutParams(-1, -1));
-        m.dialog = GameKit.window(a, root, dark || black, m::leave);
+        m.dialog = GameKit.window(a, root, dark || black, m::leave, true);
         m.dialog.setOnDismissListener(x -> PixelStack.arcadeOpen(null, null));
         m.dialog.show();
         PixelStack.arcadeOpen(m.dialog, a);
@@ -88,16 +89,33 @@ final class GameMenu extends View {
     float sp(float v) { return v * getResources().getDisplayMetrics().scaledDensity; }
 
     @Override protected void onSizeChanged(int w, int h, int ow, int oh) {
-        try { android.view.WindowInsets in = getRootWindowInsets(); if (in != null) { topInset = in.getSystemWindowInsetTop(); bottomInset = in.getSystemWindowInsetBottom(); } } catch (Throwable ignored) { }
-        if (topInset <= 0) topInset = 32 * d;
-        float hs = 78 * d, hy = topInset + Math.max(48 * d, h * .09f);
-        headRect.set(w / 2f - hs / 2, hy, w / 2f + hs / 2, hy + hs);
+        topInset = bottomInset = leftInset = rightInset = 0;
+        try { android.view.WindowInsets in = getRootWindowInsets(); if (in != null) { int[] q = GameKit.insets(in); leftInset = q[0]; topInset = q[1]; rightInset = q[2]; bottomInset = q[3]; } } catch (Throwable ignored) { }
+        land = ArcadeCurtain.land(w, h);
+        if (topInset <= 0) topInset = land ? 12 * d : 32 * d;
+        if (bottomInset <= 0) bottomInset = land ? 10 * d : 20 * d;
+        float bottom = bottomInset > 0 ? bottomInset : land ? 12 * d : 24 * d;
+        float cw, gap = 14 * d, top, ch, cx;
+        if (land) {
+            float split = leftInset + (w - leftInset - rightInset) * .38f, hs = 72 * d;
+            headX = (leftInset + split) / 2f;
+            float block = hs + 84 * d, hy = Math.max(topInset + 8 * d, (topInset + h - bottom) / 2f - block / 2 - 6 * d);
+            headRect.set(headX - hs / 2, hy, headX + hs / 2, hy + hs);
+            gap = 10 * d;
+            cw = Math.min(w - rightInset - split - 28 * d, 440 * d); cx = split + (w - rightInset - split) / 2f;
+            ch = Math.max(78 * d, Math.min(120 * d, (h - bottom - topInset - 24 * d - 2 * gap) / 3f));
+            top = (topInset + h - bottom) / 2f - (3 * ch + 2 * gap) / 2f;
+        } else {
+            float hs = 78 * d, hy = topInset + Math.max(48 * d, h * .09f);
+            headX = w / 2f;
+            headRect.set(w / 2f - hs / 2, hy, w / 2f + hs / 2, hy + hs);
+            cw = Math.min(w - 32 * d, 440 * d); top = headRect.bottom + 96 * d; cx = w / 2f;
+            ch = Math.max(96 * d, Math.min(132 * d, (h - bottom - 20 * d - top - 2 * gap) / 3f));
+        }
         GameKit.squaresOf(headRect, headAt);
-        float bottom = bottomInset > 0 ? bottomInset : 24 * d;
-        float cw = Math.min(w - 32 * d, 440 * d), gap = 14 * d, top = headRect.bottom + 96 * d;
-        float ch = Math.max(96 * d, Math.min(132 * d, (h - bottom - 20 * d - top - 2 * gap) / 3f));
+        tags[0] = tags[1] = tags[2] = null; tagRoom = -1;
         for (int i = 0; i < 3; i++) {
-            cards[i].set(w / 2f - cw / 2, top + i * (ch + gap), w / 2f + cw / 2, top + i * (ch + gap) + ch);
+            cards[i].set(cx - cw / 2, top + i * (ch + gap), cx + cw / 2, top + i * (ch + gap) + ch);
             float pad = 10 * d, vw = Math.min(cw * .42f, (ch - 2 * pad) * 1.45f);
             if (I18n.rtl()) views[i].set(cards[i].right - pad - vw, cards[i].top + pad, cards[i].right - pad, cards[i].bottom - pad);
             else views[i].set(cards[i].left + pad, cards[i].top + pad, cards[i].left + pad + vw, cards[i].bottom - pad);
@@ -179,8 +197,59 @@ final class GameMenu extends View {
         for (int k = 0; k < 4; k++) square(c, sq[k], iconColour(game, k), alphaF, 0);
     }
 
+    final float[] sprX = new float[4], sprY = new float[4], velX = new float[4], velY = new float[4], sprS = {1f, 1f, 1f, 1f}, velS = new float[4];
+    boolean touching, pulling; float downX, downY, fingerX, fingerY, pulled; int overCard = -1; long springsAt = SystemClock.uptimeMillis();
+
+    static final int[] CARD_NOTES = {0, 4, 7};
+    int cardUnder(float x, float y) { for (int i = 0; i < 3; i++) if (cards[i].contains(x, y)) return i; return -1; }
+    static float rubber(float v, float dim) { float a = Math.abs(v); return Math.signum(v) * dim * (1 - 1 / (a * .55f / dim + 1)); }
+    void springTouch(MotionEvent e) {
+        int act = e.getActionMasked();
+        if (!motion) return;
+        if (act == MotionEvent.ACTION_DOWN) { touching = true; pulling = false; downX = fingerX = e.getX(); downY = fingerY = e.getY(); overCard = cardUnder(fingerX, fingerY); pulled = 0; }
+        else if (act == MotionEvent.ACTION_MOVE && touching) {
+            fingerX = e.getX(); fingerY = e.getY();
+            if (!pulling && Math.hypot(fingerX - downX, fingerY - downY) > 10 * d && (state == IDLE || state == BACK)) { pulling = true; pressed = -1; }
+            if (pulling) {
+                int over = cardUnder(fingerX, fingerY);
+                if (over != overCard && over >= 0) { GameKit.tick(a, .2f); velS[over] -= 1.6f; PixelStackSound.felt(CARD_NOTES[over], .32f); }
+                overCard = over;
+            }
+        }
+        else if (act == MotionEvent.ACTION_UP || act == MotionEvent.ACTION_CANCEL) {
+            touching = false; pulling = false; overCard = -1;
+        }
+    }
+    void stepSprings(long now) {
+        float dt = Math.min(.034f, Math.max(0f, (now - springsAt) / 1000f)); springsAt = now;
+        if (!motion) { for (int i = 0; i < 4; i++) { sprX[i] = sprY[i] = velX[i] = velY[i] = velS[i] = 0; sprS[i] = 1; } return; }
+        boolean live = pulling && (state == IDLE || state == BACK);
+        float W = getWidth(), H = getHeight(), bx = live ? rubber(fingerX - downX, W * .2f) : 0, by = live ? rubber(fingerY - downY, H * .16f) : 0;
+        pulled = Math.max(pulled, (float) Math.hypot(bx, by));
+        float ch = Math.max(1f, cards[0].height());
+        for (int i = 0; i < 4; i++) {
+            float cy = i < 3 ? cards[i].centerY() : headRect.centerY(), q = (cy - fingerY) / (ch * 1.3f), near = live ? 1f / (1f + q * q) : 0f;
+            float weight = i == 3 ? .3f : .45f + .55f * near, tx = bx * weight, ty = by * weight;
+            float k = live ? 420 + 900 * near : 260 + 55 * i, damp = 2 * (float) Math.sqrt(k) * (live ? .75f : .3f);
+            float want = i < 3 && ((live && overCard == i) || pressed == i) ? .955f : 1f, ks = 520, ds = 2 * (float) Math.sqrt(ks) * .3f;
+            for (int n = 0; n < 3; n++) { float h = dt / 3;
+                velX[i] += (k * (tx - sprX[i]) - damp * velX[i]) * h; sprX[i] += velX[i] * h;
+                velY[i] += (k * (ty - sprY[i]) - damp * velY[i]) * h; sprY[i] += velY[i] * h;
+                velS[i] += (ks * (want - sprS[i]) - ds * velS[i]) * h; sprS[i] += velS[i] * h;
+            }
+        }
+    }
+
+    void onSpring(Canvas c, int i, float cx, float cy) {
+        float vmax = 2600 * d, stx = GameKit.clamp(Math.abs(velX[i]) / vmax) * .07f, sty = GameKit.clamp(Math.abs(velY[i]) / vmax) * .07f;
+        c.translate(sprX[i], sprY[i]);
+        c.rotate(Math.max(-1f, Math.min(1f, velX[i] / (1500 * d))) * 5f, cx, cy);
+        c.scale(sprS[i] * (1 + stx) * (1 - sty * .6f), sprS[i] * (1 + sty) * (1 - stx * .6f), cx, cy);
+    }
+
     @Override public boolean onTouchEvent(MotionEvent e) {
         int act = e.getActionMasked();
+        springTouch(e);
         if (state != IDLE) { pressed = -1; return true; }
         if (act == MotionEvent.ACTION_DOWN) {
             pressed = -1;
@@ -189,7 +258,7 @@ final class GameMenu extends View {
                 PixelStackSound.play(PixelStackSound.BOOP, .45f, 1.1f); hopAt = SystemClock.uptimeMillis();
             }
         } else if (act == MotionEvent.ACTION_MOVE) {
-            if (pressed >= 0 && !cards[pressed].contains(e.getX(), e.getY())) pressed = -1;
+            if (pressed >= 0 && (!cards[pressed].contains(e.getX(), e.getY()) || pulling)) pressed = -1;
         } else if (act == MotionEvent.ACTION_UP) {
             if (pressed >= 0 && cards[pressed].contains(e.getX(), e.getY())) launch(pressed);
             pressed = -1;
@@ -237,6 +306,8 @@ final class GameMenu extends View {
             return;
         }
         if (state == OUT || state == AWAY) return;
+
+        try { int[] at = new int[2]; logo.getLocationOnScreen(at); if (logo.getWidth() > 0) GameKit.squaresOf(new RectF(at[0], at[1], at[0] + logo.getWidth(), at[1] + logo.getHeight()), homeSquares); } catch (Throwable ignored) { }
         go(OUT);
         GameKit.tick(a, .5f);
         PixelStackSound.play(PixelStackSound.SOFT, .3f, 1.12f); postDelayed(() -> PixelStackSound.play(PixelStackSound.SOFT, .26f, .9f), 120);
@@ -257,24 +328,27 @@ final class GameMenu extends View {
         if (state == LAUNCH && t >= LAUNCH_MS) { startGame(); t = 0; }
 
         int head = -1;
-        if (e > 0) { head = c.saveLayerAlpha(0, 0, W, headRect.bottom + 90 * d, Math.round(255 * (1 - GameKit.clamp(e * 1.8f))), Canvas.ALL_SAVE_FLAG); c.translate(0, -70 * d * e); }
+        if (e > 0) { head = c.saveLayerAlpha(0, 0, land ? cards[0].left - 4 * d : W, land ? H : headRect.bottom + 90 * d, Math.round(255 * (1 - GameKit.clamp(e * 1.8f))), Canvas.ALL_SAVE_FLAG); if (land) c.translate(-70 * d * e, 0); else c.translate(0, -70 * d * e); }
+        stepSprings(now);
+        int onHead = c.save(); onSpring(c, 3, headX, headRect.centerY());
         drawHead(c, now, t);
         float tk = state == IN ? GameKit.ease((t - 260) / 380f) : state == OUT ? 1 - GameKit.ease(t / 220f) : state == LAUNCH ? 1 - GameKit.ease(t / 240f) * .0f : 1f;
         text.setTypeface(GameKit.BOLD); text.setTextSize(sp(28)); text.setColor(GameKit.alpha(ink, tk));
-        c.drawText(I18n.t("Pixel Arcade"), W / 2f, headRect.bottom + 44 * d + (1 - tk) * 12 * d, text);
+        c.drawText(I18n.t("Pixel Arcade"), headX, headRect.bottom + 44 * d + (1 - tk) * 12 * d, text);
         text.setTypeface(GameKit.MEDIUM); text.setTextSize(sp(15)); text.setColor(GameKit.alpha(soft, tk * 1.6f));
-        c.drawText(I18n.t("Choose a game"), W / 2f, headRect.bottom + 70 * d + (1 - tk) * 12 * d, text);
+        c.drawText(I18n.t("Choose a game"), headX, headRect.bottom + 70 * d + (1 - tk) * 12 * d, text);
+        c.restoreToCount(onHead);
         if (head >= 0) c.restoreToCount(head);
 
         for (int i = 0; i < 3; i++) {
             float k, lift = 0, alphaF = 1f, scale = 1f;
             if (state == IN) { float p = motion ? GameKit.clamp((t - 280 - i * 90) / 560f) : 1f; k = GameKit.spring(p); lift = (1 - k) * 80 * d; alphaF = GameKit.clamp(p * 3); }
             else if (state == OUT) { float p = GameKit.clamp((t - (2 - i) * 50) / 320f); lift = GameKit.easeIn(p) * 60 * d; alphaF = 1 - GameKit.ease(p); }
-            if (pressed == i) scale = .97f;
+            if (pressed == i && !motion) scale = .97f;
             if (e > 0 && i == chosen) continue;
             if (e > 0) { lift = (i < chosen ? -1 : 1) * e * H * .3f; alphaF = 1 - GameKit.clamp(e * 2f); }
             if (alphaF <= 0) continue;
-            int save = c.save(); c.translate(0, lift); c.scale(scale, scale, cards[i].centerX(), cards[i].centerY());
+            int save = c.save(); c.translate(0, lift); onSpring(c, i, cards[i].centerX(), cards[i].centerY()); c.scale(scale, scale, cards[i].centerX(), cards[i].centerY());
             drawCard(c, i, now, alphaF);
             c.restoreToCount(save);
         }
@@ -312,11 +386,19 @@ final class GameMenu extends View {
         stroke.setStyle(Paint.Style.STROKE); stroke.setStrokeWidth((black ? 1.2f + .3f * e : 1f + .2f * e) * d);
         stroke.setColor(GameKit.alpha(accent, night ? .5f : .35f)); c.drawRoundRect(morphAt, vr, vr, stroke);
         String name = I18n.t(NAMES[i]);
-        text.setTypeface(GameKit.BOLD); text.setTextSize(sp(20));
-        float w0 = text.measureText(name), tx = rtl ? v.left - 16 * d : v.right + 16 * d;
+        float tx = rtl ? v.left - 16 * d : v.right + 16 * d;
+        float fit = nameFit(name, rtl ? tx - (r.left + 50 * d) : (r.right - 50 * d) - tx);
+        text.setTypeface(GameKit.BOLD); text.setTextSize(sp(20) * fit);
+        float w0 = text.measureText(name);
         float x0 = rtl ? tx - w0 / 2 : tx + w0 / 2, y0 = r.centerY() - 12 * d, y1 = ArcadeCurtain.titleY(i, W, H, d, topInset, sceneAt);
-        text.setTextSize(sp(20 + 10 * e)); text.setTextAlign(Paint.Align.CENTER); text.setColor(ink);
-        c.drawText(name, x0 + (W / 2f - x0) * e, y0 + (y1 - y0) * e, text);
+        text.setTextSize(sp(20 + 10 * e) * (fit + (1 - fit) * e)); text.setTextAlign(Paint.Align.CENTER); text.setColor(ink);
+        c.drawText(name, x0 + (ArcadeCurtain.titleX(W, H, sceneAt) - x0) * e, y0 + (y1 - y0) * e, text);
+    }
+
+    float nameFit(String name, float room) {
+        text.setTypeface(GameKit.BOLD); text.setTextSize(sp(20));
+        float w = text.measureText(name);
+        return w > room && w > 0 ? Math.max(.62f, room / w) : 1f;
     }
 
     void drawCard(Canvas c, int i, long now, float alphaF) {
@@ -335,8 +417,9 @@ final class GameMenu extends View {
         float tx = rtl ? views[i].left - 16 * d : views[i].right + 16 * d;
         float room = rtl ? tx - (r.left + 50 * d) : (r.right - 50 * d) - tx;
         text.setTextAlign(rtl ? Paint.Align.RIGHT : Paint.Align.LEFT);
-        text.setTypeface(GameKit.BOLD); text.setTextSize(sp(20)); text.setColor(GameKit.alpha(ink, alphaF));
-        if (!restOnly) c.drawText(I18n.t(NAMES[i]), tx, r.centerY() - 12 * d, text);
+        String name = I18n.t(NAMES[i]); float fit = nameFit(name, room);
+        text.setTypeface(GameKit.BOLD); text.setTextSize(sp(20) * fit); text.setColor(GameKit.alpha(ink, alphaF));
+        if (!restOnly) c.drawText(name, tx, r.centerY() - 12 * d, text);
         text.setTypeface(GameKit.REGULAR); text.setTextSize(sp(13.5f)); text.setColor(GameKit.alpha(soft, alphaF * 1.6f));
         if (tags[i] == null || tagRoom != room) {
             String tag = I18n.t(TAGS[i]);
@@ -348,19 +431,30 @@ final class GameMenu extends View {
         text.setTypeface(GameKit.MEDIUM); text.setTextSize(sp(12.5f));
         String bs = I18n.t("Best") + "  " + best;
         float bw = text.measureText(bs) + 18 * d, by = r.centerY() + 22 * d;
+        if (bw > room && room > 18 * d) {
+            float k = Math.max(.7f, (room - 18 * d) / Math.max(1f, bw - 18 * d));
+            text.setTextSize(sp(12.5f) * k); bw = text.measureText(bs) + 18 * d;
+        }
         box.set(rtl ? tx - bw : tx, by, rtl ? tx : tx + bw, by + 22 * d);
         fill.setColor(GameKit.alpha(accent, alphaF * (night ? .22f : .14f))); c.drawRoundRect(box, 11 * d, 11 * d, fill);
         text.setColor(GameKit.alpha(night ? GameKit.mix(accent, 0xFFFFFFFF, .45f) : GameKit.mix(accent, 0xFF000000, .3f), alphaF));
         text.setTextAlign(Paint.Align.CENTER); c.drawText(bs, box.centerX(), box.centerY() - (text.descent() + text.ascent()) / 2, text);
         if (saved[i] || (i == 0 ? PixelStack.paused(a) : GameKit.Game.paused(a, i))) {
             String ps = I18n.t("Paused"); float pw = text.measureText(ps) + 30 * d, gap = 6 * d;
-            float pl = rtl ? box.left - gap - pw : box.right + gap;
-            box.set(pl, by, pl + pw, by + 22 * d);
-            fill.setColor(GameKit.alpha(accent, alphaF)); c.drawRoundRect(box, 11 * d, 11 * d, fill);
-            fill.setColor(GameKit.alpha(0xFFFFFFFF, alphaF));
-            float ix = rtl ? box.right - 12 * d : box.left + 12 * d;
-            c.drawRect(ix - 3.5f * d, box.centerY() - 4.5f * d, ix - 1 * d, box.centerY() + 4.5f * d, fill); c.drawRect(ix + 1 * d, box.centerY() - 4.5f * d, ix + 3.5f * d, box.centerY() + 4.5f * d, fill);
-            text.setColor(GameKit.alpha(0xFFFFFFFF, alphaF)); c.drawText(ps, box.centerX() + (rtl ? -6 : 6) * d, box.centerY() - (text.descent() + text.ascent()) / 2, text);
+
+            int fits = bw + gap + pw <= room ? 2 : bw + gap + 22 * d <= room ? 1 : 0;
+            if (fits == 0 && restOnly) { }
+            else {
+                if (fits == 2) { float pl = rtl ? box.left - gap - pw : box.right + gap; box.set(pl, by, pl + pw, by + 22 * d); }
+                else if (fits == 1) { float pl = rtl ? box.left - gap - 22 * d : box.right + gap; box.set(pl, by, pl + 22 * d, by + 22 * d); }
+                else { RectF v = views[i]; float bx = rtl ? v.left + 7 * d : v.right - 29 * d; box.set(bx, v.top + 7 * d, bx + 22 * d, v.top + 29 * d); }
+                if (fits == 0) { fill.setColor(GameKit.alpha(0xFFFFFFFF, alphaF)); c.drawCircle(box.centerX(), box.centerY(), 13 * d, fill); }
+                fill.setColor(GameKit.alpha(accent, alphaF)); c.drawRoundRect(box, 11 * d, 11 * d, fill);
+                fill.setColor(GameKit.alpha(0xFFFFFFFF, alphaF));
+                float ix = fits < 2 ? box.centerX() : rtl ? box.right - 12 * d : box.left + 12 * d;
+                c.drawRect(ix - 3.5f * d, box.centerY() - 4.5f * d, ix - 1 * d, box.centerY() + 4.5f * d, fill); c.drawRect(ix + 1 * d, box.centerY() - 4.5f * d, ix + 3.5f * d, box.centerY() + 4.5f * d, fill);
+                if (fits == 2) { text.setColor(GameKit.alpha(0xFFFFFFFF, alphaF)); c.drawText(ps, box.centerX() + (rtl ? -6 : 6) * d, box.centerY() - (text.descent() + text.ascent()) / 2, text); }
+            }
         }
         float ax = rtl ? r.left + 28 * d : r.right - 28 * d, ay = r.centerY(), ar = 15 * d;
         float press = pressed == i ? .9f : 1f;
@@ -424,18 +518,21 @@ final class GameMenu extends View {
     void drawPop(Canvas c, float t) {
         int[] at = new int[2]; getLocationOnScreen(at);
         RectF p0 = homeBox; p0.set(popAt); p0.offset(-at[0], -at[1]);
-        float k = GameKit.ease(t / 420f), r = p0.height() / 2f, grow = 1 + .35f * k;
+        float k = GameKit.ease(t / 420f), grow = 1 + .3f * k;
         box.set(p0.centerX() - p0.width() / 2 * grow, p0.centerY() - p0.height() / 2 * grow, p0.centerX() + p0.width() / 2 * grow, p0.centerY() + p0.height() / 2 * grow);
-        stroke.setStrokeWidth(2.5f * d * (1 - k)); stroke.setColor(GameKit.alpha(night ? 0xFFBFD8FF : 0xFF7FA6F5, 1 - k));
-        c.drawRoundRect(box, r * grow, r * grow, stroke);
-        if (drops[0] == 0) for (int i = 0; i < 12; i++) {
-            double ang = Math.PI * 2 * i / 12 + rnd.nextFloat() * .3;
+
+        fill.setShader(null); fill.setColor(GameKit.alpha(night ? 0xFF2E2F36 : 0xFFFFFFFF, .35f * (1 - k) * (1 - k))); c.drawOval(box, fill);
+        stroke.setStrokeWidth(3f * d * (1 - k)); stroke.setColor(GameKit.alpha(night ? 0xFFBFD8FF : 0xFF7FA6F5, 1 - k));
+        c.drawOval(box, stroke);
+        int n = drops.length / 4;
+        if (drops[0] == 0) for (int i = 0; i < n; i++) {
+            double ang = Math.PI * 2 * i / n + rnd.nextFloat() * .3;
             drops[i * 4] = (float) Math.cos(ang); drops[i * 4 + 1] = (float) Math.sin(ang);
-            drops[i * 4 + 2] = (28 + rnd.nextFloat() * 34) * d; drops[i * 4 + 3] = (1.6f + rnd.nextFloat() * 2.2f) * d;
+            drops[i * 4 + 2] = (30 + rnd.nextFloat() * 40) * d; drops[i * 4 + 3] = (1.8f + rnd.nextFloat() * 2.4f) * d;
         }
-        for (int i = 0; i < 12; i++) {
+        for (int i = 0; i < n; i++) {
             float dx = drops[i * 4], dy = drops[i * 4 + 1], far = drops[i * 4 + 2], sz = drops[i * 4 + 3];
-            float x = p0.centerX() + dx * (p0.width() / 2f + far * k), y = p0.centerY() + dy * (p0.height() / 2f + far * k * .7f) + 14 * d * k * k;
+            float x = p0.centerX() + dx * (p0.width() / 2f + far * k), y = p0.centerY() + dy * (p0.height() / 2f + far * k) + 14 * d * k * k;
             fill.setShader(null); fill.setColor(GameKit.alpha(i % 3 == 0 ? 0xFFFFB3E0 : i % 3 == 1 ? 0xFFA8CCFF : 0xFFFFF1A8, (1 - k) * .95f));
             c.drawCircle(x, y, sz * (1 - .5f * k), fill);
         }

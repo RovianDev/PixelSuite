@@ -20,6 +20,7 @@ final class PatronGate {
     private PatronGate() {}
 
     static final String KEY = "pixelsuite_patron";
+    static final String DEVICE_PASS_KEY = "pixelsuite_patron_device";
     private static final String SPKI =
             "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE4ocnJHRXyk3q1n1c9EC+5RIVJIdb"
             + "deObXFd6VIJDxpxcy9LdIa7jvnXh9TANY6lpvgen2c3/Hgm1hetm6f1OZg==";
@@ -33,6 +34,7 @@ final class PatronGate {
     private static String sPass;
     private static boolean sValid;
     private static long sExp, sOffline;
+    private static String sDid;
     private static long sCheckedAt = -1;
     private static boolean sLast;
 
@@ -62,16 +64,18 @@ final class PatronGate {
             pass = pass.trim();
             if (pass.isEmpty() || "null".equals(pass)) return false;
             long exp, off;
+            String did;
             synchronized (PatronGate.class) {
                 if (!pass.equals(sPass)) {
                     sPass = pass;
                     sValid = false;
-                    long[] t = verify(pass);
-                    if (t != null) { sValid = true; sExp = t[0]; sOffline = t[1]; }
+                    Claims t = verify(pass);
+                    if (t != null) { sValid = true; sExp = t.exp; sOffline = t.off; sDid = t.did; }
                 }
                 if (!sValid) return false;
-                exp = sExp; off = sOffline;
+                exp = sExp; off = sOffline; did = sDid;
             }
+            if (!thisDevice(c, did)) return false;
             long now = System.currentTimeMillis() / 1000L;
             return now < (online(c) ? exp : off);
         } catch (Throwable t) {
@@ -134,7 +138,19 @@ final class PatronGate {
         return new JSONObject(new String(Base64.decode(parts[1], flags), "UTF-8"));
     }
 
-    private static long[] verify(String jwt) throws Exception {
+    private static boolean thisDevice(Context c, String did) {
+        String own = Settings.Secure.getString(c.getContentResolver(), DEVICE_PASS_KEY);
+        if (own == null || own.trim().isEmpty()) return true;
+        return own.trim().equals(did);
+    }
+
+    private static final class Claims {
+        final long exp, off;
+        final String did;
+        Claims(long exp, long off, String did) { this.exp = exp; this.off = off; this.did = did; }
+    }
+
+    private static Claims verify(String jwt) throws Exception {
         String[] parts = jwt.trim().split("\\.", -1);
         if (parts.length != 3 || parts[0].isEmpty() || parts[1].isEmpty() || parts[2].isEmpty()) return null;
         int flags = Base64.URL_SAFE | Base64.NO_PADDING | Base64.NO_WRAP;
@@ -171,7 +187,7 @@ final class PatronGate {
         if (iat > now + SKEW) return null;
         if (exp <= iat || exp - iat > MAX_LIFE) return null;
         if (off < exp || off - exp > MAX_OFFLINE) return null;
-        return new long[]{exp, off};
+        return new Claims(exp, off, (String) p.opt("did"));
     }
 
     private static byte[] der(byte[] raw) {

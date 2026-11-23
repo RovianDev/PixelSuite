@@ -3,7 +3,6 @@ package io.github.pixelsuite;
 import io.github.libxposed.api.XposedModule;
 
 public class Module extends XposedModule {
-
     private static final String SETTINGS = "com.android.settings";
     private static final String SYSTEMUI = "com.android.systemui";
     private static final String LAUNCHER = "com.google.android.apps.nexuslauncher";
@@ -40,6 +39,11 @@ public class Module extends XposedModule {
         Safe.run(() -> Downgrade.installSystem(cl));
         Safe.run(() -> ChromeTextSearch.installSystem(cl));
         Safe.run(() -> TextMenuStyle.install());
+        Safe.run(() -> UsbTop.installSystem(cl));
+        Safe.run(() -> FolderSpeed.installSystem(cl));
+        Safe.run(() -> OtpFill.installSystem(cl));
+        Safe.run(() -> LockOpen.install(cl));
+        Safe.run(() -> ArcadeSwipes.installSystem(cl));
         Safe.run(() -> SystemRev.installSystem(cl));
     }
 
@@ -49,6 +53,7 @@ public class Module extends XposedModule {
         ClassLoader cl = param.getClassLoader();
         String pkg = param.getPackageName();
         if (GMS.equals(pkg)) return;
+        if (DoNotAnnoyWhatsApp.owns(pkg)) { Safe.run(() -> DoNotAnnoyWhatsApp.install(cl)); return; }
         Safe.run(() -> SettingsScrollEdges.install(cl, pkg));
         Safe.run(() -> TextMenuStyle.install());
         if (SYSTEMUI.equals(pkg) && screenshotProcess()) {
@@ -58,12 +63,15 @@ public class Module extends XposedModule {
         } else if (SYSTEMUI.equals(pkg)) {
             Safe.run(() -> VolumeCamera.installSystemUi(cl));
             Safe.run(() -> ScreenRecordTidy.install(cl));
+            Safe.run(() -> WidgetPanel.installLock(cl));
             Safe.run(() -> SuperDark.installSystemUi(cl));
             Safe.run(() -> StatusBarFade.installSystemUi(cl));
             Safe.run(() -> SystemToasts.install(cl));
             Safe.run(() -> PromptStyle.install(cl));
             Safe.run(() -> AodPlus.installSystemUi(cl));
             Safe.run(() -> PinAuto.installSystemUi(cl));
+            Safe.run(() -> UsbTop.installSystemUi(cl));
+            Safe.run(() -> FeedBackGesture.install(cl));
         } else if (LAUNCHER.equals(pkg)) {
             Safe.run(() -> ClearAll.installLauncher(cl));
             Safe.run(() -> PowerHold.installLauncher(cl));
@@ -110,6 +118,8 @@ public class Module extends XposedModule {
             Safe.run(() -> DevOptionsHide.install(pkg));
         } else if (CallRecording.PACKAGE.equals(pkg)) {
             Safe.run(() -> CallRecording.install(cl, param.getApplicationInfo()));
+        } else if (FolderSpeed.PKG.equals(pkg)) {
+            Safe.run(() -> FolderSpeed.install(cl));
         } else if (DocumentsSort.GOOGLE.equals(pkg) || DocumentsSort.AOSP.equals(pkg)) {
             Safe.run(() -> DocumentsSort.install(cl));
         } else if (AliasProvider.GOOGLE.equals(pkg)) {
@@ -117,6 +127,7 @@ public class Module extends XposedModule {
             Safe.run(() -> SuperDarkApps.install(cl, pkg));
             if (SETTINGS.equals(pkg)) Safe.run(() -> SettingsSearchTone.install());
             Safe.run(() -> GoogleFeedAds.install(cl));
+            Safe.run(() -> GoogleFeedTap.install(cl));
         } else if (SuperDarkApps.GBOARD.equals(pkg) || SETTINGS.equals(pkg) || SuperDarkApps.SETTINGS_SEARCH.equals(pkg)
                 || "com.google.android.packageinstaller".equals(pkg) || "com.android.packageinstaller".equals(pkg)) {
             Safe.run(() -> SuperDarkApps.install(cl, pkg));
@@ -124,12 +135,15 @@ public class Module extends XposedModule {
             if (!SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> SuperDarkDialogs.install());
             if (SETTINGS.equals(pkg)) Safe.run(() -> OtaBlocker.installSettings(cl));
             if (SETTINGS.equals(pkg)) Safe.run(() -> RefreshRate90.installSettings(cl));
+            if (SETTINGS.equals(pkg)) Safe.run(() -> UsbQuick.installSettings(cl));
             if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> KeyboardBarTweak.install(pkg));
             if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> GboardToolbar.install());
             if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> GboardPlus.install(cl));
+            if (SuperDarkApps.GBOARD.equals(pkg)) Safe.run(() -> OtpFill.installKeyboard());
         } else {
             Safe.run(() -> KeyboardBarTweak.install(pkg));
             Safe.run(() -> DevOptionsHide.install(pkg));
+            Safe.run(() -> OtpFill.installKeyboard());
         }
     }
 
@@ -137,5 +151,4 @@ public class Module extends XposedModule {
         try { String name = (String) android.app.Application.class.getMethod("getProcessName").invoke(null); return name != null && name.endsWith(":screenshot"); }
         catch (Throwable t) { return false; }
     }
-
 }

@@ -427,7 +427,7 @@ Refresh	Обновить
 Refreshing…	Обновление…
 Sign in with Patreon	Войти через «Патреон»
 Sign out	Выйти
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Поддержите Pixel Suite, чтобы разблокировать Chrome+, Gboard+, блокировщик рекламы, VPN, «Тёмные страницы», запись звонков и ленту Google без рекламы.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Поддержите Pixel Suite, чтобы разблокировать ленту виджетов, Chrome+, Gboard+, блокировщик рекламы, VPN, «Тёмные страницы», запись звонков и ленту Google без рекламы.
 A Quest for the\nKind-Hearted	Квест для\nдобрых сердцем
 Already a patron? Unlock	Уже патрон? Разблокировать
 Checking Patreon membership…	Проверка подписки «Патреон»…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	Квест выполнен!
 Ready to check membership	Можно проверить подписку
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	Спасибо за поддержку Pixel Suite. Функции «Патреон» готовы.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Патроны получают Chrome+ и Gboard+, блокировщик рекламы и VPN, «Тёмные страницы» в Chrome, запись звонков и ленту Google без рекламы. Вся поддержка идёт обратно в приложение: успевать за обновлениями Android и приложений Google, чинить то, что они ломают, и создавать новые функции.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Патроны получают ленту виджетов, Chrome+ и Gboard+, блокировщик рекламы и VPN, «Тёмные страницы» в Chrome, запись звонков и ленту Google без рекламы. Вся поддержка идёт обратно в приложение: успевать за обновлениями Android и приложений Google, чинить то, что они ломают, и создавать новые функции.
 Welcome back!	С возвращением!
 ✨ Quest Complete!	✨ Квест выполнен!
 📜 A Quest for the Kind-Hearted	📜 Квест для добрых сердцем
@@ -953,7 +953,6 @@ Lock apps in recents	Блокировка приложений в недавни
 Lock factory reset	Заблокировать сброс настроек
 Lock screen	Заблокированный экран
 Lock-screen behavior	Поведение заблокированного экрана
-Lock-screen taps	Нажатия на заблокированном экране
 Locking recent apps	Блокировка недавних приложений
 Locks stay after a restart.	Блокировки сохраняются после перезапуска.
 Made by RovianDev	Создано RovianDev
@@ -1005,7 +1004,6 @@ Protection	Защита
 Pure black backgrounds and darker menus in dark theme.	Чисто-чёрный фон и более тёмные меню в тёмной теме.
 Quick actions from your phone's buttons.	Быстрые действия кнопками телефона.
 Recent	Недавние
-Recent Apps	Недавние приложения
 Record and save calls	Запись и сохранение звонков
 Record calls in the Phone app, in any country, without the announcement	Записывайте звонки в приложении «Телефон» в любой стране без предупреждения
 Reduce screenshot delay	Уменьшить задержку скриншота
@@ -1077,7 +1075,7 @@ Take a screenshot	Сделать скриншот
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Нажмите «Дополнения» на странице новой вкладки Chrome, чтобы пользоваться ими. Нажмите на дополнение, чтобы открыть его настройки, или удерживайте, чтобы закрепить на панели.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Нажмите «Дополнения» на странице новой вкладки, чтобы пользоваться ими. Удерживайте дополнение, чтобы закрепить его на панели.
 Tap an app to see its saved versions.	Нажмите на приложение, чтобы увидеть его сохранённые версии.
-Tap to wake	Пробуждение касанием
+Tap or Double-tap to wake	Пробуждение касанием или двойным касанием
 Text size	Размер текста
 That isn't a Pixel Suite backup	Это не резервная копия Pixel Suite
 The 3 newest versions of each app are kept.	Хранятся 3 самые новые версии каждого приложения.
@@ -1089,7 +1087,6 @@ The toolbar	Панель инструментов
 Three-finger screenshot	Скриншот тремя пальцами
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Чтобы вернуться сюда, нажмите и удерживайте главный экран и выберите «Настройки Pixel Suite». Нужны root и LSPosed.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	Чтобы защитить приложение отпечатком или PIN-кодом, используйте «Конфиденциальность и безопасность».
-Toasts	Всплывающие сообщения
 Toolbar	Панель инструментов
 Toolbar, keys, resize, auto-correction, clipboard	Панель, клавиши, размер, автозамена, буфер обмена
 Tools for your Google apps.	Инструменты для ваших приложений Google.
@@ -1118,8 +1115,7 @@ Use custom app icons	Использовать свои значки прилож
 Use your own image for an app icon	Своё изображение в качестве значка приложения
 Voice typing with checkmark	Голосовой ввод с галочкой
 Wake gesture	Жест пробуждения
-Wake the screen	Включить экран
-Wake your phone with a tap, with pocket protection.	Пробуждайте телефон касанием, с защитой в кармане.
+Wake your phone with a tap or a double tap, with pocket protection.	Пробуждайте телефон касанием или двойным касанием, с защитой в кармане.
 Websites open dark, with no white flash. Super Dark uses pure black.	Сайты открываются тёмными, без белой вспышки. «Сверхтёмный» использует чисто чёрный цвет.
 What's new	Что нового
 When you untick apps, Back up saves their current versions first.	Когда вы снимаете отметку с приложений, «Резервная копия» сначала сохраняет их текущие версии.
@@ -1689,3 +1685,129 @@ Hide At a Glance	Скрыть «Самое важное»
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Убирает «Самое важное» с верхней части главного экрана. Строка свободна для ваших приложений, папок и виджетов.
 Hold an app, folder or widget and drop it in the free row.	Удерживайте приложение, папку или виджет и перетащите в свободную строку.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Для Android 16 и более ранних версий. В более новых версиях «Самое важное» можно убрать прямо на главном экране.
+Code autofill	Автозаполнение кодов
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	Одноразовые коды из сообщений, приложений и почты появляются над клавиатурой. Нажмите на код, чтобы вставить его.
+Fill codes automatically	Вставлять коды автоматически
+Types the code for you when an empty box is waiting for one.	Вводит код за вас, когда его ждёт пустое поле.
+Autofill OTP	Автозаполнение OTP
+One-time codes, filled in for you.	Одноразовые коды вводятся за вас.
+Codes from your messages, right above the keyboard	Коды из сообщений прямо над клавиатурой
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• Когда код приходит в сообщении, приложении или письме, он появляется над клавиатурой. Нажмите на него, чтобы вставить.\n\n• Если включено «Вставлять коды автоматически», код вводится сам, когда поле ждёт его.
+Shows the code above your keyboard and fills it in.	Показывает код над клавиатурой и вставляет его.
+Reads one-time codes from notifications as they arrive.	Считывает одноразовые коды из уведомлений сразу по приходу.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	Убирает с панели чипы вроде «Скриншот». Коды, автозаполнение и скопированный текст по-прежнему показываются.
+Widgets feed	Лента виджетов
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	Проведите вправо на первом главном экране, чтобы увидеть виджеты, погоду и дату. Панель заменяет ленту Google.
+Hide weather and date	Скрыть погоду и дату
+Your widgets start at the top of the feed.	Виджеты начинаются с самого верха ленты.
+Tap + to add a widget. Tap a widget to open its app.	Нажмите +, чтобы добавить виджет. Нажмите на виджет, чтобы открыть его приложение.
+Hold a widget to move or remove widgets, then tap the check mark.	Удерживайте виджет, чтобы перемещать или удалять виджеты, затем нажмите на галочку.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	Нажмите на дату, чтобы открыть календарь, и на погоду, чтобы увидеть прогноз. Проведите влево, чтобы вернуться.
+Add widget	Добавить виджет
+Feed settings	Настройки ленты
+Background opacity	Непрозрачность фона
+Invisible	Невидимый
+Solid	Сплошной
+How much of the feed's background shows. The status bar and home bar follow it.	Насколько виден фон ленты. Строка состояния и полоса жестов подстраиваются под него.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	Удерживайте виджет, чтобы перемещать виджеты, менять их размер или удалять, затем нажмите на галочку.
+Ditch the Google feed. Build your own.	Забудьте о ленте Google. Создайте свою.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	Полностью уберите ленту Google и замените её страницей с вашими виджетами, которую можно настроить как угодно.
+Home screen	Главный экран
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	Ваши виджеты в одном свайпе от экрана блокировки. Любое приложение, любой размер, без разблокировки телефона.
+How much of the feed's background shows.	Насколько виден фон ленты.
+Each feed keeps its own widgets.	У каждой ленты свои виджеты.
+No widgets available	Нет доступных виджетов
+Couldn't add that widget	Не удалось добавить этот виджет
+Open apps without unlocking	Открывать приложения без разблокировки
+Saved.	Сохранено.
+Pixel Suite and Settings always ask to unlock.	Pixel Suite и Настройки всегда просят разблокировать телефон.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	Выбранные приложения открываются прямо на экране блокировки, без отпечатка, поэтому выбирайте внимательно. После выхода из приложения вы вернётесь на экран блокировки.
+Apps that open without unlocking	Приложения, открывающиеся без разблокировки
+Choose which apps open from the lock screen	Выберите, какие приложения открываются с экрана блокировки
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	На экране блокировки приложение сначала просит разблокировать телефон, если вы не выбрали его в «Открывать приложения без разблокировки». Проведите вправо, чтобы вернуться.
+Your widgets, the weather and the date, one swipe from your home screen.	Ваши виджеты, погода и дата — в одном свайпе от главного экрана.
+Side	Сторона
+The feed comes in from this side of your home screen.	Лента появляется с этой стороны главного экрана.
+The feed comes in from this side of the lock screen.	Лента появляется с этой стороны экрана блокировки.
+Keep the Google feed	Оставить ленту Google
+Swipe the other way for the Google feed.	Проведите в другую сторону, чтобы открыть ленту Google.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	Выберите сторону для каждой ленты. На главном экране лента Google может остаться с другой стороны.
+Tap the date for your calendar and the weather for the forecast.	Нажмите на дату, чтобы открыть календарь, и на погоду, чтобы увидеть прогноз.
+To close a feed, swipe it back the way it came.	Чтобы закрыть ленту, проведите её обратно в ту сторону, откуда она появилась.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	На экране блокировки приложение сначала просит разблокировать телефон, если вы не выбрали его в «Открывать приложения без разблокировки».
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	Полностью настраиваемая страница с вашими виджетами — с той стороны, которую вы выберете. Оставьте ленту Google с другой стороны или уберите её.
+Your own widgets, left or right.	Ваши виджеты — слева или справа.
+Left	Слева
+Right	Справа
+Google feed	Лента Google
+A live preview of your feeds. It follows your settings.	Живой предпросмотр ваших лент. Он следует вашим настройкам.
+USB on top	USB сверху
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	Уведомление USB закреплено сверху и выбирает передачу файлов, когда телефон разблокирован. Отладка по USB — сразу под ним.
+Burns through crates and ghosts	Прожигает ящики и призраков
+Quick USB modes	Быстрые режимы USB
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	Переключайтесь на передачу файлов, USB-модем и другие режимы USB без отпечатка или PIN-кода, пока телефон разблокирован.
+More USB options	Другие настройки USB
+Block WhatsApp calls	Блокировать звонки WhatsApp
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	Пока включено «Не надоедать», звонки WhatsApp до вас не доходят, а звонящий видит «Не удаётся позвонить». Сообщения и ваши собственные звонки работают как обычно.
+WhatsApp call turned away by Do Not Annoy	«Не надоедать» отклонил звонок WhatsApp
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	Отклоняет звонки WhatsApp, пока включено «Не надоедать» и включена блокировка звонков WhatsApp. Перезапустите WhatsApp после добавления этой области.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	Быстро открывает папки с тысячами файлов в любом приложении, без пустых папок после возврата назад. Перезагрузитесь после добавления этой области.
+Demonic	Демон
+Take the angelic power?	Принять силу ангела?
+Take the demonic power?	Принять силу демона?
+Your angelic power fades	Сила ангела угаснет
+Your demonic power fades	Сила демона угаснет
+Thunder	Гром
+Inferno	Инферно
+Fit the thunder core?	Поставить ядро грома?
+Fit the inferno core?	Поставить ядро инферно?
+Your thunder core burns out	Ядро грома сгорит
+Your inferno core burns out	Ядро инферно сгорит
+Choose a core	Выбери ядро
+Crushes bricks	Давит кирпичи
+Crushes steel	Давит сталь
+Mortar King	Король мортир
+Hive Mother	Мать улья
+Steel Serpent	Стальной змей
+Twin Fortress	Крепость-близнец
+Thunder Colossus	Громовой колосс
+Mine Layer	Минный заградитель
+Crimson Baron	Багровый барон
+Shield Warden	Хранитель щита
+Inferno Engine	Адская машина
+Night Spider	Ночной паук
+Titan	Титан
+Phantom Ship	Корабль-призрак
+Siege Breaker	Осадный таран
+Overlord	Повелитель
+Dreadnought	Дредноут
+Void Eye	Око пустоты
+Emperor	Император
+Bomb Baron	Бомбовый барон
+Frost Wraith	Морозный призрак
+Slime Lord	Повелитель слизи
+Storm Eye	Око бури
+Iron Mech	Железный мех
+Shadow Twins	Теневые близнецы
+Magma Golem	Магмовый голем
+Hex Witch	Ведьма проклятий
+Hydra Slime	Слизь-гидра
+Grave King	Король могил
+Thunder Mech	Громовой мех
+The Watcher	Наблюдатель
+Crystal Golem	Хрустальный голем
+Banshee	Банши
+Toxic Slime	Ядовитая слизь
+Demon Twins	Демонические близнецы
+Glitch Emperor	Император глитчей
+What each extension does	Что делает каждое дополнение
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	Не обновляется, пока включено «{0}», чтобы обновление его не сломало. Выключите, чтобы разрешить обновление.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	Опции, работающие внутри приложения, например «Блокировать звонки WhatsApp», не дают ему обновляться, пока включены. Здесь оно показано заблокированным.
+Its data wasn't found	Данные приложения не найдены
+Its saved data is incomplete	Сохранённые данные неполные
+The app isn't installed	Приложение не установлено
+Couldn't make the backup folder	Не удалось создать папку для резервной копии
+Couldn't put back {0}	Не удалось вернуть {0}
+Couldn't save {0}	Не удалось сохранить {0}
+It didn't install	Не установилось
+Root isn't available	Root недоступен

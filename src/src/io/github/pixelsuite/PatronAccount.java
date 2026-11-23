@@ -36,7 +36,7 @@ final class PatronAccount {
    button(busy?"Refreshing…":"Refresh",()->{busy=true;render();PatronAccess.refresh(activity,()->{busy=false;render();String error=PatronAccess.prefs(activity).getString("refresh_error",null);if(error!=null)AppToast.makeText(activity,I18n.cs(error),Toast.LENGTH_LONG).show();else AppToast.makeText(activity,I18n.cs(PatronAccess.unlocked()?"Membership refreshed":PatronAccess.membershipMessage(activity)),Toast.LENGTH_LONG).show();});});
   }else{
    content.addView(text("A Quest for the Kind-Hearted",21,ink,true));content.addView(text(PatronAccess.membershipMessage(activity),16,muted,false));
-   content.addView(text("Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.",15,muted,false));
+   content.addView(text("Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.",15,muted,false));
    button("Read the quest",()->{dialog.dismiss();PatronPaper.open(activity,0,null);});
    button("Join on Patreon · $5/month",()->{PatronAccess.prefs(activity).edit().putBoolean("join_return",true).apply();dialog.dismiss();PatronPaper.join(activity);});
    button("Unlock",()->{dialog.dismiss();PatronPaper.login(activity);});

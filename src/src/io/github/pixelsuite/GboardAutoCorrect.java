@@ -76,6 +76,7 @@ final class GboardAutoCorrect {
 
     private static void applyRequest(Context app) {
         try {
+            if (!PatronGate.ok(app)) return;
             String v = Settings.Secure.getString(app.getContentResolver(), KEY_SET);
             if (v == null || v.indexOf(':') <= 0 || sPrefs == null) return;
             boolean on = v.startsWith("1");

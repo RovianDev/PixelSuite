@@ -427,7 +427,7 @@ Refresh	به‌روزرسانی
 Refreshing…	درحال به‌روزرسانی…
 Sign in with Patreon	ورود با پاتریون
 Sign out	خروج از سیستم
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	از Pixel Suite حمایت کنید تا Chrome+، Gboard+، مسدودکننده آگهی، VPN، صفحه‌های تیره، ضبط تماس و فید Google بدون آگهی باز شود.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	از Pixel Suite حمایت کنید تا فید ویجت، Chrome+، Gboard+، مسدودکننده آگهی، VPN، صفحه‌های تیره، ضبط تماس و فید Google بدون آگهی باز شود.
 A Quest for the\nKind-Hearted	مأموریتی برای\nمهربان‌دلان
 Already a patron? Unlock	از قبل حامی هستید؟ باز کردن
 Checking Patreon membership…	درحال بررسی عضویت پاتریون…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	مأموریت انجام شد!
 Ready to check membership	آماده بررسی عضویت
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	ممنون که از Pixel Suite حمایت می‌کنید. ویژگی‌های پاتریون شما آماده است.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	حامیان Chrome+ و Gboard+، مسدودکننده آگهی و VPN، صفحه‌های تیره در Chrome، ضبط تماس و فید Google بدون آگهی را باز می‌کنند. هر حمایتی مستقیم به برنامه برمی‌گردد: همگام ماندن با به‌روزرسانی‌های Android و برنامه‌های Google، درست کردن چیزهایی که خراب می‌کنند و ساختن ویژگی‌های تازه.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	حامیان فید ویجت، Chrome+ و Gboard+، مسدودکننده آگهی و VPN، صفحه‌های تیره در Chrome، ضبط تماس و فید Google بدون آگهی را باز می‌کنند. هر حمایتی مستقیم به برنامه برمی‌گردد: همگام ماندن با به‌روزرسانی‌های Android و برنامه‌های Google، درست کردن چیزهایی که خراب می‌کنند و ساختن ویژگی‌های تازه.
 Welcome back!	خوش برگشتید!
 ✨ Quest Complete!	✨ مأموریت انجام شد!
 📜 A Quest for the Kind-Hearted	📜 مأموریتی برای مهربان‌دلان
@@ -953,7 +953,6 @@ Lock apps in recents	قفل کردن برنامه‌ها در برنامه‌ه�
 Lock factory reset	قفل کردن بازنشانی کارخانه
 Lock screen	صفحه قفل
 Lock-screen behavior	رفتار صفحه قفل
-Lock-screen taps	ضربه‌های صفحه قفل
 Locking recent apps	قفل کردن برنامه‌های اخیر
 Locks stay after a restart.	قفل‌ها پس از راه‌اندازی مجدد می‌مانند.
 Made by RovianDev	ساخته RovianDev
@@ -1005,7 +1004,6 @@ Protection	محافظت
 Pure black backgrounds and darker menus in dark theme.	پس‌زمینه‌های سیاه خالص و منوهای تیره‌تر در زمینه تیره.
 Quick actions from your phone's buttons.	میانبرهای سریع با دکمه‌های گوشی.
 Recent	اخیر
-Recent Apps	برنامه‌های اخیر
 Record and save calls	ضبط و ذخیره تماس‌ها
 Record calls in the Phone app, in any country, without the announcement	تماس‌ها را در برنامه تلفن، در هر کشوری، بدون اعلام ضبط کنید
 Reduce screenshot delay	کاهش تأخیر اسکرین‌شات
@@ -1077,7 +1075,7 @@ Take a screenshot	گرفتن اسکرین‌شات
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	برای استفاده، در صفحه برگه جدید Chrome روی «افزونه‌ها» ضربه بزنید. برای تنظیمات روی یکی ضربه بزنید یا برای سنجاق کردن به نوار ابزار نگهش دارید.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	برای استفاده، در صفحه برگه جدید روی «افزونه‌ها» ضربه بزنید. برای سنجاق کردن به نوار ابزار یکی را نگه دارید.
 Tap an app to see its saved versions.	برای دیدن نسخه‌های ذخیره‌شده روی برنامه‌ای ضربه بزنید.
-Tap to wake	ضربه برای روشن کردن صفحه
+Tap or Double-tap to wake	یک یا دو ضربه برای روشن کردن صفحه
 Text size	اندازه متن
 That isn't a Pixel Suite backup	این پشتیبان Pixel Suite نیست
 The 3 newest versions of each app are kept.	۳ نسخه جدیدتر هر برنامه نگه داشته می‌شود.
@@ -1089,7 +1087,6 @@ The toolbar	نوار ابزار
 Three-finger screenshot	اسکرین‌شات با سه انگشت
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	برای برگشت به اینجا، صفحه اصلی را فشار طولانی دهید و «تنظیمات Pixel Suite» را انتخاب کنید. روت و LSPosed لازم است.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	برای محافظت از برنامه با اثر انگشت یا پین، از «حریم خصوصی و امنیت» استفاده کنید.
-Toasts	پیام‌های کوتاه
 Toolbar	نوار ابزار
 Toolbar, keys, resize, auto-correction, clipboard	نوار ابزار، کلیدها، اندازه، تصحیح خودکار، بریده‌دان
 Tools for your Google apps.	ابزارهایی برای برنامه‌های Google شما.
@@ -1118,8 +1115,7 @@ Use custom app icons	استفاده از نمادهای سفارشی برنام�
 Use your own image for an app icon	استفاده از تصویر خودتان برای نماد برنامه
 Voice typing with checkmark	تایپ صوتی با علامت تیک
 Wake gesture	حرکت روشن کردن صفحه
-Wake the screen	روشن کردن صفحه
-Wake your phone with a tap, with pocket protection.	با یک ضربه صفحه گوشی را روشن کنید. دارای محافظت در برابر لمس ناخواسته در جیب.
+Wake your phone with a tap or a double tap, with pocket protection.	با یک یا دو ضربه صفحه گوشی را روشن کنید. دارای محافظت در برابر لمس ناخواسته در جیب.
 Websites open dark, with no white flash. Super Dark uses pure black.	وب‌سایت‌ها تیره و بدون درخشش سفید باز می‌شوند. فوق‌تیره از سیاه خالص استفاده می‌کند.
 What's new	موارد تازه
 When you untick apps, Back up saves their current versions first.	وقتی تیک برنامه‌ها را برمی‌دارید، «پشتیبان‌گیری» اول نسخه فعلی‌شان را ذخیره می‌کند.
@@ -1689,3 +1685,129 @@ Hide At a Glance	پنهان کردن «در یک نگاه»
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	«در یک نگاه» رو از بالای صفحه اصلی برمی‌داره. اون ردیف برای برنامه‌ها، پوشه‌ها و ابزارک‌هات آزاد می‌شه.
 Hold an app, folder or widget and drop it in the free row.	یه برنامه، پوشه یا ابزارک رو نگه دار و توی ردیف خالی رها کن.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	برای Android 16 و قدیمی‌تر. نسخه‌های جدیدتر می‌تونن «در یک نگاه» رو از خود صفحه اصلی بردارن.
+Code autofill	تکمیل خودکار کد
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	کدهای یک‌بارمصرف پیام‌ها، برنامه‌ها و ایمیل بالای صفحه‌کلید نشون داده می‌شن. برای وارد کردن، روی کد بزن.
+Fill codes automatically	وارد کردن خودکار کد
+Types the code for you when an empty box is waiting for one.	وقتی یه کادر خالی منتظر کده، خودش کد رو وارد می‌کنه.
+Autofill OTP	پر کردن خودکار OTP
+One-time codes, filled in for you.	کدهای یک‌بار مصرف، خودش پر می‌کنه.
+Codes from your messages, right above the keyboard	کدهای پیام‌هات، درست بالای کیبورد
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• وقتی کدی توی پیام، برنامه یا ایمیل میاد، بالای کیبورد نشون داده می‌شه. روش بزن تا پر بشه.\n\n• اگه «وارد کردن خودکار کد» روشن باشه، هر وقت یه کادر منتظر کد باشه، کد خودش تایپ می‌شه.
+Shows the code above your keyboard and fills it in.	کد رو بالای کیبورد نشون می‌ده و پرش می‌کنه.
+Reads one-time codes from notifications as they arrive.	کدهای یک‌بار مصرف رو همون لحظه از اعلان‌ها می‌خونه.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	چیپ‌هایی مثل اسکرین‌شات رو از نوار ابزار دور نگه می‌داره. کدها، تکمیل خودکار و متن کپی‌شده همچنان نشون داده می‌شن.
+Widgets feed	فید ویجت
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	روی اولین صفحه اصلی‌ات به راست بکش تا ویجت‌ها، آب‌وهوا و تاریخ رو ببینی. جای فید Google رو می‌گیره.
+Hide weather and date	مخفی کردن آب‌وهوا و تاریخ
+Your widgets start at the top of the feed.	ویجت‌هات از بالای فید شروع می‌شن.
+Tap + to add a widget. Tap a widget to open its app.	برای اضافه کردن ویجت روی + بزن. روی هر ویجت بزنی برنامه‌اش باز می‌شه.
+Hold a widget to move or remove widgets, then tap the check mark.	یه ویجت رو نگه دار تا ویجت‌ها رو جابه‌جا یا حذف کنی، بعد روی تیک بزن.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	روی تاریخ بزن تا تقویم باز بشه و روی آب‌وهوا برای پیش‌بینی. برای برگشتن به چپ بکش.
+Add widget	اضافه کردن ویجت
+Feed settings	تنظیمات فید
+Background opacity	شفافیت پس‌زمینه
+Invisible	نامرئی
+Solid	کامل
+How much of the feed's background shows. The status bar and home bar follow it.	چقدر از پس‌زمینه فید دیده بشه. نوار وضعیت و نوار خانه هم باهاش هماهنگ می‌شن.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	یه ویجت رو نگه دار تا ویجت‌ها رو جابه‌جا کنی، اندازه‌شون رو عوض کنی یا حذفشون کنی، بعد روی تیک بزن.
+Ditch the Google feed. Build your own.	فید Google رو کنار بذار. مال خودت رو بساز.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	فید Google رو کامل حذف کن و به‌جاش یه صفحهٔ کاملاً قابل‌تنظیم از ویجت‌های خودت بذار.
+Home screen	صفحه اصلی
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	ویجت‌هات، با یه سوایپ از صفحهٔ قفل. هر برنامه‌ای، هر اندازه‌ای، بدون باز کردن قفل گوشی.
+How much of the feed's background shows.	چقدر از پس‌زمینه فید دیده بشه.
+Each feed keeps its own widgets.	هر فید ویجت‌های خودش رو داره.
+No widgets available	ویجتی در دسترس نیست
+Couldn't add that widget	افزودن این ویجت ممکن نشد
+Open apps without unlocking	باز کردن برنامه‌ها بدون باز کردن قفل
+Saved.	ذخیره شد.
+Pixel Suite and Settings always ask to unlock.	Pixel Suite و تنظیمات همیشه باز کردن قفل رو می‌خوان.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	برنامه‌هایی که انتخاب کنی همون روی صفحه قفل باز می‌شن، بدون اثر انگشت، پس با دقت انتخاب کن. با خروج از برنامه به صفحه قفل برمی‌گردی.
+Apps that open without unlocking	برنامه‌هایی که بدون باز کردن قفل باز می‌شن
+Choose which apps open from the lock screen	انتخاب کن کدوم برنامه‌ها از صفحه قفل باز بشن
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	روی صفحه قفل، برنامه اول باز کردن قفل رو می‌خواد، مگر اینکه توی «باز کردن برنامه‌ها بدون باز کردن قفل» انتخابش کرده باشی. برای برگشتن به راست بکش.
+Your widgets, the weather and the date, one swipe from your home screen.	ویجت‌ها، آب‌وهوا و تاریخ، با یه کشیدن از صفحه اصلی‌ات.
+Side	سمت
+The feed comes in from this side of your home screen.	فید از این سمتِ صفحه اصلی‌ات میاد.
+The feed comes in from this side of the lock screen.	فید از این سمتِ صفحه قفل میاد.
+Keep the Google feed	نگه داشتن فید Google
+Swipe the other way for the Google feed.	برای فید Google به سمت مخالف بکش.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	سمت هر فید رو انتخاب کن. روی صفحه اصلی، فید Google می‌تونه سمت دیگه بمونه.
+Tap the date for your calendar and the weather for the forecast.	روی تاریخ بزن تا تقویم باز بشه و روی آب‌وهوا برای پیش‌بینی.
+To close a feed, swipe it back the way it came.	برای بستن فید، از همون سمتی که اومده برش گردون.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	روی صفحه قفل، برنامه اول باز کردن قفل رو می‌خواد، مگر اینکه توی «باز کردن برنامه‌ها بدون باز کردن قفل» انتخابش کرده باشی.
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	یه صفحهٔ کاملاً قابل‌تنظیم از ویجت‌های خودت، هر سمتی که بخوای. فید Google رو سمت دیگه نگه دار یا کنارش بذار.
+Your own widgets, left or right.	ویجت‌های خودت، چپ یا راست.
+Left	چپ
+Right	راست
+Google feed	فید Google
+A live preview of your feeds. It follows your settings.	پیش‌نمایش زندهٔ فیدهات. با تنظیماتت همراه میشه.
+USB on top	USB در بالا
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	اعلان USB بالای همه سنجاق می‌مونه و وقتی قفل باز باشه انتقال فایل رو انتخاب می‌کنه. اشکال‌زدایی USB درست زیرش می‌مونه.
+Burns through crates and ghosts	جعبه‌ها و روح‌ها رو می‌سوزونه
+Quick USB modes	حالت‌های سریع USB
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	وقتی قفل گوشی بازه، بدون اثر انگشت یا پین بین انتقال فایل، اشتراک اینترنت با USB و بقیه حالت‌های USB جابه‌جا شو.
+More USB options	گزینه‌های بیشتر USB
+Block WhatsApp calls	مسدود کردن تماس‌های WhatsApp
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	وقتی مزاحم نشو روشنه، تماس‌های WhatsApp بهت نمی‌رسه و تماس‌گیرنده «امکان تماس نیست» رو می‌بینه. پیام‌ها و تماس‌های خودت مثل همیشه کار می‌کنن.
+WhatsApp call turned away by Do Not Annoy	مزاحم نشو یک تماس WhatsApp رو رد کرد
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	وقتی مزاحم نشو روشنه و مسدود کردن تماس‌های WhatsApp فعاله، تماس‌های WhatsApp رو رد می‌کنه. بعد از اضافه کردن این دامنه، WhatsApp رو دوباره باز کن.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	پوشه‌هایی با هزاران فایل رو در همه برنامه‌ها سریع باز می‌کنه، بدون پوشه خالی بعد از برگشتن. بعد از اضافه کردن این دامنه، گوشی رو ری‌استارت کن.
+Demonic	اهریمنی
+Take the angelic power?	قدرت فرشته‌ای رو می‌گیری؟
+Take the demonic power?	قدرت اهریمنی رو می‌گیری؟
+Your angelic power fades	قدرت فرشته‌ایت محو می‌شه
+Your demonic power fades	قدرت اهریمنیت محو می‌شه
+Thunder	تندر
+Inferno	دوزخ
+Fit the thunder core?	هستهٔ تندر رو نصب می‌کنی؟
+Fit the inferno core?	هستهٔ دوزخ رو نصب می‌کنی؟
+Your thunder core burns out	هستهٔ تندرت می‌سوزه
+Your inferno core burns out	هستهٔ دوزخت می‌سوزه
+Choose a core	یه هسته انتخاب کن
+Crushes bricks	آجر رو له می‌کنه
+Crushes steel	فولاد رو له می‌کنه
+Mortar King	پادشاه خمپاره
+Hive Mother	مادر کندو
+Steel Serpent	مار فولادی
+Twin Fortress	دژ دوقلو
+Thunder Colossus	غول تندر
+Mine Layer	مین‌گذار
+Crimson Baron	بارون ارغوانی
+Shield Warden	نگهبان سپر
+Inferno Engine	موتور دوزخ
+Night Spider	عنکبوت شب
+Titan	تایتان
+Phantom Ship	کشتی شبح
+Siege Breaker	محاصره‌شکن
+Overlord	فرمانروا
+Dreadnought	ناو جنگی
+Void Eye	چشم خلأ
+Emperor	امپراتور
+Bomb Baron	بارون بمب
+Frost Wraith	شبح یخبندان
+Slime Lord	ارباب لجن
+Storm Eye	چشم طوفان
+Iron Mech	ربات آهنی
+Shadow Twins	دوقلوهای سایه
+Magma Golem	غول ماگما
+Hex Witch	جادوگر نفرین
+Hydra Slime	لجن هیدرا
+Grave King	پادشاه گور
+Thunder Mech	ربات تندر
+The Watcher	دیده‌بان
+Crystal Golem	غول کریستالی
+Banshee	بانشی
+Toxic Slime	لجن سمی
+Demon Twins	دوقلوهای اهریمن
+Glitch Emperor	امپراتور گلیچ
+What each extension does	هر افزونه چه می‌کند
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	تا وقتی {0} روشن است به‌روزرسانی نمی‌شود تا به‌روزرسانی آن را خراب نکند. برای اجازهٔ به‌روزرسانی آن را خاموش کنید.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	گزینه‌هایی که درون یک برنامه کار می‌کنند، مثل «مسدود کردن تماس‌های WhatsApp»، تا وقتی روشن‌اند نمی‌گذارند آن برنامه به‌روز شود. اینجا قفل‌شده نشان داده می‌شود.
+Its data wasn't found	داده‌های آن پیدا نشد
+Its saved data is incomplete	داده‌های ذخیره‌شده آن ناقص است
+The app isn't installed	برنامه نصب نیست
+Couldn't make the backup folder	پوشه پشتیبان ساخته نشد
+Couldn't put back {0}	{0} برگردانده نشد
+Couldn't save {0}	{0} ذخیره نشد
+It didn't install	نصب نشد
+Root isn't available	روت در دسترس نیست

@@ -427,7 +427,7 @@ Refresh	रीफ़्रेश करें
 Refreshing…	रीफ़्रेश हो रहा है…
 Sign in with Patreon	पैट्रियन से साइन इन करें
 Sign out	साइन आउट करें
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Chrome+, Gboard+, विज्ञापन ब्लॉकर, VPN, डार्क पेज, कॉल रिकॉर्डिंग और बिना विज्ञापन वाली Google फ़ीड अनलॉक करने के लिए Pixel Suite को सपोर्ट करें।
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	विजेट फ़ीड, Chrome+, Gboard+, विज्ञापन ब्लॉकर, VPN, डार्क पेज, कॉल रिकॉर्डिंग और बिना विज्ञापन वाली Google फ़ीड अनलॉक करने के लिए Pixel Suite को सपोर्ट करें।
 A Quest for the\nKind-Hearted	नेक दिल वालों के लिए\nएक क्वेस्ट
 Already a patron? Unlock	पहले से पेट्रन हैं? अनलॉक करें
 Checking Patreon membership…	पैट्रियन सदस्यता जांची जा रही है…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	क्वेस्ट पूरा हुआ!
 Ready to check membership	सदस्यता जांचने के लिए तैयार
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	Pixel Suite को सपोर्ट करने के लिए धन्यवाद। आपकी पैट्रियन सुविधाएं तैयार हैं।
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	पेट्रन Chrome+ और Gboard+, विज्ञापन ब्लॉकर और VPN, Chrome में डार्क पेज, कॉल रिकॉर्डिंग और बिना विज्ञापन वाली Google फ़ीड अनलॉक करते हैं। हर सपोर्ट सीधे ऐप्लिकेशन में वापस जाता है: Android और Google ऐप्लिकेशन के अपडेट के साथ चलना, उनसे जो टूटे उसे ठीक करना, और नई सुविधाएं बनाना।
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	पेट्रन विजेट फ़ीड, Chrome+ और Gboard+, विज्ञापन ब्लॉकर और VPN, Chrome में डार्क पेज, कॉल रिकॉर्डिंग और बिना विज्ञापन वाली Google फ़ीड अनलॉक करते हैं। हर सपोर्ट सीधे ऐप्लिकेशन में वापस जाता है: Android और Google ऐप्लिकेशन के अपडेट के साथ चलना, उनसे जो टूटे उसे ठीक करना, और नई सुविधाएं बनाना।
 Welcome back!	वापसी पर स्वागत है!
 ✨ Quest Complete!	✨ क्वेस्ट पूरा हुआ!
 📜 A Quest for the Kind-Hearted	📜 नेक दिल वालों के लिए एक क्वेस्ट
@@ -953,7 +953,6 @@ Lock apps in recents	हाल ही के ऐप्लिकेशन मे�
 Lock factory reset	फ़ैक्ट्री रीसेट लॉक करें
 Lock screen	लॉक स्क्रीन
 Lock-screen behavior	लॉक स्क्रीन का व्यवहार
-Lock-screen taps	लॉक स्क्रीन पर टैप
 Locking recent apps	हाल ही के ऐप्लिकेशन लॉक करना
 Locks stay after a restart.	रीस्टार्ट के बाद भी लॉक बने रहते हैं।
 Made by RovianDev	RovianDev ने बनाया
@@ -1005,7 +1004,6 @@ Protection	सुरक्षा
 Pure black backgrounds and darker menus in dark theme.	गहरे रंग वाली थीम में एकदम काले बैकग्राउंड और ज़्यादा गहरे मेन्यू।
 Quick actions from your phone's buttons.	फ़ोन के बटन से फटाफट कार्रवाई।
 Recent	हाल ही के
-Recent Apps	हाल ही के ऐप्लिकेशन
 Record and save calls	कॉल रिकॉर्ड और सेव करें
 Record calls in the Phone app, in any country, without the announcement	फ़ोन ऐप्लिकेशन में किसी भी देश में, बिना घोषणा के कॉल रिकॉर्ड करें
 Reduce screenshot delay	स्क्रीनशॉट की देरी कम करें
@@ -1077,7 +1075,7 @@ Take a screenshot	स्क्रीनशॉट लें
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	इस्तेमाल करने के लिए Chrome के नए टैब पेज पर एक्सटेंशन पर टैप करें। सेटिंग के लिए किसी पर टैप करें, या टूलबार पर पिन करने के लिए दबाकर रखें।
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	इस्तेमाल करने के लिए नए टैब पेज पर एक्सटेंशन पर टैप करें। टूलबार पर पिन करने के लिए किसी को दबाकर रखें।
 Tap an app to see its saved versions.	सेव किए गए वर्शन देखने के लिए किसी ऐप्लिकेशन पर टैप करें।
-Tap to wake	चालू करने के लिए टैप करें
+Tap or Double-tap to wake	चालू करने के लिए एक या दो बार टैप करें
 Text size	टेक्स्ट का साइज़
 That isn't a Pixel Suite backup	यह Pixel Suite का बैकअप नहीं है
 The 3 newest versions of each app are kept.	हर ऐप्लिकेशन के 3 सबसे नए वर्शन रखे जाते हैं।
@@ -1089,7 +1087,6 @@ The toolbar	टूलबार
 Three-finger screenshot	तीन उंगलियों से स्क्रीनशॉट
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	यहां वापस आने के लिए होम स्क्रीन को दबाकर रखें और Pixel Suite सेटिंग चुनें। रूट और LSPosed ज़रूरी हैं।
 To protect an app with your fingerprint or PIN, use Privacy & Security.	किसी ऐप्लिकेशन को फ़िंगरप्रिंट या पिन से सुरक्षित करने के लिए निजता और सुरक्षा इस्तेमाल करें।
-Toasts	टोस्ट
 Toolbar	टूलबार
 Toolbar, keys, resize, auto-correction, clipboard	टूलबार, कुंजियां, आकार, अपने-आप सुधार, क्लिपबोर्ड
 Tools for your Google apps.	आपके Google ऐप्लिकेशन के लिए टूल।
@@ -1118,8 +1115,7 @@ Use custom app icons	अपने ऐप्लिकेशन आइकॉन �
 Use your own image for an app icon	ऐप्लिकेशन आइकॉन के लिए अपनी इमेज इस्तेमाल करें
 Voice typing with checkmark	सही के निशान वाली बोलकर टाइपिंग
 Wake gesture	जगाने का जेस्चर
-Wake the screen	स्क्रीन चालू करें
-Wake your phone with a tap, with pocket protection.	जेब में सुरक्षा के साथ, एक टैप से फ़ोन जगाएं।
+Wake your phone with a tap or a double tap, with pocket protection.	जेब में सुरक्षा के साथ, एक या दो बार टैप करके फ़ोन जगाएं।
 Websites open dark, with no white flash. Super Dark uses pure black.	वेबसाइटें बिना सफ़ेद चमक के डार्क खुलती हैं। सुपर डार्क एकदम काले रंग का इस्तेमाल करता है।
 What's new	नया क्या है
 When you untick apps, Back up saves their current versions first.	ऐप्लिकेशन से सही का निशान हटाने पर, बैकअप पहले उनके मौजूदा वर्शन सेव करता है।
@@ -1689,3 +1685,129 @@ Hide At a Glance	एक नज़र में छिपाएं
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	होम स्क्रीन के ऊपर से एक नज़र में हटाता है। वह पंक्ति आपके ऐप्लिकेशन, फ़ोल्डर और विजेट के लिए खाली रहती है।
 Hold an app, folder or widget and drop it in the free row.	किसी ऐप्लिकेशन, फ़ोल्डर या विजेट को दबाकर रखें और खाली पंक्ति में छोड़ें।
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 और उससे पुराने वर्शन के लिए। नए वर्शन में एक नज़र में को होम स्क्रीन से ही हटाया जा सकता है।
+Code autofill	कोड ऑटोफ़िल
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	मैसेज, ऐप और ईमेल के वन-टाइम कोड आपके कीबोर्ड के ऊपर दिखते हैं। भरने के लिए कोड पर टैप करें।
+Fill codes automatically	कोड अपने-आप भरें
+Types the code for you when an empty box is waiting for one.	जब कोई खाली बॉक्स कोड का इंतज़ार कर रहा हो, तो कोड अपने-आप टाइप कर देता है।
+Autofill OTP	OTP ऑटोफ़िल
+One-time codes, filled in for you.	वन-टाइम कोड, आपके लिए भरे गए।
+Codes from your messages, right above the keyboard	आपके मैसेज के कोड, ठीक कीबोर्ड के ऊपर
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• जब किसी मैसेज, ऐप या ईमेल में कोड आता है, तो वह कीबोर्ड के ऊपर दिखता है। भरने के लिए उस पर टैप करें।\n\n• «कोड अपने-आप भरें» चालू होने पर, कोड बॉक्स इंतज़ार कर रहा हो तो कोड आपके लिए टाइप हो जाता है।
+Shows the code above your keyboard and fills it in.	कीबोर्ड के ऊपर कोड दिखाता है और उसे भरता है।
+Reads one-time codes from notifications as they arrive.	नोटिफ़िकेशन आते ही उनसे वन-टाइम कोड पढ़ता है।
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	स्क्रीनशॉट जैसे चिप टूलबार से दूर रखता है। कोड, ऑटोफ़िल और कॉपी किया गया टेक्स्ट फिर भी दिखते हैं।
+Widgets feed	विजेट फ़ीड
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	अपने विजेट, मौसम और तारीख के लिए पहली होम स्क्रीन पर दाईं ओर स्वाइप करें। यह Google फ़ीड की जगह लेता है।
+Hide weather and date	मौसम और तारीख छिपाएँ
+Your widgets start at the top of the feed.	आपके विजेट फ़ीड में सबसे ऊपर से शुरू होते हैं।
+Tap + to add a widget. Tap a widget to open its app.	विजेट जोड़ने के लिए + पर टैप करें। किसी विजेट का ऐप खोलने के लिए उस पर टैप करें।
+Hold a widget to move or remove widgets, then tap the check mark.	विजेट हिलाने या हटाने के लिए किसी विजेट को दबाकर रखें, फिर सही के निशान पर टैप करें।
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	कैलेंडर के लिए तारीख और पूर्वानुमान के लिए मौसम पर टैप करें। वापस जाने के लिए बाईं ओर स्वाइप करें।
+Add widget	विजेट जोड़ें
+Feed settings	फ़ीड सेटिंग
+Background opacity	बैकग्राउंड की अपारदर्शिता
+Invisible	अदृश्य
+Solid	ठोस
+How much of the feed's background shows. The status bar and home bar follow it.	फ़ीड का बैकग्राउंड कितना दिखे। स्टेटस बार और होम बार इसी के हिसाब से बदलते हैं।
+Hold a widget to move, resize or remove widgets, then tap the check mark.	विजेट हिलाने, उनका आकार बदलने या हटाने के लिए किसी विजेट को दबाकर रखें, फिर सही के निशान पर टैप करें।
+Ditch the Google feed. Build your own.	Google फ़ीड हटाएँ। अपना खुद का बनाएँ।
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	Google फ़ीड को पूरी तरह हटाएँ और उसकी जगह अपने विजेट का पूरी तरह कस्टमाइज़ करने लायक पेज लगाएँ।
+Home screen	होम स्क्रीन
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	आपके विजेट, लॉक स्क्रीन से बस एक स्वाइप दूर। कोई भी ऐप, कोई भी साइज़, फ़ोन अनलॉक किए बिना।
+How much of the feed's background shows.	फ़ीड का बैकग्राउंड कितना दिखे।
+Each feed keeps its own widgets.	हर फ़ीड के अपने विजेट होते हैं।
+No widgets available	कोई विजेट उपलब्ध नहीं
+Couldn't add that widget	वह विजेट नहीं जोड़ा जा सका
+Open apps without unlocking	अनलॉक किए बिना ऐप खोलें
+Saved.	सेव हो गया।
+Pixel Suite and Settings always ask to unlock.	Pixel Suite और सेटिंग्स हमेशा अनलॉक माँगते हैं।
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	आपके चुने हुए ऐप सीधे लॉक स्क्रीन पर खुलते हैं, बिना फ़िंगरप्रिंट के, इसलिए सोच-समझकर चुनें। ऐप से बाहर निकलने पर आप लॉक स्क्रीन पर लौट आते हैं।
+Apps that open without unlocking	अनलॉक किए बिना खुलने वाले ऐप
+Choose which apps open from the lock screen	चुनें कि कौन-से ऐप लॉक स्क्रीन से खुलें
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	लॉक स्क्रीन पर, कोई ऐप पहले अनलॉक माँगता है, जब तक आपने उसे अनलॉक किए बिना ऐप खोलें में न चुना हो। वापस जाने के लिए दाईं ओर स्वाइप करें।
+Your widgets, the weather and the date, one swipe from your home screen.	आपके विजेट, मौसम और तारीख, होम स्क्रीन से बस एक स्वाइप दूर।
+Side	तरफ़
+The feed comes in from this side of your home screen.	फ़ीड आपकी होम स्क्रीन की इस तरफ़ से आता है।
+The feed comes in from this side of the lock screen.	फ़ीड लॉक स्क्रीन की इस तरफ़ से आता है।
+Keep the Google feed	Google फ़ीड रखें
+Swipe the other way for the Google feed.	Google फ़ीड के लिए दूसरी ओर स्वाइप करें।
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	हर फ़ीड के लिए तरफ़ चुनें। होम स्क्रीन पर, Google फ़ीड दूसरी तरफ़ बना रह सकता है।
+Tap the date for your calendar and the weather for the forecast.	कैलेंडर के लिए तारीख और पूर्वानुमान के लिए मौसम पर टैप करें।
+To close a feed, swipe it back the way it came.	फ़ीड बंद करने के लिए, उसे उसी ओर वापस स्वाइप करें जहाँ से वह आया था।
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	लॉक स्क्रीन पर, कोई ऐप पहले अनलॉक माँगता है, जब तक आपने उसे अनलॉक किए बिना ऐप खोलें में न चुना हो।
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	आपके अपने विजेट का पूरी तरह कस्टमाइज़ करने लायक पेज, आपकी चुनी हुई तरफ़। Google फ़ीड को दूसरी तरफ़ रखें या हटा दें।
+Your own widgets, left or right.	आपके अपने विजेट, बाईं या दाईं ओर।
+Left	बाएँ
+Right	दाएँ
+Google feed	Google फ़ीड
+A live preview of your feeds. It follows your settings.	आपके फ़ीड का लाइव प्रीव्यू। यह आपकी सेटिंग के साथ बदलता है।
+USB on top	USB सबसे ऊपर
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	USB सूचना सबसे ऊपर पिन रहती है और अनलॉक होने पर फ़ाइल ट्रांसफ़र चुनती है। USB डीबगिंग ठीक उसके नीचे रहती है।
+Burns through crates and ghosts	बक्सों और भूतों को जला देता है
+Quick USB modes	तेज़ USB मोड
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	फ़ोन अनलॉक रहने पर फ़िंगरप्रिंट या पिन के बिना फ़ाइल ट्रांसफ़र, USB टेदरिंग और दूसरे USB मोड पर जाएँ।
+More USB options	USB के और विकल्प
+Block WhatsApp calls	WhatsApp कॉल ब्लॉक करें
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	तंग न करें चालू रहने पर WhatsApp कॉल आप तक नहीं पहुंचतीं और कॉल करने वाले को कॉल नहीं हो सकती दिखता है। मैसेज और आपकी अपनी कॉल पहले की तरह चलती हैं।
+WhatsApp call turned away by Do Not Annoy	तंग न करें ने WhatsApp कॉल लौटा दी
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	तंग न करें चालू और WhatsApp कॉल ब्लॉक करें ऑन होने पर WhatsApp कॉल लौटा देता है। यह स्कोप जोड़ने के बाद WhatsApp फिर से शुरू करें।
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	हज़ारों फ़ाइलों वाले फ़ोल्डर हर ऐप में तेज़ी से खोलता है, वापस जाने पर फ़ोल्डर खाली नहीं दिखते। यह स्कोप जोड़ने के बाद रीबूट करें।
+Demonic	राक्षसी
+Take the angelic power?	दिव्य शक्ति लोगे?
+Take the demonic power?	राक्षसी शक्ति लोगे?
+Your angelic power fades	तुम्हारी दिव्य शक्ति मिट जाएगी
+Your demonic power fades	तुम्हारी राक्षसी शक्ति मिट जाएगी
+Thunder	वज्र
+Inferno	नरकाग्नि
+Fit the thunder core?	वज्र कोर लगाओगे?
+Fit the inferno core?	नरकाग्नि कोर लगाओगे?
+Your thunder core burns out	तुम्हारा वज्र कोर जल जाएगा
+Your inferno core burns out	तुम्हारा नरकाग्नि कोर जल जाएगा
+Choose a core	एक कोर चुनो
+Crushes bricks	ईंटें कुचल देता है
+Crushes steel	स्टील कुचल देता है
+Mortar King	मोर्टार राजा
+Hive Mother	छत्ता माता
+Steel Serpent	इस्पाती नाग
+Twin Fortress	जुड़वाँ किला
+Thunder Colossus	वज्र महाकाय
+Mine Layer	माइन बिछाने वाला
+Crimson Baron	रक्तिम बैरन
+Shield Warden	ढाल रक्षक
+Inferno Engine	नरक इंजन
+Night Spider	रात्रि मकड़ी
+Titan	टाइटन
+Phantom Ship	भूतिया जहाज़
+Siege Breaker	घेराबंदी तोड़क
+Overlord	अधिपति
+Dreadnought	ड्रेडनॉट
+Void Eye	शून्य नेत्र
+Emperor	सम्राट
+Bomb Baron	बम बैरन
+Frost Wraith	पाला प्रेत
+Slime Lord	कीचड़ स्वामी
+Storm Eye	तूफ़ानी आँख
+Iron Mech	लौह यंत्र
+Shadow Twins	छाया जुड़वाँ
+Magma Golem	मैग्मा गोलेम
+Hex Witch	शाप डायन
+Hydra Slime	हाइड्रा कीचड़
+Grave King	क़ब्र राजा
+Thunder Mech	वज्र यंत्र
+The Watcher	प्रहरी
+Crystal Golem	स्फटिक गोलेम
+Banshee	बंशी
+Toxic Slime	ज़हरीला कीचड़
+Demon Twins	दानव जुड़वाँ
+Glitch Emperor	ग्लिच सम्राट
+What each extension does	हर एक्सटेंशन क्या करता है
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	{0} चालू रहने तक अपडेट नहीं होगा, ताकि कोई अपडेट इसे खराब न करे। अपडेट होने देने के लिए इसे बंद करें।
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	जो विकल्प किसी ऐप के अंदर काम करते हैं, जैसे "WhatsApp कॉल ब्लॉक करें", वे चालू रहने तक उस ऐप को अपडेट नहीं होने देते। यह यहाँ लॉक दिखता है।
+Its data wasn't found	इसका डेटा नहीं मिला
+Its saved data is incomplete	इसका सेव किया गया डेटा अधूरा है
+The app isn't installed	ऐप इंस्टॉल नहीं है
+Couldn't make the backup folder	बैकअप फ़ोल्डर नहीं बन सका
+Couldn't put back {0}	{0} वापस नहीं रखा जा सका
+Couldn't save {0}	{0} सेव नहीं हो सका
+It didn't install	यह इंस्टॉल नहीं हुआ
+Root isn't available	रूट उपलब्ध नहीं है

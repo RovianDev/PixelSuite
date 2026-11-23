@@ -42,7 +42,7 @@ public final class PixelVpnService extends VpnService {
     static SharedPreferences prefs(Context c){return c.getSharedPreferences(PREFS,0);}
     static String chosen(Context c){return prefs(c).getString("country","US");}
     static void choose(Context c,String code){prefs(c).edit().putString("country",code).apply();changed(c);}
-    static boolean premium(Context c){try{return PatronAccess.unlocked()||PatronGate.ok(c);}catch(Throwable t){return false;}}
+    static boolean premium(Context c){try{return PatronGate.ok(c);}catch(Throwable t){return false;}}
 
     private static void changed(final Context c){
         MAIN.post(new Runnable(){public void run(){for(Runnable r:sListeners)r.run();}});
@@ -273,13 +273,25 @@ public final class PixelVpnService extends VpnService {
         tunnel(id,c);
         if(!current(id))return;
         keepAlive=new Thread(new Runnable(){public void run(){
-            try{while(current(id)&&!c.closed()){Thread.sleep(15000);long idle=SystemClock.elapsedRealtime()-c.lastRx;
+            try{while(current(id)&&!c.closed()){
+                Thread.sleep(15000);
+                if(!current(id)||c.closed())return;
+                if(!PatronGate.ok(PixelVpnService.this)){
+                    MAIN.post(() -> stopWithoutPass(id));
+                    return;
+                }
+                long idle=SystemClock.elapsedRealtime()-c.lastRx;
                 if(idle>75000){lost(id,"Server stopped answering");return;}
                 if(idle>20000)try{c.echo();}catch(IOException e){lost(id,"Connection lost");return;}}}
             catch(InterruptedException ignored){}
         }},"PixelSuite-VPN-keepalive");keepAlive.setDaemon(true);keepAlive.start();
         sServerCode=t.server.code;
         sState=ON;sSince=System.currentTimeMillis();
+        MAIN.postDelayed(new Runnable(){public void run(){
+            if(!current(id)||sState!=ON)return;
+            if(!PatronGate.ok(PixelVpnService.this)){stopWithoutPass(id);return;}
+            MAIN.postDelayed(this,10000L);
+        }},10000L);
         sDetail=c.protocol()+" · "+t.server.host+" · "+(t.rtt>0?t.rtt+" ms":c.localIp);
         changed(this);note();
     }
@@ -365,9 +377,16 @@ public final class PixelVpnService extends VpnService {
         return sp==53&&dp==port;
     }
 
+    private void stopWithoutPass(int id){
+        if(!current(id)||sState==OFF)return;
+        fail("VPN is a Patreon feature");
+        stopSelf();
+    }
+
     private void lost(final int id,final String why){
         MAIN.post(new Runnable(){public void run(){
             if(!current(id)||sState==OFF)return;
+            if(!PatronGate.ok(PixelVpnService.this)){stopWithoutPass(id);return;}
             if(sState==ON&&sCountry!=null){start(sCountry);sDetail="Reconnecting… ("+why+")";changed(PixelVpnService.this);}
             else{fail(why);stopSelf();}
         }});

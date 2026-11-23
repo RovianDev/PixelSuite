@@ -31,7 +31,6 @@ import android.hardware.SensorManager;
 import java.lang.reflect.Method;
 
 final class DoubleTapWake {
-
     static final String KEY_TAP_GESTURE = "doze_tap_gesture";
     static final String KEY_DOUBLE_TAP_GESTURE = "doze_pulse_on_double_tap";
 
@@ -2030,6 +2029,8 @@ final class DoubleTapWake {
 
     private static void maybeQuietVibration(Xp.Param param, String method) {
         int seq = sDownSeq;
+
+        if (sPinUp) return;
         if (!lockScreenShowing()) return;
         boolean haptic = method.startsWith("performHapticFeedback");
         String pkg = null;
@@ -2320,6 +2321,14 @@ final class DoubleTapWake {
         cr.registerContentObserver(Settings.Secure.getUriFor(Feature.TAP_CHECK), false, obs);
         cr.registerContentObserver(Settings.Secure.getUriFor(Feature.DOUBLE_TAP_WAKE), false, obs);
         cr.registerContentObserver(Settings.Secure.getUriFor(Feature.LOCK_SHORTCUTS), false, obs);
+
+        final ContentResolver pinCr = cr;
+        try { Settings.Secure.putInt(cr, WidgetPanel.LOCK_PIN_KEY, 0); } catch (Throwable ignored) { }
+        cr.registerContentObserver(Settings.Secure.getUriFor(WidgetPanel.LOCK_PIN_KEY), false, new ContentObserver(sWorker) {
+            @Override public void onChange(boolean selfChange) {
+                try { sPinUp = Settings.Secure.getInt(pinCr, WidgetPanel.LOCK_PIN_KEY, 0) == 1; } catch (Throwable t) { sPinUp = false; }
+            }
+        });
         initAodPower(ctx, t.getLooper());
 
         sWorker.post(new Runnable() {
@@ -2347,6 +2356,7 @@ final class DoubleTapWake {
                     sHeldSpentMs = 0;
                     updateRecording();
                 } else {
+                    sPinUp = false;
                     sScreenOffAt = SystemClock.uptimeMillis();
                     sHeldSpentMs = 0;
                     ensureMonitor();
@@ -2763,6 +2773,7 @@ final class DoubleTapWake {
         private void onTouch(MotionEvent ev) {
             switch (ev.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN: {
+                    if (sPinUp) { mIgnore = true; mTap = false; mPilfered = false; mLeftover = false; mPrevUpAt = 0; return; }
                     boolean screenOn = sPm != null && sPm.isInteractive();
                     boolean lock = lockScreenShowing();
                     mIgnore = !screenOn || !lock;
@@ -2945,7 +2956,10 @@ final class DoubleTapWake {
         return sScreenHeight;
     }
 
+    private static volatile boolean sPinUp;
+
     private static void onLockDoubleTap() {
+        if (sPinUp) return;
         boolean screenOn = sPm != null && sPm.isInteractive();
         if (!screenOn || !lockScreenShowing() || !userUnlocked()) return;
         long tap = sChipTapAt;
@@ -3014,5 +3028,4 @@ final class DoubleTapWake {
             return false;
         }
     }
-
 }

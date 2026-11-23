@@ -52,7 +52,7 @@ final class ChromeGeo {
             Context app = app();
             if (app == null) return null;
             String code = ChromeVpn.exitCountry(app);
-            if (code == null) return null;
+            if (code == null || !ChromeVpn.premium()) return null;
             code = code.toUpperCase(Locale.ROOT);
             if (!CITY.containsKey(code)) {
                 if (!code.equals(sLogged)) { sLogged = code; }
@@ -86,7 +86,6 @@ final class ChromeGeo {
         }
         return f;
     }
-
 
     private static Method sDeliver, sStart;
     private static volatile boolean sDelivering;

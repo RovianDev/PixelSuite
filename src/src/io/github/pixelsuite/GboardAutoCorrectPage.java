@@ -53,15 +53,20 @@ final class GboardAutoCorrectPage {
         global = (Switch) row.getTag();
         globalSub = (TextView) ((LinearLayout) row.getChildAt(1)).getChildAt(1);
         global.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton b, boolean on) { if (!updating) setGlobal(on); }
+            public void onCheckedChanged(CompoundButton b, boolean on) {
+                if (updating) return;
+                if (PatronUi.intercept(a, GboardAutoCorrect.KEY_SET)) { refresh(); return; }
+                setGlobal(on);
+            }
         });
+        PatronUi.decorate(a, row, GboardAutoCorrect.KEY_SET);
         finish(top);
         section("Languages");
         langs = group();
         explanation("The top switch is Gboard's own auto-correction. Turn it off for any language below: words aren't replaced there, but suggestions still show. Changes apply the next time the keyboard opens.");
         page.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-            public void onViewAttachedToWindow(View v) { KeyboardPreviewProvider.LISTENERS.addIfAbsent(changed); refresh(); read(); }
-            public void onViewDetachedFromWindow(View v) { KeyboardPreviewProvider.LISTENERS.remove(changed); }
+            public void onViewAttachedToWindow(View v) { KeyboardPreviewProvider.LISTENERS.addIfAbsent(changed); PatronAccess.watch(changed); refresh(); read(); }
+            public void onViewDetachedFromWindow(View v) { KeyboardPreviewProvider.LISTENERS.remove(changed); PatronAccess.unwatch(changed); }
         });
         refresh();
     }
@@ -90,6 +95,7 @@ final class GboardAutoCorrectPage {
         updating = true;
         global.setChecked(on); global.jumpDrawablesToCurrentState();
         updating = false;
+        global.setEnabled(PatronAccess.allowed(a, GboardAutoCorrect.KEY_SET));
         globalSub.setText(I18n.cs(!known ? "Gboard's own switch (reading it…)" : on ? "On: Gboard corrects words in the languages turned on below" : "Off: Gboard corrects nothing; turn it on to choose languages"));
         langs.removeAllViews();
         List<String[]> list = new ArrayList<String[]>();
@@ -111,6 +117,7 @@ final class GboardAutoCorrectPage {
             sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 public void onCheckedChanged(CompoundButton b, boolean corrects) {
                     if (updating) return;
+                    if (PatronUi.intercept(a, GboardAutoCorrect.KEY_OFF)) { refresh(); return; }
                     List<String> keep = new ArrayList<String>();
                     for (String[] y : shown) if (y != x && isOff(y[0])) keep.add(y[0]);
                     for (String o : new ArrayList<String>(off)) if (same(x[0], o)) off.remove(o);
@@ -122,8 +129,10 @@ final class GboardAutoCorrectPage {
             });
             r.setAlpha(on ? 1f : 0.45f);
             sw.setEnabled(on);
+            PatronUi.decorate(a, r, GboardAutoCorrect.KEY_OFF);
         }
         finish(langs);
+        PatronUi.apply(page);
     }
 
     private static boolean same(String a, String b) {

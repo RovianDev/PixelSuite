@@ -14,20 +14,59 @@ final class DocumentsSort {
     private DocumentsSort() {}
 
     static void install(ClassLoader cl) {
+        Safe.run(() -> FolderSpeed.installFiles(cl));
         try {
             Class<?> model = Xp.findClass("com.android.documentsui.sorting.SortModel", cl);
-            Xp.Callback newest = new Xp.Callback() {
+            if (model == null) return;
+            Xp.hookAllConstructors(model, new Xp.Callback() {
                 @Override
-                protected void beforeHookedMethod(Xp.Param p) {
-                    try { if (active()) newestFirst(p.thisObject); }
-                    catch (Throwable error) { }
+                protected void afterHookedMethod(Xp.Param p) {
+                    try { if (active()) once(p.thisObject); }
+                    catch (Throwable error) { android.util.Log.w("PixelSuite", "files newest first", error); }
                 }
-            };
-            Xp.hookAllMethods(model, "sortCursor", newest);
-            Xp.hookAllMethods(model, "addQuerySortArgs", newest);
-            Xp.hookAllMethods(model, "getDocumentSortQuery", newest);
+            });
         } catch (Throwable error) {
         }
+    }
+
+    private static final java.util.Map<Object, Boolean> sDone = java.util.Collections.synchronizedMap(new java.util.WeakHashMap<Object, Boolean>());
+
+    private static void once(Object model) throws Exception {
+        if (sDone.containsKey(model)) return;
+        SparseArray<?> dims = (SparseArray<?>) Xp.getObjectField(model, "mDimensions");
+        if (dims == null || dims.size() == 0) return;
+        sDone.put(model, Boolean.TRUE);
+        try { if (Boolean.TRUE.equals(Xp.getObjectField(model, "mIsUserSpecified"))) return; } catch (Throwable ignored) { }
+        Object date = dateOf(model, dims);
+        if (date == null) return;
+        int id; try { id = ((Number) Xp.callMethod(date, "getId")).intValue(); } catch (Throwable t) { id = ((Number) Xp.getObjectField(date, "mId")).intValue(); }
+        try { Xp.callMethod(model, "sortByUser", id, 2); return; }
+        catch (Throwable older) { }
+        newestFirst(model);
+    }
+
+    private static Object dateOf(Object model, SparseArray<?> dimensions) {
+        Context c = context(); if (c == null) return null;
+        int dateId = 0;
+        if (!sNoDateField) try { dateId = ((Number) Xp.getObjectField(model, "SORT_DIMENSION_ID_DATE")).intValue(); } catch (Throwable older) { if (missingField(older)) sNoDateField = true; }
+        if (dateId == 0) {
+            if (sResourceDateId < 0) {
+                int id = c.getResources().getIdentifier("date", "id", c.getPackageName());
+                if (id == 0) id = c.getResources().getIdentifier("date", "id", AOSP);
+                sResourceDateId = id;
+            }
+            dateId = sResourceDateId;
+        }
+        Object date = dateId == 0 ? null : dimensions.get(dateId);
+        for (int i = 0; i < dimensions.size() && date == null; i++) {
+            Object d = dimensions.valueAt(i);
+            try {
+                int label = ((Number) Xp.getObjectField(d, "mLabelId")).intValue();
+                String name = c.getResources().getResourceEntryName(label);
+                if (name.contains("date") || name.contains("modified")) date = d;
+            } catch (Throwable ignored) { }
+        }
+        return date;
     }
 
     private static boolean active() {

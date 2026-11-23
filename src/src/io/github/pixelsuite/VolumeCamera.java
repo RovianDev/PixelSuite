@@ -5,6 +5,9 @@ import android.content.Context;
 import android.database.ContentObserver;
 import android.hardware.display.DisplayManager;
 import android.media.AudioManager;
+import android.media.session.MediaController;
+import android.media.session.MediaSessionManager;
+import android.media.session.PlaybackState;
 import android.os.PowerManager;
 import android.os.SystemClock;
 import android.os.Vibrator;
@@ -15,10 +18,11 @@ import android.view.KeyEvent;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
+import java.util.List;
 
 final class VolumeCamera {
-
     static final String KEY_LAUNCH_AT = "voldowncam_launch_at";
+
     static final String KEY_ACTION = "pixelsuite_voldown_action";
 
     private VolumeCamera() {}
@@ -103,14 +107,53 @@ final class VolumeCamera {
             if (km == null || !km.isKeyguardLocked()) return false;
 
             AudioManager am = (AudioManager) ctx.getSystemService(Context.AUDIO_SERVICE);
-            if (am != null) {
-                if (am.isMusicActive()) return false;
-                if (am.getMode() != AudioManager.MODE_NORMAL) return false;
-            }
-            TelecomManager tm = (TelecomManager) ctx.getSystemService(Context.TELECOM_SERVICE);
-            return tm == null || !tm.isInCall();
+            if (am != null && mediaPlaying(ctx, am)) return false;
+            return !inCall(ctx, am);
         } catch (Throwable t) {
             return false;
+        }
+    }
+
+    private static boolean mediaPlaying(Context ctx, AudioManager am) {
+        if (!am.isMusicActive()) return false;
+        try {
+            MediaSessionManager msm =
+                    (MediaSessionManager) ctx.getSystemService(Context.MEDIA_SESSION_SERVICE);
+            List<MediaController> sessions = msm == null ? null : msm.getActiveSessions(null);
+            if (sessions != null && !sessions.isEmpty()) {
+                for (MediaController c : sessions) {
+                    PlaybackState st = c.getPlaybackState();
+                    int state = st == null ? PlaybackState.STATE_NONE : st.getState();
+                    if (state == PlaybackState.STATE_PLAYING || state == PlaybackState.STATE_BUFFERING
+                            || state == PlaybackState.STATE_FAST_FORWARDING
+                            || state == PlaybackState.STATE_REWINDING) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+        } catch (Throwable t) {
+        }
+
+        return true;
+    }
+
+    private static boolean inCall(Context ctx, AudioManager am) {
+        try {
+            TelecomManager tm = (TelecomManager) ctx.getSystemService(Context.TELECOM_SERVICE);
+            if (tm != null && tm.isInCall()) return true;
+        } catch (Throwable t) {
+        }
+        if (am == null) return false;
+        int mode = am.getMode();
+        if (mode == AudioManager.MODE_NORMAL) return false;
+        if (mode != AudioManager.MODE_IN_COMMUNICATION) return true;
+        try {
+            Object recording = AudioManager.class.getMethod("getActiveRecordingConfigurations").invoke(am);
+            return recording instanceof List && !((List<?>) recording).isEmpty();
+        } catch (Throwable t) {
+            return true;
         }
     }
 

@@ -22,6 +22,20 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
     private int pointer = -1;
     private float downY, lastY; private long downAt = -1;
     private boolean dragging, caught, ticking, internal;
+
+    private View inner; private boolean yielded;
+
+    private static View scrollableAt(android.view.ViewGroup g, float x, float y) {
+        for (int i = g.getChildCount() - 1; i >= 0; i--) {
+            View c = g.getChildAt(i);
+            if (c.getVisibility() != View.VISIBLE) continue;
+            float cx = x + g.getScrollX() - c.getLeft() - c.getTranslationX(), cy = y + g.getScrollY() - c.getTop() - c.getTranslationY();
+            if (cx < 0 || cy < 0 || cx >= c.getWidth() || cy >= c.getHeight()) continue;
+            if (c instanceof android.view.ViewGroup) { View r = scrollableAt((android.view.ViewGroup) c, cx, cy); if (r != null) return r; }
+            if (c.canScrollVertically(1) || c.canScrollVertically(-1)) return c;
+        }
+        return null;
+    }
     private float pos;
     private float finger;
     private float velocity, carried, edge;
@@ -86,6 +100,8 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
         float o = past();
         finger = o == 0f ? 0f : unrubber(o);
         if (o != 0f) { dragging = true; hold(); }
+        yielded = false; inner = null;
+        if (!caught && !dragging) try { inner = scrollableAt(this, e.getX(), e.getY()); } catch (Throwable ignored) { }
         return caught || dragging;
     }
 
@@ -104,9 +120,13 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
             case MotionEvent.ACTION_DOWN: return down(e);
             case MotionEvent.ACTION_MOVE: {
                 if (dragging) return true;
+                if (yielded) return false;
                 int i = e.findPointerIndex(pointer); if (i < 0) return caught;
                 float y = e.getY(i);
-                if (Math.abs(y - downY) > slop) { dragging = true; lastY = y; hold(); return true; }
+                if (Math.abs(y - downY) > slop) {
+                    if (inner != null && inner.isAttachedToWindow() && inner.canScrollVertically(y < downY ? 1 : -1)) { yielded = true; return false; }
+                    dragging = true; lastY = y; hold(); return true;
+                }
                 return caught;
             }
             case MotionEvent.ACTION_POINTER_UP: pointerUp(e); break;
@@ -139,7 +159,7 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
     }
 
     private void finish() {
-        dragging = false; caught = false; pointer = -1; trackedAt = -1;
+        dragging = false; caught = false; pointer = -1; trackedAt = -1; yielded = false; inner = null;
         if (tracker != null) { tracker.recycle(); tracker = null; }
     }
 

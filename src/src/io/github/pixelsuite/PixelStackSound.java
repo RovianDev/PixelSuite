@@ -25,9 +25,14 @@ final class PixelStackSound {
             PERFECT = "perfect", CHIP = "chip", OVER = "over", SPARKLE = "sparkle", SUCCESS = "success", FAIL = "fail",
             BOOP = "boop", SEND = "send", SOFT = "soft",
             SHOT = "shot", TING = "ting", BOOM = "boom", FUSE = "fuse", PICK = "pick", FIRE = "fire", FART = "fart", CRUMBLE = "crumble",
-            PIANO = "piano";
+            PIANO = "piano", SIREN = "siren",
+            LASER = "laser",
+            INFLATE = "inflate", BURST = "burst",
+            FELT = "felt";
 
     static void note(int n, float volume) { play(PIANO, volume, (float) Math.pow(2, Math.max(-12, Math.min(12, n)) / 12.0)); }
+
+    static void felt(int n, float volume) { play(FELT, volume, (float) Math.pow(2, Math.max(-12, Math.min(12, n)) / 12.0)); }
 
     static void prepare(Context c) {
         if (sPool != null || sPreparing) return;
@@ -38,10 +43,10 @@ final class PixelStackSound {
                 SoundPool pool = new SoundPool.Builder().setMaxStreams(14)
                         .setAudioAttributes(new AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_GAME).setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()).build();
                 pool.setOnLoadCompleteListener((p, id, status) -> { synchronized (sReady) { sReady.put(id, status == 0); } });
-                File dir = new File(sApp.getCacheDir(), "pixelstack-sounds-8");
-                for (String was : new String[]{"pixelstack-sounds-1", "pixelstack-sounds-2", "pixelstack-sounds-3", "pixelstack-sounds-4", "pixelstack-sounds-5", "pixelstack-sounds-6", "pixelstack-sounds-7"}) { File old = new File(sApp.getCacheDir(), was); File[] gone = old.listFiles(); if (gone != null) for (File g : gone) g.delete(); old.delete(); }
+                File dir = new File(sApp.getCacheDir(), "pixelstack-sounds-11");
+                for (String was : new String[]{"pixelstack-sounds-1", "pixelstack-sounds-2", "pixelstack-sounds-3", "pixelstack-sounds-4", "pixelstack-sounds-5", "pixelstack-sounds-6", "pixelstack-sounds-7", "pixelstack-sounds-8", "pixelstack-sounds-9", "pixelstack-sounds-10"}) { File old = new File(sApp.getCacheDir(), was); File[] gone = old.listFiles(); if (gone != null) for (File g : gone) g.delete(); old.delete(); }
                 dir.mkdirs();
-                for (String name : new String[]{RISE, POP, BOING, THUD, DROP, PERFECT, CHIP, OVER, SPARKLE, SUCCESS, FAIL, BOOP, SEND, SOFT, SHOT, TING, BOOM, FUSE, PICK, FIRE, FART, PIANO, CRUMBLE}) {
+                for (String name : new String[]{RISE, POP, BOING, THUD, DROP, PERFECT, CHIP, OVER, SPARKLE, SUCCESS, FAIL, BOOP, SEND, SOFT, SHOT, TING, BOOM, FUSE, PICK, FIRE, FART, PIANO, CRUMBLE, SIREN, LASER, INFLATE, BURST, FELT}) {
                     File f = new File(dir, name + ".wav");
                     if (!f.exists() || f.length() < 100) wav(f, make(name));
                     int id = pool.load(f.getAbsolutePath(), 1);
@@ -153,6 +158,19 @@ final class PixelStackSound {
                 noise(b, 0, .02f, .5f, .2f, .05f, false, 180, 7);
                 break;
             }
+            case FELT: {
+                b = buf(.75f);
+                float f = 261.63f;
+                float[] amps = {.26f, .055f, .016f};
+                for (int h = 1; h <= amps.length; h++) {
+                    float fh = f * h * (1 + .0003f * h * h);
+                    float decay = 4.6f + 2.6f * h;
+                    tone(b, 0, .73f, fh, fh, 0, amps[h - 1], .014f, decay);
+                    tone(b, 0, .73f, fh * 1.0009f, fh * 1.0009f, 0, amps[h - 1] * .4f, .016f, decay * 1.1f);
+                }
+                noise(b, 0, .025f, .05f, .02f, .012f, false, 160, 11);
+                break;
+            }
             case DROP:
                 b = buf(.3f);
                 tone(b, 0, .28f, 523, 520, 1, .45f, .002f, 14);
@@ -195,10 +213,60 @@ final class PixelStackSound {
                 float[] notes = {523, 659, 784, 1046};
                 for (int i = 0; i < 4; i++) tone(b, i * .07f, .5f, notes[i], notes[i], 0, .3f, .002f, 6);
                 break;
+            case SIREN: {
+                b = buf(1.0f);
+                float[] fq = {740f, 554f};
+                for (int k = 0; k < 2; k++) {
+                    int s0 = Math.round(k * .5f * RATE), n = Math.round(.47f * RATE); double ph = 0;
+                    for (int i = 0; i < n && s0 + i < b.length; i++) {
+                        float t = i / (float) RATE;
+                        double f = fq[k] * (1 + .01 * Math.sin(2 * Math.PI * 5.5 * t));
+                        ph += 2 * Math.PI * f / RATE;
+                        double v = Math.sin(ph) * .8 + Math.sin(ph * 2) * .1 + Math.sin(ph * 3) * .04;
+                        float env = Math.min(1f, t / .07f) * Math.min(1f, (n - i) / (RATE * .1f));
+                        b[s0 + i] += (float) (v * env * .32);
+                    }
+                }
+                break;
+            }
+            case LASER: {
+                b = buf(.34f);
+                double ph = 0, ph2 = 0;
+                for (int i = 0; i < b.length; i++) {
+                    float t = i / (float) RATE, k = t / .34f;
+                    double f = 330 * (1 + .03 * Math.sin(2 * Math.PI * 9 * t));
+                    ph += 2 * Math.PI * f / RATE; ph2 += 2 * Math.PI * f * 4.02 / RATE;
+                    double v = Math.sin(ph) * .5 + Math.sin(ph * 2) * .25 + Math.sin(ph * 3) * .12 + Math.sin(ph2) * .08 * (.6 + .4 * Math.sin(2 * Math.PI * 23 * t));
+                    b[i] += (float) (v * Math.sin(Math.PI * k) * .3);
+                }
+                noise(b, 0, .34f, .5f, .5f, .02f, true, 0, 47);
+                break;
+            }
             case FAIL:
                 b = buf(.32f);
                 tone(b, 0, .14f, 330, 300, 1, .35f, .003f, 10);
                 tone(b, .13f, .18f, 262, 220, 1, .35f, .003f, 9);
+                break;
+            case INFLATE: {
+                b = buf(1.02f);
+                double ph = 0, ph2 = 0;
+                for (int i = 0; i < b.length; i++) {
+                    float t = i / (float) RATE, k = Math.min(1f, t / .70f), q = Math.max(0f, (t - .70f) / .32f);
+                    double f = 210 * Math.pow(3.0, k) * (1 + .012 * Math.sin(2 * Math.PI * 6 * t) + .05 * q * Math.sin(2 * Math.PI * 23 * t));
+                    ph += 2 * Math.PI * f / RATE; ph2 += 2 * Math.PI * f * 2.003 / RATE;
+                    double v = Math.sin(ph) * .7 + Math.sin(ph2) * .12 * k;
+                    float env = Math.min(1f, t / .06f) * (.45f + .4f * k + .15f * q) * Math.min(1f, (b.length - i) / (RATE * .012f));
+                    b[i] = (float) (v * env * .34);
+                }
+                for (float at = .05f; at < .70f; ) { float k = at / .70f; tone(b, at, .05f, 480 + 700 * k, 760 + 900 * k, 0, .16f + .08f * k, .006f, 55); at += .13f - .085f * k; }
+                noise(b, 0, 1f, .03f, .12f, .05f, true, 0, 5);
+                break;
+            }
+            case BURST:
+
+                b = buf(.2f);
+                tone(b, 0, .16f, 160, 70, 0, .38f, .004f, 30);
+                tone(b, 0, .1f, 380, 1150, 0, .34f, .004f, 45);
                 break;
             case BOOP:
                 b = buf(.16f);

@@ -427,7 +427,7 @@ Refresh	تحديث
 Refreshing…	جارٍ التحديث…
 Sign in with Patreon	تسجيل الدخول باستخدام باتريون
 Sign out	تسجيل الخروج
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	ادعم Pixel Suite لفتح Chrome+ وGboard+ وحظر الإعلانات وVPN والصفحات الداكنة وتسجيل المكالمات وخلاصة Google بلا إعلانات.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	ادعم Pixel Suite لفتح موجز الأدوات وChrome+ وGboard+ وحظر الإعلانات وVPN والصفحات الداكنة وتسجيل المكالمات وخلاصة Google بلا إعلانات.
 A Quest for the\nKind-Hearted	مهمة لأصحاب\nالقلوب الطيبة
 Already a patron? Unlock	داعم بالفعل؟ فتح
 Checking Patreon membership…	جارٍ التحقق من عضوية باتريون…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	اكتملت المهمة!
 Ready to check membership	جاهز للتحقق من العضوية
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	شكرًا لدعمك Pixel Suite. ميزات باتريون جاهزة.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	يفتح الداعمون Chrome+ وGboard+ وحظر الإعلانات وVPN والصفحات الداكنة في Chrome وتسجيل المكالمات وخلاصة Google بلا إعلانات. كل دعم يعود مباشرة إلى التطبيق: مواكبة تحديثات Android وتطبيقات Google، وإصلاح ما تفسده، وبناء ميزات جديدة.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	يفتح الداعمون موجز الأدوات وChrome+ وGboard+ وحظر الإعلانات وVPN والصفحات الداكنة في Chrome وتسجيل المكالمات وخلاصة Google بلا إعلانات. كل دعم يعود مباشرة إلى التطبيق: مواكبة تحديثات Android وتطبيقات Google، وإصلاح ما تفسده، وبناء ميزات جديدة.
 Welcome back!	مرحبًا بعودتك!
 ✨ Quest Complete!	✨ اكتملت المهمة!
 📜 A Quest for the Kind-Hearted	📜 مهمة لأصحاب القلوب الطيبة
@@ -953,7 +953,6 @@ Lock apps in recents	قفل التطبيقات في التطبيقات الحد�
 Lock factory reset	قفل إعادة الضبط على الإعدادات الأصلية
 Lock screen	شاشة القفل
 Lock-screen behavior	سلوك شاشة القفل
-Lock-screen taps	النقرات على شاشة القفل
 Locking recent apps	قفل التطبيقات الحديثة
 Locks stay after a restart.	تبقى الأقفال بعد إعادة التشغيل.
 Made by RovianDev	من صنع RovianDev
@@ -1005,7 +1004,6 @@ Protection	الحماية
 Pure black backgrounds and darker menus in dark theme.	خلفيات سوداء تمامًا وقوائم أغمق في المظهر الداكن.
 Quick actions from your phone's buttons.	إجراءات سريعة من أزرار هاتفك.
 Recent	التطبيقات الحديثة
-Recent Apps	التطبيقات الحديثة
 Record and save calls	تسجيل المكالمات وحفظها
 Record calls in the Phone app, in any country, without the announcement	سجّل المكالمات في تطبيق الهاتف، في أي بلد، بلا إعلان التسجيل
 Reduce screenshot delay	تقليل تأخير لقطة الشاشة
@@ -1077,7 +1075,7 @@ Take a screenshot	التقاط لقطة شاشة
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	انقر على الإضافات في صفحة علامة التبويب الجديدة في Chrome لاستخدامها. انقر على إحداها لإعداداتها، أو اضغط مع الاستمرار لتثبيتها في شريط الأدوات.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	انقر على الإضافات في صفحة علامة التبويب الجديدة لاستخدامها. اضغط مع الاستمرار على إحداها لتثبيتها في شريط الأدوات.
 Tap an app to see its saved versions.	انقر على تطبيق لرؤية إصداراته المحفوظة.
-Tap to wake	النقر للتنبيه
+Tap or Double-tap to wake	النقر أو النقر المزدوج للتنبيه
 Text size	حجم النص
 That isn't a Pixel Suite backup	هذه ليست نسخة احتياطية من Pixel Suite
 The 3 newest versions of each app are kept.	يُحتفظ بأحدث 3 إصدارات من كل تطبيق.
@@ -1089,7 +1087,6 @@ The toolbar	شريط الأدوات
 Three-finger screenshot	لقطة شاشة بثلاثة أصابع
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	للعودة إلى هنا، اضغط مع الاستمرار على الشاشة الرئيسية واختر إعدادات Pixel Suite. يتطلب الروت وLSPosed.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	لحماية تطبيق ببصمة الإصبع أو رقم PIN، استخدم الخصوصية والأمان.
-Toasts	الرسائل المنبثقة
 Toolbar	شريط الأدوات
 Toolbar, keys, resize, auto-correction, clipboard	شريط الأدوات والمفاتيح والحجم والتصحيح التلقائي والحافظة
 Tools for your Google apps.	أدوات لتطبيقات Google لديك.
@@ -1118,8 +1115,7 @@ Use custom app icons	استخدام رموز تطبيقات مخصّصة
 Use your own image for an app icon	استخدام صورتك كرمز لتطبيق
 Voice typing with checkmark	الكتابة بالصوت مع علامة الاختيار
 Wake gesture	إيماءة التنبيه
-Wake the screen	تنبيه الشاشة
-Wake your phone with a tap, with pocket protection.	نبّه هاتفك بنقرة، مع الحماية داخل الجيب.
+Wake your phone with a tap or a double tap, with pocket protection.	نبّه هاتفك بنقرة أو بنقرة مزدوجة، مع الحماية داخل الجيب.
 Websites open dark, with no white flash. Super Dark uses pure black.	تُفتح المواقع داكنة، بلا وميض أبيض. يستخدم الداكن الفائق الأسود الخالص.
 What's new	الجديد
 When you untick apps, Back up saves their current versions first.	عند إلغاء تحديد التطبيقات، يحفظ النسخ الاحتياطي إصداراتها الحالية أولاً.
@@ -1689,3 +1685,129 @@ Hide At a Glance	إخفاء «نظرة سريعة»
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	يزيل «نظرة سريعة» من أعلى الشاشة الرئيسية. يصبح الصف متاحًا لتطبيقاتك ومجلداتك وأدواتك.
 Hold an app, folder or widget and drop it in the free row.	اضغط مع الاستمرار على تطبيق أو مجلد أو أداة وأفلته في الصف الفارغ.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	لنظام Android 16 والإصدارات الأقدم. الإصدارات الأحدث تتيح إزالة «نظرة سريعة» من الشاشة الرئيسية نفسها.
+Code autofill	تعبئة الرموز تلقائيًا
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	تظهر رموز المرة الواحدة من الرسائل والتطبيقات والبريد فوق لوحة المفاتيح. اضغط على الرمز لتعبئته.
+Fill codes automatically	تعبئة الرموز تلقائيًا دون ضغط
+Types the code for you when an empty box is waiting for one.	يكتب الرمز عنك عندما يكون هناك حقل فارغ ينتظره.
+Autofill OTP	تعبئة رمز OTP تلقائيًا
+One-time codes, filled in for you.	رموز المرة الواحدة، تُعبّأ عنك.
+Codes from your messages, right above the keyboard	رموز رسائلك، فوق لوحة المفاتيح مباشرة
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• عندما يصل رمز في رسالة أو تطبيق أو بريد، يظهر فوق لوحة المفاتيح. اضغط عليه لتعبئته.\n\n• عند تشغيل «تعبئة الرموز تلقائيًا دون ضغط»، يُكتب الرمز عنك عندما يكون هناك حقل ينتظره.
+Shows the code above your keyboard and fills it in.	يعرض الرمز فوق لوحة المفاتيح ويعبّئه.
+Reads one-time codes from notifications as they arrive.	يقرأ رموز المرة الواحدة من الإشعارات فور وصولها.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	يُبعد شرائح مثل لقطة الشاشة عن شريط الأدوات. تبقى الرموز والملء التلقائي والنص المنسوخ ظاهرة.
+Widgets feed	موجز الأدوات
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	اسحب لليمين على شاشتك الرئيسية الأولى لترى أدواتك والطقس والتاريخ. تحلّ محل خلاصة Google.
+Hide weather and date	إخفاء الطقس والتاريخ
+Your widgets start at the top of the feed.	تبدأ أدواتك من أعلى الموجز.
+Tap + to add a widget. Tap a widget to open its app.	اضغط + لإضافة أداة. اضغط على أداة لفتح تطبيقها.
+Hold a widget to move or remove widgets, then tap the check mark.	اضغط مطولاً على أداة لنقل الأدوات أو إزالتها، ثم اضغط علامة الصح.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	اضغط على التاريخ لفتح التقويم وعلى الطقس لرؤية التوقعات. اسحب لليسار للرجوع.
+Add widget	إضافة أداة
+Feed settings	إعدادات الموجز
+Background opacity	شفافية الخلفية
+Invisible	غير مرئية
+Solid	كاملة
+How much of the feed's background shows. The status bar and home bar follow it.	مقدار ظهور خلفية الموجز. شريط الحالة وشريط الرئيسية يتبعانها.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	اضغط مطولاً على أداة لنقل الأدوات أو تغيير حجمها أو إزالتها، ثم اضغط علامة الصح.
+Ditch the Google feed. Build your own.	تخلَّص من موجز Google. اصنع موجزك الخاص.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	أزِل موجز Google تمامًا واستبدله بصفحة من أدواتك قابلة للتخصيص بالكامل.
+Home screen	الشاشة الرئيسية
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	أدواتك على بُعد سحبة واحدة من شاشة القفل. أي تطبيق وأي حجم، دون فتح قفل هاتفك.
+How much of the feed's background shows.	مقدار ظهور خلفية الموجز.
+Each feed keeps its own widgets.	لكل موجز أدواته الخاصة.
+No widgets available	لا توجد أدوات متاحة
+Couldn't add that widget	تعذّرت إضافة هذه الأداة
+Open apps without unlocking	فتح التطبيقات دون فتح القفل
+Saved.	تم الحفظ.
+Pixel Suite and Settings always ask to unlock.	يطلب Pixel Suite والإعدادات فتح القفل دائمًا.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	التطبيقات التي تختارها تُفتح مباشرة على شاشة القفل، دون بصمة، لذا اختر بعناية. الخروج من التطبيق يعيدك إلى شاشة القفل.
+Apps that open without unlocking	تطبيقات تُفتح دون فتح القفل
+Choose which apps open from the lock screen	اختر التطبيقات التي تُفتح من شاشة القفل
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	على شاشة القفل، يطلب التطبيق فتح القفل أولًا ما لم تكن قد اخترته ضمن فتح التطبيقات دون فتح القفل. اسحب لليمين للرجوع.
+Your widgets, the weather and the date, one swipe from your home screen.	أدواتك والطقس والتاريخ، على بُعد سحبة من شاشتك الرئيسية.
+Side	الجانب
+The feed comes in from this side of your home screen.	يظهر الموجز من هذا الجانب من شاشتك الرئيسية.
+The feed comes in from this side of the lock screen.	يظهر الموجز من هذا الجانب من شاشة القفل.
+Keep the Google feed	الإبقاء على موجز Google
+Swipe the other way for the Google feed.	اسحب في الاتجاه الآخر لموجز Google.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	اختر الجانب لكل موجز. على الشاشة الرئيسية، يمكن أن يبقى موجز Google في الجانب الآخر.
+Tap the date for your calendar and the weather for the forecast.	اضغط على التاريخ لفتح التقويم وعلى الطقس لرؤية التوقعات.
+To close a feed, swipe it back the way it came.	لإغلاق الموجز، اسحبه عائدًا من حيث أتى.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	على شاشة القفل، يطلب التطبيق فتح القفل أولًا ما لم تكن قد اخترته ضمن فتح التطبيقات دون فتح القفل.
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	صفحة من أدواتك قابلة للتخصيص بالكامل، في الجانب الذي تختاره. أبقِ موجز Google في الجانب الآخر أو استغنِ عنه.
+Your own widgets, left or right.	أدواتك الخاصة، يسارًا أو يمينًا.
+Left	يسار
+Right	يمين
+Google feed	موجز Google
+A live preview of your feeds. It follows your settings.	معاينة حية لموجزاتك. تتبع إعداداتك.
+USB on top	USB في الأعلى
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	يبقى إشعار USB مثبتًا في الأعلى ويختار نقل الملفات عند فتح القفل. ويأتي تصحيح أخطاء USB تحته مباشرة.
+Burns through crates and ghosts	يحرق الصناديق والأشباح
+Quick USB modes	تبديل أوضاع USB بسرعة
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	بدّل إلى نقل الملفات وتوصيل الإنترنت عبر USB وأوضاع USB الأخرى دون بصمة الإصبع أو رقم PIN ما دام هاتفك غير مقفل.
+More USB options	خيارات USB أخرى
+Block WhatsApp calls	حظر مكالمات WhatsApp
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	ما دام «لا تزعجني» مفعّلًا، لا تصلك مكالمات WhatsApp ويرى المتصل «تعذّر الاتصال». تعمل الرسائل ومكالماتك أنت كالمعتاد.
+WhatsApp call turned away by Do Not Annoy	رفض «لا تزعجني» مكالمة WhatsApp
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	يرفض مكالمات WhatsApp ما دام «لا تزعجني» مفعّلًا مع تشغيل «حظر مكالمات WhatsApp». أعد تشغيل WhatsApp بعد إضافة هذا النطاق.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	يفتح المجلدات التي تضم آلاف الملفات بسرعة في كل التطبيقات، دون مجلدات فارغة بعد الرجوع. أعد التشغيل بعد إضافة هذا النطاق.
+Demonic	شيطاني
+Take the angelic power?	أتأخذ القوة الملائكية؟
+Take the demonic power?	أتأخذ القوة الشيطانية؟
+Your angelic power fades	تخبو قوتك الملائكية
+Your demonic power fades	تخبو قوتك الشيطانية
+Thunder	رعد
+Inferno	جحيم
+Fit the thunder core?	أتركّب نواة الرعد؟
+Fit the inferno core?	أتركّب نواة الجحيم؟
+Your thunder core burns out	تحترق نواة الرعد
+Your inferno core burns out	تحترق نواة الجحيم
+Choose a core	اختر نواة
+Crushes bricks	يسحق الطوب
+Crushes steel	يسحق الفولاذ
+Mortar King	ملك الهاون
+Hive Mother	أم الخلية
+Steel Serpent	الأفعى الفولاذية
+Twin Fortress	الحصن التوأم
+Thunder Colossus	عملاق الرعد
+Mine Layer	زارع الألغام
+Crimson Baron	البارون القرمزي
+Shield Warden	حارس الدرع
+Inferno Engine	محرك الجحيم
+Night Spider	عنكبوت الليل
+Titan	التيتان
+Phantom Ship	السفينة الشبح
+Siege Breaker	كاسر الحصار
+Overlord	السيد الأعلى
+Dreadnought	المدرعة الرهيبة
+Void Eye	عين الفراغ
+Emperor	الإمبراطور
+Bomb Baron	بارون القنابل
+Frost Wraith	شبح الصقيع
+Slime Lord	سيد الهلام
+Storm Eye	عين العاصفة
+Iron Mech	الآلي الحديدي
+Shadow Twins	توأما الظل
+Magma Golem	غولم الحمم
+Hex Witch	ساحرة اللعنات
+Hydra Slime	هلام الهيدرا
+Grave King	ملك القبور
+Thunder Mech	آلي الرعد
+The Watcher	الرقيب
+Crystal Golem	غولم الكريستال
+Banshee	البانشي
+Toxic Slime	الهلام السام
+Demon Twins	توأما الشياطين
+Glitch Emperor	إمبراطور الأشباح
+What each extension does	ما تفعله كل إضافة
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	تبقى بلا تحديثات ما دام {0} مفعّلًا، حتى لا يعطّله تحديث. أوقفه للسماح بالتحديث.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	الخيارات التي تعمل داخل تطبيق، مثل «حظر مكالمات WhatsApp»، تمنع تحديث ذلك التطبيق ما دامت مفعّلة، ويظهر هنا مقفلًا.
+Its data wasn't found	لم يتم العثور على بياناته
+Its saved data is incomplete	بياناته المحفوظة غير مكتملة
+The app isn't installed	التطبيق غير مثبّت
+Couldn't make the backup folder	تعذّر إنشاء مجلد النسخ الاحتياطي
+Couldn't put back {0}	تعذّرت إعادة {0}
+Couldn't save {0}	تعذّر حفظ {0}
+It didn't install	لم يتم تثبيته
+Root isn't available	الروت غير متاح

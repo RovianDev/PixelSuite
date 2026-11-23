@@ -427,7 +427,7 @@ Refresh	רענון
 Refreshing…	מתבצע רענון…
 Sign in with Patreon	כניסה עם פטריאון
 Sign out	יציאה
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	אפשר לתמוך ב-Pixel Suite כדי לפתוח את Chrome+, Gboard+, חוסם המודעות, ה-VPN, דפים כהים, הקלטת שיחות ופיד Google בלי מודעות.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	אפשר לתמוך ב-Pixel Suite כדי לפתוח את פיד ווידג'טים, Chrome+, Gboard+, חוסם המודעות, ה-VPN, דפים כהים, הקלטת שיחות ופיד Google בלי מודעות.
 A Quest for the\nKind-Hearted	משימה\nלטובי הלב
 Already a patron? Unlock	כבר תומך/ת? פתיחה
 Checking Patreon membership…	החברות ב-פטריאון נבדקת…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	המשימה הושלמה!
 Ready to check membership	מוכן לבדיקת החברות
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	תודה על התמיכה ב-Pixel Suite. תכונות פטריאון שלך מוכנות.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	התומכים פותחים את Chrome+ ו-Gboard+, את חוסם המודעות ואת ה-VPN, דפים כהים ב-Chrome, הקלטת שיחות ופיד Google בלי מודעות. כל תמיכה חוזרת ישר לאפליקציה: לעמוד בקצב העדכונים של Android ושל אפליקציות Google, לתקן את מה שהם שוברים ולבנות תכונות חדשות.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	התומכים פותחים את פיד ווידג'טים, Chrome+ ו-Gboard+, את חוסם המודעות ואת ה-VPN, דפים כהים ב-Chrome, הקלטת שיחות ופיד Google בלי מודעות. כל תמיכה חוזרת ישר לאפליקציה: לעמוד בקצב העדכונים של Android ושל אפליקציות Google, לתקן את מה שהם שוברים ולבנות תכונות חדשות.
 Welcome back!	ברוך שובך!
 ✨ Quest Complete!	✨ המשימה הושלמה!
 📜 A Quest for the Kind-Hearted	📜 משימה לטובי הלב
@@ -953,7 +953,6 @@ Lock apps in recents	נעילת אפליקציות באפליקציות האחר
 Lock factory reset	נעילת האיפוס להגדרות היצרן
 Lock screen	מסך הנעילה
 Lock-screen behavior	התנהגות מסך הנעילה
-Lock-screen taps	הקשות במסך הנעילה
 Locking recent apps	נעילת אפליקציות אחרונות
 Locks stay after a restart.	הנעילות נשארות גם אחרי הפעלה מחדש.
 Made by RovianDev	נוצר על ידי RovianDev
@@ -1005,7 +1004,6 @@ Protection	הגנה
 Pure black backgrounds and darker menus in dark theme.	רקעים בשחור מלא ותפריטים כהים יותר בעיצוב הכהה.
 Quick actions from your phone's buttons.	פעולות מהירות מהלחצנים של הטלפון.
 Recent	אחרונות
-Recent Apps	אפליקציות אחרונות
 Record and save calls	הקלטה ושמירה של שיחות
 Record calls in the Phone app, in any country, without the announcement	הקלטת שיחות באפליקציית הטלפון, בכל מדינה, בלי ההודעה
 Reduce screenshot delay	קיצור ההשהיה של צילום המסך
@@ -1077,7 +1075,7 @@ Take a screenshot	צילום מסך
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	כדי להשתמש בתוספים, מקישים על ״תוספים״ בדף הכרטיסייה החדשה של Chrome. הקשה על תוסף פותחת את ההגדרות שלו, ולחיצה ארוכה מצמידה אותו לסרגל הכלים.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	כדי להשתמש בתוספים, מקישים על ״תוספים״ בדף הכרטיסייה החדשה. לחיצה ארוכה על תוסף מצמידה אותו לסרגל הכלים.
 Tap an app to see its saved versions.	מקישים על אפליקציה כדי לראות את הגרסאות השמורות שלה.
-Tap to wake	הקשה להפעלת המסך
+Tap or Double-tap to wake	הקשה או הקשה כפולה להפעלת המסך
 Text size	גודל הטקסט
 That isn't a Pixel Suite backup	זה לא גיבוי של Pixel Suite
 The 3 newest versions of each app are kept.	נשמרות 3 הגרסאות החדשות ביותר של כל אפליקציה.
@@ -1089,7 +1087,6 @@ The toolbar	סרגל הכלים
 Three-finger screenshot	צילום מסך בשלוש אצבעות
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	כדי לחזור לכאן, לוחצים לחיצה ארוכה על מסך הבית ובוחרים ״ההגדרות של Pixel Suite״. נדרשים root ו-LSPosed.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	כדי להגן על אפליקציה בטביעת אצבע או בקוד אימות, משתמשים ב״פרטיות ואבטחה״.
-Toasts	הודעות קופצות
 Toolbar	סרגל הכלים
 Toolbar, keys, resize, auto-correction, clipboard	סרגל כלים, מקשים, שינוי גודל, תיקון אוטומטי, לוח
 Tools for your Google apps.	כלים לאפליקציות Google שלך.
@@ -1118,8 +1115,7 @@ Use custom app icons	שימוש בסמלי אפליקציות מותאמים
 Use your own image for an app icon	שימוש בתמונה משלך כסמל של אפליקציה
 Voice typing with checkmark	הקלדה קולית עם וי
 Wake gesture	תנועת התעוררות
-Wake the screen	הפעלת המסך
-Wake your phone with a tap, with pocket protection.	מעירים את הטלפון בהקשה, עם הגנה בכיס.
+Wake your phone with a tap or a double tap, with pocket protection.	מעירים את הטלפון בהקשה או בהקשה כפולה, עם הגנה בכיס.
 Websites open dark, with no white flash. Super Dark uses pure black.	אתרים נפתחים כהים, בלי הבזק לבן. כהה במיוחד משתמש בשחור מלא.
 What's new	מה חדש
 When you untick apps, Back up saves their current versions first.	כשמבטלים סימון של אפליקציות, ״גיבוי״ שומר קודם את הגרסאות הנוכחיות שלהן.
@@ -1689,3 +1685,129 @@ Hide At a Glance	הסתרת ״בקצרה״
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	מסיר את ״בקצרה״ מראש מסך הבית. השורה פנויה לאפליקציות, לתיקיות ולווידג׳טים שלך.
 Hold an app, folder or widget and drop it in the free row.	לוחצים לחיצה ארוכה על אפליקציה, תיקייה או ווידג׳ט ומשחררים בשורה הפנויה.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	ל-Android 16 ולגרסאות ישנות יותר. בגרסאות חדשות יותר אפשר להסיר את ״בקצרה״ ממסך הבית עצמו.
+Code autofill	מילוי קודים אוטומטי
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	קודים חד-פעמיים מהודעות, מאפליקציות ומאימייל מופיעים מעל המקלדת. מקישים על הקוד כדי למלא אותו.
+Fill codes automatically	מילוי קודים בלי הקשה
+Types the code for you when an empty box is waiting for one.	מקליד את הקוד בשבילך כששדה ריק מחכה לו.
+Autofill OTP	מילוי OTP אוטומטי
+One-time codes, filled in for you.	קודים חד-פעמיים, ממולאים בשבילך.
+Codes from your messages, right above the keyboard	קודים מההודעות שלך, ממש מעל המקלדת
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• כשמגיע קוד בהודעה, באפליקציה או במייל, הוא מופיע מעל המקלדת. הקש עליו כדי למלא אותו.\n\n• כש„מילוי קודים בלי הקשה” מופעל, הקוד מוקלד בשבילך כששדה קוד מחכה לו.
+Shows the code above your keyboard and fills it in.	מציג את הקוד מעל המקלדת וממלא אותו.
+Reads one-time codes from notifications as they arrive.	קורא קודים חד-פעמיים מההתראות ברגע שהן מגיעות.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	מרחיק מסרגל הכלים צ'יפים כמו צילום מסך. קודים, מילוי אוטומטי וטקסט מועתק עדיין מופיעים.
+Widgets feed	פיד ווידג'טים
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	החליקו ימינה במסך הבית הראשון כדי לראות את הווידג'טים, מזג האוויר והתאריך. הוא תופס את מקום הפיד של Google.
+Hide weather and date	הסתרת מזג האוויר והתאריך
+Your widgets start at the top of the feed.	הווידג'טים מתחילים בראש הפיד.
+Tap + to add a widget. Tap a widget to open its app.	הקישו על + כדי להוסיף ווידג'ט. הקישו על ווידג'ט כדי לפתוח את האפליקציה שלו.
+Hold a widget to move or remove widgets, then tap the check mark.	לחצו לחיצה ארוכה על ווידג'ט כדי להזיז או להסיר ווידג'טים, ואז הקישו על סימן הווי.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	הקישו על התאריך ליומן ועל מזג האוויר לתחזית. החליקו שמאלה כדי לחזור.
+Add widget	הוספת ווידג'ט
+Feed settings	הגדרות הפיד
+Background opacity	אטימות הרקע
+Invisible	בלתי נראה
+Solid	מלא
+How much of the feed's background shows. The status bar and home bar follow it.	כמה מרקע הפיד נראה. שורת הסטטוס וסרגל הבית מתאימים את עצמם אליו.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	לחצו לחיצה ארוכה על ווידג'ט כדי להזיז, לשנות גודל או להסיר ווידג'טים, ואז הקישו על סימן הווי.
+Ditch the Google feed. Build your own.	נפרדים מהפיד של Google. בונים פיד משלכם.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	מסירים לגמרי את הפיד של Google ומחליפים אותו בדף של הווידג'טים שלכם, בהתאמה אישית מלאה.
+Home screen	מסך הבית
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	הווידג'טים שלכם, במרחק החלקה אחת ממסך הנעילה. כל אפליקציה, כל גודל, בלי לבטל את נעילת הטלפון.
+How much of the feed's background shows.	כמה מרקע הפיד נראה.
+Each feed keeps its own widgets.	לכל פיד יש ווידג'טים משלו.
+No widgets available	אין ווידג'טים זמינים
+Couldn't add that widget	לא ניתן להוסיף את הווידג'ט הזה
+Open apps without unlocking	פתיחת אפליקציות בלי לבטל נעילה
+Saved.	נשמר.
+Pixel Suite and Settings always ask to unlock.	Pixel Suite וההגדרות תמיד מבקשים לבטל נעילה.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	אפליקציות שתבחרו נפתחות ישירות במסך הנעילה, בלי טביעת אצבע, אז בחרו בזהירות. יציאה מהאפליקציה מחזירה למסך הנעילה.
+Apps that open without unlocking	אפליקציות שנפתחות בלי לבטל נעילה
+Choose which apps open from the lock screen	בחרו אילו אפליקציות נפתחות ממסך הנעילה
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	במסך הנעילה, אפליקציה מבקשת קודם לבטל את הנעילה, אלא אם בחרתם בה תחת פתיחת אפליקציות בלי לבטל נעילה. החליקו ימינה כדי לחזור.
+Your widgets, the weather and the date, one swipe from your home screen.	הווידג'טים, מזג האוויר והתאריך, במרחק החלקה ממסך הבית.
+Side	צד
+The feed comes in from this side of your home screen.	הפיד נכנס מהצד הזה של מסך הבית.
+The feed comes in from this side of the lock screen.	הפיד נכנס מהצד הזה של מסך הנעילה.
+Keep the Google feed	השארת הפיד של Google
+Swipe the other way for the Google feed.	החליקו לכיוון השני כדי לראות את הפיד של Google.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	בחרו צד לכל פיד. במסך הבית, הפיד של Google יכול להישאר בצד השני.
+Tap the date for your calendar and the weather for the forecast.	הקישו על התאריך ליומן ועל מזג האוויר לתחזית.
+To close a feed, swipe it back the way it came.	כדי לסגור פיד, החליקו אותו בחזרה לכיוון שממנו הגיע.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	במסך הנעילה, אפליקציה מבקשת קודם לבטל את הנעילה, אלא אם בחרתם בה תחת פתיחת אפליקציות בלי לבטל נעילה.
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	דף של הווידג'טים שלכם בהתאמה אישית מלאה, בצד שתבחרו. השאירו את הפיד של Google בצד השני, או ותרו עליו.
+Your own widgets, left or right.	הווידג'טים שלכם, משמאל או מימין.
+Left	שמאל
+Right	ימין
+Google feed	הפיד של Google
+A live preview of your feeds. It follows your settings.	תצוגה מקדימה חיה של הפידים. היא עוקבת אחרי ההגדרות.
+USB on top	USB למעלה
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	ההתראה של USB נשארת מוצמדת למעלה ובוחרת העברת קבצים כשהמכשיר לא נעול. ניפוי באגים ב-USB מופיע ממש מתחתיה.
+Burns through crates and ghosts	שורף ארגזים ורוחות
+Quick USB modes	מצבי USB מהירים
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	מעבר להעברת קבצים, שיתוף אינטרנט ב-USB ומצבי USB אחרים בלי טביעת אצבע או קוד אימות כשהטלפון לא נעול.
+More USB options	אפשרויות USB נוספות
+Block WhatsApp calls	חסימת שיחות WhatsApp
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	כל עוד אל תציק פועל, שיחות WhatsApp לא מגיעות אליך והמתקשרים רואים שאי אפשר להתקשר. הודעות והשיחות שלך עובדות כרגיל.
+WhatsApp call turned away by Do Not Annoy	אל תציק דחה שיחת WhatsApp
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	דוחה שיחות WhatsApp כל עוד אל תציק פועל וחסימת שיחות WhatsApp מופעלת. יש להפעיל מחדש את WhatsApp אחרי הוספת ההיקף הזה.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	פותח במהירות תיקיות עם אלפי קבצים בכל אפליקציה, בלי תיקיות ריקות אחרי חזרה. יש להפעיל מחדש אחרי הוספת ההיקף הזה.
+Demonic	שטני
+Take the angelic power?	לקחת את הכוח המלאכי?
+Take the demonic power?	לקחת את הכוח השטני?
+Your angelic power fades	הכוח המלאכי שלך דועך
+Your demonic power fades	הכוח השטני שלך דועך
+Thunder	רעם
+Inferno	תופת
+Fit the thunder core?	להתקין את ליבת הרעם?
+Fit the inferno core?	להתקין את ליבת התופת?
+Your thunder core burns out	ליבת הרעם שלך נשרפת
+Your inferno core burns out	ליבת התופת שלך נשרפת
+Choose a core	בחר ליבה
+Crushes bricks	מועך לבנים
+Crushes steel	מועך פלדה
+Mortar King	מלך המרגמות
+Hive Mother	אם הכוורת
+Steel Serpent	נחש הפלדה
+Twin Fortress	מבצר התאומים
+Thunder Colossus	ענק הרעם
+Mine Layer	מניח המוקשים
+Crimson Baron	הברון הארגמני
+Shield Warden	שומר המגן
+Inferno Engine	מנוע התופת
+Night Spider	עכביש הלילה
+Titan	הטיטאן
+Phantom Ship	ספינת הרפאים
+Siege Breaker	שובר המצור
+Overlord	השליט העליון
+Dreadnought	הדרדנוט
+Void Eye	עין הריק
+Emperor	הקיסר
+Bomb Baron	ברון הפצצות
+Frost Wraith	רוח הכפור
+Slime Lord	אדון הרפש
+Storm Eye	עין הסערה
+Iron Mech	הרובוט מברזל
+Shadow Twins	תאומי הצל
+Magma Golem	גולם המאגמה
+Hex Witch	מכשפת הקללות
+Hydra Slime	רפש ההידרה
+Grave King	מלך הקברים
+Thunder Mech	רובוט הרעם
+The Watcher	הצופה
+Crystal Golem	גולם הבדולח
+Banshee	הבנשי
+Toxic Slime	רפש רעיל
+Demon Twins	תאומי השדים
+Glitch Emperor	קיסר הגליצ'ים
+What each extension does	מה כל תוסף עושה
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	לא מתעדכנת כל עוד {0} פועל, כדי שעדכון לא ישבור אותו. כבה אותו כדי לאפשר עדכון.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	אפשרויות שפועלות בתוך אפליקציה, כמו "חסימת שיחות WhatsApp", מונעות את עדכון האפליקציה כל עוד הן פועלות. היא מופיעה כאן נעולה.
+Its data wasn't found	הנתונים שלה לא נמצאו
+Its saved data is incomplete	הנתונים השמורים שלה חלקיים
+The app isn't installed	האפליקציה לא מותקנת
+Couldn't make the backup folder	לא ניתן ליצור את תיקיית הגיבוי
+Couldn't put back {0}	לא ניתן להחזיר את {0}
+Couldn't save {0}	לא ניתן לשמור את {0}
+It didn't install	ההתקנה לא הצליחה
+Root isn't available	root לא זמין

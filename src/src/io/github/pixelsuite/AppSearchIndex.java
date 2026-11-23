@@ -20,10 +20,18 @@ final class AppSearchIndex {
             words=new String[fields.length][];for(int i=0;i<fields.length;i++)words[i]=fields[i].split(" +");
         }
     }
+
+    static String clipped(String t,String enTitle,String enDescription,String kind){
+        if(!t.equals(enTitle)||!"TEXT".equals(kind)||enDescription==null||enDescription.length()<=enTitle.length()||!enDescription.startsWith(enTitle))return t;
+        char next=enDescription.charAt(enTitle.length());if(next=='\n')return t;
+        int cut=Character.isWhitespace(next)?enTitle.length():enTitle.lastIndexOf(' ');if(cut<enTitle.length()/2)cut=enTitle.length();
+        String head=enTitle.substring(0,cut).trim();while(head.length()>1&&".,;:".indexOf(head.charAt(head.length()-1))>=0)head=head.substring(0,head.length()-1).trim();
+        return head+"\u2026";
+    }
     static String title(String enTitle,String enDescription,String kind){
         String t=I18n.t(enTitle);
-        if(!I18n.on()||!"TEXT".equals(kind)||!t.equals(enTitle)||enDescription==null||enDescription.length()<=enTitle.length()||!enDescription.startsWith(enTitle))return t;
-        String full=I18n.t(enDescription);if(full.equals(enDescription))return t;int nl=full.indexOf('\n');if(nl>=0)full=full.substring(0,nl);
+        if(!I18n.on()||!"TEXT".equals(kind)||!t.equals(enTitle)||enDescription==null||enDescription.length()<=enTitle.length()||!enDescription.startsWith(enTitle))return clipped(t,enTitle,enDescription,kind);
+        String full=I18n.t(enDescription);if(full.equals(enDescription))return clipped(t,enTitle,enDescription,kind);int nl=full.indexOf('\n');if(nl>=0)full=full.substring(0,nl);
         int n=Math.max(24,enTitle.length());if(full.length()<=n)return full;
         int cut=full.lastIndexOf(' ',n);if(cut<n/2)cut=n;return full.substring(0,cut).trim()+"\u2026";
     }

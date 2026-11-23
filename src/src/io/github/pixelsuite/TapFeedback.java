@@ -17,13 +17,14 @@ final class TapFeedback {
         return false;
     }
     private static void apply(View view,boolean circle){
-        if(view.getForeground()!=null||ripple(view.getBackground()))return;
+        if(view instanceof TextureView||view instanceof SurfaceView)return;
+        try{if(view.getForeground()!=null||ripple(view.getBackground()))return;}catch(Throwable t){return;}
         float density=view.getResources().getDisplayMetrics().density;
         Drawable mask=new Drawable(){final Paint paint=new Paint(3);final RectF rect=new RectF();
             public void draw(Canvas c){Rect b=getBounds();paint.setColor(Color.WHITE);if(circle)c.drawCircle(b.exactCenterX(),b.exactCenterY(),Math.min(b.width(),b.height())/2f,paint);else{rect.set(b);c.drawRoundRect(rect,24*density,24*density,paint);}}
             public void setAlpha(int a){}public void setColorFilter(ColorFilter f){}public int getOpacity(){return PixelFormat.TRANSLUCENT;}};
         int color=FrostedSurface.dark(view.getContext())?0x33ffffff:0x26000000;
-        view.setForeground(new RippleDrawable(ColorStateList.valueOf(color),null,mask));
+        try{view.setForeground(new RippleDrawable(ColorStateList.valueOf(color),null,mask));}catch(Throwable ignored){}
     }
     private static void scan(View view){
         if(view instanceof PatronIdentity){View photo=((PatronIdentity)view).getChildAt(0);photo.setDuplicateParentStateEnabled(true);apply(photo,true);}

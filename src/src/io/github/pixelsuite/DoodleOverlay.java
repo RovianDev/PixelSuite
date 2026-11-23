@@ -676,8 +676,6 @@ final class DoodleOverlay extends FrameLayout {
 
         void settleZoom() { StudioZoom.settle(zoomTarget()); }
 
-        void resetZoom(boolean animate) { View c = zoomTarget(); if (c != null) StudioZoom.reset(c, animate); }
-
         void handOff(MotionEvent e) {
             revertStarted();
             View root = getRootView();

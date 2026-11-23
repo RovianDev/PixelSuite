@@ -36,25 +36,28 @@ final class PixelStack {
         PixelStackSound.prepare(a);
         GameMenu.warm(a);
         final int slop = ViewConfiguration.get(a).getScaledTouchSlop();
-        final long charge = 700;
+        final long charge = INFLATE_MS;
         final float[] down = new float[2];
         final boolean[] holding = {false}, fired = {false};
         final long[] since = {0};
-        final boolean[] rising = {false};
+        final boolean[] rising = {false}, shaking = {false};
         final Runnable[] tick = new Runnable[1];
         tick[0] = new Runnable() {
             public void run() {
                 if (!holding[0]) return;
                 long held = SystemClock.uptimeMillis() - since[0];
                 if (held < WAIT) { logo.postOnAnimation(this); return; }
-                if (!rising[0]) { rising[0] = true; sRise = PixelStackSound.play(PixelStackSound.RISE, .55f, 1f); buzz(a, new int[]{5}, new float[]{.75f}, new int[]{0}, new long[]{0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70}, ramp()); }
+                if (!rising[0]) { rising[0] = true; sRise = PixelStackSound.play(PixelStackSound.INFLATE, .6f, 1f); buzz(a, new int[]{5}, new float[]{.75f}, new int[]{0}, new long[]{0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70, 0, 70}, ramp()); }
                 float p = Math.min(1f, (held - WAIT) / (float) charge);
                 float e = p * p * (3 - 2 * p);
-                apply(logo, mark, left, right, e, 0f);
-                if (p >= 1f) {
-                    holding[0] = false; fired[0] = true;
-                    PixelStackSound.stop(sRise); PixelStackSound.play(PixelStackSound.POP, .72f, 1f);
-                    buzz(a, new int[]{1, 7}, new float[]{1f, .8f}, new int[]{0, 25}, new long[]{0, 18, 25, 12}, new int[]{0, 255, 0, 160});
+
+                float q = Math.max(0f, Math.min(1f, (held - WAIT - charge) / (float) SHAKE_MS));
+                if (p >= 1f && !shaking[0]) { shaking[0] = true; buzz(a, shakePrims(), shakeScales(), shakeDelays(), shakeTimings(), shakeAmps()); }
+                apply(logo, mark, left, right, e, q);
+                if (q >= 1f) {
+                    holding[0] = false; fired[0] = true; shaking[0] = false;
+                    PixelStackSound.stop(sRise); PixelStackSound.play(PixelStackSound.BURST, .8f, 1f);
+                    buzz(a, new int[]{1, 7}, new float[]{1f, .7f}, new int[]{0, 30}, new long[]{0, 20, 30, 14}, new int[]{0, 255, 0, 170});
                     GameMenu.open(a, logo, mark, left, right, ink, page, dark, black);
                     return;
                 }
@@ -67,7 +70,7 @@ final class PixelStack {
                     case MotionEvent.ACTION_DOWN:
                         if (sOpen) return false;
                         down[0] = e.getRawX(); down[1] = e.getRawY();
-                        holding[0] = true; fired[0] = false; rising[0] = false; since[0] = SystemClock.uptimeMillis();
+                        holding[0] = true; fired[0] = false; rising[0] = false; shaking[0] = false; since[0] = SystemClock.uptimeMillis();
                         logo.postOnAnimation(tick[0]);
                         return true;
                     case MotionEvent.ACTION_MOVE:
@@ -92,66 +95,83 @@ final class PixelStack {
         });
     }
 
-    private static final long WAIT = 140;
+    private static final long WAIT = 140, INFLATE_MS = 700, SHAKE_MS = 300;
     private static int sRise;
     private static int[] ramp() { int[] r = new int[20]; for (int i = 0; i < 10; i++) { r[i * 2] = 0; r[i * 2 + 1] = 20 + i * 22; } return r; }
 
-    private static final float WIDE = 2.4f, TALL = .22f;
+    private static int[] shakePrims() { int[] p = new int[9]; java.util.Arrays.fill(p, 7); return p; }
+    private static float[] shakeScales() { float[] f = new float[9]; for (int i = 0; i < 9; i++) f[i] = .45f + .55f * i / 8f; return f; }
+    private static int[] shakeDelays() { int[] d = new int[9]; for (int i = 1; i < 9; i++) d[i] = 30; return d; }
+    private static long[] shakeTimings() { long[] t = new long[19]; for (int i = 1; i < 19; i++) t[i] = i % 2 == 1 ? 14 : 18; return t; }
+    private static int[] shakeAmps() { int[] a = new int[19]; for (int i = 1; i < 19; i += 2) a[i] = 110 + 145 * (i / 2) / 8; return a; }
+
+    static float bubbleMax(View logo) {
+        float dd = logo.getResources().getDisplayMetrics().density, base = logo.getWidth();
+        android.util.DisplayMetrics dm = logo.getResources().getDisplayMetrics();
+        float most = Math.min(dm.widthPixels, dm.heightPixels) * .5f;
+        return Math.max(base, Math.min(most, Math.max(164 * dd, Math.min(196 * dd, base * 5f))));
+    }
 
     private static final class HoldMark extends android.graphics.drawable.Drawable {
         final Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG), rim = new Paint(Paint.ANTI_ALIAS_FLAG);
         final int plate, ink, soft; final boolean black, dark; final float dd;
-        float cx, cy, base, e; final long born = SystemClock.uptimeMillis();
+        float cx, cy, base, most, e, q; final long born = SystemClock.uptimeMillis();
         final RectF box = new RectF();
+        final android.graphics.Matrix spin = new android.graphics.Matrix();
+        android.graphics.SweepGradient sheen;
         HoldMark(Context c, int ink, boolean dark, boolean black) {
             this.ink = ink | 0xFF000000; soft = (Math.round(255 * .45f) << 24) | (ink & 0xFFFFFF); this.black = black; this.dark = dark;
             dd = c.getResources().getDisplayMetrics().density;
             plate = black ? 0xFF000000 : dark ? 0xFF2E2F36 : FrostedDialog.tone(c);
             rim.setStyle(Paint.Style.STROKE);
         }
+
         RectF bubble() {
             long t = SystemClock.uptimeMillis() - born;
-            float wob = e * e;
-            float w = base * (1f + WIDE * e) * (1f + .035f * wob * (float) Math.sin(t / 55.0));
-            float h = base * (1f + TALL * e) * (1f + .05f * wob * (float) Math.sin(t / 47.0 + 1.3));
-            box.set(cx - w / 2f, cy - h / 2f, cx + w / 2f, cy + h / 2f);
+            float d = base + (most - base) * e;
+            float breathe = .035f * 4f * e * (1f - e) * (float) Math.sin(t / 70.0);
+            float jig = q > 0 ? .022f * q * (float) Math.sin(t / 11.0) : 0f;
+            float jx = q > 0 ? 1.6f * dd * q * (float) Math.sin(t / 9.0 + 1) : 0f, jy = q > 0 ? 1.6f * dd * q * (float) Math.sin(t / 13.0 + 2) : 0f;
+            d *= 1f + .035f * q;
+            float w = d * (1f + breathe + jig), h = d * (1f - breathe - jig * .6f);
+            box.set(cx + jx - w / 2f, cy + jy - h / 2f, cx + jx + w / 2f, cy + jy + h / 2f);
             return box;
         }
+
         RectF square(int k, RectF out) {
             float f = e * e * (3 - 2 * e);
-            float u = .235f * base * (1f + .2f * e), g = .07f * base;
-            int col = k % 2, row = k / 2;
-            float gx = (col - .5f) * (u + g), gy = (row - .5f) * (u + g);
-            int[] order = {0, 2, 1, 3};
-            float rx = (order[k] - 1.5f) * (u + .2f * base), ry = 0;
             long t = SystemClock.uptimeMillis() - born;
+            float u = .235f * base * (1f + 1.3f * f), g = .07f * base;
+            int col = k % 2, row = k / 2;
+            float off = .5f * (.235f * base + g) + (.175f * most - .5f * (.235f * base + g)) * f;
+            double turn = Math.toRadians(18 * f + 6 * e * Math.sin(t / 600.0));
+            float gx = (col - .5f) * 2f * off, gy = (row - .5f) * 2f * off;
+            float x = (float) (gx * Math.cos(turn) - gy * Math.sin(turn)), y = (float) (gx * Math.sin(turn) + gy * Math.cos(turn));
             float bob = (float) Math.sin(t / 90.0 + k) * .04f * base * e;
-            float x = cx + gx + (rx - gx) * f, y = cy + gy + (ry - gy) * f + bob;
-            out.set(x - u / 2f, y - u / 2f, x + u / 2f, y + u / 2f);
+            RectF b = box.isEmpty() ? bubble() : box;
+            float mx = b.centerX(), my = b.centerY() - .13f * most * f;
+            out.set(mx + x - u / 2f, my + y + bob - u / 2f, mx + x + u / 2f, my + y + bob + u / 2f);
             return out;
         }
         @Override public void draw(Canvas c) {
             if (base <= 0) return;
-            RectF b = bubble(); float r = b.height() / 2f;
-            int a = Math.round(255 * (1f - .55f * e));
-            fill.setShader(null); fill.setColor((plate & 0xFFFFFF) | (a << 24));
+            RectF b = bubble();
+            float rr = Math.max(b.width(), b.height()) / 2f;
+            int inner = Math.round(255 * (1f - .62f * e)), outer = Math.round(255 * (1f - .4f * e));
+            fill.setShader(new android.graphics.RadialGradient(b.centerX(), b.centerY(), Math.max(1f, rr),
+                    new int[]{(plate & 0xFFFFFF) | (inner << 24), (plate & 0xFFFFFF) | (outer << 24)}, new float[]{.55f, 1f}, android.graphics.Shader.TileMode.CLAMP));
             if (!black) fill.setShadowLayer(6 * dd * (1 - e), 0, 2 * dd, 0x33000000);
-            c.drawRoundRect(b, r, r, fill); fill.clearShadowLayer();
-            rim.setStrokeWidth((1.2f + 1f * e) * dd);
-            rim.setShader(new android.graphics.LinearGradient(b.left, b.top, b.right, b.bottom,
-                    new int[]{0x99A8CCFF, 0x88FFB3E0, 0x88FFF1A8, 0x88B6FFD9, 0x99A8CCFF}, null, android.graphics.Shader.TileMode.CLAMP));
-            int ra = Math.round(255 * (.35f + .65f * e)); rim.setAlpha(ra);
-            c.drawRoundRect(b, r, r, rim); rim.setShader(null);
-            if (e > .05f) {
-                fill.setColor(((dark || black) ? 0x55FFFFFF : 0x99FFFFFF) & 0x00FFFFFF | (Math.round(((dark || black) ? 85 : 150) * e) << 24));
-                RectF gl = new RectF(b.left + r * .45f, b.top + b.height() * .14f, b.left + r * .45f + b.width() * .26f, b.top + b.height() * .3f);
-                c.drawRoundRect(gl, gl.height() / 2, gl.height() / 2, fill);
-                c.drawCircle(b.right - r * .55f, b.top + b.height() * .28f, 1.6f * dd * e, fill);
-            }
-            RectF q = new RectF(); float cr = .052f * base;
+            c.drawOval(b, fill); fill.clearShadowLayer(); fill.setShader(null);
+
+            if (sheen == null) sheen = new android.graphics.SweepGradient(0, 0, new int[]{0xFFA8CCFF, 0xFFFFB3E0, 0xFFFFF1A8, 0xFFB6FFD9, 0xFFA8CCFF}, null);
+            spin.reset(); spin.postRotate((SystemClock.uptimeMillis() - born) * .09f); spin.postTranslate(b.centerX(), b.centerY()); sheen.setLocalMatrix(spin);
+            rim.setShader(sheen); rim.setStrokeWidth((1.2f + 1.4f * e) * dd);
+            rim.setAlpha(Math.round(255 * (.3f + .55f * e)));
+            c.drawOval(b, rim); rim.setShader(null);
+            RectF sq = new RectF(); float cr = .052f * base * (1f + 1.3f * e);
             for (int k = 0; k < 4; k++) {
                 int col = k % 2, row = k / 2;
-                square(k, q); fill.setColor(col == row ? ink : soft); c.drawRoundRect(q, cr, cr, fill);
+                square(k, sq); fill.setColor(col == row ? ink : soft); c.drawRoundRect(sq, cr, cr, fill);
             }
             if (e > 0f) invalidateSelf();
         }
@@ -168,9 +188,26 @@ final class PixelStack {
     static void apply(View logo, ImageView mark, View left, View right, float e, float tremble) { apply(logo, mark, left, right, e, tremble, true); }
     static void apply(View logo, ImageView mark, View left, View right, float e, float tremble, boolean showLogo) {
         float dd = logo.getResources().getDisplayMetrics().density;
-        float push = logo.getWidth() * WIDE * e / 2f + 6 * dd * e;
-        if (left != null) { left.setTranslationX(-push); left.setAlpha(1f - .25f * e); }
-        if (right != null) { right.setTranslationX(push); right.setAlpha(1f - .25f * e); }
+        float most = bubbleMax(logo);
+        float push = (most - logo.getWidth()) * e / 2f + 8 * dd * e;
+
+        float q = Math.max(0f, Math.min(1f, tremble));
+        long nowQ = SystemClock.uptimeMillis();
+        float lean = 5 * dd * q, grow = 1f + .05f * q;
+        if (left != null) {
+            left.setTranslationX(-push - lean + (q > 0 ? 2.2f * dd * q * (float) Math.sin(nowQ / 9.0) : 0f));
+            left.setTranslationY(q > 0 ? 1.8f * dd * q * (float) Math.sin(nowQ / 13.0 + 1) : 0f);
+            left.setRotation(q > 0 ? 2.5f * q * (float) Math.sin(nowQ / 11.0) : 0f);
+            left.setScaleX(grow); left.setScaleY(grow);
+            left.setAlpha(1f - .25f * e);
+        }
+        if (right != null) {
+            right.setTranslationX(push + lean + (q > 0 ? 2.2f * dd * q * (float) Math.sin(nowQ / 10.0 + 2) : 0f));
+            right.setTranslationY(q > 0 ? 1.8f * dd * q * (float) Math.sin(nowQ / 12.0 + 3) : 0f);
+            right.setRotation(q > 0 ? 2.5f * q * (float) Math.sin(nowQ / 10.5 + 1.5) : 0f);
+            right.setScaleX(grow); right.setScaleY(grow);
+            right.setAlpha(1f - .25f * e);
+        }
         android.view.ViewParent v = logo.getParent();
         for (int i = 0; i < 2 && v instanceof android.view.ViewGroup; i++, v = v.getParent()) {
             android.view.ViewGroup g = (android.view.ViewGroup) v;
@@ -185,7 +222,7 @@ final class PixelStack {
             if (m == null) { m = new HoldMark(logo.getContext(), sInk, sDark, sBlack); logo.setTag(TAG_MARK, m); try { root.getOverlay().add(m); } catch (Throwable ignored) { } }
             int[] at = new int[2], rootAt = new int[2]; logo.getLocationOnScreen(at); root.getLocationOnScreen(rootAt);
             m.cx = at[0] - rootAt[0] + logo.getWidth() / 2f; m.cy = at[1] - rootAt[1] + logo.getHeight() / 2f;
-            m.base = logo.getWidth(); m.e = e;
+            m.base = logo.getWidth(); m.most = most; m.e = e; m.q = Math.max(0f, Math.min(1f, tremble));
             m.setBounds(0, 0, root.getWidth(), root.getHeight()); m.invalidateSelf(); root.invalidate();
             logo.setAlpha(0f);
         } else {
@@ -320,7 +357,7 @@ final class PixelStack {
             w.setWindowAnimations(0); w.setDimAmount(0f);
             w.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
             w.setStatusBarColor(0); w.setNavigationBarColor(0);
-            if (!dark && !black) w.getDecorView().setSystemUiVisibility(0x2000 | 0x10 | 0x400 | 0x200 | 0x100); else w.getDecorView().setSystemUiVisibility(0x400 | 0x200 | 0x100);
+            if (!dark && !black) w.getDecorView().setSystemUiVisibility(0x2000 | 0x10 | 0x400 | 0x200 | 0x100 | 0x4 | 0x2 | 0x1000); else w.getDecorView().setSystemUiVisibility(0x400 | 0x200 | 0x100 | 0x4 | 0x2 | 0x1000);
             try { Window.class.getMethod("setDecorFitsSystemWindows", boolean.class).invoke(w, false); } catch (Throwable ignored) { }
             try { WindowManager.LayoutParams lp = w.getAttributes(); lp.getClass().getField("layoutInDisplayCutoutMode").setInt(lp, 3); w.setAttributes(lp); } catch (Throwable ignored) { }
         }
@@ -333,14 +370,20 @@ final class PixelStack {
         Object mk = logo.getTag(TAG_MARK);
         if (mk instanceof HoldMark) { ((HoldMark) mk).e = 0f; try { logo.getRootView().getOverlay().remove((HoldMark) mk); } catch (Throwable ignored) { } logo.setTag(TAG_MARK, null); }
         logo.setAlpha(0f);
+        for (View word : new View[]{left, right}) if (word != null) { word.setTranslationY(0f); word.setRotation(0f); word.setScaleX(1f); word.setScaleY(1f); }
         final long w0 = SystemClock.uptimeMillis();
-        final float from0 = left.getTranslationX();
+        final float from0 = (left.getTranslationX() - right.getTranslationX()) / 2f;
         left.postOnAnimation(new Runnable() { public void run() {
             float t = Math.min(1f, (SystemClock.uptimeMillis() - w0) / 600f), k = 1f - spring(t);
             left.setTranslationX(from0 * k); right.setTranslationX(-from0 * k); left.setAlpha(1f - .25f * k); right.setAlpha(1f - .25f * k);
             if (t < 1f) left.postOnAnimation(this); else apply(logo, mark, left, right, 0f, 0f, false);
         } });
+    }
 
+    static boolean arcadeShowing(Activity a) {
+        Dialog was = sDialog == null ? null : sDialog.get();
+        Activity owner = sOwner == null ? null : sOwner.get();
+        return sOpen && owner == a && was != null && was.isShowing();
     }
 
     static void arcadeOpen(Dialog d, Activity a) {
@@ -353,8 +396,9 @@ final class PixelStack {
         Object mk = logo.getTag(TAG_MARK);
         if (mk instanceof HoldMark) { ((HoldMark) mk).e = 0f; try { logo.getRootView().getOverlay().remove((HoldMark) mk); } catch (Throwable ignored) { } logo.setTag(TAG_MARK, null); }
         logo.setAlpha(0f);
+        for (View word : new View[]{left, right}) if (word != null) { word.setTranslationY(0f); word.setRotation(0f); word.setScaleX(1f); word.setScaleY(1f); }
         final long w0 = SystemClock.uptimeMillis();
-        final float from0 = left.getTranslationX();
+        final float from0 = (left.getTranslationX() - right.getTranslationX()) / 2f;
         left.postOnAnimation(new Runnable() { public void run() {
             float t = Math.min(1f, (SystemClock.uptimeMillis() - w0) / 600f), k = 1f - spring(t);
             left.setTranslationX(from0 * k); right.setTranslationX(-from0 * k); left.setAlpha(1f - .25f * k); right.setAlpha(1f - .25f * k);
@@ -408,7 +452,7 @@ final class PixelStack {
             w.setWindowAnimations(0); w.setDimAmount(0f);
             w.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
             w.setStatusBarColor(0); w.setNavigationBarColor(0);
-            if (!dark && !black) w.getDecorView().setSystemUiVisibility(0x2000 | 0x10 | 0x400 | 0x200 | 0x100); else w.getDecorView().setSystemUiVisibility(0x400 | 0x200 | 0x100);
+            if (!dark && !black) w.getDecorView().setSystemUiVisibility(0x2000 | 0x10 | 0x400 | 0x200 | 0x100 | 0x4 | 0x2 | 0x1000); else w.getDecorView().setSystemUiVisibility(0x400 | 0x200 | 0x100 | 0x4 | 0x2 | 0x1000);
             try { Window.class.getMethod("setDecorFitsSystemWindows", boolean.class).invoke(w, false); } catch (Throwable ignored) { }
             try { WindowManager.LayoutParams lp = w.getAttributes(); lp.getClass().getField("layoutInDisplayCutoutMode").setInt(lp, 3); w.setAttributes(lp); } catch (Throwable ignored) { }
         }
@@ -487,7 +531,7 @@ final class PixelStack {
         try { present(g.a, g, gone); } catch (Throwable t) { kept = null; if (gone != null) gone.run(); return; }
         g.invalidate();
     }
-    private static final class Cell { float sx, sy, tx, ty, size, x, y, now; int colour, col; float delay; }
+    private static final class Cell { float sx, sy, tx, ty, size, x, y, now; int colour, col, row; float delay; }
 
     private static final class Game extends View {
         Dialog dialog; Runnable onGone; android.widget.EditText field;
@@ -524,6 +568,12 @@ final class PixelStack {
         long shareAt0; android.graphics.Bitmap shareCard; String player;
         long stateAt, last, flashAt = -10000, shakeAt = -10000;
         float curL, curR, dir = 1, speed, cam, camTarget, zoom = 1f, bh, baseW, baseY, introSize;
+
+        float colX, colW; int cellCols, cellRows;
+        boolean land; float topInset, bottomInset, leftInset, rightInset; long turnAt = -10000;
+        float colL() { return colX - colW / 2f; }
+        float sideX() { return land ? (leftInset + colL()) / 2f : colX; }
+        float camAim() { return getHeight() * (land ? .3f : .42f); }
         final RectF[] logoAt = new RectF[4], bigAt = new RectF[4], startAt = new RectF[4];
         RectF popAt;
         RectF cardScreen, cardAt; final RectF scene = new RectF();
@@ -582,14 +632,42 @@ final class PixelStack {
         }
 
         @Override protected void onSizeChanged(int w, int h, int ow, int oh) {
-            bh = 30 * d; baseW = Math.min(w * .62f, 300 * d);
-            baseY = h * .72f;
-            introSize = Math.min(w, h) * .42f;
+            topInset = bottomInset = leftInset = rightInset = 0;
+            try {
+                android.view.WindowInsets in = getRootWindowInsets();
+                if (in != null) { int[] q = GameKit.insets(in); leftInset = q[0]; topInset = q[1]; rightInset = q[2]; bottomInset = q[3]; }
+            } catch (Throwable ignored) { }
+            if (topInset <= 0) topInset = 24 * d; if (bottomInset <= 0) bottomInset = 12 * d;
+            boolean was = land;
+            land = ArcadeCurtain.land(w, h);
+            float oX = colX, oW = colW, oBW = baseW, oBY = baseY;
+            if (oW <= 0 && !blocks.isEmpty()) { float sh = Math.min(w, h); oX = sh / 2f; oW = sh; oBW = Math.min(sh * .62f, 300 * d); oBY = Math.max(w, h) * .72f; }
+            bh = 30 * d;
+            if (land) { colW = Math.max(200 * d, Math.min(Math.min(w, h), w - leftInset - rightInset - 300 * d)); colX = (leftInset + w - rightInset) / 2f; baseY = h * .84f; }
+            else { colW = w; colX = w / 2f; baseY = h * .72f; }
+            baseW = Math.min(colW * .62f, 300 * d);
+            if (oW > 0 && oBW > 0 && (oX != colX || oW != colW || oBW != baseW || oBY != baseY)) relay(oX, oW, oBW, oBY);
+            if (ow > 0 && oh > 0 && (w != ow || h != oh)) { turnAt = SystemClock.uptimeMillis(); if (was != land) PixelStackSound.play(PixelStackSound.SOFT, .22f, land ? 1.1f : .95f); }
+            introSize = Math.min(w, h) * (land ? .36f : .42f);
             if (cardScreen != null) { int[] at = new int[2]; getLocationOnScreen(at); cardAt = new RectF(cardScreen); cardAt.offset(-at[0], -at[1]); }
             squaresOf(from, logoAt);
             if (startAt[0] != null) for (int k = 0; k < 4; k++) logoAt[k] = new RectF(startAt[k]);
-            float cx = w / 2f, cy = h * .4f;
+            float cx = w / 2f, cy = introY(h);
             squaresOf(new RectF(cx - introSize / 2, cy - introSize / 2, cx + introSize / 2, cy + introSize / 2), bigAt);
+        }
+        float introY(float h) { return h * (land ? .36f : .4f); }
+
+        void relay(float oX, float oW, float oBW, float oBY) {
+            float k = baseW / oBW;
+            for (Block b : blocks) { b.l = colX + (b.l - oX) * k; b.r = colX + (b.r - oX) * k; }
+            curL = colX + (curL - oX) * k; curR = colX + (curR - oX) * k;
+            speed *= colW / oW;
+            bits.clear(); pops.clear();
+            if (state != OVER && state != REFORM) { camTarget = Math.max(0f, camAim() - (baseY - blocks.size() * bh)); cam = camTarget; }
+            if (cells != null) {
+                if (state == REFORM) for (Cell e : cells) { e.tx = colX + (e.tx - oX) * k; e.ty += baseY - oBY; e.sx = e.tx; e.sy = e.ty; }
+                else { placeCells(); for (Cell e : cells) { e.sx = e.tx; e.sy = e.ty; } }
+            }
         }
 
         private long since() { return SystemClock.uptimeMillis() - stateAt; }
@@ -597,6 +675,7 @@ final class PixelStack {
 
         @Override public void onWindowFocusChanged(boolean has) {
             super.onWindowFocusChanged(has);
+            if (has) postInvalidateOnAnimation();
             if (has || cardAt == null || state != PLAY) return;
             go(PAUSED);
             GameSave.save(a, ArcadePreview.STACK, this);
@@ -688,8 +767,8 @@ final class PixelStack {
             cells = new ArrayList<Cell>();
             if (maxX < 0) return;
             int cols = maxX - minX + 1, rows = maxY - minY + 1;
-            float size = Math.min(getWidth() * .8f / cols, 9 * d), gx = getWidth() / 2f - cols * size / 2f, gy = getHeight() * .44f - rows * size / 2f;
-            float cx = getWidth() / 2f;
+            cellCols = cols; cellRows = rows;
+            float cx = colX;
             int n = blocks.size(), i = 0;
             for (int y = minY; y <= maxY; y++) for (int x = minX; x <= maxX; x++) {
                 if (!on[y][x]) continue;
@@ -698,14 +777,21 @@ final class PixelStack {
                 float by = baseY - (b.level + 1) * bh;
                 float wx = b.l + rnd.nextFloat() * (b.r - b.l), wy = by + rnd.nextFloat() * bh;
                 c.sx = cx + (wx - cx) * zoom; c.sy = baseY + (wy - baseY) * zoom + cam; c.x = c.sx; c.y = c.sy;
-                c.col = x - minX;
-                c.tx = gx + c.col * size + size / 2f; c.ty = gy + (y - minY) * size + size / 2f;
-                c.size = size; c.colour = widthColour(b.r - b.l);
+                c.col = x - minX; c.row = y - minY;
+                c.colour = widthColour(b.r - b.l);
                 c.delay = (c.col / (float) Math.max(1, cols)) * 380f + rnd.nextFloat() * 90f;
                 cells.add(c);
             }
+            placeCells();
             buzz(a, new int[]{7, 7, 7}, new float[]{.5f, .6f, .8f}, new int[]{0, 90, 90}, new long[]{0, 10, 80, 10, 80, 14}, new int[]{0, 100, 0, 140, 0, 200});
             for (int k = 0; k < 9; k++) { final int q = k; postDelayed(() -> PixelStackSound.play(PixelStackSound.SPARKLE, .32f, .8f + q * .12f), 260 + k * 62); }
+        }
+
+        private void placeCells() {
+            if (cells == null) return;
+            int cols = Math.max(1, cellCols), rows = Math.max(1, cellRows);
+            float size = Math.min(colW * .8f / cols, 9 * d), gx = colX - cols * size / 2f, gy = getHeight() * (land ? .32f : .44f) - rows * size / 2f;
+            for (Cell e : cells) { e.tx = gx + e.col * size + size / 2f; e.ty = gy + e.row * size + size / 2f; e.size = size; }
         }
 
         private void drawCells(Canvas c, long now, float fade) {
@@ -737,7 +823,7 @@ final class PixelStack {
 
         private void reform() {
             if (cells == null) { restart(); return; }
-            float l = getWidth() / 2f - baseW / 2f;
+            float l = colX - baseW / 2f;
             for (Cell e : cells) {
                 e.sx = e.x; e.sy = e.y; e.size = e.now;
                 e.tx = l + rnd.nextFloat() * baseW; e.ty = baseY - bh / 2f + (rnd.nextFloat() - .5f) * bh * .5f;
@@ -754,7 +840,7 @@ final class PixelStack {
             if (cardAt != null) GameSave.drop(a, ArcadePreview.STACK);
             blocks.clear(); score = 0; combo = 0; newBest = false; cam = camTarget = 0; zoom = 1f; fever = 0; lastGold = -100; curGold = false; hearts = 3;
             tune = (sTune++) % TUNES.length; noteAt = 0;
-            float l = getWidth() / 2f - baseW / 2f;
+            float l = colX - baseW / 2f;
             blocks.add(new Block(l, l + baseW, 0));
             next();
             go(PLAY);
@@ -764,11 +850,11 @@ final class PixelStack {
             Block top = blocks.get(blocks.size() - 1);
             float w = top.r - top.l;
             dir = blocks.size() % 2 == 0 ? -1 : 1;
-            float min = -w * .3f, max = getWidth() - w * .7f;
+            float min = colL() - w * .3f, max = colL() + colW - w * .7f;
             curL = dir > 0 ? min : max; curR = curL + w;
             int lv = blocks.size() - 1;
             int tier = score / 100;
-            speed = getWidth() * Math.min(1.15f, .5f + .024f * lv) * (1 + .2f * Math.min(tier, 5));
+            speed = colW * Math.min(1.15f, .5f + .024f * lv) * (1 + .2f * Math.min(tier, 5));
             if (tier >= 1) speed *= .85f + rnd.nextFloat() * .3f;
             if (tier >= 2 && rnd.nextFloat() < .35f) { dir = -dir; float w0 = curR - curL; curL = dir > 0 ? min : max; curR = curL + w0; }
             curGold = blocks.size() >= 4 && blocks.size() - lastGold > 4 && rnd.nextFloat() < .3f;
@@ -816,7 +902,7 @@ final class PixelStack {
                 if (gold) { PixelStackSound.play(PixelStackSound.SUCCESS, .5f, 1.2f); shakeAt = SystemClock.uptimeMillis() - 200; }
                 if (combo == 5 || (combo > 5 && combo % 5 == 0)) {
                     fever = 6; feverAt = SystemClock.uptimeMillis();
-                    Pop f = new Pop(); f.text = I18n.t("On fire!") + "  ×2"; f.x = getWidth() / 2f; f.y = y - 46 * d; f.at = feverAt + 120; f.colour = FIRE; f.size = 24;
+                    Pop f = new Pop(); f.text = I18n.t("On fire!") + "  ×2"; f.x = colX; f.y = y - 46 * d; f.at = feverAt + 120; f.colour = FIRE; f.size = 24;
                     pops.add(f);
                     PixelStackSound.play(PixelStackSound.SUCCESS, .55f, 1f);
                     buzz(a, new int[]{3, 7, 7}, new float[]{.6f, .8f, 1f}, new int[]{0, 60, 60}, new long[]{0, 20, 60, 20, 60, 20}, new int[]{0, 160, 0, 200, 0, 255});
@@ -854,15 +940,15 @@ final class PixelStack {
             score += gain;
             if (score / 25 > before / 25) {
                 Block t2 = blocks.get(blocks.size() - 1);
-                sparkle((t2.l + t2.r) / 2f, y + bh / 2f, getWidth() * .8f, 30);
+                sparkle((t2.l + t2.r) / 2f, y + bh / 2f, colW * .8f, 30);
                 PixelStackSound.play(PixelStackSound.SPARKLE, .45f, 1.1f);
             }
             float topY = baseY - (blocks.size()) * bh;
-            camTarget = Math.max(0f, getHeight() * .42f - topY);
+            camTarget = Math.max(0f, camAim() - topY);
             if (score / 100 > before / 100) {
                 long at = SystemClock.uptimeMillis(); flashAt = at; shakeAt = at - 200;
-                Pop p = new Pop(); p.text = I18n.t("Speed up") + "  ×" + (score / 100 + 1); p.x = getWidth() / 2f; p.y = y - 50 * d; p.at = at; p.colour = FIRE; p.size = 26; pops.add(p);
-                sparkle(getWidth() / 2f, y, getWidth() * .9f, 40);
+                Pop p = new Pop(); p.text = I18n.t("Speed up") + "  ×" + (score / 100 + 1); p.x = colX; p.y = y - 50 * d; p.at = at; p.colour = FIRE; p.size = 26; pops.add(p);
+                sparkle(colX, y, colW * .9f, 40);
                 PixelStackSound.play(PixelStackSound.SUCCESS, .6f, 1f);
                 buzz(a, new int[]{3, 7, 7}, new float[]{.6f, .8f, 1f}, new int[]{0, 60, 60}, new long[]{0, 20, 60, 20, 60, 20}, new int[]{0, 160, 0, 200, 0, 255});
             }
@@ -945,7 +1031,7 @@ final class PixelStack {
 
         private void share() {
             final java.util.ArrayList<float[]> tower = new java.util.ArrayList<float[]>();
-            float cx = getWidth() / 2f, widest = 1;
+            float cx = colX, widest = 1;
             for (Block b : blocks) { tower.add(new float[]{(b.l - cx) / d * 3f, (b.r - cx) / d * 3f, blockColour(b.level)}); widest = Math.max(widest, (b.r - b.l) / d * 3f); }
             final float wid = widest;
             final int sc = score, bs = best; final boolean nb = newBest; final String who = PixelStackShare.player(a);
@@ -964,7 +1050,7 @@ final class PixelStack {
                     shareCard = shown; shareState = ok ? 2 : 3; shareAt0 = SystemClock.uptimeMillis();
                     if (ok) {
                         PixelStackSound.play(PixelStackSound.SUCCESS, .6f, 1f);
-                        sparkle(getWidth() / 2f, getHeight() * .55f, getWidth() * .5f, 26);
+                        sparkle(colX, getHeight() * .55f, colW * .5f, 26);
                         buzz(a, new int[]{3, 7, 7}, new float[]{.6f, .8f, 1f}, new int[]{0, 60, 60}, new long[]{0, 20, 60, 20, 60, 20}, new int[]{0, 160, 0, 200, 0, 255});
                         postDelayed(() -> PixelStackShare.openSection(a, share), 1100);
                     } else { buzz(a, new int[]{6}, new float[]{.8f}, new int[]{0}, new long[]{0, 60}, new int[]{0, 140}); PixelStackSound.play(PixelStackSound.FAIL, .5f, 1f); }
@@ -982,15 +1068,15 @@ final class PixelStack {
             boolean signed = PixelStackShare.signedIn(a), typing = !signed && field != null && state == OVER;
             boolean busy = shareState == 1 || shareState == 2;
             if (field != null && imeShown()) imeSeenAt = now;
-            float bw = Math.min(W - 40 * d, 336 * d), bh = 60 * d;
-            float home = H - BAR_UP * d + (1 - spring((since() - 900) / 600f)) * 40 * d;
-            float up = H * .17f + (newBest && score > 0 ? 84 : 48) * d + bh / 2;
+            float bw = Math.min(colW - 40 * d, 336 * d), bh = 60 * d;
+            float home = (land ? H * .64f : H - BAR_UP * d) + (1 - spring((since() - 900) / 600f)) * 40 * d;
+            float up = land ? topInset + 14 * d + bh / 2 : H * .17f + (newBest && score > 0 ? 84 : 48) * d + bh / 2;
             float fk = typing ? fieldNow(now) : 0f;
             if (!typing) { fieldK = fieldFrom = 0f; fieldUp = false; }
             float cy = home + (up - home) * fk;
             float mid = (float) Math.sin(Math.PI * Math.max(0f, Math.min(1f, fieldUp ? fk : 1f - fk)));
             float swell = 1f + .04f * mid, tilt = (fieldUp ? -3f : 3f) * mid;
-            barAt.set(W / 2f - bw / 2, cy - bh / 2, W / 2f + bw / 2, cy + bh / 2);
+            barAt.set(colX - bw / 2, cy - bh / 2, colX + bw / 2, cy + bh / 2);
             float press = shareState == 1 ? 1 - .04f * (float) Math.sin(Math.min(1f, st / 160f) * Math.PI) : 1f;
             int save = c.save(); c.rotate(tilt, barAt.centerX(), barAt.centerY()); c.scale(swell * press, swell * press, barAt.centerX(), barAt.centerY());
             boolean night = dark || black, focused = field != null && field.hasFocus();
@@ -1079,11 +1165,11 @@ final class PixelStack {
             } else hideField();
             if (shareState == 3 && st < 2600) {
                 text.setTextSize(sp(13)); text.setColor(alpha(soft, fade * 1.6f * (st < 2200 ? 1 : 1 - (st - 2200) / 400f)));
-                c.drawText(I18n.t("Couldn't share. Try again."), W / 2f, barAt.top - 12 * d, text);
+                c.drawText(I18n.t("Couldn't share. Try again."), colX, barAt.top - 12 * d, text);
             }
             if (shareState == 1 || (shareState == 2 && st < 900)) {
                 float f = shareState == 1 ? Math.min(1f, st / 500f) : 1f;
-                float cw = W * .62f, ch = cw * 1.25f, cx = W / 2f, ccy = H * .48f;
+                float cw = land ? Math.min(colW * .62f, H * .74f / 1.25f) : W * .62f, ch = cw * 1.25f, cx = colX, ccy = H * .48f;
                 float fly = shareState == 2 ? easeIn(st / 900f) : 0f;
                 float sc = .6f + .4f * spring(f) - .5f * fly;
                 box.set(cx - cw / 2 * sc, ccy - ch / 2 * sc - fly * H * .7f, cx + cw / 2 * sc, ccy + ch / 2 * sc - fly * H * .7f);
@@ -1133,7 +1219,7 @@ final class PixelStack {
 
         private void restart() {
             shareState = 0;
-            float cx = getWidth() / 2f;
+            float cx = colX;
             for (int i = bits.size() - 1; i >= 0; i--) bits.remove(i);
             for (Block b : blocks) {
                 float y = baseY - (b.level + 1) * bh;
@@ -1158,7 +1244,22 @@ final class PixelStack {
             PixelStackSound.play(PixelStackSound.SOFT, .3f, 1.12f); postDelayed(() -> PixelStackSound.play(PixelStackSound.SOFT, .26f, .9f), 120);
         }
 
+        @Override protected void onWindowVisibilityChanged(int v) {
+            super.onWindowVisibilityChanged(v);
+            if (v == VISIBLE) postInvalidateOnAnimation();
+        }
+        @Override protected void onAttachedToWindow() { super.onAttachedToWindow(); postInvalidateOnAnimation(); }
+
         @Override protected void onDraw(Canvas c) {
+            int save = c.save();
+            long now0 = SystemClock.uptimeMillis();
+            GameKit.hold(this, dialog, land && (state == PLAY || state == MERGE || state == REFORM));
+            if (motion && now0 - turnAt < 420) { float sc = .94f + .06f * spring((now0 - turnAt) / 420f); c.scale(sc, sc, getWidth() / 2f, getHeight() / 2f); }
+            frame(c);
+            c.restoreToCount(save);
+        }
+
+        private void frame(Canvas c) {
             long now = SystemClock.uptimeMillis();
             float dt = Math.min(.034f, (now - last) / 1000f); last = now;
             int W = getWidth(), H = getHeight();
@@ -1244,13 +1345,13 @@ final class PixelStack {
         private void step(float dt) {
             if (state == PLAY) {
                 curL += dir * speed * dt; curR += dir * speed * dt;
-                float w = curR - curL, min = -w * .3f, max = getWidth() - w * .7f;
+                float w = curR - curL, min = colL() - w * .3f, max = colL() + colW - w * .7f;
                 if (curL > max) { curL = max; curR = curL + w; dir = -1; }
                 if (curL < min) { curL = min; curR = curL + w; dir = 1; }
             }
             if (state == OVER) {
                 float k = ease((since() - 350) / 900f);
-                float tower = (blocks.size() + 1) * bh, room = baseY - (getHeight() * .17f + 84 * d);
+                float tower = (blocks.size() + 1) * bh, room = baseY - (land ? topInset + 24 * d : getHeight() * .17f + 84 * d);
                 float fit = tower > room ? room / tower : 1f;
                 zoom = 1f + (fit - 1f) * k;
                 camTarget = 0;
@@ -1273,9 +1374,9 @@ final class PixelStack {
             int save = c.save();
             float shake = 0;
             long sk = now - shakeAt;
-            if (sk < 420 && motion) shake = (float) Math.sin(sk / 22.0) * 7 * d * (1 - sk / 420f);
+            if (sk >= 0 && sk < 420 && motion) shake = (float) Math.sin(sk / 22.0) * 7 * d * (1 - sk / 420f);
             c.translate(shake, cam);
-            c.scale(zoom, zoom, getWidth() / 2f, baseY);
+            c.scale(zoom, zoom, colX, baseY);
             long fl = now - flashAt;
             for (int i = 0; i < blocks.size(); i++) {
                 Block b = blocks.get(i);
@@ -1316,15 +1417,15 @@ final class PixelStack {
             int W = getWidth(), H = getHeight();
             text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             text.setTextSize(sp(68)); text.setColor(alpha(dark || black ? 0xFFFFFFFF : 0xFF14161C, fade));
-            float y = H * .17f;
-            c.drawText(String.valueOf(score), W / 2f, y, text);
+            float y = land ? Math.max(topInset + 70 * d, H * .3f) : H * .17f, sx = sideX();
+            c.drawText(String.valueOf(score), sx, y, text);
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
             text.setTextSize(sp(15)); text.setColor(alpha(ink, fade * .8f));
-            c.drawText(I18n.t("Best") + "  " + best, W / 2f, y + 28 * d, text);
+            c.drawText(I18n.t("Best") + "  " + best, sx, y + 28 * d, text);
             if (state == PLAY) {
                 float hy = y + 50 * d, hs = 7 * d, since = now - heartAt;
                 for (int i = 0; i < 3; i++) {
-                    float hx = W / 2f + (i - 1) * 22 * d; boolean has = i < hearts;
+                    float hx = sx + (i - 1) * 22 * d; boolean has = i < hearts;
                     float sc = 1f; if (since < 400 && i == (has ? hearts - 1 : hearts)) sc = has ? spring(since / 400f) : 1f + .5f * (1 - ease(since / 400f));
                     int col = has ? 0xFFFF5C7A : (dark || black ? 0x33FFFFFF : 0x22000000);
                     fill.setShader(null); fill.setColor(alpha(col, fade));
@@ -1337,7 +1438,7 @@ final class PixelStack {
                 float q = (float) (.5 + .5 * Math.sin(now / 90.0));
                 text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD)); text.setTextSize(sp(16));
                 text.setColor(alpha(FIRE, fade * (.7f + .3f * q)));
-                c.drawText(I18n.t("On fire!") + "  ×2", W / 2f, y + 82 * d, text);
+                c.drawText(I18n.t("On fire!") + "  ×2", sx, y + 82 * d, text);
             }
             if (state == OVER) {
                 float k = ease((since() - 500) / 400f);
@@ -1345,16 +1446,16 @@ final class PixelStack {
                     float pop = 1 + .15f * (1 - spring((since() - 400) / 500f)) ;
                     text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
                     text.setTextSize(sp(22) * Math.max(.01f, pop)); text.setColor(alpha(dark || black ? LIGHT : BLUE, k * fade));
-                    c.drawText(I18n.t("New best!"), W / 2f, y + 64 * d, text);
+                    c.drawText(I18n.t("New best!"), sx, y + 64 * d, text);
                 }
                 float pulse = .55f + .45f * (float) (.5 + .5 * Math.cos(now / 300.0));
                 text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
                 text.setTextSize(sp(16)); text.setColor(alpha(ink, k * pulse * fade));
-                c.drawText(I18n.t("Tap to play again"), W / 2f, H - 64 * d, text);
+                c.drawText(I18n.t("Tap to play again"), colX, ArcadeCurtain.footY(W, H, d, bottomInset), text);
             } else if (score == 0) {
                 float pulse = .55f + .45f * (float) (.5 + .5 * Math.cos(now / 300.0));
                 text.setTextSize(sp(16)); text.setColor(alpha(ink, pulse * fade));
-                c.drawText(I18n.t("Tap to drop"), W / 2f, H - 64 * d, text);
+                c.drawText(I18n.t("Tap to drop"), colX, ArcadeCurtain.footY(W, H, d, bottomInset), text);
             }
         }
 
@@ -1410,17 +1511,18 @@ final class PixelStack {
 
         private void drawTitleArcade(Canvas c, float nameA, float extrasA) {
             int W = getWidth(), H = getHeight();
-            float y = ArcadeCurtain.titleY(ArcadePreview.STACK, W, H, d, 0, sceneRect());
+            RectF sc = sceneRect();
+            float y = ArcadeCurtain.titleY(ArcadePreview.STACK, W, H, d, 0, sc), tx = ArcadeCurtain.titleX(W, H, sc);
             text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             text.setTextSize(sp(30)); text.setColor(alpha(ink, nameA));
-            if (nameA > 0) c.drawText(I18n.t("Pixel Stack"), W / 2f, y, text);
+            if (nameA > 0) c.drawText(I18n.t("Pixel Stack"), tx, y, text);
             float k = extrasA; if (k <= 0) return;
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
             text.setTextSize(sp(15)); text.setColor(alpha(soft, k * 1.6f));
-            c.drawText(I18n.t("Best") + "  " + best, W / 2f, y + 28 * d + (1 - k) * 10 * d, text);
+            c.drawText(I18n.t("Best") + "  " + best, tx, y + 28 * d + (1 - k) * 10 * d, text);
             float pulse = .5f + .5f * (float) (.5 + .5 * Math.cos(SystemClock.uptimeMillis() / 300.0));
             text.setTextSize(sp(16)); text.setColor(alpha(ink, k * pulse));
-            c.drawText(I18n.t("Tap to start"), W / 2f, H - 64 * d, text);
+            c.drawText(I18n.t("Tap to start"), tx, ArcadeCurtain.footY(W, H, d, bottomInset), text);
         }
 
         private void drawPaused(Canvas c, float t, long now) {
@@ -1437,7 +1539,7 @@ final class PixelStack {
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL)); text.setTextSize(sp(16)); text.setColor(alpha(ink, in * pulse));
             c.drawText(I18n.t("Tap to continue"), W / 2f, y + 40 * d, text);
             text.setTextSize(sp(14));
-            String ng = I18n.t("New game"); float bw = text.measureText(ng) + 36 * d, by2 = H - 110 * d;
+            String ng = I18n.t("New game"); float bw = text.measureText(ng) + 36 * d, by2 = land ? Math.max(y + 62 * d, H - 70 * d - bottomInset * .5f) : H - 110 * d;
             newGameAt.set(W / 2f - bw / 2, by2, W / 2f + bw / 2, by2 + 40 * d);
             stroke.setStrokeWidth(1.4f * d); stroke.setColor(alpha(soft, in * 1.4f)); c.drawRoundRect(newGameAt, 20 * d, 20 * d, stroke);
             text.setColor(alpha(ink, in * .9f)); c.drawText(ng, W / 2f, newGameAt.centerY() + 5 * d, text);
@@ -1450,20 +1552,20 @@ final class PixelStack {
             float lift = (1 - k) * 14 * d;
             text.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
             text.setTextSize(sp(30)); text.setColor(alpha(ink, k));
-            float y = (cardAt != null ? sceneRect().bottom + 50 * d : H * .4f + introSize / 2f + 58 * d) + lift;
+            float y = (cardAt != null ? sceneRect().bottom + (land ? 38 : 50) * d : introY(H) + introSize / 2f + (land ? 40 : 58) * d) + lift;
             c.drawText(I18n.t("Pixel Stack"), W / 2f, y, text);
             text.setTypeface(Typeface.create("sans-serif-medium", Typeface.NORMAL));
             text.setTextSize(sp(15)); text.setColor(alpha(soft, k * 1.6f));
             c.drawText(I18n.t("Best") + "  " + best, W / 2f, y + 28 * d, text);
             float pulse = .5f + .5f * (float) (.5 + .5 * Math.cos(SystemClock.uptimeMillis() / 300.0));
             text.setTextSize(sp(16)); text.setColor(alpha(ink, k * pulse));
-            c.drawText(I18n.t("Tap to start"), W / 2f, H - 64 * d, text);
+            c.drawText(I18n.t("Tap to start"), W / 2f, ArcadeCurtain.footY(W, H, d, bottomInset), text);
         }
 
         static final float MERGE_MS = 980, DROP_MS = 640;
         private boolean landed, firstFrame;
         private void drawFirstDrop(Canvas c, float t) {
-            float l = getWidth() / 2f - baseW / 2f, y = baseY - bh, fall = 400;
+            float l = colX - baseW / 2f, y = baseY - bh, fall = 400;
             if (t < 30) landed = false;
             float w = baseW, h = bh - 3 * d, bottom = y + bh - 1.5f * d; int colour = blockColour(0);
             if (t < fall) {
@@ -1473,7 +1575,7 @@ final class PixelStack {
                 float k = Math.min(1f, (t - fall) / (DROP_MS - fall)), sq = (float) Math.sin(Math.PI * Math.min(1f, k * 1.6f)) * (1 - k);
                 w *= 1 + .06f * sq; h *= 1 - .3f * sq; colour = mix(colour, 0xFFFFFFFF, .5f * (1 - ease(k)));
             }
-            block(c, getWidth() / 2f - w / 2, bottom - h, getWidth() / 2f + w / 2, bottom, colour, 1f);
+            block(c, colX - w / 2, bottom - h, colX + w / 2, bottom, colour, 1f);
             if (!landed && t >= fall) {
                 landed = true;
                 PixelStackSound.play(PixelStackSound.THUD, .75f, 1f);
@@ -1481,13 +1583,13 @@ final class PixelStack {
                 for (int i = 0; i < 18; i++) {
                     Bit p = new Bit(); float s = (3 + rnd.nextFloat() * 4) * d, x = l + rnd.nextFloat() * baseW;
                     p.l = x - s / 2; p.r = x + s / 2; p.t = baseY - s; p.b = baseY; p.square = true;
-                    p.vx = (x - getWidth() / 2f) * 2.2f + (rnd.nextFloat() - .5f) * 120 * d; p.vy = -(120 + rnd.nextFloat() * 220) * d;
+                    p.vx = (x - colX) * 2.2f + (rnd.nextFloat() - .5f) * 120 * d; p.vy = -(120 + rnd.nextFloat() * 220) * d;
                     p.vr = (rnd.nextFloat() - .5f) * 720; p.life = 1f; p.colour = rnd.nextBoolean() ? LIGHT : BLUE; bits.add(p);
                 }
             }
         }
         private void drawMerge(Canvas c, float t) {
-            float l = getWidth() / 2f - baseW / 2f, q = baseW / 4f, y = baseY - bh;
+            float l = colX - baseW / 2f, q = baseW / 4f, y = baseY - bh;
             if (t < 30) landed = false;
             for (int i = 0; i < 4; i++) {
                 RectF s0 = bigAt[i];
@@ -1500,13 +1602,13 @@ final class PixelStack {
                     w = size * (1 + .25f * k); h = size * (1 - .3f * k); cy = cy0 + (size - h) / 2;
                 } else if (tt < 460) {
                     float k = ease((tt - 140) / 320f);
-                    cy = cy0 - 150 * d * k; cx = cx0 + (cx0 - getWidth() / 2f) * .5f * k;
+                    cy = cy0 - 150 * d * k; cx = cx0 + (cx0 - colX) * .5f * k;
                     turn = (i % 2 == 0 ? 1 : -1) * 360 * k * (i == 3 ? 2 : 1);
                     colour = mix(colour, 0xFFFFFFFF, (float) Math.sin(Math.PI * k) * .7f);
                     w = h = size * (1 - .15f * (float) Math.sin(Math.PI * k));
                 } else if (tt < 760) {
                     float k = easeIn((tt - 460) / 300f);
-                    float sx0 = cx0 + (cx0 - getWidth() / 2f) * .5f, sy0 = cy0 - 150 * d;
+                    float sx0 = cx0 + (cx0 - colX) * .5f, sy0 = cy0 - 150 * d;
                     float ex = (tl + tr) / 2f, ey = y + bh / 2f;
                     cx = sx0 + (ex - sx0) * k; cy = sy0 + (ey - sy0) * k;
                     w = size + (q - size) * k; h = (size + (bh - 3 * d - size) * k) * (1 + .3f * (float) Math.sin(Math.PI * k));
@@ -1528,7 +1630,7 @@ final class PixelStack {
                 for (int i = 0; i < 18; i++) {
                     Bit p = new Bit(); float s = (3 + rnd.nextFloat() * 4) * d, x = l + rnd.nextFloat() * baseW;
                     p.l = x - s / 2; p.r = x + s / 2; p.t = baseY - s; p.b = baseY; p.square = true;
-                    p.vx = (x - getWidth() / 2f) * 2.2f + (rnd.nextFloat() - .5f) * 120 * d; p.vy = -(120 + rnd.nextFloat() * 220) * d;
+                    p.vx = (x - colX) * 2.2f + (rnd.nextFloat() - .5f) * 120 * d; p.vy = -(120 + rnd.nextFloat() * 220) * d;
                     p.vr = (rnd.nextFloat() - .5f) * 720; p.life = 1f; p.colour = rnd.nextBoolean() ? LIGHT : BLUE; bits.add(p);
                 }
             }
@@ -1557,7 +1659,7 @@ final class PixelStack {
                 float sy = baseY + (p.t - baseY) * zoom + cam;
                 if (sy > getHeight() + 200 * d || p.life <= 0) { bits.remove(i); continue; }
                 int save = c.save();
-                c.translate(0, cam); c.scale(zoom, zoom, getWidth() / 2f, baseY);
+                c.translate(0, cam); c.scale(zoom, zoom, colX, baseY);
                 c.rotate(p.rot, (p.l + p.r) / 2f, (p.t + p.b) / 2f);
                 block(c, p.l, p.t, p.r, p.b, p.colour, Math.min(1f, p.life * 1.5f));
                 c.restoreToCount(save);

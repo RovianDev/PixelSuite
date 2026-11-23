@@ -73,7 +73,7 @@ final class SuperDark {
                         int c = (Integer) p.args[0];
                         if ((c >>> 24) != 0xff || (c & 0xffffff) == (SuperDarkPalette.CARD & 0xffffff) || !darkGrey(c)) return;
                         p.args[0] = SuperDarkPalette.CARD;
-                                            } catch (Throwable ignored) { }
+                    } catch (Throwable ignored) { }
                 }
             });
         } catch (Throwable t) { }

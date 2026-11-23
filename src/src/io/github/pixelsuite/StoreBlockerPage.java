@@ -23,6 +23,9 @@ final class StoreBlockerPage {
     private final int text,secondary,accent,onAccent;
     private final Handler main=new Handler(Looper.getMainLooper());
     private final Set<String> core=new HashSet<String>(Arrays.asList(StoreBlocker.CORE));
+
+    private final Map<String,String> kept=new HashMap<String,String>();
+    private boolean locked(String pkg){return (!unlock&&core.contains(pkg))||kept.containsKey(pkg);}
     private final Set<String> selected=new TreeSet<String>();
     private final Set<String> installedPackages=new HashSet<String>();
     private final Map<String,StoreUpdates.Available> updates=new HashMap<String,StoreUpdates.Available>();
@@ -98,6 +101,7 @@ final class StoreBlockerPage {
                 List<String> values=Root.run("settings get secure "+StoreBlocker.KEY+"; settings get secure "+StoreBlocker.UNLOCK_KEY+"; settings get secure pixelsuite_store_scope_defaults_cleaned");
                 if(values==null||values.size()<3)throw new IllegalStateException("Root unavailable");
                 final boolean unlocked="1".equals(values.get(1));
+                final Map<String,String> keptNow=StoreBlocker.featureApps(activity.getContentResolver());
                 final boolean cleanOldDefaults=!"1".equals(values.get(2));
                 final Set<String> original="null".equals(values.get(0))?new TreeSet<String>(core):MiscOptions.parse(values.get(0));
                 if(!unlocked)original.addAll(core);
@@ -106,7 +110,7 @@ final class StoreBlockerPage {
                 for(ResolveInfo r:pm.queryIntentActivities(new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER),0))if(r.activityInfo!=null)launchable.add(r.activityInfo.packageName);
                 for(ApplicationInfo app:pm.getInstalledApplications(0)){
                     installed.add(app.packageName);
-                    if(core.contains(app.packageName)||launchable.contains(app.packageName)){
+                    if(core.contains(app.packageName)||keptNow.containsKey(app.packageName)||launchable.contains(app.packageName)){
                         String name;try{name=app.loadLabel(pm).toString();}catch(Exception unavailable){name=app.packageName;}PackageInfo pkg;try{pkg=pm.getPackageInfo(app.packageName,0);}catch(PackageManager.NameNotFoundException removedDuringLoad){continue;}long code=pkg.versionCode;
                         if(Build.VERSION.SDK_INT>=28)try{code=((Number)PackageInfo.class.getMethod("getLongVersionCode").invoke(pkg)).longValue();}catch(Exception ignored){}
                         entries.add(new Entry(app,name,pkg.versionName==null?"Unknown":pkg.versionName,code));
@@ -123,11 +127,12 @@ final class StoreBlockerPage {
                     if(Root.run("settings put secure "+StoreBlocker.KEY+" '"+MiscOptions.join(original)+"'")==null)throw new IllegalStateException("Root unavailable");
                 }
                 if(cleanOldDefaults&&Root.run("settings put secure pixelsuite_store_scope_defaults_cleaned 1")==null)throw new IllegalStateException("Root unavailable");
-                Set<String> heldNow=new HashSet<String>(original);if(!unlocked)heldNow.addAll(core);heldNow.retainAll(installed);
+                Set<String> heldNow=new HashSet<String>(original);if(!unlocked)heldNow.addAll(core);heldNow.addAll(keptNow.keySet());heldNow.retainAll(installed);
                 final Map<String,StoreUpdates.Available> found=StoreUpdates.read(activity,heldNow);
                 final Map<String,List<StoreBackup.Saved>> savedApks=StoreBackup.all();
                 main.post(new Runnable(){public void run(){
                     if(!live())return;loading=false;
+                    kept.clear();kept.putAll(keptNow);
                     if(!loaded){loaded=true;unlock=unlocked;saved=new TreeSet<String>(original);selected.addAll(original);}
                     else if(panel==null&&!saving){unlock=unlocked;saved=new TreeSet<String>(original);selected.clear();selected.addAll(original);}
                     selected.removeAll(removed);saved.removeAll(removed);
@@ -207,7 +212,7 @@ final class StoreBlockerPage {
         wasHeld.addAll(saved);if(!unlock)wasHeld.addAll(core);
         ArrayList<Entry> out=new ArrayList<Entry>();
         for(Entry e:all){String p=e.info.packageName;if(!installedPackages.contains(p)||backedUp.contains(p)||savedNow(e))continue;
-            boolean pending=selected.contains(p)!=saved.contains(p),unheld=wasHeld.contains(p)&&!selected.contains(p);
+            boolean pending=selected.contains(p)!=saved.contains(p),unheld=wasHeld.contains(p)&&!selected.contains(p)&&!kept.containsKey(p);
             if(pending||unheld)out.add(e);}
         return out;
     }
@@ -250,9 +255,9 @@ final class StoreBlockerPage {
             }},Math.max(0,650-(SystemClock.uptimeMillis()-start)));
         }});
     }
-    private boolean inSelectedFolder(String pkg){return core.contains(pkg);}
-    private int selectedFolderCount(){int count=0;for(String pkg:core)if(installedPackages.contains(pkg))count++;return count;}
-    private int protectedCount(){int count=0;for(String pkg:selected)if(installedPackages.contains(pkg))count++;return count;}
+    private boolean inSelectedFolder(String pkg){return core.contains(pkg)||kept.containsKey(pkg);}
+    private int selectedFolderCount(){Set<String> in=new HashSet<String>(core);in.addAll(kept.keySet());int count=0;for(String pkg:in)if(installedPackages.contains(pkg))count++;return count;}
+    private int protectedCount(){Set<String> on=new HashSet<String>(selected);on.addAll(kept.keySet());int count=0;for(String pkg:on)if(installedPackages.contains(pkg))count++;return count;}
     private void createFolder(){
         folder=new LinearLayout(activity);folder.setOrientation(1);folder.setBackground(new ThemeGlass(activity,22,ThemeGlass.RAISED));
         LinearLayout header=new LinearLayout(activity);header.setGravity(Gravity.CENTER_VERTICAL);header.setPadding(dp(10),dp(10),dp(4),dp(10));
@@ -313,7 +318,6 @@ final class StoreBlockerPage {
             paint.setColor(AppSurfaces.active(activity)?0xff191919:FrostedSurface.dark(activity)?0xff34343b:0xffd6d6e0);canvas.drawCircle(cx,cy,r,paint);
             float[][] places={{.28f,.28f},{.72f,.28f},{.28f,.72f},{.72f,.72f}};
             for(int i=0;i<Math.min(4,blockedShown.size());i++){Entry entry=blockedShown.get(i);Drawable icon=icon(entry);if(icon==null)continue;float size=w*.41f,x=w*places[i][0],y=h*places[i][1];int save=canvas.save();clip.reset();clip.addCircle(x,y,size*.5f,android.graphics.Path.Direction.CW);canvas.clipPath(clip);android.graphics.Rect bounds=icon.getBounds();int oldLeft=bounds.left,oldTop=bounds.top,oldRight=bounds.right,oldBottom=bounds.bottom;try{icon.setBounds(Math.round(x-size/2),Math.round(y-size/2),Math.round(x+size/2),Math.round(y+size/2));icon.draw(canvas);}finally{icon.setBounds(oldLeft,oldTop,oldRight,oldBottom);canvas.restoreToCount(save);}}
-
         }
     }
     private Drawable icon(Entry e){Drawable value=icons.get(e.info.packageName);if(value==null)try{value=e.info.loadIcon(activity.getPackageManager());icons.put(e.info.packageName,value);}catch(Exception ignored){}return value;}
@@ -338,21 +342,22 @@ final class StoreBlockerPage {
                 h.restore=new ImageView(activity);h.restore.setScaleType(ImageView.ScaleType.CENTER);int rid=activity.getResources().getIdentifier("ic_ps_restore","drawable",activity.getPackageName());if(rid!=0)h.restore.setImageResource(rid);h.restore.setBackground(BackupRestorePage.roundRipple(activity,4,0)); h.restore.setClickable(true);h.restore.setFocusable(true);h.restore.setVisibility(View.GONE);row.addView(h.restore,new LinearLayout.LayoutParams(dp(40),dp(48)));h.info=label("!",17,accent);h.info.setGravity(Gravity.CENTER);h.info.setTypeface(android.graphics.Typeface.DEFAULT,android.graphics.Typeface.BOLD);h.info.setBackground(new ScopePanel.SoftSurface(activity,true,accent));h.info.setLayerType(View.LAYER_TYPE_SOFTWARE,null);h.info.setClickable(true);h.info.setFocusable(true);row.addView(h.info,new LinearLayout.LayoutParams(dp(44),dp(48)));h.check=new CheckBox(activity);h.check.setClickable(false);h.check.setFocusable(false);h.check.setButtonTintList(ColorStateList.valueOf(accent));row.addView(h.check);row.setTag(h);
             }else{row=(LinearLayout)reuse;h=(Holder)row.getTag();}
             row.animate().cancel();row.setTranslationY(0);
-            h.packageName=e.info.packageName;boolean guarded=!unlock&&core.contains(e.info.packageName);boolean enabled=!saving&&!guarded;
-            h.name.setText(I18n.cs(e.name));h.pkg.setText(I18n.cs(versionLine(e))); h.check.setChecked(selected.contains(e.info.packageName));h.check.jumpDrawablesToCurrentState(); h.check.setEnabled(!saving);h.check.setAlpha(guarded?.55f:1f);
+            h.packageName=e.info.packageName;boolean guarded=locked(e.info.packageName);boolean enabled=!saving&&!guarded;
+            h.name.setText(I18n.cs(e.name));h.pkg.setText(I18n.cs(versionLine(e))); h.check.setChecked(selected.contains(e.info.packageName)||kept.containsKey(e.info.packageName));h.check.jumpDrawablesToCurrentState(); h.check.setEnabled(!saving);h.check.setAlpha(guarded?.55f:1f);
             Drawable icon=icons.get(e.info.packageName);if(icon==null)try{icon=e.info.loadIcon(activity.getPackageManager());icons.put(e.info.packageName,icon);}catch(Exception ignored){}if(icon!=null&&icon.getConstantState()!=null)icon=icon.getConstantState().newDrawable(activity.getResources()).mutate();h.icon.setImageDrawable(icon);
             row.setEnabled(!saving);row.setAlpha(1);h.name.setAlpha(enabled?1f:.55f);h.pkg.setAlpha(enabled?1f:.65f);h.icon.setAlpha(enabled?1f:.55f);h.info.setEnabled(!saving);
             bindRestore(e,h);
-            h.info.setContentDescription(I18n.cs((saved.contains(e.info.packageName)||(!unlock&&core.contains(e.info.packageName))?"Update, back up or restore ":"Installed version of ")+e.name));h.info.setOnClickListener(v->actions(e)); row.setContentDescription(I18n.cs(e.name+", "+e.info.packageName+(h.check.isChecked()?", updates blocked":"")+(guarded?", core app locked. Tap to learn why":"")));
+            h.info.setContentDescription(I18n.cs((saved.contains(e.info.packageName)||locked(e.info.packageName)?"Update, back up or restore ":"Installed version of ")+e.name));h.info.setOnClickListener(v->actions(e)); row.setContentDescription(I18n.cs(e.name+", "+e.info.packageName+(h.check.isChecked()?", updates blocked":"")+(guarded?", core app locked. Tap to learn why":"")));
             final Holder holder=h;h.check.setClickable(true);h.check.setOnClickListener(v->row.performClick());row.setOnClickListener(new View.OnClickListener(){public void onClick(View v){
                 hideKeyboard();
                 if(saving)return;
+                if(kept.containsKey(e.info.packageName)){holder.check.setChecked(true);showCoreWarning("Kept from updates while "+kept.get(e.info.packageName)+" is on, so an update can't break it. Turn that off to let it update.");return;}
                 if(!unlock&&core.contains(e.info.packageName)){holder.check.setChecked(selected.contains(e.info.packageName));showCoreWarning("Turn on Unlock OEM apps to uncheck this app. Updating it may break Pixel Suite support.");return;}
                 if(core.contains(e.info.packageName)&&selected.contains(e.info.packageName))showCoreWarning("Updating this core app may break Pixel Suite support.");
                 if(selected.add(e.info.packageName))checkedOrder.put(e.info.packageName,++order);else{selected.remove(e.info.packageName);checkedOrder.remove(e.info.packageName);}refresh(true);
             }});return row;
     }
-    private StoreUpdates.Available newer(Entry e){StoreUpdates.Available a=updates.get(e.info.packageName);return a!=null&&a.code>e.code&&(saved.contains(e.info.packageName)||(!unlock&&core.contains(e.info.packageName)))?a:null;}
+    private StoreUpdates.Available newer(Entry e){StoreUpdates.Available a=updates.get(e.info.packageName);return a!=null&&a.code>e.code&&(saved.contains(e.info.packageName)||locked(e.info.packageName))?a:null;}
     private CharSequence versionLine(Entry e){
         String base=e.info.packageName+"  ·  "+e.version;StoreUpdates.Available a=newer(e);if(a==null)return base;
         String extra="  ("+(a.name!=null?a.name:I18n.t("Build {0}").equals("Build {0}")?"build "+a.code:I18n.t("Build "+a.code))+")";
@@ -375,7 +380,7 @@ final class StoreBlockerPage {
     }
     private void actions(final Entry e){
         final String pkg=e.info.packageName;
-        boolean held=saved.contains(pkg)||(!unlock&&core.contains(pkg));
+        boolean held=saved.contains(pkg)||locked(pkg);
         if(!held){if(versionHint!=null&&panel!=null)versionHint.show("**"+e.name+"**\nVersion "+e.version+"\nBuild "+e.code+"\n"+pkg+"\n\nTick it and apply to hold it back.",panel.getWindow().getDecorView());return;}
         io.execute(new Runnable(){public void run(){
             final List<StoreBackup.Saved> saved=StoreBackup.list(pkg);

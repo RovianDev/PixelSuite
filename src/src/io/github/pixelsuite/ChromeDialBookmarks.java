@@ -84,7 +84,7 @@ final class ChromeDialBookmarks {
                         @SuppressWarnings("unchecked") ArrayList<Object> list = (ArrayList<Object>) p.getResult();
                         if (target == null || !list.contains(target) || list.contains(ours)) return;
                         list.add(ours);
-                                            } catch (Throwable ignored) { }
+                    } catch (Throwable ignored) { }
                 }
             });
             if (mCount != null) Xp.hookMethod(mCount, new Xp.Callback() {
@@ -139,6 +139,7 @@ final class ChromeDialBookmarks {
 
     private static Object ours(Object model) {
         try {
+            if (!ChromePatron.ok(app())) return null;
             if (sOurs != null && raw(model, mItem, sOurs) != null) return sOurs;
             sOurs = null;
             Context c = app();

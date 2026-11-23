@@ -427,7 +427,7 @@ Refresh	更新
 Refreshing…	更新中…
 Sign in with Patreon	パトレオン でログイン
 Sign out	ログアウト
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Pixel Suite を支援すると、Chrome+、Gboard+、広告ブロッカー、VPN、ダークページ、通話録音、広告なしの Google フィードが利用できます。
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Pixel Suite を支援すると、ウィジェット フィード、Chrome+、Gboard+、広告ブロッカー、VPN、ダークページ、通話録音、広告なしの Google フィードが利用できます。
 A Quest for the\nKind-Hearted	心優しき者たちの\nクエスト
 Already a patron? Unlock	すでにパトロンですか？ ロック解除
 Checking Patreon membership…	パトレオン のメンバーシップを確認中…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	クエスト達成！
 Ready to check membership	メンバーシップを確認できます
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	Pixel Suite を支援してくださりありがとうございます。パトレオン 機能を利用できます。
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	パトロンは Chrome+ と Gboard+、広告ブロッカーと VPN、Chrome のダークページ、通話録音、広告なしの Google フィードを利用できます。支援はすべてアプリに還元されます：Android と Google アプリのアップデートへの対応、それによる不具合の修正、新機能の開発です。
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	パトロンは ウィジェット フィード、Chrome+ と Gboard+、広告ブロッカーと VPN、Chrome のダークページ、通話録音、広告なしの Google フィードを利用できます。支援はすべてアプリに還元されます：Android と Google アプリのアップデートへの対応、それによる不具合の修正、新機能の開発です。
 Welcome back!	おかえりなさい！
 ✨ Quest Complete!	✨ クエスト達成！
 📜 A Quest for the Kind-Hearted	📜 心優しき者たちのクエスト
@@ -953,7 +953,6 @@ Lock apps in recents	最近のアプリでアプリをロック
 Lock factory reset	出荷時設定へのリセットをロック
 Lock screen	ロック画面
 Lock-screen behavior	ロック画面の動作
-Lock-screen taps	ロック画面のタップ
 Locking recent apps	最近のアプリのロック
 Locks stay after a restart.	ロックは再起動後も維持されます。
 Made by RovianDev	開発：RovianDev
@@ -1005,7 +1004,6 @@ Protection	保護
 Pure black backgrounds and darker menus in dark theme.	ダークテーマで真っ黒な背景と、より暗いメニュー。
 Quick actions from your phone's buttons.	スマートフォンのボタンからクイック操作。
 Recent	最近
-Recent Apps	最近のアプリ
 Record and save calls	通話を録音して保存
 Record calls in the Phone app, in any country, without the announcement	電話アプリで、どの国でも、アナウンスなしで通話を録音
 Reduce screenshot delay	スクリーンショットの遅延を短縮
@@ -1077,7 +1075,7 @@ Take a screenshot	スクリーンショットを撮る
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Chrome の新しいタブページで「拡張機能」をタップして使います。タップで設定、長押しでツールバーに固定できます。
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	新しいタブページで「拡張機能」をタップして使います。長押しでツールバーに固定できます。
 Tap an app to see its saved versions.	アプリをタップすると保存したバージョンが表示されます。
-Tap to wake	タップでスリープ解除
+Tap or Double-tap to wake	タップまたはダブルタップでスリープ解除
 Text size	テキストサイズ
 That isn't a Pixel Suite backup	Pixel Suite のバックアップではありません
 The 3 newest versions of each app are kept.	各アプリの最新 3 バージョンが保持されます。
@@ -1089,7 +1087,6 @@ The toolbar	ツールバー
 Three-finger screenshot	3 本指スクリーンショット
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	ここに戻るには、ホーム画面を長押しして「Pixel Suite の設定」を選びます。root と LSPosed が必要です。
 To protect an app with your fingerprint or PIN, use Privacy & Security.	アプリを指紋や PIN で保護するには「プライバシーとセキュリティ」を使います。
-Toasts	トースト
 Toolbar	ツールバー
 Toolbar, keys, resize, auto-correction, clipboard	ツールバー、キー、サイズ変更、自動修正、クリップボード
 Tools for your Google apps.	Google アプリのためのツール。
@@ -1118,8 +1115,7 @@ Use custom app icons	カスタムのアプリアイコンを使用
 Use your own image for an app icon	好きな画像をアプリアイコンに使う
 Voice typing with checkmark	チェックマーク付き音声入力
 Wake gesture	スリープ解除の操作
-Wake the screen	画面をオンにする
-Wake your phone with a tap, with pocket protection.	タップでスマートフォンをスリープ解除。ポケット内での誤動作を防止します。
+Wake your phone with a tap or a double tap, with pocket protection.	タップまたはダブルタップでスマートフォンをスリープ解除。ポケット内での誤動作を防止します。
 Websites open dark, with no white flash. Super Dark uses pure black.	ウェブサイトが白く光らずダークで開きます。スーパーダーク は真っ黒を使います。
 What's new	新機能
 When you untick apps, Back up saves their current versions first.	アプリのチェックを外すと、「バックアップ」がまず現在のバージョンを保存します。
@@ -1689,3 +1685,129 @@ Hide At a Glance	スナップショットを非表示
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	ホーム画面上部のスナップショットを取り除きます。その行はアプリ、フォルダ、ウィジェットに使えます。
 Hold an app, folder or widget and drop it in the free row.	アプリ、フォルダ、ウィジェットを長押しして、空いた行にドロップします。
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 以前向けです。新しいバージョンでは、ホーム画面からスナップショットを削除できます。
+Code autofill	コードの自動入力
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	メッセージ、アプリ、メールのワンタイムコードがキーボードの上に表示されます。コードをタップすると入力されます。
+Fill codes automatically	コードを自動で入力
+Types the code for you when an empty box is waiting for one.	空の入力欄がコードを待っているとき、代わりに入力します。
+Autofill OTP	OTP の自動入力
+One-time codes, filled in for you.	ワンタイムコードを代わりに入力。
+Codes from your messages, right above the keyboard	メッセージのコードをキーボードのすぐ上に
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• メッセージ、アプリ、メールでコードが届くと、キーボードの上に表示されます。タップすると入力されます。\n\n• 「コードを自動で入力」がオンなら、コード欄が待っているときに自動で入力されます。
+Shows the code above your keyboard and fills it in.	キーボードの上にコードを表示して入力します。
+Reads one-time codes from notifications as they arrive.	届いた通知からすぐにワンタイムコードを読み取ります。
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	スクリーンショットなどのチップをツールバーに出しません。コード、自動入力、コピーしたテキストは引き続き表示されます。
+Widgets feed	ウィジェット フィード
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	最初のホーム画面で右にスワイプすると、ウィジェット、天気、日付が表示されます。Google フィードの代わりになります。
+Hide weather and date	天気と日付を非表示
+Your widgets start at the top of the feed.	ウィジェットがフィードの一番上から並びます。
+Tap + to add a widget. Tap a widget to open its app.	+ をタップしてウィジェットを追加します。ウィジェットをタップするとそのアプリが開きます。
+Hold a widget to move or remove widgets, then tap the check mark.	ウィジェットを長押しして移動や削除をし、チェックマークをタップします。
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	日付をタップするとカレンダー、天気をタップすると予報が開きます。左にスワイプすると戻ります。
+Add widget	ウィジェットを追加
+Feed settings	フィードの設定
+Background opacity	背景の不透明度
+Invisible	透明
+Solid	不透明
+How much of the feed's background shows. The status bar and home bar follow it.	フィードの背景をどのくらい表示するかを決めます。ステータスバーとホームバーもそれに合わせて変わります。
+Hold a widget to move, resize or remove widgets, then tap the check mark.	ウィジェットを長押しして移動、サイズ変更、削除をし、チェックマークをタップします。
+Ditch the Google feed. Build your own.	Google フィードはもう不要。自分だけのフィードを作ろう。
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	Google フィードを完全に取り除き、自由にカスタマイズできる自分だけのウィジェット ページに置き換えます。
+Home screen	ホーム画面
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	ロック画面からスワイプひとつで、あなたのウィジェットへ。どのアプリも、どのサイズも、ロックを解除せずに使えます。
+How much of the feed's background shows.	フィードの背景をどのくらい表示するかを決めます。
+Each feed keeps its own widgets.	フィードごとにウィジェットは別々です。
+No widgets available	利用できるウィジェットがありません
+Couldn't add that widget	そのウィジェットを追加できませんでした
+Open apps without unlocking	ロックを解除せずにアプリを開く
+Saved.	保存しました。
+Pixel Suite and Settings always ask to unlock.	Pixel Suite と設定は常にロック解除を求めます。
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	選んだアプリは、指紋認証なしでロック画面上に直接開くので、慎重に選んでください。アプリを閉じるとロック画面に戻ります。
+Apps that open without unlocking	ロックを解除せずに開くアプリ
+Choose which apps open from the lock screen	ロック画面から開くアプリを選択します
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	ロック画面では、「ロックを解除せずにアプリを開く」で選んだアプリ以外は、先にロック解除を求めます。右にスワイプすると戻ります。
+Your widgets, the weather and the date, one swipe from your home screen.	ウィジェット、天気、日付を、ホーム画面からひとスワイプで。
+Side	位置
+The feed comes in from this side of your home screen.	ホーム画面のこちら側からフィードが表示されます。
+The feed comes in from this side of the lock screen.	ロック画面のこちら側からフィードが表示されます。
+Keep the Google feed	Google フィードを残す
+Swipe the other way for the Google feed.	反対側にスワイプすると Google フィードが表示されます。
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	フィードごとに表示する側を選べます。ホーム画面では、Google フィードを反対側に残せます。
+Tap the date for your calendar and the weather for the forecast.	日付をタップするとカレンダー、天気をタップすると予報が開きます。
+To close a feed, swipe it back the way it came.	フィードを閉じるには、来た方向へスワイプして戻します。
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	ロック画面では、「ロックを解除せずにアプリを開く」で選んだアプリ以外は、先にロック解除を求めます。
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	自由にカスタマイズできる自分だけのウィジェット ページを、好きな側に。Google フィードは反対側に残すことも、なくすこともできます。
+Your own widgets, left or right.	自分だけのウィジェットを左右どちらにでも。
+Left	左
+Right	右
+Google feed	Google フィード
+A live preview of your feeds. It follows your settings.	フィードのライブ プレビュー。設定に合わせて変わります。
+USB on top	USB を一番上に
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	USB の通知を一番上に固定し、ロック解除中はファイル転送を選びます。USB デバッグはそのすぐ下に表示されます。
+Burns through crates and ghosts	箱もゴーストも焼き抜く
+Quick USB modes	USB モードをすばやく切り替え
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	スマートフォンのロックが解除されている間は、指紋や PIN なしでファイル転送、USB テザリングなどの USB モードに切り替えられます。
+More USB options	その他の USB オプション
+Block WhatsApp calls	WhatsApp の通話をブロック
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	迷惑ブロックがオンの間、WhatsApp の着信は届かず、発信者には「通話できません」と表示されます。メッセージや自分からの通話はいつもどおり使えます。
+WhatsApp call turned away by Do Not Annoy	迷惑ブロックが WhatsApp の着信を断りました
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	迷惑ブロックがオンで「WhatsApp の通話をブロック」もオンのとき、WhatsApp の着信を断ります。このスコープを追加したら WhatsApp を再起動してください。
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	何千ものファイルがあるフォルダを、どのアプリでもすばやく開きます。戻ったあとにフォルダが空になることもありません。このスコープを追加したら再起動してください。
+Demonic	悪魔
+Take the angelic power?	天使の力を受け取る？
+Take the demonic power?	悪魔の力を受け取る？
+Your angelic power fades	天使の力は薄れる
+Your demonic power fades	悪魔の力は薄れる
+Thunder	雷
+Inferno	業火
+Fit the thunder core?	雷のコアを積む？
+Fit the inferno core?	業火のコアを積む？
+Your thunder core burns out	雷のコアは焼き切れる
+Your inferno core burns out	業火のコアは焼き切れる
+Choose a core	コアを選ぼう
+Crushes bricks	レンガを押し潰す
+Crushes steel	鋼鉄を押し潰す
+Mortar King	迫撃砲キング
+Hive Mother	ハイヴマザー
+Steel Serpent	スチールサーペント
+Twin Fortress	ツインフォートレス
+Thunder Colossus	サンダーコロッサス
+Mine Layer	マインレイヤー
+Crimson Baron	クリムゾンバロン
+Shield Warden	シールドウォーデン
+Inferno Engine	インフェルノエンジン
+Night Spider	ナイトスパイダー
+Titan	タイタン
+Phantom Ship	ファントムシップ
+Siege Breaker	シージブレイカー
+Overlord	オーバーロード
+Dreadnought	ドレッドノート
+Void Eye	ヴォイドアイ
+Emperor	エンペラー
+Bomb Baron	ボムバロン
+Frost Wraith	フロストレイス
+Slime Lord	スライムロード
+Storm Eye	ストームアイ
+Iron Mech	アイアンメカ
+Shadow Twins	シャドウツインズ
+Magma Golem	マグマゴーレム
+Hex Witch	ヘックスウィッチ
+Hydra Slime	ヒドラスライム
+Grave King	グレイブキング
+Thunder Mech	サンダーメカ
+The Watcher	ウォッチャー
+Crystal Golem	クリスタルゴーレム
+Banshee	バンシー
+Toxic Slime	トキシックスライム
+Demon Twins	デーモンツインズ
+Glitch Emperor	グリッチエンペラー
+What each extension does	各拡張機能でできること
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	{0} がオンの間は更新されません（更新で動かなくなるのを防ぐため）。更新するにはオフにしてください。
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	アプリの中で動くオプション（「WhatsApp の通話をブロック」など）がオンの間、そのアプリは更新されません。ここではロック表示になります。
+Its data wasn't found	データが見つかりませんでした
+Its saved data is incomplete	保存されたデータが不完全です
+The app isn't installed	アプリがインストールされていません
+Couldn't make the backup folder	バックアップフォルダを作成できませんでした
+Couldn't put back {0}	{0} を戻せませんでした
+Couldn't save {0}	{0} を保存できませんでした
+It didn't install	インストールできませんでした
+Root isn't available	root が使えません

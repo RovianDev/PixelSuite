@@ -333,7 +333,8 @@ final class GboardClipAll {
     private static void ask(final View anchor) {
         android.app.Dialog old = sDialog.get();
         if (old != null && old.isShowing()) return;
-        GboardPlus.confirm(anchor, "Clear the clipboard?", "Every clip is deleted except pinned ones.", "Clear", new Runnable() { public void run() { clear(anchor.getContext().getApplicationContext()); } }, sDialog);
+        android.app.Dialog d = GboardPlus.confirm(anchor, "Clear the clipboard?", "Every clip is deleted except pinned ones.", "Clear", new Runnable() { public void run() { clear(anchor.getContext().getApplicationContext()); } }, sDialog);
+        if (d != null) sDialog = new WeakReference<android.app.Dialog>(d);
     }
 
     private static void clear(final Context c) {

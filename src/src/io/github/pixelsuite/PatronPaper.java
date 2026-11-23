@@ -32,7 +32,7 @@ final class PatronPaper {
         LinearLayout paragraphs=new LinearLayout(activity);paragraphs.setOrientation(1);paper.paragraphs=paragraphs;
         String[] copy=state==2?new String[]{"Thank you for supporting Pixel Suite. Your Patreon features are ready."}:state==1?new String[]{"Joined? Tap Unlock to confirm your paid Patreon membership."}:new String[]{
             "Pixel Suite is built by one person, in spare hours, out of love for Pixel phones.",
-            "Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.",
+            "Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.",
             "Pixel Suite has no ads or trackers. Account and payment details are used only to verify your unlock.",
             "Join on Patreon to unlock the Patreon features, and thank you for keeping the project alive. 💙"};
         for(String paragraph:copy){TextView body=text(activity,paragraph,15,muted,false);body.setLineSpacing(0,1.3f);body.setGravity(state==0?Gravity.START:Gravity.CENTER);paragraphs.addView(body,new LinearLayout.LayoutParams(-1,-2));}

@@ -24,20 +24,21 @@ final class NavStrip {
 
     private static volatile boolean sOn;
     private static volatile int sStripPx;
-    private static int sNavType = 2, sTappableType = 64;
+    private static int sNavType = 2, sTappableType = 64, sImeType = 8;
     private static final Map<Object, Boolean> sDisplays = Collections.synchronizedMap(new WeakHashMap<Object, Boolean>());
     private static Handler sWorker;
     private static boolean sBooted;
 
     private static Field fAttrs, fActivity, fDisplay;
     private static Constructor<?> cState, cSource;
-    private static Method mDisplayFrame, mSourceSize, mSourceAt, mAddSource, mGetType, mGetId, mGetFrame, mSetFrame, mVisibleFrame, mSetVisibleFrame;
+    private static Method mDisplayFrame, mSourceSize, mSourceAt, mAddSource, mGetType, mGetId, mGetFrame, mSetFrame, mVisibleFrame, mSetVisibleFrame, mIsVisible;
 
     static void installSystem(ClassLoader cl) {
         try {
             Class<?> t = Class.forName("android.view.WindowInsets$Type");
             sNavType = (Integer) t.getMethod("navigationBars").invoke(null);
             sTappableType = (Integer) t.getMethod("tappableElement").invoke(null);
+            sImeType = (Integer) t.getMethod("ime").invoke(null);
         } catch (Throwable ignored) { }
         try {
             Class<?> state = Class.forName("android.view.InsetsState"), source = Class.forName("android.view.InsetsSource");
@@ -52,6 +53,7 @@ final class NavStrip {
             mGetFrame = source.getMethod("getFrame");
             mSetFrame = source.getMethod("setFrame", Rect.class);
             try { mVisibleFrame = source.getMethod("getVisibleFrame"); mSetVisibleFrame = source.getMethod("setVisibleFrame", Rect.class); } catch (Throwable ignored) { }
+            try { mIsVisible = source.getMethod("isVisible"); } catch (Throwable ignored) { }
         } catch (Throwable t) { return; }
 
         Class<?> policy = Xp.findClass("com.android.server.wm.InsetsPolicy", cl);
@@ -153,14 +155,18 @@ final class NavStrip {
         Rect display = (Rect) mDisplayFrame.invoke(state);
         if (strip <= 0 || display == null || display.isEmpty()) return false;
         int n = (Integer) mSourceSize.invoke(state);
-        Object nav = null; Rect navFrame = null;
+        Object nav = null, emptied = null; Rect navFrame = null;
         for (int i = 0; i < n; i++) {
             Object s = mSourceAt.invoke(state, i);
-            if ((Integer) mGetType.invoke(s) != sNavType) continue;
+            int type = (Integer) mGetType.invoke(s);
+            if (type == sImeType && keyboardUp(s, display, strip)) return false;
+            if (type != sNavType || nav != null) continue;
             Rect f = (Rect) mGetFrame.invoke(s);
-            if (f == null || f.isEmpty() || f.bottom < display.bottom || f.width() < display.width() * 9 / 10) continue;
-            nav = s; navFrame = f; break;
+            if (f == null || f.isEmpty()) { if (emptied == null) emptied = s; continue; }
+            if (f.bottom < display.bottom || f.width() < display.width() * 9 / 10) continue;
+            nav = s; navFrame = f;
         }
+        if (nav == null && emptied != null) { nav = emptied; navFrame = new Rect(display.left, display.bottom, display.right, display.bottom); }
         if (nav == null || navFrame.height() >= strip) return false;
         int owner = ((Integer) mGetId.invoke(nav)) >> 16;
         Rect wide = new Rect(navFrame.left, navFrame.bottom - strip, navFrame.right, navFrame.bottom);
@@ -172,6 +178,14 @@ final class NavStrip {
         put(state, nav, wide);
         for (Object s : tappable) put(state, s, wide);
         return true;
+    }
+
+    private static boolean keyboardUp(Object ime, Rect display, int strip) {
+        try {
+            if (mIsVisible == null || !Boolean.TRUE.equals(mIsVisible.invoke(ime))) return false;
+            Rect f = (Rect) mGetFrame.invoke(ime);
+            return f != null && !f.isEmpty() && f.bottom >= display.bottom && f.height() > strip;
+        } catch (Throwable t) { return false; }
     }
 
     private static void put(Object state, Object source, Rect frame) throws Exception {

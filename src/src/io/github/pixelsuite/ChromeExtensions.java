@@ -193,11 +193,13 @@ final class ChromeExtensions {
             press = 1f; tap = -1f;
         }
         void refresh() {
-            boolean on = ID.equals(ChromeShield.pinnedId(getContext()));
-            if (!on) { if (getVisibility() != GONE) setVisibility(GONE); return; }
-            if (getVisibility() != VISIBLE) setVisibility(VISIBLE);
+            boolean on = ID.equals(ChromeShield.pinnedId(getContext())) && ChromePatron.ok(getContext());
+            if (!on) { if (getVisibility() != GONE) { setVisibility(GONE); ChromeShield.toolbarChanged(); } return; }
+            if (getVisibility() != VISIBLE) { setVisibility(VISIBLE); drawnSince = false; ChromeShield.toolbarChanged(); }
             invalidate();
         }
+        @Override protected void onSizeChanged(int w, int h, int ow, int oh) { super.onSizeChanged(w, h, ow, oh); drawnSince = false; ChromeShield.toolbarChanged(); }
+        @Override protected void onAttachedToWindow() { super.onAttachedToWindow(); drawnSince = false; ChromeShield.toolbarChanged(); }
         private int iconColor() {
             android.widget.ImageView src = tint.get();
             if (src == null || !src.isAttachedToWindow()) {
@@ -209,7 +211,9 @@ final class ChromeExtensions {
             if (src != null && src.getImageTintList() != null) return src.getImageTintList().getColorForState(src.getDrawableState(), src.getImageTintList().getDefaultColor());
             return night(getContext()) ? 0xFFE3E3E3 : 0xFF444746;
         }
+        private boolean drawnSince;
         @Override protected void onDraw(Canvas c) {
+            if (!drawnSince) { drawnSince = true; ChromeShield.toolbarChanged(); }
             float d = getResources().getDisplayMetrics().density, cx = getWidth() / 2f, cy = getHeight() / 2f, s = 11 * d;
             int save = c.save();
             try {

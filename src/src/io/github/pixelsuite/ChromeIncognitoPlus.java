@@ -121,7 +121,7 @@ final class ChromeIncognitoPlus {
             rel = side;
         }
 
-        float pillGap() { return 8 * getResources().getDisplayMetrics().density; }
+        float pillGap() { return 14 * getResources().getDisplayMetrics().density; }
 
         float offset(View p) { return rel >= 0f ? rel : p.getWidth() + gap(); }
 

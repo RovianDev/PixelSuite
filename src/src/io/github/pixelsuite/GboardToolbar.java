@@ -18,7 +18,7 @@ final class GboardToolbar {
                     try {
                         if (p.args.length == 0 || !PROP.equals(p.args[0]) || !on()) return;
                         p.setResult(String.valueOf(MAX));
-                                            } catch (Throwable ignored) { }
+                    } catch (Throwable ignored) { }
                 }
             });
         } catch (Throwable ignored) { }

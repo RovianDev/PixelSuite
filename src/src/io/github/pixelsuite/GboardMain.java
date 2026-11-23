@@ -1,6 +1,7 @@
 package io.github.pixelsuite;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.provider.Settings;
 
 import java.lang.reflect.Method;
@@ -13,6 +14,7 @@ final class GboardMain {
     abstract static class Kept extends Xp.Callback {}
 
     private static volatile int sState = -1;
+    private static volatile long sStateUntil;
     private static volatile Thread sReader;
     private static Method sApp;
 
@@ -23,13 +25,12 @@ final class GboardMain {
     }
 
     static boolean off() {
-        int s = sState;
-        if (s >= 0) return s != 1;
+        if (SystemClock.elapsedRealtime() < sStateUntil) return sState != 1;
         if (sReader == Thread.currentThread()) return false;
         Context c = app();
         if (c == null) return true;
         synchronized (GboardMain.class) {
-            if (sState >= 0) return sState != 1;
+            if (SystemClock.elapsedRealtime() < sStateUntil) return sState != 1;
             sReader = Thread.currentThread();
             try {
                 if (!SuperDarkApps.GBOARD.equals(c.getPackageName())) sState = 1;
@@ -37,6 +38,7 @@ final class GboardMain {
             } catch (Throwable t) {
                 sState = 0;
             } finally {
+                sStateUntil = SystemClock.elapsedRealtime() + 30000L;
                 sReader = null;
             }
             return sState != 1;

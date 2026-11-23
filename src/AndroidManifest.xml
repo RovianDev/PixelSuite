@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.roviandev.pixelsuite"
-    android:versionCode="568"
-    android:versionName="3.1.2">
+    android:versionCode="630"
+    android:versionName="3.2.0">
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
@@ -69,6 +69,7 @@
         <activity
             android:name="io.github.pixelsuite.SettingsActivity"
             android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
             android:label="@string/app_name"
             android:theme="@style/Theme.PixelSuite">
             <intent-filter>
@@ -99,6 +100,9 @@
         </activity>
         <receiver android:name="io.github.pixelsuite.DoNotAnnoyReceiver" android:exported="true" android:permission="android.permission.MODIFY_PHONE_STATE">
             <intent-filter><action android:name="io.github.pixelsuite.action.DNA_DEFLECTED" /><action android:name="io.github.pixelsuite.action.DNA_STATE" /></intent-filter>
+        </receiver>
+        <receiver android:name="io.github.pixelsuite.DoNotAnnoyWaReceiver" android:exported="true">
+            <intent-filter><action android:name="io.github.pixelsuite.action.DNA_WA" /></intent-filter>
         </receiver>
     <service android:name="io.github.pixelsuite.EsimRefreshJob" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false" />
 <activity android:name="io.github.pixelsuite.EsimLinkActivity" android:exported="true" android:excludeFromRecents="true" android:theme="@style/Theme.PixelSuite">

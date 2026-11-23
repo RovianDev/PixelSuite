@@ -74,6 +74,7 @@ final class LauncherFeatures {
         loader = cl;
         LauncherHideSearch.install(cl);
         Safe.run(() -> LauncherHideGlance.install(cl));
+        Safe.run(() -> WidgetPanel.install(cl));
         Safe.run(() -> {
             Xp.hookAllMethods(type("Launcher"), "onCreate", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
@@ -277,6 +278,7 @@ final class LauncherFeatures {
             }
         });
         LauncherSearchAliases.install();
+
         if(Xp.hookAllMethods(type("allapps.AllAppsStore"),"setApps",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){GoogleAliases.publish();}}).isEmpty()){
             final android.os.Handler main=new android.os.Handler(android.os.Looper.getMainLooper());
             final Runnable publish=new Runnable(){public void run(){try{GoogleAliases.publish();}catch(Throwable ignored){}}};
@@ -812,6 +814,7 @@ final class LauncherFeatures {
             }
         });
     }
+
     @SuppressWarnings("unchecked")
     static java.util.List<View> iconRows(ViewGroup popup) {
         Object kept = Xp.getAdditionalInstanceField(popup, "pixelsuite_icon_rows");
@@ -846,6 +849,7 @@ final class LauncherFeatures {
                     if (until == null) return;
                     if (android.os.SystemClock.uptimeMillis() > until) { openingUntil.remove(p.thisObject); return; }
                     float v = ((Float) p.args[0]).floatValue();
+
                     try { for (View h : iconRows((ViewGroup) p.thisObject)) h.setAlpha(v); } catch (Throwable ignored) { }
                     if (v < 1f) p.args[0] = Float.valueOf(1f);
                 }
@@ -866,6 +870,7 @@ final class LauncherFeatures {
                 try{if(Xp.getAdditionalInstanceField(p.thisObject,"pixelsuite_compact_menu")==null)PopupAbove.place((ViewGroup)p.thisObject);}catch(Throwable error){}
             }
         }});
+
         Xp.hookAllMethods(type("popup.ArrowPopup"),"orientAboutObject",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             try{PopupAbove.clearOtherMargin((ViewGroup)p.thisObject);}catch(Throwable ignored){}
         }});
@@ -887,6 +892,7 @@ final class LauncherFeatures {
                 final Object popup = p.thisObject; final Object info = get(popup, "itemInfo");
                 if (frosted() && !privateItem(info)) openingUntil.put(popup, android.os.SystemClock.uptimeMillis() + 450);
                 if (info != null && type("model.data.FolderInfo").isInstance(info) && !DrawerFolders.isFolder(info)) { try { addHomeFolderRows(popup, info); } catch (Throwable error) { } return; }
+
                 if (searchWidget(popup)) { try { searchRows(popup); } catch (Throwable error) { } return; }
                 if (identity(info) == null || privateItem(info)) return;
                 if (ComposeMenu.active && get(popup, "systemShortcutContainer") == null) return;
@@ -903,6 +909,7 @@ final class LauncherFeatures {
         Safe.run(() -> ComposeMenu.install());
         Safe.run(() -> NavButtons.install(loader));
     }
+
     static boolean searchWidget(Object popup) {
         try {
             View v = (View) get(popup, "originalView");
@@ -916,6 +923,7 @@ final class LauncherFeatures {
             return id != 0 && ((Number) get(tag, "id")).intValue() == id && ((Number) get(tag, "container")).intValue() == -101;
         } catch (Throwable t) { return false; }
     }
+
     static void searchRows(final Object popup) {
         ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
         if (rows == null || rows.findViewWithTag("pixelsuite_hide_search") != null) return;

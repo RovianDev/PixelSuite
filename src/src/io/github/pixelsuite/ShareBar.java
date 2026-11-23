@@ -35,6 +35,8 @@ final class ShareBar {
 
     boolean available() { return cfg != null; }
 
+    float colX = -1, colW = -1, homeY = -1;
+
     void attach(android.widget.FrameLayout root) {
         if (cfg == null) return;
         final android.widget.EditText f = new android.widget.EditText(a) {
@@ -153,14 +155,15 @@ final class ShareBar {
         boolean signed = PixelStackShare.signedIn(a), typing = !signed && field != null;
         boolean busy = state == 1 || state == 2;
         if (field != null && imeShown()) imeSeenAt = now;
-        float bw = Math.min(W - 40 * d, 336 * d), bh = 60 * d;
-        float home = H - BAR_UP * d + (1 - GameKit.spring((since - 900) / 600f)) * 40 * d;
+        float midX = colX >= 0 ? colX : W / 2f, span = colX >= 0 && colW > 0 ? colW - 24 * d : W - 40 * d;
+        float bw = Math.min(span, 336 * d), bh = 60 * d;
+        float home = (homeY >= 0 ? homeY : H - BAR_UP * d) + (1 - GameKit.spring((since - 900) / 600f)) * 40 * d;
         float fk = typing ? fieldNow(now, motion) : 0f;
         if (!typing) { fieldK = fieldFrom = 0f; fieldUp = false; }
         float cy = home + (upY + bh / 2 - home) * fk;
         float mid = (float) Math.sin(Math.PI * Math.max(0f, Math.min(1f, fieldUp ? fk : 1f - fk)));
         float swell = 1f + .04f * mid, tilt = (fieldUp ? -3f : 3f) * mid;
-        barAt.set(W / 2f - bw / 2, cy - bh / 2, W / 2f + bw / 2, cy + bh / 2);
+        barAt.set(midX - bw / 2, cy - bh / 2, midX + bw / 2, cy + bh / 2);
         float press = state == 1 ? 1 - .04f * (float) Math.sin(Math.min(1f, st / 160f) * Math.PI) : 1f;
         int save = c.save(); c.rotate(tilt, barAt.centerX(), barAt.centerY()); c.scale(swell * press, swell * press, barAt.centerX(), barAt.centerY());
         boolean focused = field != null && field.hasFocus();
@@ -236,11 +239,11 @@ final class ShareBar {
         } else hideField();
         if (state == 3 && st < 2600) {
             text.setTypeface(GameKit.MEDIUM); text.setTextSize(sp(13)); text.setColor(GameKit.alpha(soft, fade * 1.6f * (st < 2200 ? 1 : 1 - (st - 2200) / 400f)));
-            c.drawText(I18n.t("Couldn't share. Try again."), W / 2f, barAt.top - 12 * d, text);
+            c.drawText(I18n.t("Couldn't share. Try again."), midX, barAt.top - 12 * d, text);
         }
         if (state == 1 || (state == 2 && st < 900)) {
             float f = state == 1 ? Math.min(1f, st / 500f) : 1f;
-            float cw = W * .62f, ch = cw * 1.25f, cx = W / 2f, ccy = H * .48f;
+            float cw = Math.min(W * .62f, H * .74f / 1.25f), ch = cw * 1.25f, cx = midX, ccy = H * .48f;
             float fly = state == 2 ? GameKit.easeIn(st / 900f) : 0f;
             float sc = .6f + .4f * GameKit.spring(f) - .5f * fly;
             box.set(cx - cw / 2 * sc, ccy - ch / 2 * sc - fly * H * .7f, cx + cw / 2 * sc, ccy + ch / 2 * sc - fly * H * .7f);

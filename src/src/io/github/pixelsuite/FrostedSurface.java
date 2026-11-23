@@ -68,7 +68,6 @@ final class FrostedSurface {
     static GradientDrawable windowDrawable(Context c,float radius){GradientDrawable d=new GradientDrawable(GradientDrawable.Orientation.TOP_BOTTOM,colors(c));d.setCornerRadius(dp(c,radius));return d;}
     static int depthBlurRadius(Context c){Context launcher=launcherContext(c);int id=launcher.getResources().getIdentifier("max_depth_blur_radius_enhanced","dimen","com.google.android.apps.nexuslauncher");return id==0?dp(c,30):launcher.getResources().getDimensionPixelSize(id);}
     static int blurRadius(Context c){Context launcher=launcherContext(c);int id=launcher.getResources().getIdentifier("max_depth_blur_radius_enhanced","dimen","com.google.android.apps.nexuslauncher");return 3*(id==0?dp(c,30):launcher.getResources().getDimensionPixelSize(id));}
-    static void opaqueFallback(View view){opaqueDrawable(view.getBackground(),tone(view.getContext())|0xff000000);}
     static void opaqueDrawable(Drawable drawable,int color){if(drawable instanceof GradientDrawable)((GradientDrawable)drawable).setColor(color);else if(drawable instanceof android.graphics.drawable.LayerDrawable){android.graphics.drawable.LayerDrawable layers=(android.graphics.drawable.LayerDrawable)drawable;for(int i=0;i<layers.getNumberOfLayers();i++)if(layers.getId(i)!=android.R.id.mask)opaqueDrawable(layers.getDrawable(i),color);}}
     static AlertDialog show(AlertDialog.Builder builder){return show(builder.create());}
     static AlertDialog show(AlertDialog dialog){

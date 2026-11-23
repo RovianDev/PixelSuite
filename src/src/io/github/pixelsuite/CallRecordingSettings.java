@@ -76,7 +76,7 @@ final class CallRecordingSettings {
         presenter.show(new AlertDialog.Builder(activity).setTitle(I18n.cs("Recording quality"))
             .setSingleChoiceItems(I18n.all(new String[]{"Standard: phone-call quality, smallest files","HD: twice the detail, clearer voice (default)","Lossless: HD without compression, large WAV files"}),current,new android.content.DialogInterface.OnClickListener(){
                 public void onClick(android.content.DialogInterface dialog,int which){
-                    dialog.dismiss();final String selected=QUALITY_VALUES[which];
+                    dialog.dismiss();if(!PatronAccess.unlocked()){PatronPaper.open(activity,0,null);return;}final String selected=QUALITY_VALUES[which];
                     io.execute(new Runnable(){public void run(){
                         final boolean ok=Root.run("settings put secure "+CallRecording.QUALITY_KEY+" "+selected)!=null;
                         activity.runOnUiThread(new Runnable(){public void run(){
@@ -91,7 +91,7 @@ final class CallRecordingSettings {
         presenter.show(new AlertDialog.Builder(activity).setTitle(I18n.cs("Recording mode"))
             .setSingleChoiceItems(I18n.all(new String[]{"Automatic (default)","Manual"}),"manual".equals(mode)?1:0,new android.content.DialogInterface.OnClickListener(){
                 public void onClick(android.content.DialogInterface dialog,int which){
-                    dialog.dismiss();final String selected=which==1?"manual":"auto";
+                    dialog.dismiss();if(!PatronAccess.unlocked()){PatronPaper.open(activity,0,null);return;}final String selected=which==1?"manual":"auto";
                     io.execute(new Runnable(){public void run(){
                         final boolean ok=Root.run("settings put secure "+CallRecording.MODE_KEY+" "+selected)!=null;
                         activity.runOnUiThread(new Runnable(){public void run(){
@@ -106,6 +106,7 @@ final class CallRecordingSettings {
         presenter.show(new AlertDialog.Builder(activity).setTitle(I18n.cs("Recordings folder"))
             .setItems(I18n.all(new String[]{"Recordings/Calls (default)","Choose folder…"}),new android.content.DialogInterface.OnClickListener(){
                 public void onClick(android.content.DialogInterface dialog,int which){
+                    if(!PatronAccess.unlocked()){PatronPaper.open(activity,0,null);return;}
                     if(which==0)save(DEFAULT,null,false);
                     else try {
                         Intent pick=new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
@@ -117,6 +118,7 @@ final class CallRecordingSettings {
     }
     void result(int result,Intent data) {
         if(result!=Activity.RESULT_OK||data==null||data.getData()==null)return;
+        if(!PatronAccess.unlocked()){PatronPaper.open(activity,0,null);return;}
         Uri uri=data.getData();boolean held=hasPermission(uri);
         try {
             activity.getContentResolver().takePersistableUriPermission(uri,Intent.FLAG_GRANT_READ_URI_PERMISSION|Intent.FLAG_GRANT_WRITE_URI_PERMISSION);

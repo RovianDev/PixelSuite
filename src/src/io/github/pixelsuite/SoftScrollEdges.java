@@ -5,7 +5,7 @@ import android.view.*;
 import android.widget.*;
 import java.lang.reflect.Method;
 final class SoftScrollEdges extends FrameLayout {
- private final ScrollView scroll;private final float density;private final Paint tint=new Paint(),mask=new Paint(),layer=new Paint();
+ private final ScrollView scroll;private final float density;private final Paint mask=new Paint(),layer=new Paint();
  private final Paint topTint=new Paint(),bottomTint=new Paint(),topMask=new Paint(),bottomMask=new Paint();
  private final RectF top=new RectF(),bottom=new RectF();private final int background;private int palette=-1,status,nav;private boolean frosted;private NativeBlur blur;
  SoftScrollEdges(Activity a,ScrollView content,int color){super(a);scroll=content;background=color;density=getResources().getDisplayMetrics().density;setClipChildren(true);content.setClipToPadding(false);content.setVerticalFadingEdgeEnabled(false);addView(content,new LayoutParams(-1,-1));mask.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.DST_IN));getViewTreeObserver().addOnScrollChangedListener(()->invalidate());}

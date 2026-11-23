@@ -354,7 +354,7 @@ final class BackdropSurface extends GradientDrawable {
                     canvas.clipPath(path,Region.Op.DIFFERENCE);
                 }
             }
-        }catch(Throwable error){
+        }catch(Throwable ignored){
         }
         saves.push(save);
     }

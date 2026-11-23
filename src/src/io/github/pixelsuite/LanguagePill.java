@@ -144,7 +144,7 @@ final class LanguagePill extends FrameLayout implements Choreographer.FrameCallb
         float text = label.measureText(shown);
         float w = Math.min(dp(150), dp(11) + dp(13) + dp(6) + text + dp(6) + dp(7) + dp(11));
         int inset = scroll.getPaddingTop();
-        float right = getWidth() - dp(16), top = inset + dp(4) + offset;
+        float right = getWidth() - AppColumn.side(getContext(), getWidth()) - dp(16), top = inset + dp(4) + offset;
         pill.set(right - w, top, right, top + dp(26));
         hit.set(pill.left - dp(10), Math.max(inset, pill.top - dp(6)), pill.right + dp(8), pill.bottom + dp(12));
         float tw = Math.min(dp(304), getWidth() - dp(32));

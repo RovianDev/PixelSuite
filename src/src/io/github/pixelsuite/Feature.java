@@ -5,7 +5,6 @@ import android.os.SystemClock;
 import android.provider.Settings;
 
 final class Feature {
-
     static final String FLASHLIGHT = "powertorch_double_press";
     static final String VOLDOWN_CAMERA = "voldowncam_enabled";
     static final String THREE_FINGER = "threefingershot_enabled";
@@ -23,7 +22,7 @@ final class Feature {
 
     static int defaultFor(String key) {
         if(DarkPages.known(key))return DarkPages.defaultFor(key);
-        if(LauncherFeatures.HIDE_SEARCH.equals(key)||LauncherHideGlance.KEY.equals(key)||GboardMain.KEY.equals(key))return 0;
+        if(LauncherFeatures.HIDE_SEARCH.equals(key)||LauncherHideGlance.KEY.equals(key)||GboardMain.KEY.equals(key)||OtpFill.KEY.equals(key)||OtpFill.AUTO_KEY.equals(key)||UsbTop.KEY.equals(key)||WidgetPanel.KEY.equals(key)||WidgetPanel.HEADER_KEY.equals(key)||WidgetPanel.LOCK_KEY.equals(key)||WidgetPanel.LOCK_HEADER_KEY.equals(key)||WidgetPanel.LOCK_OPEN_KEY.equals(key))return 0;
         if(ChromeLayout.KEY.equals(key)||DOUBLE_TAP_SLEEP.equals(key)||TAP_CHECK.equals(key)||NavButtons.KEY.equals(key)||VOLDOWN_CAMERA.equals(key)||FLASHLIGHT.equals(key)||PrivacyLock.GRACE_KEY.equals(key)||AodPlus.KEY_CHARGING.equals(key)||AodPlus.KEY_AFTER.equals(key)||PinAuto.KEY.equals(key)||PowerHold.KEY_LOCKED_GEMINI.equals(key)||ClearAll.KEY_ONLY.equals(key)||MiscOptions.defaultOff(key))return 0;
         if(LauncherFeatures.LABEL_LEVEL.equals(key))return 2;
         if(SurfaceStyle.KEY.equals(key))return SurfaceStyle.FROSTED;

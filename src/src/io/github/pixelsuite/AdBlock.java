@@ -79,7 +79,7 @@ final class AdBlock {
         int v = extras == null ? -1 : extras.getInt("value", -1);
         if (!ChromeShield.KEY_ON.equals(key) || (v != 0 && v != 1)) throw new IllegalArgumentException("Invalid Ad Blocker setting");
         android.os.Bundle out = new android.os.Bundle();
-        out.putBoolean("ok", Root.run("settings put secure " + key + " " + v) != null);
+        out.putBoolean("ok", PatronGate.ok(c) && Root.run("settings put secure " + key + " " + v) != null);
         return out;
     }
 

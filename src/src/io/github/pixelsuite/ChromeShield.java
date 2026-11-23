@@ -83,18 +83,18 @@ final class ChromeShield {
     }
     static void setLevel(Context c, String host, int level) {
         if(host==null)return;
-        try{ChromeSiteSettings.change(c,"level",host,level,null);}catch(Throwable unavailable){}
+        try{ChromeSiteSettings.change(c,"level",host,level,null);}catch(Throwable ignored){}
     }
     static Set<String> hidden(Context c, String host) {
         return host==null?Collections.<String>emptySet():ChromeSiteSettings.snapshot(c).selectors(host);
     }
     private static void addHidden(Context c, String host, List<String> selectors) {
         if(host==null||selectors.isEmpty())return;
-        try{ChromeSiteSettings.change(c,"addHidden",host,0,selectors);}catch(Throwable unavailable){}
+        try{ChromeSiteSettings.change(c,"addHidden",host,0,selectors);}catch(Throwable ignored){}
     }
     private static void clearHidden(Context c, String host) {
         if(host==null)return;
-        try{ChromeSiteSettings.change(c,"clearHidden",host,0,null);}catch(Throwable unavailable){}
+        try{ChromeSiteSettings.change(c,"clearHidden",host,0,null);}catch(Throwable ignored){}
     }
 
     static void install(ClassLoader l) throws Throwable {
@@ -107,7 +107,125 @@ final class ChromeShield {
             }
         });
         try { ChromeSpeedDial.install(l); } catch (Throwable ignored) { }
+        try { watchSnapshot(l); } catch (Throwable ignored) { }
         sInstalled = true;
+    }
+
+    static volatile boolean sToolbarChanged = true;
+
+    static void toolbarChanged() { sToolbarChanged = true; }
+
+    private static void watchSnapshot(ClassLoader l) throws Throwable {
+        String[] names = { "org.chromium.chrome.browser.toolbar.top.ToolbarControlContainer$ToolbarViewResourceAdapter",
+                "org.chromium.chrome.browser.toolbar.ToolbarControlContainer$ToolbarViewResourceAdapter" };
+        Class<?> adapter = null;
+        for (String n : names) { try { adapter = l.loadClass(n); break; } catch (Throwable ignored) { } }
+        if (adapter == null) { findAdapterLater(l); return; }
+        hookAdapter(adapter);
+    }
+
+    private static void findAdapterLater(final ClassLoader l) {
+        new Thread("pixelsuite-toolbar-picture") { @Override public void run() {
+            try {
+                android.content.Context app = null;
+                for (int i = 0; i < 40 && app == null; i++) {
+                    app = (android.content.Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+                    if (app == null) Thread.sleep(250);
+                }
+                if (app == null) { return; }
+
+                String[] found = DexPeek.cachedMethodWithStringPrefix(app, "toolbar_capture", "Android.Toolbar.BitmapCapture");
+                if (found == null) found = DexPeek.cachedMethodWithStringPrefix(app, "toolbar_picture", "ToolbarViewResourceAdapter");
+                if (found == null) { return; }
+                Class<?> k = l.loadClass(found[0]);
+                hookAdapter(k);
+                drawOursInPicture(l, k, found[1]);
+            } catch (Throwable ignored) { }
+        } }.start();
+    }
+
+    private static java.lang.ref.WeakReference<android.graphics.Canvas> sCaptureCanvas = new java.lang.ref.WeakReference<android.graphics.Canvas>(null);
+    private static boolean sDrawLogged;
+
+    private static void drawOursInPicture(ClassLoader l, Class<?> adapter, String startName) throws Throwable {
+        for (java.lang.reflect.Method m : adapter.getDeclaredMethods()) {
+            Class<?>[] t = m.getParameterTypes();
+            if (!m.getName().equals(startName) || t.length != 2 || t[0] != android.graphics.Canvas.class || t[1] != android.graphics.Rect.class) continue;
+            Xp.hookMethod(m, new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) { sCaptureCanvas = new java.lang.ref.WeakReference<android.graphics.Canvas>((android.graphics.Canvas) p.args[0]); }
+            });
+        }
+        Class<?> phone = l.loadClass("org.chromium.chrome.browser.toolbar.top.ToolbarPhone");
+        Xp.hookAllMethods(phone, "dispatchDraw", new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                try {
+                    if (p.args.length != 1 || p.args[0] == null || p.args[0] != sCaptureCanvas.get()) return;
+                    android.graphics.Canvas c = (android.graphics.Canvas) p.args[0];
+                    ViewGroup bar = (ViewGroup) p.thisObject;
+                    int drawn = drawOurs(c, bar, bar);
+                    if (!sDrawLogged || drawn > 0) { sDrawLogged = true; }
+                } catch (Throwable ignored) { }
+            }
+        });
+    }
+
+    private static int drawOurs(android.graphics.Canvas c, ViewGroup bar, View v) {
+        if (v.getVisibility() != View.VISIBLE) return 0;
+        if (v != bar && v.getClass().getName().startsWith("io.github.pixelsuite.")) {
+            if (v.getWidth() <= 0 || v.getHeight() <= 0) return 0;
+            float x = 0, y = 0;
+            for (View k = v; k != null && k != bar; k = k.getParent() instanceof View ? (View) k.getParent() : null) { x += k.getLeft() + k.getTranslationX() - (k == v ? 0 : k.getScrollX()); y += k.getTop() + k.getTranslationY() - (k == v ? 0 : k.getScrollY()); }
+            int save = c.save();
+            try { c.translate(x, y); if (v.getAlpha() < 1f) c.saveLayerAlpha(0, 0, v.getWidth(), v.getHeight(), Math.round(v.getAlpha() * 255)); v.draw(c); } finally { c.restoreToCount(save); }
+            return 1;
+        }
+        int n = 0;
+        if (v instanceof ViewGroup) for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) n += drawOurs(c, bar, ((ViewGroup) v).getChildAt(i));
+        return n;
+    }
+
+    private static void hookAdapter(Class<?> adapter) {
+        if (!adapter.getName().startsWith("org.chromium") && adapter.getSuperclass() != null) {
+            java.util.ArrayList<String> asks = new java.util.ArrayList<String>();
+            for (java.lang.reflect.Method m : adapter.getSuperclass().getDeclaredMethods())
+                if (m.getParameterTypes().length == 0 && m.getReturnType() == boolean.class && !java.lang.reflect.Modifier.isStatic(m.getModifiers())) asks.add(m.getName());
+            if (asks.size() == 1) {
+                try {
+                    java.lang.reflect.Method own = adapter.getDeclaredMethod(asks.get(0));
+                    Xp.hookMethod(own, new Xp.Callback() {
+                        @Override protected void afterHookedMethod(Xp.Param p) {
+                            try {
+                                if (!sToolbarChanged || Boolean.TRUE.equals(p.getResult())) return;
+                                if (!ChromePatron.ok(app())) return;
+                                sToolbarChanged = false;
+                                p.setResult(Boolean.TRUE);
+                            } catch (Throwable ignored) { }
+                        }
+                    });
+                    return;
+                } catch (Throwable ignored) { }
+            }
+            return;
+        }
+        int hooked = 0;
+        for (Class<?> k = adapter; k != null && k != Object.class; k = k.getSuperclass()) {
+            for (java.lang.reflect.Method m : k.getDeclaredMethods()) {
+                if (m.getParameterTypes().length != 0 || m.getReturnType() != boolean.class || java.lang.reflect.Modifier.isStatic(m.getModifiers())) continue;
+                if (!m.getName().equals("isDirty") && k.getName().startsWith("org.chromium")) continue;
+                if (java.lang.reflect.Modifier.isAbstract(m.getModifiers())) continue;
+                hooked++;
+                Xp.hookMethod(m, new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) {
+                        try {
+                            if (!sToolbarChanged || Boolean.TRUE.equals(p.getResult())) return;
+                            sToolbarChanged = false;
+                            p.setResult(Boolean.TRUE);
+                        } catch (Throwable ignored) { }
+                    }
+                });
+            }
+            if (hooked > 0) break;
+        }
     }
 
     static void loaded(Context app, final Object wc, boolean on) {
@@ -177,11 +295,32 @@ final class ChromeShield {
         try { ChromeVpn.attach(row, at + 1, toolbar); } catch (Throwable ignored) { }
         try { ChromeExtensions.attach(row, at + 2, toolbar); } catch (Throwable ignored) { }
         try { ChromeDarkPages.attach(row, at + 3, toolbar); } catch (Throwable ignored) { }
+        toolbarChanged();
     }
 
     static Object current(View anchor) {
         Object wc = visible(anchor.getRootView());
         return wc != null ? wc : sLast.get();
+    }
+
+    static Object shown(View anchor) {
+        Object wc = visible(anchor.getRootView());
+        return wc != null ? wc : holding(anchor.getRootView());
+    }
+
+    private static Object holding(View v) {
+        if (v == null || v.getVisibility() != View.VISIBLE) return null;
+        Class<?> type = ChromeCosmetic.webContentsClass();
+        if (type == null) return null;
+        if (v.isShown() && v.getWidth() > 0 && v.getHeight() > 0) {
+            Field f = field(v.getClass(), type);
+            if (f != null) { try { Object wc = f.get(v); if (wc != null) return wc; } catch (Throwable ignored) { } }
+        }
+        if (v instanceof ViewGroup) {
+            ViewGroup g = (ViewGroup) v;
+            for (int i = g.getChildCount() - 1; i >= 0; i--) { Object wc = holding(g.getChildAt(i)); if (wc != null) return wc; }
+        }
+        return null;
     }
 
     private static Object visible(View v) {

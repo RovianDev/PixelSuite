@@ -831,11 +831,13 @@ final class ChromeFolders {
     }
 
     private static void openSite(ViewGroup grid, Site s, boolean newTab) {
+        if (!folderAllowed(grid.getContext())) return;
         try {
             Object group = groupOf(grid);
             Object sites = group == null ? null : sites(group);
             if (sites != null) {
                 ClassLoader l = grid.getClass().getClassLoader();
+                if (loadInTab(sites, l, s.url, newTab)) return;
                 Class<?> bridge = Class.forName("org.chromium.chrome.browser.suggestions.mostvisited.MostVisitedSitesBridge", false, l);
                 Class<?> gurlClass = Class.forName("org.chromium.url.GURL", false, l);
                 Method make = bridge.getDeclaredMethod("makeSiteSuggestion", String.class, gurlClass, int.class, int.class, int.class);
@@ -862,6 +864,29 @@ final class ChromeFolders {
             Context c = grid.getContext();
             c.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(s.url)).setPackage(c.getPackageName()).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } catch (Throwable ignored) { }
+    }
+
+    private static boolean loadInTab(Object sites, ClassLoader l, String url, boolean newTab) {
+        try {
+            Class<?> params = Class.forName("org.chromium.content_public.browser.LoadUrlParams", false, l);
+            Class<?> tab = Class.forName("org.chromium.chrome.browser.tab.Tab", false, l);
+            Constructor<?> make = params.getDeclaredConstructor(String.class, int.class);
+            make.setAccessible(true);
+            for (Field f : fields(sites.getClass())) {
+                Object d = f.get(sites);
+                if (d == null) continue;
+                for (Class<?> k = d.getClass(); k != null && k != Object.class; k = k.getSuperclass()) {
+                    for (Method m : k.getDeclaredMethods()) {
+                        Class<?>[] p = m.getParameterTypes();
+                        if (p.length != 2 || p[0] != int.class || p[1] != params || Modifier.isStatic(m.getModifiers()) || !tab.isAssignableFrom(m.getReturnType())) continue;
+                        m.setAccessible(true);
+                        m.invoke(d, newTab ? 4 : 1, make.newInstance(url, 2));
+                        return true;
+                    }
+                }
+            }
+        } catch (Throwable ignored) { }
+        return false;
     }
 
     private static boolean addBack(ViewGroup grid, Site s, Integer pos) {
@@ -1003,6 +1028,7 @@ final class ChromeFolders {
     }
 
     private static void menu(final FolderTile v) {
+        if (!folderAllowed(v.getContext())) return;
         final Folder f = v.folder();
         if (f == null || !(v.getParent() instanceof ViewGroup)) return;
         final ViewGroup grid = (ViewGroup) v.getParent();
@@ -1011,6 +1037,7 @@ final class ChromeFolders {
             final Site site = f.sites.get(0);
             menuAbove(v, new String[]{"Open in new tab", "Edit", "Remove"}, new Pick() {
                 public void picked(int item) {
+                    if (!folderAllowed(v.getContext())) return;
                     if (item == 0) openSite(grid, site, true);
                     else if (item == 1) edit(v.getContext(), site, new Runnable() { public void run() { save(v.getContext()); v.invalidate(); } });
                     else { drop(v.getContext(), f, 0); ensure(grid); grid.requestLayout(); TileAdd.ensure(grid); }
@@ -1020,6 +1047,7 @@ final class ChromeFolders {
         }
         menuAbove(v, new String[]{"Rename", "Remove folder"}, new Pick() {
             public void picked(int item) {
+                if (!folderAllowed(v.getContext())) return;
                 if (item == 0) rename(v.getContext(), f, new Runnable() { public void run() { v.invalidate(); } });
                 else removeFolder(grid, v, f);
             }
@@ -1049,6 +1077,7 @@ final class ChromeFolders {
         final AlertDialog dlg = new AlertDialog.Builder(c).setTitle(I18n.cs("Edit website")).setView(box)
                 .setPositiveButton(I18n.cs("Save"), null).setNegativeButton(I18n.cs("Cancel"), null).create();
         final Runnable apply = new Runnable() { public void run() {
+            if (!folderAllowed(c)) { dlg.dismiss(); return; }
             String u = address.getText().toString().trim();
             if (u.isEmpty()) { address.setError(I18n.cs("Enter an address")); return; }
             if (!u.contains("://")) u = "https://" + u;
@@ -1090,6 +1119,7 @@ final class ChromeFolders {
     }
 
     private static void rename(final Context c, final Folder f, final Runnable done) {
+        if (!folderAllowed(c)) return;
         final EditText e = new EditText(c);
         e.setSingleLine(true);
         e.setText(I18n.cs(f.name));
@@ -1103,6 +1133,7 @@ final class ChromeFolders {
         final AlertDialog d = new AlertDialog.Builder(c).setTitle(I18n.cs("Rename folder")).setView(box)
                 .setPositiveButton(I18n.cs("Save"), null).setNegativeButton(I18n.cs("Cancel"), null).create();
         final Runnable apply = new Runnable() { public void run() {
+            if (!folderAllowed(c)) { d.dismiss(); return; }
             String n = e.getText().toString().trim();
             if (n.isEmpty()) n = "Folder";
             if (n.length() > 30) n = n.substring(0, 30);
@@ -1132,7 +1163,7 @@ final class ChromeFolders {
             AlertDialog d = new AlertDialog.Builder(c).setTitle(I18n.cs("Remove \"" + f.name + "\"?"))
                     .setMessage(I18n.cs(f.sites.size() == 1 ? "Its website goes back to the speed dial." : "Its " + f.sites.size() + " websites go back to the speed dial."))
                     .setPositiveButton(I18n.cs("Remove"), new android.content.DialogInterface.OnClickListener() {
-                        public void onClick(android.content.DialogInterface di, int w) { unfolder(grid, v, f); }
+                        public void onClick(android.content.DialogInterface di, int w) { if (folderAllowed(c)) unfolder(grid, v, f); }
                     }).setNegativeButton(I18n.cs("Cancel"), null).create();
             d.show(); Rtl.dialog(d);
             return;
@@ -1140,7 +1171,7 @@ final class ChromeFolders {
         Rtl.dialog(new AlertDialog.Builder(c).setTitle(I18n.cs("Remove \"" + f.name + "\"?"))
                 .setMessage(I18n.cs("There's no room on the speed dial for its " + f.sites.size() + " websites, so they'll be deleted with the folder."))
                 .setPositiveButton(I18n.cs("Delete"), new android.content.DialogInterface.OnClickListener() {
-                    public void onClick(android.content.DialogInterface d, int w) { drop(c, f, 0); ensure(grid); grid.requestLayout(); }
+                    public void onClick(android.content.DialogInterface d, int w) { if (!folderAllowed(c)) return; drop(c, f, 0); ensure(grid); grid.requestLayout(); }
                 }).setNegativeButton(I18n.cs("Cancel"), null).show());
     }
 
@@ -1159,8 +1190,14 @@ final class ChromeFolders {
 
     private static Panel sOpen;
 
+    private static boolean folderAllowed(Context c) {
+        if (PatronGate.ok(c)) return true;
+        if (sOpen != null) sOpen.revoke();
+        return false;
+    }
+
     private static void open(FolderTile v) {
-        if (sOpen != null || !(v.getParent() instanceof ViewGroup)) return;
+        if (!folderAllowed(v.getContext()) || sOpen != null || !(v.getParent() instanceof ViewGroup)) return;
         Folder f = v.folder();
         if (f == null) return;
         Activity a = activity(v.getContext());
@@ -1210,6 +1247,12 @@ final class ChromeFolders {
             dialog.setCancelable(true);
             Window w = dialog.getWindow();
             root = new FrameLayout(a) {
+                @Override public boolean dispatchTouchEvent(MotionEvent e) {
+                    int action = e.getActionMasked();
+                    if ((action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_UP) && !folderAllowed(a)) return true;
+                    return super.dispatchTouchEvent(e);
+                }
+
                 @Override public boolean dispatchKeyEvent(KeyEvent e) {
                     if (e.getKeyCode() == KeyEvent.KEYCODE_BACK && e.getAction() == KeyEvent.ACTION_UP) { close(null); return true; }
                     return super.dispatchKeyEvent(e);
@@ -1536,6 +1579,15 @@ final class ChromeFolders {
             }}, 900);
         }
 
+        void revoke() {
+            for (SiteCell cell : cells) {
+                cell.cancelPress();
+                if (cell.menu != null) cell.menu.dismiss();
+            }
+            if (dragging != null) dragging.endDrag(false, false);
+            close(null);
+        }
+
         void close(final Runnable after) {
             if (closing) return;
             closing = true;
@@ -1691,12 +1743,14 @@ final class ChromeFolders {
         }
 
         void lift() {
+            if (!folderAllowed(panel.a)) return;
             lifted = true;
             performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
             setElevation(6 * getResources().getDisplayMetrics().density);
             animate().scaleX(1.1f).scaleY(1.1f).setDuration(160).setInterpolator(ChromeTabTransition.DECELERATE).start();
             menu = menuAbove(this, new String[]{"Open in new tab", "Edit", "Move to speed dial", "Remove"}, new Pick() {
                 public void picked(int item) {
+                    if (!folderAllowed(panel.a)) return;
                     if (item == 0) panel.openSite(site, true);
                     else if (item == 1) edit(panel.a, site, new Runnable() { public void run() { panel.changed(); invalidate(); } });
                     else if (item == 2) panel.takeOut(site);
@@ -1749,10 +1803,15 @@ final class ChromeFolders {
         }
 
         void endDrag(boolean drop) {
+            endDrag(drop, PatronGate.ok(panel.a));
+        }
+
+        void endDrag(boolean drop, boolean keepOrder) {
             if (edge != null) { removeCallbacks(edge); edge = null; }
             inDrag = false;
             panel.dragging = null;
             panel.card.animate().alpha(1f).setDuration(120).start();
+            if (!keepOrder) { outside = false; return; }
             if (drop && outside) {
                 outside = false;
                 panel.cells.remove(this);

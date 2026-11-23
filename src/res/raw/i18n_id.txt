@@ -427,7 +427,7 @@ Refresh	Perbarui
 Refreshing…	Memperbarui…
 Sign in with Patreon	Masuk dengan Patreon
 Sign out	Keluar
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Dukung Pixel Suite untuk membuka Chrome+, Gboard+, Pemblokir Iklan, VPN, Halaman gelap, perekaman panggilan, dan feed Google bebas iklan.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Dukung Pixel Suite untuk membuka Feed widget, Chrome+, Gboard+, Pemblokir Iklan, VPN, Halaman gelap, perekaman panggilan, dan feed Google bebas iklan.
 A Quest for the\nKind-Hearted	Misi untuk\nHati yang Baik
 Already a patron? Unlock	Sudah jadi patron? Buka kunci
 Checking Patreon membership…	Memeriksa keanggotaan Patreon…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	Misi Selesai!
 Ready to check membership	Siap memeriksa keanggotaan
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	Terima kasih telah mendukung Pixel Suite. Fitur Patreon Anda sudah siap.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patron membuka Chrome+ dan Gboard+, Pemblokir Iklan dan VPN, Halaman gelap di Chrome, perekaman panggilan, serta feed Google bebas iklan. Setiap dukungan kembali ke aplikasi: mengikuti update Android dan aplikasi Google, memperbaiki yang rusak karenanya, dan membuat fitur baru.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patron membuka Feed widget, Chrome+ dan Gboard+, Pemblokir Iklan dan VPN, Halaman gelap di Chrome, perekaman panggilan, serta feed Google bebas iklan. Setiap dukungan kembali ke aplikasi: mengikuti update Android dan aplikasi Google, memperbaiki yang rusak karenanya, dan membuat fitur baru.
 Welcome back!	Selamat datang kembali!
 ✨ Quest Complete!	✨ Misi Selesai!
 📜 A Quest for the Kind-Hearted	📜 Misi untuk Hati yang Baik
@@ -953,7 +953,6 @@ Lock apps in recents	Kunci aplikasi di aplikasi terbaru
 Lock factory reset	Kunci reset ke setelan pabrik
 Lock screen	Layar kunci
 Lock-screen behavior	Perilaku layar kunci
-Lock-screen taps	Ketukan di layar kunci
 Locking recent apps	Mengunci aplikasi terbaru
 Locks stay after a restart.	Kunci tetap ada setelah mulai ulang.
 Made by RovianDev	Dibuat oleh RovianDev
@@ -1005,7 +1004,6 @@ Protection	Perlindungan
 Pure black backgrounds and darker menus in dark theme.	Latar belakang hitam pekat dan menu lebih gelap di tema gelap.
 Quick actions from your phone's buttons.	Tindakan cepat dari tombol ponsel Anda.
 Recent	Terbaru
-Recent Apps	Aplikasi Terbaru
 Record and save calls	Rekam dan simpan panggilan
 Record calls in the Phone app, in any country, without the announcement	Rekam panggilan di aplikasi Telepon, di negara mana pun, tanpa pengumuman
 Reduce screenshot delay	Kurangi jeda screenshot
@@ -1077,7 +1075,7 @@ Take a screenshot	Ambil screenshot
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Ketuk Ekstensi di halaman tab baru Chrome untuk menggunakannya. Ketuk salah satu untuk setelannya, atau tahan untuk menyematkannya ke toolbar.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Ketuk Ekstensi di halaman tab baru untuk menggunakannya. Tahan salah satu untuk menyematkannya ke toolbar.
 Tap an app to see its saved versions.	Ketuk aplikasi untuk melihat versi yang tersimpan.
-Tap to wake	Ketuk untuk membangunkan
+Tap or Double-tap to wake	Ketuk atau ketuk dua kali untuk membangunkan
 Text size	Ukuran teks
 That isn't a Pixel Suite backup	Itu bukan cadangan Pixel Suite
 The 3 newest versions of each app are kept.	3 versi terbaru setiap aplikasi disimpan.
@@ -1089,7 +1087,6 @@ The toolbar	Toolbar
 Three-finger screenshot	Screenshot tiga jari
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Untuk kembali ke sini, tekan lama layar utama lalu pilih Setelan Pixel Suite. Memerlukan root dan LSPosed.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	Untuk melindungi aplikasi dengan sidik jari atau PIN, gunakan Privasi & Keamanan.
-Toasts	Toast
 Toolbar	Toolbar
 Toolbar, keys, resize, auto-correction, clipboard	Toolbar, tombol, ukuran, koreksi otomatis, papan klip
 Tools for your Google apps.	Alat untuk aplikasi Google Anda.
@@ -1118,8 +1115,7 @@ Use custom app icons	Gunakan ikon aplikasi kustom
 Use your own image for an app icon	Gunakan gambar Anda sendiri untuk ikon aplikasi
 Voice typing with checkmark	Ketik dengan suara dengan tanda centang
 Wake gesture	Gestur bangun
-Wake the screen	Bangunkan layar
-Wake your phone with a tap, with pocket protection.	Bangunkan ponsel dengan ketukan, dengan perlindungan saku.
+Wake your phone with a tap or a double tap, with pocket protection.	Bangunkan ponsel dengan sekali atau dua kali ketuk, dengan perlindungan saku.
 Websites open dark, with no white flash. Super Dark uses pure black.	Situs terbuka gelap, tanpa kilatan putih. Super Gelap memakai hitam pekat.
 What's new	Yang baru
 When you untick apps, Back up saves their current versions first.	Saat Anda menghapus centang aplikasi, Cadangkan menyimpan versi saat ini dulu.
@@ -1689,3 +1685,129 @@ Hide At a Glance	Sembunyikan Sekilas
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Menghapus Sekilas dari bagian atas layar utama. Barisnya bebas untuk aplikasi, folder, dan widget Anda.
 Hold an app, folder or widget and drop it in the free row.	Tahan aplikasi, folder, atau widget lalu lepaskan di baris yang kosong.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Untuk Android 16 dan yang lebih lama. Versi yang lebih baru dapat menghapus Sekilas langsung dari layar utama.
+Code autofill	Isi otomatis kode
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	Kode sekali pakai dari pesan, aplikasi, dan email muncul di atas keyboard. Ketuk kodenya untuk mengisinya.
+Fill codes automatically	Isi kode secara otomatis
+Types the code for you when an empty box is waiting for one.	Mengetikkan kode untukmu saat kotak kosong sedang menunggunya.
+Autofill OTP	Isi otomatis OTP
+One-time codes, filled in for you.	Kode sekali pakai, diisikan untuk Anda.
+Codes from your messages, right above the keyboard	Kode dari pesan Anda, tepat di atas keyboard
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• Saat kode masuk lewat pesan, aplikasi, atau email, kode muncul di atas keyboard. Ketuk untuk mengisinya.\n\n• Dengan Isi kode secara otomatis aktif, kode diketik untuk Anda saat ada kotak kode yang menunggu.
+Shows the code above your keyboard and fills it in.	Menampilkan kode di atas keyboard dan mengisinya.
+Reads one-time codes from notifications as they arrive.	Membaca kode sekali pakai dari notifikasi begitu masuk.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	Menjauhkan chip seperti Screenshot dari toolbar. Kode, isi otomatis, dan teks yang disalin tetap muncul.
+Widgets feed	Feed widget
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	Geser ke kanan di layar utama pertama untuk widget, cuaca, dan tanggal Anda. Panel ini menggantikan feed Google.
+Hide weather and date	Sembunyikan cuaca dan tanggal
+Your widgets start at the top of the feed.	Widget Anda dimulai dari bagian paling atas feed.
+Tap + to add a widget. Tap a widget to open its app.	Ketuk + untuk menambahkan widget. Ketuk widget untuk membuka aplikasinya.
+Hold a widget to move or remove widgets, then tap the check mark.	Tahan widget untuk memindahkan atau menghapus widget, lalu ketuk tanda centang.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	Ketuk tanggal untuk kalender dan cuaca untuk prakiraan. Geser ke kiri untuk kembali.
+Add widget	Tambah widget
+Feed settings	Setelan feed
+Background opacity	Opasitas latar belakang
+Invisible	Tak terlihat
+Solid	Solid
+How much of the feed's background shows. The status bar and home bar follow it.	Seberapa banyak latar belakang feed yang terlihat. Bilah status dan bilah beranda mengikutinya.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	Tahan widget untuk memindahkan, mengubah ukuran, atau menghapus widget, lalu ketuk tanda centang.
+Ditch the Google feed. Build your own.	Tinggalkan feed Google. Buat feed Anda sendiri.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	Hapus feed Google sepenuhnya dan ganti dengan halaman widget Anda sendiri yang bisa disesuaikan sepenuhnya.
+Home screen	Layar utama
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	Widget Anda, cukup satu usapan dari layar kunci. Aplikasi apa pun, ukuran apa pun, tanpa membuka kunci ponsel.
+How much of the feed's background shows.	Seberapa banyak latar belakang feed yang terlihat.
+Each feed keeps its own widgets.	Setiap feed punya widgetnya sendiri.
+No widgets available	Tidak ada widget tersedia
+Couldn't add that widget	Tidak bisa menambahkan widget itu
+Open apps without unlocking	Buka aplikasi tanpa membuka kunci
+Saved.	Tersimpan.
+Pixel Suite and Settings always ask to unlock.	Pixel Suite dan Setelan selalu meminta buka kunci.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	Aplikasi yang Anda pilih terbuka langsung di layar kunci, tanpa sidik jari, jadi pilihlah dengan hati-hati. Keluar dari aplikasi membawa Anda kembali ke layar kunci.
+Apps that open without unlocking	Aplikasi yang terbuka tanpa membuka kunci
+Choose which apps open from the lock screen	Pilih aplikasi yang terbuka dari layar kunci
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	Di layar kunci, aplikasi meminta buka kunci dulu kecuali Anda memilihnya di Buka aplikasi tanpa membuka kunci. Geser ke kanan untuk kembali.
+Your widgets, the weather and the date, one swipe from your home screen.	Widget, cuaca, dan tanggal Anda, cukup sekali geser dari layar utama.
+Side	Sisi
+The feed comes in from this side of your home screen.	Feed muncul dari sisi layar utama ini.
+The feed comes in from this side of the lock screen.	Feed muncul dari sisi layar kunci ini.
+Keep the Google feed	Pertahankan feed Google
+Swipe the other way for the Google feed.	Geser ke arah sebaliknya untuk feed Google.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	Pilih sisi untuk setiap feed. Di layar utama, feed Google bisa tetap di sisi lainnya.
+Tap the date for your calendar and the weather for the forecast.	Ketuk tanggal untuk kalender dan cuaca untuk prakiraan.
+To close a feed, swipe it back the way it came.	Untuk menutup feed, geser kembali ke arah asalnya.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	Di layar kunci, aplikasi meminta buka kunci dulu kecuali Anda memilihnya di Buka aplikasi tanpa membuka kunci.
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	Halaman widget Anda sendiri yang bisa disesuaikan sepenuhnya, di sisi pilihan Anda. Pertahankan feed Google di sisi lainnya, atau tinggalkan.
+Your own widgets, left or right.	Widget Anda sendiri, di kiri atau kanan.
+Left	Kiri
+Right	Kanan
+Google feed	Feed Google
+A live preview of your feeds. It follows your settings.	Pratinjau langsung feed Anda. Mengikuti setelan Anda.
+USB on top	USB di atas
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	Notifikasi USB tetap disematkan di atas dan memilih Transfer file saat tidak terkunci. Proses debug USB ada tepat di bawahnya.
+Burns through crates and ghosts	Membakar peti dan hantu
+Quick USB modes	Mode USB cepat
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	Beralih ke Transfer file, Tethering USB, dan mode USB lainnya tanpa sidik jari atau PIN selama ponsel tidak terkunci.
+More USB options	Opsi USB lainnya
+Block WhatsApp calls	Blokir panggilan WhatsApp
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	Selama Jangan Ganggu Saya aktif, panggilan WhatsApp tidak sampai ke Anda dan penelepon melihat Tidak dapat menelepon. Pesan dan panggilan Anda sendiri tetap berjalan seperti biasa.
+WhatsApp call turned away by Do Not Annoy	Panggilan WhatsApp ditolak oleh Jangan Ganggu Saya
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	Menolak panggilan WhatsApp selama Jangan Ganggu Saya aktif dan Blokir panggilan WhatsApp dinyalakan. Mulai ulang WhatsApp setelah menambahkan cakupan ini.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	Membuka folder berisi ribuan file dengan cepat di semua aplikasi, tanpa folder kosong setelah kembali. Mulai ulang setelah menambahkan cakupan ini.
+Demonic	Iblis
+Take the angelic power?	Ambil kekuatan malaikat?
+Take the demonic power?	Ambil kekuatan iblis?
+Your angelic power fades	Kekuatan malaikatmu memudar
+Your demonic power fades	Kekuatan iblismu memudar
+Thunder	Petir
+Inferno	Inferno
+Fit the thunder core?	Pasang inti petir?
+Fit the inferno core?	Pasang inti inferno?
+Your thunder core burns out	Inti petirmu terbakar
+Your inferno core burns out	Inti infernomu terbakar
+Choose a core	Pilih inti
+Crushes bricks	Menghancurkan bata
+Crushes steel	Menghancurkan baja
+Mortar King	Raja Mortir
+Hive Mother	Induk Sarang
+Steel Serpent	Ular Baja
+Twin Fortress	Benteng Kembar
+Thunder Colossus	Raksasa Guntur
+Mine Layer	Penebar Ranjau
+Crimson Baron	Baron Kirmizi
+Shield Warden	Penjaga Perisai
+Inferno Engine	Mesin Neraka
+Night Spider	Laba-laba Malam
+Titan	Titan
+Phantom Ship	Kapal Hantu
+Siege Breaker	Pemecah Kepungan
+Overlord	Penguasa Agung
+Dreadnought	Kapal Perang Raksasa
+Void Eye	Mata Hampa
+Emperor	Kaisar
+Bomb Baron	Baron Bom
+Frost Wraith	Arwah Beku
+Slime Lord	Raja Lendir
+Storm Eye	Mata Badai
+Iron Mech	Mech Besi
+Shadow Twins	Kembar Bayangan
+Magma Golem	Golem Magma
+Hex Witch	Penyihir Kutukan
+Hydra Slime	Lendir Hydra
+Grave King	Raja Kubur
+Thunder Mech	Mech Guntur
+The Watcher	Sang Pengawas
+Crystal Golem	Golem Kristal
+Banshee	Banshee
+Toxic Slime	Lendir Beracun
+Demon Twins	Kembar Iblis
+Glitch Emperor	Kaisar Glitch
+What each extension does	Fungsi setiap ekstensi
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	Tidak diperbarui selama {0} aktif, agar pembaruan tidak merusaknya. Nonaktifkan untuk mengizinkan pembaruan.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	Opsi yang bekerja di dalam aplikasi, seperti "Blokir panggilan WhatsApp", mencegah aplikasi itu diperbarui selama aktif. Aplikasinya tampil terkunci di sini.
+Its data wasn't found	Datanya tidak ditemukan
+Its saved data is incomplete	Data yang disimpan tidak lengkap
+The app isn't installed	Aplikasi tidak terpasang
+Couldn't make the backup folder	Tidak dapat membuat folder cadangan
+Couldn't put back {0}	Tidak dapat mengembalikan {0}
+Couldn't save {0}	Tidak dapat menyimpan {0}
+It didn't install	Gagal dipasang
+Root isn't available	Root tidak tersedia

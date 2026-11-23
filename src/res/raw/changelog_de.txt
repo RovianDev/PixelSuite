@@ -1,3 +1,57 @@
+## v3.2.0
+Widget-Feed, OTP automatisch ausfüllen, WhatsApp-Anrufe blockieren, ein viel größeres Pixel Arcade, Filme zu den Funktionen und viele Fehlerbehebungen.
+
+✨ Neu
+• **OTP automatisch ausfüllen**: Einmalcodes aus SMS, Chat-Apps und E-Mails (auch Outlook) erscheinen über der Tastatur und werden mit einem Tippen eingefügt, oder von selbst, wenn du das einschaltest. Codes mit Buchstaben und Ziffern funktionieren auch. (OTP automatisch ausfüllen)
+• **WhatsApp-Anrufe blockieren**: Solange Nicht nerven an ist, klingeln WhatsApp-Anrufe nie und Anrufende sehen „Anruf nicht möglich“. Eine Benachrichtigung zeigt, wer angerufen hat, mit einer Schaltfläche „Anrufen“ für den Rückruf. Blockierte Anrufe stehen weiter im Anrufe-Tab von WhatsApp, und Nachrichten und deine eigenen Anrufe funktionieren wie gewohnt. (Nicht nerven)
+• **USB oben**: Die USB-Benachrichtigung bleibt oben angeheftet und wählt Dateiübertragung, wenn dein Smartphone entsperrt ist, mit USB-Debugging direkt darunter. (Sonstiges › USB oben)
+• **Schnelle USB-Modi**: Wechsle ohne Fingerabdruck oder PIN zu Dateiübertragung, solange dein Smartphone entsperrt ist. (Sonstiges › USB oben)
+• **Sicher vor Updates**: Eine Option, die in einer App wirkt (wie WhatsApp-Anrufe blockieren), hält diese App von Updates ab, solange sie an ist, damit kein Update sie kaputt macht. (OTA- & Store-Blocker › Play Store-Blocker)
+• **App-Listen**: Listen, in denen du Apps auswählst, haben jetzt eine richtige Suchleiste und ein Kästchen „Alles auswählen“.
+• **LSPosed-Bereich**: External Storage und WhatsApp werden jetzt als empfohlen angezeigt, da Dateien und WhatsApp-Anrufe blockieren sie brauchen.
+• **Im Querformat**: Die Seiten von Pixel Suite passen jetzt auch zum seitlich gedrehten Smartphone.
+• **Filme zu den Funktionen**: Jede Funktionsseite beginnt jetzt mit einem kurzen Film, der zeigt, was sie macht.
+
+💎 Patreon
+• **Widget-Feed**: Deine eigene Seite mit Widgets neben dem Startbildschirm und dem Sperrbildschirm. Füge Widgets über die gewohnte Auswahl hinzu, verschiebe sie und ändere ihre Größe, und wähle ihre Seite und wie durchsichtig sie ist. Lass den Google-Feed auf der anderen Seite oder lass ihn weg. Auf dem Sperrbildschirm können Widgets die Apps, die du auswählst, ohne Entsperren öffnen, also wähle sorgfältig. (Widget-Feed)
+• **Tabs in Chrome+**: Ein Tab öffnet sich jetzt immer mit einem sanften Zoom statt einer Überblendung, und zurück im Tab-Raster behält der Tab seinen ganzen Rahmen, während er an seinen Platz schrumpft, mit voller Bildrate. Die Farben folgen dem Tab, und die Karte deines aktuellen Tabs wird nie von der unteren Leiste abgeschnitten. (Chrome+)
+• **Zurück und Vorwärts in Chrome+**: Die Pfeile in der unteren Leiste folgen dem Verlauf der Seite, ein blasser Pfeil heißt also, dass es nicht weitergeht. (Chrome+)
+• **Tab-Übersicht in Chrome+**: Mehr Platz zwischen den Plus-Schaltflächen und der Tab-Gruppe in der unteren Leiste. (Chrome+)
+• **Arabische Tasten in Gboard+**: Die Buchstaben ر und ى tauschen in der dritten Reihe die Plätze, damit du leichter tippst, auf Wunsch eines Patreon-Mitglieds. (Gboard+)
+
+🛠️ Patreon-Fehlerbehebungen
+• **Chrome+**: Die Schaltfläche der angehefteten Erweiterung verschwindet beim Scrollen einer Seite nicht mehr, der Ladekreis bleibt nicht mehr im Feed der Seite „Neuer Tab“ stehen, und die untere Leiste bleibt auf der Seite der inaktiven Tabs unten, und eine Website, die du aus einem Schnellwahl-Ordner öffnest, öffnet sich wieder im selben Tab, sodass dich „Zurück“ zur Seite „Neuer Tab“ bringt, statt Chrome zu verlassen.
+• **Gboard+**: Codes, Autofill und kopierter Text erscheinen mit eingeschaltetem „Vorschlagschips ausblenden“ wieder über der Tastatur. Die Verknüpfungen der Symbolleiste reagieren immer auf Tippen, „Zwischenablage löschen?“ schließt die Tastatur in Chrome nicht mehr, der Chip mit kopiertem Text ragt nicht mehr über den Rand, und der Zurück-Pfeil der Zwischenablage ist leichter zu treffen.
+
+🕹️ Pixel Arcade
+• **Querformat**: Alle drei Spiele laufen im Querformat, und Wischen von der Seite beendet ein Spiel nicht mehr aus Versehen.
+• **Kleine Bildschirme**: Die Spielkarten passen jetzt auf kleinere Bildschirme, auch mit großer Schrift.
+• **Engelhaft oder Dämonisch** (Pixel Blast): Wähle an den Altären eine Seite und steigere sie bis Stufe 10. Engelhafte Laseraugen und dämonischer Feueratem erledigen mit jeder Stufe mehr Geister mit einem Treffer und ab Stufe 10 alle, treffen Bosse hart und brechen durch Säulen (der Laser zerschmettert sie, das Feuer schmilzt sie) und werden dabei immer stärker und eindrucksvoller.
+• **Donner oder Inferno** (Pixel Siege): Baue nach einer Stufe einen Kern ein und steigere ihn bis Stufe 10. Donnerblitze und Infernoraketen erledigen mit jeder Stufe mehr Panzer mit einem Treffer und ab Stufe 10 alle (außer Bossen und Kriegsherren), und deine Helferdrohne und dein Überschild ändern sich mit deinem Weg.
+• **100 Stufen**: alle 5 Stufen ein neuer Boss mit Namen und immer einzigartigere Gegner, je weiter du kommst. Pixel Siege bekommt außerdem Türen zwischen den Stufen, neu gezeichnete Feindpanzer und 14 Karten mit Treibstofffässern.
+• **Basis in Pixel Siege**: Sie wird mit deiner Stufe robuster, mit Lebensbalken, Stahlecken und einem Polizeilicht, wenn sie getroffen wird.
+• **Vollbild**: Statusleiste und Navigationsleiste verschwinden beim Spielen, und zum Verlassen braucht es ein zweites Wischen, damit du nicht aus Versehen gehst. Das Spielemenü behält beide Leisten.
+• **Pause- und Beenden-Schaltflächen**, Schadenszahlen über jedem Treffer und Level-up-Titel. Tippen aufs Spielfeld sammelt jetzt nur noch Power-ups ein.
+• **Neues Menü**: Das Spielemenü federt wie auf Sprungfedern, und jedes Spiel spielt seinen eigenen Ton, wenn dein Finger darüberstreicht. Die Blase, die du gedrückt hältst, ist runder und größer, zittert und hat neue Klänge.
+• **Fehlerbehebungen**: Du kannst nach einem verlorenen Leben zurückkommen, pausierte Spiele öffnen sich nicht mehr leer, jede Stufe hat ihre Geister und jede Bossstufe ihren Boss, Geister sehen in späteren Stufen nicht mehr alle gleich aus und bewegen sich nicht mehr gleich, beide Finger zählen bei der Steuerung immer, ein Boss bekommt nicht mehr von jeder überlappenden Explosion gleichzeitig einen Treffer, und eine neue Stufe beginnt nicht mehr damit, dass du dich von selbst bewegst oder schießt.
+
+🪄 Feinschliff
+• **Eigene Symbole**: Zeilen, die sich ein Symbol teilten, haben jetzt jede ihr eigenes.
+
+🐞 Fehlerbehebungen in Pixel Suite
+• **Navigationsschaltflächen**: Die Tastatur verdeckt in manchen Apps nicht mehr, was du tippst, etwa in den Kommentaren von Instagram.
+• **Screenshot-Verzögerung verringern**: Lässt den Screenshot-Prozess von System UI nicht mehr abstürzen, wenn System UI im Bereich von Pixel Suite nicht angehakt ist.
+• **Leiser-Taste zweimal drücken**: Nur ein echter Anruf hält es jetzt auf, keine App, die das Smartphone im Anrufmodus lässt, und kein pausierter Ton.
+• **Dateien › Neueste zuerst**: Ein Ordner erscheint beim Zurückgehen nicht mehr leer.
+• **Suche**: Lange Ergebnisse enden jetzt bei einem ganzen Wort, statt mitten im Wort abgeschnitten zu werden.
+
+🔧 Google-Fehlerbehebungen
+• **Dateien**: Ordner mit Tausenden Dateien (etwa ein großer Download- oder Camera-Ordner) öffnen sich jetzt in etwa einer Sekunde, statt leer zu bleiben. Hake dafür External Storage im LSPosed-Bereich von Pixel Suite an.
+• **Google-Feed**: Wischen zum Feed direkt nach dem Schließen bleibt nicht mehr ohne Wirkung. Er öffnet sich und folgt deinem Finger.
+• **Google-Feed**: Ein Wischen vom Rand schließt ihn nicht mehr als Zurück-Geste, und direkt nach dem Schließen erscheint der Zurück-Pfeil nicht mehr, ohne etwas zu tun.
+
+Über die aktuelle Version installieren und neu starten.
+
 ## v3.1.2
 Zwei neue Spiele in Pixel Arcade! Dazu ein überarbeitetes Pixel Stack, „Auf einen Blick“ ausblenden, neue Optionen für die Navigationsschaltflächen und Fehlerbehebungen.
 
@@ -45,60 +99,5 @@ Systemweiten Werbeblocker abschalten, Suchleiste ausblenden auf mehr Launchern, 
 • 🧹 **Suchleiste ausblenden**: ältere Versionen von Pixel Launcher meldeten, es werde nicht unterstützt. Dort funktioniert es jetzt.
 • 🧭 **Navigationsschaltflächen**: ein Versuch, ein zweites Tastenpaar oben auf dem Bildschirm bei manchen Smartphones zu beheben.
 • 📁 **Schnellwahl**: lange Ordnernamen verloren ihre ersten Buchstaben. Sie werden jetzt von Anfang an angezeigt.
-
-Über die aktuelle Version installieren und neu starten.
-
-## v3.1.0
-Pixel Suite in 14 Sprachen, Chrome+ und Gboard+, ein integriertes VPN, Sichern & Wiederherstellen für zurückgehaltene Apps, neue Optionen für Ein-/Aus-Taste, Lautstärke und Sperrbildschirm und ein neues Symbol.
-
-✨ Neu
-• 💾 **Sichern & Wiederherstellen**: zurückgehaltene Apps werden vor dem Update gesichert, mit ihren Daten (Anmeldungen, Chats, Einstellungen und Dateien) oder nur die App. Die 3 neuesten Versionen jeder App bleiben erhalten, auch nach dem Deinstallieren. (Schutz › OTA- & Store-Blocker › Play Store-Blocker)
-• 🌍 **14 Sprachen**: Pixel Suite spricht jetzt Chinesisch, Hindi, Spanisch, Arabisch, Französisch, Portugiesisch, Russisch, Bengalisch, Indonesisch, Deutsch, Japanisch, Türkisch, Persisch und Hebräisch, dieses Änderungsprotokoll eingeschlossen. Es folgt der Sprache deines Smartphones, oder tippe oben rechts auf der Startseite auf die Sprachtaste, um eine zu wählen. (Arabisch, Persisch und Hebräisch werden von rechts nach links gelesen.)
-• 🎮 **Pixel Stack!** ein kleines verstecktes Spiel: Halte das Logo oben auf der Startseite von Pixel Suite gedrückt. Staple die Blöcke so hoch du kannst, setz sie genau für ein (Perfekt!) und teile deine Punktzahl mit unserer Telegram-Community!
-• 🔘 **Ein-/Aus-Taste gedrückt halten**: öffne Gemini oder „Circle to Search“, mache einen Screenshot oder schalte einen Ruhemodus ein und aus: „Stumm“, „Bitte nicht stören“, „Nicht nerven“ oder „Kein Ärger“ für alle drei. (Verknüpfungen › Schaltflächen)
-• 🔒 **Ein-/Aus-Taste im gesperrten Zustand gedrückt halten**: wähle eine eigene Aktion für das gesperrte Smartphone: „Gemini (Original)“, „Stumm“, „Bitte nicht stören“, „Nicht nerven“ oder „Kein Ärger“. Sie funktioniert eigenständig, unabhängig von „Ein-/Aus-Taste gedrückt halten“. (Verknüpfungen › Schaltflächen)
-• 📷 **Ein-/Aus-Taste zweimal drücken**: jetzt kannst du auch „Kamera (Original)“ wählen. (Verknüpfungen › Schaltflächen)
-• 🔦 **Leiser-Taste zweimal drücken**: jetzt kannst du auch die Taschenlampe ein- und ausschalten. (Verknüpfungen › Schaltflächen)
-• 🕒 **Always-on-Display**: lass es beim Laden an, und lass die Ein-/Aus-Taste es beim Ausschalten des Displays ein paar Sekunden zeigen. (Personalisieren › Always-on-Display)
-• 🔢 **4-stellige PIN automatisch bestätigen**: dein Smartphone entsperrt sich, sobald du die 4. Ziffer eingibst, ohne Enter. (Schutz › Datenschutz & Sicherheit › Sperrbildschirm)
-• 🧹 **Suchleiste ausblenden**: halte einfach die Suchleiste gedrückt und wähle Widget ausblenden. Das Dock rückt nach unten, deine Apps nutzen den Platz, und die Suche bleibt in der App-Übersicht. Du kannst sie auch unter Personalisieren › Pixel-Launcher ausblenden.
-• 📋 **Apps sichern**: sichere jede App, nur die App oder mit allen Daten (Anmeldungen, Chats, Einstellungen und Dateien), und stelle sie wieder her, wann du willst. Tippe auf die grüne Taste, um eine gesicherte Version zurückzuholen. (Play Store-Blocker › Apps auswählen)
-• 🔎 **In Chrome suchen**: markiere Text in einer beliebigen App, tippe auf ⋮ und wähle „In Chrome suchen“. Die Wörter öffnen sich direkt in Chrome.
-• 🗑️ **Nur „Alle löschen“**: die letzten Apps zeigen nur „Alle löschen“, in der Mitte, ohne „Auswählen“ und „Screenshot“. (Personalisieren › Pixel-Launcher › Zuletzt verwendete Apps)
-• 🎨 **Neues Pixel Suite-Symbol**: das App-Symbol von Pixel Suite füllt den Kreis jetzt randlos aus, ohne die weiße Fläche, und hat eine Design-Version in den Farben deines Hintergrunds.
-
-💎 Patreon
-• 🚀 **Chrome+**: Chromes Bedienelemente wandern nach unten, mit noch flüssigeren, von Hand gestalteten Animationen für Tabs, Tab-Übersicht und neue Tabs. Das orange + in der Tab-Übersicht öffnet einen Inkognito-Tab. (Patreon › Google-Apps › Chrome+)
-• 🧩 **Erweiterungen für Chrome**: „VPN“, „Werbeblocker“ und „Dunkle Seiten“ in einem Fenster, über die Puzzle-Taste in Chromes Symbolleiste. Tippe zum Verwenden oder halte gedrückt, um sie an die Symbolleiste anzuheften.
-• 🌐 **VPN**: surfe über Open-Source-Server weltweit aus einem anderen Land, für das ganze Smartphone oder nur Chrome, der schnellste Server zuerst. Chromes Standort folgt dem VPN. (Patreon › VPN, dazu eine Kachel in den Schnelleinstellungen)
-• ⭐ **Schnellwahl**: runde Symbole für bis zu 19 Websites auf Chromes Neuer-Tab-Seite. Ziehe sie zum Verschieben, oder lass eines auf ein anderes fallen, um einen Ordner zu erstellen, der „Super-Dunkel“ folgt. Gib jeder Website dein eigenes rundes Bild.
-• 🛡️ **Werbeblocker**: wähle für jede Website eine Filterstufe. Vollständig blendet auch Cookie-Banner und Pop-ups aus, und du kannst jeden Teil einer Seite selbst entfernen. Mit seinem Schalter in den Erweiterungen schaltest du ihn für alle Websites aus oder ein. (Chrome+ › Erweiterungen)
-• 🌙 **Dunkle Seiten**: Websites öffnen sich dunkel ohne weißes Aufblitzen, oder tiefschwarz mit „Super-Dunkel“: immer, mit dem dunklen Design des Smartphones oder nach Zeitplan. Bilder und Videos behalten ihre Farben. (Chrome+ › Erweiterungen)
-• 🎙️ **Google Telefon+**: (Aufnahmequalität) Standard für kleinere Dateien, HD für eine klarere Stimme (jetzt Standard) oder Verlustfrei für die klarste. (Patreon › Google-Apps › Google Telefon+)
-• ⌨️ **Gboard+-Symbolleiste**: bis zu 7 eigene Verknüpfungen, etwa „Rückgängig“, „Wiederholen“, „Schnellauswahl“, „Alles auswählen“, „Ausschneiden“, „Kopieren“ und „Einfügen“, in jeder App. „Alles auswählen“ und „Schnellauswahl“ öffnen sofort das Menü zum Kopieren und Einfügen. (Patreon › Google-Apps › Gboard+)
-• 🔤 **Gboard+-Tasten**: abgerundete Tasten mit flüssigen Pop-ups, wische von der Löschtaste nach links, um Buchstabe für Buchstabe zu löschen, und ändere die Größe der Tastatur oder verschiebe sie. Mit eingeschalteter Zahlenreihe in Gboard behält die Symbolseite dieselbe Tastengröße. (Patreon › Google-Apps › Gboard+)
-• ✍️ **Tippen mit Gboard+**: schalte „Autokorrektur“ für die gewünschten Sprachen aus, behalte jeden Eintrag in der Zwischenablage und nutze „Spracheingabe mit Häkchen“: sprich, dann tippe auf das Häkchen, um deine Wörter einzufügen. (Patreon › Google-Apps › Gboard+)
-• 🧊 **Milchglas-Gboard**: der Tastaturhintergrund wird zu Milchglas: Was dahinter liegt, scheint verschwommen durch, mit Glasrändern, in hell, dunkel und Super-Dunkel. Die Tasten bleiben, wie sie sind. (Patreon › Google-Apps › Gboard+)
-
-🪄 Feinschliff
-• 🌑 **Super-Dunkel**: das Menü über markiertem Text („Ausschneiden“, „Kopieren“, „In Chrome suchen“ und mehr) ist jetzt in allen Apps schwarz mit Rand, und Chromes Inkognito bleibt überall tiefschwarz, auch beim Wechseln von Tabs.
-• ⚡ **Optionen gelten sofort**: „Super-Dunkelmodus“ und der Oberflächenstil ändern sich sofort beim Umschalten, andere Optionen starten ihre App selbst neu, und die Taste „Aktualisieren“ erscheint nur bei Optionen für Pixel-Launcher.
-• 🔄 **Neustart-Taste**: manche Funktionen wirken erst nach einem Neustart. Nach einem Update erscheint eine Neustart-Taste, bis das Smartphone neu startet. Tippe darauf, um zu sehen, welche Funktionen den Neustart brauchen, und tippe noch einmal, um neu zu starten.
-• 🌄 **Google-Feed**: wische auf dem Startbildschirm nach rechts, und der Feed gleitet direkt über dein Hintergrundbild, ohne dass vorher ein weißes Feld aufblitzt.
-• 🏠 **Pixel-Launcher**: langes Drücken auf die Suchleiste zeigt jetzt nur noch Widget-Einstellungen und Widget ausblenden.
-
-🐞 Fehlerbehebungen
-• 🧠 **Pixel-Launcher**: nach vielen Wechseln zwischen hell und dunkel (etwa mit einem Zeitplan für das dunkle Design) konnte er langsam werden, nicht mehr reagieren und neu starten. Jetzt bleibt er flüssig.
-• 📱 **Navigationsschaltflächen**: nach dem Drehen des Bildschirms konnte das Wischen nach oben zum Startbildschirm ausfallen, wenn die Taste „Zurück“ an war. Jetzt klappt es jedes Mal. (Verknüpfungen › Gesten › Navigationsschaltflächen)
-• 🧭 **Navigationsschaltflächen**: manche Apps legten ihr unteres Menü unter die Tasten. Jetzt liegt es darüber. (Verknüpfungen › Gesten › Navigationsschaltflächen)
-• 🛟 **Werbeblocker**: Chrome konnte sich von selbst schließen, wenn du eine Seite verlassen oder einen Tab geschlossen hast, während er noch lud. Jetzt bleibt Chrome offen.
-• 🖐️ **Pixel-Launcher**: langes Drücken auf eine App an manchen Stellen des Startbildschirms zeigte nur ein paar kleine Symbole, und ihr Menü verschwand. Menüs öffnen sich jetzt überall vollständig.
-• 📰 **Chrome-Feed**: der Feed konnte springen, während gesponserte Beiträge ausgeblendet wurden. Jetzt bleibt er stehen und scrollt flüssiger.
-• 🔴 **App-Übersicht**: bei manchen Versionen von Pixel-Launcher schwebten die Benachrichtigungspunkte von Ordnern über ihnen. Sie sitzen wieder auf den Ordnern.
-• 🔔 **Super-Dunkel**: einzeilige Benachrichtigungen unten in der Leiste blieben grau. Jetzt sind sie „Super-Dunkel“.
-• #️⃣ **Super-Dunkel**: die Zifferntasten von Gboard (für PINs, Telefonnummern und Beträge) waren schwarz auf schwarz und leuchteten beim Tippen nicht auf. Jetzt sind sie wieder zu sehen und leuchten auf.
-• ➗ **Gboard+**: auf der Zahlenseite sieht die Spalte + - * / jetzt aus wie die anderen Tasten. Leer- und Löschtaste sind wieder richtige Tasten und verschwinden im dunklen Modus nicht mehr.
-• 🪟 **Menüs auf dem Startbildschirm**: mit Milchglas erschien die Symbolreihe oben im Menü einer App vor dem Rest. Jetzt blendet sie sich mit dem Menü ein.
-• ✅ **Apps auswählen**: die Tastatur blieb über der Liste offen, nachdem du eine App aus der Suche angehakt hattest. Jetzt schließt sie sich.
 
 Über die aktuelle Version installieren und neu starten.

@@ -87,7 +87,6 @@ final class GboardPlus {
     }
 
     private static void installTwoLineFit() {
-
         try {
             final Class<?> holder = Class.forName("com.google.android.apps.inputmethod.latin.keyboard.widget.LatinFixedCountCandidatesHolderView", false, sCl);
             boolean own = false;
@@ -111,6 +110,7 @@ final class GboardPlus {
     }
 
     private static boolean on(String key) {
+        if (!premium()) return false;
         synchronized (sOn) {
             Boolean v = sOn.get(key);
             if (v != null) return v;
@@ -119,7 +119,7 @@ final class GboardPlus {
         try {
             Context c = app();
             if (c == null) return false;
-            v = (KEY_SHORTCUTS.equals(key) || Settings.Secure.getInt(c.getContentResolver(), key, 0) == 1) && PatronGate.ok(c);
+            v = KEY_SHORTCUTS.equals(key) || Settings.Secure.getInt(c.getContentResolver(), key, 0) == 1;
         } catch (Throwable ignored) { return false; }
         synchronized (sOn) { sOn.put(key, v); }
         return v;
@@ -133,23 +133,27 @@ final class GboardPlus {
             return w == null || w.getWindow() == null ? null : w.getWindow().peekDecorView();
         } catch (Throwable t) { return null; }
     }
-    private static volatile Boolean sPremium;
-    private static long sPremiumAt;
+    private static volatile boolean sPremium;
+    private static volatile long sPremiumUntil;
     static boolean premium() {
-        long now = android.os.SystemClock.uptimeMillis();
-        Boolean v = sPremium;
-        if (v != null && now - sPremiumAt < 30000) return v;
+        long now = android.os.SystemClock.elapsedRealtime();
+        if (now < sPremiumUntil) return sPremium;
         boolean ok = false;
         try { Context c = app(); ok = c != null && PatronGate.ok(c); } catch (Throwable ignored) { }
-        sPremium = ok; sPremiumAt = now;
+        sPremium = ok;
+        sPremiumUntil = now + 30000L;
         return ok;
     }
     static String gboardClass(Context c, String what, String literal) throws Throwable { return Shortcuts.cachedClass(c, what, literal); }
 
-    static void confirm(View anchor, String title, String message, String yes, final Runnable then, Object holder) {
+    private static WeakReference<android.app.Dialog> sConfirm = new WeakReference<android.app.Dialog>(null);
+    static void dismissConfirm() {
+        try { android.app.Dialog d = sConfirm.get(); sConfirm = new WeakReference<android.app.Dialog>(null); if (d != null && d.isShowing()) d.dismiss(); } catch (Throwable ignored) { }
+    }
+    static android.app.Dialog confirm(View anchor, String title, String message, String yes, final Runnable then, Object holder) {
         try {
             InputMethodService ims = sIme.get();
-            if (ims == null || anchor == null || anchor.getWindowToken() == null) return;
+            if (ims == null || anchor == null || anchor.getWindowToken() == null) return null;
             boolean dark = sDarkKeys != null ? sDarkKeys : (ims.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
             Context c = new android.view.ContextThemeWrapper(ims, dark ? android.R.style.Theme_DeviceDefault_Dialog_Alert : android.R.style.Theme_DeviceDefault_Light_Dialog_Alert);
             android.app.AlertDialog d = new android.app.AlertDialog.Builder(c)
@@ -164,9 +168,13 @@ final class GboardPlus {
                 lp.token = anchor.getWindowToken();
                 lp.type = android.view.WindowManager.LayoutParams.TYPE_APPLICATION_ATTACHED_DIALOG;
                 w.setAttributes(lp);
-                w.addFlags(android.view.WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
+                w.addFlags(android.view.WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | android.view.WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
             }
+            d.setCanceledOnTouchOutside(true);
+            dismissConfirm();
             d.show();
+            sConfirm = new WeakReference<android.app.Dialog>(d);
             boolean black = dark && superDark(ims);
             float dp = ims.getResources().getDisplayMetrics().density;
             int bg = dark ? (black ? 0xFF1C1C1E : 0xFF2C2C2E) : 0xFFF2F2F7;
@@ -191,7 +199,8 @@ final class GboardPlus {
             if (t instanceof TextView) ((TextView) t).setTextColor(fg);
             View msg = d.findViewById(android.R.id.message);
             if (msg instanceof TextView) ((TextView) msg).setTextColor(sub);
-        } catch (Throwable ignored) { }
+            return d;
+        } catch (Throwable ignored) { return null; }
     }
 
     private static Context app() {
@@ -275,6 +284,7 @@ final class GboardPlus {
                         try { prepareRowsClicks(ims, cl); } catch (Throwable t) { Log.w("toolbar taps", t); }
                         try { prepareArabic(cl); } catch (Throwable t) { Log.w("arabic", t); }
                         try { prepareChips(ims, cl); } catch (Throwable t) { Log.w("undo chip", t); }
+                        try { preparePendingClip(ims, cl); } catch (Throwable t) { Log.w("pending clip", t); }
                         try { preparePopups(ims, cl); } catch (Throwable t) { Log.w("key pop-ups", t); }
                         try { prepareResizeBounds(ims, cl); } catch (Throwable t) { Log.w("resize bounds", t); }
                         try { prepareNga(ims, cl); } catch (Throwable t) { Log.w("voice nga", t); }
@@ -826,6 +836,7 @@ final class GboardPlus {
         View area = null;
         for (android.view.ViewParent p = key.getParent(); p instanceof View; p = p.getParent()) if ("input_area".equals(idName((View) p))) { area = (View) p; break; }
         if (area == null || area.getWidth() <= 0) return;
+
         long now = android.os.SystemClock.uptimeMillis();
         synchronized (sPanelAreas) { Long at = sPanelAreas.get(area); if (at != null && (at < 0 || now - at < 2000)) return; sPanelAreas.put(area, now); }
         final View list = findClass(area, "ReadingTextCandidateHolderView", 0);
@@ -850,6 +861,7 @@ final class GboardPlus {
             android.graphics.Rect b = getBounds();
             if (v == null || b.width() <= 0 || b.height() <= 0) return;
             float d = v.getResources().getDisplayMetrics().density;
+
             float last = lastRow(v, b.height());
             r.set(b.left + 3 * d, b.top + 4 * d, b.right - 3 * d, b.bottom - last * (1 - 0.812f));
             boolean dark = dark(v);
@@ -1184,6 +1196,7 @@ final class GboardPlus {
             clearContainers(v);
             symbolSwitch(v);
             int rowTop = v.getTop(), rowH = v.getParent() instanceof View ? ((View) v.getParent()).getHeight() : h;
+
             boolean column = rowH > h * 1.6f;
             if (rowH <= 0 || column) { rowH = h; rowTop = 0; }
             if (w != lastW || h != lastH || rowTop != lastTop || rowH != lastRowH) {
@@ -1393,9 +1406,7 @@ final class GboardPlus {
                     if ((Integer) p.args[0] == View.GONE) return;
                     if (v instanceof View && ((View) v).getId() != View.NO_ID && right((View) v) && on(KEY_HIDE_RIGHT)) { p.args[0] = View.GONE; return; }
                     if (chipsClass != null && chipsClass.isInstance(v)) {
-                        if (!on(KEY_HIDE_CHIPS)) return;
-                        p.args[0] = View.GONE;
-                        showBar((View) v, bar);
+                        return;
                     } else if (key.isInstance(v) && menu((View) v) && on(KEY_HIDE_MENU)) {
                         p.args[0] = View.GONE;
                     }
@@ -1575,7 +1586,7 @@ final class GboardPlus {
             if (orig == null) { orig = new int[] { pl, pr }; synchronized (sTitlePad) { sTitlePad.put(ch, orig); } }
             int side = Math.max(pl, pr);
             ch.setPadding(side, ch.getPaddingTop(), side, ch.getPaddingBottom());
-                    } else if (orig != null) {
+        } else if (orig != null) {
             synchronized (sTitlePad) { sTitlePad.remove(ch); }
             ch.setPadding(orig[0], ch.getPaddingTop(), orig[1], ch.getPaddingBottom());
         }
@@ -1664,7 +1675,43 @@ final class GboardPlus {
         column.measure(View.MeasureSpec.makeMeasureSpec(W, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(H, View.MeasureSpec.EXACTLY));
         column.layout(0, 0, W, H);
         grow(barView, before, W);
+        if (frame instanceof ViewGroup) fitChips((ViewGroup) frame, barView);
             }
+
+    private static void fitChips(final ViewGroup frame, final View bar) {
+        MAIN.post(new Runnable() { public void run() {
+            try {
+                if (!frame.isAttachedToWindow()) return;
+                int[] at = new int[2];
+                frame.getLocationOnScreen(at);
+                int left = at[0] + frame.getPaddingLeft(), right = at[0] + frame.getWidth() - frame.getPaddingRight();
+                for (int i = 0; i < frame.getChildCount(); i++) {
+                    View row = frame.getChildAt(i);
+                    if (row == bar || row.getVisibility() != View.VISIBLE || !(row instanceof ViewGroup)) continue;
+                    List<View> all = new ArrayList<View>(); all.add(row);
+                    for (int k = 0; k < all.size(); k++) {
+                        View v = all.get(k);
+                        if (v.getVisibility() != View.VISIBLE) continue;
+                        if (v instanceof ViewGroup) { for (int c = 0; c < ((ViewGroup) v).getChildCount(); c++) all.add(((ViewGroup) v).getChildAt(c)); continue; }
+                        if (!(v instanceof TextView) || ((TextView) v).getEllipsize() == null || v.getWidth() <= 0) continue;
+                        TextView tv = (TextView) v;
+                        View pill = tv; boolean scrolling = false;
+                        for (View c = tv; c != null && c != row; c = c.getParent() instanceof View ? (View) c.getParent() : null) {
+                            if (c != tv && c.getBackground() != null) pill = c;
+                            View up = c.getParent() instanceof View ? (View) c.getParent() : null;
+                            if (up instanceof ViewGroup && ((ViewGroup) up).getChildCount() > 1 && (up.getClass().getName().contains("RecyclerView") || up.getClass().getName().contains("ScrollView"))) scrolling = true;
+                        }
+                        if (scrolling) continue;
+                        pill.getLocationOnScreen(at);
+                        if (at[0] < left || at[0] >= right) continue;
+                        int gap = at[0] - left, over = at[0] + pill.getWidth() - (right - gap);
+                        if (over <= 1 || tv.getWidth() - over < dp(tv.getContext(), 48)) continue;
+                        tv.setMaxWidth(tv.getWidth() - over);
+                    }
+                }
+            } catch (Throwable t) { Log.w("chip fit", t); }
+        }});
+    }
 
     private static void oneRow(ViewGroup inner, Class<?> bar) {
         if (!inHeader(inner)) return;
@@ -1904,7 +1951,6 @@ final class GboardPlus {
 
     private static volatile Geo sGeo = new Geo();
     private static volatile long sGeoRead;
-    private static Boolean sGeoPatron;
 
     static Geo geo() {
         long now = android.os.SystemClock.uptimeMillis();
@@ -1914,15 +1960,12 @@ final class GboardPlus {
         try {
             Context c = app();
             String v = c == null ? null : Settings.Secure.getString(c.getContentResolver(), KEY_GEO);
-            if (v != null && !v.trim().isEmpty()) {
-                if (sGeoPatron == null) sGeoPatron = PatronGate.ok(c);
-                if (sGeoPatron) {
-                    String[] f = v.split(",");
-                    g.w = clamp(Float.parseFloat(f[0]), 0.6f, 1f);
-                    g.cx = clamp(Float.parseFloat(f[1]), g.w / 2f, 1f - g.w / 2f);
-                    g.h = clamp(Float.parseFloat(f[2]), 0.75f, 1.35f);
-                    g.up = Math.round(clamp(Float.parseFloat(f[3]), -FREE_DP, 260));
-                }
+            if (v != null && !v.trim().isEmpty() && premium()) {
+                String[] f = v.split(",");
+                g.w = clamp(Float.parseFloat(f[0]), 0.6f, 1f);
+                g.cx = clamp(Float.parseFloat(f[1]), g.w / 2f, 1f - g.w / 2f);
+                g.h = clamp(Float.parseFloat(f[2]), 0.75f, 1.35f);
+                g.up = Math.round(clamp(Float.parseFloat(f[3]), -FREE_DP, 260));
             }
         } catch (Throwable ignored) { }
         sGeo = g;
@@ -1931,8 +1974,6 @@ final class GboardPlus {
 
     private static float clamp(float v, float lo, float hi) { return Math.max(lo, Math.min(hi, v)); }
 
-    private static Boolean sLowPatron;
-
     static void lowestPlace(InputMethodService ims) {
         android.app.Dialog dlg = ims.getWindow();
         View decor = dlg == null || dlg.getWindow() == null ? null : dlg.getWindow().peekDecorView();
@@ -1940,9 +1981,8 @@ final class GboardPlus {
         int id = Resources.getSystem().getIdentifier("inputArea", "id", "android");
         View area = id == 0 ? null : decor.findViewById(id);
         if (area == null || !(area.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) return;
-        if (sLowPatron == null) sLowPatron = PatronGate.ok(ims);
         boolean portrait = ims.getResources().getConfiguration().orientation != android.content.res.Configuration.ORIENTATION_LANDSCAPE;
-        int want = sLowPatron && portrait ? -Math.round(FREE_DP * ims.getResources().getDisplayMetrics().density) : 0;
+        int want = premium() && portrait ? -Math.round(FREE_DP * ims.getResources().getDisplayMetrics().density) : 0;
         ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) area.getLayoutParams();
         if (lp.bottomMargin == want) return;
         lp.bottomMargin = want;
@@ -1953,8 +1993,7 @@ final class GboardPlus {
         try {
             InputMethodService ims = sIme.get();
             if (ims == null) return 0;
-            if (sLowPatron == null) sLowPatron = PatronGate.ok(ims);
-            if (!sLowPatron) return 0;
+            if (!premium()) return 0;
             if (ims.getResources().getConfiguration().orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) return 0;
             return Math.round(FREE_DP * ims.getResources().getDisplayMetrics().density);
         } catch (Throwable t) { return 0; }
@@ -1979,7 +2018,7 @@ final class GboardPlus {
                             android.graphics.Rect r = new android.graphics.Rect((android.graphics.Rect) p.args[0]);
                             r.bottom += px;
                             p.args[0] = r;
-                                                    } catch (Throwable t) { Log.w("resize area", t); }
+                        } catch (Throwable t) { Log.w("resize area", t); }
                     }
                 });
             } else if ("activate".equals(m.getName()) && t.length == 1 && !t[0].isPrimitive()) {
@@ -2448,6 +2487,7 @@ final class GboardPlus {
 
     private static void installBarTaps(ClassLoader cl) throws Throwable {
         final Class<?> barClass = cl.loadClass(BAR);
+        final Class<?> keyClass = cl.loadClass(SOFT_KEY);
         final Class<?> kv = cl.loadClass("com.google.android.libraries.inputmethod.widgets.SoftKeyboardView");
         Xp.hookAllMethods(kv, "dispatchTouchEvent", new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
@@ -2456,6 +2496,19 @@ final class GboardPlus {
                     MotionEvent e = (MotionEvent) p.args[0];
                     int a = e.getActionMasked();
                     View kb = (View) p.thisObject;
+
+                    if (a == MotionEvent.ACTION_DOWN) {
+                        sSnapKb = null;
+                        float[] d = toolbarOn() && !sVoice && !sCustomizing ? snapToKey(kb, e, keyClass, barClass) : null;
+                        if (d != null) { sSnapKb = new WeakReference<View>(kb); sSnapDx = d[0]; sSnapDy = d[1]; }
+                    }
+                    View snapKb = sSnapKb == null ? null : sSnapKb.get();
+                    if (snapKb == kb) {
+                        MotionEvent moved = MotionEvent.obtain(e);
+                        moved.offsetLocation(sSnapDx, sSnapDy);
+                        p.args[0] = moved; e = moved;
+                        if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) sSnapKb = null;
+                    }
                     if (a == MotionEvent.ACTION_DOWN) {
                         sRouteTo = null;
                         if (toolbarOn() && !sVoice) {
@@ -2480,14 +2533,14 @@ final class GboardPlus {
                     if (a == MotionEvent.ACTION_DOWN) {
                         sTapItem = null; sTapWhich = -1; sTapHeld = false;
                         MAIN.removeCallbacks(QS_HOLD);
-                        if (!on(KEY_SHORTCUTS) || sVoice) return;
+                        if (!on(KEY_SHORTCUTS) || sVoice) { return; }
                         View bar;
                         synchronized (sBars) { bar = sBars.get(kb); }
                         if (bar == null || !bar.isAttachedToWindow() || !isAncestor(kb, bar) || !bar.isShown()) {
                             bar = shownBar(kb, barClass);
                             synchronized (sBars) { if (bar != null) sBars.put(kb, bar); else sBars.remove(kb); }
                         }
-                        if (!(bar instanceof ViewGroup) || !bar.isShown()) return;
+                        if (!(bar instanceof ViewGroup) || !bar.isShown()) { return; }
                         View item = itemAt((ViewGroup) bar, e.getRawX(), e.getRawY());
                         int which = item == null ? -1 : ours((ViewGroup) bar, item);
                         if (which < 0) return;
@@ -2559,6 +2612,54 @@ final class GboardPlus {
         return null;
     }
 
+    private static WeakReference<View> sSnapKb;
+    private static float sSnapDx, sSnapDy;
+
+    private static float[] snapToKey(View kb, MotionEvent e, Class<?> keyClass, Class<?> barClass) {
+        if (!(kb instanceof ViewGroup) || !inHeader(kb) || findInstance(kb, barClass) != null) return null;
+        float rx = e.getRawX(), ry = e.getRawY();
+        int[] at = new int[2];
+        View hit = deepestAt((ViewGroup) kb, rx, ry, at);
+        for (View c = hit; c != null && c != kb; c = c.getParent() instanceof View ? (View) c.getParent() : null) {
+            if (keyClass.isInstance(c) || c.isClickable() || c instanceof android.widget.EditText) return null;
+        }
+        kb.getLocationOnScreen(at);
+        int kbTop = at[1], kbBottom = at[1] + kb.getHeight(), reach = dp(kb.getContext(), 18);
+        if (ry < kbTop || ry >= kbBottom) return null;
+        List<View> keys = new ArrayList<View>();
+        List<View> all = new ArrayList<View>(); all.add(kb);
+        for (int i = 0; i < all.size(); i++) {
+            View v = all.get(i);
+            if (v.getVisibility() != View.VISIBLE) continue;
+            if (keyClass.isInstance(v)) { if (v.isShown() && v.getWidth() > 0 && v.isEnabled()) keys.add(v); continue; }
+            if (v instanceof ViewGroup) for (int k = 0; k < ((ViewGroup) v).getChildCount(); k++) all.add(((ViewGroup) v).getChildAt(k));
+        }
+        View best = null; float bestD = Float.MAX_VALUE, bx = 0, by = 0;
+        for (View k : keys) {
+            k.getLocationOnScreen(at);
+            float l = at[0] - reach, r = at[0] + k.getWidth() + reach;
+            if (rx < l || rx >= r) continue;
+            float cx = at[0] + k.getWidth() / 2f, cy = at[1] + k.getHeight() / 2f, d = Math.abs(cx - rx) + Math.abs(cy - ry);
+            if (d < bestD) { bestD = d; best = k; bx = cx; by = cy; }
+        }
+        if (best == null) return null;
+        return new float[] { bx - rx, by - ry };
+    }
+
+    private static View deepestAt(ViewGroup g, float rx, float ry, int[] at) {
+        for (int i = g.getChildCount() - 1; i >= 0; i--) {
+            View c = g.getChildAt(i);
+            if (c.getVisibility() != View.VISIBLE || c.getWidth() <= 0) continue;
+            c.getLocationOnScreen(at);
+            if (rx < at[0] || rx >= at[0] + c.getWidth() || ry < at[1] || ry >= at[1] + c.getHeight()) continue;
+            if (c instanceof ViewGroup) { View d = deepestAt((ViewGroup) c, rx, ry, at); return d != null ? d : c; }
+            return c;
+        }
+        return null;
+    }
+
+    private static int dp(Context c, float v) { return Math.round(v * c.getResources().getDisplayMetrics().density); }
+
     private static void route(View to, MotionEvent e) {
         int[] at = new int[2];
         to.getLocationOnScreen(at);
@@ -2578,7 +2679,39 @@ final class GboardPlus {
         return null;
     }
 
+    private static final Map<View, Integer> sOurs = new WeakHashMap<View, Integer>();
+
     private static int ours(ViewGroup bar, View item) {
+        int found = oursByMap(bar, item);
+        CharSequence cd = item.getContentDescription();
+        boolean unnamed = cd == null || cd.length() == 0;
+        synchronized (sOurs) {
+            if (found >= 0) { sOurs.put(item, found); return found; }
+            if (!unnamed) { sOurs.remove(item); for (int i = 0; i < Shortcuts.LABELS.length; i++) if (Shortcuts.LABELS[i].contentEquals(cd)) return i; return -1; }
+
+            Integer known = sOurs.get(item);
+            if (known != null) { return known; }
+        }
+        int byPlace = oursByPlace(bar, item);
+        if (byPlace >= 0) { synchronized (sOurs) { sOurs.put(item, byPlace); } }
+        return byPlace;
+    }
+
+    private static int oursByPlace(ViewGroup bar, View item) {
+        try {
+            String choice = barChoice(); if (choice == null) return -1;
+            String[] order = choice.substring(choice.indexOf(':') + 1).split(",");
+            List<View> shown = new ArrayList<View>();
+            for (int i = 0; i < bar.getChildCount(); i++) { View c = bar.getChildAt(i); if (c.getVisibility() == View.VISIBLE && c.getWidth() > 0) shown.add(c); }
+            java.util.Collections.sort(shown, new java.util.Comparator<View>() { public int compare(View a, View b) { return Float.compare(a.getX(), b.getX()); } });
+            if (bar.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) java.util.Collections.reverse(shown);
+            if (shown.size() != order.length) { return -1; }
+            int at = shown.indexOf(item); if (at < 0) return -1;
+            return Arrays.asList(Shortcuts.IDS).indexOf(order[at].trim());
+        } catch (Throwable t) { return -1; }
+    }
+
+    private static int oursByMap(ViewGroup bar, View item) {
         try {
             for (Class<?> k = bar.getClass(); k != null && k != ViewGroup.class; k = k.getSuperclass())
                 for (Field f : k.getDeclaredFields()) {
@@ -2593,8 +2726,6 @@ final class GboardPlus {
                     }
                 }
         } catch (Throwable ignored) { }
-        CharSequence cd = item.getContentDescription();
-        if (cd != null) for (int i = 0; i < Shortcuts.LABELS.length; i++) if (Shortcuts.LABELS[i].contentEquals(cd)) return i;
         return -1;
     }
 
@@ -2626,7 +2757,7 @@ final class GboardPlus {
             try { Field f = k.getDeclaredField(name); if (f.getType() == boolean.class && !Modifier.isStatic(f.getModifiers())) { f.setAccessible(true); return f; } } catch (NoSuchFieldException ignored) { }
         return null;
     }
-    private static boolean sShowingProbed, sShowingLogged;
+    private static boolean sShowingProbed;
 
     static void prepareShowing(InputMethodService ims, ClassLoader cl) throws Throwable {
         final String mgr = Shortcuts.cachedClass(ims, "apmanager", "Can't handle click event: The access points are not showing");
@@ -2653,7 +2784,7 @@ final class GboardPlus {
                         View decor = dlg == null || dlg.getWindow() == null ? null : dlg.getWindow().peekDecorView();
                         if (decor == null || barOnScreen(decor, bar) == null) return;
                         sShowingField.setBoolean(h, true);
-                                            } catch (Throwable ignored) { }
+                    } catch (Throwable ignored) { }
                 }
             });
         }
@@ -2750,6 +2881,7 @@ final class GboardPlus {
                 } catch (Throwable ignored) { }
             }
         });
+
         Xp.hookAllMethods(InputMethodService.class, "onConfigurationChanged", new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) {
                 try { sUiModeWas = ((InputMethodService) p.thisObject).getResources().getConfiguration().uiMode; } catch (Throwable ignored) { }
@@ -2764,12 +2896,12 @@ final class GboardPlus {
             }
         });
         final Xp.Callback closing = new Xp.Callback() {
-            @Override protected void beforeHookedMethod(Xp.Param p) { sClosing = true; sCustomizing = false; }
+            @Override protected void beforeHookedMethod(Xp.Param p) { sClosing = true; sCustomizing = false; dismissConfirm(); }
             @Override protected void afterHookedMethod(Xp.Param p) { sClosing = false; }
         };
         Xp.hookAllMethods(InputMethodService.class, "onWindowHidden", closing);
         Xp.hookAllMethods(InputMethodService.class, "onFinishInputView", new Xp.Callback() {
-            @Override protected void beforeHookedMethod(Xp.Param p) { sClosing = true; }
+            @Override protected void beforeHookedMethod(Xp.Param p) { sClosing = true; dismissConfirm(); }
             @Override protected void afterHookedMethod(Xp.Param p) {
                 sClosing = false;
                 rowsReset();
@@ -2838,9 +2970,6 @@ final class GboardPlus {
             noInfo(scope, 0);
             for (int ms : new int[] { 80, 250, 600, 1200 }) MAIN.postDelayed(new Runnable() { public void run() { if (sVoice) noInfo(scope, 0); } }, ms);
             if (sShot == null) { micToVoiceItem(); MAIN.postDelayed(new Runnable() { public void run() { if (sVoice) glowOn(); } }, 60); }
-            if (sClassicVoice) {
-
-            }
         } else {
             micBack();
             showBars();
@@ -2979,7 +3108,6 @@ final class GboardPlus {
                     if (changed || sMask == null) { final View fh = h; final Class<?> fb = bar; MAIN.postDelayed(new Runnable() { public void run() { if (sCustomizing && sMask == null) maskCorner(fh, fb); } }, 250); }
                     if (changed) showCustHidden();
                     if (on(KEY_HIDE_RIGHT)) powerKeyOff(decor);
-
                 }
                 else { showCustHidden(); unmaskCorner(); }
                 if (!now) {
@@ -3195,7 +3323,7 @@ final class GboardPlus {
                 if (!corner || !outsideBarRow) continue;
                 synchronized (sOvlHidden) { sOvlHidden.put(d, Boolean.TRUE); }
                 d.setAlpha(0);
-                            }
+            }
         } catch (Throwable ignored) { }
     }
 
@@ -3246,20 +3374,6 @@ final class GboardPlus {
     }
 
     @SuppressWarnings("unchecked")
-
-    private static void customTree(View v, int depth, StringBuilder b) {
-        if (depth > 30) return;
-        int[] l = new int[2]; v.getLocationOnScreen(l);
-        for (int i = 0; i < depth; i++) b.append(' ');
-        b.append(v.getClass().getName()).append(" id=").append(idName(v)).append(" vis=").append(v.getVisibility()).append(" a=").append(v.getAlpha())
-                .append(" at=").append(l[0]).append(',').append(l[1]).append(' ').append(v.getWidth()).append('x').append(v.getHeight())
-                .append(" bg=").append(v.getBackground() == null ? "-" : v.getBackground().getClass().getSimpleName()).append(" tag=").append(v.getTag());
-        if (v.getContentDescription() != null) b.append(" cd=\"").append(v.getContentDescription()).append('"');
-        if (v instanceof TextView) b.append(" text=\"").append(((TextView) v).getText()).append('"');
-        if (v instanceof android.widget.ImageView) { android.graphics.drawable.Drawable d = ((android.widget.ImageView) v).getDrawable(); b.append(" img=").append(d == null ? "-" : d.getClass().getSimpleName()); }
-        b.append('\n');
-        if (v instanceof ViewGroup) for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) customTree(((ViewGroup) v).getChildAt(i), depth + 1, b);
-    }
 
     private static void emptyButtons(View v, Class<?> bar, float d, int depth) {
         if (depth > 16 || v.getVisibility() != View.VISIBLE) return;
@@ -3694,20 +3808,6 @@ final class GboardPlus {
         } catch (Throwable ignored) { }
     }
 
-    private static void dumpTree(View v, int depth, StringBuilder b) {
-        if (depth > 24) return;
-        int[] l = new int[2]; v.getLocationOnScreen(l);
-        for (int i = 0; i < depth; i++) b.append("  ");
-        b.append(v.getClass().getName()).append(" id=").append(idName(v)).append(" vis=").append(v.getVisibility())
-                .append(" click=").append(v.isClickable()).append(" alpha=").append(v.getAlpha())
-                .append(" at=").append(l[0]).append(',').append(l[1]).append(' ').append(v.getWidth()).append('x').append(v.getHeight());
-        CharSequence cd = v.getContentDescription();
-        if (cd != null) b.append(" cd=\"").append(cd).append('"');
-        if (v instanceof TextView) b.append(" text=\"").append(((TextView) v).getText()).append('"');
-        b.append('\n');
-        if (v instanceof ViewGroup) for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) dumpTree(((ViewGroup) v).getChildAt(i), depth + 1, b);
-    }
-
     private static void showVoiceHidden() {
         List<Map.Entry<View, Integer>> all;
         synchronized (sVoiceHidden) { all = new ArrayList<Map.Entry<View, Integer>>(sVoiceHidden.entrySet()); sVoiceHidden.clear(); }
@@ -3902,6 +4002,7 @@ final class GboardPlus {
     private static Class<?> sKeyDef, sActionDef;
     private static Field sDefActions, sActData, sActType, sActLabels, sActIcons, sActDesc, sDataText;
     private static Object sHamzaData, sHamzaType, sLongTemplate, sLongOne, sPressType;
+
     private static Class<?> sList;
     private static Method sListOf;
     private static String sNoLabel;
@@ -3969,7 +4070,10 @@ final class GboardPlus {
             @Override protected void beforeHookedMethod(Xp.Param p) {
                 if (p.args[0] == null) return;
                 View view = (View) p.thisObject;
+                if (sRaYaRedraw) { try { if (on(KEY_KEYS)) sawKey(view, p.args[0], p.args[1]); } catch (Throwable t) { Log.w("arabic key", t); } return; }
                 synchronized (sLastDef) { sLastDef.put(view, p.args[0]); }
+                synchronized (sLastFlags) { sLastFlags.put(view, p.args[1]); }
+                try { if (on(KEY_KEYS)) { Object other = raYa(view, p.args[0]); if (other != null) p.args[0] = other; } } catch (Throwable t) { android.util.Log.w("PixelSuite", "ra ya", t); }
                 try { if (on(KEY_KEYS)) sawKey(view, p.args[0], p.args[1]); } catch (Throwable t) { Log.w("arabic key", t); }
                 try { if (on(KEY_KEYS) && ("key_pos_del".equals(idName(view)) || actionKey(view))) ltrNow(view); } catch (Throwable t) { Log.w("ltr key", t); }
                 try { if (on(KEY_HIDE_MENU)) { Object c = menuKeys(view, p.args[0], p.args[1]); if (c != null) p.args[0] = c; } } catch (Throwable t) { Log.w("menu on comma", t); }
@@ -3998,6 +4102,7 @@ final class GboardPlus {
         if (f == null) { actions(def); f = sDefActions; }
         if (f != null) f.set(def, listOf(acts));
     }
+
     private static boolean actFields(Object action) throws Throwable {
         if (sActData != null) return true;
         if (sList == null) return false;
@@ -4109,6 +4214,7 @@ final class GboardPlus {
             sHamzaType = sActType.get(pressAct);
         }
         if ("ؤ".equals(press)) sHamzaKey = new WeakReference<View>(key);
+
         if (sLongTemplate == null)
             for (Object a : acts) {
                 Object d = datas(a);
@@ -4123,6 +4229,42 @@ final class GboardPlus {
         applyHamza();
     }
 
+    private static final Map<Object, Object> sRaYaPair = new WeakHashMap<Object, Object>();
+    private static final Map<View, Object> sLastFlags = new WeakHashMap<View, Object>();
+    private static volatile boolean sRaYaRedraw;
+
+    private static String pressOf(Object def) throws Throwable {
+        for (Object a : actions(def)) { String t = text(a); if (t != null) return t; }
+        return null;
+    }
+
+    private static Object raYa(View key, Object def) throws Throwable {
+        synchronized (sRaYaPair) { Object other = sRaYaPair.get(def); if (other != null) return other; }
+        String press = pressOf(def);
+        if (!"ر".equals(press) && !"ى".equals(press)) return null;
+        final String want = "ر".equals(press) ? "ى" : "ر";
+        Map<View, Object> defs; synchronized (sLastDef) { defs = new java.util.HashMap<View, Object>(sLastDef); }
+        View partner = null; Object partnerDef = null;
+        for (Map.Entry<View, Object> e : defs.entrySet()) {
+            View v = e.getKey(); Object d = e.getValue();
+            if (v == null || d == null || v == key || d == def || v.getRootView() != key.getRootView()) continue;
+            if (!want.equals(pressOf(d))) continue;
+            if (partner == null || v.getParent() == key.getParent()) { partner = v; partnerDef = d; }
+        }
+        if (partner == null) return null;
+        synchronized (sRaYaPair) { sRaYaPair.put(def, partnerDef); sRaYaPair.put(partnerDef, def); }
+
+        Object pf; synchronized (sLastFlags) { pf = sLastFlags.get(partner); }
+        final View other = partner; final Object mine = def, flags = pf;
+        MAIN.post(new Runnable() { public void run() {
+            if (sBind == null || flags == null) return;
+            sRaYaRedraw = true;
+            try { sBind.invoke(other, mine, flags); } catch (Throwable ignored) { }
+            finally { sRaYaRedraw = false; }
+        }});
+        return partnerDef;
+    }
+
     private static void applyHamza() throws Throwable {
         List<Object> pending;
         synchronized (sWawDefs) { pending = new ArrayList<Object>(sWawDefs.keySet()); }
@@ -4131,6 +4273,7 @@ final class GboardPlus {
     }
 
     private static volatile boolean sSettlePosted;
+
     private static void settleSoon() {
         if (sSettlePosted) return;
         sSettlePosted = true;
@@ -4157,7 +4300,7 @@ final class GboardPlus {
                 synchronized (sWawDefs) { any = !sWawDefs.isEmpty(); }
                 if (!any) { return; }
                 applyHamza();
-            } catch (Throwable ignored) { }
+            } catch (Throwable t) { Log.w("arabic second look", t); }
         }}, 120);
     }
 
@@ -4308,6 +4451,7 @@ final class GboardPlus {
         if (tpl == null) return null;
         for (int at = 0; at < acts.length; at++) {
             if (sActType.get(acts[at]) != sActType.get(tpl)) continue;
+
             Object d = datas(acts[at]);
             if (!(d instanceof Object[])) return null;
             Object[] old = (Object[]) d;
@@ -4445,6 +4589,150 @@ final class GboardPlus {
         if (Looper.myLooper() == Looper.getMainLooper()) apply.run(); else MAIN.post(apply);
     }
 
+    private static final java.util.Set<String> SHOWN_CHIPS = new java.util.HashSet<String>(Arrays.asList(
+            "AUTO_FILL", "AUGMENTED_AUTO_FILL", "AUGMENTED_AUTO_FILL_SMART_REPLY_TC", "AUGMENTED_AUTO_FILL_SMART_REPLY_AICORE",
+            "AUGMENTED_AUTO_FILL_PERSONAL_CONTEXT_TEXT_SUGGESTION", "AUGMENTED_AUTO_FILL_PERSONAL_CONTEXT_ACTION_SUGGESTION",
+            "AUGMENTED_AUTO_FILL_PERSONAL_CONTEXT_TEXT_PII_SUGGESTION", "AUGMENTED_AUTO_FILL_MESSAGE_ARMOUR",
+            "CLIPBOARD", "SYSTEM_CLIPBOARD", "INLINE_SUGGESTION_TOOLTIP_V2", "SPELL_CHECKER"));
+    private static final Map<Class<?>, Field> sKindField = new HashMap<Class<?>, Field>();
+
+    private static String chipKind(Object s) {
+        if (s == null || s instanceof Enum || s instanceof String) return null;
+        Field kind;
+        synchronized (sKindField) {
+            if (!sKindField.containsKey(s.getClass())) {
+                Field found = null;
+                for (Field f : s.getClass().getDeclaredFields()) {
+                    if (Modifier.isStatic(f.getModifiers()) || !f.getType().isEnum()) continue;
+                    Object[] all = f.getType().getEnumConstants();
+                    boolean kinds = false;
+                    if (all != null) for (Object e : all) if ("AUTO_FILL".equals(((Enum<?>) e).name())) kinds = true;
+                    if (kinds) { f.setAccessible(true); found = f; break; }
+                }
+                sKindField.put(s.getClass(), found);
+            }
+            kind = sKindField.get(s.getClass());
+        }
+        if (kind == null) return null;
+        try { Object v = kind.get(s); return v instanceof Enum ? ((Enum<?>) v).name() : null; } catch (Throwable t) { return null; }
+    }
+
+    private static boolean keptOut(Object request) {
+        if (request == null) return false;
+        List<String> kinds = new ArrayList<String>();
+        try {
+            for (Class<?> k = request.getClass(); k != null && k != Object.class; k = k.getSuperclass()) {
+                for (Field f : k.getDeclaredFields()) {
+                    if (Modifier.isStatic(f.getModifiers())) continue;
+                    f.setAccessible(true);
+                    Object v = f.get(request);
+                    if (v instanceof Map) { for (Object one : ((Map<?, ?>) v).values()) { String c = chipKind(one); if (c != null) kinds.add(c); } }
+                    else { String c = chipKind(v); if (c != null) kinds.add(c); }
+                }
+            }
+        } catch (Throwable t) { return false; }
+        if (kinds.isEmpty()) return false;
+        for (String c : kinds) if (SHOWN_CHIPS.contains(c)) return false;
+        return true;
+    }
+
+    private static void hideImageClips(InputMethodService ims, ClassLoader cl) throws Throwable {
+        String name = Shortcuts.cachedClass(ims, "clipchip", "createImageItemChip");
+        if (name == null) return;
+        Class<?> builder = cl.loadClass(name);
+        Method textClip = null;
+        for (Method m : builder.getDeclaredMethods()) {
+            Class<?>[] t = m.getParameterTypes();
+            if (Modifier.isStatic(m.getModifiers()) && m.getReturnType() == boolean.class && t.length == 1 && !t[0].isPrimitive() && t[0] != String.class && t[0] != Object.class
+                    && !java.util.Collection.class.isAssignableFrom(t[0]) && t[0].getClassLoader() == builder.getClassLoader()) { textClip = m; break; }
+        }
+        if (textClip == null) return;
+        textClip.setAccessible(true);
+        final Method isText = textClip;
+        for (Method m : builder.getDeclaredMethods()) {
+            Class<?>[] t = m.getParameterTypes();
+            if (Modifier.isStatic(m.getModifiers()) || m.getReturnType() == void.class || m.getReturnType().isPrimitive() || t.length != 4
+                    || t[0] != Context.class || t[2] != android.view.inputmethod.EditorInfo.class || !List.class.isAssignableFrom(t[1])) continue;
+            Xp.hookMethod(m, new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        if (!on(KEY_HIDE_CHIPS) || !(p.args[1] instanceof List) || ((List<?>) p.args[1]).isEmpty()) return;
+                        Object clip = ((List<?>) p.args[1]).get(0);
+                        if (clip == null || !isText.getParameterTypes()[0].isInstance(clip)) return;
+                        if (!Boolean.TRUE.equals(isText.invoke(null, clip))) p.setResult(null);
+                    } catch (Throwable ignored) { }
+                }
+            });
+        }
+    }
+
+    static void preparePendingClip(InputMethodService ims, ClassLoader cl) throws Throwable {
+        String[] found = cachedMethod(ims, "pendingshow", "has pending suggestions to show");
+        if (found == null || found.length < 2) { return; }
+        Class<?> owner = cl.loadClass(found[0]);
+        Method target = null;
+        for (Method m : owner.getDeclaredMethods()) {
+            if (!m.getName().equals(found[1]) || m.getParameterTypes().length != found.length - 2) continue;
+            boolean same = true;
+            for (int i = 0; i < m.getParameterTypes().length; i++) if (!descriptor(m.getParameterTypes()[i]).equals(found[2 + i])) same = false;
+            if (same) { target = m; break; }
+        }
+        if (target == null) { return; }
+        final Class<?> ret = target.getReturnType();
+        Xp.hookMethod(target, new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                try {
+                    if (!on(KEY_ROWS) || sVoice || sCustomizing || p.thisObject == null) return;
+                    Context c = app();
+                    if (c != null && c.getResources().getConfiguration().orientation == android.content.res.Configuration.ORIENTATION_LANDSCAPE) return;
+                    if (!onlyClipboardWaiting(p.thisObject)) return;
+                    p.setResult(ret == boolean.class ? Boolean.FALSE : null);
+                } catch (Throwable ignored) { }
+            }
+        });
+    }
+
+    private static boolean onlyClipboardWaiting(Object holder) {
+        for (Class<?> k = holder.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (Field f : k.getDeclaredFields()) {
+                if (Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+                try {
+                    f.setAccessible(true);
+                    Object v = f.get(holder);
+                    Object kinds = v instanceof Map ? ((Map<?, ?>) v).keySet() : v instanceof java.util.Collection ? v : null;
+                    if (kinds != null && "[CLIPBOARD]".equals(String.valueOf(kinds))) return true;
+                } catch (Throwable ignored) { }
+            }
+        return false;
+    }
+
+    private static String descriptor(Class<?> t) {
+        if (t.isArray()) return t.getName().replace('.', '/');
+        if (t == int.class) return "I"; if (t == boolean.class) return "Z"; if (t == long.class) return "J"; if (t == float.class) return "F";
+        if (t == double.class) return "D"; if (t == byte.class) return "B"; if (t == char.class) return "C"; if (t == short.class) return "S"; if (t == void.class) return "V";
+        return "L" + t.getName().replace('.', '/') + ";";
+    }
+
+    private static String[] cachedMethod(Context c, String what, String prefix) throws Throwable {
+        long ver = c.getPackageManager().getPackageInfo(c.getPackageName(), 0).versionCode;
+        File f = new File(c.getCacheDir(), "pixelsuite_gboard_" + what + "_" + ver);
+        if (f.isFile()) {
+            byte[] b = new byte[(int) f.length()];
+            FileInputStream in = new FileInputStream(f);
+            try { in.read(b); } finally { in.close(); }
+            String s = new String(b, "UTF-8").trim();
+            if (!s.isEmpty()) return s.split("\\|", -1);
+        }
+        String[] found = DexPeek.methodWithStringPrefix(c, prefix);
+        if (found != null) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < found.length; i++) { if (i > 0) sb.append('|'); sb.append(found[i]); }
+            FileOutputStream out = new FileOutputStream(f);
+            try { out.write(sb.toString().getBytes("UTF-8")); } finally { out.close(); }
+        }
+        return found;
+    }
+
     static void prepareChips(InputMethodService ims, ClassLoader cl) throws Throwable {
         final Class<?> def = Shortcuts.defClass(cl);
         if (def == null) return;
@@ -4460,27 +4748,26 @@ final class GboardPlus {
                         if (defId(p.args[0], "mic_animation")) { voiceOn(true); return; }
                         if (!undoDef(p.args[0]) || !(on(KEY_HIDE_CHIPS) || on(KEY_SHORTCUTS))) return;
                         p.setResult(null);
-                                            } catch (Throwable ignored) { }
+                    } catch (Throwable ignored) { }
                 }
             });
         }
         String pro = Shortcuts.cachedClass(ims, "proactive", "Requesting to show proactive suggestions: %s in %s");
         if (pro != null) {
-            int k = 0;
             for (Method m : cl.loadClass(pro).getDeclaredMethods()) {
                 Class<?>[] t = m.getParameterTypes();
                 if (Modifier.isStatic(m.getModifiers()) || m.getReturnType() != void.class || t.length != 1 || t[0] == Class.class || t[0].isPrimitive()) continue;
                 Xp.hookMethod(m, new Xp.Callback() {
                     @Override protected void beforeHookedMethod(Xp.Param p) {
                         try {
-                            if (!on(KEY_HIDE_CHIPS)) return;
+                            if (!on(KEY_HIDE_CHIPS) || !keptOut(p.args[0])) return;
                             p.setResult(null);
-                                                    } catch (Throwable ignored) { }
+                        } catch (Throwable ignored) { }
                     }
                 });
-                k++;
             }
         }
+        try { hideImageClips(ims, cl); } catch (Throwable t) { Log.w("image clips", t); }
         String rm = Shortcuts.cachedClass(ims, "unnotify", "RemoveAccessPointNotification.notify->NotificationCenter.notify");
         if (rm == null) { return; }
         for (Constructor<?> k : cl.loadClass(rm).getDeclaredConstructors()) {
@@ -4589,7 +4876,7 @@ final class GboardPlus {
                             voiceOn(true);
                             boolean sent = sendEvent(-10042);
                             if (!sent) { sClassicVoice = false; voiceOn(false); }
-                                                    }});
+                        }});
                     } catch (Throwable t) { Log.w("classic voice", t); }
                 }
             });
@@ -4612,6 +4899,7 @@ final class GboardPlus {
                 try {
                     if (on(KEY_DICTATION) || !(p.args[0] instanceof Integer)) return;
                     int s = (Integer) p.args[0];
+
                     if ((s & SPARKLE_MIC) != 0 && (s & ~SPARKLE_MIC) != 0) p.args[0] = s & ~SPARKLE_MIC;
                 } catch (Throwable t) { Log.w("classic mic", t); }
             }
@@ -5129,21 +5417,6 @@ final class GboardPlus {
         return m;
     }
 
-    private static void showBar(final View chips, final Class<?> bar) {
-        MAIN.post(new Runnable() { public void run() {
-            try {
-                if (sVoice) return;
-                if (!(chips.getParent() instanceof ViewGroup)) return;
-                ViewGroup g = (ViewGroup) chips.getParent();
-                for (int i = 0; i < g.getChildCount(); i++) {
-                    View ch = g.getChildAt(i);
-                    if (ch != chips && ch.getVisibility() == View.VISIBLE && ch.getClass().getName().contains("Candidates")) return;
-                }
-                for (int i = 0; i < g.getChildCount(); i++) { View ch = g.getChildAt(i); if (bar.isInstance(ch) && ch.getVisibility() != View.VISIBLE) ch.setVisibility(View.VISIBLE); }
-            } catch (Throwable ignored) { }
-        }});
-    }
-
     private static View labelArea(View v) {
         if (!(v instanceof ViewGroup)) return null;
         ViewGroup g = (ViewGroup) v;
@@ -5279,7 +5552,7 @@ final class GboardPlus {
                     try { if (on(KEY_CLIP) && row != null && row.hasOnClickListeners()) wrapClipClick(row); } catch (Throwable ignored) { }
                     try { if (row != null && premium()) { fast(row); if (row.getParent() instanceof View) fast((View) row.getParent()); } } catch (Throwable ignored) { }
                     try { if (row != null && p.args[0] != null && premium()) cardColour(row, ad, p.thisObject, (Integer) p.args[1]); } catch (Throwable ignored) { }
-                    try { if (p.args[0] != null) { GboardClipAll.ensureButton(row, p.thisObject); } } catch (Throwable t) { }
+                    try { if (p.args[0] != null) { GboardClipAll.ensureButton(row, p.thisObject); } } catch (Throwable ignored) { }
                     try {
                         if (!on(KEY_CLIP) || p.args[0] == null) return;
                         int pos = (Integer) p.args[1];

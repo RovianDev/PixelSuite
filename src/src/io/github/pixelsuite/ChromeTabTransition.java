@@ -42,6 +42,9 @@ final class ChromeTabTransition {
     static final TimeInterpolator EMPHASIZED;
     static final TimeInterpolator DECELERATE = new PathInterpolator(0.05f, 0.7f, 0.1f, 1f);
     static final TimeInterpolator ACCELERATE = new PathInterpolator(0.3f, 0f, 0.8f, 0.15f);
+
+    static final TimeInterpolator OPEN_CURVE = new PathInterpolator(0.2f, 0f, 0f, 1f), OPEN_SOFT = new PathInterpolator(0.12f, 0f, 0f, 1f);
+    private static final long AIM_BLEND_MS = 110, FRAME_IN_MS = 100;
     static final TimeInterpolator SPRING = new TimeInterpolator() {
         public float getInterpolation(float t) { return t >= 1f ? 1f : 1f - (float) (Math.exp(-6.5 * t) * Math.cos(10.5 * t)); }
     };
@@ -54,7 +57,7 @@ final class ChromeTabTransition {
     }
 
     private static final int OPEN = 1, CLOSE = 2, NEW = 3, COVER = 4;
-    private static final long OPEN_MS = 420, CLOSE_MS = 400, NEW_MS = 380, FADE_OUT_MS = 130;
+    private static final long OPEN_MS = 360, CLOSE_MS = 400, NEW_MS = 380, FADE_OUT_MS = 130;
     private static final Handler MAIN = new Handler(Looper.getMainLooper());
     private static final WeakHashMap<Object, Flight> FLIGHTS = new WeakHashMap<Object, Flight>();
     private static Flight sCurrent;
@@ -121,7 +124,6 @@ final class ChromeTabTransition {
         } catch (Throwable ignored) { }
         return 0;
     }
-
 
     interface Got { void got(int color); }
 
@@ -209,29 +211,6 @@ final class ChromeTabTransition {
         if (out.bottom <= out.top) out.setEmpty();
     }
 
-    private static boolean place(Bitmap win, Bitmap page, Rect holeOnScreen, int[] origin) {
-        Rect hole = new Rect(holeOnScreen);
-        hole.offset(-origin[0], -origin[1]);
-        if (!hole.intersect(0, 0, win.getWidth(), win.getHeight())) return false;
-        int bw = page.getWidth(), bh = page.getHeight();
-        if (bw < hole.width() * 0.9f || bh < hole.height() * 0.5f) return false;
-        Canvas cv = new Canvas(win);
-        cv.save();
-        cv.clipRect(hole);
-        float sc = (float) hole.width() / bw;
-        Rect dst = new Rect(hole.left, hole.top, hole.left + Math.round(bw * sc), hole.top + Math.round(bh * sc));
-        cv.drawBitmap(page, null, dst, new Paint(Paint.FILTER_BITMAP_FLAG));
-        cv.restore();
-        return true;
-    }
-
-    static String captureMode() {
-        try {
-            Object v = Class.forName("android.os.SystemProperties").getMethod("get", String.class, String.class).invoke(null, "debug.pixelsuite.capture", "off");
-            return String.valueOf(v);
-        } catch (Throwable t) { return "off"; }
-    }
-
     private static boolean hasContent(Bitmap b, Rect r) {
         try {
             Rect q = new Rect(r);
@@ -259,7 +238,6 @@ final class ChromeTabTransition {
             return;
         }
         sTapAt = now;
-        if (!"off".equals(captureMode())) ChromeCapture.tapped(from);
         final boolean[] went = {false};
         final Runnable click = new Runnable() {
             public void run() {
@@ -274,6 +252,8 @@ final class ChromeTabTransition {
     }
 
     private static long sTapAt;
+
+    static long openedAt() { return Math.max(sTapAt, sWaitOpen ? sWaitStart : 0L); }
     private static Bitmap sTapShot;
 
     private static Stage sCover;
@@ -295,13 +275,21 @@ final class ChromeTabTransition {
             content.addView(c, new FrameLayout.LayoutParams(-1, -1));
             sCover = c;
             sCoverAt = SystemClock.uptimeMillis();
-            MAIN.postDelayed(new Runnable() { public void run() { if (sCover == c) removeCover(); } }, 700);
+            sCoverHoldUntil = 0;
+            final Runnable[] gone = new Runnable[1];
+            gone[0] = new Runnable() { public void run() {
+                if (sCover != c) return;
+                long late = sCoverHoldUntil + 350 - SystemClock.uptimeMillis();
+                if (late > 0) MAIN.postDelayed(gone[0], late); else removeCover();
+            } };
+            MAIN.postDelayed(gone[0], 700);
             content.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
                 public boolean onPreDraw() {
                     if (sCover != c) { try { content.getViewTreeObserver().removeOnPreDrawListener(this); } catch (Throwable ignored) { } return true; }
-                    long e = SystemClock.uptimeMillis() - sCoverAt;
-                    if (e > 350) {
-                        float a = 1f - smooth((e - 350) / 200f);
+                    long now = SystemClock.uptimeMillis();
+                    long hold = Math.max(sCoverAt + 350, sCoverHoldUntil);
+                    if (now > hold) {
+                        float a = 1f - smooth((now - hold) / 200f);
                         if (a <= 0.01f) { removeCover(); try { content.getViewTreeObserver().removeOnPreDrawListener(this); } catch (Throwable ignored) { } }
                         else { c.setAlpha(a); c.invalidate(); }
                     } else c.invalidate();
@@ -328,8 +316,6 @@ final class ChromeTabTransition {
             final Bitmap b = Bitmap.createBitmap(decor.getWidth(), decor.getHeight(), Bitmap.Config.ARGB_8888);
             final long asked = SystemClock.uptimeMillis();
             final View root = decor;
-            final android.app.Activity act = a;
-            final View source = v;
             final Rect hole = new Rect();
             final Runnable done = new Runnable() {
                 public void run() {
@@ -355,18 +341,6 @@ final class ChromeTabTransition {
                             Rect local = new Rect(hole);
                             local.offset(-origin[0], -origin[1]);
                             if (!hole.isEmpty() && hasContent(b, local)) hole.setEmpty();
-                            if (!hole.isEmpty() && "pre".equals(captureMode())) {
-                                final Rect where = new Rect(hole);
-                                final long asked2 = SystemClock.uptimeMillis();
-                                boolean asked = ChromeCapture.page(act, source, new ChromeCapture.Got() {
-                                    public void got(Bitmap pageBmp) {
-                                        try { if (pageBmp != null && place(b, pageBmp, where, origin)) hole.setEmpty(); } catch (Throwable t) { }
-                                        if (pageBmp != null) ChromeCapture.recache(pageBmp);
-                                        done.run();
-                                    }
-                                });
-                                if (asked) return;
-                            }
                         }
                     } catch (Throwable t) { hole.setEmpty(); }
                     done.run();
@@ -422,7 +396,6 @@ final class ChromeTabTransition {
             return out;
         } catch (Throwable e) { return null; }
     }
-
 
     private static int pictureDiff(Bitmap a, Bitmap b) {
         if (a == null || b == null) return 999;
@@ -571,8 +544,6 @@ final class ChromeTabTransition {
                     readBack(hub, new Rect(at[0] + 3, y, at[0] + 37, y + 48), new Got() {
                         public void got(int color) {
                             if (active() || !hub.isShown()) return;
-                            if (color != sGridMeasured || estimate != sGridEstimate) {
-                            }
                             sGridEstimate = estimate;
                             sGridMeasured = close(color, estimate, 90) ? color : 0;
                             ChromeLayout.refresh();
@@ -592,6 +563,45 @@ final class ChromeTabTransition {
                 Math.round(lerp(Color.green(a), Color.green(b), f)), Math.round(lerp(Color.blue(a), Color.blue(b), f)));
     }
 
+    static final long ZOOM_WAIT_MS = 450;
+
+    static final long OPEN_WAIT_MS = 900;
+    private static long sWaitMs = ZOOM_WAIT_MS, sCoverHoldUntil;
+
+    private static boolean opening(long now) { return now - sTapAt < 1000 && now - sTappedAt > 1000; }
+
+    static boolean zoomWait(Object task, Class<?> zoom) {
+        StringBuilder why = new StringBuilder("300 ms task " + task.getClass().getName());
+        try {
+            android.app.Application app = (android.app.Application) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+            if (app == null || !ChromeLayout.enabled(app)) { return false; }
+            java.lang.reflect.Field[] one = task.getClass().getDeclaredFields();
+            why.append(" fields=").append(one.length);
+            if (one.length != 1 || one[0].getType().isPrimitive()) { return false; }
+            one[0].setAccessible(true);
+            Object runner = one[0].get(task);
+            if (runner == null) { return false; }
+            why.append(" runner=").append(runner.getClass().getName());
+            for (java.lang.reflect.Field f : runner.getClass().getDeclaredFields()) {
+                if (f.getType().isPrimitive() || java.lang.reflect.Modifier.isStatic(f.getModifiers())) continue;
+                f.setAccessible(true);
+                Object provider = f.get(runner);
+                if (provider == null) continue;
+                for (java.lang.reflect.Field g : provider.getClass().getDeclaredFields()) if (g.getType() == zoom) {
+                    sProvider = new java.lang.ref.WeakReference<Object>(provider); sAnimatorAt = 0;
+                    final long now = SystemClock.uptimeMillis();
+                    sWaitMs = opening(now) ? OPEN_WAIT_MS : ZOOM_WAIT_MS;
+                    if (sWaitMs == OPEN_WAIT_MS) {
+                        sCoverHoldUntil = now + OPEN_WAIT_MS;
+                    }
+                    watchWait(task, sWaitMs == OPEN_WAIT_MS, now);
+                    return true;
+                }
+            }
+        } catch (Throwable t) { return false; }
+        return false;
+    }
+
     private static boolean on(View v) {
         try { return ChromeLayout.enabled(v.getContext()); } catch (Throwable t) { return false; }
     }
@@ -604,6 +614,9 @@ final class ChromeTabTransition {
                 if (sBypass || p.args.length != 0) return;
                 try {
                     View v = (View) p.thisObject;
+                    if ("TabGridView".equals(v.getClass().getSimpleName())) {
+                        sTappedCard = new java.lang.ref.WeakReference<View>(v); sTappedAt = SystemClock.uptimeMillis();
+                    }
                     if (!sChipBusy && on(v) && incognitoChip(v)) { incognitoFromChip(v); return; }
                     if (v.getId() == View.NO_ID) return;
                     String n = name(v);
@@ -1077,11 +1090,375 @@ final class ChromeTabTransition {
         return null;
     }
 
+    private static java.lang.ref.WeakReference<View> sTappedCard = new java.lang.ref.WeakReference<View>(null);
+    private static long sTappedAt;
+    private static java.lang.ref.WeakReference<Object> sAsked = new java.lang.ref.WeakReference<Object>(null);
+    private static boolean sAnswered, sStandIn;
+    private static final java.util.HashSet<Class<?>> sWatchedAnswers = new java.util.HashSet<Class<?>>();
+
+    private static final java.util.ArrayList<Object> sKeep = new java.util.ArrayList<Object>();
+    private static java.lang.ref.WeakReference<Object> sProvider = new java.lang.ref.WeakReference<Object>(null);
+    private static long sAnimatorAt;
+
+    static long waitMs() { return sWaitMs; }
+
+    static final long OPEN_CAP_MS = 1600;
+    private static java.lang.ref.WeakReference<Object> sWaitTask = new java.lang.ref.WeakReference<Object>(null);
+    private static long sWaitStart, sNudgedAt;
+    private static boolean sWaitOpen;
+    private static final java.util.HashSet<Class<?>> sWaitRunHooked = new java.util.HashSet<Class<?>>();
+
+    private static void watchWait(Object task, final boolean open, final long start) {
+        sWaitTask = new java.lang.ref.WeakReference<Object>(task);
+        sWaitStart = start;
+        sWaitOpen = open;
+        sNudgedAt = 0;
+        synchronized (sPins) { sPins.clear(); }
+        synchronized (sVPins) { sVPins.clear(); }
+        sLostLogged = false;
+        sKickedAt = 0;
+        pinCallbacks();
+        synchronized (sWaitRunHooked) {
+            if (sWaitRunHooked.add(task.getClass())) {
+                try {
+                    Xp.hookAllMethods(task.getClass(), "run", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            try { if (p.args.length == 0 && p.thisObject == sWaitTask.get() && holdWait(p.thisObject)) p.setResult(null); } catch (Throwable ignored) { }
+                        }
+                    });
+                } catch (Throwable ignored) { }
+            }
+        }
+        final int[] tick = { 0 };
+        MAIN.postDelayed(new Runnable() { public void run() {
+            try {
+                if (sWaitStart != start) return;
+                long now = SystemClock.uptimeMillis(), at = now - start;
+                boolean zoomed = sAnimatorAt >= start;
+                if (!zoomed) pinCallbacks();
+                if (!zoomed && at >= 200 && now - sKickedAt >= 150) { sKickedAt = now; zoomed = kick(); }
+                if (open && ++tick[0] % 3 == 0) {
+                    String pending = pendingPart();
+                    Grid g = grid();
+                    if (!zoomed && g.ready && now - sNudgedAt >= 150) { sNudgedAt = now; g.nudge(); }
+                    if (zoomed && pending == null) { synchronized (sPins) { sPins.clear(); } return; }
+                }
+                if ((zoomed && !open) || at >= 1700) { synchronized (sPins) { sPins.clear(); } return; }
+                MAIN.postDelayed(this, 30);
+            } catch (Throwable ignored) { }
+        } }, 30);
+    }
+
+    private static final ArrayList<Object> sPins = new ArrayList<Object>();
+    private static boolean sLostLogged;
+
+    private static void pinCallbacks() {
+        Object pr = sProvider.get();
+        if (pr == null) return;
+        for (Class<?> k = pr.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+                try {
+                    f.setAccessible(true);
+                    Object v = f.get(pr);
+                    if (v == null || v instanceof View) continue;
+                    if (v instanceof java.lang.ref.Reference) { pin(f.getName(), (java.lang.ref.Reference<?>) v); continue; }
+                    for (java.lang.reflect.Field g : v.getClass().getDeclaredFields()) {
+                        if (java.lang.reflect.Modifier.isStatic(g.getModifiers()) || !java.lang.ref.Reference.class.isAssignableFrom(g.getType())) continue;
+                        g.setAccessible(true);
+                        Object r = g.get(v);
+                        if (r instanceof java.lang.ref.Reference) pin(f.getName() + "." + g.getName(), (java.lang.ref.Reference<?>) r);
+                    }
+                } catch (Throwable ignored) { }
+            }
+    }
+
+    private static void pin(String where, java.lang.ref.Reference<?> r) {
+        Object o = r.get();
+        if (o == null) {
+            if (!sLostLogged) { sLostLogged = true; }
+            return;
+        }
+        synchronized (sPins) { for (Object q : sPins) if (q == o) return; sPins.add(o); }
+        if (o instanceof Runnable && where.endsWith(".V")) { learnReadiness(o); synchronized (sVPins) { if (!sVPins.contains(o)) sVPins.add(o); } }
+    }
+
+    private static final ArrayList<Object> sVPins = new ArrayList<Object>();
+
+    private static volatile Class<?> sReadyClass;
+    private static volatile Object sReadyVariant;
+    private static final ArrayList<Object> sMade = new ArrayList<Object>();
+    private static final ArrayList<Long> sMadeAt = new ArrayList<Long>();
+
+    private static void learnReadiness(Object o) {
+        if (sReadyClass != null) return;
+        final Class<?> k = o.getClass();
+        sReadyClass = k;
+        sReadyVariant = intOf(o);
+        try {
+            Xp.hookAllConstructors(k, new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    long now = SystemClock.uptimeMillis();
+                    synchronized (sMade) {
+                        while (!sMadeAt.isEmpty() && now - sMadeAt.get(0) > 3000) { sMadeAt.remove(0); sMade.remove(0); }
+                        sMade.add(p.thisObject);
+                        sMadeAt.add(now);
+                    }
+                }
+            });
+        } catch (Throwable ignored) { }
+    }
+
+    private static Object intOf(Object o) {
+        for (java.lang.reflect.Field f : o.getClass().getDeclaredFields()) {
+            if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || !f.getType().isPrimitive()) continue;
+            try { f.setAccessible(true); return f.get(o); } catch (Throwable ignored) { }
+        }
+        return null;
+    }
+
+    private static boolean holds(Object o, Object provider) {
+        for (java.lang.reflect.Field f : o.getClass().getDeclaredFields()) {
+            if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+            try { f.setAccessible(true); if (f.get(o) == provider) return true; } catch (Throwable ignored) { }
+        }
+        return false;
+    }
+
+    private static ArrayList<Runnable> readinessChecks() {
+        ArrayList<Runnable> out = new ArrayList<Runnable>();
+        Object pr = sProvider.get();
+        if (pr == null) return out;
+        Class<?> k = sReadyClass;
+        synchronized (sVPins) { for (Object o : sVPins) if (o instanceof Runnable && (k == null || holds(o, pr))) out.add((Runnable) o); }
+        if (!out.isEmpty() || k == null) return out;
+        synchronized (sMade) {
+            for (int i = 0; i < sMade.size(); i++) {
+                Object o = sMade.get(i);
+                long at = sMadeAt.get(i);
+                if (!(o instanceof Runnable) || o.getClass() != k || at > sWaitStart || sWaitStart - at > 1000 || !holds(o, pr)) continue;
+                Object v = intOf(o);
+                if (sReadyVariant != null && !sReadyVariant.equals(v)) continue;
+                out.add((Runnable) o);
+            }
+        }
+        if (out.size() > 1) { Runnable first = out.get(0); out.clear(); out.add(first); }
+        if (out.isEmpty()) {
+            for (java.lang.reflect.Constructor<?> c : k.getDeclaredConstructors()) {
+                Class<?>[] ps = c.getParameterTypes();
+                Object[] args = new Object[ps.length];
+                boolean ok = true, gotProvider = false;
+                for (int i = 0; i < ps.length && ok; i++) {
+                    if (ps[i].isInstance(pr) && !gotProvider) { args[i] = pr; gotProvider = true; }
+                    else if (ps[i].isPrimitive() && sReadyVariant != null && box(ps[i]).isInstance(sReadyVariant)) args[i] = sReadyVariant;
+                    else ok = false;
+                }
+                if (!ok || !gotProvider) continue;
+                try { c.setAccessible(true); Object made = c.newInstance(args); if (made instanceof Runnable) { out.add((Runnable) made); break; } } catch (Throwable ignored) { }
+            }
+        }
+        return out;
+    }
+
+    private static Class<?> box(Class<?> t) {
+        if (t == int.class) return Integer.class;
+        if (t == boolean.class) return Boolean.class;
+        if (t == byte.class) return Byte.class;
+        if (t == short.class) return Short.class;
+        if (t == char.class) return Character.class;
+        if (t == long.class) return Long.class;
+        if (t == float.class) return Float.class;
+        if (t == double.class) return Double.class;
+        return t;
+    }
+
+    private static boolean kick() {
+        if (sAnimatorAt >= sWaitStart) return true;
+        ArrayList<Runnable> checks = readinessChecks();
+        for (Runnable r : checks) { try { r.run(); } catch (Throwable ignored) { } }
+        return sAnimatorAt >= sWaitStart;
+    }
+
+    private static boolean holdWait(Object task) {
+        long now = SystemClock.uptimeMillis(), waited = now - sWaitStart;
+        if (sAnimatorAt >= sWaitStart) return false;
+        if (kick()) return false;
+        if (!sWaitOpen) return false;
+        String pic = picture();
+        boolean noPicture = "none".equals(pic) || "no view".equals(pic);
+        Grid g = grid();
+        if (!noPicture) { return false; }
+        if (waited + 100 > OPEN_CAP_MS) { return false; }
+        if (g.ready && now - sNudgedAt >= 150) { sNudgedAt = now; g.nudge(); }
+        sCoverHoldUntil = Math.max(sCoverHoldUntil, now + 200);
+        MAIN.postDelayed((Runnable) task, 100);
+        return true;
+    }
+    private static long sKickedAt;
+
+    private static String pendingPart() {
+        Object pr = sProvider.get();
+        if (pr == null) return null;
+        for (Class<?> k = pr.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+                try {
+                    f.setAccessible(true);
+                    Object v = f.get(pr);
+                    if (v == null || v instanceof View || v instanceof CharSequence || v instanceof Number) continue;
+                    java.lang.reflect.Field listField = null, valueField = null;
+                    int count = 0;
+                    for (java.lang.reflect.Field g : v.getClass().getDeclaredFields()) {
+                        if (java.lang.reflect.Modifier.isStatic(g.getModifiers())) continue;
+                        count++;
+                        if (g.getType().isPrimitive()) { count = 99; break; }
+                        g.setAccessible(true);
+                        if (java.util.Collection.class.isAssignableFrom(g.getType()) || g.get(v) instanceof java.util.Collection) listField = g; else valueField = g;
+                    }
+                    if (count != 2 || listField == null || valueField == null) continue;
+                    if (listField.get(v) != null && valueField.get(v) == null) return f.getName();
+                } catch (Throwable ignored) { }
+            }
+        return null;
+    }
+
+    private static String picture() {
+        Object pr = sProvider.get();
+        if (pr == null) return "provider gone";
+        for (Class<?> k = pr.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || !ImageView.class.isAssignableFrom(f.getType())) continue;
+                try {
+                    f.setAccessible(true);
+                    ImageView v = (ImageView) f.get(pr);
+                    if (v == null) return "no view";
+                    Drawable d = v.getDrawable();
+                    Bitmap b = d instanceof BitmapDrawable ? ((BitmapDrawable) d).getBitmap() : null;
+                    return b == null ? "none" : b.isRecycled() ? "recycled" : b.getWidth() + "x" + b.getHeight();
+                } catch (Throwable ignored) { }
+            }
+        return "no view field";
+    }
+
+    private static final class Grid {
+        final ArrayList<View> lists = new ArrayList<View>();
+        boolean shown, ready;
+        void nudge() { for (View v : lists) try { v.requestLayout(); v.invalidate(); } catch (Throwable ignored) { } }
+    }
+
+    private static Grid grid() {
+        Grid g = new Grid();
+        Object pr = sProvider.get();
+        View hub = null;
+        if (pr != null)
+            for (Class<?> k = pr.getClass(); k != null && k != Object.class && hub == null; k = k.getSuperclass())
+                for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                    if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || !ViewGroup.class.isAssignableFrom(f.getType())) continue;
+                    try { f.setAccessible(true); View v = (View) f.get(pr); if (v != null && v.isAttachedToWindow()) { hub = v; break; } } catch (Throwable ignored) { }
+                }
+        if (hub == null) return g;
+        listsUnder(hub, g.lists);
+        if (g.lists.isEmpty()) return g;
+        for (View v : g.lists) {
+            if (v.isShown() && v.getWidth() > 0 && v.getHeight() > 0) g.shown = true;
+            if (layable(v)) g.ready = true;
+        }
+        return g;
+    }
+
+    private static boolean layable(View v) {
+        if (v.getWidth() <= 0 || v.getHeight() <= 0 || !v.isAttachedToWindow()) return false;
+        for (View q = v; q != null; q = q.getParent() instanceof View ? (View) q.getParent() : null) if (q.getVisibility() == View.GONE) return false;
+        return true;
+    }
+
+    private static void listsUnder(View v, ArrayList<View> out) {
+        if ("tab_list_recycler_view".equals(name(v)) || v.getClass().getName().endsWith("TabListRecyclerView")) { out.add(v); return; }
+        if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) listsUnder(g.getChildAt(i), out); }
+    }
+
+    static void thumbRequested(final Object callback) {
+        if (SystemClock.uptimeMillis() - sTappedAt > 2000 || sTappedCard.get() == null) return;
+        View tapped = sTappedCard.get();
+        if (tapped == null || !on(tapped)) return;
+        sAsked = new java.lang.ref.WeakReference<Object>(callback);
+        sAnswered = false;
+
+        sKeep.clear();
+        for (Class<?> c = callback.getClass(); c != null && c != Object.class; c = c.getSuperclass())
+            for (java.lang.reflect.Field f : c.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || !java.lang.ref.Reference.class.isAssignableFrom(f.getType())) continue;
+                try { f.setAccessible(true); Object r = f.get(callback); Object o = r == null ? null : ((java.lang.ref.Reference<?>) r).get(); if (o != null) sKeep.add(o); } catch (Throwable ignored) { }
+            }
+        final Class<?> k = callback.getClass();
+        synchronized (sWatchedAnswers) {
+            if (sWatchedAnswers.add(k)) {
+                Xp.hookAllMethods(k, "onResult", new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        try {
+                            if (p.thisObject != sAsked.get() || sStandIn || p.args.length != 1) return;
+                            if (p.args[0] instanceof Bitmap && !((Bitmap) p.args[0]).isRecycled()) { sAnswered = true; return; }
+                            final Object cb = p.thisObject;
+                            MAIN.post(new Runnable() { public void run() { standIn(cb); } });
+                        } catch (Throwable ignored) { }
+                    }
+                });
+            }
+        }
+        MAIN.postDelayed(new Runnable() { public void run() {
+            if (sAsked.get() == callback && !sAnswered) { standIn(callback); }
+        } }, 160);
+    }
+
+    private static void standIn(Object callback) {
+        try {
+            if (sAnswered || sAsked.get() != callback) return;
+            View card = sTappedCard.get();
+            Bitmap shot = card == null ? null : cardThumbnail(card);
+            if (shot == null && card != null) { shot = cardPlaceholder(card); }
+            if (shot == null) { return; }
+            sAnswered = true;
+            sStandIn = true;
+            try { callback.getClass().getMethod("onResult", Object.class).invoke(callback, shot); }
+            finally { sStandIn = false; }
+        } catch (Throwable ignored) { }
+    }
+
+    private static Bitmap cardThumbnail(View v) {
+        if ("TabThumbnailView".equals(v.getClass().getSimpleName()) && v instanceof ImageView) {
+            android.graphics.drawable.Drawable d = ((ImageView) v).getDrawable();
+            if (d instanceof android.graphics.drawable.BitmapDrawable) {
+                Bitmap b = ((android.graphics.drawable.BitmapDrawable) d).getBitmap();
+                if (b != null && !b.isRecycled() && b.getWidth() > 1) return b.copy(b.getConfig() != null ? b.getConfig() : Bitmap.Config.ARGB_8888, false);
+            }
+            return null;
+        }
+        if (v instanceof ViewGroup) for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) { Bitmap b = cardThumbnail(((ViewGroup) v).getChildAt(i)); if (b != null) return b; }
+        return null;
+    }
+
+    private static Bitmap cardPlaceholder(View v) {
+        View t = thumbnailView(v);
+        if (t == null || t.getWidth() <= 1 || t.getHeight() <= 1) return null;
+        try {
+            Bitmap b = Bitmap.createBitmap(t.getWidth(), t.getHeight(), Bitmap.Config.ARGB_8888);
+            t.draw(new Canvas(b));
+            return b;
+        } catch (Throwable e) { return null; }
+    }
+
+    private static View thumbnailView(View v) {
+        if ("TabThumbnailView".equals(v.getClass().getSimpleName())) return v;
+        if (v instanceof ViewGroup) for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) { View t = thumbnailView(((ViewGroup) v).getChildAt(i)); if (t != null) return t; }
+        return null;
+    }
+
     static void start(Object animator, ImageView image, Rect from, Rect to) {
         try {
+            sAnimatorAt = SystemClock.uptimeMillis();
             if (!on(image)) return;
             View root = image.getRootView().findViewById(android.R.id.content);
-            if (!(root instanceof FrameLayout) || !(image.getParent() instanceof View)) return;
+            if (!(root instanceof FrameLayout) || !(image.getParent() instanceof View)) { return; }
             if (sCurrent != null) sCurrent.finish(true);
             boolean recentPlus = SystemClock.uptimeMillis() - sPlusAt < 1500;
             int kind;
@@ -1092,7 +1469,7 @@ final class ChromeTabTransition {
             FLIGHTS.put(animator, f);
             sCurrent = f;
             f.begin();
-        } catch (Throwable t) {
+        } catch (Throwable ignored) {
         }
     }
 
@@ -1116,33 +1493,31 @@ final class ChromeTabTransition {
         final RectF page = new RectF(), card = new RectF(), origin = new RectF();
         View hub, pane, header, target;
         float targetAlpha = 1f, cardRadius;
-        boolean nativeDone, clockDone, finished, added, paneScaled, headerTried, looked, exact, checked, copyTried;
-        long settleSince, hubGoneAt, toolbarAt, clockEndAt, beginAt;
-        boolean waitCapture;
 
-        void captureWebPage() {
-            final Bitmap copy = sShot;
-            final Rect where = new Rect(sShotHole);
-            final int[] origin = {sShotOrigin[0], sShotOrigin[1]};
-            android.app.Activity act = activityOf(content);
-            final long asked = SystemClock.uptimeMillis();
-            waitCapture = ChromeCapture.page(act, content, new ChromeCapture.Got() {
-                public void got(Bitmap page) {
-                    boolean ok = false;
-                    try { ok = page != null && copy == sShot && place(copy, page, where, origin); } catch (Throwable t) { }
-                    if (ok) {
-                        sShotHole.setEmpty();
-                        if (!finished && (!added || t <= 0.12f)) {
-                            shot = null;
-                            adoptShot(copy, origin);
-                        }
-                    }
-                    waitCapture = false;
-                    if (!finished && !added) render(t);
-                }
-            });
-        }
+        View frameView;
+        boolean frameTried;
+        final RectF frameR = new RectF();
+        float frameRadius;
+        boolean nativeDone, clockDone, finished, added, paneScaled, headerTried, looked, exact, checked, copyTried;
+        long settleSince, hubGoneAt, toolbarAt, clockEndAt;
+
+        int startExact = -1, startBar, lastEx;
+        boolean newKnown;
+
         int failures, liveFrames;
+
+        final RectF aim = new RectF(), aimRaw = new RectF(), aimPrev = new RectF();
+        final float[] aimOff = new float[4];
+        long aimOffAt, framedAt;
+        boolean aimSet;
+        float settleBy;
+
+        boolean settleKnown;
+        float settleFirst;
+        final RectF settleAt = new RectF();
+        int openCurve;
+
+        View frameHost;
         int readyFrames;
         Bitmap shot;
         final Rect shotSrc = new Rect();
@@ -1215,7 +1590,6 @@ final class ChromeTabTransition {
         }
 
         void begin() {
-            beginAt = SystemClock.uptimeMillis();
             sActive++;
             stage.incognito = ChromeSuperDark.incognitoNow();
             if (stage.incognito) ChromeSuperDark.hold(clock.getDuration() + 600);
@@ -1230,12 +1604,12 @@ final class ChromeTabTransition {
             stage.gridColor = gridColor(hub != null ? hub : root);
             int chromeFallback = paintColor(image);
             stage.topColor = ChromeLayout.barColor(chromeFallback != 0 ? chromeFallback : stage.gridColor);
+            startBar = stage.topColor;
             if (kind == NEW) {
                 int ntpBg = ChromeLayout.ntpColor() != 0 ? ChromeLayout.ntpColor() : sNtpColor;
                 stage.fill = ntpBg != 0 && close(ntpBg, stage.topColor, 60) ? ntpBg : stage.topColor;
             }
             if (kind == OPEN) {
-                if (sShot != null && SystemClock.uptimeMillis() - sShotAt < 1500 && !sShotHole.isEmpty() && "post".equals(captureMode())) captureWebPage();
                 if (sShot != null && SystemClock.uptimeMillis() - sShotAt < 1500) adoptShot(sShot, sShotOrigin);
                 else captureScreen(content);
                 if (shot == null && stage.toolbarShot == null) stage.toolbar = capture(find(root, "control_container"), null, stage.toolbarAt);
@@ -1351,15 +1725,6 @@ final class ChromeTabTransition {
             return (image.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
         }
 
-        void captureHeader() {
-            if (headerTried || header == null || header.getWidth() == 0 || header.getHeight() == 0) return;
-            header.getLocationOnScreen(at);
-            int screen = image.getResources().getDisplayMetrics().heightPixels;
-            if (at[1] < screen / 2) return;
-            headerTried = true;
-            stage.header = capture(header, find(header, "hub_toolbar"), null);
-        }
-
         View findTarget() {
             if (hub == null) return null;
             ArrayList<View> thumbs = new ArrayList<View>();
@@ -1423,6 +1788,9 @@ final class ChromeTabTransition {
                 if (found != target) {
                     if (target != null) restore(target);
                     target = found;
+
+                    frameTried = false; frameView = null;
+                    if (frameHost != null) { restore(frameHost); frameHost = null; }
                     if (target != null) {
                         if (added) hide(target);
                         cardRadius = radius(target);
@@ -1442,6 +1810,111 @@ final class ChromeTabTransition {
             } else {
                 card.set(small.left + parentAt[0] - contentAt[0], small.top + parentAt[1] - contentAt[1], small.right + parentAt[0] - contentAt[0], small.bottom + parentAt[1] - contentAt[1]);
             }
+            frameR.setEmpty();
+            if (kind == OPEN) {
+                if (target != null) captureFrame();
+
+                if (stage.frame != null) {
+                    Rect in = stage.frameIns;
+                    float pw = stage.frame.getWidth() - in.left - in.right;
+                    if (pw > 0 && card.width() > 0) {
+                        float sc = card.width() / pw;
+                        frameR.set(card.left - in.left * sc, card.top - in.top * sc, card.right + in.right * sc, card.bottom + in.bottom * sc);
+                    }
+                }
+            }
+        }
+
+        private boolean far(RectF a, RectF b, float by) { return Math.abs(a.left - b.left) > by || Math.abs(a.top - b.top) > by || Math.abs(a.right - b.right) > by || Math.abs(a.bottom - b.bottom) > by; }
+
+        private String name(View v) { try { return v.getResources().getResourceEntryName(v.getId()); } catch (Throwable e) { return "#" + Integer.toHexString(v.getId()); } }
+
+        void captureFrame() {
+            if (frameTried || target == null) return;
+
+            View cardView = null;
+            for (View q = target; q != null; q = q.getParent() instanceof View ? (View) q.getParent() : null) {
+                if (q.getClass().getName().endsWith("TabGridView")) { cardView = find(q, "card_view"); break; }
+            }
+            View host = target.getParent() instanceof View ? (View) target.getParent() : null;
+            if (cardView == null || host == null || cardView.getParent() != host) {
+                if (!frameTried) { frameTried = true; }
+                return;
+            }
+            if (!cardView.isAttachedToWindow() || cardView.getWidth() <= 0 || cardView.getHeight() <= 0 || target.getWidth() <= 0 || target.getHeight() <= 0) return;
+            frameTried = true;
+            int cl = Math.round(cardView.getLeft() + cardView.getTranslationX()), ct = Math.round(cardView.getTop() + cardView.getTranslationY());
+            int tl = Math.round(target.getLeft() + target.getTranslationX()), tt = Math.round(target.getTop() + target.getTranslationY());
+            int fw = cardView.getWidth(), fh = cardView.getHeight();
+            int l = tl - cl, tp = tt - ct, r = fw - l - target.getWidth(), b = fh - tp - target.getHeight();
+            if (l < 0 || tp <= 0 || r < 0 || b < 0 || tp > fh / 2 || l > fw / 4 || r > fw / 4 || b > fh / 4) {
+                return;
+            }
+            Bitmap fb = null;
+            float ta = target.getAlpha();
+            try {
+                fb = Bitmap.createBitmap(fw, fh, Bitmap.Config.ARGB_8888);
+                Canvas fc = new Canvas(fb);
+                fc.translate(-cl, -ct);
+                target.setAlpha(0f);
+                host.draw(fc);
+            } catch (Throwable e) {
+                if (fb != null) fb.recycle();
+                fb = null;
+            } finally {
+                target.setAlpha(ta);
+            }
+            if (fb == null) return;
+            frameView = cardView;
+            frameRadius = radius(cardView);
+
+            frameHost = host;
+            if (framedAt == 0) framedAt = SystemClock.uptimeMillis();
+            if (added) hide(host);
+            stage.frame = fb;
+            stage.frameIns.set(l, tp, r, b);
+            stage.frameCorner = frameRadius;
+            int fill = fb.getPixel(Math.max(0, l / 2), fh / 2);
+            if (Color.alpha(fill) < 250) fill = fb.getPixel(fw / 2, Math.max(0, fh - 1 - b / 2));
+            stage.frameFill = Color.alpha(fill) >= 250 ? fill : 0;
+            float[] pr = cornerRadii(target);
+            float bottomFallback = Math.max(cardRadius, frameRadius - b);
+            stage.picRadii = pr != null ? pr : new float[]{cardRadius, cardRadius, bottomFallback, bottomFallback};
+        }
+
+        float settleUp(float bottomOnScreen) {
+            if (target == null || hub == null) return 0f;
+            float up = 0f, end = Float.MAX_VALUE;
+            int[] a2 = new int[2];
+            if (header != null && header.getHeight() > 0) {
+                header.getLocationOnScreen(a2);
+                int headerTop = a2[1];
+                if (headerTop < image.getResources().getDisplayMetrics().heightPixels / 2 && pane != null && pane.getParent() instanceof View) {
+                    ((View) pane.getParent()).getLocationOnScreen(a2);
+                    float paneTop = a2[1] + pane.getTop() + pane.getTranslationY();
+                    if (paneTop > headerTop) up = paneTop - headerTop;
+                }
+                hub.getLocationOnScreen(a2);
+                end = a2[1] + hub.getHeight() - ChromeLayout.navInset(hub) - header.getHeight();
+            }
+            View g = null, item = null;
+            for (View q = target; q != null; q = q.getParent() instanceof View ? (View) q.getParent() : null) {
+                String n = q.getClass().getName();
+                if (n.endsWith("TabGridView")) item = q;
+                if (n.endsWith("TabListRecyclerView")) { g = q; break; }
+            }
+            if (g == null) return up;
+            g.getLocationOnScreen(a2);
+            float gscale = scaleOf(g);
+            end = Math.min(end, a2[1] + g.getHeight() * gscale - up) - g.getPaddingBottom() * gscale;
+            float bottom = bottomOnScreen;
+            if (item != null) {
+                item.getLocationOnScreen(a2);
+                float margin = item.getLayoutParams() instanceof ViewGroup.MarginLayoutParams ? ((ViewGroup.MarginLayoutParams) item.getLayoutParams()).bottomMargin : 0;
+                bottom = Math.max(bottom, a2[1] + (item.getHeight() + margin) * scaleOf(item));
+            }
+            float over = bottom - up - end;
+            return over > 0f ? up + over : up;
         }
 
         float scaleOf(View v) {
@@ -1463,8 +1936,9 @@ final class ChromeTabTransition {
                 measure();
                 Stage s = stage;
                 s.kind = kind;
-                boolean webOpen = kind == OPEN && !exact;
-                float p = webOpen ? DECELERATE.getInterpolation(t) : EMPHASIZED.getInterpolation(t);
+
+                if (kind == OPEN && openCurve == 0 && added) openCurve = exact ? 1 : 2;
+                float p = kind == OPEN ? ((openCurve == 0 ? exact : openCurve == 1) ? OPEN_CURVE : OPEN_SOFT).getInterpolation(t) : EMPHASIZED.getInterpolation(t);
                 if (kind == NEW) {
                     s.snap.set(lerp(origin.left, page.left, p), lerp(origin.top, page.top, p), lerp(origin.right, page.right, p), lerp(origin.bottom, page.bottom, p));
                     s.radius = lerp(origin.height() / 2f, 0f, p);
@@ -1497,12 +1971,53 @@ final class ChromeTabTransition {
                     boolean open = kind == OPEN;
                     float hand = open ? smooth((t - 0.88f) / 0.12f) : 0f;
                     float shrink = open ? p + (1f - p) * hand : 1f - p;
-                    s.snap.set(lerp(page.left, card.left, shrink), lerp(page.top, card.top, shrink), lerp(page.right, card.right, shrink), lerp(page.bottom, card.bottom, shrink));
-                    s.radius = cardRadius * shrink;
+                    if (open) {
+                        long now = SystemClock.uptimeMillis();
+                        boolean framed = s.frame != null && !frameR.isEmpty();
+                        aimRaw.set(framed ? frameR : card);
+                        if (!settleKnown && target != null) {
+                            settleKnown = true;
+                            settleFirst = settleUp(aimRaw.bottom + contentAt[1]);
+                            settleAt.set(card);
+                        }
+                        boolean cardStill = settleKnown && Math.abs(card.top - settleAt.top) < 4f * density && Math.abs(card.left - settleAt.left) < 4f * density;
+                        settleBy = cardStill && t <= 0.6f ? settleFirst : 0f;
+                        if (settleBy > 0f) aimRaw.offset(0f, -settleBy);
+                        if (aimRaw.bottom > page.bottom) aimRaw.offset(0f, page.bottom - aimRaw.bottom);
+
+                        float fade = (aimOffAt == 0 ? 0f : 1f - smooth((now - aimOffAt) / (float) AIM_BLEND_MS)) * (1f - hand);
+                        if (!aimSet) aimSet = true;
+                        else if (far(aimPrev, aimRaw, 0.75f)) {
+                            aimOff[0] = aimPrev.left + aimOff[0] * fade - aimRaw.left;
+                            aimOff[1] = aimPrev.top + aimOff[1] * fade - aimRaw.top;
+                            aimOff[2] = aimPrev.right + aimOff[2] * fade - aimRaw.right;
+                            aimOff[3] = aimPrev.bottom + aimOff[3] * fade - aimRaw.bottom;
+                            aimOffAt = now;
+                            fade = 1f - hand;
+                        }
+                        aimPrev.set(aimRaw);
+                        aim.set(aimRaw.left + aimOff[0] * fade, aimRaw.top + aimOff[1] * fade, aimRaw.right + aimOff[2] * fade, aimRaw.bottom + aimOff[3] * fade);
+                        s.snap.set(lerp(page.left, aim.left, shrink), lerp(page.top, aim.top, shrink), lerp(page.right, aim.right, shrink), lerp(page.bottom, aim.bottom, shrink));
+
+                        float here = framed ? smooth((now - framedAt) / (float) FRAME_IN_MS) : 0f;
+                        float cardCorner = framed ? frameRadius * (frameR.width() / s.frame.getWidth()) : cardRadius;
+                        s.radius = lerp(cardRadius, cardCorner, here) * shrink;
+                        if (framed) {
+                            float k = smooth(p / 0.9f) * here;
+                            s.frameK = k;
+                            s.frameScale = s.snap.width() / s.frame.getWidth();
+                            s.imageRadius = lerp(s.radius, cardRadius, k);
+                        } else s.frameK = -1f;
+                    } else {
+                        s.frameK = -1f;
+                        s.snap.set(lerp(page.left, card.left, shrink), lerp(page.top, card.top, shrink), lerp(page.right, card.right, shrink), lerp(page.bottom, card.bottom, shrink));
+                        s.radius = cardRadius * shrink;
+                    }
                     s.shadow = (float) Math.sin(Math.PI * p);
                     if (open) {
-                        s.backdrop = mix(s.sd(s.topColor), s.sd(s.gridColor), smooth((t - 0.13f) / 0.27f));
-                        s.backdropAlpha = 1f - smooth((t - 0.38f) / 0.34f);
+                        s.backdrop = mix(s.sd(s.topColor), s.sd(s.gridColor), smooth(t / 0.30f));
+
+                        s.backdropAlpha = 1f - DECELERATE.getInterpolation(clamp(t / 0.40f));
                         s.toolbarAlpha = 1f - smooth(t / 0.16f);
                         s.toolbarDy = 0f;
                         s.headerAlpha = smooth((t - 0.30f) / 0.34f);
@@ -1510,8 +2025,22 @@ final class ChromeTabTransition {
                         s.snapAlpha = target != null ? 1f - hand : 1f;
                         Float a = hidden.get(target);
                         if (target != null && a != null) target.setAlpha(hand > 0f ? a : 0f);
+                        Float ha = frameHost == null ? null : hidden.get(frameHost);
+                        if (ha != null) frameHost.setAlpha(hand > 0f ? ha : 0f);
                     } else {
-                        s.backdrop = mix(s.sd(s.gridColor), s.sd(s.topColor), smooth((p - 0.35f) / 0.6f));
+                        int ex = ChromeLayout.toolbarExact();
+                        if (startExact == -1) startExact = ex;
+
+                        boolean changed = ex != 0 && ex != startExact && ex != lastEx;
+                        if (changed || (!newKnown && p >= 0.6f)) {
+                            newKnown = true;
+                            lastEx = ex;
+                            ChromeLayout.paintNow();
+                            int live = ChromeLayout.barColor(0);
+                            if (live != 0) s.topColor = live;
+                            if (s.flatSnap) s.fill = s.topColor;
+                        }
+                        s.backdrop = newKnown ? mix(s.sd(s.gridColor), s.sd(s.topColor), smooth((p - 0.65f) / 0.35f)) : s.sd(s.gridColor);
                         s.backdropAlpha = smooth(t / 0.2f);
                         s.toolbarAlpha = s.toolbarShot != null ? smooth((p - 0.55f) / 0.4f) : 0f;
                         if (s.toolbarShot == null) {
@@ -1542,18 +2071,23 @@ final class ChromeTabTransition {
                     }
                     float full = s.getHeight() > 0 ? s.getHeight() : content.getHeight();
                     s.pageClip = s.bandTop > 0 && full > s.bandTop ? lerp(full, s.bandTop, shrink) : -1f;
+                    if (open && s.pageClip > 0) {
+                        float keep = Math.max(s.pageClip, s.snap.bottom + 12f * density);
+                        s.pageClip = lerp(keep, s.pageClip, smooth((shrink - 0.8f) / 0.2f));
+                    }
                 }
                 if (kind == CLOSE && !added && s.source == null && !s.flatSnap && clockStarted && t > 0.08f) {
                     s.flatSnap = true;
                     s.fill = s.topColor;
                 }
-                boolean holdForCapture = waitCapture && SystemClock.uptimeMillis() - beginAt < 160;
-                if (!added && !holdForCapture && (kind == NEW || s.source != null || s.flatSnap)) {
+                if (!added && (kind == NEW || s.source != null || s.flatSnap)) {
                     added = true;
                     content.addView(stage, new FrameLayout.LayoutParams(-1, -1));
+                    highRate(stage);
                     removeCover();
                     image.setAlpha(0f);
                     if (target != null) hide(target);
+                    if (frameHost != null) hide(frameHost);
                     if (kind == OPEN && target != null) target.setAlpha(0f);
                     ChromeLayout.refresh();
                     if (!looked) { looked = true; logOnce(); }
@@ -1591,10 +2125,6 @@ final class ChromeTabTransition {
         void finish(boolean now) {
             if (finished) return;
             finished = true;
-            final Bitmap snap = stage.bitmap;
-            if (kind == OPEN && snap != null && snap.getWidth() >= page.width() * 0.95f && "hook".equals(captureMode())) {
-                MAIN.post(new Runnable() { public void run() { ChromeCapture.recache(snap); } });
-            }
             sActive = Math.max(0, sActive - 1);
             if (sCurrent == this) sCurrent = null;
             MAIN.removeCallbacks(failsafe);
@@ -1614,6 +2144,7 @@ final class ChromeTabTransition {
             if (kind == OPEN && !now) measureGrid(content.getRootView());
             if (kind == OPEN) sShotTitle = exact && shot == sShot && target != null && !sShotPage.isEmpty() ? cardTitle(target) : null;
             else sShotTitle = null;
+            if (kind == CLOSE && !now && newKnown && stage.topColor != startBar) statusStrip(content, stage.sd(stage.topColor));
             boolean fade = !now && kind != OPEN && added && stage.getParent() == content;
             if (fade) {
                 stage.animate().alpha(0f).setDuration(exact ? FADE_OUT_MS : 200).setInterpolator(DECELERATE).withEndAction(new Runnable() {
@@ -1626,6 +2157,27 @@ final class ChromeTabTransition {
         void remove() {
             if (stage.getParent() == content) content.removeView(stage);
             stage.release();
+        }
+
+        void statusStrip(View content, int colour) {
+            try {
+                final View decor = content.getRootView();
+                int top = 0;
+                android.view.WindowInsets in = decor.getRootWindowInsets();
+                if (in != null) top = in.getStableInsetTop();
+                if (top <= 0) { int id = decor.getResources().getIdentifier("status_bar_height", "dimen", "android"); if (id != 0) top = decor.getResources().getDimensionPixelSize(id); }
+                if (top <= 0 || decor.getWidth() <= 0) return;
+                final ColorDrawable d = new ColorDrawable(colour | 0xFF000000);
+                d.setBounds(0, 0, decor.getWidth(), top);
+                decor.getOverlay().add(d);
+                MAIN.postDelayed(new Runnable() { public void run() {
+                    ValueAnimator a = ValueAnimator.ofInt(255, 0);
+                    a.setDuration(150);
+                    a.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { public void onAnimationUpdate(ValueAnimator v) { d.setAlpha((Integer) v.getAnimatedValue()); decor.invalidate(); } });
+                    a.addListener(new AnimatorListenerAdapter() { @Override public void onAnimationEnd(Animator x) { try { decor.getOverlay().remove(d); } catch (Throwable ignored) { } } });
+                    a.start();
+                } }, 600);
+            } catch (Throwable ignored) { }
         }
 
         public void onViewAttachedToWindow(View v) { }
@@ -1661,17 +2213,27 @@ final class ChromeTabTransition {
         float radius, shadow, snapAlpha = 1f, backdropAlpha, bandAlpha = 1f, toolbarAlpha, toolbarDy, headerAlpha, headerDy, headerX, headerY, bandTop = -1;
         float pageClip = -1;
 
+        Bitmap frame;
+        final Rect frameIns = new Rect(), frameSrc = new Rect();
+        final RectF box = new RectF();
+        float frameK = -1f, frameScale = 1f, imageRadius;
+
+        float frameCorner;
+        float[] picRadii;
+
+        int frameFill;
+        private final float[] boxRadii = new float[8];
+        private final Path boxPath = new Path(), outerPath = new Path();
+
+        float lastImageBottom;
+        boolean lastShort;
+
         Stage(View anchor) {
             super(anchor.getContext());
             setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_NO);
             setClickable(false);
             setFocusable(false);
             setWillNotDraw(false);
-        }
-
-        void setBitmap(Bitmap b) {
-            bitmap = b;
-            if (source == null) setSource(b, new Rect(0, 0, b.getWidth(), b.getHeight()));
         }
 
         void setSource(Bitmap b, Rect region) {
@@ -1690,10 +2252,13 @@ final class ChromeTabTransition {
             shader = null;
             header = null;
             toolbar = null;
+            frame = null;
+            frameK = -1f;
+            picRadii = null;
         }
 
         @Override protected void onDraw(Canvas c) {
-            try { paint(c); } catch (Throwable t) { }
+            try { paint(c); } catch (Throwable ignored) { }
         }
 
         private void paint(Canvas c) {
@@ -1813,54 +2378,157 @@ final class ChromeTabTransition {
 
         private void flying(Canvas c, float d) {
             if (snapAlpha <= 0.001f || snap.width() < 1 || snap.height() < 1) return;
+
+            int layer = -1;
+            if (snapAlpha < 0.999f) {
+                float pad = d * 12f;
+                layer = c.saveLayerAlpha(snap.left - pad, snap.top - pad, snap.right + pad, snap.bottom + pad, Math.round(255 * snapAlpha));
+            }
+            try { flyingOpaque(c, d); } finally { if (layer >= 0) c.restoreToCount(layer); }
+        }
+
+        private void flyingOpaque(Canvas c, float d) {
             if (shadow > 0.01f) {
                 paint.setShader(null);
                 for (int i = 0; i < 3; i++) {
                     float spread = d * (1.5f + 2.5f * i), drop = d * (1f + i);
                     paint.setColor(Color.BLACK);
-                    paint.setAlpha(Math.round(shadow * snapAlpha * (i == 0 ? 14 : i == 1 ? 8 : 4)));
+                    paint.setAlpha(Math.round(shadow * (i == 0 ? 14 : i == 1 ? 8 : 4)));
                     r.set(snap.left - spread, snap.top - spread + drop, snap.right + spread, snap.bottom + spread + drop);
                     c.drawRoundRect(r, radius + spread, radius + spread, paint);
                 }
             }
+            box.set(snap);
+            float rTop = radius, rBottom = radius;
+            if (kind == OPEN && frameK >= 0f && frame != null && !frame.isRecycled()) {
+                float u = frameScale, k = frameK;
+                float L = frameIns.left * u, T = frameIns.top * u, R = frameIns.right * u, B = frameIns.bottom * u;
+                box.set(snap.left + k * L, snap.top + k * T, snap.right - k * R, snap.bottom - k * B);
+                if (box.width() >= 1 && box.height() >= 1) {
+                    float[] pr = picRadii;
+                    float toTop = (pr != null ? Math.max(pr[0], pr[1]) : radius) * u, toBottom = (pr != null ? Math.max(pr[2], pr[3]) : Math.max(0f, frameCorner - frameIns.bottom)) * u;
+                    rTop = lerp(radius, toTop, k);
+                    rBottom = lerp(radius, toBottom, k);
+                    int fw = frame.getWidth(), fh = frame.getHeight();
+                    int fr = Math.round(frameCorner);
+                    int picTop = pr == null ? 0 : (int) Math.ceil(Math.max(pr[0], pr[1])), picBot = pr == null ? 0 : (int) Math.ceil(Math.max(pr[2], pr[3]));
+                    int topRows = Math.min(fh, Math.max(fr, frameIns.top + picTop));
+                    int botRows = Math.min(fh - topRows, Math.max(fr, frameIns.bottom + picBot));
+                    if (frameFill != 0) { paint.setShader(null); paint.setColor(frameFill); paint.setAlpha(255); c.drawRoundRect(snap, radius, radius, paint); }
+                    int save = c.save();
+                    outerPath.reset();
+                    outerPath.addRoundRect(snap, radius, radius, Path.Direction.CW);
+                    c.clipPath(outerPath);
+                    bmp.setShader(null);
+
+                    float top0 = snap.top, bot1 = snap.bottom;
+                    float topEnd = top0 + topRows * u, botStart = bot1 - botRows * u;
+                    float titleA = frameFill == 0 ? 1f : smooth((k - 0.72f) / 0.28f);
+                    if (titleA > 0.004f) {
+                        bmp.setAlpha(Math.round(255 * titleA));
+                        frameSrc.set(0, 0, fw, topRows); r.set(snap.left, top0, snap.right, topEnd); c.drawBitmap(frame, frameSrc, r, bmp);
+                    }
+                    float exact = frameFill == 0 ? 1f : smooth((k - 0.9f) / 0.1f);
+                    if (exact > 0.004f) {
+                        bmp.setAlpha(Math.round(255 * exact));
+                        if (botRows > 0) { frameSrc.set(0, fh - botRows, fw, fh); r.set(snap.left, botStart, snap.right, bot1); c.drawBitmap(frame, frameSrc, r, bmp); }
+                        int midTop = topRows, midBottom = fh - botRows;
+                        if (midBottom > midTop && botStart > topEnd) {
+                            if (frameIns.left > 0) { frameSrc.set(0, midTop, frameIns.left, midBottom); r.set(snap.left, topEnd, snap.left + L, botStart); c.drawBitmap(frame, frameSrc, r, bmp); }
+                            if (frameIns.right > 0) { frameSrc.set(fw - frameIns.right, midTop, fw, midBottom); r.set(snap.right - R, topEnd, snap.right, botStart); c.drawBitmap(frame, frameSrc, r, bmp); }
+                        }
+                    }
+                    bmp.setAlpha(255);
+                    c.restoreToCount(save);
+                } else box.set(snap);
+            }
             if (kind == NEW || flatSnap) {
                 paint.setShader(null);
                 paint.setColor(sd(fill));
-                paint.setAlpha(Math.round(255 * snapAlpha));
-                c.drawRoundRect(snap, radius, radius, paint);
+                paint.setAlpha(255);
+                pictureShape(c, paint, rTop, rBottom);
                 return;
             }
             if (source == null || source.isRecycled() || src.width() <= 0) return;
-            float scale = snap.width() / src.width();
+            float scale = box.width() / src.width();
             if (shader != null) {
                 shaderMatrix.setScale(scale, scale);
-                shaderMatrix.postTranslate(snap.left - src.left * scale, snap.top - src.top * scale);
+                shaderMatrix.postTranslate(box.left - src.left * scale, box.top - src.top * scale);
                 shader.setLocalMatrix(shaderMatrix);
-                float imageBottom = snap.top + src.height() * scale;
-                boolean short_ = imageBottom < snap.bottom - 0.5f;
+                float imageBottom = box.top + src.height() * scale;
+                boolean short_ = imageBottom < box.bottom - 0.5f;
+                lastImageBottom = imageBottom; lastShort = short_;
                 if (short_) {
                     paint.setShader(null);
                     paint.setColor(sd(tail != 0 ? tail : backdrop));
-                    paint.setAlpha(Math.round(255 * snapAlpha));
-                    c.drawRoundRect(snap, radius, radius, paint);
+                    paint.setAlpha(255);
+                    pictureShape(c, paint, rTop, rBottom);
                 }
                 int clipSave = c.save();
-                if (short_) c.clipRect(snap.left, snap.top, snap.right, (float) Math.floor(imageBottom));
+                if (short_) c.clipRect(box.left, box.top, box.right, (float) Math.floor(imageBottom));
                 bmp.setShader(shader);
-                bmp.setAlpha(Math.round(255 * snapAlpha));
-                c.drawRoundRect(snap, radius, radius, bmp);
+                bmp.setAlpha(255);
+                pictureShape(c, bmp, rTop, rBottom);
                 bmp.setShader(null);
                 c.restoreToCount(clipSave);
             } else {
                 int save = c.save();
-                Path clip = new Path();
-                clip.addRoundRect(snap, radius, radius, Path.Direction.CW);
-                c.clipPath(clip);
-                bmp.setAlpha(Math.round(255 * snapAlpha));
-                r.set(snap.left, snap.top, snap.right, snap.top + src.height() * scale);
+                boxPath.reset();
+                for (int i = 0; i < 8; i++) boxRadii[i] = i < 4 ? rTop : rBottom;
+                boxPath.addRoundRect(box, boxRadii, Path.Direction.CW);
+                c.clipPath(boxPath);
+                bmp.setAlpha(255);
+                r.set(box.left, box.top, box.right, box.top + src.height() * scale);
                 c.drawBitmap(source, src, r, bmp);
                 c.restoreToCount(save);
             }
+        }
+
+        private void pictureShape(Canvas c, Paint p, float rTop, float rBottom) {
+            if (Math.abs(rTop - rBottom) < 0.5f) { c.drawRoundRect(box, rTop, rTop, p); return; }
+            float mid = Math.round((box.top + box.bottom) / 2f);
+            int save = c.save();
+            c.clipRect(box.left - 1, box.top - 1, box.right + 1, mid);
+            c.drawRoundRect(box, rTop, rTop, p);
+            c.restoreToCount(save);
+            save = c.save();
+            c.clipRect(box.left - 1, mid, box.right + 1, box.bottom + 1);
+            c.drawRoundRect(box, rBottom, rBottom, p);
+            c.restoreToCount(save);
+        }
+    }
+
+    private static void highRate(View v) {
+        if (android.os.Build.VERSION.SDK_INT < 35) return;
+        try {
+            float high = View.class.getField("REQUESTED_FRAME_RATE_CATEGORY_HIGH").getFloat(null);
+            View.class.getMethod("setRequestedFrameRate", float.class).invoke(v, high);
+        } catch (Throwable ignored) { }
+    }
+
+    static float[] cornerRadii(View v) {
+        int w = v.getWidth(), h = v.getHeight();
+        if (w < 8 || h < 8) return null;
+        Bitmap b = null;
+        try {
+            b = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+            v.draw(new Canvas(b));
+            if (Color.alpha(b.getPixel(w / 2, h / 2)) < 128) return null;
+            int lim = Math.min(w, h) / 2;
+            int[][] at = {{0, 0, 1, 1}, {w - 1, 0, -1, 1}, {w - 1, h - 1, -1, -1}, {0, h - 1, 1, -1}};
+            float[] r = new float[4];
+            boolean any = false;
+            for (int i = 0; i < 4; i++) {
+                int d = 0;
+                while (d < lim && Color.alpha(b.getPixel(at[i][0] + at[i][2] * d, at[i][1] + at[i][3] * d)) < 128) d++;
+                r[i] = d > 0 ? (d - 0.5f) / 0.29289f : 0f;
+                if (d > 0) any = true;
+            }
+            return any ? r : null;
+        } catch (Throwable t) {
+            return null;
+        } finally {
+            if (b != null) b.recycle();
         }
     }
 

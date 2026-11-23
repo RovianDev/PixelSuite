@@ -1,7 +1,7 @@
 package io.github.pixelsuite;
 final class FeatureScopes {
  private FeatureScopes(){}
- static String doNotAnnoy(boolean pixelStack){return pixelStack?"• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.":"• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.";}
+ static String doNotAnnoy(boolean pixelStack){return (pixelStack?"• **IMS Stack** (com.android.imsstack)\n• **Phone Services** (com.android.phone)\n\nSelect both, then reboot. Later toggle changes apply instantly.":"• **Phone Services** (com.android.phone)\n\nSelect it, then reboot. Later toggle changes apply instantly.")+"\n• **WhatsApp** (com.whatsapp / com.whatsapp.w4b)";}
 
  static String get(String id){
   if(NavButtons.KEY.equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — navigation buttons beside the gesture bar\n• **System Framework** (system) — apps keep their bottom menus above the buttons\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard dismiss button";
@@ -22,7 +22,7 @@ final class FeatureScopes {
   if("recents".equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — recent apps\n• **System UI** (com.android.systemui) — landscape status bar";
   if("launcher".equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — launcher features\n• **Google** (com.google.android.googlequicksearchbox) — customized apps in Google search\n• **System UI** (com.android.systemui) — toast position";
   if("clear_badge".equals(id)||"drawer".equals(id)||LauncherFeatures.GRID.equals(id)||LauncherFeatures.DRAWER.equals(id)||LauncherFeatures.DRAG_PILL.equals(id)||LauncherFeatures.HIDE_SHORTCUTS.equals(id)||LauncherFeatures.LABEL_SIZE.equals(id)||FolderDrag.TWO_FINGER.equals(id)||MultiDrag.KEY.equals(id)||Feature.CLEAR_ALL.equals(id)||RecentsLock.KEY.equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher)";
-  if("files".equals(id)||Feature.FILES_SORT.equals(id))return "• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker";
+  if("files".equals(id)||Feature.FILES_SORT.equals(id))return "• **Files by Google** (com.google.android.apps.nbu.files) — file browser\n• **Files (system)** (com.google.android.documentsui / com.android.documentsui) — system file picker\n• **External Storage** (com.android.externalstorage) — big folders";
   if("share_menu".equals(id))return "• **Share sheet** (com.android.intentresolver)\n• **Google Photos** (com.google.android.apps.photos) — matching Photos share-page colors";
   if("privacy".equals(id))return "• **System Framework** (system) — app protection\n• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — app and folder locks\n• **System UI** (com.android.systemui) — authentication prompts\n\nSet up your phone's screen lock, then reboot after adding scopes.";
   if("do_not_annoy".equals(id))return doNotAnnoy(false);
@@ -38,7 +38,9 @@ final class FeatureScopes {
   if("chrome".equals(id)||"ad_blocker".equals(id))return "• **Chrome** (com.android.chrome) — empty ad-box cleanup\n\nRestart Chrome after adding its scope. Ad-domain blocking needs no scope.";
   if("google_news".equals(id))return "• **Chrome** (com.android.chrome) — ad-box cleanup in articles opened with Chrome\n\nGoogle News (com.google.android.apps.magazines) needs no scope. Ad-domain blocking uses the system-wide blocker.";
   if("google_apps".equals(id))return null;
-  if("miscellaneous".equals(id))return "• **System Framework** (system) — secure screenshots, accessibility hiding, Hide Developer Options and FPS\n• **System UI** (com.android.systemui) — faster screenshots\n• **Settings** (com.android.settings) — refresh rate slider\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard bar\n\nHide Developer Options works globally; no individual app scopes needed.";
+  if(WidgetPanel.KEY.equals(id))return "• **Pixel Launcher** (com.google.android.apps.nexuslauncher) — the Widgets feed on the home screen\n• **System UI** (com.android.systemui) — the Widgets feed on the lock screen\n• **System Framework** (android) — apps opened from the lock screen's feed";
+  if("otp".equals(id))return "• **System Framework** (system) — reading codes as they arrive\n• **Gboard** (com.google.android.inputmethod.latin) — the code above your keyboard";
+  if("miscellaneous".equals(id))return "• **System Framework** (system) — secure screenshots, accessibility hiding, Hide Developer Options and FPS\n• **System UI** (com.android.systemui) — faster screenshots\n• **Settings** (com.android.settings) — refresh rate slider and quick USB modes\n• **Gboard** (com.google.android.inputmethod.latin) — keyboard bar\n\nHide Developer Options works globally; no individual app scopes needed.";
   return null;
  }
 }

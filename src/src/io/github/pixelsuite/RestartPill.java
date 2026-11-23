@@ -289,22 +289,6 @@ final class RestartPill {
         }
     }
 
-    void showRestriction(){
-        refreshPalette();
-        if(activity.isFinishing()||activity.isDestroyed())return;
-        main.removeCallbacks(clearNotice);
-        android.text.SpannableString message=new android.text.SpannableString(I18n.t("Super Dark-Mode uses its own black style.\nTurn it off to change styles."));
-        int boldAt=Math.max(0,message.toString().indexOf("Super Dark-Mode"));message.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),boldAt,Math.min(message.length(),boldAt+"Super Dark-Mode".length()),android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);notice.setText(message);
-        if(pill.getVisibility()==View.VISIBLE)pill.setVisibility(View.INVISIBLE);
-        boolean already=notice.getVisibility()==View.VISIBLE;
-        stopNoticeAnimation();notice.setAlpha(1f);notice.setVisibility(View.VISIBLE);notice.requestApplyInsets();notice.setScaleX(1);notice.setScaleY(1);notice.setTranslationY(0);
-        if(!already&&status.motion()){
-            notice.setAlpha(0f);notice.setTranslationY(dp(activity.getResources().getDisplayMetrics().density,12));notice.setScaleX(.84f);notice.setScaleY(.84f);
-            notice.animate().alpha(1f).translationY(0).scaleX(1).scaleY(1).setDuration(340).setInterpolator(new android.view.animation.OvershootInterpolator(.55f)).withLayer().start();
-        }
-        ToastMotion.watchScroll(activity.getWindow().getDecorView());ToastMotion.register(notice,clearNotice);
-        main.postDelayed(clearNotice,5000);
-    }
     void dispose(){if(whyBack!=null)whyBack.off();pillFrost.release();noticeFrost.release();if(whyFrost!=null)whyFrost.release();if(whyRoot!=null&&whyScroll!=null&&whyRoot.getViewTreeObserver().isAlive())whyRoot.getViewTreeObserver().removeOnScrollChangedListener(whyScroll);ToastMotion.unregister(notice);stopNoticeAnimation();main.removeCallbacks(clearNotice);main.removeCallbacks(finishDone);status.setActive(false);}
 
     private int backgroundColor(){boolean dark=FrostedSurface.dark(activity);return AppSurfaces.active(activity)?0xff000000:LauncherFeatures.surface(activity,dark?"system_surface_container_dark":"system_surface_container_light",dark?0xff211f26:0xfff3edf7);}

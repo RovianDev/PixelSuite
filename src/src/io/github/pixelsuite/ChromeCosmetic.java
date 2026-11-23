@@ -64,6 +64,7 @@ final class ChromeCosmetic {
         };
         Xp.hookAllMethods(proxy, "primaryMainDocumentElementAvailable", cb);
         Xp.hookAllMethods(proxy, "documentLoadedInPrimaryMainFrame", cb);
+        try { ChromeLayout.navInstall(l, proxy, sWebContents); } catch (Throwable ignored) { }
         sInstalled = true;
         try { ChromeShield.install(l); } catch (Throwable ignored) { }
         try { ChromeDarkPages.install(l); } catch (Throwable ignored) { }

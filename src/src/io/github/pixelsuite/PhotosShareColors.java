@@ -174,20 +174,6 @@ final class PhotosShareColors {
 
     private static final int TAG = 0x7f7ffd31;
 
-    private static void dump(View decor) {
-        final int limit = Math.round(Resources.getSystem().getDisplayMetrics().heightPixels * 0.2f);
-        final StringBuilder sb = new StringBuilder();
-        dumpInto(decor, 0, limit, sb);
-    }
-    private static void dumpInto(View v, int depth, int limit, StringBuilder sb) {
-        if (depth > 12 || sb.length() > 3000) return;
-        int[] at = new int[2]; v.getLocationInWindow(at);
-        if (at[1] > limit) return;
-        Drawable b = v.getBackground();
-        sb.append(" | ").append(depth).append(':').append(v.getClass().getSimpleName()).append(' ').append(at[1]).append('+').append(v.getHeight())
-                .append(" w").append(v.getWidth()).append(" bg=").append(b == null ? "-" : b instanceof ColorDrawable ? "#" + Integer.toHexString(((ColorDrawable) b).getColor()) : b.getClass().getSimpleName());
-        if (v instanceof ViewGroup) for (int i = 0; i < ((ViewGroup) v).getChildCount(); i++) dumpInto(((ViewGroup) v).getChildAt(i), depth + 1, limit, sb);
-    }
 
     static void apply(final Activity a) {
         final int target = sheetColor(a);
@@ -207,7 +193,6 @@ final class PhotosShareColors {
             if (pageColour(w.getNavigationBarColor()) && (w.getNavigationBarColor() >>> 24) >= 0xE0) w.setNavigationBarColor(target);
         } catch (Throwable ignored) { }
         paint(decor, whites, target);
-        if (decor.getTag(TAG + 1) == null) { decor.setTag(TAG + 1, Boolean.TRUE); decor.postDelayed(() -> dump(decor), 900); }
         if (decor.getTag(TAG) == null) {
             decor.setTag(TAG, Boolean.TRUE);
             decor.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

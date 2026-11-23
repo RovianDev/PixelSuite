@@ -427,7 +427,7 @@ Refresh	Aktualisieren
 Refreshing…	Wird aktualisiert…
 Sign in with Patreon	Mit „Patreon“ anmelden
 Sign out	Abmelden
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Unterstütze Pixel Suite, um Chrome+, Gboard+, den Werbeblocker, VPN, Dunkle Seiten, die Anrufaufnahme und einen werbefreien Google-Feed freizuschalten.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Unterstütze Pixel Suite, um den Widget-Feed, Chrome+, Gboard+, den Werbeblocker, VPN, Dunkle Seiten, die Anrufaufnahme und einen werbefreien Google-Feed freizuschalten.
 A Quest for the\nKind-Hearted	Eine Quest für die\nGutherzigen
 Already a patron? Unlock	Schon Patron? Freischalten
 Checking Patreon membership…	Patreon-Mitgliedschaft wird geprüft…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	Quest abgeschlossen!
 Ready to check membership	Bereit zur Prüfung der Mitgliedschaft
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	Danke, dass du Pixel Suite unterstützt. Deine Patreon-Funktionen sind bereit.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patrons schalten Chrome+ und Gboard+, den Werbeblocker und VPN, Dunkle Seiten in Chrome, die Anrufaufnahme und einen werbefreien Google-Feed frei. Jede Unterstützung fließt direkt zurück in die App: Schritt halten mit Android- und Google-App-Updates, beheben, was sie kaputt machen, und neue Funktionen bauen.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patrons schalten den Widget-Feed, Chrome+ und Gboard+, den Werbeblocker und VPN, Dunkle Seiten in Chrome, die Anrufaufnahme und einen werbefreien Google-Feed frei. Jede Unterstützung fließt direkt zurück in die App: Schritt halten mit Android- und Google-App-Updates, beheben, was sie kaputt machen, und neue Funktionen bauen.
 Welcome back!	Willkommen zurück!
 ✨ Quest Complete!	✨ Quest abgeschlossen!
 📜 A Quest for the Kind-Hearted	📜 Eine Quest für die Gutherzigen
@@ -953,7 +953,6 @@ Lock apps in recents	Apps in den zuletzt verwendeten Apps sperren
 Lock factory reset	Zurücksetzen auf Werkseinstellungen sperren
 Lock screen	Sperrbildschirm
 Lock-screen behavior	Verhalten auf dem Sperrbildschirm
-Lock-screen taps	Tippen auf dem Sperrbildschirm
 Locking recent apps	Zuletzt verwendete Apps sperren
 Locks stay after a restart.	Sperren bleiben nach einem Neustart erhalten.
 Made by RovianDev	Erstellt von RovianDev
@@ -1005,7 +1004,6 @@ Protection	Schutz
 Pure black backgrounds and darker menus in dark theme.	Rein schwarze Hintergründe und dunklere Menüs im dunklen Design.
 Quick actions from your phone's buttons.	Schnellaktionen über die Tasten deines Smartphones.
 Recent	Übersicht
-Recent Apps	Zuletzt verwendete Apps
 Record and save calls	Anrufe aufnehmen und speichern
 Record calls in the Phone app, in any country, without the announcement	Anrufe in der Telefon-App aufnehmen, in jedem Land, ohne Ansage
 Reduce screenshot delay	Screenshot-Verzögerung verringern
@@ -1077,7 +1075,7 @@ Take a screenshot	Screenshot aufnehmen
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Tippe auf der Seite „Neuer Tab“ in Chrome auf „Erweiterungen“, um sie zu nutzen. Tippe auf eine für ihre Einstellungen oder halte sie gedrückt, um sie an die Symbolleiste anzuheften.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Tippe auf der Seite „Neuer Tab“ auf „Erweiterungen“, um sie zu nutzen. Halte eine gedrückt, um sie an die Symbolleiste anzuheften.
 Tap an app to see its saved versions.	Tippe auf eine App, um ihre gespeicherten Versionen zu sehen.
-Tap to wake	Zum Aktivieren tippen
+Tap or Double-tap to wake	Zum Aktivieren tippen oder doppeltippen
 Text size	Textgröße
 That isn't a Pixel Suite backup	Das ist keine Pixel Suite-Sicherung
 The 3 newest versions of each app are kept.	Die 3 neuesten Versionen jeder App werden behalten.
@@ -1089,7 +1087,6 @@ The toolbar	Die Symbolleiste
 Three-finger screenshot	Screenshot mit drei Fingern
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Um hierher zurückzukehren, halte den Startbildschirm gedrückt und wähle „Pixel Suite-Einstellungen“. Erfordert Root und LSPosed.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	Um eine App mit Fingerabdruck oder PIN zu schützen, nutze Datenschutz & Sicherheit.
-Toasts	Kurzmeldungen
 Toolbar	Symbolleiste
 Toolbar, keys, resize, auto-correction, clipboard	Symbolleiste, Tasten, Größe, Autokorrektur, Zwischenablage
 Tools for your Google apps.	Tools für deine Google-Apps.
@@ -1118,8 +1115,7 @@ Use custom app icons	Eigene App-Symbole verwenden
 Use your own image for an app icon	Eigenes Bild als App-Symbol verwenden
 Voice typing with checkmark	Spracheingabe mit Häkchen
 Wake gesture	Aufweckgeste
-Wake the screen	Bildschirm aktivieren
-Wake your phone with a tap, with pocket protection.	Weck dein Smartphone mit einem Tippen, mit Taschenschutz.
+Wake your phone with a tap or a double tap, with pocket protection.	Weck dein Smartphone mit einem Tippen oder Doppeltippen, mit Taschenschutz.
 Websites open dark, with no white flash. Super Dark uses pure black.	Websites öffnen dunkel, ohne weißes Aufblitzen. „Super-Dunkel“ nutzt reines Schwarz.
 What's new	Neuigkeiten
 When you untick apps, Back up saves their current versions first.	Wenn du Apps abwählst, speichert „Sichern“ zuerst ihre aktuellen Versionen.
@@ -1689,3 +1685,129 @@ Hide At a Glance	„Auf einen Blick“ ausblenden
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Entfernt „Auf einen Blick“ oben auf dem Startbildschirm. Die Zeile ist frei für deine Apps, Ordner und Widgets.
 Hold an app, folder or widget and drop it in the free row.	Halte eine App, einen Ordner oder ein Widget gedrückt und lege es in der freien Zeile ab.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Für Android 16 und älter. Neuere Versionen können „Auf einen Blick“ direkt auf dem Startbildschirm entfernen.
+Code autofill	Codes automatisch ausfüllen
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	Einmalcodes aus Nachrichten, Apps und E-Mails erscheinen über deiner Tastatur. Tippe auf den Code, um ihn einzufügen.
+Fill codes automatically	Codes von selbst einfügen
+Types the code for you when an empty box is waiting for one.	Gibt den Code für dich ein, wenn ein leeres Feld darauf wartet.
+Autofill OTP	OTP automatisch ausfüllen
+One-time codes, filled in for you.	Einmalcodes, für dich ausgefüllt.
+Codes from your messages, right above the keyboard	Codes aus deinen Nachrichten, direkt über der Tastatur
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• Kommt ein Code per Nachricht, App oder E-Mail, erscheint er über deiner Tastatur. Tipp darauf, um ihn einzufügen.\n\n• Ist „Codes von selbst einfügen“ an, wird der Code für dich eingetippt, sobald ein Codefeld wartet.
+Shows the code above your keyboard and fills it in.	Zeigt den Code über deiner Tastatur und fügt ihn ein.
+Reads one-time codes from notifications as they arrive.	Liest Einmalcodes aus Benachrichtigungen, sobald sie eintreffen.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	Hält Chips wie Screenshot aus der Leiste fern. Codes, Autofill und kopierter Text erscheinen weiterhin.
+Widgets feed	Widget-Feed
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	Wisch auf deinem ersten Startbildschirm nach rechts für deine Widgets, das Wetter und das Datum. Er ersetzt den Google-Feed.
+Hide weather and date	Wetter und Datum ausblenden
+Your widgets start at the top of the feed.	Deine Widgets beginnen ganz oben im Feed.
+Tap + to add a widget. Tap a widget to open its app.	Tippe auf +, um ein Widget hinzuzufügen. Tippe auf ein Widget, um seine App zu öffnen.
+Hold a widget to move or remove widgets, then tap the check mark.	Halte ein Widget gedrückt, um Widgets zu verschieben oder zu entfernen, und tippe dann auf das Häkchen.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	Tippe auf das Datum für deinen Kalender und auf das Wetter für die Vorhersage. Wisch nach links, um zurückzugehen.
+Add widget	Widget hinzufügen
+Feed settings	Feed-Einstellungen
+Background opacity	Deckkraft des Hintergrunds
+Invisible	Unsichtbar
+Solid	Deckend
+How much of the feed's background shows. The status bar and home bar follow it.	Wie viel vom Hintergrund des Feeds zu sehen ist. Statusleiste und Home-Leiste passen sich an.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	Halte ein Widget gedrückt, um Widgets zu verschieben, in der Größe zu ändern oder zu entfernen, und tippe dann auf das Häkchen.
+Ditch the Google feed. Build your own.	Weg mit dem Google-Feed. Bau dir deinen eigenen.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	Entferne den Google-Feed komplett und ersetze ihn durch eine frei anpassbare Seite mit deinen eigenen Widgets.
+Home screen	Startbildschirm
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	Deine Widgets, nur einen Wisch vom Sperrbildschirm entfernt. Jede App, jede Größe, ohne dein Handy zu entsperren.
+How much of the feed's background shows.	Wie viel vom Hintergrund des Feeds zu sehen ist.
+Each feed keeps its own widgets.	Jeder Feed hat seine eigenen Widgets.
+No widgets available	Keine Widgets verfügbar
+Couldn't add that widget	Dieses Widget konnte nicht hinzugefügt werden
+Open apps without unlocking	Apps ohne Entsperren öffnen
+Saved.	Gespeichert.
+Pixel Suite and Settings always ask to unlock.	Pixel Suite und die Einstellungen fragen immer nach dem Entsperren.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	Von dir gewählte Apps öffnen sich direkt auf dem Sperrbildschirm, ohne Fingerabdruck, also wähle sorgfältig. Verlässt du die App, kehrst du zum Sperrbildschirm zurück.
+Apps that open without unlocking	Apps, die sich ohne Entsperren öffnen
+Choose which apps open from the lock screen	Wähle, welche Apps sich vom Sperrbildschirm öffnen
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	Auf dem Sperrbildschirm fragt eine App zuerst nach dem Entsperren, außer du hast sie unter „Apps ohne Entsperren öffnen“ gewählt. Wisch nach rechts, um zurückzugehen.
+Your widgets, the weather and the date, one swipe from your home screen.	Deine Widgets, das Wetter und das Datum – einen Wisch vom Startbildschirm entfernt.
+Side	Seite
+The feed comes in from this side of your home screen.	Der Feed kommt von dieser Seite deines Startbildschirms.
+The feed comes in from this side of the lock screen.	Der Feed kommt von dieser Seite des Sperrbildschirms.
+Keep the Google feed	Google-Feed behalten
+Swipe the other way for the Google feed.	Wisch in die andere Richtung für den Google-Feed.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	Wähle die Seite für jeden Feed. Auf dem Startbildschirm kann der Google-Feed auf der anderen Seite bleiben.
+Tap the date for your calendar and the weather for the forecast.	Tippe auf das Datum für deinen Kalender und auf das Wetter für die Vorhersage.
+To close a feed, swipe it back the way it came.	Um einen Feed zu schließen, wisch ihn dorthin zurück, wo er herkam.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	Auf dem Sperrbildschirm fragt eine App zuerst nach dem Entsperren, außer du hast sie unter „Apps ohne Entsperren öffnen“ gewählt.
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	Eine frei anpassbare Seite mit deinen eigenen Widgets, auf der Seite deiner Wahl. Behalte den Google-Feed auf der anderen Seite oder lass ihn weg.
+Your own widgets, left or right.	Deine eigenen Widgets, links oder rechts.
+Left	Links
+Right	Rechts
+Google feed	Google-Feed
+A live preview of your feeds. It follows your settings.	Eine Live-Vorschau deiner Feeds. Sie folgt deinen Einstellungen.
+USB on top	USB oben
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	Die USB-Benachrichtigung bleibt oben angeheftet und wählt im entsperrten Zustand Dateiübertragung. USB-Debugging steht direkt darunter.
+Burns through crates and ghosts	Brennt sich durch Kisten und Geister
+Quick USB modes	Schnelle USB-Modi
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	Wechsle ohne Fingerabdruck oder PIN zu Dateiübertragung, USB-Tethering und anderen USB-Modi, solange dein Smartphone entsperrt ist.
+More USB options	Weitere USB-Optionen
+Block WhatsApp calls	WhatsApp-Anrufe blockieren
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	Solange Nicht nerven an ist, erreichen dich keine WhatsApp-Anrufe und Anrufende sehen „Anruf nicht möglich“. Nachrichten und deine eigenen Anrufe funktionieren wie gewohnt.
+WhatsApp call turned away by Do Not Annoy	WhatsApp-Anruf von Nicht nerven abgewiesen
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	Weist WhatsApp-Anrufe ab, solange Nicht nerven an ist und WhatsApp-Anrufe blockieren eingeschaltet ist. Starte WhatsApp neu, nachdem du diesen Bereich hinzugefügt hast.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	Öffnet Ordner mit Tausenden von Dateien schnell, in jeder App und ohne leere Ordner nach dem Zurückgehen. Starte nach dem Hinzufügen dieses Bereichs neu.
+Demonic	Dämonisch
+Take the angelic power?	Engelskraft annehmen?
+Take the demonic power?	Dämonenkraft annehmen?
+Your angelic power fades	Deine Engelskraft verblasst
+Your demonic power fades	Deine Dämonenkraft verblasst
+Thunder	Donner
+Inferno	Inferno
+Fit the thunder core?	Donnerkern einbauen?
+Fit the inferno core?	Infernokern einbauen?
+Your thunder core burns out	Dein Donnerkern brennt durch
+Your inferno core burns out	Dein Infernokern brennt durch
+Choose a core	Wähle einen Kern
+Crushes bricks	Zermalmt Ziegel
+Crushes steel	Zermalmt Stahl
+Mortar King	Mörserkönig
+Hive Mother	Schwarmmutter
+Steel Serpent	Stahlschlange
+Twin Fortress	Zwillingsfestung
+Thunder Colossus	Donnerkoloss
+Mine Layer	Minenleger
+Crimson Baron	Purpurbaron
+Shield Warden	Schildwächter
+Inferno Engine	Höllenmaschine
+Night Spider	Nachtspinne
+Titan	Titan
+Phantom Ship	Geisterschiff
+Siege Breaker	Belagerungsbrecher
+Overlord	Oberherr
+Dreadnought	Schlachtschiff
+Void Eye	Leerenauge
+Emperor	Imperator
+Bomb Baron	Bombenbaron
+Frost Wraith	Frostgeist
+Slime Lord	Schleimfürst
+Storm Eye	Sturmauge
+Iron Mech	Eisen-Mech
+Shadow Twins	Schattenzwillinge
+Magma Golem	Magma-Golem
+Hex Witch	Fluchhexe
+Hydra Slime	Hydra-Schleim
+Grave King	Grabkönig
+Thunder Mech	Donner-Mech
+The Watcher	Der Wächter
+Crystal Golem	Kristallgolem
+Banshee	Banshee
+Toxic Slime	Giftschleim
+Demon Twins	Dämonenzwillinge
+Glitch Emperor	Glitch-Kaiser
+What each extension does	Was jede Erweiterung macht
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	Bleibt ohne Updates, solange {0} an ist, damit kein Update es kaputt macht. Schalte das aus, um Updates zuzulassen.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	Optionen, die in einer App arbeiten, wie „WhatsApp-Anrufe blockieren“, halten diese App von Updates ab, solange sie an sind. Sie erscheint hier gesperrt.
+Its data wasn't found	Die Daten der App wurden nicht gefunden
+Its saved data is incomplete	Die gesicherten Daten sind unvollständig
+The app isn't installed	Die App ist nicht installiert
+Couldn't make the backup folder	Der Sicherungsordner konnte nicht erstellt werden
+Couldn't put back {0}	{0} konnte nicht zurückgespielt werden
+Couldn't save {0}	{0} konnte nicht gespeichert werden
+It didn't install	Die Installation hat nicht geklappt
+Root isn't available	Root ist nicht verfügbar

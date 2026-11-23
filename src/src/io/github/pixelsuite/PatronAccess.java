@@ -45,9 +45,9 @@ final class PatronAccess {
     static boolean unlocked(){return unlocked;}
     static SharedPreferences prefs(Context c){return c.getSharedPreferences("pixelsuite_patron",0);}
     static boolean configured(){return PatronConfig.SERVER.startsWith("https://")&&!PatronConfig.CAMPAIGN.isEmpty();}
-    static boolean protectedKey(String key){return key != null && (CallRecording.KEY.equals(key) || CallRecording.QUALITY_KEY.equals(key) || GoogleFeedAds.KEY.equals(key) || WatchEsim.KEY.equals(key) || ChromeLayout.KEY.equals(key) || AdBlock.KEY.equals(key) || ChromeShield.KEY_ON.equals(key) || DarkPages.KEY.equals(key) || DarkPages.KEY_STYLE.equals(key) || DarkPages.KEY_WHEN.equals(key) || DarkPages.KEY_FROM.equals(key) || DarkPages.KEY_TO.equals(key) || key.startsWith("pixelsuite_gboard_"));}
+    static boolean protectedKey(String key){return key != null && (CallRecording.KEY.equals(key) || CallRecording.QUALITY_KEY.equals(key) || GoogleFeedAds.KEY.equals(key) || WatchEsim.KEY.equals(key) || ChromeLayout.KEY.equals(key) || AdBlock.KEY.equals(key) || ChromeShield.KEY_ON.equals(key) || DarkPages.KEY.equals(key) || DarkPages.KEY_STYLE.equals(key) || DarkPages.KEY_WHEN.equals(key) || DarkPages.KEY_FROM.equals(key) || DarkPages.KEY_TO.equals(key) || WidgetPanel.KEY.equals(key) || WidgetPanel.HEADER_KEY.equals(key) || WidgetPanel.OPACITY_KEY.equals(key) || WidgetPanel.LOCK_KEY.equals(key) || WidgetPanel.LOCK_HEADER_KEY.equals(key) || WidgetPanel.LOCK_OPACITY_KEY.equals(key) || WidgetPanel.LOCK_OPEN_KEY.equals(key) || WidgetPanel.LOCK_APPS_KEY.equals(key) || key.startsWith("pixelsuite_gboard_"));}
     static boolean allowed(Context c,String key){return WatchEsim.KEY.equals(key)?EsimPurchase.unlocked(c):unlocked();}
-    static boolean protectedPage(String page){return "google_dialer".equals(page)||"google_app".equals(page);}
+    static boolean protectedPage(String page){return "google_dialer".equals(page)||"google_app".equals(page)||WidgetPanel.KEY.equals(page);}
     static String random(){byte[] bytes=new byte[32];new SecureRandom().nextBytes(bytes);return Base64.encodeToString(bytes,Base64.URL_SAFE|Base64.NO_WRAP|Base64.NO_PADDING);}
     static synchronized String device(Context c){String id=prefs(c).getString("device",null);if(id==null){id=random();prefs(c).edit().putString("device",id).commit();}return id;}
     static void watch(Runnable action){listeners.addIfAbsent(action);}
@@ -73,8 +73,10 @@ final class PatronAccess {
         if(p.optInt("v")!=1||!"pixelsuite-patreon".equals(p.optString("iss"))||!"io.github.roviandev.pixelsuite".equals(p.optString("aud"))||!PatronConfig.CAMPAIGN.equals(p.optString("campaign"))||!device(c).equals(p.optString("did"))||!p.optString("sub").matches("[0-9]+")||!p.optString("sid").matches("[A-Za-z0-9_-]{43}")||issued>now+300||expiry-issued!=35*DAY||grace-expiry!=7*DAY||now>grace||(!forRefresh&&now>expiry&&(login||!offline(c))))throw new Exception("claims");
         prefs(c).edit().putLong("clock",now).apply();return p;
     }
+    private static void publishDevice(Context c){try{String id=device(c);if(!id.equals(android.provider.Settings.Secure.getString(c.getContentResolver(),PatronGate.DEVICE_PASS_KEY)))Root.run("settings put secure "+PatronGate.DEVICE_PASS_KEY+" '"+id+"'");}catch(Throwable ignored){}}
     static void reconcile(Context c){synchronized(APPLY){reconcileLocked(c);initialized=true;}}
     private static void reconcileLocked(Context c){
+        publishDevice(c);
         List<String> lines=Root.run("settings get secure "+KEY);String token=lines!=null&&!lines.isEmpty()?lines.get(0).trim():prefs(c).getString("pass","");
         if(prefs(c).getBoolean("signed_out",false)){if(!"null".equals(token)&&token.length()>0)Root.run("settings delete secure "+KEY);token="";}
         boolean allowed=false;JSONObject claims=null;try{claims=verify(c,token,false);allowed=claims.optBoolean("entitled",false);}catch(Exception ignored){}
@@ -96,6 +98,9 @@ final class PatronAccess {
             long age=System.currentTimeMillis()-prefs(c).getLong("checked",0);
             if(age>7*DAY*1000||claims.optLong("exp")-System.currentTimeMillis()/1000<7*DAY)refresh(c);
         }
+        boolean seen=prefs(c).contains("entitled_seen"),was=prefs(c).getBoolean("entitled_seen",false);
+        if(!seen||was!=allowed)prefs(c).edit().putBoolean("entitled_seen",allowed).apply();
+        if(seen&&was!=allowed){if(!allowed)try{PixelVpnService.stop(c);}catch(Throwable ignored){}refreshPremiumApps(c);}
         if(before!=allowed)changed();
     }
     private static void updateBlocker(Context context,final boolean activate){
@@ -117,7 +122,7 @@ final class PatronAccess {
     private static void savePass(Context c,String fresh,JSONObject claims)throws Exception{savePass(c,fresh,claims,false);}
     private static void savePass(Context c,String fresh,JSONObject claims,boolean login)throws Exception{
         boolean paid=claims.optBoolean("entitled",false);
-        String command=paid?"settings put secure "+KEY+" '"+fresh+"'":"settings delete secure "+KEY;
+        String command=paid?"settings put secure "+PatronGate.DEVICE_PASS_KEY+" '"+device(c)+"'; settings put secure "+KEY+" '"+fresh+"'":"settings delete secure "+KEY;
         if(Root.run(command)==null)throw new Exception("Root access is needed to save membership changes.");
         prefs(c).edit().putString("pass",fresh).putLong("checked",System.currentTimeMillis()).putBoolean("logged_in",true).remove("signed_out").putString("membership",claims.optString("membership",paid?"paid":"none")).remove("refresh_error").apply();
         if(login&&paid){Root.run("settings put secure "+CallRecording.KEY+" 1; settings put secure "+GoogleFeedAds.KEY+" 1");prefs(c).edit().putBoolean("defaults_applied",false).putBoolean("refresh_after_blocker",true).apply();}

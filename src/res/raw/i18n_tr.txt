@@ -427,7 +427,7 @@ Refresh	Yenile
 Refreshing…	Yenileniyor…
 Sign in with Patreon	Patreon ile oturum açın
 Sign out	Oturumu kapat
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Chrome+, Gboard+, Reklam Engelleyici, VPN, Koyu sayfalar, arama kaydı ve reklamsız Google akışının kilidini açmak için Pixel Suite'i destekleyin.
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	Widget akışı, Chrome+, Gboard+, Reklam Engelleyici, VPN, Koyu sayfalar, arama kaydı ve reklamsız Google akışının kilidini açmak için Pixel Suite'i destekleyin.
 A Quest for the\nKind-Hearted	İyi Kalpliler İçin\nBir Görev
 Already a patron? Unlock	Zaten patron musunuz? Kilidi aç
 Checking Patreon membership…	Patreon üyeliği kontrol ediliyor…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	Görev Tamamlandı!
 Ready to check membership	Üyelik kontrolüne hazır
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	Pixel Suite'i desteklediğiniz için teşekkürler. Patreon özellikleriniz hazır.
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patronlar Chrome+ ve Gboard+, Reklam Engelleyici ve VPN, Chrome'da Koyu sayfalar, arama kaydı ve reklamsız Google akışının kilidini açar. Her destek doğrudan uygulamaya geri döner: Android ve Google uygulama güncellemelerine ayak uydurmak, bozdukları şeyleri düzeltmek ve yeni özellikler geliştirmek.
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	Patronlar Widget akışı, Chrome+ ve Gboard+, Reklam Engelleyici ve VPN, Chrome'da Koyu sayfalar, arama kaydı ve reklamsız Google akışının kilidini açar. Her destek doğrudan uygulamaya geri döner: Android ve Google uygulama güncellemelerine ayak uydurmak, bozdukları şeyleri düzeltmek ve yeni özellikler geliştirmek.
 Welcome back!	Tekrar hoş geldiniz!
 ✨ Quest Complete!	✨ Görev Tamamlandı!
 📜 A Quest for the Kind-Hearted	📜 İyi Kalpliler İçin Bir Görev
@@ -953,7 +953,6 @@ Lock apps in recents	Son kullanılanlarda uygulamaları kilitle
 Lock factory reset	Fabrika ayarlarına sıfırlamayı kilitle
 Lock screen	Kilit ekranı
 Lock-screen behavior	Kilit ekranı davranışı
-Lock-screen taps	Kilit ekranı dokunmaları
 Locking recent apps	Son kullanılan uygulamaları kilitleme
 Locks stay after a restart.	Kilitler yeniden başlatmadan sonra da kalır.
 Made by RovianDev	RovianDev tarafından yapıldı
@@ -1005,7 +1004,6 @@ Protection	Koruma
 Pure black backgrounds and darker menus in dark theme.	Koyu temada saf siyah arka planlar ve daha koyu menüler.
 Quick actions from your phone's buttons.	Telefonunuzun düğmelerinden hızlı işlemler.
 Recent	Son kullanılanlar
-Recent Apps	Son Kullanılan Uygulamalar
 Record and save calls	Aramaları kaydedin ve saklayın
 Record calls in the Phone app, in any country, without the announcement	Telefon uygulamasında aramaları her ülkede, anons olmadan kaydedin
 Reduce screenshot delay	Ekran görüntüsü gecikmesini azalt
@@ -1077,7 +1075,7 @@ Take a screenshot	Ekran görüntüsü al
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	Kullanmak için Chrome'un yeni sekme sayfasında Uzantılar'a dokunun. Ayarları için birine dokunun veya araç çubuğuna sabitlemek için basılı tutun.
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	Kullanmak için yeni sekme sayfasında Uzantılar'a dokunun. Araç çubuğuna sabitlemek için birini basılı tutun.
 Tap an app to see its saved versions.	Kayıtlı sürümlerini görmek için bir uygulamaya dokunun.
-Tap to wake	Uyandırmak için dokunun
+Tap or Double-tap to wake	Uyandırmak için dokunun veya çift dokunun
 Text size	Metin boyutu
 That isn't a Pixel Suite backup	Bu bir Pixel Suite yedeği değil
 The 3 newest versions of each app are kept.	Her uygulamanın en yeni 3 sürümü saklanır.
@@ -1089,7 +1087,6 @@ The toolbar	Araç çubuğu
 Three-finger screenshot	Üç parmakla ekran görüntüsü
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	Buraya dönmek için ana ekrana uzun basın ve Pixel Suite ayarları'nı seçin. Root ve LSPosed gerekir.
 To protect an app with your fingerprint or PIN, use Privacy & Security.	Bir uygulamayı parmak izi veya PIN ile korumak için Gizlilik ve Güvenlik'i kullanın.
-Toasts	Bildirim mesajları
 Toolbar	Araç çubuğu
 Toolbar, keys, resize, auto-correction, clipboard	Araç çubuğu, tuşlar, boyut, otomatik düzeltme, pano
 Tools for your Google apps.	Google uygulamalarınız için araçlar.
@@ -1118,8 +1115,7 @@ Use custom app icons	Özel uygulama simgeleri kullan
 Use your own image for an app icon	Uygulama simgesi için kendi resminizi kullanın
 Voice typing with checkmark	Onay işaretli sesle yazma
 Wake gesture	Uyandırma hareketi
-Wake the screen	Ekranı uyandır
-Wake your phone with a tap, with pocket protection.	Telefonunuzu cep korumasıyla, bir dokunuşla uyandırın.
+Wake your phone with a tap or a double tap, with pocket protection.	Telefonunuzu cep korumasıyla, bir veya iki dokunuşla uyandırın.
 Websites open dark, with no white flash. Super Dark uses pure black.	Web siteleri beyaz parlama olmadan koyu açılır. Süper Karanlık saf siyah kullanır.
 What's new	Yenilikler
 When you untick apps, Back up saves their current versions first.	Uygulamaların işaretini kaldırdığınızda, Yedekle önce mevcut sürümlerini kaydeder.
@@ -1689,3 +1685,129 @@ Hide At a Glance	Bir Bakışta'yı gizle
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	Bir Bakışta'yı ana ekranın üstünden kaldırır. Satır; uygulamalarınız, klasörleriniz ve widget'larınız için boş kalır.
 Hold an app, folder or widget and drop it in the free row.	Bir uygulamayı, klasörü veya widget'ı basılı tutup boş satıra bırakın.
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	Android 16 ve öncesi için. Daha yeni sürümlerde Bir Bakışta doğrudan ana ekrandan kaldırılabilir.
+Code autofill	Kod otomatik doldurma
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	Mesajlardan, uygulamalardan ve e-postadan gelen tek kullanımlık kodlar klavyenin üstünde görünür. Doldurmak için koda dokun.
+Fill codes automatically	Kodları kendiliğinden doldur
+Types the code for you when an empty box is waiting for one.	Boş bir kutu kod beklediğinde kodu senin yerine yazar.
+Autofill OTP	OTP otomatik doldurma
+One-time codes, filled in for you.	Tek kullanımlık kodlar, sizin yerinize doldurulur.
+Codes from your messages, right above the keyboard	Mesajlarınızdaki kodlar, klavyenin hemen üstünde
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• Mesaj, uygulama veya e-postayla bir kod geldiğinde klavyenin üstünde görünür. Doldurmak için dokunun.\n\n• Kodları kendiliğinden doldur açıksa, bir kod kutusu beklerken kod sizin yerinize yazılır.
+Shows the code above your keyboard and fills it in.	Kodu klavyenin üstünde gösterir ve doldurur.
+Reads one-time codes from notifications as they arrive.	Tek kullanımlık kodları bildirimler gelir gelmez okur.
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	Ekran görüntüsü gibi çipleri araç çubuğundan uzak tutar. Kodlar, otomatik doldurma ve kopyalanan metin yine görünür.
+Widgets feed	Widget akışı
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	Widget'larınız, hava durumu ve tarih için ilk ana ekranınızda sağa kaydırın. Google akışının yerini alır.
+Hide weather and date	Hava durumunu ve tarihi gizle
+Your widgets start at the top of the feed.	Widget'larınız akışın en üstünden başlar.
+Tap + to add a widget. Tap a widget to open its app.	Widget eklemek için + simgesine dokunun. Uygulamasını açmak için bir widget'a dokunun.
+Hold a widget to move or remove widgets, then tap the check mark.	Widget'ları taşımak veya kaldırmak için bir widget'ı basılı tutun, ardından onay işaretine dokunun.
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	Takvim için tarihe, tahmin için hava durumuna dokunun. Geri dönmek için sola kaydırın.
+Add widget	Widget ekle
+Feed settings	Akış ayarları
+Background opacity	Arka plan opaklığı
+Invisible	Görünmez
+Solid	Dolu
+How much of the feed's background shows. The status bar and home bar follow it.	Akışın arka planının ne kadarının görüneceği. Durum çubuğu ve ana ekran çubuğu buna uyar.
+Hold a widget to move, resize or remove widgets, then tap the check mark.	Widget'ları taşımak, yeniden boyutlandırmak veya kaldırmak için bir widget'ı basılı tutun, ardından onay işaretine dokunun.
+Ditch the Google feed. Build your own.	Google akışını bırakın. Kendinizinkini oluşturun.
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	Google akışını tamamen kaldırın ve yerine kendi widget'larınızdan oluşan, tümüyle özelleştirilebilir bir sayfa koyun.
+Home screen	Ana ekran
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	Widget'larınız, kilit ekranından tek kaydırma uzakta. Her uygulama, her boyut, telefonunuzun kilidini açmadan.
+How much of the feed's background shows.	Akışın arka planının ne kadarının görüneceği.
+Each feed keeps its own widgets.	Her akışın kendi widget'ları vardır.
+No widgets available	Kullanılabilir widget yok
+Couldn't add that widget	O widget eklenemedi
+Open apps without unlocking	Kilidi açmadan uygulama aç
+Saved.	Kaydedildi.
+Pixel Suite and Settings always ask to unlock.	Pixel Suite ve Ayarlar her zaman kilidi açmanızı ister.
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	Seçtiğiniz uygulamalar doğrudan kilit ekranında, parmak izi olmadan açılır, bu yüzden dikkatli seçin. Uygulamadan çıkınca kilit ekranına dönersiniz.
+Apps that open without unlocking	Kilit açmadan açılan uygulamalar
+Choose which apps open from the lock screen	Hangi uygulamaların kilit ekranından açılacağını seçin
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	Kilit ekranında, Kilidi açmadan uygulama aç altında seçmediğiniz bir uygulama önce kilidi açmanızı ister. Geri dönmek için sağa kaydırın.
+Your widgets, the weather and the date, one swipe from your home screen.	Widget'larınız, hava durumu ve tarih, ana ekranınızdan bir kaydırma uzakta.
+Side	Taraf
+The feed comes in from this side of your home screen.	Akış, ana ekranınızın bu tarafından gelir.
+The feed comes in from this side of the lock screen.	Akış, kilit ekranının bu tarafından gelir.
+Keep the Google feed	Google akışını koru
+Swipe the other way for the Google feed.	Google akışı için diğer yöne kaydırın.
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	Her akış için tarafı seçin. Ana ekranda Google akışı diğer tarafta kalabilir.
+Tap the date for your calendar and the weather for the forecast.	Takvim için tarihe, tahmin için hava durumuna dokunun.
+To close a feed, swipe it back the way it came.	Bir akışı kapatmak için geldiği yöne geri kaydırın.
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	Kilit ekranında, Kilidi açmadan uygulama aç altında seçmediğiniz bir uygulama önce kilidi açmanızı ister.
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	Kendi widget'larınızdan oluşan, tümüyle özelleştirilebilir bir sayfa; seçtiğiniz tarafta. Google akışını diğer tarafta tutun ya da kaldırın.
+Your own widgets, left or right.	Kendi widget'larınız, solda ya da sağda.
+Left	Sol
+Right	Sağ
+Google feed	Google akışı
+A live preview of your feeds. It follows your settings.	Akışlarınızın canlı önizlemesi. Ayarlarınızı takip eder.
+USB on top	USB en üstte
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	USB bildirimi en üste sabitlenir ve kilit açıkken Dosya aktarımı'nı seçer. USB hata ayıklama hemen altında durur.
+Burns through crates and ghosts	Sandıkları ve hayaletleri yakar
+Quick USB modes	Hızlı USB modları
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	Telefonun kilidi açıkken parmak izi veya PIN olmadan Dosya aktarımı, USB tethering ve diğer USB modlarına geçin.
+More USB options	Diğer USB seçenekleri
+Block WhatsApp calls	WhatsApp aramalarını engelle
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	Beni Rahatsız Etme açıkken WhatsApp aramaları size ulaşmaz ve arayan kişi Aranamıyor uyarısını görür. Mesajlar ve kendi aramalarınız her zamanki gibi çalışır.
+WhatsApp call turned away by Do Not Annoy	Beni Rahatsız Etme bir WhatsApp aramasını geri çevirdi
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	Beni Rahatsız Etme açıkken ve WhatsApp aramalarını engelle etkinken WhatsApp aramalarını geri çevirir. Bu kapsamı ekledikten sonra WhatsApp'ı yeniden başlatın.
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	Binlerce dosya içeren klasörleri her uygulamada hızla açar, geri dönünce klasörler boş görünmez. Bu kapsamı ekledikten sonra yeniden başlatın.
+Demonic	Şeytan
+Take the angelic power?	Melek gücünü al?
+Take the demonic power?	Şeytan gücünü al?
+Your angelic power fades	Melek gücün söner
+Your demonic power fades	Şeytan gücün söner
+Thunder	Yıldırım
+Inferno	Cehennem
+Fit the thunder core?	Yıldırım çekirdeğini tak?
+Fit the inferno core?	Cehennem çekirdeğini tak?
+Your thunder core burns out	Yıldırım çekirdeğin yanar
+Your inferno core burns out	Cehennem çekirdeğin yanar
+Choose a core	Bir çekirdek seç
+Crushes bricks	Tuğlaları ezer
+Crushes steel	Çeliği ezer
+Mortar King	Havan Kral
+Hive Mother	Kovan Ana
+Steel Serpent	Çelik Yılan
+Twin Fortress	İkiz Kale
+Thunder Colossus	Gök Gürültüsü Devi
+Mine Layer	Mayın Döşeyici
+Crimson Baron	Kızıl Baron
+Shield Warden	Kalkan Muhafızı
+Inferno Engine	Cehennem Motoru
+Night Spider	Gece Örümceği
+Titan	Titan
+Phantom Ship	Hayalet Gemi
+Siege Breaker	Kuşatma Kıran
+Overlord	Hükümdar
+Dreadnought	Zırhlı Dev
+Void Eye	Boşluk Gözü
+Emperor	İmparator
+Bomb Baron	Bomba Baronu
+Frost Wraith	Ayaz Hortlağı
+Slime Lord	Balçık Lordu
+Storm Eye	Fırtına Gözü
+Iron Mech	Demir Robot
+Shadow Twins	Gölge İkizler
+Magma Golem	Magma Golemi
+Hex Witch	Lanet Cadısı
+Hydra Slime	Hidra Balçık
+Grave King	Mezar Kral
+Thunder Mech	Gök Gürültüsü Robotu
+The Watcher	Gözcü
+Crystal Golem	Kristal Golem
+Banshee	Banşi
+Toxic Slime	Zehirli Balçık
+Demon Twins	İblis İkizler
+Glitch Emperor	Glitch İmparator
+What each extension does	Her uzantı ne yapar
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	{0} açıkken güncellenmez, böylece bir güncelleme onu bozmaz. Güncellenmesine izin vermek için kapatın.
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	Bir uygulamanın içinde çalışan seçenekler, örneğin "WhatsApp aramalarını engelle", açık oldukları sürece o uygulamanın güncellenmesini engeller. Burada kilitli görünür.
+Its data wasn't found	Verileri bulunamadı
+Its saved data is incomplete	Kayıtlı verileri eksik
+The app isn't installed	Uygulama yüklü değil
+Couldn't make the backup folder	Yedek klasörü oluşturulamadı
+Couldn't put back {0}	{0} geri konamadı
+Couldn't save {0}	{0} kaydedilemedi
+It didn't install	Yüklenemedi
+Root isn't available	Root yok

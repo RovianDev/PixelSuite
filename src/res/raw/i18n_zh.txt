@@ -427,7 +427,7 @@ Refresh	刷新
 Refreshing…	正在刷新…
 Sign in with Patreon	使用 Patreon 登录
 Sign out	退出登录
-Support Pixel Suite to unlock Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	支持 Pixel Suite，即可解锁 Chrome+、Gboard+、广告拦截器、VPN、深色网页、通话录音和无广告的 Google 信息流。
+Support Pixel Suite to unlock Widgets feed, Chrome+, Gboard+, the Ad Blocker, VPN, Dark pages, call recording and an ad-free Google feed.	支持 Pixel Suite，即可解锁 小部件信息流、Chrome+、Gboard+、广告拦截器、VPN、深色网页、通话录音和无广告的 Google 信息流。
 A Quest for the\nKind-Hearted	善心者的\n任务
 Already a patron? Unlock	已经是赞助者？解锁
 Checking Patreon membership…	正在检查 Patreon 会员资格…
@@ -445,7 +445,7 @@ Pixel Suite is built by one person, in spare hours, out of love for Pixel phones
 Quest Complete!	任务完成！
 Ready to check membership	可以检查会员资格了
 Thank you for supporting Pixel Suite. Your Patreon features are ready.	感谢你支持 Pixel Suite。你的 Patreon 功能已就绪。
-Patrons unlock Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	赞助者可解锁 Chrome+ 和 Gboard+、广告拦截器和 VPN、Chrome 中的深色网页、通话录音以及无广告的 Google 信息流。每一份支持都会直接回到应用中：跟上 Android 和 Google 应用的更新、修复它们带来的问题，以及开发新功能。
+Patrons unlock Widgets feed, Chrome+ and Gboard+, the Ad Blocker and VPN, Dark pages in Chrome, call recording and an ad-free Google feed. Every bit of support goes straight back into the app: keeping up with Android and Google app updates, fixing what they break, and building new features.	赞助者可解锁 小部件信息流、Chrome+ 和 Gboard+、广告拦截器和 VPN、Chrome 中的深色网页、通话录音以及无广告的 Google 信息流。每一份支持都会直接回到应用中：跟上 Android 和 Google 应用的更新、修复它们带来的问题，以及开发新功能。
 Welcome back!	欢迎回来！
 ✨ Quest Complete!	✨ 任务完成！
 📜 A Quest for the Kind-Hearted	📜 善心者的任务
@@ -953,7 +953,6 @@ Lock apps in recents	在最近使用中锁定应用
 Lock factory reset	锁定恢复出厂设置
 Lock screen	锁定屏幕
 Lock-screen behavior	锁定屏幕行为
-Lock-screen taps	锁定屏幕点按
 Locking recent apps	锁定最近使用的应用
 Locks stay after a restart.	重启后锁定仍然有效。
 Made by RovianDev	由 RovianDev 打造
@@ -1005,7 +1004,6 @@ Protection	保护
 Pure black backgrounds and darker menus in dark theme.	深色主题下使用纯黑背景和更暗的菜单。
 Quick actions from your phone's buttons.	通过手机按键快速操作。
 Recent	最近使用
-Recent Apps	最近使用的应用
 Record and save calls	录制并保存通话
 Record calls in the Phone app, in any country, without the announcement	在电话应用中录制通话，任何国家/地区均可，且无提示音
 Reduce screenshot delay	减少截屏延迟
@@ -1077,7 +1075,7 @@ Take a screenshot	截屏
 Tap Extensions on Chrome's new tab page to use them. Tap one for its settings, or hold it to pin it to the toolbar.	在 Chrome 的新标签页上点按“附加功能”即可使用。点按某项可打开其设置，按住可固定到工具栏。
 Tap Extensions on the new tab page to use them. Hold one to pin it to the toolbar.	在新标签页上点按“附加功能”即可使用。按住某项可固定到工具栏。
 Tap an app to see its saved versions.	点按应用即可查看其已保存的版本。
-Tap to wake	点按唤醒
+Tap or Double-tap to wake	点按或点按两次唤醒
 Text size	文字大小
 That isn't a Pixel Suite backup	这不是 Pixel Suite 备份
 The 3 newest versions of each app are kept.	每个应用保留最新的 3 个版本。
@@ -1089,7 +1087,6 @@ The toolbar	工具栏
 Three-finger screenshot	三指截屏
 To come back here, long-press the home screen and choose Pixel Suite settings. Needs root and LSPosed.	如需回到这里，请长按主屏幕并选择“Pixel Suite 设置”。需要 root 和 LSPosed。
 To protect an app with your fingerprint or PIN, use Privacy & Security.	如需用指纹或 PIN 码保护应用，请使用“隐私和安全”。
-Toasts	提示消息
 Toolbar	工具栏
 Toolbar, keys, resize, auto-correction, clipboard	工具栏、按键、调整大小、自动更正、剪贴板
 Tools for your Google apps.	适用于 Google 应用的工具。
@@ -1118,8 +1115,7 @@ Use custom app icons	使用自定义应用图标
 Use your own image for an app icon	使用你自己的图片作为应用图标
 Voice typing with checkmark	带勾号的语音输入
 Wake gesture	唤醒手势
-Wake the screen	唤醒屏幕
-Wake your phone with a tap, with pocket protection.	点按即可唤醒手机，并有口袋误触保护。
+Wake your phone with a tap or a double tap, with pocket protection.	点按或点按两次即可唤醒手机，并有口袋误触保护。
 Websites open dark, with no white flash. Super Dark uses pure black.	网站以深色打开，不会白屏闪烁。超暗 使用纯黑色。
 What's new	新功能
 When you untick apps, Back up saves their current versions first.	取消勾选应用时，“备份”会先保存它们的当前版本。
@@ -1689,3 +1685,129 @@ Hide At a Glance	隐藏“概览”
 Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets.	移除主屏幕顶部的“概览”。这一行可用于放置应用、文件夹和微件。
 Hold an app, folder or widget and drop it in the free row.	按住应用、文件夹或微件，然后拖放到空出的那一行。
 For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.	适用于 Android 16 及更低版本。较新版本可直接在主屏幕上移除“概览”。
+Code autofill	验证码自动填充
+One-time codes from messages, apps and email show above your keyboard. Tap the code to fill it in.	短信、应用和邮件中的一次性验证码会显示在键盘上方。点按验证码即可填入。
+Fill codes automatically	自动填入验证码
+Types the code for you when an empty box is waiting for one.	当空白输入框等待验证码时，自动替你输入。
+Autofill OTP	OTP 自动填充
+One-time codes, filled in for you.	一次性验证码，自动帮你填好。
+Codes from your messages, right above the keyboard	短信里的验证码，就在键盘上方
+• When a code arrives in a message, app or email, it shows above your keyboard. Tap it to fill it in.\n\n• With Fill codes automatically on, the code is typed for you when a code box is waiting.	• 短信、应用或邮件收到验证码时，它会显示在键盘上方。点按即可填入。\n\n• 开启“自动填入验证码”后，有输入框在等验证码时会自动帮你输入。
+Shows the code above your keyboard and fills it in.	在键盘上方显示验证码并填入。
+Reads one-time codes from notifications as they arrive.	通知一到就读取其中的一次性验证码。
+Keeps chips like Screenshot off the toolbar. Codes, autofill and copied text still show.	不在工具栏上显示“屏幕截图”等提示条。验证码、自动填充和复制的文字仍会显示。
+Widgets feed	小部件信息流
+Swipe right on your first home screen for your widgets, the weather and the date. It takes the place of the Google feed.	在第一个主屏幕上向右滑动，即可查看小部件、天气和日期。它会取代 Google 信息流。
+Hide weather and date	隐藏天气和日期
+Your widgets start at the top of the feed.	小部件从信息流最顶部开始排列。
+Tap + to add a widget. Tap a widget to open its app.	点按 + 可添加小部件。点按小部件可打开相应应用。
+Hold a widget to move or remove widgets, then tap the check mark.	按住小部件可移动或移除小部件，然后点按对勾。
+Tap the date for your calendar and the weather for the forecast. Swipe left to go back.	点按日期可打开日历，点按天气可查看预报。向左滑动即可返回。
+Add widget	添加小部件
+Feed settings	信息流设置
+Background opacity	背景不透明度
+Invisible	不可见
+Solid	不透明
+How much of the feed's background shows. The status bar and home bar follow it.	信息流背景显示多少。状态栏和主屏幕条会随之变化。
+Hold a widget to move, resize or remove widgets, then tap the check mark.	按住小部件可移动、调整大小或移除小部件，然后点按对勾。
+Ditch the Google feed. Build your own.	告别 Google 信息流，打造你自己的。
+Strip out the Google feed completely and replace it with a fully customizable page of your own widgets.	彻底移除 Google 信息流，换成完全可自定义的专属小部件页面。
+Home screen	主屏幕
+Your widgets, one swipe from the lock screen. Any app, any size, without unlocking your phone.	从锁屏轻轻一滑，就是你的小部件。任何应用、任何尺寸，无需解锁手机。
+How much of the feed's background shows.	信息流背景显示多少。
+Each feed keeps its own widgets.	每个信息流各有自己的小部件。
+No widgets available	没有可用的小部件
+Couldn't add that widget	无法添加该小部件
+Open apps without unlocking	无需解锁即可打开应用
+Saved.	已保存。
+Pixel Suite and Settings always ask to unlock.	Pixel Suite 和设置始终要求解锁。
+Apps you choose open right on the lock screen, no fingerprint, so choose carefully. Leaving the app goes back to the lock screen.	你选择的应用会直接在锁定屏幕上打开，无需指纹，所以请谨慎选择。退出应用后会回到锁定屏幕。
+Apps that open without unlocking	无需解锁即可打开的应用
+Choose which apps open from the lock screen	选择可从锁定屏幕打开的应用
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking. Swipe right to go back.	在锁定屏幕上，除非你已在“无需解锁即可打开应用”中选择了某个应用，否则它会先要求解锁。向右滑动即可返回。
+Your widgets, the weather and the date, one swipe from your home screen.	小部件、天气和日期，在主屏幕上轻轻一滑即可看到。
+Side	位置
+The feed comes in from this side of your home screen.	信息流从主屏幕的这一侧滑入。
+The feed comes in from this side of the lock screen.	信息流从锁定屏幕的这一侧滑入。
+Keep the Google feed	保留 Google 信息流
+Swipe the other way for the Google feed.	向另一侧滑动即可查看 Google 信息流。
+Choose the side for each feed. On the home screen, the Google feed can stay on the other side.	为每个信息流选择所在的一侧。在主屏幕上，Google 信息流可以保留在另一侧。
+Tap the date for your calendar and the weather for the forecast.	点按日期可打开日历，点按天气可查看预报。
+To close a feed, swipe it back the way it came.	要关闭信息流，请将它朝来的方向滑回去。
+On the lock screen, an app asks you to unlock first unless you chose it under Open apps without unlocking.	在锁定屏幕上，除非你已在“无需解锁即可打开应用”中选择了某个应用，否则它会先要求解锁。
+A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.	完全可自定义的专属小部件页面，放在你选择的一侧。可将 Google 信息流保留在另一侧，也可以不要它。
+Your own widgets, left or right.	专属小部件，可放左侧或右侧。
+Left	左侧
+Right	右侧
+Google feed	Google 信息流
+A live preview of your feeds. It follows your settings.	信息流的实时预览，会随你的设置而变化。
+USB on top	USB 置顶
+The USB notification stays pinned at the top and picks File transfer when unlocked. USB debugging sits right under it.	USB 通知固定在最上方，解锁时自动选择文件传输。USB 调试紧随其下。
+Burns through crates and ghosts	烧穿箱子和幽灵
+Quick USB modes	快速切换 USB 模式
+Switch to File transfer, USB tethering and other USB modes without your fingerprint or PIN while your phone is unlocked.	手机解锁时，无需指纹或 PIN 码即可切换到文件传输、USB 网络共享等 USB 模式。
+More USB options	更多 USB 选项
+Block WhatsApp calls	屏蔽 WhatsApp 通话
+While Do Not Annoy is on, WhatsApp calls don't reach you and callers see Unable to call. Messages and your own calls work as usual.	开启“别烦我”时，WhatsApp 来电不会打扰你，对方会看到“无法通话”。消息和你主动拨出的通话照常使用。
+WhatsApp call turned away by Do Not Annoy	“别烦我”已拒接一个 WhatsApp 来电
+Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.	开启“别烦我”且打开“屏蔽 WhatsApp 通话”时，拒接 WhatsApp 来电。添加此作用域后请重启 WhatsApp。
+Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.	在所有应用中快速打开包含数千个文件的文件夹，返回后也不会出现空文件夹。添加此作用域后请重启手机。
+Demonic	恶魔
+Take the angelic power?	接受天使之力？
+Take the demonic power?	接受恶魔之力？
+Your angelic power fades	你的天使之力会消退
+Your demonic power fades	你的恶魔之力会消退
+Thunder	雷霆
+Inferno	炼狱
+Fit the thunder core?	装上雷霆核心？
+Fit the inferno core?	装上炼狱核心？
+Your thunder core burns out	你的雷霆核心会烧毁
+Your inferno core burns out	你的炼狱核心会烧毁
+Choose a core	选择一个核心
+Crushes bricks	碾碎砖块
+Crushes steel	碾碎钢块
+Mortar King	迫击炮之王
+Hive Mother	蜂巢之母
+Steel Serpent	钢铁巨蛇
+Twin Fortress	双子要塞
+Thunder Colossus	雷霆巨像
+Mine Layer	布雷者
+Crimson Baron	绯红男爵
+Shield Warden	护盾守卫
+Inferno Engine	炼狱引擎
+Night Spider	暗夜蜘蛛
+Titan	泰坦
+Phantom Ship	幽灵战舰
+Siege Breaker	攻城破坏者
+Overlord	霸主
+Dreadnought	无畏战舰
+Void Eye	虚空之眼
+Emperor	皇帝
+Bomb Baron	炸弹男爵
+Frost Wraith	冰霜怨灵
+Slime Lord	史莱姆领主
+Storm Eye	风暴之眼
+Iron Mech	钢铁机甲
+Shadow Twins	暗影双子
+Magma Golem	熔岩魔像
+Hex Witch	咒术女巫
+Hydra Slime	九头史莱姆
+Grave King	墓穴之王
+Thunder Mech	雷霆机甲
+The Watcher	守望者
+Crystal Golem	水晶魔像
+Banshee	报丧女妖
+Toxic Slime	剧毒史莱姆
+Demon Twins	恶魔双子
+Glitch Emperor	故障皇帝
+What each extension does	每个附加功能的作用
+Kept from updates while {0} is on, so an update can't break it. Turn that off to let it update.	开启“{0}”期间不会更新，以免更新导致其失效。关闭后即可更新。
+Options that work inside an app, like Block WhatsApp calls, keep that app from updating while they're on. It shows locked here.	在应用内运作的选项（例如“屏蔽 WhatsApp 通话”）开启期间，该应用不会更新，并在此处显示为锁定。
+Its data wasn't found	找不到它的数据
+Its saved data is incomplete	它保存的数据不完整
+The app isn't installed	未安装该应用
+Couldn't make the backup folder	无法创建备份文件夹
+Couldn't put back {0}	无法放回 {0}
+Couldn't save {0}	无法保存 {0}
+It didn't install	未能安装
+Root isn't available	root 不可用

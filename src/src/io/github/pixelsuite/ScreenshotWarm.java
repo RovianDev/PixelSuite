@@ -18,12 +18,15 @@ final class ScreenshotWarm {
     static final String KEY = "pixelsuite_fast_screenshot";
     private static final String KEEP = "io.github.pixelsuite.KEEP_SCREENSHOT_READY";
     private static final String ENDED = "io.github.pixelsuite.SCREENSHOT_ENDED";
+
+    private static final String READY = "io.github.pixelsuite.SCREENSHOT_READY";
     private static final String SENDER = "android.permission.STATUS_BAR_SERVICE";
     private static final String SYSTEMUI = "com.android.systemui", PROCESS = ":screenshot";
 
     private static Context system; private static Handler worker;
     private static ServiceConnection connection; private static volatile ComponentName target;
     private static volatile boolean armed;
+    private static volatile boolean verified, missing;
 
     static void installSystem(ClassLoader cl) {
         try {
@@ -44,7 +47,7 @@ final class ScreenshotWarm {
                             if (c == null || target == null || !c.equals(target) || KEEP.equals(in.getAction())) return;
                             if (armed && connection == null && worker != null) worker.postDelayed(new Runnable() { public void run() { synchronized (ScreenshotWarm.class) { if (armed) bind(); } } }, 1500);
                             for (Object a : p.args) if (a instanceof ServiceConnection) synchronized (real) { real.put((ServiceConnection) a, Boolean.TRUE); }
-                            if (connection == null) return;
+                            if (connection == null || !verified) return;
                             Intent fresh = new Intent(in);
                             Intent.class.getMethod("setIdentifier", String.class).invoke(fresh, "pixelsuite-shot-" + (++shots));
                             p.args[i] = fresh;
@@ -81,7 +84,11 @@ final class ScreenshotWarm {
             Class<?> service = Class.forName("com.android.systemui.screenshot.TakeScreenshotService", false, cl);
             Xp.hookAllMethods(service, "onBind", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
-                    if (p.args.length == 1 && p.args[0] instanceof Intent && KEEP.equals(((Intent) p.args[0]).getAction())) p.setResult(new android.os.Binder());
+                    if (p.args.length == 1 && p.args[0] instanceof Intent && KEEP.equals(((Intent) p.args[0]).getAction())) {
+                        android.os.Binder answer = new android.os.Binder();
+                        answer.attachInterface(null, READY);
+                        p.setResult(answer);
+                    }
                 }
             });
             Xp.hookAllMethods(service, "onUnbind", new Xp.Callback() {
@@ -150,11 +157,17 @@ final class ScreenshotWarm {
     }
 
     private static void bind() {
-        if (connection != null) return;
+        if (connection != null || missing) return;
         ComponentName c = target;
         if (c == null) { return; }
+
+        if (!c.getClassName().endsWith("TakeScreenshotService")) verified = true;
+        if (!verified) synchronized (real) { if (!real.isEmpty()) return; }
         ServiceConnection conn = new ServiceConnection() {
-            @Override public void onServiceConnected(ComponentName name, IBinder service) { }
+            @Override public void onServiceConnected(ComponentName name, final IBinder service) {
+                final ServiceConnection self = this;
+                if (worker != null) worker.post(new Runnable() { public void run() { check(self, service); } });
+            }
             @Override public void onServiceDisconnected(ComponentName name) { }
             public void onBindingDied(ComponentName name) {
                 worker.post(new Runnable() { public void run() { synchronized (ScreenshotWarm.class) { unbind(); } } });
@@ -170,6 +183,16 @@ final class ScreenshotWarm {
             } catch (Throwable older) { ok = system.bindService(i, conn, Context.BIND_AUTO_CREATE); }
             if (ok) { connection = conn; }
         } catch (Throwable error) { }
+    }
+
+    private static void check(ServiceConnection conn, IBinder service) {
+        String name;
+        try { name = service == null ? null : service.getInterfaceDescriptor(); } catch (Throwable error) { return; }
+        synchronized (ScreenshotWarm.class) {
+            if (name == null || READY.equals(name)) { verified = true; return; }
+            missing = true;
+            if (connection == conn) unbind();
+        }
     }
 
     private static void unbind() {

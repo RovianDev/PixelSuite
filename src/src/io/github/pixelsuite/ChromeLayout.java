@@ -97,6 +97,73 @@ final class ChromeLayout {
         return out;
     }
 
+    private static final java.util.Map<Class<?>, java.lang.reflect.Field> sOwnColour = new java.util.HashMap<Class<?>, java.lang.reflect.Field>();
+    private static final java.util.Map<Class<?>, long[]> sOwnColourLook = new java.util.HashMap<Class<?>, long[]>();
+
+    static int ownColour(View t) {
+        View phone = toolbarPhone(t, 0);
+        if (phone == null) return 0;
+        Class<?> k = phone.getClass();
+        java.lang.reflect.Field f;
+        synchronized (sOwnColour) {
+            f = sOwnColour.get(k);
+            if (f == null) {
+                long now = android.os.SystemClock.uptimeMillis();
+                long[] look = sOwnColourLook.get(k);
+                if (look == null) { look = new long[]{now, 0L, 0L}; sOwnColourLook.put(k, look); }
+                if (now < look[1]) return 0;
+                look[2]++;
+                java.lang.reflect.Field pick = null, v0 = null;
+                for (Class<?> c = k; c != null && c != View.class; c = c.getSuperclass())
+                    for (java.lang.reflect.Field g : c.getDeclaredFields()) {
+                        if (java.lang.reflect.Modifier.isStatic(g.getModifiers()) || g.getType() != ColorDrawable.class) continue;
+                        try {
+                            g.setAccessible(true);
+                            ColorDrawable d = (ColorDrawable) g.get(phone);
+                            if ("V0".equals(g.getName())) v0 = g;
+                            if (d != null && (pick == null || "V0".equals(g.getName()))) pick = g;
+                        } catch (Throwable ignored) { }
+                    }
+
+                boolean settled = pick != null && (v0 == null || pick == v0);
+                if (settled) {
+                    sOwnColour.put(k, pick);
+                    f = pick;
+                } else {
+                    look[1] = now + 200;
+                    return 0;
+                }
+            }
+        }
+        if (f == null) return 0;
+        try {
+            ColorDrawable d = (ColorDrawable) f.get(phone);
+            int c = d == null ? 0 : d.getColor();
+            return Color.alpha(c) == 255 ? c : 0;
+        } catch (Throwable t2) { return 0; }
+    }
+
+    private static View toolbarPhone(View v, int depth) {
+        if (v.getClass().getName().endsWith("ToolbarPhone")) return v;
+        if (depth >= 4 || !(v instanceof ViewGroup)) return null;
+        ViewGroup g = (ViewGroup) v;
+        for (int i = 0; i < g.getChildCount(); i++) { View f = toolbarPhone(g.getChildAt(i), depth + 1); if (f != null) return f; }
+        return null;
+    }
+
+    static int toolbarExact() {
+        for (Holder h : live()) if (h != null && h.bar != null) { int e = h.bar.exactColor(); if (e != 0) return e; }
+        return 0;
+    }
+
+    static void paintNow() {
+        for (Holder h : live()) {
+            if (h == null || h.bar == null) continue;
+            h.bar.forcePaint = true;
+            try { h.bar.style(false); } catch (Throwable ignored) { } finally { h.bar.forcePaint = false; }
+        }
+    }
+
     static int barColor(int fallback) {
         int any = 0;
         for (Holder h : live()) if (h != null && h.bar != null && h.bar.bgColor != 0) {
@@ -186,6 +253,180 @@ final class ChromeLayout {
         return 0;
     }
 
+    static final float NAV_DIM = 0.42f;
+    private static Method sNavController, sNavDirected, sNavFull, sNavIndexOf, sNavEntryAt;
+    private static java.lang.reflect.Field sNavEntries, sNavIndex;
+
+    private static boolean sNavProbed;
+    private static final Runnable sNavRun = new Runnable() { public void run() { for (Holder h : live()) if (h != null && h.bar != null) h.bar.updateNav(true); } };
+
+    static void navInstall(ClassLoader l, Class<?> proxy, Class<?> webContents) {
+        StringBuilder why = new StringBuilder();
+        try {
+            Class<?> nc = l.loadClass("org.chromium.content_public.browser.NavigationController");
+
+            Class<?> nh = null;
+            try { nh = l.loadClass("org.chromium.content_public.browser.NavigationHistory"); } catch (Throwable ignored) { }
+            for (Method m : webContents.getMethods()) if (m.getParameterTypes().length == 0 && m.getReturnType() == nc) { sNavController = m; break; }
+            int shapes = 0;
+            for (Method m : nc.getMethods()) {
+                Class<?>[] t = m.getParameterTypes();
+                Class<?> r = m.getReturnType();
+                if (t.length != 2 || t[0] != boolean.class || t[1] != int.class || r.isPrimitive() || r == Object.class) continue;
+                if (nh != null ? r != nh : !historyShape(r)) continue;
+                shapes++;
+                sNavDirected = m;
+                nh = r;
+            }
+            if (shapes > 1) sNavDirected = null;
+            if (nh != null) {
+                for (Method m : nc.getMethods()) if (m.getParameterTypes().length == 0 && m.getReturnType() == nh) { sNavFull = m; break; }
+                int lists = 0, ints = 0;
+                for (Class<?> k = nh; k != null && k != Object.class; k = k.getSuperclass())
+                    for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                        if (java.lang.reflect.Modifier.isStatic(f.getModifiers())) continue;
+                        if (List.class.isAssignableFrom(f.getType())) { lists++; f.setAccessible(true); sNavEntries = f; }
+                        else if (f.getType() == int.class) { ints++; f.setAccessible(true); sNavIndex = f; }
+                    }
+                if (lists != 1) sNavEntries = null;
+                if (ints != 1) sNavIndex = null;
+                why.append("history ").append(nh.getName()).append(", entries ").append(lists).append(", index ").append(ints).append(", ");
+            } else why.append("no history class, ");
+            why.append("controller ").append(sNavController == null ? "none" : sNavController.getName())
+                    .append(", one way ").append(sNavDirected == null ? (shapes > 1 ? shapes + " candidates" : "none") : sNavDirected.getName())
+                    .append(", whole ").append(sNavFull == null ? "none" : sNavFull.getName());
+        } catch (Throwable t) { why.append(t); }
+        Xp.Callback cb = new Xp.Callback() { @Override protected void afterHookedMethod(Xp.Param p) { if (!ChromePatron.ok(null)) return; navEvent(p); navChanged(); } };
+        for (String n : new String[]{"navigationEntryCommitted", "navigationEntriesDeleted", "navigationEntriesChanged", "didFinishNavigationInPrimaryMainFrame", "didFinishNavigationNoop", "onVisibilityChanged", "wasShown"}) {
+            try { Xp.hookAllMethods(proxy, n, cb); } catch (Throwable ignored) { }
+        }
+    }
+
+    private static void navProbe(Object c) {
+        sNavProbed = true;
+        java.util.List<Method> all = new java.util.ArrayList<Method>();
+        for (Class<?> k = c.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (Method m : k.getDeclaredMethods()) {
+                if (java.lang.reflect.Modifier.isStatic(m.getModifiers()) || m.isSynthetic()) continue;
+                all.add(m);
+            }
+        Method directed = null, full = null, indexOf = null, entryAt = null;
+        int directedN = 0, indexN = 0, entryN = 0;
+        Class<?> hist = null;
+        for (Method m : all) {
+            Class<?>[] t = m.getParameterTypes();
+            Class<?> r = m.getReturnType();
+            if (t.length == 2 && t[0] == boolean.class && t[1] == int.class && !r.isPrimitive() && r != Object.class && listFields(r) == 1) { directed = m; hist = r; directedN++; }
+            if (t.length == 0 && r == int.class) { indexOf = m; indexN++; }
+            if (t.length == 1 && t[0] == int.class && !r.isPrimitive() && r != String.class && r != Object.class && !List.class.isAssignableFrom(r)) { entryAt = m; entryN++; }
+        }
+        if (directedN == 1 && hist != null) {
+            for (Method m : all) if (m.getParameterTypes().length == 0 && m.getReturnType() == hist) { full = m; break; }
+            sNavEntries = null; sNavIndex = null;
+            int ints = 0;
+            for (Class<?> k = hist; k != null && k != Object.class; k = k.getSuperclass())
+                for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                    if (java.lang.reflect.Modifier.isStatic(f.getModifiers())) continue;
+                    if (List.class.isAssignableFrom(f.getType())) { f.setAccessible(true); sNavEntries = f; }
+                    else if (f.getType() == int.class) { ints++; f.setAccessible(true); sNavIndex = f; }
+                }
+            if (ints != 1) sNavIndex = null;
+            directed.setAccessible(true);
+            sNavDirected = directed;
+            if (full != null) { full.setAccessible(true); sNavFull = full; }
+        }
+        if (sNavDirected == null && indexN == 1 && entryN == 1) {
+            indexOf.setAccessible(true); entryAt.setAccessible(true);
+            sNavIndexOf = indexOf; sNavEntryAt = entryAt;
+        }
+    }
+
+    private static int listFields(Class<?> k) {
+        int n = 0;
+        for (Class<?> c = k; c != null && c != Object.class; c = c.getSuperclass())
+            for (java.lang.reflect.Field f : c.getDeclaredFields()) if (!java.lang.reflect.Modifier.isStatic(f.getModifiers()) && List.class.isAssignableFrom(f.getType())) n++;
+        return n;
+    }
+
+    private static boolean historyShape(Class<?> k) {
+        int lists = 0, ints = 0, other = 0;
+        for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+            if (java.lang.reflect.Modifier.isStatic(f.getModifiers())) continue;
+            if (List.class.isAssignableFrom(f.getType())) lists++;
+            else if (f.getType() == int.class) ints++;
+            else other++;
+        }
+        return lists == 1 && ints == 1 && other <= 1;
+    }
+
+    private static WeakReference<Object> sNavShown = new WeakReference<Object>(null), sNavRecent = new WeakReference<Object>(null);
+
+    private static void navEvent(Xp.Param p) {
+        try {
+            Object wc = ChromeCosmetic.webContentsOf(p.thisObject);
+            if (wc == null) return;
+            String n = p.method.getName();
+            if ("onVisibilityChanged".equals(n)) {
+                int v = p.args != null && p.args.length > 0 && p.args[0] instanceof Integer ? (Integer) p.args[0] : -1;
+                if (v == 2) sNavShown = new WeakReference<Object>(wc);
+                else if (sNavShown.get() == wc) sNavShown = new WeakReference<Object>(null);
+            } else if ("wasShown".equals(n)) {
+                sNavShown = new WeakReference<Object>(wc);
+            } else {
+                sNavRecent = new WeakReference<Object>(wc);
+            }
+        } catch (Throwable ignored) { }
+    }
+
+    static Object navPage(View anchor) {
+        Object wc = ChromeShield.shown(anchor);
+        if (wc != null) return wc;
+        wc = sNavShown.get();
+        if (wc != null) return wc;
+        wc = sNavRecent.get();
+        if (wc != null) return wc;
+        return null;
+    }
+
+    static int navState(Object wc) {
+        if (sNavController == null) return -1;
+        if (wc == null) return -1;
+        try {
+            Object c = sNavController.invoke(wc);
+            if (c == null) return -1;
+            if (!sNavProbed && sNavDirected == null) navProbe(c);
+            if (sNavDirected != null && sNavEntries != null) {
+                boolean back = navCount(sNavDirected.invoke(c, false, 1)) > 0, forward = navCount(sNavDirected.invoke(c, true, 1)) > 0;
+                return (back ? 1 : 0) | (forward ? 2 : 0);
+            }
+            if (sNavFull != null && sNavEntries != null && sNavIndex != null) {
+                Object h = sNavFull.invoke(c);
+                int n = navCount(h), i = h == null ? -1 : sNavIndex.getInt(h);
+                if (i < 0 || n <= 0) return -1;
+                return (i > 0 ? 1 : 0) | (i < n - 1 ? 2 : 0);
+            }
+            if (sNavIndexOf != null && sNavEntryAt != null) {
+                int i = (Integer) sNavIndexOf.invoke(c);
+                if (i < 0) return -1;
+                boolean back = i > 0 && sNavEntryAt.invoke(c, i - 1) != null, forward = sNavEntryAt.invoke(c, i + 1) != null;
+                return (back ? 1 : 0) | (forward ? 2 : 0);
+            }
+        } catch (Throwable ignored) { }
+        return -1;
+    }
+
+    private static int navCount(Object h) throws Exception {
+        if (h == null) return -1;
+        Object e = sNavEntries.get(h);
+        return e instanceof List ? ((List<?>) e).size() : -1;
+    }
+
+    static void navChanged() {
+        MAIN.removeCallbacks(sNavRun);
+        MAIN.postDelayed(sNavRun, 24);
+        MAIN.postDelayed(new Runnable() { public void run() { for (Holder h : live()) if (h != null && h.bar != null) h.bar.updateNav(true); } }, 320);
+    }
+
     static void expectNtp() {
         for (Holder h : live()) if (h != null && h.bar != null && !h.bar.ntp && h.bar.getAlpha() < 0.05f) h.bar.mode(true, false);
     }
@@ -194,7 +435,6 @@ final class ChromeLayout {
 
     private static boolean sMeasureFix;
     private static int sEdge;
-    private static long sMeasureLogAt;
 
     private static synchronized void measureFix(Class<?> toolbarClass) {
         if (sMeasureFix) return;
@@ -274,14 +514,9 @@ final class ChromeLayout {
         int right = buttons.getVisibility() == View.GONE ? 0 : buttons.getMeasuredWidth();
         int width = t.getMeasuredWidth() - left - right;
         if (width <= 0 || lp.width >= width - 1 || lp.width <= 0) return;
-        int oldLeft = lp.leftMargin, oldWidth = lp.width;
         lp.leftMargin = left;
         lp.width = width;
         lb.measure(View.MeasureSpec.makeMeasureSpec(width, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(lb.getMeasuredHeight(), View.MeasureSpec.EXACTLY));
-        long now = android.os.SystemClock.uptimeMillis();
-        if (now - sMeasureLogAt > 2000) {
-            sMeasureLogAt = now;
-        }
     }
 
     private static synchronized void geometryHooks() {
@@ -322,7 +557,6 @@ final class ChromeLayout {
             });
         } catch (Throwable ignored) { }
     }
-
 
     static void attach(final ViewGroup toolbar) {
         try { ChromeUrlBar.install(toolbar.getClass().getClassLoader()); } catch (Throwable ignored) { }
@@ -529,7 +763,6 @@ final class ChromeLayout {
         Bar bar;
         View lifted;
         int liftedBy;
-        String lastWhy = "";
         WeakReference<View> movedHub = new WeakReference<View>(null), movedPane = new WeakReference<View>(null);
         boolean searchHidden;
         WeakReference<View> hairline = new WeakReference<View>(null);
@@ -593,7 +826,6 @@ final class ChromeLayout {
                 content.addView(bar, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.BOTTOM));
             }
             String why = (transitionActive() || hubShown(a)) ? "tab switcher" : ime(content) ? "keyboard" : fullscreen(content) ? "fullscreen" : "";
-            if (!why.equals(lastWhy)) { lastWhy = why; }
             boolean hidden = !why.isEmpty();
             bar.inset(navInset(content));
             boolean moving = transitionActive();
@@ -677,7 +909,6 @@ final class ChromeLayout {
             }
             Activity a = activity(t.getContext());
             if (a != null) { lift(a, 0); moveHub(a, false); }
-            lastWhy = "";
         }
 
         private View hubView(Activity a, String id) {
@@ -685,11 +916,21 @@ final class ChromeLayout {
             return res == 0 ? null : a.findViewById(res);
         }
 
+        private String name(View v) {
+            if (v.getId() == View.NO_ID) return "";
+            try { return "#" + v.getResources().getResourceEntryName(v.getId()); } catch (Throwable t) { return ""; }
+        }
+
         private boolean hubShown(Activity a) {
             View hub = hubView(a, "hub_main_container");
-            if (hub == null || !hub.isShown() || hub.getAlpha() < 0.02f) return false;
+            if (hub == null || !hub.isShown() || hub.getAlpha() < 0.02f) return inactiveShown(a);
             android.graphics.Rect r = new android.graphics.Rect();
-            return hub.getGlobalVisibleRect(r) && r.height() > hub.getResources().getDisplayMetrics().heightPixels / 2;
+            return (hub.getGlobalVisibleRect(r) && r.height() > hub.getResources().getDisplayMetrics().heightPixels / 2) || inactiveShown(a);
+        }
+
+        private boolean inactiveShown(Activity a) {
+            View page = hubView(a, "archived_tabs_dialog");
+            return page != null && page.isShown() && page.getAlpha() > 0.02f && page.getHeight() > page.getResources().getDisplayMetrics().heightPixels / 2;
         }
 
         private void moveHub(Activity a, boolean bottom) {
@@ -969,8 +1210,17 @@ final class ChromeLayout {
             }
         }
 
+        void updateNav(boolean animate) {
+            if (ntp || getChildCount() <= Kind.FORWARD.ordinal()) return;
+            int st = navState(navPage(this));
+            if (st < 0) return;
+            ((Button) getChildAt(Kind.BACK.ordinal())).nav((st & 1) != 0, animate && isShown());
+            ((Button) getChildAt(Kind.FORWARD.ordinal())).nav((st & 2) != 0, animate && isShown());
+        }
+
         void mode(boolean page, boolean animate) {
             ntp = page;
+            if (!page) post(new Runnable() { public void run() { updateNav(false); } });
             for (int i = 0; i < getChildCount(); i++) {
                 Button b = (Button) getChildAt(i);
                 b.setContentDescription(b.label());
@@ -997,8 +1247,7 @@ final class ChromeLayout {
             int ink = ink();
             boolean lightInk = (Color.red(ink) * 299 + Color.green(ink) * 587 + Color.blue(ink) * 114) / 1000 > 140;
             int bg = lightInk ? 0xFF1F1F1F : 0xFFFFFFFF;
-            int exact = 0;
-            if (t != null && t.getBackground() instanceof ColorDrawable && Color.alpha(((ColorDrawable) t.getBackground()).getColor()) == 255) exact = ((ColorDrawable) t.getBackground()).getColor();
+            int exact = exactColor();
             View[] parts = t == null ? null : parts(t);
             boolean focused = parts != null && parts[2] != null && parts[2].hasFocus();
             if (focused != lastFocused) {
@@ -1042,7 +1291,7 @@ final class ChromeLayout {
             boolean keepCurrent = bgColor != 0 && keepable("pD0", bgColor)
                     && ((Color.red(bgColor) * 299 + Color.green(bgColor) * 587 + Color.blue(bgColor) * 114) / 1000 < 128) == lightInk;
             if (guessed && keepCurrent) bg = bgColor;
-            if (!transitionActive()) paintBg(bg, bgColor != 0 && isShown() && getAlpha() > 0.5f);
+            if (!transitionActive() || forcePaint) paintBg(bg, bgColor != 0 && isShown() && getAlpha() > 0.5f);
             Activity a = activity(getContext());
             boolean page = a != null && newTabPage(a.getWindow().getDecorView());
             long now = android.os.SystemClock.uptimeMillis();
@@ -1065,6 +1314,15 @@ final class ChromeLayout {
             }
             for (int i = 0; i < getChildCount(); i++) getChildAt(i).invalidate();
             if (!transitionActive() && !switcher && !covered && isShown() && getAlpha() > 0.99f && pendingSince == 0) measure(t, key, lightInk);
+        }
+
+        boolean forcePaint;
+
+        int exactColor() {
+            ViewGroup t = toolbar.get();
+            if (t == null) return 0;
+            if (t.getBackground() instanceof ColorDrawable && Color.alpha(((ColorDrawable) t.getBackground()).getColor()) == 255) return ((ColorDrawable) t.getBackground()).getColor();
+            return ownColour(t);
         }
 
         private boolean lastFocused;
@@ -1235,6 +1493,10 @@ final class ChromeLayout {
         private final Path path = new Path();
         private final RectF box = new RectF();
         private float press = 1f, tap = -1f, morph = 1f, count = 1f;
+
+        private float navShown;
+        private boolean navOn;
+        private ValueAnimator navAnim;
         private ValueAnimator pressAnim, tapAnim, morphAnim, countAnim;
         private int shownTabs = -1, oldTabs = -1;
 
@@ -1242,6 +1504,8 @@ final class ChromeLayout {
             super(c);
             kind = k;
             bar = b;
+            navOn = k != Kind.FORWARD;
+            navShown = navOn ? 1f : NAV_DIM;
             setClickable(true);
             setLongClickable(k == Kind.TABS || k == Kind.BACK);
             setContentDescription(label());
@@ -1259,6 +1523,19 @@ final class ChromeLayout {
                 ChromeExtensions.openPixelSuite(v.getContext(), "extensions");
                 return true;
             } });
+        }
+
+        void nav(boolean on, boolean animate) {
+            if (on == navOn) return;
+            navOn = on;
+            if (navAnim != null) navAnim.cancel();
+            float to = on ? 1f : NAV_DIM;
+            if (!animate) { navShown = to; invalidate(); return; }
+            ValueAnimator a = ValueAnimator.ofFloat(navShown, to);
+            a.setDuration(180);
+            a.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() { public void onAnimationUpdate(ValueAnimator v) { navShown = (Float) v.getAnimatedValue(); invalidate(); } });
+            navAnim = a;
+            a.start();
         }
 
         String label() {
@@ -1449,7 +1726,7 @@ final class ChromeLayout {
                     path.moveTo(cx - dir * s * 0.15f, cy - s * 0.75f);
                     path.lineTo(cx - dir * s * 0.9f, cy);
                     path.lineTo(cx - dir * s * 0.15f, cy + s * 0.75f);
-                    if (kind == Kind.FORWARD) ink(alpha * 170f / 255f);
+                    ink(alpha * navShown);
                     c.drawPath(path, p);
                     break;
                 }

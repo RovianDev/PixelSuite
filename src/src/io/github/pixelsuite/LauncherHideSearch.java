@@ -13,7 +13,7 @@ import java.util.Set;
 final class LauncherHideSearch {
     private static final String TAG="PixelSuiteHomeSearch";
     private static volatile boolean enabled, ready, read;
-    private static boolean warned, reported;
+    private static boolean warned;
     private static ClassLoader loader;
     private static final Set<Method> factories=new HashSet<Method>();
     private static final ThreadLocal<Build> builds=new ThreadLocal<Build>();

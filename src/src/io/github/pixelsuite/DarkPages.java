@@ -79,7 +79,7 @@ final class DarkPages {
     static Bundle serve(Context c, String key, Bundle extras) {
         int v = extras == null ? -1 : extras.getInt("value", -1);
         if (!known(key) || !valid(key, v)) throw new IllegalArgumentException("Invalid Dark pages setting");
-        boolean ok = Root.run("settings put secure " + key + " " + v) != null;
+        boolean ok = PatronGate.ok(c) && Root.run("settings put secure " + key + " " + v) != null;
         Bundle out = new Bundle();
         out.putBoolean("ok", ok);
         return out;

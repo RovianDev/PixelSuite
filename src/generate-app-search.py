@@ -102,9 +102,13 @@ for m in re.finditer(r'if\s*\(([^\n;{}]*)\)\s*(?!\{)(explanation|section|choice)
 def pages_at(pos):
     hits=[r for r in ranges if r[0]<pos<r[1]]
     return min(hits,key=lambda r:r[1]-r[0])[2] if hits else ['']
-for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|section|choice|navChoice|labelSize|surfaceStyle|chromeGuidePart'):
+for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|section|choice|navChoice|labelSize|surfaceStyle|chromeGuidePart|feedSide|feedGoogle'):
     pages=pages_at(pos)
-    if name=='row' and len(a)>=6:
+    if name in ('feedSide','feedGoogle') and len(a)>=5:
+        key,icon,title,desc=value(a[1]),value(a[2]),value(a[3]),value(a[4])
+        if key and title:
+            for page in pages:add(page,title,desc,'CHOICE',key,icon,key)
+    elif name=='row' and len(a)>=6:
         key,icon,title,desc=value(a[1]),value(a[2]),value(a[4]),value(a[5])
         if key and title:
             for page in pages:add(page,title,desc,'TOGGLE',key,icon,key)
@@ -115,7 +119,6 @@ for pos,name,a,raw in calls(body,'row|navigation|appNavigation|explanation|secti
     elif name=='appNavigation' and len(a)>=7:
         page=value(a[6]);parents[page]=pages[0];add(page,value(a[1]),value(a[2]),'PAGE',icon=value(a[5]))
     elif name=='chromeGuidePart' and len(a)>2 and value(a[1]) and value(a[2]):
-        # r262: the "How it works" parts (Chrome+, Gboard+) are found by their title and text
         for page in pages:add(page,value(a[1]),value(a[2]),anchor=value(a[1]))
     elif name in ('explanation','section') and len(a)>1 and value(a[1]):
         text=value(a[1])

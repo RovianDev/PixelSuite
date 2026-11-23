@@ -252,33 +252,6 @@ final class LauncherIcon {
             File pack=LauncherIconPack.pickFile(c,key);if(pack.exists())pack.delete();
         }finally{output.delete();}
     }
-    static void importImage(Context c,String key,Uri uri)throws Exception{
-        File dir=new File(c.getFilesDir(),"pixelsuite-icons");if(!dir.isDirectory()&&!dir.mkdirs())throw new IOException("Cannot create icon storage");
-        File input=File.createTempFile("import-",".image",dir),output=File.createTempFile("icon-",".png",dir);
-        Bitmap decoded=null,oriented=null,cropped=null;
-        try{
-            try(InputStream in=c.getContentResolver().openInputStream(uri);OutputStream out=new FileOutputStream(input)){
-                if(in==null)throw new IOException("No image stream");byte[] buffer=new byte[16384];int n,total=0;
-                while((n=in.read(buffer))!=-1){total+=n;if(total>32*1024*1024)throw new IOException("Image is too large");out.write(buffer,0,n);}
-            }
-            BitmapFactory.Options options=new BitmapFactory.Options();options.inJustDecodeBounds=true;BitmapFactory.decodeFile(input.getPath(),options);
-            if(options.outWidth<=0||options.outHeight<=0||Math.max(options.outWidth,options.outHeight)>32768)throw new IOException("Unsupported dimensions");
-            options.inSampleSize=1;while(Math.max(options.outWidth,options.outHeight)/options.inSampleSize>1024)options.inSampleSize*=2;
-            options.inJustDecodeBounds=false;options.inPreferredConfig=Bitmap.Config.ARGB_8888;
-            decoded=BitmapFactory.decodeFile(input.getPath(),options);if(decoded==null)throw new IOException("Unsupported image");
-            int orientation=1;try{orientation=new ExifInterface(input.getPath()).getAttributeInt(ExifInterface.TAG_ORIENTATION,1);}catch(IOException ignored){}
-            Matrix matrix=new Matrix();
-            if(orientation==2)matrix.setScale(-1,1);else if(orientation==3)matrix.setRotate(180);else if(orientation==4)matrix.setScale(1,-1);
-            else if(orientation==5){matrix.setRotate(90);matrix.postScale(-1,1);}else if(orientation==6)matrix.setRotate(90);
-            else if(orientation==7){matrix.setRotate(270);matrix.postScale(-1,1);}else if(orientation==8)matrix.setRotate(270);
-            oriented=matrix.isIdentity()?decoded:Bitmap.createBitmap(decoded,0,0,decoded.getWidth(),decoded.getHeight(),matrix,true);
-            cropped=crop(oriented,512);
-            try(FileOutputStream out=new FileOutputStream(output)){if(!cropped.compress(Bitmap.CompressFormat.PNG,100,out))throw new IOException("Cannot encode image");out.getFD().sync();}
-            if(!output.renameTo(file(c,key)))throw new IOException("Cannot save image");
-        }finally{
-            input.delete();output.delete();if(cropped!=null)cropped.recycle();if(oriented!=null&&oriented!=decoded)oriented.recycle();if(decoded!=null)decoded.recycle();
-        }
-    }
     static Bitmap crop(Bitmap input,int size){
         int side=Math.min(input.getWidth(),input.getHeight());int x=(input.getWidth()-side)/2,y=(input.getHeight()-side)/2;
         Bitmap output=Bitmap.createBitmap(size,size,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(output);c.drawBitmap(input,new Rect(x,y,x+side,y+side),new Rect(0,0,size,size),new Paint(3));return output;

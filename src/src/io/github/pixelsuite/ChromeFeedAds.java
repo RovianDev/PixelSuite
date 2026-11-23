@@ -49,6 +49,7 @@ final class ChromeFeedAds {
             Xp.hookAllMethods(Activity.class, "onPostResume", new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try { watch((Activity) p.thisObject); } catch (Throwable ignored) { }
+                    try { ChromeFeedSpinner.watch((Activity) p.thisObject); } catch (Throwable ignored) { }
                 }
             });
         } catch (Throwable ignored) { }
@@ -176,7 +177,6 @@ final class ChromeFeedAds {
         sFrames[sFrameIndex] = line;
         sFrameIndex = (sFrameIndex + 1) % sFrames.length;
     }
-
 
     private static int sMoved;
     private static long sMovedAt;

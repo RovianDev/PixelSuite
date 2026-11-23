@@ -68,7 +68,6 @@ final class SuiteIcon extends Drawable {
         c.restoreToCount(save);
         scheduleSelf(next, android.os.SystemClock.uptimeMillis() + 16);
     }
-    float spreadNow() { return spread; }
     private long start;
     private static final long PERIOD = 6400;
     private static final int[] ROUND = {0, 1, 3, 2};

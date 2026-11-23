@@ -154,6 +154,111 @@ final class DexPeek {
         return null;
     }
 
+    static String[] methodWithStringPrefix(Context c, String prefix) throws Exception {
+        List<String> order = new ArrayList<String>();
+        if (c.getApplicationInfo().sourceDir != null) order.add(c.getApplicationInfo().sourceDir);
+        for (String a : apks(c)) if (!order.contains(a)) order.add(a);
+        for (String apk : order) {
+            ZipFile z = new ZipFile(apk);
+            try {
+                for (Enumeration<? extends ZipEntry> e = z.entries(); e.hasMoreElements(); ) {
+                    ZipEntry entry = e.nextElement();
+                    String n = entry.getName();
+                    if (!n.startsWith("classes") || !n.endsWith(".dex") || n.contains("/")) continue;
+                    Dex x = new Dex(read(z, entry));
+                    int str = x.findStringPrefix(prefix);
+                    if (str < 0) continue;
+                    String[] m = x.methodLoading(str);
+                    if (m != null) return m;
+                }
+            } finally { z.close(); }
+        }
+        return null;
+    }
+
+    static String[] cachedMethodWithStringPrefix(Context c, String what, String prefix) throws Exception {
+        long ver = c.getPackageManager().getPackageInfo(c.getPackageName(), 0).versionCode;
+        java.io.File f = new java.io.File(c.getCacheDir(), "pixelsuite_" + what + "_" + ver);
+        if (f.isFile()) {
+            byte[] b = new byte[(int) f.length()];
+            java.io.FileInputStream in = new java.io.FileInputStream(f);
+            try { in.read(b); } finally { in.close(); }
+            String s = new String(b, "UTF-8").trim();
+            if (!s.isEmpty()) return s.split("\\|", -1);
+        }
+        String[] found = methodWithStringPrefix(c, prefix);
+        if (found != null) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < found.length; i++) { if (i > 0) sb.append('|'); sb.append(found[i]); }
+            java.io.FileOutputStream out = new java.io.FileOutputStream(f);
+            try { out.write(sb.toString().getBytes("UTF-8")); } finally { out.close(); }
+        }
+        return found;
+    }
+
+    static String[] cachedMethodWithStringContaining(Context c, String what, String needle) throws Exception {
+        long ver = c.getPackageManager().getPackageInfo(c.getPackageName(), 0).versionCode;
+        java.io.File f = new java.io.File(c.getCacheDir(), "pixelsuite_" + what + "_" + ver);
+        if (f.isFile()) {
+            byte[] b = new byte[(int) f.length()];
+            java.io.FileInputStream in = new java.io.FileInputStream(f);
+            try { in.read(b); } finally { in.close(); }
+            String s = new String(b, "UTF-8").trim();
+            if (!s.isEmpty()) return s.split("\\|", -1);
+        }
+        String[] found = null;
+        List<String> order = new ArrayList<String>();
+        if (c.getApplicationInfo().sourceDir != null) order.add(c.getApplicationInfo().sourceDir);
+        for (String a : apks(c)) if (!order.contains(a)) order.add(a);
+        outer:
+        for (String apk : order) {
+            ZipFile z = new ZipFile(apk);
+            try {
+                for (Enumeration<? extends ZipEntry> e = z.entries(); e.hasMoreElements(); ) {
+                    ZipEntry entry = e.nextElement();
+                    String n = entry.getName();
+                    if (!n.startsWith("classes") || !n.endsWith(".dex") || n.contains("/")) continue;
+                    Dex x = new Dex(read(z, entry));
+                    for (int str = 0; str < x.stringsSize; str++) {
+                        if (!x.string(str).contains(needle)) continue;
+                        String[] m = x.methodLoading(str);
+                        if (m != null) { found = m; break outer; }
+                    }
+                }
+            } finally { z.close(); }
+        }
+        if (found != null) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < found.length; i++) { if (i > 0) sb.append('|'); sb.append(found[i]); }
+            java.io.FileOutputStream out = new java.io.FileOutputStream(f);
+            try { out.write(sb.toString().getBytes("UTF-8")); } finally { out.close(); }
+        }
+        return found;
+    }
+
+    static String classEndingWith(Context c, String suffix) throws Exception {
+        String want = suffix.replace('.', '/') + ";";
+        List<String> order = new ArrayList<String>();
+        if (c.getApplicationInfo().sourceDir != null) order.add(c.getApplicationInfo().sourceDir);
+        for (String a : apks(c)) if (!order.contains(a)) order.add(a);
+        for (String apk : order) {
+            ZipFile z = new ZipFile(apk);
+            try {
+                for (Enumeration<? extends ZipEntry> e = z.entries(); e.hasMoreElements(); ) {
+                    ZipEntry entry = e.nextElement();
+                    String n = entry.getName();
+                    if (!n.startsWith("classes") || !n.endsWith(".dex") || n.contains("/")) continue;
+                    Dex x = new Dex(read(z, entry));
+                    for (int cls = 0; cls < x.classesSize; cls++) {
+                        String desc = x.type(x.u32(x.classesOff + cls * 32));
+                        if (desc.endsWith(want)) return desc.substring(1, desc.length() - 1).replace('/', '.');
+                    }
+                }
+            } finally { z.close(); }
+        }
+        return null;
+    }
+
     private static List<String> apks(Context c) {
         List<String> out = new ArrayList<String>();
         ApplicationInfo ai = c.getApplicationInfo();
@@ -239,6 +344,42 @@ final class DexPeek {
                 if (c < 0) lo = mid + 1; else hi = mid - 1;
             }
             return -1;
+        }
+
+        int findStringPrefix(String prefix) {
+            int lo = 0, hi = stringsSize - 1, at = stringsSize;
+            while (lo <= hi) {
+                int mid = (lo + hi) >>> 1;
+                if (string(mid).compareTo(prefix) >= 0) { at = mid; hi = mid - 1; } else lo = mid + 1;
+            }
+            return at < stringsSize && string(at).startsWith(prefix) ? at : -1;
+        }
+
+        String[] methodLoading(int str) {
+            for (int cls = 0; cls < classesSize; cls++) {
+                int data = u32(classesOff + cls * 32 + 24);
+                if (data == 0) continue;
+                pos = data;
+                int sf = uleb(), inf = uleb(), dm = uleb(), vm = uleb();
+                for (int k = 0; k < sf + inf; k++) { uleb(); uleb(); }
+                List<int[]> codes = new ArrayList<int[]>();
+                int idx = 0;
+                for (int k = 0; k < dm; k++) { idx += uleb(); uleb(); int code = uleb(); if (code != 0) codes.add(new int[] { idx, code }); }
+                idx = 0;
+                for (int k = 0; k < vm; k++) { idx += uleb(); uleb(); int code = uleb(); if (code != 0) codes.add(new int[] { idx, code }); }
+                for (int[] mc : codes) {
+                    if (!loads(mc[1], str)) continue;
+                    int m = methodsOff + mc[0] * 8;
+                    String owner = type(u16(m)), name = string(u32(m + 4));
+                    int params = u32(protosOff + u16(m + 2) * 12 + 8);
+                    int count = params == 0 ? 0 : u32(params);
+                    String[] out = new String[2 + count];
+                    out[0] = owner.substring(1, owner.length() - 1).replace('/', '.'); out[1] = name;
+                    for (int i = 0; i < count; i++) out[2 + i] = type(u16(params + 4 + i * 2));
+                    return out;
+                }
+            }
+            return null;
         }
 
         int classWithString(String value) {

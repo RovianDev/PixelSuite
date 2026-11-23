@@ -6,7 +6,7 @@ import java.util.TreeSet;
 final class MiscOptions {
     private MiscOptions() {}
     static boolean defaultOff(String key) {
-        return "pixelsuite_dna_watch".equals(key) || GboardToolbar.KEY.equals(key) || GboardPlus.KEY_SHORTCUTS.equals(key) || GboardPlus.KEY_KEYS.equals(key) || GboardFrost.KEY.equals(key) || GboardPlus.KEY_AR_NO_AUTOCORRECT.equals(key) || GboardPlus.KEY_CLIP.equals(key) || GboardPlus.KEY_HIDE_CHIPS.equals(key) || GboardPlus.KEY_HIDE_MENU.equals(key) || GboardPlus.KEY_HIDE_RIGHT.equals(key) || GboardPlus.KEY_ROWS.equals(key) || GboardPlus.KEY_ROWS_TOP.equals(key) || GboardPlus.KEY_FREE.equals(key) || GboardPlus.KEY_DEL_LETTERS.equals(key) || DoNotAnnoy.KEY.equals(key) || RefreshRate90.KEY.equals(key) || ShowFps.KEY.equals(key) || StoreBlocker.UNLOCK_KEY.equals(key) || OtaBlocker.KEY.equals(key) || OtaBlocker.RESET_KEY.equals(key) || CallRecording.KEY.equals(key) || MiscSystem.SECURE_KEY.equals(key) || MiscSystem.A11Y_KEY.equals(key) || KeyboardBarTweak.KEY.equals(key) || MiscSystem.DEV_KEY.equals(key);
+        return "pixelsuite_dna_watch".equals(key) || DoNotAnnoyWhatsApp.KEY.equals(key) || UsbTop.KEY.equals(key) || UsbQuick.KEY.equals(key) || OtpFill.KEY.equals(key) || OtpFill.AUTO_KEY.equals(key) || GboardToolbar.KEY.equals(key) || GboardPlus.KEY_SHORTCUTS.equals(key) || GboardPlus.KEY_KEYS.equals(key) || GboardFrost.KEY.equals(key) || GboardPlus.KEY_AR_NO_AUTOCORRECT.equals(key) || GboardPlus.KEY_CLIP.equals(key) || GboardPlus.KEY_HIDE_CHIPS.equals(key) || GboardPlus.KEY_HIDE_MENU.equals(key) || GboardPlus.KEY_HIDE_RIGHT.equals(key) || GboardPlus.KEY_ROWS.equals(key) || GboardPlus.KEY_ROWS_TOP.equals(key) || GboardPlus.KEY_FREE.equals(key) || GboardPlus.KEY_DEL_LETTERS.equals(key) || DoNotAnnoy.KEY.equals(key) || RefreshRate90.KEY.equals(key) || ShowFps.KEY.equals(key) || StoreBlocker.UNLOCK_KEY.equals(key) || OtaBlocker.KEY.equals(key) || OtaBlocker.RESET_KEY.equals(key) || CallRecording.KEY.equals(key) || MiscSystem.SECURE_KEY.equals(key) || MiscSystem.A11Y_KEY.equals(key) || KeyboardBarTweak.KEY.equals(key) || MiscSystem.DEV_KEY.equals(key);
     }
     static boolean packageName(String value) {
         return value != null && value.matches("[A-Za-z0-9_]+(?:\\.[A-Za-z0-9_]+)*");
@@ -28,10 +28,12 @@ final class MiscOptions {
         return (filter==2 || (filter==1)==system) && (q.isEmpty()
                 || label.toLowerCase(java.util.Locale.ROOT).contains(q) || pkg.toLowerCase(java.util.Locale.ROOT).contains(q));
     }
-    static String listCommand(Set<String> packages) {
+    static String listCommand(Set<String> packages) { return listCommand(MiscSystem.A11Y_APPS_KEY, packages); }
+
+    static String listCommand(String key, Set<String> packages) {
         String value = join(packages);
-        return value.isEmpty() ? "settings delete secure " + MiscSystem.A11Y_APPS_KEY
-                : "settings put secure " + MiscSystem.A11Y_APPS_KEY + " '" + value + "'";
+        return value.isEmpty() ? "settings delete secure " + key
+                : "settings put secure " + key + " '" + value + "'";
     }
     static Set<String> changed(Set<String> before, Set<String> after) {
         Set<String> result = new TreeSet<String>(before);

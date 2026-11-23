@@ -118,7 +118,10 @@ final class ChromeSiteSettings {
         invalidate();
     }
     static synchronized Bundle serve(Context c,String op,Bundle data){
-        SharedPreferences p=own(c);SharedPreferences.Editor edit=p.edit();boolean write=!"snapshot".equals(op);
+        boolean write=!"snapshot".equals(op);
+        Bundle out=new Bundle();
+        if(write&&!PatronGate.ok(c)){out.putBoolean("ok",false);return out;}
+        SharedPreferences p=own(c);SharedPreferences.Editor edit=p.edit();
         String host=data==null?null:domain(data.getString("host"));int level=data==null?-1:data.getInt("level",-1);
         if("import".equals(op)){
             String source=data.getString("source");if(!Arrays.asList(BROWSERS).contains(source))throw new IllegalArgumentException("Invalid browser");
@@ -139,7 +142,7 @@ final class ChromeSiteSettings {
         }else if("resetAll".equals(op)){for(String key:p.getAll().keySet())if(key.startsWith("level:")||key.startsWith("hide:"))edit.remove(key);}
         else if(!"snapshot".equals(op))throw new IllegalArgumentException("Unknown operation");
         if(write){if(!edit.commit())throw new IllegalStateException("Could not save site settings");c.getContentResolver().notifyChange(URI_SETTINGS,null);}
-        Bundle out=new Bundle();out.putBoolean("ok",true);out.putString("data",encode(p));return out;
+        out.putBoolean("ok",true);out.putString("data",encode(p));return out;
     }
 
     static void importLegacy(Context c){

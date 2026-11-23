@@ -89,7 +89,8 @@ final class ChromeSpeedDial {
         } catch (Throwable ignored) { }
         try {
             ChromeTabTransition.install();
-            Class<?> anim = l.loadClass("org.chromium.chrome.browser.hub.ShrinkExpandAnimator");
+            Class<?> anim;
+            try { anim = l.loadClass("org.chromium.chrome.browser.hub.ShrinkExpandAnimator"); } catch (Throwable t) { throw t; }
             Xp.hookAllConstructors(anim, new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try {
@@ -103,6 +104,23 @@ final class ChromeSpeedDial {
                     try { if (p.args.length > 0 && p.args[0] instanceof android.graphics.Rect) ChromeTabTransition.frame(p.thisObject, (android.graphics.Rect)p.args[0]); } catch (Throwable ignored) { }
                 }
             });
+
+            try {
+                final Class<?> zoom = anim;
+                Class<?> post = l.loadClass("org.chromium.base.task.PostTask");
+                for (java.lang.reflect.Method m : post.getDeclaredMethods()) {
+                    Class<?>[] t = m.getParameterTypes();
+                    if (!java.lang.reflect.Modifier.isStatic(m.getModifiers()) || t.length != 3 || t[0] != int.class || t[1] != Runnable.class || t[2] != long.class) continue;
+                    Xp.hookMethod(m, new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            try {
+                                if (!(p.args[2] instanceof Long) || ((Long) p.args[2]).longValue() != 300L || p.args[1] == null) return;
+                                if (ChromeTabTransition.zoomWait(p.args[1], zoom)) p.args[2] = Long.valueOf(ChromeTabTransition.waitMs());
+                            } catch (Throwable ignored) { }
+                        }
+                    });
+                }
+            } catch (Throwable ignored) { }
         } catch (Throwable ignored) { }
         try { ChromeTileIcons.install(); } catch (Throwable ignored) { }
         try { ChromeDialBookmarks.install(l); } catch (Throwable ignored) { }
@@ -136,6 +154,7 @@ final class ChromeSpeedDial {
             Class<?> natives = l.loadClass("J.N");
             Xp.hookAllMethods(natives, "VIJO", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try { if (p.args.length == 4 && p.args[0] instanceof Integer && (Integer) p.args[0] == 16 && p.args[3] != null) ChromeTabTransition.thumbRequested(p.args[3]); } catch (Throwable ignored) { }
                     try {
                         if (p.args.length == 4 && p.args[3] != null && p.args[1] instanceof Integer && (Integer) p.args[1] == 8
                                 && p.args[3].getClass().getName().endsWith("MostVisitedSitesBridge")) {

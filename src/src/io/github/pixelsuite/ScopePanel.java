@@ -55,6 +55,7 @@ final class ScopePanel {
   }
   if("IMS Stack".equals(name))return "Keeps incoming calls quiet through the Pixel calling stack while Do Not Annoy is on.";
   if("Phone Services".equals(name))return "Declines incoming calls for Do Not Annoy when the Pixel calling-stack path is unavailable.";
+  if("WhatsApp".equals(name))return "Turns WhatsApp calls away while Do Not Annoy is on, with Block WhatsApp calls turned on. Restart WhatsApp after adding this scope.";
   if("Google".equals(name))return "google_app".equals(id)?"Removes sponsored cards and their empty space from the Google feed.":SuperDark.KEY.equals(id)?"Applies Super Dark to the Google app and feed.":"Shows customized app names and icons in home-screen Google search.";
   if("Phone".equals(name))return "Enables call recording and its controls in the Google Phone app.";
   if("Pixel watch".equals(name))return "Enables QR-code eSIM setup in the Pixel Watch phone app.";
@@ -66,12 +67,15 @@ final class ScopePanel {
   if("Settings Services".equals(name))return "Applies Super Dark to Settings search.";
   if("Package installer".equals(name))return "Applies Super Dark to app uninstall dialogs.";
   if("Settings".equals(name))return "miscellaneous".equals(id)?"Adds the refresh-rate slider to Display & touch.":SuperDark.KEY.equals(id)?"Applies Super Dark to Settings.":"Controls Software updates and the factory-reset option in Settings.";
+  if("Gboard".equals(name)&&"otp".equals(id))return "Shows the code above your keyboard and fills it in.";
   if("Gboard".equals(name))return "gboard".equals(id)?"Toolbar room for 7 shortcuts, text editing shortcuts, rounded keys, the one-column clipboard, hidden chips, menu and emoji/voice buttons, your toolbar order, suggestions with shortcuts in two rows, Resize (keyboard size and place), free keyboard position, Arabic ؤ on و, letter-by-letter delete swipe, auto-correction per language, the unlimited clipboard and the Resize page's keyboard picture.":SuperDark.KEY.equals(id)?"Applies Super Dark to Gboard.":"Hides the keyboard globe and moves the dismiss arrow to the right.";
   if("Files by Google".equals(name))return "Shows newest files first in the file browser.";
   if("Files (system)".equals(name))return "Shows newest files first in the system file picker.";
+  if("External Storage".equals(name))return "Opens folders with thousands of files quickly, in every app, without empty folders after going back. Reboot after adding this scope.";
   if("Chrome".equals(name))return "Removes supported empty ad boxes from web pages opened in Chrome.";
   if("System UI".equals(name)&&"launcher".equals(id))return "Places toast messages at the top, middle or stock bottom position. Changes apply to the next toast.";
   if("System UI".equals(name))return "buttons".equals(id)||Feature.VOLDOWN_CAMERA.equals(id)?"Opens the camera from the volume-down shortcut.":"privacy".equals(id)?"Shows fingerprint and PIN prompts for locked apps and folders.":"miscellaneous".equals(id)?"Keeps screenshots ready for faster capture.":"recents".equals(id)?"Fades the status bar while recent apps are viewed in landscape.":"gestures".equals(id)?"Provides cleaner screen-recording controls.":"Matches system menus and messages to your chosen theme and surface style.";
+  if("System Framework".equals(name)&&"otp".equals(id))return "Reads one-time codes from notifications as they arrive.";
   if("System Framework".equals(name))return "buttons".equals(id)?"Detects power-button and volume-down double presses for the flashlight and camera shortcuts.":Feature.FLASHLIGHT.equals(id)?"Toggles the flashlight with a double press of the power button.":Feature.VOLDOWN_CAMERA.equals(id)?"Detects volume-down double presses while the screen is off.":"privacy".equals(id)?"Requires authentication before opening protected apps or uninstalling, disabling or pausing them.":"google_dialer".equals(id)?"Keeps calls responsive while recordings are saved.":"ota_blocker".equals(id)||"blockers".equals(id)?"Blocks system update installation and protects factory reset.":"miscellaneous".equals(id)?"Allows secure-screen capture, hides accessibility and debugging status from apps, and provides the FPS counter.":"Handles wake, sleep and screenshot gestures in Android's system process.";
   return "Enables "+(I18n.on()?title:title.toLowerCase(java.util.Locale.ROOT))+" in "+name+".";
  }

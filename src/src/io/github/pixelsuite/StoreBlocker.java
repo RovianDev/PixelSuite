@@ -12,6 +12,8 @@ import android.provider.Settings;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Set;
 
 final class StoreBlocker {
@@ -36,6 +38,20 @@ final class StoreBlocker {
             "org.futo.inputmethod.latin.playstore",
             "org.futo.inputmethod.latin.unstable" };
     private static final long FAR_AHEAD = Integer.MAX_VALUE - 1;
+
+    static final String[][] FEATURE_APPS = {
+            { DoNotAnnoyWhatsApp.KEY, "0", "Block WhatsApp calls", "com.whatsapp", "com.whatsapp.w4b" },
+    };
+
+    static Map<String, String> featureApps(ContentResolver cr) {
+        Map<String, String> out = new HashMap<String, String>();
+        for (String[] f : FEATURE_APPS) {
+            boolean on;
+            try { on = Settings.Secure.getInt(cr, f[0], Integer.parseInt(f[1])) == 1; } catch (Throwable t) { on = "1".equals(f[1]); }
+            if (on) for (int i = 3; i < f.length; i++) out.put(f[i], f[2]);
+        }
+        return out;
+    }
 
     private static volatile Set<String> sBlocked;
     private static volatile String sAllowPkg;
@@ -63,6 +79,7 @@ final class StoreBlocker {
         if (list == null) Collections.addAll(out, CORE);
         else for (String p : list.split(",")) if (!p.trim().isEmpty()) out.add(p.trim());
         if (!"1".equals(unlock)) Collections.addAll(out, CORE);
+        out.addAll(featureApps(cr).keySet());
         return Collections.unmodifiableSet(out);
     }
     static Set<String> guarded(ContentResolver cr) {
@@ -100,6 +117,7 @@ final class StoreBlocker {
             c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(KEY), false, o);
             c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(StoreBackup.ALLOW_KEY), false, o);
             c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(UNLOCK_KEY), false, o);
+            for (String[] f : FEATURE_APPS) c.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(f[0]), false, o);
             return s;
         } catch (Throwable t) { return Collections.emptySet(); }
     }

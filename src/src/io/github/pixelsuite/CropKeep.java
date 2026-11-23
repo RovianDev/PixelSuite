@@ -129,7 +129,6 @@ final class CropKeep {
         } catch (Throwable t) { return null; }
     }
 
-    static Class<?> pointClass() { return pointCls; }
     static Object point(float x, float y) { try { return newPoint.newInstance(x, y); } catch (Throwable t) { return null; } }
 
     private static final ThreadLocal<Integer> SAVES = new ThreadLocal<Integer>();
