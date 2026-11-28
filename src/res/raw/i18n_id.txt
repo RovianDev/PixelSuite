@@ -1811,3 +1811,366 @@ Couldn't put back {0}	Tidak dapat mengembalikan {0}
 Couldn't save {0}	Tidak dapat menyimpan {0}
 It didn't install	Gagal dipasang
 Root isn't available	Root tidak tersedia
+Pixel search	Pencarian Pixel
+Find apps, contacts, files and more	Cari aplikasi, kontak, file, dan lainnya
+Everything on your phone, one search away.	Semua isi ponsel Anda, cukup satu pencarian.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	Bilah pencarian baru di layar utama. Cari aplikasi, kontak, file, setelan, dan lainnya di satu tempat.
+Look	Tampilan
+Color	Warna
+Blurs what's behind the bar, with glowing edges.	Memburamkan yang ada di balik bilah, dengan tepi bercahaya.
+How much of the outer bar shows.	Seberapa terlihat bilah luar.
+How much of the search box and side buttons shows.	Seberapa terlihat kotak pencarian dan tombol samping.
+Voice search, Google Lens, Song search	Penelusuran suara, Google Lens, Telusuri lagu
+Choose and order what shows up	Pilih yang muncul dan urutannya
+Web search	Penelusuran web
+What to search	Yang dicari
+Search inside files	Cari di dalam file
+Tap to look through your files now.	Ketuk untuk memeriksa file Anda sekarang.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	Temukan kata dan angka di dalam file PDF, Word, Excel, dan teks Anda, lengkap dengan halamannya. Tahan file untuk melihat, membagikan, atau menemukannya.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	Ketik hitungan atau konversi, seperti 15% of 80 atau 5 km in miles, lalu ketuk jawabannya untuk menyalin.
+Pixel search shows when Hide search bar is off.	Pencarian Pixel muncul saat Sembunyikan bilah pencarian nonaktif.
+System colors	Warna sistem
+Your color	Warna Anda
+Any color	Warna apa saja
+Light	Terang
+Calculator and units	Kalkulator dan satuan
+App shortcuts	Pintasan aplikasi
+Files and media	File dan media
+Inside files	Di dalam file
+Web	Web
+All	Semua
+Google Lens	Google Lens
+Song search	Telusuri lagu
+Assistant	Asisten
+QR code scanner	Pemindai kode QR
+Action	Tindakan
+App	Aplikasi
+App shortcut	Pintasan aplikasi
+Contact	Kontak
+Shortcut	Pintasan
+Add a button	Tambahkan tombol
+Choose an app	Pilih aplikasi
+Couldn't open your contacts	Tidak dapat membuka kontak
+Getting the app's shortcuts…	Mengambil pintasan aplikasi…
+Go to your home screen once, then try again.	Buka layar utama sekali, lalu coba lagi.
+In the search box	Di kotak pencarian
+Left side	Sisi kiri
+Right side	Sisi kanan
+Looking through your files…	Memeriksa file Anda…
+Looking through your files… {0}	Memeriksa file Anda… {0}
+Move down	Pindahkan ke bawah
+Move left	Pindahkan ke kiri
+Move right	Pindahkan ke kanan
+Move up	Pindahkan ke atas
+No buttons	Tidak ada tombol
+Preview	Pratinjau
+Results show in this order. Turn off what you don't need.	Hasil muncul dengan urutan ini. Nonaktifkan yang tidak Anda perlukan.
+That side is full	Sisi itu sudah penuh
+This app has no shortcuts	Aplikasi ini tidak punya pintasan
+This contact has no phone number	Kontak ini tidak punya nomor telepon
+Turn Pixel search off and on again to allow searching your files.	Nonaktifkan lalu aktifkan lagi Pencarian Pixel untuk mengizinkan pencarian file Anda.
+Turn on Pixel search first	Aktifkan Pencarian Pixel terlebih dahulu
+Your files are looked through after you turn on Pixel search.	File Anda diperiksa setelah Pencarian Pixel diaktifkan.
+{0} files, {1} with text you can search. Updated {2}.	{0} file, {1} berisi teks yang bisa dicari. Diperbarui {2}.
+{0} of {1} turned on	{0} dari {1} aktif
+No app can open this file	Tidak ada aplikasi yang bisa membuka file ini
+No app can open this folder	Tidak ada aplikasi yang bisa membuka folder ini
+That file isn't there any more	File itu sudah tidak ada
+Couldn't open it	Tidak dapat membukanya
+About phone	Tentang ponsel
+Accessibility	Aksesibilitas
+Airplane mode	Mode pesawat
+Android settings	Setelan Android
+Battery	Baterai
+Battery Saver	Penghemat Baterai
+Cast	Transmisi
+Copied	Disalin
+Dark theme	Tema gelap
+Data usage	Penggunaan data
+Default apps	Aplikasi default
+Developer options	Opsi developer
+Display	Layar
+Getting your files ready. They show up here in a few minutes.	Menyiapkan file Anda. File akan muncul di sini dalam beberapa menit.
+Keyboard	Keyboard
+Location	Lokasi
+Network & internet	Jaringan & internet
+Night Light	Cahaya Malam
+No results	Tidak ada hasil
+Open	Buka
+Page {0}	Halaman {0}
+Passwords & accounts	Sandi & akun
+Printing	Pencetakan
+Privacy	Privasi
+Search apps, contacts, files, settings and more	Cari aplikasi, kontak, file, setelan, dan lainnya
+Search your phone and the web	Telusuri ponsel dan web
+Search {0} for “{1}”	Telusuri “{1}” di {0}
+Security & privacy	Keamanan & privasi
+Show in folder	Tampilkan di folder
+Sound & vibration	Suara & getaran
+Storage	Penyimpanan
+System update	Update sistem
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	Nonaktifkan lalu aktifkan lagi Pencarian Pixel di Pixel Suite untuk mengizinkan pencarian file Anda.
+Users	Pengguna
+Wi-Fi	Wi-Fi
+Colorful icons	Ikon berwarna
+App and shortcut buttons keep their own colors.	Tombol aplikasi dan pintasan tetap memakai warnanya sendiri.
+Edit search bar	Edit bilah pencarian
+Size	Ukuran
+Outer bar	Bilah luar
+Search box	Kotak pencarian
+More settings	Setelan lainnya
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	Ketuk bilah pencarian dan mulai mengetik. Tahan bilah untuk mengeditnya langsung di layar utama.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	Seret tombol di bilah untuk memindahkannya. Seret tombol keluar dari bilah untuk menghapusnya.
+The bar is full. Drag a button off the bar first.	Bilah sudah penuh. Seret dulu satu tombol keluar dari bilah.
+Hold and drag to change the order.	Tahan dan seret untuk mengubah urutan.
+Favorites	Favorit
+Favorite	Favorit
+Added to favorites	Ditambahkan ke favorit
+Removed from favorites	Dihapus dari favorit
+Hold an app, a contact or a file to add it here	Tahan aplikasi, kontak, atau file untuk menambahkannya ke sini
+Open Pixel Suite once to download currency rates	Buka Pixel Suite sekali untuk mengunduh kurs mata uang
+Currency	Mata uang
+Convert to	Konversi ke
+Update automatically	Perbarui otomatis
+Update now	Perbarui sekarang
+Updating the rates…	Memperbarui kurs…
+Rates updated	Kurs diperbarui
+Rates updated {0}	Kurs diperbarui: {0}
+Rates not downloaded yet	Kurs belum diunduh
+Couldn't update the rates	Tidak dapat memperbarui kurs
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	Ketik jumlah dan mata uang, seperti 200 USD, untuk mengonversinya. Kurs diunduh dari internet, dan tidak ada data tentang Anda yang dikirim.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	Ketuk tombol untuk menambahkannya, atau tahan dan seret ke bilah. Seret tombol di bilah untuk memindahkannya, atau ke luar bilah untuk menghapusnya.
+Drop it on the bar to add it	Lepaskan di bilah untuk menambahkannya
+No contacts with a phone number	Tidak ada kontak dengan nomor telepon
+Everything is searched on your phone. Only web searches and currency rates go online.	Semua dicari di ponsel Anda. Hanya penelusuran web dan kurs mata uang yang online.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	Tahan Gelap atau Super Gelap untuk memilih mana yang dipakai Otomatis di malam hari.
+Lock the sliders	Kunci penggeser
+Search currencies	Cari mata uang
+Search engine	Mesin telusur
+Search settings	Setelan penelusuran
+Show keyboard	Tampilkan keyboard
+Replace	Ganti
+Favorite contacts	Kontak favorit
+Add dialer favorites	Tambahkan favorit telepon
+Search contacts	Cari kontak
+Added to favorite contacts	Ditambahkan ke kontak favorit
+Hold the search bar and add contacts first	Tahan bilah penelusuran dan tambahkan kontak terlebih dahulu
+No favorites in your dialer yet	Belum ada favorit di telepon Anda
+Hide swipe-up hint	Sembunyikan petunjuk geser ke atas
+Stops the hint that plays after a few short swipes that don't open the drawer.	Menghentikan petunjuk yang muncul setelah beberapa geseran pendek yang tidak membuka laci.
+Closing animation	Animasi penutup
+Shutter	Tirai
+Glide	Meluncur
+Balloons	Balon
+Jelly	Jeli
+Pop	Pop
+Wave	Gelombang
+Swell	Mengembang
+Classic	Klasik
+Scan to PDF	Pindai ke PDF
+Add from gallery	Tambahkan dari galeri
+Take photo	Ambil foto
+Pages	Halaman
+Couldn't open the camera	Tidak dapat membuka kamera
+Camera access is needed to scan	Akses kamera diperlukan untuk memindai
+Save as PDF	Simpan sebagai PDF
+Rotate	Putar
+All pages	Semua halaman
+{0} selected	{0} dipilih
+File name	Nama file
+Making the PDF…	Membuat PDF…
+Saved to Download	Disimpan di Download
+Couldn't save the PDF	Tidak dapat menyimpan PDF
+Original	Asli
+Auto	Otomatis
+Enhanced	Ditingkatkan
+Grayscale	Skala abu-abu
+Black & white	Hitam putih
+Lighten	Cerahkan
+Image to PDF	Gambar ke PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	Menambahkan Pindai ke PDF ke tombol yang bisa dipasang di bilah penelusuran. Foto halaman atau pilih foto, rapikan, lalu simpan atau bagikan sebagai satu PDF.
+Tools	Alat
+Featured apps	Aplikasi unggulan
+Shows the apps you open most from Pixel search before you type.	Menampilkan aplikasi yang paling sering Anda buka dari Pixel search sebelum mengetik.
+Recent searches	Penelusuran terbaru
+Shows your latest searches before you type. Hold one to remove it.	Menampilkan penelusuran terakhir Anda sebelum mengetik. Tahan salah satu untuk menghapusnya.
+Enter opens the first app	Enter membuka aplikasi pertama
+Turn off to always search the web when you press Enter.	Matikan agar Enter selalu menelusuri web.
+Delete this file?	Hapus file ini?
+Deleted	Dihapus
+Couldn't delete it	Tidak dapat menghapusnya
+Unpin	Lepas sematan
+Add to favorites	Tambahkan ke favorit
+Remove from favorites	Hapus dari favorit
+Clear recent searches?	Hapus penelusuran terbaru?
+Pixel Suite apps	Aplikasi Pixel Suite
+Pixel dialer	Dialer Pixel
+Your phone app, with call recording	Aplikasi telepon Anda, dengan perekaman panggilan
+Scan pages into one PDF	Pindai halaman menjadi satu PDF
+Apps that come with Pixel Suite.	Aplikasi yang disertakan dengan Pixel Suite.
+Your phone app, made for Pixel Suite.	Aplikasi telepon Anda, dibuat untuk Pixel Suite.
+Pages and photos, turned into one PDF.	Halaman dan foto, dijadikan satu PDF.
+Calls, contacts, favorites and call recording.	Panggilan, kontak, favorit, dan perekaman panggilan.
+Calls, favorites, contacts and recordings	Panggilan, favorit, kontak, dan rekaman
+Dialer settings	Setelan dialer
+Theme, sounds and call recording	Tema, suara, dan perekaman panggilan
+Install the Pixel Suite apps module in your root manager, then restart your phone.	Pasang modul Pixel Suite Apps di pengelola root Anda, lalu mulai ulang ponsel.
+Look for new pages	Tampilan halaman baru
+Open Image to PDF	Buka Gambar ke PDF
+Open Pixel dialer	Buka Dialer Pixel
+Photograph pages or pick photos	Potret halaman atau pilih foto
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	Potret halaman atau pilih foto, luruskan dan rapikan, lalu simpan atau bagikan sebagai satu PDF.
+Shows Image to PDF with your apps, with its own icon.	Menampilkan Gambar ke PDF di antara aplikasi Anda, dengan ikonnya sendiri.
+The Scan to PDF button on the search bar is set in Pixel search.	Tombol Pindai ke PDF di bilah penelusuran diatur di Pencarian Pixel.
+Turn Pixel dialer on first	Aktifkan Dialer Pixel dulu
+Turn each app on or off and change its settings.	Aktifkan atau nonaktifkan tiap aplikasi dan ubah setelannya.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	Jika dimatikan, aplikasi disembunyikan dan panggilan kembali ke aplikasi telepon Anda yang lain. Aktifkan lagi kapan saja.
+Gray	Abu-abu
+High	Tinggi
+Standard	Standar
+PDF quality	Kualitas PDF
+Pixel dialer, Pixel search and Image to PDF	Dialer Pixel, Pencarian Pixel, dan Gambar ke PDF
+A file with that name already exists	Sudah ada file dengan nama itu
+Add Text	Tambah teks
+All PDFs	Semua PDF
+All tools	Semua alat
+All your PDFs and tools	Semua PDF dan alat Anda
+Allow	Izinkan
+Allow access to your files to see and save PDFs.	Izinkan akses ke file Anda untuk melihat dan menyimpan PDF.
+Anyone opening it will need this password.	Siapa pun yang membukanya memerlukan sandi ini.
+Back side	Sisi belakang
+Best quality	Kualitas terbaik
+Browse	Telusuri
+Choose PDFs to merge	Pilih PDF untuk digabung
+Choose a PDF	Pilih PDF
+Compress	Kompres
+Convert	Konversi
+Couldn't finish	Tidak dapat diselesaikan
+Couldn't rename it	Tidak dapat mengganti nama
+Docx to PDF	Docx ke PDF
+Doodle	Coretan
+Draw on the page with your finger.	Gambar di halaman dengan jari Anda.
+Front side	Sisi depan
+Good balance	Seimbang
+Import PDF	Impor PDF
+Largest first	Terbesar dulu
+Leave	Keluar
+Leave without saving?	Keluar tanpa menyimpan?
+Lock PDF	Kunci PDF
+Merge PDF	Gabung PDF
+No PDFs yet.	Belum ada PDF.
+Oldest first	Terlama dulu
+Open Pixel PDF	Buka Pixel PDF
+PDF to JPG	PDF ke JPG
+PDF to PPT	PDF ke PPT
+PDF to Word	PDF ke Word
+PPT to PDF	PPT ke PDF
+Page	Halaman
+Password	Sandi
+Pick some files first	Pilih beberapa file dulu
+Pick two or more PDFs to merge	Pilih dua PDF atau lebih untuk digabung
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Dialer Pixel, Pencarian Pixel, dan Pixel PDF
+Popular	Populer
+Print PDF	Cetak PDF
+Repeat password	Ulangi sandi
+Saved to	Disimpan ke
+Saved to Pixel PDF	Disimpan ke Pixel PDF
+Saving	Menyimpan
+Scan ID Card	Pindai kartu identitas
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	Pindai halaman dan kartu identitas, ubah foto, file Word dan PowerPoint menjadi PDF, lalu kompres, gabung, tanda tangani, kunci, atau cetak.
+Scan, convert and edit PDFs	Pindai, konversi, dan edit PDF
+Scan, convert, edit and sign PDFs.	Pindai, konversi, edit, dan tanda tangani PDF.
+Scanned and made PDFs show here. Tap + to scan your first one.	PDF yang dipindai dan dibuat muncul di sini. Ketuk + untuk memindai yang pertama.
+Search files	Cari file
+Shows Pixel PDF with your apps, with its own icon.	Menampilkan Pixel PDF di antara aplikasi Anda, dengan ikonnya sendiri.
+Sign inside the box first	Tanda tangani di dalam kotak dulu
+Sign inside the box.	Tanda tangani di dalam kotak.
+Signature	Tanda tangan
+Smallest file	File terkecil
+Smart Scan	Pindai Pintar
+Strong	Kuat
+Tap to place your signature. Drag the corner to resize it.	Ketuk untuk menaruh tanda tangan. Seret sudutnya untuk mengubah ukuran.
+Tap where the text goes. Drag it to move it.	Ketuk tempat teks. Seret untuk memindahkannya.
+That password isn't right.	Sandi itu salah.
+The passwords don't match	Sandi tidak cocok
+They can't be brought back.	Tidak bisa dikembalikan.
+Thick	Tebal
+Thin	Tipis
+This PDF is locked	PDF ini terkunci
+This PDF is locked. Opening it needs a newer Android version.	PDF ini terkunci. Membukanya perlu versi Android yang lebih baru.
+This file couldn't be read. It may be damaged or locked.	File ini tidak dapat dibaca. Mungkin rusak atau terkunci.
+This needs a newer Android version.	Ini memerlukan versi Android yang lebih baru.
+Type a password	Ketik sandi
+Type here	Ketik di sini
+Unlock PDF	Buka kunci PDF
+Unlock it first to edit	Buka kuncinya dulu untuk mengedit
+Unlock it first to print	Buka kuncinya dulu untuk mencetak
+Unlocking needs a newer Android version	Membuka kunci perlu versi Android yang lebih baru
+Use	Gunakan
+Working…	Memproses…
+Your PDFs are kept in Documents/Pixel PDF.	PDF Anda disimpan di Documents/Pixel PDF.
+Your changes will be lost.	Perubahan Anda akan hilang.
+selected	dipilih
+Delete these files?	Hapus file ini?
+Pinned	Disematkan
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	Hingga 5 aplikasi yang selalu tampil lebih dulu di Aplikasi unggulan. Ketuk aplikasi untuk melepas sematannya.
+Seconds in the status bar	Detik di bilah status
+The clock at the top shows seconds. Uses a little more battery.	Jam di atas menampilkan detik. Memakai baterai sedikit lebih banyak.
+Pull down at the top of the feed to search. Works even with the search bar off.	Tarik ke bawah di bagian atas feed untuk mencari. Tetap berfungsi meski bilah penelusuran nonaktif.
+Use Pixel search on the lock screen?	Gunakan Pencarian Pixel di layar kunci?
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	Sentuh sensor sidik jari untuk mengaktifkannya. Membuka aplikasi dan hasil lain tetap perlu membuka kunci.
+Not now	Nanti saja
+More Pixel search options	Opsi Pencarian Pixel lainnya
+Search on the lock screen	Cari di layar kunci
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	Tarik ke bawah juga di feed layar kunci. Hitungan, konversi satuan, dan panggilan langsung bisa dipakai. Membuka aplikasi tetap meminta sidik jari.
+Safe	Aman
+Unsafe	Tidak aman
+Customize	Sesuaikan
+Previous page	Halaman sebelumnya
+Next page	Halaman berikutnya
+Glide (default)	Meluncur (default)
+Refresh automatically	Segarkan otomatis
+Adds new and changed files the moment they appear.	Menambahkan file baru dan yang berubah begitu muncul.
+Pen	Pena
+Tap or drag to add a shape. Drag its dots to resize it.	Ketuk atau seret untuk menambah bentuk. Seret titiknya untuk mengubah ukuran.
+Hold to edit	Tahan untuk mengedit
+Hide Apps list	Sembunyikan Daftar aplikasi
+Removes Apps list from the menu you see when you hold the home screen.	Menghapus Daftar aplikasi dari menu yang muncul saat Anda menahan layar utama.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	Tahan tempat kosong di layar utama untuk melihat menu. Geser ke atas untuk membuka aplikasi Anda.
+Your phone	Ponsel Anda
+Android version	Versi Android
+Build number	Nomor build
+Security update	Update keamanan
+Untested	Belum diuji
+Tested on this Android version. Everything should work.	Sudah diuji di versi Android ini. Semuanya seharusnya berfungsi.
+This Android version is known to break Pixel Suite features.	Versi Android ini diketahui merusak fitur Pixel Suite.
+Not tested on this Android version yet. Some features may work, some may not.	Belum diuji di versi Android ini. Beberapa fitur mungkin berfungsi, sebagian mungkin tidak.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	Harap diperhatikan: memperbarui ponsel bisa dan pasti akan merusak sebagian Pixel Suite. Jika Anda memperbarui sebelum saya memberi lampu hijau, saya tidak bertanggung jawab atas apa yang rusak. Saya mengerjakan ini di waktu luang dan saya hanya sendirian, jadi jangan berharap saya selalu bisa mengikuti semua yang dirilis Google.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	Saya sarankan selalu menyalakan {0} agar tidak ada yang terpasang tanpa sengaja. Update yang tiba-tiba bisa membuat ponsel Anda bootloop atau merusak sesuatu tanpa Anda sadari.
+To know when it's safe to update, follow Announcements in my {0}.	Untuk tahu kapan aman memperbarui, ikuti Announcements di channel {0} saya.
+Thank you 💙	Terima kasih 💙
+Phone compatibility	Kompatibilitas ponsel
+Hide the shortcuts you see when you hold an app, like View orders.	Sembunyikan pintasan yang muncul saat Anda menahan aplikasi, seperti Lihat pesanan.
+Hide on the home screen	Sembunyikan di layar utama
+Home screen, dock and folders.	Layar utama, dok, dan folder.
+Hide in the app drawer	Sembunyikan di panel aplikasi
+App drawer and its folders.	Panel aplikasi dan foldernya.
+Folders, dragging and the swipe-up hint.	Folder, penarikan, dan petunjuk geser ke atas.
+Folders, dragging and the swipe-up hint	Folder, penarikan, dan petunjuk geser ke atas
+Force stop	Paksa berhenti
+{0} stopped	{0} dihentikan
+Could not remove the folder	Tidak dapat menghapus folder
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	Merekam setiap panggilan, serta panggilan suara dan video WhatsApp, dengan suara kedua sisi, ke tab Rekaman.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	Merekam seseorang tanpa sepengetahuannya bisa melanggar hukum di tempat Anda tinggal. Anda bertanggung jawab atas rekaman Anda dan cara menggunakannya, bukan RovianDev.
+Clipboard on the lock screen	Papan klip di layar kunci
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	Tempel yang Anda salin di pencarian layar kunci. Siapa pun yang memegang ponsel Anda juga bisa menempelkannya.
+Use the clipboard on the lock screen?	Gunakan papan klip di layar kunci?
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	Sentuh sensor sidik jari untuk mengaktifkannya. Siapa pun yang memegang ponsel Anda bisa menempelkan yang Anda salin, seperti sandi atau kode.
+Turn on to install	Aktifkan untuk memasang
+Installing Pixel dialer…	Memasang Dialer Pixel…
+Installing Pixel PDF…	Memasang Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Dialer Pixel sudah terpasang. Mulai ulang ponsel sekali agar bisa merekam panggilan.
+Couldn't install: root access needed	Tidak dapat memasang: perlu akses root
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	Aktifkan dan Pixel Suite akan memasangnya untuk Anda. Setelah itu, mulai ulang ponsel sekali agar bisa merekam panggilan.
+Pixel PDF is installed	Pixel PDF sudah terpasang

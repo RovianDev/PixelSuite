@@ -57,7 +57,7 @@ final class ChromeTabTransition {
     }
 
     private static final int OPEN = 1, CLOSE = 2, NEW = 3, COVER = 4;
-    private static final long OPEN_MS = 360, CLOSE_MS = 400, NEW_MS = 380, FADE_OUT_MS = 130;
+    private static final long OPEN_MS = 360, CLOSE_MS = 400, NEW_MS = 380;
     private static final Handler MAIN = new Handler(Looper.getMainLooper());
     private static final WeakHashMap<Object, Flight> FLIGHTS = new WeakHashMap<Object, Flight>();
     private static Flight sCurrent;
@@ -2145,12 +2145,7 @@ final class ChromeTabTransition {
             if (kind == OPEN) sShotTitle = exact && shot == sShot && target != null && !sShotPage.isEmpty() ? cardTitle(target) : null;
             else sShotTitle = null;
             if (kind == CLOSE && !now && newKnown && stage.topColor != startBar) statusStrip(content, stage.sd(stage.topColor));
-            boolean fade = !now && kind != OPEN && added && stage.getParent() == content;
-            if (fade) {
-                stage.animate().alpha(0f).setDuration(exact ? FADE_OUT_MS : 200).setInterpolator(DECELERATE).withEndAction(new Runnable() {
-                    public void run() { remove(); }
-                }).start();
-            } else remove();
+            remove();
             ChromeLayout.refresh();
         }
 

@@ -1811,3 +1811,366 @@ Couldn't put back {0}	Impossible de remettre {0}
 Couldn't save {0}	Impossible d'enregistrer {0}
 It didn't install	L'installation n'a pas abouti
 Root isn't available	Le root n'est pas disponible
+Pixel search	Recherche Pixel
+Find apps, contacts, files and more	Trouvez applis, contacts, fichiers et plus
+Everything on your phone, one search away.	Tout votre téléphone, à portée de recherche.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	Une nouvelle barre de recherche sur votre écran d'accueil. Trouvez applis, contacts, fichiers, paramètres et plus au même endroit.
+Look	Apparence
+Color	Couleur
+Blurs what's behind the bar, with glowing edges.	Floute ce qui se trouve derrière la barre, avec des bords lumineux.
+How much of the outer bar shows.	Visibilité de la barre extérieure.
+How much of the search box and side buttons shows.	Visibilité du champ de recherche et des boutons latéraux.
+Voice search, Google Lens, Song search	Recherche vocale, Google Lens, Rechercher un titre
+Choose and order what shows up	Choisissez ce qui s'affiche et dans quel ordre
+Web search	Recherche web
+What to search	Où chercher
+Search inside files	Rechercher dans les fichiers
+Tap to look through your files now.	Appuyez pour parcourir vos fichiers maintenant.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	Trouvez des mots et des nombres dans vos fichiers PDF, Word, Excel et texte, avec la page où ils se trouvent. Appuyez de manière prolongée sur un fichier pour l'aperçu, le partage ou le retrouver.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	Tapez un calcul ou une conversion, comme 15% of 80 ou 5 km in miles, puis appuyez sur le résultat pour le copier.
+Pixel search shows when Hide search bar is off.	Recherche Pixel s'affiche quand Masquer la barre de recherche est désactivé.
+System colors	Couleurs du système
+Your color	Votre couleur
+Any color	Toute couleur
+Light	Clair
+Calculator and units	Calculatrice et unités
+App shortcuts	Raccourcis d'applis
+Files and media	Fichiers et médias
+Inside files	Dans les fichiers
+Web	Web
+All	Tout
+Google Lens	Google Lens
+Song search	Rechercher un titre
+Assistant	Assistant
+QR code scanner	Lecteur de code QR
+Action	Action
+App	Appli
+App shortcut	Raccourci d'appli
+Contact	Contact
+Shortcut	Raccourci
+Add a button	Ajouter un bouton
+Choose an app	Choisissez une appli
+Couldn't open your contacts	Impossible d'ouvrir vos contacts
+Getting the app's shortcuts…	Récupération des raccourcis de l'appli…
+Go to your home screen once, then try again.	Allez une fois sur votre écran d'accueil, puis réessayez.
+In the search box	Dans le champ de recherche
+Left side	Côté gauche
+Right side	Côté droit
+Looking through your files…	Parcours de vos fichiers…
+Looking through your files… {0}	Parcours de vos fichiers… {0}
+Move down	Descendre
+Move left	Déplacer à gauche
+Move right	Déplacer à droite
+Move up	Monter
+No buttons	Aucun bouton
+Preview	Aperçu
+Results show in this order. Turn off what you don't need.	Les résultats s'affichent dans cet ordre. Désactivez ce dont vous n'avez pas besoin.
+That side is full	Ce côté est plein
+This app has no shortcuts	Cette appli n'a pas de raccourcis
+This contact has no phone number	Ce contact n'a pas de numéro de téléphone
+Turn Pixel search off and on again to allow searching your files.	Désactivez puis réactivez Recherche Pixel pour autoriser la recherche dans vos fichiers.
+Turn on Pixel search first	Activez d'abord Recherche Pixel
+Your files are looked through after you turn on Pixel search.	Vos fichiers sont parcourus une fois Recherche Pixel activée.
+{0} files, {1} with text you can search. Updated {2}.	{0} fichiers, dont {1} avec du texte consultable. Mis à jour {2}.
+{0} of {1} turned on	{0} sur {1} activés
+No app can open this file	Aucune appli ne peut ouvrir ce fichier
+No app can open this folder	Aucune appli ne peut ouvrir ce dossier
+That file isn't there any more	Ce fichier n'est plus là
+Couldn't open it	Impossible de l'ouvrir
+About phone	À propos du téléphone
+Accessibility	Accessibilité
+Airplane mode	Mode Avion
+Android settings	Paramètres Android
+Battery	Batterie
+Battery Saver	Économiseur de batterie
+Cast	Caster
+Copied	Copié
+Dark theme	Thème sombre
+Data usage	Consommation des données
+Default apps	Applis par défaut
+Developer options	Options pour les développeurs
+Display	Écran
+Getting your files ready. They show up here in a few minutes.	Préparation de vos fichiers. Ils apparaîtront ici dans quelques minutes.
+Keyboard	Clavier
+Location	Localisation
+Network & internet	Réseau et Internet
+Night Light	Éclairage nocturne
+No results	Aucun résultat
+Open	Ouvrir
+Page {0}	Page {0}
+Passwords & accounts	Mots de passe et comptes
+Printing	Impression
+Privacy	Confidentialité
+Search apps, contacts, files, settings and more	Recherchez applis, contacts, fichiers, paramètres et plus
+Search your phone and the web	Recherchez sur votre téléphone et le Web
+Search {0} for “{1}”	Rechercher « {1} » sur {0}
+Security & privacy	Sécurité et confidentialité
+Show in folder	Afficher dans le dossier
+Sound & vibration	Son et vibreur
+Storage	Stockage
+System update	Mise à jour du système
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	Désactivez puis réactivez Recherche Pixel dans Pixel Suite pour autoriser la recherche dans vos fichiers.
+Users	Utilisateurs
+Wi-Fi	Wi-Fi
+Colorful icons	Icônes en couleur
+App and shortcut buttons keep their own colors.	Les boutons d'applis et de raccourcis gardent leurs couleurs.
+Edit search bar	Modifier la barre de recherche
+Size	Taille
+Outer bar	Barre extérieure
+Search box	Champ de recherche
+More settings	Plus de paramètres
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	Appuyez sur la barre de recherche et commencez à taper. Appuyez de manière prolongée sur la barre pour la modifier directement sur l'écran d'accueil.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	Faites glisser les boutons sur la barre pour les déplacer. Faites-en glisser un hors de la barre pour le retirer.
+The bar is full. Drag a button off the bar first.	La barre est pleine. Faites d'abord glisser un bouton hors de la barre.
+Hold and drag to change the order.	Appuyez de manière prolongée et faites glisser pour changer l'ordre.
+Favorites	Favoris
+Favorite	Favori
+Added to favorites	Ajouté aux favoris
+Removed from favorites	Retiré des favoris
+Hold an app, a contact or a file to add it here	Appuyez de manière prolongée sur une appli, un contact ou un fichier pour l'ajouter ici
+Open Pixel Suite once to download currency rates	Ouvrez Pixel Suite une fois pour télécharger les taux de change
+Currency	Devise
+Convert to	Convertir en
+Update automatically	Mettre à jour automatiquement
+Update now	Mettre à jour maintenant
+Updating the rates…	Mise à jour des taux…
+Rates updated	Taux mis à jour
+Rates updated {0}	Taux mis à jour : {0}
+Rates not downloaded yet	Taux pas encore téléchargés
+Couldn't update the rates	Impossible de mettre à jour les taux
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	Tapez un montant et une devise, comme 200 USD, pour le convertir. Les taux sont téléchargés depuis Internet et rien vous concernant n'est envoyé.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	Appuyez sur un bouton pour l'ajouter, ou maintenez-le et faites-le glisser sur la barre. Faites glisser les boutons de la barre pour les déplacer, ou hors de la barre pour les retirer.
+Drop it on the bar to add it	Déposez-le sur la barre pour l'ajouter
+No contacts with a phone number	Aucun contact avec un numéro de téléphone
+Everything is searched on your phone. Only web searches and currency rates go online.	Tout est recherché sur votre téléphone. Seules les recherches web et les taux de change passent par Internet.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	Maintenez Sombre ou Super Sombre pour choisir celui que Automatique utilise la nuit.
+Lock the sliders	Verrouiller les curseurs
+Search currencies	Rechercher une devise
+Search engine	Moteur de recherche
+Search settings	Paramètres de recherche
+Show keyboard	Afficher le clavier
+Replace	Remplacer
+Favorite contacts	Contacts favoris
+Add dialer favorites	Ajouter les favoris du téléphone
+Search contacts	Rechercher des contacts
+Added to favorite contacts	Ajouté aux contacts favoris
+Hold the search bar and add contacts first	Maintenez d'abord la barre de recherche et ajoutez des contacts
+No favorites in your dialer yet	Pas encore de favoris dans votre téléphone
+Hide swipe-up hint	Masquer l'indice de balayage vers le haut
+Stops the hint that plays after a few short swipes that don't open the drawer.	Empêche l'indice qui s'affiche après quelques balayages courts qui n'ouvrent pas le tiroir.
+Closing animation	Animation de fermeture
+Shutter	Volet
+Glide	Glissé
+Balloons	Ballons
+Jelly	Gelée
+Pop	Pop
+Wave	Vague
+Swell	Gonflé
+Classic	Classique
+Scan to PDF	Numériser en PDF
+Add from gallery	Ajouter depuis la galerie
+Take photo	Prendre une photo
+Pages	Pages
+Couldn't open the camera	Impossible d'ouvrir l'appareil photo
+Camera access is needed to scan	L'accès à l'appareil photo est nécessaire pour numériser
+Save as PDF	Enregistrer en PDF
+Rotate	Pivoter
+All pages	Toutes les pages
+{0} selected	{0} sélectionnée(s)
+File name	Nom du fichier
+Making the PDF…	Création du PDF…
+Saved to Download	Enregistré dans Téléchargements
+Couldn't save the PDF	Impossible d'enregistrer le PDF
+Original	Original
+Auto	Auto
+Enhanced	Amélioré
+Grayscale	Niveaux de gris
+Black & white	Noir et blanc
+Lighten	Éclaircir
+Image to PDF	Image vers PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	Ajoute « Numériser en PDF » aux boutons que vous pouvez placer sur la barre de recherche. Photographiez des pages ou choisissez des photos, retouchez-les, puis enregistrez-les ou partagez-les en un seul PDF.
+Tools	Outils
+Featured apps	Applis à la une
+Shows the apps you open most from Pixel search before you type.	Affiche les applis que vous ouvrez le plus depuis Pixel search avant de taper.
+Recent searches	Recherches récentes
+Shows your latest searches before you type. Hold one to remove it.	Affiche vos dernières recherches avant de taper. Appuyez longuement sur l'une d'elles pour la retirer.
+Enter opens the first app	Entrée ouvre la première appli
+Turn off to always search the web when you press Enter.	Désactivez pour toujours rechercher sur le Web quand vous appuyez sur Entrée.
+Delete this file?	Supprimer ce fichier ?
+Deleted	Supprimé
+Couldn't delete it	Impossible de le supprimer
+Unpin	Détacher
+Add to favorites	Ajouter aux favoris
+Remove from favorites	Retirer des favoris
+Clear recent searches?	Effacer les recherches récentes ?
+Pixel Suite apps	Applis Pixel Suite
+Pixel dialer	Téléphone Pixel
+Your phone app, with call recording	Votre appli téléphone, avec enregistrement des appels
+Scan pages into one PDF	Numérisez des pages en un seul PDF
+Apps that come with Pixel Suite.	Les applis fournies avec Pixel Suite.
+Your phone app, made for Pixel Suite.	Votre appli téléphone, conçue pour Pixel Suite.
+Pages and photos, turned into one PDF.	Pages et photos, réunies en un seul PDF.
+Calls, contacts, favorites and call recording.	Appels, contacts, favoris et enregistrement des appels.
+Calls, favorites, contacts and recordings	Appels, favoris, contacts et enregistrements
+Dialer settings	Réglages du téléphone
+Theme, sounds and call recording	Thème, sons et enregistrement des appels
+Install the Pixel Suite apps module in your root manager, then restart your phone.	Installez le module Pixel Suite Apps dans votre gestionnaire root, puis redémarrez votre téléphone.
+Look for new pages	Rendu des nouvelles pages
+Open Image to PDF	Ouvrir Image vers PDF
+Open Pixel dialer	Ouvrir Téléphone Pixel
+Photograph pages or pick photos	Photographiez des pages ou choisissez des photos
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	Photographiez des pages ou choisissez des photos, redressez-les et nettoyez-les, puis enregistrez-les ou partagez-les en un seul PDF.
+Shows Image to PDF with your apps, with its own icon.	Affiche Image vers PDF parmi vos applis, avec sa propre icône.
+The Scan to PDF button on the search bar is set in Pixel search.	Le bouton Numériser en PDF de la barre de recherche se règle dans Recherche Pixel.
+Turn Pixel dialer on first	Activez d'abord Téléphone Pixel
+Turn each app on or off and change its settings.	Activez ou désactivez chaque appli et modifiez ses réglages.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	Désactivée, l'appli est masquée et les appels reviennent à votre autre appli téléphone. Réactivez-la quand vous voulez.
+Gray	Gris
+High	Élevée
+Standard	Standard
+PDF quality	Qualité du PDF
+Pixel dialer, Pixel search and Image to PDF	Téléphone Pixel, Recherche Pixel et Image vers PDF
+A file with that name already exists	Un fichier porte déjà ce nom
+Add Text	Ajouter du texte
+All PDFs	Tous les PDF
+All tools	Tous les outils
+All your PDFs and tools	Tous vos PDF et outils
+Allow	Autoriser
+Allow access to your files to see and save PDFs.	Autorisez l'accès à vos fichiers pour voir et enregistrer des PDF.
+Anyone opening it will need this password.	Il faudra ce mot de passe pour l'ouvrir.
+Back side	Verso
+Best quality	Meilleure qualité
+Browse	Parcourir
+Choose PDFs to merge	Choisissez les PDF à fusionner
+Choose a PDF	Choisissez un PDF
+Compress	Compresser
+Convert	Convertir
+Couldn't finish	Impossible de terminer
+Couldn't rename it	Impossible de le renommer
+Docx to PDF	Docx vers PDF
+Doodle	Dessin
+Draw on the page with your finger.	Dessinez sur la page avec le doigt.
+Front side	Recto
+Good balance	Bon équilibre
+Import PDF	Importer un PDF
+Largest first	Les plus gros d'abord
+Leave	Quitter
+Leave without saving?	Quitter sans enregistrer ?
+Lock PDF	Verrouiller le PDF
+Merge PDF	Fusionner des PDF
+No PDFs yet.	Aucun PDF pour l'instant.
+Oldest first	Les plus anciens d'abord
+Open Pixel PDF	Ouvrir Pixel PDF
+PDF to JPG	PDF vers JPG
+PDF to PPT	PDF vers PPT
+PDF to Word	PDF vers Word
+PPT to PDF	PPT vers PDF
+Page	Page
+Password	Mot de passe
+Pick some files first	Choisissez d'abord des fichiers
+Pick two or more PDFs to merge	Choisissez au moins deux PDF à fusionner
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Téléphone Pixel, Recherche Pixel et Pixel PDF
+Popular	Populaires
+Print PDF	Imprimer le PDF
+Repeat password	Répétez le mot de passe
+Saved to	Enregistré dans
+Saved to Pixel PDF	Enregistré dans Pixel PDF
+Saving	Enregistrement
+Scan ID Card	Scanner une pièce d'identité
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	Numérisez pages et pièces d'identité, transformez photos, fichiers Word et PowerPoint en PDF, puis compressez, fusionnez, signez, verrouillez ou imprimez-les.
+Scan, convert and edit PDFs	Numérisez, convertissez et modifiez des PDF
+Scan, convert, edit and sign PDFs.	Numérisez, convertissez, modifiez et signez des PDF.
+Scanned and made PDFs show here. Tap + to scan your first one.	Les PDF numérisés et créés s'affichent ici. Appuyez sur + pour numériser le premier.
+Search files	Rechercher des fichiers
+Shows Pixel PDF with your apps, with its own icon.	Affiche Pixel PDF parmi vos applis, avec sa propre icône.
+Sign inside the box first	Signez d'abord dans le cadre
+Sign inside the box.	Signez dans le cadre.
+Signature	Signature
+Smallest file	Fichier le plus léger
+Smart Scan	Scan intelligent
+Strong	Forte
+Tap to place your signature. Drag the corner to resize it.	Appuyez pour placer votre signature. Faites glisser le coin pour la redimensionner.
+Tap where the text goes. Drag it to move it.	Appuyez à l'endroit du texte. Faites-le glisser pour le déplacer.
+That password isn't right.	Ce mot de passe est incorrect.
+The passwords don't match	Les mots de passe ne correspondent pas
+They can't be brought back.	Ils ne pourront pas être récupérés.
+Thick	Épais
+Thin	Fin
+This PDF is locked	Ce PDF est verrouillé
+This PDF is locked. Opening it needs a newer Android version.	Ce PDF est verrouillé. Il faut une version d'Android plus récente pour l'ouvrir.
+This file couldn't be read. It may be damaged or locked.	Ce fichier est illisible. Il est peut-être endommagé ou verrouillé.
+This needs a newer Android version.	Il faut une version d'Android plus récente.
+Type a password	Saisissez un mot de passe
+Type here	Saisissez ici
+Unlock PDF	Déverrouiller le PDF
+Unlock it first to edit	Déverrouillez-le d'abord pour le modifier
+Unlock it first to print	Déverrouillez-le d'abord pour l'imprimer
+Unlocking needs a newer Android version	Le déverrouillage nécessite une version d'Android plus récente
+Use	Utiliser
+Working…	Traitement…
+Your PDFs are kept in Documents/Pixel PDF.	Vos PDF sont rangés dans Documents/Pixel PDF.
+Your changes will be lost.	Vos modifications seront perdues.
+selected	sélectionnés
+Delete these files?	Supprimer ces fichiers ?
+Pinned	Épinglée
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	Jusqu'à 5 applis toujours en tête des applis à la une. Touchez une appli pour la détacher.
+Seconds in the status bar	Secondes dans la barre d'état
+The clock at the top shows seconds. Uses a little more battery.	L'horloge en haut affiche les secondes. Consomme un peu plus de batterie.
+Pull down at the top of the feed to search. Works even with the search bar off.	Tirez vers le bas en haut du flux pour rechercher. Fonctionne même avec la barre de recherche désactivée.
+Use Pixel search on the lock screen?	Utiliser Recherche Pixel sur l'écran de verrouillage ?
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	Touchez le lecteur d'empreinte pour l'activer. Ouvrir des applis et d'autres résultats demande toujours de déverrouiller.
+Not now	Pas maintenant
+More Pixel search options	Plus d'options de Recherche Pixel
+Search on the lock screen	Rechercher sur l'écran de verrouillage
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	Tirez aussi vers le bas dans le flux de l'écran de verrouillage. Calculs, conversions d'unités et appels fonctionnent tout de suite. Ouvrir une appli demande toujours votre empreinte.
+Safe	Sûr
+Unsafe	Non sûr
+Customize	Personnaliser
+Previous page	Page précédente
+Next page	Page suivante
+Glide (default)	Glissé (par défaut)
+Refresh automatically	Actualiser automatiquement
+Adds new and changed files the moment they appear.	Ajoute les fichiers nouveaux et modifiés dès qu'ils apparaissent.
+Pen	Stylo
+Tap or drag to add a shape. Drag its dots to resize it.	Touchez ou faites glisser pour ajouter une forme. Faites glisser ses points pour la redimensionner.
+Hold to edit	Maintenez pour modifier
+Hide Apps list	Masquer Liste des applis
+Removes Apps list from the menu you see when you hold the home screen.	Retire Liste des applis du menu qui s'affiche quand vous maintenez l'écran d'accueil.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	Maintenez un espace vide de l'écran d'accueil pour voir le menu. Balayez vers le haut pour ouvrir vos applis.
+Your phone	Votre téléphone
+Android version	Version d'Android
+Build number	Numéro de build
+Security update	Mise à jour de sécurité
+Untested	Non testé
+Tested on this Android version. Everything should work.	Testé sur cette version d'Android. Tout devrait fonctionner.
+This Android version is known to break Pixel Suite features.	Cette version d'Android est connue pour casser des fonctions de Pixel Suite.
+Not tested on this Android version yet. Some features may work, some may not.	Pas encore testé sur cette version d'Android. Certaines fonctions peuvent marcher, d'autres non.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	Attention : mettre à jour votre téléphone peut casser, et cassera, certaines parties de Pixel Suite. Si vous mettez à jour avant que je donne le feu vert, je ne suis pas responsable de ce qui ne fonctionne plus. Je fais ça sur mon temps libre et je suis tout seul, alors ne vous attendez pas à ce que je suive toujours tout ce que Google publie.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	Je vous recommande de toujours laisser {0} activé, pour que rien ne s'installe par erreur. Une mise à jour surprise pourrait bloquer votre téléphone en bootloop ou casser des choses sans que vous le sachiez.
+To know when it's safe to update, follow Announcements in my {0}.	Pour savoir quand la mise à jour est sans risque, suivez Announcements sur mon canal {0}.
+Thank you 💙	Merci 💙
+Phone compatibility	Compatibilité du téléphone
+Hide the shortcuts you see when you hold an app, like View orders.	Masquez les raccourcis qui s'affichent quand vous maintenez une appli, comme Voir les commandes.
+Hide on the home screen	Masquer sur l'écran d'accueil
+Home screen, dock and folders.	Écran d'accueil, dock et dossiers.
+Hide in the app drawer	Masquer dans le panneau des applis
+App drawer and its folders.	Le panneau des applis et ses dossiers.
+Folders, dragging and the swipe-up hint.	Dossiers, glisser-déposer et indice de balayage vers le haut.
+Folders, dragging and the swipe-up hint	Dossiers, glisser-déposer et indice de balayage vers le haut
+Force stop	Forcer l'arrêt
+{0} stopped	Arrêt forcé : {0}
+Could not remove the folder	Impossible de retirer le dossier
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	Enregistre chaque appel, ainsi que les appels vocaux et vidéo WhatsApp, avec le son des deux côtés, dans l'onglet Enregistrements.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	Enregistrer quelqu'un à son insu peut être illégal là où vous vivez. Vous êtes responsable de vos enregistrements et de leur usage, pas RovianDev.
+Clipboard on the lock screen	Presse-papiers sur l'écran de verrouillage
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	Collez ce que vous avez copié dans la recherche sur l'écran de verrouillage. Toute personne qui tient votre téléphone pourrait aussi le coller.
+Use the clipboard on the lock screen?	Utiliser le presse-papiers sur l'écran de verrouillage ?
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	Touchez le capteur d'empreinte pour l'activer. Toute personne qui tient votre téléphone pourrait coller ce que vous avez copié, comme des mots de passe ou des codes.
+Turn on to install	Activez pour installer
+Installing Pixel dialer…	Installation de Téléphone Pixel…
+Installing Pixel PDF…	Installation de Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Téléphone Pixel est installé. Redémarrez votre téléphone une fois pour qu'il puisse enregistrer les appels.
+Couldn't install: root access needed	Impossible d'installer : accès root requis
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	Activez-le et Pixel Suite l'installe pour vous. Redémarrez ensuite votre téléphone une fois pour qu'il puisse enregistrer les appels.
+Pixel PDF is installed	Pixel PDF est installé

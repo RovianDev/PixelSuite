@@ -6,7 +6,7 @@ import android.provider.Settings;
 
 final class SystemRev {
     private SystemRev() { }
-    static final String REV = "b5626346a844";
+    static final String REV = "651191085472";
     static final String KEY = "pixelsuite_system_rev";
 
     static void installSystem(ClassLoader cl) {

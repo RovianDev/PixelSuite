@@ -116,12 +116,13 @@ final class ClearAll {
 
             try {
                 Class<?> base = Xp.findClass("com.android.quickstep.views.OverviewActionsView", cl);
-                Xp.hookAllMethods(base, "updateActionButtonsVisibility", new Xp.Callback() {
+                Xp.Callback pairs = new Xp.Callback() {
                     @Override
                     protected void afterHookedMethod(Xp.Param param) {
                         try { keepRowForPairs((ViewGroup) param.thisObject); } catch (Throwable ignored) { }
                     }
-                });
+                };
+                if (Xp.hookAllMethods(base, "updateActionButtonsVisibility", pairs).isEmpty()) Xp.hookAllMethods(base, "updateForGroupedTask", pairs);
             } catch (Throwable t) { }
             try {
                 Xp.hookAllMethods(View.class, "setEnabled", new Xp.Callback() {

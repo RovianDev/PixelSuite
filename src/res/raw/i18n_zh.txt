@@ -1811,3 +1811,366 @@ Couldn't put back {0}	无法放回 {0}
 Couldn't save {0}	无法保存 {0}
 It didn't install	未能安装
 Root isn't available	root 不可用
+Pixel search	Pixel 搜索
+Find apps, contacts, files and more	查找应用、联系人、文件等
+Everything on your phone, one search away.	手机上的一切，一搜即得。
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	主屏幕上的全新搜索栏。在一个地方查找应用、联系人、文件、设置等。
+Look	外观
+Color	颜色
+Blurs what's behind the bar, with glowing edges.	模糊搜索栏后面的内容，并带有发光边缘。
+How much of the outer bar shows.	外框显示的程度。
+How much of the search box and side buttons shows.	搜索框和两侧按钮显示的程度。
+Voice search, Google Lens, Song search	语音搜索、Google 智能镜头、歌曲搜索
+Choose and order what shows up	选择要显示的内容并排序
+Web search	网页搜索
+What to search	搜索范围
+Search inside files	搜索文件内容
+Tap to look through your files now.	点按即可立即查看您的文件。
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	查找 PDF、Word、Excel 和文本文件中的文字和数字，并显示所在页码。长按文件可预览、分享或找到它。
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	输入算式或换算，例如 15% of 80 或 5 km in miles，点按结果即可复制。
+Pixel search shows when Hide search bar is off.	关闭“隐藏搜索栏”后才会显示 Pixel 搜索。
+System colors	系统颜色
+Your color	自选颜色
+Any color	任意颜色
+Light	浅色
+Calculator and units	计算器和单位换算
+App shortcuts	应用快捷方式
+Files and media	文件和媒体
+Inside files	文件内容
+Web	网页
+All	全部
+Google Lens	Google 智能镜头
+Song search	歌曲搜索
+Assistant	助理
+QR code scanner	二维码扫描器
+Action	操作
+App	应用
+App shortcut	应用快捷方式
+Contact	联系人
+Shortcut	快捷方式
+Add a button	添加按钮
+Choose an app	选择应用
+Couldn't open your contacts	无法打开通讯录
+Getting the app's shortcuts…	正在获取应用的快捷方式…
+Go to your home screen once, then try again.	请先回到主屏幕一次，然后重试。
+In the search box	搜索框内
+Left side	左侧
+Right side	右侧
+Looking through your files…	正在查看您的文件…
+Looking through your files… {0}	正在查看您的文件… {0}
+Move down	下移
+Move left	左移
+Move right	右移
+Move up	上移
+No buttons	无按钮
+Preview	预览
+Results show in this order. Turn off what you don't need.	结果按此顺序显示。关闭您不需要的项目。
+That side is full	这一侧已满
+This app has no shortcuts	此应用没有快捷方式
+This contact has no phone number	此联系人没有电话号码
+Turn Pixel search off and on again to allow searching your files.	关闭再重新开启 Pixel 搜索，即可允许搜索您的文件。
+Turn on Pixel search first	请先开启 Pixel 搜索
+Your files are looked through after you turn on Pixel search.	开启 Pixel 搜索后，系统会查看您的文件。
+{0} files, {1} with text you can search. Updated {2}.	{0} 个文件，其中 {1} 个包含可搜索的文字。更新于{2}。
+{0} of {1} turned on	已开启 {0}/{1} 项
+No app can open this file	没有可打开此文件的应用
+No app can open this folder	没有可打开此文件夹的应用
+That file isn't there any more	该文件已不存在
+Couldn't open it	无法打开
+About phone	关于手机
+Accessibility	无障碍
+Airplane mode	飞行模式
+Android settings	Android 设置
+Battery	电池
+Battery Saver	省电模式
+Cast	投放
+Copied	已复制
+Dark theme	深色主题
+Data usage	流量使用情况
+Default apps	默认应用
+Developer options	开发者选项
+Display	显示
+Getting your files ready. They show up here in a few minutes.	正在准备您的文件，几分钟后会显示在这里。
+Keyboard	键盘
+Location	位置信息
+Network & internet	网络和互联网
+Night Light	护眼模式
+No results	无结果
+Open	打开
+Page {0}	第 {0} 页
+Passwords & accounts	密码和帐号
+Printing	打印
+Privacy	隐私
+Search apps, contacts, files, settings and more	搜索应用、联系人、文件、设置等
+Search your phone and the web	搜索手机和网络
+Search {0} for “{1}”	在 {0} 中搜索“{1}”
+Security & privacy	安全和隐私
+Show in folder	在文件夹中显示
+Sound & vibration	声音和振动
+Storage	存储空间
+System update	系统更新
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	在 Pixel Suite 中关闭再重新开启 Pixel 搜索，即可允许搜索您的文件。
+Users	用户
+Wi-Fi	WLAN
+Colorful icons	彩色图标
+App and shortcut buttons keep their own colors.	应用和快捷方式按钮保留原本的颜色。
+Edit search bar	编辑搜索栏
+Size	大小
+Outer bar	外框
+Search box	搜索框
+More settings	更多设置
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	点按搜索栏并开始输入。长按搜索栏可直接在主屏幕上编辑它。
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	拖动搜索栏上的按钮即可移动。将按钮拖出搜索栏即可移除。
+The bar is full. Drag a button off the bar first.	搜索栏已满。请先将一个按钮拖出搜索栏。
+Hold and drag to change the order.	按住并拖动即可更改顺序。
+Favorites	收藏
+Favorite	收藏
+Added to favorites	已添加到收藏
+Removed from favorites	已从收藏中移除
+Hold an app, a contact or a file to add it here	长按应用、联系人或文件即可添加到这里
+Open Pixel Suite once to download currency rates	打开一次 Pixel Suite 以下载汇率
+Currency	货币
+Convert to	换算为
+Update automatically	自动更新
+Update now	立即更新
+Updating the rates…	正在更新汇率…
+Rates updated	汇率已更新
+Rates updated {0}	汇率更新时间：{0}
+Rates not downloaded yet	尚未下载汇率
+Couldn't update the rates	无法更新汇率
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	输入金额和货币（例如 200 USD）即可换算。汇率从互联网下载，不会发送任何有关您的信息。
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	点按按钮即可添加，或长按并拖到搜索栏上。拖动搜索栏上的按钮可移动位置，拖出搜索栏即可移除。
+Drop it on the bar to add it	拖放到搜索栏上即可添加
+No contacts with a phone number	没有带电话号码的联系人
+Everything is searched on your phone. Only web searches and currency rates go online.	所有搜索都在您的手机上完成，只有网页搜索和汇率更新会联网。
+Hold Dark or Super Dark to choose which one Automatic uses at night.	长按“深色”或“超暗”，即可选择“自动”在夜间使用哪一个。
+Lock the sliders	锁定滑块
+Search currencies	搜索货币
+Search engine	搜索引擎
+Search settings	搜索设置
+Show keyboard	显示键盘
+Replace	替换
+Favorite contacts	常用联系人
+Add dialer favorites	添加拨号器收藏联系人
+Search contacts	搜索联系人
+Added to favorite contacts	已添加到常用联系人
+Hold the search bar and add contacts first	请先长按搜索栏并添加联系人
+No favorites in your dialer yet	拨号器中还没有收藏联系人
+Hide swipe-up hint	隐藏上滑提示
+Stops the hint that plays after a few short swipes that don't open the drawer.	在几次未能打开抽屉的短滑动后，不再播放提示动画。
+Closing animation	关闭动画
+Shutter	卷帘
+Glide	滑入
+Balloons	气球
+Jelly	果冻
+Pop	弹出
+Wave	波浪
+Swell	膨胀
+Classic	经典
+Scan to PDF	扫描为 PDF
+Add from gallery	从相册添加
+Take photo	拍照
+Pages	页面
+Couldn't open the camera	无法打开相机
+Camera access is needed to scan	扫描需要相机权限
+Save as PDF	保存为 PDF
+Rotate	旋转
+All pages	所有页面
+{0} selected	已选择 {0} 项
+File name	文件名
+Making the PDF…	正在生成 PDF…
+Saved to Download	已保存到“下载”
+Couldn't save the PDF	无法保存 PDF
+Original	原图
+Auto	自动
+Enhanced	增强
+Grayscale	灰度
+Black & white	黑白
+Lighten	提亮
+Image to PDF	图片转 PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	把“扫描为 PDF”加入可放到搜索栏上的按钮。拍下页面或选择照片，整理后保存或分享为一个 PDF。
+Tools	工具
+Featured apps	常用应用
+Shows the apps you open most from Pixel search before you type.	在你输入之前，显示你最常通过 Pixel search 打开的应用。
+Recent searches	最近搜索
+Shows your latest searches before you type. Hold one to remove it.	在你输入之前显示最近的搜索。长按可移除。
+Enter opens the first app	按回车打开第一个应用
+Turn off to always search the web when you press Enter.	关闭后，按回车时始终搜索网页。
+Delete this file?	删除此文件？
+Deleted	已删除
+Couldn't delete it	无法删除
+Unpin	取消固定
+Add to favorites	添加到收藏
+Remove from favorites	从收藏中移除
+Clear recent searches?	清除最近搜索？
+Pixel Suite apps	Pixel Suite 应用
+Pixel dialer	Pixel 拨号
+Your phone app, with call recording	你的电话应用，支持通话录音
+Scan pages into one PDF	把页面扫描成一个 PDF
+Apps that come with Pixel Suite.	Pixel Suite 附带的应用。
+Your phone app, made for Pixel Suite.	为 Pixel Suite 打造的电话应用。
+Pages and photos, turned into one PDF.	把页面和照片变成一个 PDF。
+Calls, contacts, favorites and call recording.	通话、联系人、收藏和通话录音。
+Calls, favorites, contacts and recordings	通话、收藏、联系人和录音
+Dialer settings	拨号设置
+Theme, sounds and call recording	主题、声音和通话录音
+Install the Pixel Suite apps module in your root manager, then restart your phone.	在你的 root 管理器中安装 Pixel Suite Apps 模块，然后重启手机。
+Look for new pages	新页面的效果
+Open Image to PDF	打开图片转 PDF
+Open Pixel dialer	打开 Pixel 拨号
+Photograph pages or pick photos	拍摄页面或选择照片
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	拍摄页面或选择照片，拉直并整理，然后保存或分享为一个 PDF。
+Shows Image to PDF with your apps, with its own icon.	在你的应用中显示图片转 PDF，带有自己的图标。
+The Scan to PDF button on the search bar is set in Pixel search.	搜索栏上的“扫描为 PDF”按钮在“Pixel 搜索”中设置。
+Turn Pixel dialer on first	请先开启 Pixel 拨号
+Turn each app on or off and change its settings.	开启或关闭每个应用并更改其设置。
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	关闭后应用会被隐藏，通话将回到你的其他电话应用。可随时重新开启。
+Gray	灰度
+High	高
+Standard	标准
+PDF quality	PDF 质量
+Pixel dialer, Pixel search and Image to PDF	Pixel 拨号、Pixel 搜索和图片转 PDF
+A file with that name already exists	已有同名文件
+Add Text	添加文字
+All PDFs	所有 PDF
+All tools	所有工具
+All your PDFs and tools	所有 PDF 和工具
+Allow	允许
+Allow access to your files to see and save PDFs.	允许访问文件，才能查看和保存 PDF。
+Anyone opening it will need this password.	任何人打开它都需要此密码。
+Back side	背面
+Best quality	最佳质量
+Browse	浏览
+Choose PDFs to merge	选择要合并的 PDF
+Choose a PDF	选择一个 PDF
+Compress	压缩
+Convert	转换
+Couldn't finish	无法完成
+Couldn't rename it	无法重命名
+Docx to PDF	Docx 转 PDF
+Doodle	涂鸦
+Draw on the page with your finger.	用手指在页面上绘制。
+Front side	正面
+Good balance	均衡
+Import PDF	导入 PDF
+Largest first	最大的在前
+Leave	离开
+Leave without saving?	不保存就离开？
+Lock PDF	锁定 PDF
+Merge PDF	合并 PDF
+No PDFs yet.	还没有 PDF。
+Oldest first	最早的在前
+Open Pixel PDF	打开 Pixel PDF
+PDF to JPG	PDF 转 JPG
+PDF to PPT	PDF 转 PPT
+PDF to Word	PDF 转 Word
+PPT to PDF	PPT 转 PDF
+Page	页
+Password	密码
+Pick some files first	请先选择文件
+Pick two or more PDFs to merge	请选择两个或更多 PDF 来合并
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Pixel 拨号、Pixel 搜索和 Pixel PDF
+Popular	常用
+Print PDF	打印 PDF
+Repeat password	再次输入密码
+Saved to	已保存到
+Saved to Pixel PDF	已保存到 Pixel PDF
+Saving	正在保存
+Scan ID Card	扫描身份证件
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	扫描页面和证件，把照片、Word 和 PowerPoint 文件转为 PDF，还能压缩、合并、签名、加锁或打印。
+Scan, convert and edit PDFs	扫描、转换和编辑 PDF
+Scan, convert, edit and sign PDFs.	扫描、转换、编辑和签署 PDF。
+Scanned and made PDFs show here. Tap + to scan your first one.	扫描和制作的 PDF 会显示在这里。点按 + 扫描第一份。
+Search files	搜索文件
+Shows Pixel PDF with your apps, with its own icon.	在你的应用中显示 Pixel PDF，带有自己的图标。
+Sign inside the box first	请先在框内签名
+Sign inside the box.	在框内签名。
+Signature	签名
+Smallest file	最小文件
+Smart Scan	智能扫描
+Strong	强
+Tap to place your signature. Drag the corner to resize it.	点按以放置签名。拖动角落可调整大小。
+Tap where the text goes. Drag it to move it.	点按文字要放的位置。拖动可移动。
+That password isn't right.	密码不正确。
+The passwords don't match	两次密码不一致
+They can't be brought back.	它们无法恢复。
+Thick	粗
+Thin	细
+This PDF is locked	此 PDF 已锁定
+This PDF is locked. Opening it needs a newer Android version.	此 PDF 已锁定。打开它需要更新的 Android 版本。
+This file couldn't be read. It may be damaged or locked.	无法读取此文件。它可能已损坏或被锁定。
+This needs a newer Android version.	这需要更新的 Android 版本。
+Type a password	请输入密码
+Type here	在此输入
+Unlock PDF	解锁 PDF
+Unlock it first to edit	请先解锁再编辑
+Unlock it first to print	请先解锁再打印
+Unlocking needs a newer Android version	解锁需要更新的 Android 版本
+Use	使用
+Working…	正在处理…
+Your PDFs are kept in Documents/Pixel PDF.	你的 PDF 保存在 Documents/Pixel PDF。
+Your changes will be lost.	你的更改将会丢失。
+selected	已选择
+Delete these files?	删除这些文件？
+Pinned	已固定
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	最多 5 个应用，始终排在精选应用最前面。点按应用即可取消固定。
+Seconds in the status bar	状态栏显示秒
+The clock at the top shows seconds. Uses a little more battery.	顶部的时钟会显示秒。耗电略有增加。
+Pull down at the top of the feed to search. Works even with the search bar off.	在信息流顶部向下拉即可搜索。即使关闭搜索栏也能用。
+Use Pixel search on the lock screen?	在锁定屏幕上使用 Pixel 搜索？
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	轻触指纹传感器即可开启。打开应用和其他结果时仍需解锁。
+Not now	以后再说
+More Pixel search options	更多 Pixel 搜索选项
+Search on the lock screen	在锁定屏幕上搜索
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	在锁定屏幕的信息流中也可以下拉搜索。计算、单位换算和拨打电话可直接使用。打开应用仍需验证指纹。
+Safe	安全
+Unsafe	不安全
+Customize	自定义
+Previous page	上一页
+Next page	下一页
+Glide (default)	滑入 (默认)
+Refresh automatically	自动刷新
+Adds new and changed files the moment they appear.	新文件和更改的文件一出现就会添加。
+Pen	画笔
+Tap or drag to add a shape. Drag its dots to resize it.	点按或拖动即可添加形状。拖动圆点可调整大小。
+Hold to edit	按住即可编辑
+Hide Apps list	隐藏“应用列表”
+Removes Apps list from the menu you see when you hold the home screen.	从长按主屏幕时显示的菜单中移除“应用列表”。
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	长按主屏幕上的空白处即可看到菜单。向上滑动即可打开应用。
+Your phone	您的手机
+Android version	Android 版本
+Build number	版本号
+Security update	安全更新
+Untested	未测试
+Tested on this Android version. Everything should work.	已在此 Android 版本上测试，一切应该都能正常使用。
+This Android version is known to break Pixel Suite features.	已知此 Android 版本会导致 Pixel Suite 的功能失效。
+Not tested on this Android version yet. Some features may work, some may not.	尚未在此 Android 版本上测试。部分功能可能正常，部分可能无法使用。
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	请注意：更新手机可能会、也一定会导致 Pixel Suite 的部分功能失效。如果您在我给出绿灯之前就更新，出现的问题我概不负责。我是利用业余时间做这个的，而且只有我一个人，所以请不要指望我总能跟上 Google 推送的每一次更新。
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	建议您始终开启 {0}，以免误装任何更新。一次意外的更新可能会让手机陷入无限重启（bootloop），或在您不知情的情况下导致功能失效。
+To know when it's safe to update, follow Announcements in my {0}.	想知道何时可以安全更新，请关注我的{0}频道中的 Announcements。
+Thank you 💙	谢谢 💙
+Phone compatibility	手机兼容性
+Hide the shortcuts you see when you hold an app, like View orders.	隐藏长按应用时出现的快捷方式，例如“查看订单”。
+Hide on the home screen	在主屏幕上隐藏
+Home screen, dock and folders.	主屏幕、程序坞和文件夹。
+Hide in the app drawer	在应用抽屉中隐藏
+App drawer and its folders.	应用抽屉及其文件夹。
+Folders, dragging and the swipe-up hint.	文件夹、拖动和上滑提示。
+Folders, dragging and the swipe-up hint	文件夹、拖动和上滑提示
+Force stop	强行停止
+{0} stopped	已停止 {0}
+Could not remove the folder	无法移除文件夹
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	录下每一通电话，以及 WhatsApp 语音和视频通话的双方声音，保存在“录音”标签页中。
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	在对方不知情的情况下录音，在你所在的地区可能违法。你需对自己的录音及其用途负责，RovianDev 不承担责任。
+Clipboard on the lock screen	锁定屏幕上的剪贴板
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	在锁定屏幕搜索中粘贴你复制的内容。任何拿着你手机的人也能粘贴。
+Use the clipboard on the lock screen?	要在锁定屏幕上使用剪贴板吗？
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	轻触指纹传感器即可开启。任何拿着你手机的人都能粘贴你复制的内容，比如密码或验证码。
+Turn on to install	开启即可安装
+Installing Pixel dialer…	正在安装 Pixel 拨号…
+Installing Pixel PDF…	正在安装 Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Pixel 拨号已安装。请重启一次手机，以便它可以录制通话。
+Couldn't install: root access needed	无法安装：需要 root 权限
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	开启后 Pixel Suite 会为你安装。之后请重启一次手机，以便它可以录制通话。
+Pixel PDF is installed	Pixel PDF 已安装

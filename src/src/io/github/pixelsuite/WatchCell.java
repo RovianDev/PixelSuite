@@ -37,6 +37,12 @@ public final class WatchCell {
 
     static void want(Context c, boolean off) {
         SharedPreferences p = prefs(c);
+        if (!optionOn(c)) cancelNote(c);
+        if (!off && p.getString("addr", null) == null) {
+            if (p.contains("want") || p.contains("done")) p.edit().remove("want").remove("done").apply();
+            cancelNote(c);
+            return;
+        }
         String w = off ? "off" : "on";
         if (!w.equals(p.getString("want", null))) p.edit().putString("want", w).putBoolean("done", false).apply();
         if (!p.getBoolean("done", false)) schedule(c);
@@ -72,6 +78,7 @@ public final class WatchCell {
         SharedPreferences p = prefs(c);
         String want = p.getString("want", null);
         if (want == null || p.getBoolean("done", false)) return;
+        if ("on".equals(want) && p.getString("addr", null) == null) { p.edit().remove("want").remove("done").apply(); cancelNote(c); return; }
         if (c.checkSelfPermission("android.permission.BLUETOOTH_CONNECT") != PackageManager.PERMISSION_GRANTED) {
             note(c, "Allow Nearby devices for Pixel Suite so Do Not Annoy can switch your watch's mobile network.", true);
             return;
@@ -137,7 +144,12 @@ public final class WatchCell {
         }
     }
 
+    static boolean optionOn(Context c) {
+        try { return "1".equals(android.provider.Settings.Secure.getString(c.getContentResolver(), DoNotAnnoy.KEY_WATCH)); } catch (Throwable t) { return false; }
+    }
+
     private static void note(Context c, String text, boolean openSettings) {
+        if (!optionOn(c)) { cancelNote(c); return; }
         try {
             NotificationManager nm = (NotificationManager) c.getSystemService(Context.NOTIFICATION_SERVICE);
             Class<?> chType = Class.forName("android.app.NotificationChannel");

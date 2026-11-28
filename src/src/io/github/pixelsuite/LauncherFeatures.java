@@ -39,6 +39,8 @@ final class LauncherFeatures {
     static final String ICONS = "pixelsuite_change_icons";
     static final String DRAG_PILL = "pixelsuite_drawer_home_target";
     static final String HIDE_SHORTCUTS = "pixelsuite_drawer_hide_shortcuts";
+    static final String HIDE_HOME_SHORTCUTS = "pixelsuite_home_hide_shortcuts";
+    static final String NO_SWIPE_HINT = "pixelsuite_drawer_no_swipe_hint";
     static final String LABEL_SIZE = "pixelsuite_icon_label_size";
     static final String HIDE_SEARCH = "pixelsuite_hide_search_bar";
     static final String LABEL_LEVEL = "pixelsuite_icon_label_level";
@@ -62,7 +64,7 @@ final class LauncherFeatures {
     static boolean on(String key){return Boolean.TRUE.equals(enabled.get(key));}
     static void reload(Activity a){
         Map<String,Boolean> next=new java.util.HashMap<String,Boolean>();
-        for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,LABEL_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,DrawerIconColors.KEY})next.put(key,Feature.on(a,key));
+        for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,HIDE_HOME_SHORTCUTS,NO_SWIPE_HINT,LABEL_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,DrawerIconColors.KEY})next.put(key,Feature.on(a,key));
         labelLevel=IconLabelScale.level(Settings.Secure.getInt(a.getContentResolver(),LABEL_LEVEL,2));
         SurfaceStyle.refresh();restyle=SurfaceStyle.restyled(a);styleDisc=restyle||!FrostedSurface.dark(a);
         enabled=next;
@@ -75,6 +77,7 @@ final class LauncherFeatures {
         LauncherHideSearch.install(cl);
         Safe.run(() -> LauncherHideGlance.install(cl));
         Safe.run(() -> WidgetPanel.install(cl));
+        Safe.run(() -> SearchDock.install(cl));
         Safe.run(() -> {
             Xp.hookAllMethods(type("Launcher"), "onCreate", new Xp.Callback() {
                 protected void beforeHookedMethod(Xp.Param p) {
@@ -91,7 +94,7 @@ final class LauncherFeatures {
                             refresh();
                         }
                     };
-                    for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,LABEL_SIZE,LABEL_LEVEL,GRID_SIZE,DRAWER_GRID_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,SurfaceStyle.KEY,DrawerIconColors.KEY})
+                    for(String key:new String[]{GRID,DRAWER,RENAME,ICONS,DRAG_PILL,HIDE_SHORTCUTS,HIDE_HOME_SHORTCUTS,NO_SWIPE_HINT,LABEL_SIZE,LABEL_LEVEL,GRID_SIZE,DRAWER_GRID_SIZE,FolderDrag.TWO_FINGER,MultiDrag.KEY,SurfaceStyle.KEY,DrawerIconColors.KEY})
                         a.getContentResolver().registerContentObserver(Settings.Secure.getUriFor(key),false,observer);
                     Xp.setAdditionalInstanceField(a,"pixelsuite_settings_observer",observer);
                     GoogleAliases.publish();
@@ -139,6 +142,7 @@ final class LauncherFeatures {
         Safe.run(() -> Balloon.install());
         Safe.run(() -> ScatterEffect.install());
         Safe.run(() -> MultiDrag.install());
+        Safe.run(() -> PausedShortcuts.install());
         Safe.run(() -> ShapeWatch.install());
         Safe.run(() -> FolderCloseClip.install());
         Safe.run(() -> ThemedIconEdges.install());
@@ -183,6 +187,20 @@ final class LauncherFeatures {
             if (serial < 0) return null;
             return serial + "|" + component.flattenToString();
         } catch (Throwable ignored) { return null; }
+    }
+    static boolean hidesShortcuts(Object popup, Object info) {
+        try {
+            if (info == null || privateItem(info)) return false;
+            boolean drawer = type("model.data.AppInfo").isInstance(info) || DrawerFolders.isDrawerMember(info) || inDrawer(popup);
+            return on(drawer ? HIDE_SHORTCUTS : HIDE_HOME_SHORTCUTS);
+        } catch (Throwable t) { return false; }
+    }
+    private static boolean inDrawer(Object popup) {
+        if (popup == null) return false;
+        Object view = null;
+        for (String name : new String[]{"originalView", "mOriginalView"}) { try { view = get(popup, name); if (view != null) break; } catch (Throwable ignored) { } }
+        for (Object v = view; v instanceof android.view.View; v = ((android.view.View) v).getParent()) if (v.getClass().getName().contains("AllAppsContainerView")) return true;
+        return false;
     }
     static boolean privateItem(Object info) {
         try { return (((Number) get(info, "runtimeStatusFlags")).intValue() & 8192) != 0; }
@@ -766,11 +784,33 @@ final class LauncherFeatures {
             if(cut>0)cellHeight=Math.max(needed,cellHeight-(cut+n-1)/n);
             border.x=Math.round(border.x*FOLDER_4X4_COLUMN_GAP);
         }
-        return Xp.newInstance(old.getClass(), get(old,"labelTextSizePx"), icon,
+        Object[] values={get(old,"labelTextSizePx"), icon,
                 text, labelLines,
                 fittedPadding, new Point(border), pad, get(old,"contentPaddingTop"),
                 get(old,"footerHeightPx"), cellWidth, cellHeight, get(old,"labelTextScale"), n, n,
-                get(old,"folderIconSizePx"), get(old,"folderIconOffsetYPx"));
+                get(old,"folderIconSizePx"), get(old,"folderIconOffsetYPx")};
+        if(!profileFields)try{return Xp.newInstance(old.getClass(),values);}catch(RuntimeException e){if(!(e.getCause() instanceof NoSuchMethodException))throw e;profileFields=true;}
+        return profileCopy(old,values);
+    }
+    private static volatile boolean profileFields;
+    private static final String[] PROFILE_FIELDS={"labelTextSizePx","childIconSizePx","childTextSizePx","maxChildTextLineCount","childDrawablePaddingPx","cellLayoutBorderSpacePx","contentPaddingLeftRight","contentPaddingTop","footerHeightPx","cellWidthPx","cellHeightPx","labelTextScale","numRows","numColumns","folderIconSizePx","folderIconOffsetYPx"};
+    private static Object profileCopy(Object old,Object[] values){
+        try{
+            Class<?> u=Class.forName("sun.misc.Unsafe");java.lang.reflect.Field f;
+            try{f=u.getDeclaredField("theUnsafe");}catch(NoSuchFieldException e){f=u.getDeclaredField("THE_ONE");}
+            f.setAccessible(true);
+            Object out=u.getMethod("allocateInstance",Class.class).invoke(f.get(null),old.getClass());
+            for(Class<?> k=old.getClass();k!=null&&k!=Object.class;k=k.getSuperclass())
+                for(java.lang.reflect.Field x:k.getDeclaredFields()){if(java.lang.reflect.Modifier.isStatic(x.getModifiers()))continue;x.setAccessible(true);x.set(out,x.get(old));}
+            for(int i=0;i<PROFILE_FIELDS.length;i++){
+                java.lang.reflect.Field x=null;
+                for(Class<?> k=old.getClass();k!=null&&x==null;k=k.getSuperclass())try{x=k.getDeclaredField(PROFILE_FIELDS[i]);}catch(NoSuchFieldException ignored){}
+                if(x==null)continue;x.setAccessible(true);
+                Object v=values[i];
+                if(x.getType()==int.class)x.setInt(out,((Number)v).intValue());else if(x.getType()==float.class)x.setFloat(out,((Number)v).floatValue());else x.set(out,v);
+            }
+            return out;
+        }catch(Throwable t){return old;}
     }
     static int labelHeight(int textPx,int lines){
         Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);paint.setTextSize(textPx);
@@ -855,13 +895,19 @@ final class LauncherFeatures {
                 }
             });
         } catch (Throwable error) { }
-        Xp.hookAllMethods(type("popup.PopupContainerWithArrow"),"populateAndShowRows",new Xp.Callback(){
+        try {
+            Class<?> hint = Xp.findClass("com.android.quickstep.views.AllAppsEduView", loader);
+            Xp.Callback skip = new Xp.Callback() { protected void beforeHookedMethod(Xp.Param p) { if (on(NO_SWIPE_HINT)) p.setResult(null); } };
+            Xp.hookAllMethods(hint, "show", skip);
+            Xp.hookAllMethods(hint, "playAnimation", skip);
+        } catch (Throwable t) { android.util.Log.w("PixelSuite", "launcher: swipe hint " + t); }
+        Xp.Callback noShortcuts=new Xp.Callback(){
             protected void beforeHookedMethod(Xp.Param p){
-                if(!on(HIDE_SHORTCUTS))return;
-                Object info=get(p.thisObject,"itemInfo");
-                if((type("model.data.AppInfo").isInstance(info)||DrawerFolders.isDrawerMember(info))&&!privateItem(info))p.args[0]=0;
+                if(p.args.length==0||!(p.args[0] instanceof Integer))return;
+                if(hidesShortcuts(p.thisObject,get(p.thisObject,"itemInfo")))p.args[0]=0;
             }
-        });
+        };
+        if(Xp.hookAllMethods(type("popup.PopupContainerWithArrow"),"populateAndShowRows",noShortcuts).isEmpty())Xp.hookAllMethods(type("popup.PopupContainerWithArrow"),"showComposePopup",noShortcuts);
         Xp.hookAllMethods(type("popup.ArrowPopup"),"assignMarginsAndBackgrounds",new Xp.Callback(){protected void afterHookedMethod(Xp.Param p){
             if(p.args.length>0&&p.args[0]==p.thisObject&&type("popup.PopupContainer").isInstance(p.thisObject)&&!privateItem(get(p.thisObject,"itemInfo"))){
                 try{DrawerPopupLayout.compact((ViewGroup)p.thisObject);}catch(Throwable error){}
@@ -894,7 +940,19 @@ final class LauncherFeatures {
                 if (info != null && type("model.data.FolderInfo").isInstance(info) && !DrawerFolders.isFolder(info)) { try { addHomeFolderRows(popup, info); } catch (Throwable error) { } return; }
 
                 if (searchWidget(popup)) { try { searchRows(popup); } catch (Throwable error) { } return; }
-                if (identity(info) == null || privateItem(info)) return;
+                if (widgetItem(info) && !ComposeMenu.active && SearchDock.widgetView(get(popup, "originalView"))) {
+                    try {
+                        ViewGroup box = (ViewGroup) get(popup, "systemShortcutContainer");
+                        if (box != null && box.findViewWithTag("pixelsuite_customize") == null) {
+                            final Context app = ((View) popup).getContext().getApplicationContext();
+                            addFolderRow(box, "Customize", "pixelsuite_customize", 10, 0, new View.OnClickListener() {
+                                public void onClick(View v) { try { call(popup, "close", true); } catch (Throwable ignored) { } SearchDock.customize(app); }
+                            });
+                        }
+                    } catch (Throwable ignored) { }
+                    return;
+                }
+                if (identity(info) == null || privateItem(info) || widgetItem(info)) return;
                 if (ComposeMenu.active && get(popup, "systemShortcutContainer") == null) return;
                 ViewGroup rows = (ViewGroup) get(popup, "systemShortcutContainer");
                 if (rows == null) {
@@ -908,6 +966,16 @@ final class LauncherFeatures {
         });
         Safe.run(() -> ComposeMenu.install());
         Safe.run(() -> NavButtons.install(loader));
+    }
+
+    static boolean widgetItem(Object info) {
+        try {
+            if (info == null) return false;
+            if (info.getClass().getName().endsWith("AppWidgetInfo")) return true;
+            Object kind = get(info, "itemType");
+            int k = kind instanceof Number ? ((Number) kind).intValue() : -1;
+            return k == 4 || k == 5;
+        } catch (Throwable t) { return false; }
     }
 
     static boolean searchWidget(Object popup) {
@@ -944,8 +1012,12 @@ final class LauncherFeatures {
             public void onClick(View v) { call(popup,"close",true); rename(info); }
         }, false);
         if (!drawer || !DrawerFolders.isFolder(info)) PrivacyLock.addRow(rows, popup, info);
-        if (BadgeClear.has(info)) addFolderRow(rows, "Clear badge", "pixelsuite_badge", 16, 0, new View.OnClickListener() {
+        boolean badge = BadgeClear.has(info);
+        if (badge) addFolderRow(rows, "Clear badge", "pixelsuite_badge", 16, 0, new View.OnClickListener() {
             public void onClick(View v) { call(popup, "close", true); BadgeClear.clear(info); }
+        });
+        if (ForceStop.target(info) != null) addFolderRow(rows, "Force stop", "pixelsuite_force_stop", 18, badge ? 1 : 0, new View.OnClickListener() {
+            public void onClick(View v) { call(popup, "close", true); ForceStop.request(info); }
         });
     }
     static void addHomeFolderRows(final Object popup, final Object info) {

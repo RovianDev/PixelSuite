@@ -778,13 +778,14 @@ final class WidgetPanel {
 
         float raw() { return pos >= 0f ? pos : unrubber(pos); }
 
-        void drag(float raw) { stop(false); pos = raw >= 0f ? raw : rubber(raw); show(); }
+        void drag(float raw) { if (sLock && raw > 0f) Lock.closeDragStart(); stop(false); pos = raw >= 0f ? raw : rubber(raw); show(); }
 
         void arrive(float speed) { pos = 0f; fling(-gently(speed), 0f); }
 
         float gently(float v) { float most = Math.min(width() * 0.035f, 14f * density); float cap = most * OMEGA * (float) Math.E; return cap <= 0f ? 0f : cap * (float) Math.tanh(v / (3f * cap)); }
 
         void release(float v, boolean away) {
+            if (sLock) Lock.closeDragEnd(away);
             if (!away && pos < 0f && v < 0f) v = -soften(-v);
 
             fling(v, away ? width() * 1.35f : 0f);
@@ -836,9 +837,9 @@ final class WidgetPanel {
                 panel.moving();
                 return;
             }
-            panel.own = Math.max(0f, Math.min(1f, 1f - Math.max(0f, pos) / width()));
+            float own = Math.max(0f, Math.min(1f, 1f - Math.max(0f, pos) / width()));
             if (panel.content != null) panel.content.setTranslationX(Math.round(dir * Math.min(0f, pos)));
-            panel.lockApply();
+            if (own != panel.own || pos > 0f) { panel.own = own; panel.lockApply(); }
             panel.moving();
         }
     }
@@ -1547,6 +1548,7 @@ final class WidgetPanel {
         }
 
         void leftByFinger() {
+            if (sLock) Lock.leftDone();
             own = 0f;
             lockApply();
             if (sLock && lockOther(activity) && hub > 0f) Lock.snapClose();
@@ -1569,6 +1571,7 @@ final class WidgetPanel {
             progress = now;
             place();
             Lock.raised(now > 0f && !Lock.pinUp);
+            Lock.pageShift(now);
             if (now <= 0f && visible) hidden();
         }
 
@@ -2286,7 +2289,6 @@ final class WidgetPanel {
         }
 
         boolean dragged(android.view.DragEvent e) {
-            if (sLock) return false;
             switch (e.getAction()) {
                 case android.view.DragEvent.ACTION_DRAG_STARTED:
                     return panel.progress > 0 && e.getClipDescription() != null && e.getClipDescription().hasMimeType("text/vnd.android.intent");
@@ -2307,6 +2309,8 @@ final class WidgetPanel {
                     getLocationOnScreen(me); panel.grid.getLocationOnScreen(g);
                     int index = panel.grid.indexAt(e.getX() + me[0] - g[0], e.getY() + me[1] - g[1]);
                     performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    if (sLock) return Lock.add(provider, user, index);
+                    if (!(panel.activity instanceof Activity)) return false;
                     addProvider((Activity) panel.activity, provider, user, index);
                     return true;
                 }
@@ -2362,17 +2366,19 @@ final class WidgetPanel {
                 {
                     int act = ev.getActionMasked();
                     if (act == MotionEvent.ACTION_DOWN) { gx0 = ev.getRawX(); gy0 = ev.getRawY(); }
-                    else if (act == MotionEvent.ACTION_MOVE && !tracking && !barTouch && ev.getPointerCount() == 1 && (sLock ? panel.progress >= 1f : panel.progress > 0.5f) && !panel.wiggle
+                    else if (act == MotionEvent.ACTION_MOVE && !tracking && !barTouch && ev.getPointerCount() == 1 && (sLock ? panel.progress >= 0.98f : panel.progress > 0.5f) && !panel.wiggle
                             && !(panel.grid != null && panel.grid.busy()) && !(panel.menu != null && panel.menu.open)) {
-                        float gdx = ev.getRawX() - gx0, gdy = ev.getRawY() - gy0;
-                        if (closing(gdx) > WidgetPanel.dp(getContext(), 22) && Math.abs(gdx) > Math.abs(gdy) * 1.3f) {
+                        float gdx = ev.getRawX() - gx0, gdy = ev.getRawY() - gy0, edge = WidgetPanel.dp(getContext(), 22);
+                        boolean shut = closing(gdx) > edge, far = -closing(gdx) > edge && panel.progress >= 0.98f;
+                        if ((shut || far) && Math.abs(gdx) > Math.abs(gdy) * 1.3f) {
                             MotionEvent cancel = MotionEvent.obtain(ev);
                             cancel.setAction(MotionEvent.ACTION_CANCEL);
                             super.dispatchTouchEvent(cancel);
                             cancel.recycle();
                             tracking = true; catching = false;
-                            x0 = gx0 + (panel.right() ? 1 : -1) * slop;
-                            startRaw = from();
+                            x0 = gx0 + (shut == panel.right() ? 1 : -1) * slop;
+                            if (panel.swinging()) { startRaw = panel.swing.raw(); panel.swing.stop(false); }
+                            else { if (!sLock && panel.settle != null) panel.settle.cancel(); startRaw = from(); }
                             WidgetPanel.fast(this, true); panel.layer(true);
                             return true;
                         }
@@ -2387,7 +2393,7 @@ final class WidgetPanel {
             switch (ev.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN:
                     x0 = ev.getRawX(); y0 = ev.getRawY(); tracking = false; startRaw = 0f;
-                    downIn = panel.progress >= 1f && !panel.swinging();
+                    downIn = panel.progress >= 0.98f && !panel.swinging();
                     if (velocity != null) velocity.recycle();
                     velocity = VelocityTracker.obtain(); track(ev);
 
@@ -2426,7 +2432,7 @@ final class WidgetPanel {
             if (Math.abs(dx) <= Math.abs(dy) * 1.4f) return false;
             if (closing(dx) > slop) return true;
 
-            return downIn && panel.progress >= 1f && -closing(dx) > slop * 2f && Math.abs(dx) > Math.abs(dy) * 2f;
+            return downIn && panel.progress >= 0.98f && -closing(dx) > slop * 1.5f && Math.abs(dx) > Math.abs(dy) * 1.5f;
         }
 
         void track(MotionEvent ev) {
@@ -2489,7 +2495,139 @@ final class WidgetPanel {
         static void install(final ClassLoader cl) throws Throwable {
             sLock = true;
             try { Weather.install(); } catch (Throwable t) { Log.w("lock weather", t); }
+            try { installDrop(); } catch (Throwable t) { Log.w("lock drop", t); }
             Class<?> type = cl.loadClass("com.android.systemui.shade.GlanceableHubContainerController");
+            try {
+                Class<?> kumType = cl.loadClass("com.android.keyguard.KeyguardUpdateMonitor");
+                Xp.hookAllConstructors(kumType, new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { updateMonitor = p.thisObject; }
+                });
+                Xp.hookAllMethods(kumType, "shouldListenForFingerprint", new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { if (fpPaused && Boolean.TRUE.equals(p.getResult())) { p.setResult(Boolean.FALSE); fpHeldBack = true; } }
+                });
+            } catch (Throwable t) { }
+            try {
+                String keys = "com.android.systemui.bouncer.ui.composable.PinBouncerKt$pinPadButtonInput$3$1$1$1$1$";
+                Xp.hookAllConstructors(cl.loadClass(keys + "1$1"), new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { if (p.args.length >= 2 && p.args[0] != null && p.args[1] != null) synchronized (pinPresses) { pinPresses.put(p.args[1], p.args[0]); } }
+                });
+                Xp.Callback ended = new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { if (p.args.length >= 2 && p.args[1] != null) synchronized (pinPresses) { pinPresses.remove(p.args[1]); } }
+                };
+                Xp.hookAllConstructors(cl.loadClass(keys + "3$1"), ended);
+                Xp.hookAllConstructors(cl.loadClass(keys + "4$1"), ended);
+            } catch (Throwable t) { }
+            try {
+                Xp.hookAllMethods(cl.loadClass("com.android.systemui.keyguard.ui.viewmodel.DeviceEntryIconViewModel$rawIconType$1"), "invoke", new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        if (fpHeldBack && p.args.length == 3 && Boolean.FALSE.equals(p.args[0])) { p.args[0] = Boolean.TRUE; }
+                    }
+                });
+            } catch (Throwable t) { }
+            try {
+                Xp.hookAllConstructors(cl.loadClass("com.android.systemui.bouncer.data.repository.KeyguardBouncerRepositoryImpl"), new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { bouncerRepo = p.thisObject; }
+                });
+            } catch (Throwable t) { }
+            try {
+                Xp.hookAllConstructors(cl.loadClass("com.android.systemui.scene.domain.interactor.LegacySceneInteractorImpl"), new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { sceneInteractor = p.thisObject; }
+                });
+                try {
+                    Xp.hookAllMethods(cl.loadClass("com.android.systemui.scene.domain.interactor.LegacySceneInteractorImpl"), "changeScene", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            if (!sceneMode || wrapper == null) return;
+                            for (Object a : p.args) if (a instanceof String && ((String) a).contains("Falsing")) { p.setResult(null); return; }
+                        }
+                    });
+                } catch (Throwable t) { }
+                Xp.hookAllConstructors(type, new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) { hubController = p.thisObject; }
+                });
+                try {
+                    try {
+                        final Class<?> keys = cl.loadClass("com.android.systemui.scene.shared.model.Scenes");
+                        Xp.hookAllMethods(cl.loadClass("com.android.systemui.keyguard.ui.viewmodel.LockscreenUserActionsViewModel$hydrateActions$2$1"), "invokeSuspend", new Xp.Callback() {
+                            @Override protected void afterHookedMethod(Xp.Param p) {
+                                try {
+                                    if (!(p.getResult() instanceof Map)) return;
+                                    boolean want = driverReady && feedWanted();
+                                    swipeOff = want;
+                                    if (!want) return;
+                                    Object hub = keys.getField("Communal").get(null);
+                                    Map<Object, Object> kept = new java.util.LinkedHashMap<Object, Object>();
+                                    boolean removed = false;
+                                    for (Map.Entry<?, ?> en : ((Map<?, ?>) p.getResult()).entrySet()) {
+                                        if (leadsTo(en.getValue(), hub)) { removed = true; continue; }
+                                        kept.put(en.getKey(), en.getValue());
+                                    }
+                                    if (removed) p.setResult(kept);
+                                } catch (Throwable t) { swipeOff = false; }
+                            }
+                        });
+                    } catch (Throwable t) { }
+                    keepStream(cl);
+                    try {
+                        Xp.hookAllMethods(cl.loadClass("com.android.systemui.communal.ui.compose.CommunalContainerKt"), "CommunalScene", new Xp.Callback() {
+                            @Override protected void beforeHookedMethod(Xp.Param p) {
+                                try {
+                                    if (!sceneMode || sPanel == null) return;
+                                    Class<?>[] t = ((Method) p.method).getParameterTypes();
+                                    for (int i = 0; i < t.length; i++) {
+                                        if (!t[i].isEnum() || !t[i].getName().endsWith("CommunalBackgroundType") || p.args[i] == null) continue;
+                                        for (Object k : t[i].getEnumConstants()) if (((Enum<?>) k).ordinal() == 4) { p.args[i] = k; break; }
+                                        break;
+                                    }
+                                } catch (Throwable t) { }
+                            }
+                        });
+                    } catch (Throwable t) { }
+                    try {
+                        Xp.hookAllMethods(cl.loadClass("com.android.systemui.communal.ui.compose.CommunalContent"), "Content", new Xp.Callback() {
+                            @Override protected void beforeHookedMethod(Xp.Param p) {
+                                try {
+                                    if (!sceneMode || sPanel == null) return;
+                                    Class<?>[] t = ((Method) p.method).getParameterTypes();
+                                    for (int i = 0; i < t.length; i++) {
+                                        if (!"androidx.compose.ui.Modifier".equals(t[i].getName()) || p.args[i] == null) continue;
+                                        p.args[i] = hidden(cl, t[i], p.args[i]);
+                                        return;
+                                    }
+                                } catch (Throwable t) { }
+                            }
+                        });
+                    } catch (Throwable t) { }
+                    Xp.hookAllMethods(cl.loadClass("com.android.systemui.communal.ui.compose.CommunalHubKt"), "CommunalHub", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            try {
+                                if (!sceneMode || sPanel == null || p.args.length < 2 || p.args[0] == null || p.args[1] == null) return;
+                                if (!"CommunalViewModel".equals(p.args[1].getClass().getSimpleName())) return;
+                                Class<?>[] t = ((java.lang.reflect.Method) p.method).getParameterTypes();
+                                if (!"androidx.compose.ui.Modifier".equals(t[0].getName())) return;
+                                p.args[0] = hidden(cl, t[0], p.args[0]);
+                            } catch (Throwable t) { }
+                        }
+                    });
+                    Xp.hookAllMethods(cl.loadClass("com.android.systemui.communal.ui.compose.CommunalScene"), "Content", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            try {
+                                if (!sceneMode || sPanel == null) return;
+                                Class<?>[] t = ((java.lang.reflect.Method) p.method).getParameterTypes();
+                                for (int i = 0; i < t.length; i++) {
+                                    if (!"androidx.compose.ui.Modifier".equals(t[i].getName()) || p.args[i] == null) continue;
+                                    p.args[i] = hidden(cl, t[i], p.args[i]);
+                                    return;
+                                }
+                            } catch (Throwable t) { }
+                        }
+                    });
+                } catch (Throwable t) { }
+                Xp.hookAllMethods(cl.loadClass("com.android.systemui.scene.ui.view.SceneWindowRootView"), "init", new Xp.Callback() {
+                    @Override protected void afterHookedMethod(Xp.Param p) {
+                        if (p.thisObject instanceof ViewGroup) { final ViewGroup root = (ViewGroup) p.thisObject; MAIN.post(() -> sceneHost(cl, root, 0)); }
+                    }
+                });
+            } catch (Throwable t) { }
             Set<String> names = new HashSet<String>();
             for (Method m : type.getDeclaredMethods()) {
                 Class<?>[] p = m.getParameterTypes();
@@ -2813,11 +2951,876 @@ final class WidgetPanel {
 
         static final List<ContentObserver> lockObservers = new ArrayList<ContentObserver>();
 
+        static Object sceneInteractor, hubController, stateHolder;
+        static boolean sceneMode, bouncerFailed;
+
+        static void sceneHost(final ClassLoader cl, final ViewGroup root, final int tries) {
+            try {
+                if (wrapper != null && !sceneMode) return;
+                int id = root.getResources().getIdentifier("scene_container_root_composable", "id", root.getContext().getPackageName());
+                View host = id != 0 ? root.findViewById(id) : null;
+                if (!(host instanceof ViewGroup) || sceneInteractor == null) {
+                    if (tries < 40) MAIN.postDelayed(() -> sceneHost(cl, root, tries + 1), 250);
+                    return;
+                }
+                Object users = root.getContext().getSystemService(Context.USER_SERVICE);
+                if (users != null && Boolean.FALSE.equals(users.getClass().getMethod("isUserUnlocked").invoke(users))) { MAIN.postDelayed(() -> sceneHost(cl, root, tries), 1500); return; }
+                sceneMode = true;
+                sceneRoot = root;
+                hookDriver(root);
+                attach(cl, hubController != null ? hubController : sceneInteractor, (ViewGroup) host);
+            } catch (Throwable t) { }
+        }
+
+        static View sceneRoot;
+        static volatile boolean swipeOff, driverReady;
+        static volatile boolean ownArmed, ownDriving, leadHold; static float ownX0, ownY0, ownSlop;
+        static VelocityTracker ownVt;
+        static float lead = -1f;
+        static ValueAnimator leadAnim;
+
+        static boolean feedWanted() {
+            try {
+                Context c = (Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+                return c != null && lockEnabled(c);
+            } catch (Throwable t) { return false; }
+        }
+
+        static boolean leadsTo(Object result, Object scene) {
+            if (result == null || scene == null) return false;
+            for (Class<?> k = result.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+                for (Field f : k.getDeclaredFields()) {
+                    if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+                    try { f.setAccessible(true); if (scene.equals(f.get(result))) return true; } catch (Throwable ignored) { }
+                }
+            return false;
+        }
+
+        static void hookDriver(ViewGroup root) {
+            if (driverReady) return;
+            for (Class<?> k = root.getClass(); k != null && k != ViewGroup.class && k != View.class; k = k.getSuperclass()) {
+                try { k.getDeclaredMethod("dispatchTouchEvent", MotionEvent.class); } catch (NoSuchMethodException none) { continue; }
+                Xp.hookAllMethods(k, "dispatchTouchEvent", new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        try { ownTouch(p); } catch (Throwable t) { ownArmed = false; ownDriving = false; }
+                    }
+                });
+                driverReady = true;
+                return;
+            }
+        }
+
+        static boolean onLockIdle() throws Throwable {
+            if (stateOf == null) progress();
+            Object state = stateOf.invoke(stateHolder != null ? stateHolder : source.get(controller));
+            return state != null && !change.isInstance(state) && blank != null && blank.equals(sceneOf.invoke(state));
+        }
+
+        static final java.util.Map<Class<?>, java.lang.reflect.Member[]> shownSize = new java.util.HashMap<Class<?>, java.lang.reflect.Member[]>();
+        static final String[] SHOWN = {"mActualHeight", "mClipTopAmount", "mClipBottomAmount", "mTopOverlap", "mBottomOverlap", "mMinimumHeightForClipping", "mInShelf"};
+        static final String[] SHOWN_GET = {"getActualHeight", "getClipTopAmount", "getClipBottomAmount", null, null, null, null};
+
+        static java.lang.reflect.Member[] shownMembers(View v) {
+            Class<?> k = v.getClass();
+            java.lang.reflect.Member[] m = shownSize.get(k);
+            if (m != null) return m;
+            m = new java.lang.reflect.Member[SHOWN.length];
+            for (int i = 0; i < SHOWN.length; i++) {
+                for (Class<?> t = k; t != null && t != View.class && m[i] == null; t = t.getSuperclass())
+                    try { java.lang.reflect.Field f = t.getDeclaredField(SHOWN[i]); f.setAccessible(true); m[i] = f; } catch (Throwable ignored) { }
+                if (m[i] == null && SHOWN_GET[i] != null) try { Method g = k.getMethod(SHOWN_GET[i]); g.setAccessible(true); m[i] = g; } catch (Throwable ignored) { }
+            }
+            shownSize.put(k, m);
+            return m;
+        }
+
+        static int shownValue(View v, java.lang.reflect.Member m, int otherwise) {
+            if (m == null) return otherwise;
+            try {
+                Object o = m instanceof java.lang.reflect.Field ? ((java.lang.reflect.Field) m).get(v) : ((Method) m).invoke(v);
+                return o instanceof Boolean ? (((Boolean) o) ? 1 : 0) : ((Number) o).intValue();
+            } catch (Throwable t) { return otherwise; }
+        }
+
+        static int[] shownRange(View v) {
+            java.lang.reflect.Member[] m = shownMembers(v);
+            int h = v.getHeight();
+            int top = Math.max(0, Math.max(shownValue(v, m[1], 0), shownValue(v, m[3], 0)));
+            int bottom = Math.max(Math.max(shownValue(v, m[0], h) - Math.max(shownValue(v, m[2], 0), shownValue(v, m[4], 0)), top), shownValue(v, m[5], 0));
+            return new int[]{Math.min(top, h), Math.min(bottom, h)};
+        }
+
+        static boolean busyUnder(View v, float x, float y) {
+            if (v.getVisibility() != View.VISIBLE || v.getWidth() <= 0 || v.getHeight() <= 0 || v.getAlpha() <= 0.01f) return false;
+            if (v instanceof Root) return false;
+            int[] at = new int[2]; v.getLocationOnScreen(at);
+            int[] shown = shownRange(v);
+            int top = at[1] + shown[0], bottom = at[1] + shown[1];
+            if (x < at[0] || y < top || x >= at[0] + v.getWidth() || y >= bottom) return false;
+            String n = v.getClass().getName();
+            if (n.contains("ExpandableNotificationRow") || n.contains("MediaCarousel") || n.contains("MediaScrollView")) { busyWhat = v.getClass().getSimpleName() + "@" + top + ".." + bottom + "/" + (at[1] + v.getHeight()) + (shownValue(v, shownMembers(v)[6], 0) == 1 ? " shelf" : ""); return true; }
+            if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) if (busyUnder(g.getChildAt(i), x, y)) return true; }
+            return false;
+        }
+
+        static boolean pagerUnder(View v, float x, float y) {
+            if (v.getVisibility() != View.VISIBLE || v.getWidth() <= 0 || v.getHeight() <= 0 || v.getAlpha() <= 0.01f || v instanceof Root) return false;
+            int[] at = new int[2]; v.getLocationOnScreen(at);
+            int[] shown = shownRange(v);
+            if (x < at[0] || y < at[1] + shown[0] || x >= at[0] + v.getWidth() || y >= at[1] + shown[1]) return false;
+            String n = v.getClass().getName();
+            if (n.contains("Smartspace") || n.contains("ViewPager") || n.contains("Carousel") || n.contains("HorizontalScroll") || v.canScrollHorizontally(1) || v.canScrollHorizontally(-1)) return true;
+            if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) if (pagerUnder(g.getChildAt(i), x, y)) return true; }
+            return false;
+        }
+
+        static boolean ownCatch, ownBlock, ownOnSensor;
+        static float ownMax;
+        static String busyWhat;
+        static volatile float ownLastX;
+        static int pinGuard, sideGuard;
+        static volatile long udfpsCut;
+        static float ownLastTowards;
+
+        static void keepStream(ClassLoader cl) {
+            Xp.Callback keep = new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        if (sceneRoot == null || !sceneMode) return;
+                        long now = android.os.SystemClock.uptimeMillis();
+                        boolean fresh = now - ownEventAt < 500;
+                        if (fresh && (ownDriving || (ownArmed && ownLastTowards >= dp(sceneRoot.getContext(), 8)))) { p.setResult(null); return; }
+                        boolean sensor = false, back = false;
+                        for (StackTraceElement f : new Throwable().getStackTrace()) {
+                            String n = f.getClassName();
+                            if (n.contains("Udfps")) { sensor = true; break; }
+                            if (n.contains("EdgeBackGesture") || n.contains("BackGesture") || n.contains("BackPanel")) back = true;
+                        }
+                        if (back && !sensor && fresh && ownArmed && onLockIdle()) { p.setResult(null); return; }
+                        if (back && !sensor && fresh && sPanel != null && sPanel.progress >= 0.98f && (lockRight(sceneRoot.getContext()) ? ownLastX < ownX0 : ownLastX > ownX0)) { p.setResult(null); return; }
+                        if (now - pilferAt < 50) return;
+                        if (!sensor) return;
+                        pilferAt = now;
+                        if (ownArmed && !ownForeign) { ownForeign = true; }
+                    } catch (Throwable ignored) { }
+                }
+            };
+            try { Xp.hookAllMethods(android.hardware.input.InputManager.class, "pilferPointers", keep); } catch (Throwable t) { }
+            try { Xp.hookAllMethods(Class.forName("android.hardware.input.InputManagerGlobal"), "pilferPointers", keep); } catch (Throwable ignored) { }
+            try { Xp.hookAllMethods(Class.forName("android.hardware.input.IInputManager$Stub$Proxy"), "pilferPointers", keep); } catch (Throwable t) { }
+            try { Xp.deoptimizeAll(Class.forName("com.android.systemui.biometrics.UdfpsController", false, cl), "onTouch"); } catch (Throwable ignored) { }
+            for (String name : new String[] {"com.android.systemui.auth.biometrics.fingerprint.udfps.controller.PhoneUdfpsController", "com.android.systemui.biometrics.UdfpsController"}) {
+                try {
+                    Class<?> udfps = Class.forName(name, false, cl);
+                    Xp.hookAllMethods(udfps, "onTouch", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            try {
+                                if (sceneRoot == null) return;
+                                for (int i = 0; i < p.args.length; i++) {
+                                    if (!(p.args[i] instanceof MotionEvent)) continue;
+                                    int rule = sensorRule((MotionEvent) p.args[i]);
+                                    if (rule == 1) { p.args[i] = cancelOf((MotionEvent) p.args[i]); return; }
+                                    if (rule == 2) { p.setResult(Boolean.FALSE); return; }
+                                    break;
+                                }
+                                if (!ownDriving) return;
+                                for (int i = 0; i < p.args.length; i++) {
+                                    if (!(p.args[i] instanceof MotionEvent)) continue;
+                                    MotionEvent e = (MotionEvent) p.args[i];
+                                    if (e.getDownTime() != ownDownTime) return;
+                                    if (udfpsCut != ownDownTime) { udfpsCut = ownDownTime; p.args[i] = cancelOf(e); }
+                                    else p.setResult(Boolean.FALSE);
+                                    return;
+                                }
+                            } catch (Throwable ignored) { }
+                        }
+                    });
+                    Xp.hookAllMethods(udfps, "onFingerDown", new Xp.Callback() {
+                        @Override protected void beforeHookedMethod(Xp.Param p) {
+                            if (ownDriving && android.os.SystemClock.uptimeMillis() - ownEventAt < 300) { p.setResult(null); return; }
+                            if (sensorOff && android.os.SystemClock.uptimeMillis() - sensorAt < 1500) p.setResult(null);
+                        }
+                    });
+                    Xp.deoptimizeAll(udfps, "onTouch");
+                } catch (Throwable ignored) { }
+            }
+            try {
+                Xp.hookAllMethods(android.view.InputEventReceiver.class, "dispatchInputEvent", new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        if (!ownForeign && !ownDriving) {
+                            if (p.args.length > 1 && android.os.Looper.myLooper() == android.os.Looper.getMainLooper())
+                                for (Object x : p.args) if (x instanceof MotionEvent && ((MotionEvent) x).getActionMasked() == MotionEvent.ACTION_DOWN) { downFrom = p.thisObject; downEvent = x; break; }
+                            return;
+                        }
+                        try {
+                            if (sceneRoot == null) return;
+                            int at = -1;
+                            for (int i = 0; i < p.args.length; i++) if (p.args[i] instanceof MotionEvent) { at = i; break; }
+                            if (at < 0) return;
+                            MotionEvent e = (MotionEvent) p.args[at];
+                            int a = e.getActionMasked();
+                            if (!ownForeign) {
+                                Object shade = shadeRecv == null ? null : shadeRecv.get();
+                                if (shade == null || shadeFor != ownDownTime || shade == p.thisObject || e.getDownTime() != ownDownTime || a == MotionEvent.ACTION_DOWN) return;
+                                p.args[at] = cancelOf(e);
+                                return;
+                            }
+                            if (e.getDownTime() != ownDownTime || (a != MotionEvent.ACTION_MOVE && a != MotionEvent.ACTION_UP)) return;
+                            if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) { if (ownStep(e) != 0) p.args[at] = cancelOf(e); return; }
+                            final MotionEvent copy = MotionEvent.obtain(e);
+                            MAIN.post(() -> {
+                                try { if (ownForeign || ownDriving) ownStep(copy); }
+                                catch (Throwable t) { ownForeign = false; ownArmed = false; ownDriving = false; }
+                                finally { copy.recycle(); }
+                            });
+                            if (ownDriving) p.args[at] = cancelOf(e);
+                        } catch (Throwable t) { ownForeign = false; ownArmed = false; ownDriving = false; }
+                    }
+                });
+            } catch (Throwable t) { }
+        }
+
+        static volatile boolean ownForeign;
+        static volatile boolean sensorOff, sensorCancelled;
+        static volatile long sensorDown = -1, sensorAt;
+        static float sensorX0, sensorY0;
+
+        static int sensorRule(MotionEvent e) {
+            Panel panel = sPanel;
+            int a = e.getActionMasked();
+            if (a == MotionEvent.ACTION_DOWN || e.getDownTime() != sensorDown) {
+                sensorDown = e.getDownTime(); sensorAt = android.os.SystemClock.uptimeMillis();
+                sensorX0 = e.getRawX(); sensorY0 = e.getRawY(); sensorCancelled = false;
+                boolean feed = panel != null && wrapper != null && (panel.progress > 0.02f || lead > 0f || ownDriving || leadMoving());
+                boolean quiet = feed && android.os.SystemClock.uptimeMillis() < fpQuietUntil;
+                sensorOff = feed && (quiet || !onSensorTight(sceneRoot.getContext(), sensorX0, sensorY0));
+                float[] spot = sensorSpot;
+                return sensorOff ? 2 : 0;
+            }
+            sensorAt = android.os.SystemClock.uptimeMillis();
+            if (sensorOff) return 2;
+            if (sensorCancelled) return 2;
+            boolean feed = panel != null && wrapper != null && (panel.progress > 0.02f || lead > 0f || ownDriving);
+            if (!feed) return 0;
+            float d = (float) Math.hypot(e.getRawX() - sensorX0, e.getRawY() - sensorY0);
+            if (d > dp(sceneRoot.getContext(), 24)) { sensorCancelled = true; sensorOff = true; return 1; }
+            return 0;
+        }
+
+        static boolean onSensorTight(Context c, float x, float y) {
+            onSensor(c, x, y);
+            float[] s = sensorSpot;
+            if (s == null) return true;
+            float dx = x - s[0], dy = y - s[1], rr = s[2] * 1.15f;
+            return dx * dx + dy * dy <= rr * rr;
+        }
+        static volatile java.lang.ref.WeakReference<Object> shadeRecv;
+        static volatile Object downFrom, downEvent;
+        static volatile long shadeFor = -1;
+        static long ownDownTime, pilferAt, ownEventAt;
+
+        static void track(MotionEvent e) {
+            if (ownVt == null) return;
+            MotionEvent m = MotionEvent.obtain(e);
+            m.setLocation(e.getRawX(), e.getRawY());
+            ownVt.addMovement(m);
+            m.recycle();
+        }
+        static float ownBase, ownFrom;
+        static long ownAt;
+        static float leadTarget = -1f;
+
+        static float[] sensorSpot;
+        static boolean sensorRead;
+
+        static boolean onSensor(Context c, float x, float y) {
+            if (!sensorRead) {
+                sensorRead = true;
+                try {
+                    Object fm = c.getSystemService("fingerprint");
+                    List<?> props = fm == null ? null : (List<?>) fm.getClass().getMethod("getSensorPropertiesInternal").invoke(fm);
+                    if (props != null) for (Object pr : props) {
+                        Object loc = pr.getClass().getMethod("getLocation").invoke(pr);
+                        int sx = loc.getClass().getField("sensorLocationX").getInt(loc), sy = loc.getClass().getField("sensorLocationY").getInt(loc), r = loc.getClass().getField("sensorRadius").getInt(loc);
+                        if (r <= 0) continue;
+                        float scale = 1f;
+                        try {
+                            android.view.Display d = ((android.hardware.display.DisplayManager) c.getSystemService(Context.DISPLAY_SERVICE)).getDisplay(0);
+                            int most = 0;
+                            for (android.view.Display.Mode m : d.getSupportedModes()) most = Math.max(most, Math.min(m.getPhysicalWidth(), m.getPhysicalHeight()));
+                            android.util.DisplayMetrics dm = c.getResources().getDisplayMetrics();
+                            int now = Math.min(dm.widthPixels, dm.heightPixels);
+                            if (most > 0 && now > 0) scale = now / (float) most;
+                        } catch (Throwable ignored) { }
+                        sensorSpot = new float[]{sx * scale, sy * scale, r * scale};
+                        break;
+                    }
+                } catch (Throwable t) { }
+            }
+            float[] s = sensorSpot;
+            if (s == null) return false;
+            float dx = x - s[0], dy = y - s[1], rr = s[2] * 2.5f;
+            return dx * dx + dy * dy <= rr * rr;
+        }
+
+        static boolean leadMoving() { return leadAnim != null && leadAnim.isRunning() && !leadHold; }
+
+        static void ownTouch(Xp.Param p) throws Throwable {
+            if (p.thisObject != sceneRoot || p.args.length != 1 || !(p.args[0] instanceof MotionEvent)) return;
+            MotionEvent e = (MotionEvent) p.args[0];
+            if (ownForeign && e.getActionMasked() != MotionEvent.ACTION_DOWN) return;
+            if (e.getActionMasked() == MotionEvent.ACTION_DOWN) {
+                if (downEvent == e && downFrom != null) { shadeRecv = new java.lang.ref.WeakReference<Object>(downFrom); shadeFor = e.getDownTime(); }
+                downFrom = null; downEvent = null;
+            }
+            int r = ownStep(e);
+            if (r == 1) p.setResult(Boolean.TRUE);
+            else if (r == 2) p.args[0] = cancelOf(e);
+        }
+
+        static MotionEvent cancelOf(MotionEvent e) {
+            MotionEvent cancel = MotionEvent.obtain(e);
+            cancel.setAction(MotionEvent.ACTION_CANCEL);
+            return cancel;
+        }
+
+        static int ownStep(MotionEvent e) throws Throwable {
+            int out = 0;
+            Panel panel = sPanel;
+            int a = e.getActionMasked();
+            ownEventAt = android.os.SystemClock.uptimeMillis();
+            ownLastX = e.getRawX();
+            try { fingerprintWatch(e); } catch (Throwable ignored) { }
+            if (a == MotionEvent.ACTION_DOWN) {
+                ownDriving = false; ownCatch = false; ownBlock = false; ownForeign = false;
+                ownDownTime = e.getDownTime();
+                if (ownVt != null) { ownVt.recycle(); ownVt = null; }
+                ownX0 = e.getRawX(); ownY0 = e.getRawY(); ownAt = e.getEventTime();
+                if (panel != null && wrapper != null && (leadHold || (leadMoving() && leadTarget >= 1f))) {
+                    float w0 = sceneRoot.getWidth() > 0 ? sceneRoot.getWidth() : sceneRoot.getResources().getDisplayMetrics().widthPixels;
+                    float edge = lockRight(sceneRoot.getContext()) ? w0 * (1f - panel.progress) : w0 * panel.progress;
+                    boolean onPanel = lockRight(sceneRoot.getContext()) ? e.getRawX() >= edge : e.getRawX() <= edge;
+                    if (!onPanel) { ownBlock = true; out = Math.max(out, 1); }
+                }
+                if (panel != null && swipeOff && wrapper != null && leadMoving() && e.getPointerCount() == 1) {
+                    ownCatch = true; ownArmed = false;
+                } else {
+                    busyWhat = null;
+                    ownArmed = panel != null && swipeOff && lead < 0f && !occluded && wrapper != null && onLockIdle() && !bouncerUp() && shadeExpansion() < 0.03f
+                            && !busyUnder(sceneRoot, e.getRawX(), e.getRawY());
+                    ownOnSensor = ownArmed && onSensor(sceneRoot.getContext(), e.getRawX(), e.getRawY());
+                    ownLastTowards = 0f;
+                    ownForeign = ownArmed && ownEventAt - pilferAt < 300;
+                }
+                if (ownArmed || ownCatch) { ownVt = VelocityTracker.obtain(); track(e); }
+                pinGuard = !ownArmed && !ownCatch && panel != null && wrapper != null && bouncerUp() ? 1 : 0;
+                sideGuard = pinGuard == 0 && !ownCatch && !ownBlock && panel != null && wrapper != null && lead < 0f && panel.progress <= 0.01f && !occluded
+                        && onLockIdle() && shadeExpansion() < 0.03f && !busyUnder(sceneRoot, e.getRawX(), e.getRawY()) && !pagerUnder(sceneRoot, e.getRawX(), e.getRawY()) ? 1 : 0;
+                try { } catch (Throwable ignored) { }
+                return out;
+            }
+            if (pinGuard != 0 && !ownArmed && !ownCatch && !ownDriving) {
+                if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) { boolean was = pinGuard == 2; pinGuard = 0; return was ? Math.max(out, 1) : out; }
+                if (pinGuard == 2) return Math.max(out, 1);
+                if (a == MotionEvent.ACTION_MOVE) {
+                    float px = Math.abs(e.getRawX() - ownX0), py = Math.abs(e.getRawY() - ownY0), ps = dp(sceneRoot.getContext(), 8);
+                    if (py > ps && py >= px) pinGuard = 0;
+                    else if (px > ps && px > py) { pinGuard = 2; releasePinKeys(); return 2; }
+                }
+            }
+            if (sideGuard != 0 && !ownCatch && !ownDriving) {
+                if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) { boolean was = sideGuard == 2; sideGuard = 0; if (was) { ownArmed = false; return Math.max(out, 1); } }
+                else if (sideGuard == 2) return Math.max(out, 1);
+                else if (a == MotionEvent.ACTION_MOVE) {
+                    float px = Math.abs(e.getRawX() - ownX0), py = Math.abs(e.getRawY() - ownY0), ps = dp(sceneRoot.getContext(), 8);
+                    if (py > ps && py * 1.2f >= px) sideGuard = 0;
+                    else if (px > ps && px > 1.6f * py && (!ownArmed || (lockRight(sceneRoot.getContext()) ? e.getRawX() > ownX0 : e.getRawX() < ownX0))) { sideGuard = 2; ownArmed = false; return 2; }
+                }
+            }
+            if (!ownArmed && !ownCatch && !ownDriving) {
+                if (ownBlock) { out = Math.max(out, 1); if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) ownBlock = false; }
+                return out;
+            }
+            track(e);
+            Context c = sceneRoot.getContext();
+            boolean right = lockRight(c);
+            float wide = sceneRoot.getWidth() > 0 ? sceneRoot.getWidth() : c.getResources().getDisplayMetrics().widthPixels;
+            if (!ownDriving) {
+                if (ownBlock) out = Math.max(out, 1);
+                if (e.getPointerCount() > 1 || a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL || panel == null) { ownArmed = false; ownCatch = false; ownForeign = false; if (a != MotionEvent.ACTION_MOVE) ownBlock = false; return out; }
+                if (a != MotionEvent.ACTION_MOVE) return out;
+                float dx = e.getRawX() - ownX0, dy = e.getRawY() - ownY0;
+                float slop = dp(c, 8);
+                float towards = right ? -dx : dx;
+                if (ownCatch) {
+                    if (Math.abs(dy) > slop && Math.abs(dy) > Math.abs(dx)) { ownCatch = false; return out; }
+                    if (Math.abs(dx) < slop || Math.abs(dx) < 1.2f * Math.abs(dy)) return out;
+                    if (towards > 0f && leadTarget >= 1f && lead >= 0.98f && panel.progress >= 0.98f) {
+                        ownCatch = false; ownBlock = false;
+                        if (ownVt != null) { ownVt.recycle(); ownVt = null; }
+                        if (leadAnim != null && leadAnim.isRunning()) leadAnim.end();
+                        return out;
+                    }
+                    if (leadAnim != null) leadAnim.cancel();
+                    ownBase = Math.max(0f, lead >= 0f ? lead : panel.hub); ownFrom = towards;
+                    if (hubInvolved()) backToLock();
+                } else {
+                    if (towards < -slop || Math.abs(dy) > dp(c, 96)) { ownArmed = false; return out; }
+                    ownLastTowards = Math.abs(dx) >= Math.abs(dy) ? towards : 0f;
+                    float first = ownOnSensor ? dp(c, 20) : slop, bend = ownOnSensor ? dp(c, 40) : 3f * slop;
+                    boolean level = towards >= first && Math.abs(dx) >= 1.5f * Math.abs(dy);
+                    boolean curve = towards >= bend && Math.abs(dx) >= 1.2f * Math.abs(dy);
+                    if (!level && !curve) return out;
+                    if (!onLockIdle() || bouncerUp()) { ownArmed = false; ownForeign = false; return out; }
+                    if (leadAnim != null) leadAnim.cancel();
+                    ownBase = 0f; ownFrom = towards;
+                }
+                ownArmed = false; ownCatch = false; ownBlock = false; ownDriving = true; ownMax = Math.max(0f, towards);
+                MAIN.removeCallbacks(LEAD_GIVE_UP); leadHold = false;
+                panel.own = 1f;
+                setLead(ownBase);
+                return 2;
+            }
+            out = Math.max(out, 1);
+            float towards = right ? ownX0 - e.getRawX() : e.getRawX() - ownX0;
+            if (towards > ownMax) ownMax = towards;
+            float room = ownBase > 0f ? wide : Math.max(1f, wide - ownFrom);
+            float now = Math.max(0f, Math.min(1f, ownBase + (towards - ownFrom) / room));
+            if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL || e.getPointerCount() > 1) {
+                ownDriving = false; ownForeign = false;
+                float v = 0f;
+                if (ownVt != null) { ownVt.computeCurrentVelocity(1000); v = (right ? -ownVt.getXVelocity() : ownVt.getXVelocity()) / wide; ownVt.recycle(); ownVt = null; }
+                float dy = Math.abs(e.getRawY() - ownY0);
+                boolean hooked = v < 0f && ownMax >= dp(c, 80) && ownMax - towards <= 0.4f * ownMax;
+                boolean quick = towards >= dp(c, 80) && towards >= 1.2f * dy && e.getEventTime() - ownAt <= 800 && (v > -0.3f || hooked);
+                float target = a == MotionEvent.ACTION_CANCEL ? 0f : Math.abs(v) > 0.6f && !hooked ? (v > 0 ? 1f : 0f) : (quick || now > 0.4f ? 1f : 0f);
+                settleLead(target, v);
+                return out;
+            }
+            setLead(now);
+            return out;
+        }
+
+        static void setLead(float v) {
+            lead = v;
+            try { follow(); } catch (Throwable t) { Log.w("lock lead", t); }
+        }
+
+        static final Runnable LEAD_GIVE_UP = () -> { if (leadHold) { leadHold = false; lead = -1f; try { follow(); } catch (Throwable ignored) { } } };
+
+        static void settleLead(final float target, final float velocity) {
+            if (leadAnim != null) leadAnim.cancel();
+            final Context c = sceneRoot.getContext();
+            final float from = Math.max(0f, lead), d = from - target;
+            final double w = Math.sqrt(Panel.SETTLE_STIFFNESS), k = Panel.SETTLE_DAMPING * w, wd = w * Math.sqrt(1 - Panel.SETTLE_DAMPING * Panel.SETTLE_DAMPING);
+            final double b = (velocity + k * d) / wd;
+            final float wide = sceneRoot.getWidth() > 0 ? sceneRoot.getWidth() : c.getResources().getDisplayMetrics().widthPixels;
+            double reach = (Math.abs(d) + Math.abs(b)) * wide / 0.5;
+            final long ms = (long) Math.max(120, Math.min(900, 1000 * Math.log(Math.max(1.0001, reach)) / k));
+            final ValueAnimator an = ValueAnimator.ofFloat(0f, 1f);
+            leadAnim = an; leadTarget = target;
+            an.setDuration(ms);
+            an.setInterpolator(new android.view.animation.LinearInterpolator());
+            final boolean[] crossed = {target <= 0f || from >= target};
+            final float density = c.getResources().getDisplayMetrics().density;
+            an.addUpdateListener(x -> {
+                double s = x.getAnimatedFraction() * ms / 1000.0, e = Math.exp(-k * s);
+                float now = (float) (target + e * (d * Math.cos(wd * s) + b * Math.sin(wd * s)));
+                if (!crossed[0] && now >= target) {
+                    crossed[0] = true;
+                    float flick = Math.abs(velocity) * wide;
+                    Panel p = sPanel;
+                    if (p != null && sLock && flick > Swing.ARRIVE_DP * density) try { p.swing().arrive(flick); } catch (Throwable ignored) { }
+                }
+                setLead(Math.max(0f, Math.min(1f, now)));
+            });
+            an.addListener(new AnimatorListenerAdapter() {
+                boolean cancelled;
+                @Override public void onAnimationCancel(Animator x) { cancelled = true; }
+                @Override public void onAnimationEnd(Animator x) {
+                    if (cancelled) return;
+                    if (target >= 1f && (onLockScene() || hubInvolved())) {
+                        setLead(1f);
+                        leadHold = true;
+                        if (!hubInvolved() && !snapScene(communal)) sceneTo(communal);
+                        MAIN.removeCallbacks(LEAD_GIVE_UP); MAIN.postDelayed(LEAD_GIVE_UP, 2500);
+                    } else {
+                        leadHold = false; setLead(0f); lead = -1f;
+                        backToLock();
+                        try { follow(); } catch (Throwable ignored) { }
+                    }
+                }
+            });
+            an.start();
+        }
+
+        static boolean closingDrag;
+
+        static boolean hubInvolved() {
+            try {
+                if (stateOf == null) progress();
+                Object state = stateOf.invoke(stateHolder != null ? stateHolder : source.get(controller));
+                if (state == null || communal == null) return false;
+                if (change.isInstance(state)) return communal.equals(fromScene.get(state)) || communal.equals(toScene.get(state));
+                return communal.equals(sceneOf.invoke(state));
+            } catch (Throwable t) { return false; }
+        }
+
+        static boolean onLockScene() { Object now = currentScene(); return now != null && now.equals(blank); }
+
+        static void backToLock() {
+            if (!hubInvolved()) return;
+            if (!snapScene(blank)) sceneTo(blank);
+        }
+
+        static void closeDragStart() {
+            if (!sceneMode || closingDrag || sPanel == null || sPanel.hub < 1f) return;
+            closingDrag = true;
+            MAIN.removeCallbacks(LEAD_GIVE_UP); leadHold = false;
+            if (leadAnim != null) leadAnim.cancel();
+            lead = 1f;
+            backToLock();
+        }
+
+        static void closeDragEnd(boolean away) {
+            if (!closingDrag || away) return;
+            closingDrag = false;
+            if (!onLockScene() && !hubInvolved()) { lead = -1f; leadHold = false; return; }
+            lead = 1f; leadHold = true;
+            if (!hubInvolved() && !snapScene(communal)) sceneTo(communal);
+            MAIN.removeCallbacks(LEAD_GIVE_UP); MAIN.postDelayed(LEAD_GIVE_UP, 2500);
+        }
+
+        static void leftDone() {
+            if (!closingDrag && !leadHold) return;
+            closingDrag = false; leadHold = false; lead = -1f;
+            MAIN.removeCallbacks(LEAD_GIVE_UP);
+        }
+
+        static boolean snapScene(Object key) {
+            if (sceneInteractor == null || key == null) return false;
+            try {
+                for (Method m : sceneInteractor.getClass().getMethods()) {
+                    Class<?>[] t = m.getParameterTypes();
+                    if (m.getName().equals("snapToScene") && t.length == 2 && t[1] == String.class && t[0].isInstance(key)) { m.invoke(sceneInteractor, key, "pixelsuite widget panel"); return true; }
+                }
+            } catch (Throwable t) { }
+            return false;
+        }
+
+        static final Map<Object, Object> hiddenModifiers = new java.util.WeakHashMap<Object, Object>();
+        static Method alphaOf;
+
+        static WeakReference<View> stackRef, shiftedStock;
+        static long stackLooked;
+        static float stockShift, stackShift;
+
+        static View stack() {
+            View v = stackRef == null ? null : stackRef.get();
+            if (v != null && v.isAttachedToWindow()) return v;
+            long now = android.os.SystemClock.uptimeMillis();
+            if (now - stackLooked < 2000 || !(sceneRoot instanceof ViewGroup)) return null;
+            stackLooked = now;
+            v = findStack((ViewGroup) sceneRoot);
+            stackRef = v == null ? null : new WeakReference<View>(v);
+            return v;
+        }
+
+        static View findStack(ViewGroup g) {
+            for (int i = 0; i < g.getChildCount(); i++) {
+                View ch = g.getChildAt(i);
+                if (ch instanceof Root) continue;
+                if (ch.getClass().getName().contains("NotificationStackScrollLayout")) return ch;
+                if (ch instanceof ViewGroup) { View f = findStack((ViewGroup) ch); if (f != null) return f; }
+            }
+            return null;
+        }
+
+        static boolean inside(View v, View parent) {
+            for (Object o = v; o instanceof View; o = ((View) o).getParent()) if (o == parent) return true;
+            return false;
+        }
+
+        static void pageShift(float progress) {
+            try {
+                if (!sceneMode || wrapper == null) return;
+                Context c = wrapper.getContext();
+                float w = wrapper.getWidth() > 0 ? wrapper.getWidth() : c.getResources().getDisplayMetrics().widthPixels;
+                float dx = progress <= 0f ? 0f : (lockRight(c) ? -1f : 1f) * Math.min(1f, progress) * w;
+                View stockView = null;
+                for (int i = 0; i < wrapper.getChildCount(); i++) { View v = wrapper.getChildAt(i); if (!(v instanceof Root) && v != shadeBack && v != veilView) { stockView = v; break; } }
+                View old = shiftedStock == null ? null : shiftedStock.get();
+                if (old != null && old != stockView) { old.setTranslationX(0f); tAlpha(old, 1f); stockShift = 0f; }
+                boolean hubIdle = pageKind.startsWith("idle") && pageKind.contains("Communal");
+                float want = hubIdle || bouncerUp() ? 0f : dx;
+                float p = Math.max(0f, Math.min(1f, progress));
+                float fade = dx == 0f ? 1f : Math.max(0f, 1f - p * 1.4f);
+                if (stockView != null) {
+                    float stockFade = want == 0f ? 1f : fade;
+                    if (want != stockShift || stockView.getTranslationX() != want) { stockView.setTranslationX(want); stockShift = want; }
+                    tAlpha(stockView, stockFade);
+                    shiftedStock = new WeakReference<View>(stockView);
+                }
+                View list = dx == 0f && stackShift == 0f ? null : stack();
+                if (list != null && (stockView == null || !inside(list, stockView))) {
+                    if (list.getTranslationX() != dx) list.setTranslationX(dx);
+                    tAlpha(list, fade);
+                    stackShift = dx;
+                }
+                View bar = dx == 0f && barShifted == null ? null : statusBarView(stockView);
+                if (bar != null) {
+                    float barFade = want == 0f ? 1f : Math.max(0f, 1f - p / 0.15f);
+                    tAlpha(bar, barFade);
+                    barShifted = want == 0f ? null : bar;
+                }
+            } catch (Throwable t) { Log.w("lock page shift", t); }
+        }
+
+        static View barShifted;
+        static java.lang.reflect.Method tSet, tGet;
+
+        static void tAlpha(View v, float a) {
+            try {
+                if (tSet == null) { tSet = View.class.getMethod("setTransitionAlpha", float.class); tGet = View.class.getMethod("getTransitionAlpha"); }
+                if (((Float) tGet.invoke(v)) != a) tSet.invoke(v, a);
+            } catch (Throwable ignored) { }
+        }
+        static WeakReference<View> barRef;
+        static long barLooked;
+
+        static View statusBarView(View stockView) {
+            View v = barRef == null ? null : barRef.get();
+            if (v != null && v.isAttachedToWindow() && (stockView == null || inside(v, stockView))) return v;
+            long now = android.os.SystemClock.uptimeMillis();
+            if (now - barLooked < 150 || !(stockView instanceof ViewGroup)) return v != null && v.isAttachedToWindow() ? v : null;
+            barLooked = now;
+            View found = findBar((ViewGroup) stockView);
+            if (found == null) return v != null && v.isAttachedToWindow() ? v : null;
+            if (v != null && v != found) tAlpha(v, 1f);
+            barRef = new WeakReference<View>(found);
+            return found;
+        }
+
+        static View findBar(ViewGroup g) {
+            for (int i = 0; i < g.getChildCount(); i++) {
+                View ch = g.getChildAt(i);
+                if (ch.getClass().getName().endsWith("KeyguardStatusBarView")) return ch;
+                if (ch instanceof ViewGroup) { View f = findBar((ViewGroup) ch); if (f != null) return f; }
+            }
+            return null;
+        }
+
+        static Object hidden(ClassLoader cl, Class<?> modifier, Object given) throws Throwable {
+            synchronized (hiddenModifiers) {
+                Object made = hiddenModifiers.get(given);
+                if (made != null) return made;
+                if (alphaOf == null) alphaOf = cl.loadClass("androidx.compose.ui.draw.AlphaKt").getMethod("alpha", modifier, float.class);
+                made = alphaOf.invoke(null, given, 0f);
+                hiddenModifiers.put(given, made);
+                return made;
+            }
+        }
+
+        static boolean sceneTo(Object key) {
+            if (!sceneMode || sceneInteractor == null || key == null) return false;
+            try {
+                for (Method m : sceneInteractor.getClass().getMethods()) {
+                    Class<?>[] t = m.getParameterTypes();
+                    if (m.getName().equals("changeScene") && t.length == 2 && t[1] == String.class && t[0].isInstance(key)) { m.invoke(sceneInteractor, key, "pixelsuite widget panel"); return true; }
+                }
+            } catch (Throwable t) { }
+            return false;
+        }
+
+        static volatile Object bouncerRepo;
+        static java.lang.reflect.Field repoShow, repoSoon;
+        static Method flowValue;
+
+        static int repoBouncer() {
+            Object repo = bouncerRepo;
+            if (repo == null) return -1;
+            try {
+                if (repoShow == null) {
+                    repoShow = repo.getClass().getDeclaredField("_primaryBouncerShow"); repoShow.setAccessible(true);
+                    try { repoSoon = repo.getClass().getDeclaredField("_primaryBouncerShowingSoon"); repoSoon.setAccessible(true); } catch (Throwable none) { }
+                }
+                Object flow = repoShow.get(repo);
+                if (flowValue == null) flowValue = flow.getClass().getMethod("getValue");
+                if (Boolean.TRUE.equals(flowValue.invoke(flow))) return 1;
+                if (repoSoon != null) { Object soon = repoSoon.get(repo); if (soon != null && Boolean.TRUE.equals(soon.getClass().getMethod("getValue").invoke(soon))) return 1; }
+                return 0;
+            } catch (Throwable t) { bouncerRepo = null; return -1; }
+        }
+
+        static volatile Object updateMonitor;
+        static volatile boolean fpPaused;
+        static float fpX0, fpY0;
+        static Method fpUpdate;
+
+        static volatile boolean fpHeldBack;
+        static final java.util.WeakHashMap<Object, Object> pinPresses = new java.util.WeakHashMap<Object, Object>();
+
+        static void releasePinKeys() {
+            java.util.Map<Object, Object> open;
+            synchronized (pinPresses) { if (pinPresses.isEmpty()) return; open = new java.util.HashMap<Object, Object>(pinPresses); pinPresses.clear(); }
+            int n = 0;
+            for (java.util.Map.Entry<Object, Object> e : open.entrySet()) {
+                Object press = e.getKey(), source = e.getValue();
+                try {
+                    ClassLoader cl = source.getClass().getClassLoader();
+                    Object cancel = cl.loadClass("androidx.compose.foundation.interaction.PressInteraction$Cancel").getConstructor(press.getClass()).newInstance(press);
+                    Method emit = null, tryEmit = null;
+                    for (Class<?> k = source.getClass(); k != null; k = k.getSuperclass())
+                        for (Method m : k.getDeclaredMethods()) {
+                            if (m.getName().equals("tryEmit") && m.getParameterTypes().length == 1) tryEmit = m;
+                            else if (m.getName().equals("emit") && m.getParameterTypes().length == 2) emit = m;
+                        }
+                    if (tryEmit != null) { tryEmit.setAccessible(true); tryEmit.invoke(source, cancel); n++; continue; }
+                    if (emit == null) continue;
+                    final Class<?> cont = cl.loadClass("kotlin.coroutines.Continuation");
+                    final Object context = cl.loadClass("kotlin.coroutines.EmptyCoroutineContext").getField("INSTANCE").get(null);
+                    Object done = Proxy.newProxyInstance(cl, new Class<?>[]{cont}, (self, m, args) -> {
+                        if (m.getName().equals("getContext")) return context;
+                        if (m.getName().equals("hashCode")) return System.identityHashCode(self);
+                        if (m.getName().equals("equals")) return self == args[0];
+                        return null;
+                    });
+                    emit.setAccessible(true); emit.invoke(source, cancel, done); n++;
+                } catch (Throwable t) { }
+            }
+        }
+
+        static void fingerprintPause(boolean on) {
+            if (fpPaused == on) return;
+            fpPaused = on;
+            if (!on) fpHeldBack = false;
+            final Object kum = updateMonitor;
+            if (kum == null) return;
+            Runnable apply = () -> {
+                try {
+                    if (fpUpdate == null) { fpUpdate = kum.getClass().getDeclaredMethod("updateFingerprintListeningState", int.class); fpUpdate.setAccessible(true); }
+                    fpUpdate.invoke(kum, 2);
+                } catch (Throwable t) { }
+            };
+            if (on || !feedShowing()) apply.run(); else MAIN.postDelayed(apply, 120);
+        }
+
+        static void fingerprintBackOnLock() {
+            if (!fpPaused || feedShowing()) return;
+            fpQuietUntil = 0;
+            MAIN.removeCallbacks(FP_RESUME); MAIN.removeCallbacks(FP_POLL);
+            fingerprintPause(false);
+        }
+
+        static final long FP_QUIET = 1200;
+        static volatile long fpQuietUntil;
+        static volatile boolean fpTouching;
+        static final Runnable FP_RESUME = () -> { if (!fpTouching && android.os.SystemClock.uptimeMillis() >= fpQuietUntil) fingerprintPause(false); };
+        static final Runnable FP_POLL = new Runnable() { public void run() {
+            if (!fpPaused) return;
+            if (!feedShowing()) { fingerprintBackOnLock(); return; }
+            if (android.os.SystemClock.uptimeMillis() < fpQuietUntil) MAIN.postDelayed(this, 40);
+        } };
+
+        static boolean feedShowing() {
+            Panel panel = sPanel;
+            return panel != null && wrapper != null && (panel.progress > 0.02f || lead > 0f || ownDriving || leadMoving());
+        }
+
+        static boolean fingerprintQuiet() { return android.os.SystemClock.uptimeMillis() < fpQuietUntil && feedShowing(); }
+
+        static void fingerprintWatch(MotionEvent e) {
+            int a = e.getActionMasked();
+            if (a == MotionEvent.ACTION_DOWN) {
+                fpX0 = e.getRawX(); fpY0 = e.getRawY(); fpTouching = true;
+                MAIN.removeCallbacks(FP_RESUME);
+                if (fingerprintQuiet()) { fingerprintPause(true); }
+                else fingerprintPause(false);
+                return;
+            }
+            if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) {
+                fpTouching = false;
+                if (!feedShowing()) { fpQuietUntil = 0; fingerprintBackOnLock(); return; }
+                fpQuietUntil = android.os.SystemClock.uptimeMillis() + FP_QUIET;
+                MAIN.removeCallbacks(FP_RESUME); MAIN.removeCallbacks(FP_POLL);
+                if (fpPaused) { MAIN.postDelayed(FP_RESUME, Math.max(0, fpQuietUntil - android.os.SystemClock.uptimeMillis())); MAIN.postDelayed(FP_POLL, 40); }
+                return;
+            }
+            if (fpPaused || a != MotionEvent.ACTION_MOVE || sceneRoot == null) return;
+            if (!feedShowing()) return;
+            if (Math.hypot(e.getRawX() - fpX0, e.getRawY() - fpY0) > dp(sceneRoot.getContext(), 12)) fingerprintPause(true);
+        }
+
+
+        static java.lang.reflect.Field overlaysField;
+        static Method flowRead, stateNow, stateOverlays;
+
+        static int overlayBouncer() {
+            Object scenes = sceneInteractor;
+            if (scenes == null) return -1;
+            try {
+                if (overlaysField == null) {
+                    for (Class<?> k = scenes.getClass(); k != null && overlaysField == null; k = k.getSuperclass())
+                        try { overlaysField = k.getDeclaredField("currentOverlays"); overlaysField.setAccessible(true); } catch (NoSuchFieldException none) { }
+                }
+                if (overlaysField != null) {
+                    Object flow = overlaysField.get(scenes);
+                    if (flow != null) {
+                        if (flowRead == null || !flowRead.getDeclaringClass().isInstance(flow)) flowRead = flow.getClass().getMethod("getValue");
+                        Object set = flowRead.invoke(flow);
+                        if (set instanceof Iterable) { for (Object k : (Iterable<?>) set) if (isBouncer(k)) return 1; return 0; }
+                    }
+                }
+            } catch (Throwable t) { }
+            try {
+                if (stateNow == null) stateNow = scenes.getClass().getMethod("getTransitionState");
+                Object state = stateNow.invoke(scenes);
+                if (state == null) return -1;
+                if (stateOverlays == null || !stateOverlays.getDeclaringClass().isInstance(state)) stateOverlays = state.getClass().getMethod("getCurrentOverlays");
+                Object set = stateOverlays.invoke(state);
+                if (set instanceof Iterable) { for (Object k : (Iterable<?>) set) if (isBouncer(k)) return 1; return 0; }
+            } catch (Throwable t) { }
+            return -1;
+        }
+
+        static boolean bouncerUp() {
+            int over = overlayBouncer();
+            if (over == 1) return true;
+            int repo = repoBouncer();
+            if (repo == 1) return true;
+            if (sceneMode) return sceneBouncer();
+            if (bouncerFailed || controller == null) return false;
+            try { return Xp.getBooleanField(controller, "anyBouncerShowing"); }
+            catch (Throwable t) { bouncerFailed = true; return false; }
+        }
+
+        static java.lang.reflect.Method overlaysOf;
+        static boolean overlaysMissing;
+
+        static boolean sceneBouncer() {
+            try {
+                if (stateOf == null) progress();
+                Object state = stateOf.invoke(stateHolder != null ? stateHolder : source.get(controller));
+                if (state == null) return false;
+                if (!"Idle".equals(state.getClass().getSimpleName())) return false;
+                if (!overlaysMissing) {
+                    try {
+                        if (overlaysOf == null || !overlaysOf.getDeclaringClass().isInstance(state)) overlaysOf = state.getClass().getMethod("getCurrentOverlays");
+                        Object set = overlaysOf.invoke(state);
+                        if (set instanceof Iterable) { for (Object k : (Iterable<?>) set) if (isBouncer(k)) return true; return false; }
+                    } catch (NoSuchMethodException none) { overlaysMissing = true; }
+                }
+                return isBouncer(state);
+            } catch (Throwable t) { return false; }
+        }
+
+        static boolean isBouncer(Object o) { return String.valueOf(o).replace("bouncer_not_showing", "").contains("bouncer"); }
+
         static void attach(ClassLoader cl, Object owner, ViewGroup frame) throws Throwable {
             if (wrapper == frame) return;
             if (sPanel != null) { Panel old = sPanel; sPanel = null; if (old.root.getParent() instanceof ViewGroup) ((ViewGroup) old.root.getParent()).removeView(old.root); }
             if (watcher != null && wrapper != null) { try { wrapper.getViewTreeObserver().removeOnPreDrawListener(watcher); } catch (Throwable ignored) { } watcher = null; }
-            controller = owner; wrapper = frame; stock = null; stockAlpha = -1f; shade = null; raised = false; source = null;
+            controller = owner; wrapper = frame; stock = null; stockAlpha = -1f; shade = null; raised = false; source = null; stateHolder = null; bouncerFailed = false; shadeFailed = false; shadeFlow = null;
             try { if (veilView != null && veilView.getParent() instanceof ViewGroup) ((ViewGroup) veilView.getParent()).removeView(veilView); } catch (Throwable ignored) { }
             MAIN.removeCallbacks(SHADE_OUT); MAIN.removeCallbacks(SHADE_BACK); picking = false; shadeGone = false;
             pinView = null; pinUp = false; pinEntry = false; tapsBusy = false; pinShown = 1f;
@@ -2826,6 +3829,11 @@ final class WidgetPanel {
             Class<?> scenes = cl.loadClass("com.android.systemui.communal.shared.model.CommunalScenes");
             communal = scenes.getField("Communal").get(null);
             blank = scenes.getField("Blank").get(null);
+            if (sceneMode) {
+                Class<?> keys = cl.loadClass("com.android.systemui.scene.shared.model.Scenes");
+                communal = keys.getField("Communal").get(null);
+                blank = keys.getField("Lockscreen").get(null);
+            }
             idle = cl.loadClass("com.android.compose.animation.scene.content.state.TransitionState$Idle");
             change = cl.loadClass("com.android.compose.animation.scene.content.state.TransitionState$Transition$ChangeScene");
             final Context c = frame.getContext();
@@ -2901,7 +3909,7 @@ final class WidgetPanel {
         }
 
         static void drawn(boolean yes) {
-            if (wrapper == null) return;
+            if (wrapper == null || sceneMode) return;
             if (stock == null || stock.getParent() != wrapper) {
                 stock = null; stockAlpha = -1f;
                 for (int i = 0; i < wrapper.getChildCount(); i++) { View v = wrapper.getChildAt(i); if (!(v instanceof Root) && v != shadeBack && v != veilView) { stock = v; break; } }
@@ -2952,17 +3960,18 @@ final class WidgetPanel {
         }
 
         static void follow() throws Throwable {
+            if (fpPaused) try { fingerprintBackOnLock(); } catch (Throwable ignored) { }
             Panel p = sPanel;
             if (p == null || wrapper == null) return;
             if (!PatronGate.ok(p.activity)) { apply(false); return; }
             drawn(false);
 
             try {
-                boolean up = controller != null && Xp.getBooleanField(controller, "anyBouncerShowing");
+                boolean up = bouncerUp();
                 if (up != pinUp) { pinUp = up; raised(p.progress > 0f && !up); }
 
-                boolean pin = false;
-                if (up) {
+                boolean pin = sceneMode && up;
+                if (up && !sceneMode) {
                     if (pinView == null) { int bid = wrapper.getResources().getIdentifier("keyguard_bouncer_container", "id", wrapper.getContext().getPackageName()); pinView = bid != 0 ? wrapper.getRootView().findViewById(bid) : null; }
 
                     pin = pinView != null && pinView.isAttachedToWindow() && pinView.getVisibility() == View.VISIBLE;
@@ -2991,6 +4000,8 @@ final class WidgetPanel {
                 }
             } catch (Throwable ignored) { }
             float now = progress();
+            if (leadHold && now >= 1f) { leadHold = false; lead = -1f; MAIN.removeCallbacks(LEAD_GIVE_UP); }
+            if (lead >= 0f) now = lead;
             if (veilOn && !sSessionOn) veil(false);
 
             if (covered() && (heldOut || now < p.hub)) { heldOut = true; now = 0f; } else heldOut = false;
@@ -3055,15 +4066,15 @@ final class WidgetPanel {
         }
 
         static float progress() throws Throwable {
-            if (source == null) {
-                source = controller.getClass().getDeclaredField("dataSourceDelegator"); source.setAccessible(true);
-                stateOf = source.getType().getMethod("getTransitionState");
+            if (source == null && stateHolder == null) {
+                if (sceneMode && sceneInteractor != null) { stateHolder = sceneInteractor; stateOf = sceneInteractor.getClass().getMethod("getTransitionState"); }
+                else { source = controller.getClass().getDeclaredField("dataSourceDelegator"); source.setAccessible(true); stateOf = source.getType().getMethod("getTransitionState"); }
                 sceneOf = stateOf.getReturnType().getMethod("getCurrentScene");
                 progressOf = change.getMethod("getProgress");
                 fromScene = change.getDeclaredField("fromScene"); fromScene.setAccessible(true);
                 toScene = change.getDeclaredField("toScene"); toScene.setAccessible(true);
             }
-            Object state = stateOf.invoke(source.get(controller));
+            Object state = stateOf.invoke(stateHolder != null ? stateHolder : source.get(controller));
             if (state == null) { page("none", 0f); return 0f; }
             if (change.isInstance(state)) {
                 float done = ((Number) progressOf.invoke(state)).floatValue();
@@ -3083,7 +4094,45 @@ final class WidgetPanel {
             if (!kind.equals(pageKind)) pageKind = kind;
         }
 
+        static Object currentScene() {
+            try {
+                if (stateOf == null) progress();
+                Object state = stateOf.invoke(stateHolder != null ? stateHolder : source.get(controller));
+                return state == null || change.isInstance(state) ? null : sceneOf.invoke(state);
+            } catch (Throwable t) { return null; }
+        }
+
+        static boolean smoothClose() {
+            Panel p = sPanel;
+            if (!sceneMode || p == null || closingDrag || p.progress <= 0f || sceneRoot == null) return false;
+            if (leadMoving() && leadTarget == 0f) return true;
+            float from = p.progress;
+            MAIN.removeCallbacks(LEAD_GIVE_UP); leadHold = false;
+            if (leadAnim != null) leadAnim.cancel();
+            lead = from;
+            backToLock();
+            final ValueAnimator an = ValueAnimator.ofFloat(from, 0f);
+            leadAnim = an; leadTarget = 0f;
+            an.setDuration(Math.max(220, Math.round(420 * from)));
+            an.setInterpolator(new DecelerateInterpolator(2.2f));
+            an.addUpdateListener(x -> setLead((Float) x.getAnimatedValue()));
+            an.addListener(new AnimatorListenerAdapter() {
+                boolean cancelled;
+                @Override public void onAnimationCancel(Animator x) { cancelled = true; }
+                @Override public void onAnimationEnd(Animator x) {
+                    if (cancelled) return;
+                    setLead(0f); lead = -1f;
+                    try { follow(); } catch (Throwable ignored) { }
+                }
+            });
+            an.start();
+            return true;
+        }
+
         static void close() {
+            if (smoothClose()) return;
+            if (sceneMode) { backToLock(); return; }
+            if (sceneTo(blank)) return;
             try {
                 Object scenes = Xp.getObjectField(controller, "communalSceneInteractor");
                 for (Method m : scenes.getClass().getMethods()) {
@@ -3281,6 +4330,7 @@ final class WidgetPanel {
         }
 
         static void snapClose() {
+            if (sceneMode) { close(); return; }
             try {
                 Object scenes = Xp.getObjectField(controller, "communalSceneInteractor");
 
@@ -3313,6 +4363,8 @@ final class WidgetPanel {
         }
 
         static void openHub() {
+            if (sceneMode) { if (onLockScene()) sceneTo(communal); return; }
+            if (sceneTo(communal)) return;
             try {
                 Object scenes = Xp.getObjectField(controller, "communalSceneInteractor");
                 for (Method m : scenes.getClass().getMethods()) {
@@ -3359,7 +4411,69 @@ final class WidgetPanel {
             return null;
         }
 
-        static boolean add(ComponentName provider, android.os.UserHandle user) {
+        static boolean sDropOurs;
+
+        static void installDrop() {
+            Xp.hookAllMethods(ViewGroup.class, "dispatchDragEvent", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        if (wrapper == null || sPanel == null || p.args.length < 1 || !(p.args[0] instanceof android.view.DragEvent)) return;
+                        if (p.thisObject != wrapper.getRootView()) return;
+                        Boolean r = drop((android.view.DragEvent) p.args[0]);
+                        if (r != null) p.setResult(r);
+                    } catch (Throwable t) { Log.w("lock drop", t); }
+                }
+            });
+        }
+
+        static boolean widgetDrag(android.content.ClipDescription d) {
+            if (d == null || !d.hasMimeType("text/vnd.android.intent")) return false;
+            if (picking || sSessionOn) return true;
+            for (int i = 0; i < d.getMimeTypeCount(); i++) if (d.getMimeType(i).startsWith("com.android.launcher3.widgetpicker")) return true;
+            return false;
+        }
+
+        static Boolean drop(android.view.DragEvent e) {
+            Panel p = sPanel;
+            switch (e.getAction()) {
+                case android.view.DragEvent.ACTION_DRAG_STARTED:
+                    sDropOurs = p != null && lockEnabled(wrapper.getContext()) && widgetDrag(e.getClipDescription());
+                    return sDropOurs ? Boolean.TRUE : null;
+                case android.view.DragEvent.ACTION_DRAG_LOCATION: {
+                    if (!sDropOurs) return null;
+                    if (p != null && p.progress >= 1f && p.scroll != null) {
+                        int[] at = new int[2]; p.root.getLocationInWindow(at);
+                        float y = e.getY() - at[1], zone = dp(p.root.getContext(), 96);
+                        if (y < p.topInset + zone) p.scroll.smoothScrollBy(0, -dp(p.root.getContext(), 40));
+                        else if (y > p.root.getHeight() - zone) p.scroll.smoothScrollBy(0, dp(p.root.getContext(), 40));
+                    }
+                    return Boolean.TRUE;
+                }
+                case android.view.DragEvent.ACTION_DROP: {
+                    if (!sDropOurs) return null;
+                    android.content.ClipData clip = e.getClipData();
+                    if (p == null || clip == null || clip.getItemCount() == 0 || clip.getItemAt(0).getIntent() == null) return Boolean.FALSE;
+                    Intent data = clip.getItemAt(0).getIntent();
+                    ComponentName provider = data.getParcelableExtra("android.intent.extra.COMPONENT_NAME");
+                    android.os.UserHandle user = data.getParcelableExtra(Intent.EXTRA_USER);
+                    if (provider == null) return Boolean.FALSE;
+                    int index = -1;
+                    if (p.progress >= 1f && p.grid != null) { int[] g = new int[2]; p.grid.getLocationInWindow(g); index = p.grid.indexAt(e.getX() - g[0], e.getY() - g[1]); }
+                    p.root.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    return add(provider, user, index);
+                }
+                case android.view.DragEvent.ACTION_DRAG_ENDED:
+                    if (!sDropOurs) return null;
+                    sDropOurs = false;
+                    return Boolean.TRUE;
+                default:
+                    return sDropOurs ? Boolean.TRUE : null;
+            }
+        }
+
+        static boolean add(ComponentName provider, android.os.UserHandle user) { return add(provider, user, -1); }
+
+        static boolean add(ComponentName provider, android.os.UserHandle user, int index) {
             if (wrapper == null || sPanel == null) return false;
             Context c = wrapper.getContext();
             if (!lockEnabled(c)) return false;
@@ -3374,6 +4488,7 @@ final class WidgetPanel {
             AppWidgetProviderInfo info = AppWidgetManager.getInstance(c).getAppWidgetInfo(id);
             if (info == null) { host.deleteAppWidgetId(id); return false; }
             listen(c);
+            if (index >= 0) sPendingAt.put(id, index);
             if (info.configure != null && !configurationOptional(info)) {
                 setup(c, id, info.configure);
                 return true;
@@ -3386,6 +4501,7 @@ final class WidgetPanel {
         }
 
         static final List<Integer> sPending = new ArrayList<Integer>();
+        static final Map<Integer, Integer> sPendingAt = new HashMap<Integer, Integer>();
         static int sFlushTries;
         static final Runnable FLUSH = () -> { try { flush(); } catch (Throwable t) { Log.w("lock flush", t); } };
 
@@ -3399,11 +4515,12 @@ final class WidgetPanel {
                 MAIN.postDelayed(FLUSH, 250);
                 return;
             }
-            for (Integer id : new ArrayList<Integer>(sPending)) p.addCard(id, ready, -1);
+            boolean end = false;
+            for (Integer id : new ArrayList<Integer>(sPending)) { Integer at = sPendingAt.remove(id); end |= at == null; p.addCard(id, ready, at == null ? -1 : at); }
             sPending.clear();
             save(p.activity, p.grid.ids());
             p.updateEmpty();
-            p.scrollToEnd();
+            if (end) p.scrollToEnd();
         }
 
         static int sSetupId = -1;

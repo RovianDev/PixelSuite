@@ -28,6 +28,10 @@ final class Backup {
 
     private static final Set<String> PATREON = new HashSet<String>(Arrays.asList(AdBlock.KEY, GoogleFeedAds.KEY, CallRecording.KEY));
 
+    static boolean patreon(String key) {
+        return PatronAccess.protectedKey(key) || key.startsWith(WidgetPanel.KEY) || key.startsWith(WidgetPanel.LOCK_KEY);
+    }
+
     static boolean wanted(String key) {
         if (key == null || SKIP.contains(key)) return false;
         if (key.startsWith("pixelsuite_patron") || key.startsWith("pixelsuite_esim")) return false;
@@ -178,6 +182,7 @@ final class Backup {
                 String key = it.next();
                 if (!wanted(key) || !key.matches("[A-Za-z0-9_.]+")) continue;
                 if (!patron && PATREON.contains(key)) { cmd.append("settings put secure ").append(key).append(" 0;\n"); continue; }
+                if (!patron && patreon(key)) continue;
                 cmd.append("settings put secure ").append(key).append(' ').append(quote(secure.optString(key))).append(";\n");
             }
             Map<String, StringBuilder> perPkg = new LinkedHashMap<String, StringBuilder>();

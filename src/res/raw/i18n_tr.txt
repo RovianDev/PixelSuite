@@ -1811,3 +1811,366 @@ Couldn't put back {0}	{0} geri konamadı
 Couldn't save {0}	{0} kaydedilemedi
 It didn't install	Yüklenemedi
 Root isn't available	Root yok
+Pixel search	Pixel Arama
+Find apps, contacts, files and more	Uygulamaları, kişileri, dosyaları ve fazlasını bulun
+Everything on your phone, one search away.	Telefonunuzdaki her şey, tek bir aramada.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	Ana ekranınızda yeni bir arama çubuğu. Uygulamaları, kişileri, dosyaları, ayarları ve fazlasını tek yerden bulun.
+Look	Görünüm
+Color	Renk
+Blurs what's behind the bar, with glowing edges.	Çubuğun arkasını bulanıklaştırır, kenarları parlar.
+How much of the outer bar shows.	Dış çubuğun ne kadar görüneceği.
+How much of the search box and side buttons shows.	Arama kutusunun ve yan düğmelerin ne kadar görüneceği.
+Voice search, Google Lens, Song search	Sesli arama, Google Lens, Şarkı arama
+Choose and order what shows up	Neyin görüneceğini ve sırasını seçin
+Web search	Web araması
+What to search	Neler aransın
+Search inside files	Dosyaların içinde ara
+Tap to look through your files now.	Dosyalarınızı şimdi taramak için dokunun.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	PDF, Word, Excel ve metin dosyalarınızın içindeki kelimeleri ve sayıları, bulundukları sayfayla birlikte bulun. Önizlemek, paylaşmak veya bulmak için dosyaya basılı tutun.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	15% of 80 veya 5 km in miles gibi bir hesap ya da dönüşüm yazın, kopyalamak için sonuca dokunun.
+Pixel search shows when Hide search bar is off.	Pixel Arama, Arama çubuğunu gizle kapalıyken görünür.
+System colors	Sistem renkleri
+Your color	Sizin renginiz
+Any color	İstediğiniz renk
+Light	Açık
+Calculator and units	Hesap makinesi ve birimler
+App shortcuts	Uygulama kısayolları
+Files and media	Dosyalar ve medya
+Inside files	Dosyaların içi
+Web	Web
+All	Tümü
+Google Lens	Google Lens
+Song search	Şarkı arama
+Assistant	Asistan
+QR code scanner	QR kod tarayıcı
+Action	Eylem
+App	Uygulama
+App shortcut	Uygulama kısayolu
+Contact	Kişi
+Shortcut	Kısayol
+Add a button	Düğme ekle
+Choose an app	Bir uygulama seçin
+Couldn't open your contacts	Kişileriniz açılamadı
+Getting the app's shortcuts…	Uygulamanın kısayolları alınıyor…
+Go to your home screen once, then try again.	Bir kez ana ekranınıza gidin, sonra tekrar deneyin.
+In the search box	Arama kutusunda
+Left side	Sol taraf
+Right side	Sağ taraf
+Looking through your files…	Dosyalarınız taranıyor…
+Looking through your files… {0}	Dosyalarınız taranıyor… {0}
+Move down	Aşağı taşı
+Move left	Sola taşı
+Move right	Sağa taşı
+Move up	Yukarı taşı
+No buttons	Düğme yok
+Preview	Önizleme
+Results show in this order. Turn off what you don't need.	Sonuçlar bu sırayla görünür. İhtiyacınız olmayanları kapatın.
+That side is full	O taraf dolu
+This app has no shortcuts	Bu uygulamanın kısayolu yok
+This contact has no phone number	Bu kişinin telefon numarası yok
+Turn Pixel search off and on again to allow searching your files.	Dosyalarınızda aramaya izin vermek için Pixel Arama'yı kapatıp yeniden açın.
+Turn on Pixel search first	Önce Pixel Arama'yı açın
+Your files are looked through after you turn on Pixel search.	Pixel Arama'yı açtıktan sonra dosyalarınız taranır.
+{0} files, {1} with text you can search. Updated {2}.	{0} dosya, {1} tanesinde aranabilir metin var. Güncelleme: {2}.
+{0} of {1} turned on	{1} öğeden {0} tanesi açık
+No app can open this file	Bu dosyayı açabilecek uygulama yok
+No app can open this folder	Bu klasörü açabilecek uygulama yok
+That file isn't there any more	O dosya artık orada değil
+Couldn't open it	Açılamadı
+About phone	Telefon hakkında
+Accessibility	Erişilebilirlik
+Airplane mode	Uçak modu
+Android settings	Android ayarları
+Battery	Pil
+Battery Saver	Pil Tasarrufu
+Cast	Yayınla
+Copied	Kopyalandı
+Dark theme	Koyu tema
+Data usage	Veri kullanımı
+Default apps	Varsayılan uygulamalar
+Developer options	Geliştirici seçenekleri
+Display	Ekran
+Getting your files ready. They show up here in a few minutes.	Dosyalarınız hazırlanıyor. Birkaç dakika içinde burada görünecek.
+Keyboard	Klavye
+Location	Konum
+Network & internet	Ağ ve internet
+Night Light	Gece Işığı
+No results	Sonuç yok
+Open	Aç
+Page {0}	Sayfa {0}
+Passwords & accounts	Şifreler ve hesaplar
+Printing	Yazdırma
+Privacy	Gizlilik
+Search apps, contacts, files, settings and more	Uygulama, kişi, dosya, ayar ve fazlasını arayın
+Search your phone and the web	Telefonunuzda ve web'de arayın
+Search {0} for “{1}”	{0} üzerinde “{1}” ara
+Security & privacy	Güvenlik ve gizlilik
+Show in folder	Klasörde göster
+Sound & vibration	Ses ve titreşim
+Storage	Depolama
+System update	Sistem güncellemesi
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	Dosyalarınızda aramaya izin vermek için Pixel Suite'te Pixel Arama'yı kapatıp yeniden açın.
+Users	Kullanıcılar
+Wi-Fi	Kablosuz
+Colorful icons	Renkli simgeler
+App and shortcut buttons keep their own colors.	Uygulama ve kısayol düğmeleri kendi renklerini korur.
+Edit search bar	Arama çubuğunu düzenle
+Size	Boyut
+Outer bar	Dış çubuk
+Search box	Arama kutusu
+More settings	Diğer ayarlar
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	Arama çubuğuna dokunup yazmaya başlayın. Doğrudan ana ekranda düzenlemek için çubuğa basılı tutun.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	Taşımak için çubuktaki düğmeleri sürükleyin. Kaldırmak için bir düğmeyi çubuğun dışına sürükleyin.
+The bar is full. Drag a button off the bar first.	Çubuk dolu. Önce bir düğmeyi çubuğun dışına sürükleyin.
+Hold and drag to change the order.	Sırayı değiştirmek için basılı tutup sürükleyin.
+Favorites	Favoriler
+Favorite	Favori
+Added to favorites	Favorilere eklendi
+Removed from favorites	Favorilerden kaldırıldı
+Hold an app, a contact or a file to add it here	Buraya eklemek için bir uygulamaya, kişiye veya dosyaya basılı tutun
+Open Pixel Suite once to download currency rates	Döviz kurlarını indirmek için Pixel Suite'i bir kez açın
+Currency	Para birimi
+Convert to	Şuna çevir
+Update automatically	Otomatik güncelle
+Update now	Şimdi güncelle
+Updating the rates…	Kurlar güncelleniyor…
+Rates updated	Kurlar güncellendi
+Rates updated {0}	Kurlar güncellendi: {0}
+Rates not downloaded yet	Kurlar henüz indirilmedi
+Couldn't update the rates	Kurlar güncellenemedi
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	Çevirmek için 200 USD gibi bir tutar ve para birimi yazın. Kurlar internetten indirilir, sizinle ilgili hiçbir şey gönderilmez.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	Eklemek için bir düğmeye dokunun veya basılı tutup çubuğa sürükleyin. Çubuktaki düğmeleri taşımak için sürükleyin, kaldırmak için çubuğun dışına sürükleyin.
+Drop it on the bar to add it	Eklemek için çubuğun üzerine bırakın
+No contacts with a phone number	Telefon numarası olan kişi yok
+Everything is searched on your phone. Only web searches and currency rates go online.	Her şey telefonunuzda aranır. Yalnızca web aramaları ve döviz kurları internete çıkar.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	Otomatik ayarının gece hangisini kullanacağını seçmek için Koyu veya Süper Karanlık seçeneğine basılı tutun.
+Lock the sliders	Kaydırıcıları kilitle
+Search currencies	Para birimi ara
+Search engine	Arama motoru
+Search settings	Arama ayarları
+Show keyboard	Klavyeyi göster
+Replace	Değiştir
+Favorite contacts	Favori kişiler
+Add dialer favorites	Telefon favorilerini ekle
+Search contacts	Kişilerde ara
+Added to favorite contacts	Favori kişilere eklendi
+Hold the search bar and add contacts first	Önce arama çubuğuna basılı tutup kişi ekleyin
+No favorites in your dialer yet	Telefonunuzda henüz favori yok
+Hide swipe-up hint	Yukarı kaydırma ipucunu gizle
+Stops the hint that plays after a few short swipes that don't open the drawer.	Çekmeceyi açmayan birkaç kısa kaydırmadan sonra oynayan ipucunu durdurur.
+Closing animation	Kapanma animasyonu
+Shutter	Panjur
+Glide	Süzülme
+Balloons	Balonlar
+Jelly	Jöle
+Pop	Pop
+Wave	Dalga
+Swell	Şişme
+Classic	Klasik
+Scan to PDF	PDF olarak tara
+Add from gallery	Galeriden ekle
+Take photo	Fotoğraf çek
+Pages	Sayfalar
+Couldn't open the camera	Kamera açılamadı
+Camera access is needed to scan	Taramak için kamera izni gerekli
+Save as PDF	PDF olarak kaydet
+Rotate	Döndür
+All pages	Tüm sayfalar
+{0} selected	{0} seçildi
+File name	Dosya adı
+Making the PDF…	PDF oluşturuluyor…
+Saved to Download	İndirilenler'e kaydedildi
+Couldn't save the PDF	PDF kaydedilemedi
+Original	Orijinal
+Auto	Otomatik
+Enhanced	Geliştirilmiş
+Grayscale	Gri tonlama
+Black & white	Siyah beyaz
+Lighten	Aydınlat
+Image to PDF	Görüntüden PDF'ye
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	Arama çubuğuna koyabileceğin düğmelere “PDF olarak tara”yı ekler. Sayfaların fotoğrafını çek veya fotoğraf seç, düzenle, sonra tek bir PDF olarak kaydet ya da paylaş.
+Tools	Araçlar
+Featured apps	Öne çıkan uygulamalar
+Shows the apps you open most from Pixel search before you type.	Yazmadan önce Pixel search'ten en çok açtığın uygulamaları gösterir.
+Recent searches	Son aramalar
+Shows your latest searches before you type. Hold one to remove it.	Yazmadan önce son aramalarını gösterir. Kaldırmak için birini basılı tut.
+Enter opens the first app	Enter ilk uygulamayı açar
+Turn off to always search the web when you press Enter.	Enter'a bastığında her zaman web'de aramak için kapat.
+Delete this file?	Bu dosya silinsin mi?
+Deleted	Silindi
+Couldn't delete it	Silinemedi
+Unpin	Sabitlemeyi kaldır
+Add to favorites	Favorilere ekle
+Remove from favorites	Favorilerden kaldır
+Clear recent searches?	Son aramalar temizlensin mi?
+Pixel Suite apps	Pixel Suite uygulamaları
+Pixel dialer	Pixel çevirici
+Your phone app, with call recording	Arama kaydı olan telefon uygulamanız
+Scan pages into one PDF	Sayfaları tek PDF'de tarayın
+Apps that come with Pixel Suite.	Pixel Suite ile gelen uygulamalar.
+Your phone app, made for Pixel Suite.	Pixel Suite için yapılmış telefon uygulamanız.
+Pages and photos, turned into one PDF.	Sayfalar ve fotoğraflar tek PDF'de.
+Calls, contacts, favorites and call recording.	Aramalar, kişiler, favoriler ve arama kaydı.
+Calls, favorites, contacts and recordings	Aramalar, favoriler, kişiler ve kayıtlar
+Dialer settings	Çevirici ayarları
+Theme, sounds and call recording	Tema, sesler ve arama kaydı
+Install the Pixel Suite apps module in your root manager, then restart your phone.	Pixel Suite Apps modülünü root yöneticinize yükleyin, ardından telefonunuzu yeniden başlatın.
+Look for new pages	Yeni sayfaların görünümü
+Open Image to PDF	Görüntüden PDF'ye'yi aç
+Open Pixel dialer	Pixel çeviriciyi aç
+Photograph pages or pick photos	Sayfaları çekin veya fotoğraf seçin
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	Sayfaları çekin veya fotoğraf seçin, düzeltip toparlayın, sonra tek PDF olarak kaydedin veya paylaşın.
+Shows Image to PDF with your apps, with its own icon.	Görüntüden PDF'ye'yi kendi simgesiyle uygulamalarınız arasında gösterir.
+The Scan to PDF button on the search bar is set in Pixel search.	Arama çubuğundaki PDF olarak tara düğmesi Pixel Arama'da ayarlanır.
+Turn Pixel dialer on first	Önce Pixel çeviriciyi açın
+Turn each app on or off and change its settings.	Her uygulamayı açıp kapatın ve ayarlarını değiştirin.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	Kapatınca uygulama gizlenir ve aramalar diğer telefon uygulamanıza döner. İstediğiniz zaman yeniden açın.
+Gray	Gri
+High	Yüksek
+Standard	Standart
+PDF quality	PDF kalitesi
+Pixel dialer, Pixel search and Image to PDF	Pixel çevirici, Pixel Arama ve Görüntüden PDF'ye
+A file with that name already exists	Bu adda bir dosya zaten var
+Add Text	Metin ekle
+All PDFs	Tüm PDF'ler
+All tools	Tüm araçlar
+All your PDFs and tools	Tüm PDF'leriniz ve araçlarınız
+Allow	İzin ver
+Allow access to your files to see and save PDFs.	PDF'leri görmek ve kaydetmek için dosyalarınıza erişime izin verin.
+Anyone opening it will need this password.	Açmak isteyen herkesin bu şifreye ihtiyacı olacak.
+Back side	Arka yüz
+Best quality	En iyi kalite
+Browse	Göz at
+Choose PDFs to merge	Birleştirilecek PDF'leri seçin
+Choose a PDF	Bir PDF seçin
+Compress	Sıkıştır
+Convert	Dönüştür
+Couldn't finish	Tamamlanamadı
+Couldn't rename it	Yeniden adlandırılamadı
+Docx to PDF	Docx'ten PDF'ye
+Doodle	Çizim
+Draw on the page with your finger.	Parmağınızla sayfaya çizin.
+Front side	Ön yüz
+Good balance	İyi denge
+Import PDF	PDF içe aktar
+Largest first	Önce en büyük
+Leave	Çık
+Leave without saving?	Kaydetmeden çıkılsın mı?
+Lock PDF	PDF'yi kilitle
+Merge PDF	PDF birleştir
+No PDFs yet.	Henüz PDF yok.
+Oldest first	Önce en eski
+Open Pixel PDF	Pixel PDF'yi aç
+PDF to JPG	PDF'den JPG'ye
+PDF to PPT	PDF'den PPT'ye
+PDF to Word	PDF'den Word'e
+PPT to PDF	PPT'den PDF'ye
+Page	Sayfa
+Password	Şifre
+Pick some files first	Önce birkaç dosya seçin
+Pick two or more PDFs to merge	Birleştirmek için iki veya daha fazla PDF seçin
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Pixel çevirici, Pixel Arama ve Pixel PDF
+Popular	Popüler
+Print PDF	PDF yazdır
+Repeat password	Şifreyi tekrarla
+Saved to	Kaydedildi:
+Saved to Pixel PDF	Pixel PDF'ye kaydedildi
+Saving	Kaydediliyor
+Scan ID Card	Kimlik kartı tara
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	Sayfaları ve kimlik kartlarını tarayın, fotoğrafları, Word ve PowerPoint dosyalarını PDF'ye çevirin; sıkıştırın, birleştirin, imzalayın, kilitleyin veya yazdırın.
+Scan, convert and edit PDFs	PDF tara, dönüştür ve düzenle
+Scan, convert, edit and sign PDFs.	PDF'leri tarayın, dönüştürün, düzenleyin ve imzalayın.
+Scanned and made PDFs show here. Tap + to scan your first one.	Taranan ve oluşturulan PDF'ler burada görünür. İlkini taramak için + simgesine dokunun.
+Search files	Dosya ara
+Shows Pixel PDF with your apps, with its own icon.	Pixel PDF'yi kendi simgesiyle uygulamalarınız arasında gösterir.
+Sign inside the box first	Önce kutunun içine imza atın
+Sign inside the box.	Kutunun içine imza atın.
+Signature	İmza
+Smallest file	En küçük dosya
+Smart Scan	Akıllı Tarama
+Strong	Güçlü
+Tap to place your signature. Drag the corner to resize it.	İmzanızı yerleştirmek için dokunun. Boyutlandırmak için köşeyi sürükleyin.
+Tap where the text goes. Drag it to move it.	Metnin gideceği yere dokunun. Taşımak için sürükleyin.
+That password isn't right.	Bu şifre doğru değil.
+The passwords don't match	Şifreler eşleşmiyor
+They can't be brought back.	Geri getirilemezler.
+Thick	Kalın
+Thin	İnce
+This PDF is locked	Bu PDF kilitli
+This PDF is locked. Opening it needs a newer Android version.	Bu PDF kilitli. Açmak için daha yeni bir Android sürümü gerekir.
+This file couldn't be read. It may be damaged or locked.	Bu dosya okunamadı. Bozuk veya kilitli olabilir.
+This needs a newer Android version.	Bunun için daha yeni bir Android sürümü gerekir.
+Type a password	Bir şifre yazın
+Type here	Buraya yazın
+Unlock PDF	PDF kilidini aç
+Unlock it first to edit	Düzenlemek için önce kilidini açın
+Unlock it first to print	Yazdırmak için önce kilidini açın
+Unlocking needs a newer Android version	Kilidi açmak için daha yeni bir Android sürümü gerekir
+Use	Kullan
+Working…	İşleniyor…
+Your PDFs are kept in Documents/Pixel PDF.	PDF'leriniz Documents/Pixel PDF klasöründe tutulur.
+Your changes will be lost.	Değişiklikleriniz kaybolacak.
+selected	seçildi
+Delete these files?	Bu dosyalar silinsin mi?
+Pinned	Sabitlendi
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	Öne çıkan uygulamalarda her zaman önce gelen en fazla 5 uygulama. Sabitlemeyi kaldırmak için uygulamaya dokunun.
+Seconds in the status bar	Durum çubuğunda saniye
+The clock at the top shows seconds. Uses a little more battery.	Üstteki saat saniyeleri gösterir. Biraz daha fazla pil kullanır.
+Pull down at the top of the feed to search. Works even with the search bar off.	Aramak için akışın en üstünde aşağı çekin. Arama çubuğu kapalıyken de çalışır.
+Use Pixel search on the lock screen?	Pixel Arama kilit ekranında kullanılsın mı?
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	Açmak için parmak izi sensörüne dokun. Uygulamaları ve diğer sonuçları açmak için yine kilidi açman gerekir.
+Not now	Şimdi değil
+More Pixel search options	Diğer Pixel Arama seçenekleri
+Search on the lock screen	Kilit ekranında ara
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	Kilit ekranındaki akışta da aşağı çek. Hesaplamalar, birim dönüştürme ve aramalar hemen çalışır. Uygulama açmak için yine parmak izin gerekir.
+Safe	Güvenli
+Unsafe	Güvenli değil
+Customize	Özelleştir
+Previous page	Önceki sayfa
+Next page	Sonraki sayfa
+Glide (default)	Süzülme (varsayılan)
+Refresh automatically	Otomatik yenile
+Adds new and changed files the moment they appear.	Yeni ve değişen dosyaları göründükleri anda ekler.
+Pen	Kalem
+Tap or drag to add a shape. Drag its dots to resize it.	Şekil eklemek için dokunun veya sürükleyin. Boyutlandırmak için noktalarını sürükleyin.
+Hold to edit	Düzenlemek için basılı tutun
+Hide Apps list	Uygulama listesini gizle
+Removes Apps list from the menu you see when you hold the home screen.	Ana ekranı basılı tuttuğunuzda açılan menüden Uygulama listesi seçeneğini kaldırır.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	Menüyü görmek için ana ekranda boş bir yeri basılı tutun. Uygulamalarınızı açmak için yukarı kaydırın.
+Your phone	Telefonunuz
+Android version	Android sürümü
+Build number	Derleme numarası
+Security update	Güvenlik güncellemesi
+Untested	Test edilmedi
+Tested on this Android version. Everything should work.	Bu Android sürümünde test edildi. Her şey çalışmalı.
+This Android version is known to break Pixel Suite features.	Bu Android sürümünün Pixel Suite özelliklerini bozduğu biliniyor.
+Not tested on this Android version yet. Some features may work, some may not.	Bu Android sürümünde henüz test edilmedi. Bazı özellikler çalışabilir, bazıları çalışmayabilir.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	Lütfen dikkat: telefonunuzu güncellemek Pixel Suite'in bazı kısımlarını bozabilir ve bozacaktır. Ben yeşil ışık yakmadan önce güncellerseniz, bozulan şeylerden sorumlu değilim. Bunu boş zamanımda yapıyorum ve tek başımayım, bu yüzden Google'ın yayınladığı her şeye her zaman yetişmemi beklemeyin.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	Hiçbir şeyin yanlışlıkla yüklenmemesi için {0} özelliğini her zaman açık tutmanızı öneririm. Beklenmedik bir güncelleme telefonunuzu bootloop'a sokabilir ya da siz farkında olmadan bir şeyleri bozabilir.
+To know when it's safe to update, follow Announcements in my {0}.	Güncellemenin ne zaman güvenli olduğunu öğrenmek için {0} kanalımda Announcements'ı takip edin.
+Thank you 💙	Teşekkürler 💙
+Phone compatibility	Telefon uyumluluğu
+Hide the shortcuts you see when you hold an app, like View orders.	Bir uygulamayı basılı tuttuğunuzda görünen Siparişleri görüntüle gibi kısayolları gizleyin.
+Hide on the home screen	Ana ekranda gizle
+Home screen, dock and folders.	Ana ekran, dock ve klasörler.
+Hide in the app drawer	Uygulama çekmecesinde gizle
+App drawer and its folders.	Uygulama çekmecesi ve klasörleri.
+Folders, dragging and the swipe-up hint.	Klasörler, sürükleme ve yukarı kaydırma ipucu.
+Folders, dragging and the swipe-up hint	Klasörler, sürükleme ve yukarı kaydırma ipucu
+Force stop	Durmaya zorla
+{0} stopped	{0} durduruldu
+Could not remove the folder	Klasör kaldırılamadı
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	Her aramayı ve WhatsApp sesli ve görüntülü aramalarını iki tarafın sesiyle Kayıtlar sekmesine kaydeder.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	Birini haberi olmadan kaydetmek yaşadığınız yerde yasa dışı olabilir. Kayıtlarınızdan ve onları nasıl kullandığınızdan RovianDev değil, siz sorumlusunuz.
+Clipboard on the lock screen	Kilit ekranında pano
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	Kopyaladığınızı kilit ekranı aramasına yapıştırın. Telefonunuzu eline alan herkes de yapıştırabilir.
+Use the clipboard on the lock screen?	Pano kilit ekranında kullanılsın mı?
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	Açmak için parmak izi sensörüne dokunun. Telefonunuzu eline alan herkes, şifreler veya kodlar gibi kopyaladıklarınızı yapıştırabilir.
+Turn on to install	Yüklemek için açın
+Installing Pixel dialer…	Pixel çevirici yükleniyor…
+Installing Pixel PDF…	Pixel PDF yükleniyor…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Pixel çevirici yüklendi. Aramaları kaydedebilmesi için telefonunuzu bir kez yeniden başlatın.
+Couldn't install: root access needed	Yüklenemedi: root erişimi gerekli
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	Açın, Pixel Suite sizin için yüklesin. Ardından aramaları kaydedebilmesi için telefonunuzu bir kez yeniden başlatın.
+Pixel PDF is installed	Pixel PDF yüklendi

@@ -45,6 +45,8 @@ final class PrivacyGuard {
                     } catch (Throwable error) { }
                 }
             });
+        } catch (Throwable error) { }
+        try {
             Xp.hookAllMethods(Xp.findClass("com.android.launcher3.DeleteDropTarget", cl), "onDrop", new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {

@@ -1,3 +1,59 @@
+## v3.2.1
+Compatibilidad total con la actualización de noviembre, Búsqueda Pixel, Marcador Pixel, Pixel PDF, un menú de carpetas en la pantalla de inicio, Forzar detención, Comprobación del teléfono y muchas correcciones.
+
+📱 Actualización de noviembre
+• **Android 17 QPR2 (actualización de noviembre)**: Pixel Suite funciona en la nueva versión, y las versiones anteriores siguen funcionando como antes. La actualización rompió todo esto, y ya vuelve a funcionar:
+• **Modo Súper Oscuro**: negro de verdad otra vez en el panel de notificaciones, el cajón de apps, las carpetas y en todo lo demás donde se aplica, también tras reiniciar, y sin pantalla gris al desbloquear. (Temas › Modo Súper Oscuro)
+• **Menús de apps**: al mantener pulsada una app en la pantalla de inicio o en el cajón de apps, su menú se abre siempre, como un solo panel esmerilado con su borde, sus accesos directos y las opciones de Pixel Suite.
+• **Carpetas**: las carpetas de la pantalla de inicio se abren con el mismo aspecto esmerilado, desenfoque y borde que las del cajón de apps, y vuelve el efecto al quitar una carpeta.
+• **Varios iconos a la vez**: al soltar varios iconos elegidos sobre Quitar se quitan todos (Deshacer los recupera todos), y moverlos a otra página ya no deja los originales atrás.
+• **Capturas de pantalla**: vuelve el sonido del obturador, siguiendo el volumen del tono de llamada.
+• **Bloqueo de apps y carpetas**: una app bloqueada pide tu huella antes de abrirse y no después, y quitar una app o carpeta bloqueada de la pantalla de inicio vuelve a pedir tu huella.
+• **Doble toque para bloquear**: tocar dos veces la alarma, el tiempo o la fecha en la pantalla de bloqueo apaga la pantalla en vez de abrirlos, y tocar tu PIN ya no apaga la pantalla. (Gestos › Tocar o doble toque para activar › Comportamiento de la pantalla de bloqueo › Pixel Suite)
+• **Panel de grabación de pantalla**: se abre limpio, sin que se vean los Ajustes rápidos detrás, sin destellos ni tarjeta pálida, y con sus botones en su sitio.
+• **Menú de compartir**: las apps para compartir ocultas vuelven a quedarse ocultas, y vuelve el botón Editar al compartir desde Google Fotos.
+• **Avisos**: "Video guardado", "Video eliminado" y otros avisos del sistema vuelven a ser una sola píldora que sigue tu tema, Super Dark incluido.
+• **También de vuelta**: la fila de Pixel Suite y su icono en el menú al mantener pulsada la pantalla de inicio, el estilo de la solicitud de huella, las formas de los iconos, Borrar todo para pares de apps y ocultar accesos directos en los menús del cajón de apps.
+
+✨ Novedades
+• **Nueva animación para Pixel Suite**: las páginas, los diálogos y los menús se abren y cierran con una animación totalmente nueva, mucho más fluida y creada con nuevas técnicas.
+• **Comprobación del teléfono**: toca el **!** arriba a la izquierda de la página principal para ver tu teléfono, la versión de Android y la actualización de seguridad, y si Pixel Suite es **Seguro**, está **Sin probar** o es **No seguro** en él, con enlaces rápidos al Bloqueador OTA y a Telegram.
+• **Menú de carpetas en la pantalla de inicio**: mantén pulsada una carpeta para cambiarle el nombre, ordenarla (A–Z o tu propio orden), bloquearla o quitarla, con el mismo menú que las carpetas del cajón de apps.
+• **Forzar detención**: mantén pulsada cualquier app y elige Forzar detención para cerrarla por completo.
+• **Ocultar los accesos directos de apps en la pantalla de inicio, en el cajón de apps o en ambos**. (Lanzador Pixel › Accesos directos de apps)
+• **Apps en pausa**: al mantener pulsada una app que pausaste se abre su menú con sus accesos directos.
+• **Versiones seguras y no seguras**: cuando una app tiene una actualización esperando, tu versión instalada aparece como Seguro en verde y la que espera como No seguro en rojo. Toca la versión segura para descargar exactamente esa versión. (Bloqueador OTA y de Store › Bloqueador de Play Store)
+• **Ocultar Lista de apps** del menú que aparece al mantener pulsado un espacio vacío de la pantalla de inicio. (Lanzador Pixel › Ocultar Lista de apps)
+• **Ocultar la pista de deslizar hacia arriba**: se acabó la pista tras varios intentos fallidos de abrir el cajón de apps. (Cajón de apps › Ocultar la pista de deslizar hacia arriba)
+• **Segundos en el reloj de la barra de estado**. (Varios › Segundos en la barra de estado)
+• **Empieza de cero**: en una instalación nueva todas las funciones empiezan desactivadas, así activas solo lo que quieras. Al actualizar se mantienen tus ajustes.
+
+💎 Patreon
+• **Apps de Pixel Suite**: Búsqueda Pixel, Marcador Pixel y Pixel PDF, en los que llevo mucho tiempo trabajando, por fin están aquí, todos en un solo lugar. (Apps de Pixel Suite)
+• **Búsqueda Pixel**: sustituye por completo la inútil barra de búsqueda de Google por una que de verdad busca en tu teléfono. Apps, contactos, ajustes y archivos, todo encontrado en el teléfono (solo las búsquedas web salen a internet). Incluso encuentra palabras y números dentro de tus PDF y de tus archivos de Word, Excel y PowerPoint. Mantén pulsada la barra para cambiar su tamaño, colores, tema y botones. (Apps de Pixel Suite › Búsqueda Pixel)
+• **Búsqueda Pixel, todo incluido**: Favoritos y contactos favoritos tras el corazón, conversión de divisas con banderas, una calculadora que también convierte unidades (como 5 km a millas), apps destacadas y búsquedas recientes, pines y un botón de buscador en la barra, las sugerencias de palabras de tu teclado, animaciones de cierre que eliges con una vista previa en vivo y un widget para la pantalla de inicio. Los archivos muestran cuándo cambiaron por última vez y aparecen en cuanto se añaden; mantén pulsado uno para compartirlo, verlo en su carpeta o eliminarlo.
+• **Búsqueda Pixel en el Feed de widgets**: los dos funcionan juntos. Desliza hacia abajo en el Feed de widgets y Búsqueda Pixel se abre sobre el feed difuminado. (Feed de widgets › Búsqueda Pixel) También funciona en la pantalla de bloqueo, donde los cálculos y las divisas funcionan sin desbloquear. (Feed de widgets › flecha junto a Búsqueda Pixel › Buscar en la pantalla de bloqueo)
+• **Marcador Pixel**: una app de teléfono completa hecha para Pixel Suite. Graba todas las llamadas automáticamente, ambos lados, con la calidad que elijas, y también **graba las llamadas de voz y video de WhatsApp**, guardadas como un video de la llamada con el sonido de ambos lados. Las notas que escribes durante una llamada se guardan en Google Keep, una nota por persona. Pestañas de Favoritos, Llamadas, Contactos y Grabaciones, contesta con un toque o deslizando, y el estilo de Pixel Suite, Super Dark incluido. (Apps de Pixel Suite › Marcador Pixel) ***(Grabar a alguien sin que lo sepa puede ser ilegal donde vives. Tú eres responsable de tus grabaciones y de cómo las usas, no RovianDev.)***
+• **Pixel PDF**: una app de PDF completa. Escanea documentos y carnés de identidad, convierte imágenes y archivos de Word y PowerPoint en PDF, y los PDF en Word, PowerPoint o JPG. Une, comprime, bloquea y desbloquea PDF, añade texto, firma y dibuja en ellos, imprímelos y abre PDF desde otras apps. (Apps de Pixel Suite › Pixel PDF)
+• **Feed de widgets en la pantalla de bloqueo** con la actualización de noviembre: la pantalla de bloqueo se mueve como una página y puedes abrir el feed deslizando desde casi cualquier sitio, incluso debajo de una notificación, sin bajar el panel ni activar el teclado del PIN, la flecha de atrás o el sensor de huellas. Rebota como en la pantalla de inicio al asentarse y al deslizar más allá de los widgets. (Feed de widgets)
+• **Pantalla de bloqueo y huella**: al salir del Feed de widgets, el icono de huella aparece al instante (nunca un candado) y tu huella desbloquea enseguida. Tocar el punto de la huella justo después de usar el feed no desbloquea por error.
+
+🛠️ Correcciones de Patreon
+• **Feed de widgets en la pantalla de bloqueo**: con el teclado del PIN abierto, deslizar de lado ya no mete el feed detrás, y el feed ya no vuelve a bloquear el teléfono justo después de desbloquearlo con la huella.
+• **Gboard+**: tocar el icono del portapapeles vuelve a funcionar justo después de copiar algo, las teclas vuelven al cerrar el panel de herramientas, el dictado funciona en árabe y otros idiomas y ya no deja la barra vacía y azul, los deslizamientos ya no pulsan botones de la barra ni bloquean el gesto de atrás, y el teclado flotante mantiene su diseño, también arriba de la pantalla, con esquinas redondeadas y una barra que lo llena.
+• **Chrome+**: las pestañas se abren sin espera tras el toque, la imagen de una pestaña ya no se funde sobre una página en blanco, y una pestaña dormida conserva su imagen hasta que la página se dibuja.
+
+🐞 Correcciones de Pixel Suite
+• **Autocompletar OTP**: el código aparece al principio de la fila de sugerencias del teclado, nunca arriba de la pantalla ni sobre la sugerencia de código de Google. Funciona con el teclado flotante, desaparece cuando escribes el código y también encuentra códigos hechos solo de letras.
+• **Compartir en Telegram** vuelve a Pixel Stack, Pixel Blast y Pixel Siege: después de una partida, comparte tu puntuación en el grupo de Telegram.
+• **Pantalla de bloqueo**: deslizar de lado o en diagonal ya no baja un momento el panel de notificaciones.
+• **Teclado del PIN**: deslizar sobre un número ya no lo deja resaltado.
+• **Carpetas del cajón de apps**: el menú al mantener pulsado queda justo al lado de la carpeta, incluso cerca del final del cajón.
+• **No me molestes**: "No se pudo contactar con tu reloj" ya no aparece sin un Pixel Watch con LTE ni con esa opción desactivada.
+
+Instala sobre tu versión actual y reinicia.
+
+
 ## v3.2.0
 Feed de widgets, Autocompletar OTP, Bloquear llamadas de WhatsApp, un Pixel Arcade mucho más grande, vídeos de las funciones y muchas correcciones.
 

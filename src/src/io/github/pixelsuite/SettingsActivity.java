@@ -86,6 +86,7 @@ public class SettingsActivity extends Activity {
 
     private IconPackPage mIconPackPage;
     private BackupRestorePage mBackupPage;
+    private PixelSearchPage mSearchPage;
     private TextView mBackupSummary;
 
     private final Runnable mPatronChanged=new Runnable(){public void run(){if(!isFinishing()&&!isDestroyed()){updateAdProtectionStatus();load();if(mCallRecordingSettings!=null)mCallRecordingSettings.reload();if(mAppRoot!=null)PatronUi.apply(mAppRoot);}}};
@@ -169,6 +170,8 @@ public class SettingsActivity extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         I18n.refresh(this);
+        IO.execute(new Runnable(){public void run(){Defaults.decide();}});
+        if(savedInstanceState==null&&getIntent().getStringExtra("page")==null){final android.content.Context app=getApplicationContext();IO.execute(new Runnable(){public void run(){SuiteApps.freshen(app);}});}
 
         mDark = (getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
 
@@ -243,7 +246,7 @@ public class SettingsActivity extends Activity {
             LinearLayout.LayoutParams logoSize=new LinearLayout.LayoutParams(dp(30),dp(30));logoSize.leftMargin=dp(7);titleLine.addView(suiteLogo,logoSize);
 
             heading.addView(titleLine);
-        }else if(premiumPage(pageId)){
+        }else if(premiumPage(pageId)||"suite_apps".equals(pageId)){
             title.setIncludeFontPadding(false);
             LinearLayout titleLine=new LinearLayout(this){
                 private final android.graphics.Rect inkBounds=new android.graphics.Rect();
@@ -339,6 +342,7 @@ public class SettingsActivity extends Activity {
         int searchClearance=dp(84)+Math.max(0,Math.round((getResources().getConfiguration().fontScale-1)*dp(20)));
         page.setPadding(page.getPaddingLeft(),page.getPaddingTop(),page.getPaddingRight(),searchClearance);
         if(pageId==null||"home".equals(pageId)){
+            root.addView(PhoneStatus.corner(this,scroll),new FrameLayout.LayoutParams(dp(44),dp(44),android.view.Gravity.TOP|android.view.Gravity.LEFT));
             mLanguage=new LanguagePill(this,scroll,new LanguagePill.Host(){
                 public int background(){return mBg;}public int primary(){return mText;}public int secondary(){return mTextSecondary;}public int accent(){return mAccent;}
                 public void picked(String code){languagePicked(code);}
@@ -399,7 +403,9 @@ public class SettingsActivity extends Activity {
     private PatronMembershipRefresh mPatronMembershipRefresh;
     @Override
     protected void onResume() {
-        super.onResume();mPageResumed=true;mPageNavigation=false;animatePageIn();refreshAppSurfaces();startDeveloperGear();EsimPurchase.resume(this);
+        super.onResume();mPageResumed=true;mPageNavigation=false;
+        if(!mPageShown){mPageShown=true;animatePageIn();}
+        refreshAppSurfaces();startDeveloperGear();EsimPurchase.resume(this);
         if(getIntent().hasExtra("esim_code")){final String code=getIntent().getStringExtra("esim_code");getIntent().removeExtra("esim_code");mMain.post(()->EsimPurchase.open(SettingsActivity.this,code));}
 
         if(getIntent().getBooleanExtra("patron_thanks",false)){getIntent().removeExtra("patron_thanks");mMain.post(new Runnable(){public void run(){PatronPaper.open(SettingsActivity.this,2,null);}});}
@@ -435,7 +441,7 @@ public class SettingsActivity extends Activity {
         PatronAccess.resume(getApplicationContext(),firstEntitlement?new Runnable(){public void run(){mInitialReads.add("settings");mPatronChanged.run();initialReadDone("entitlement");}}:null);
         PatronTiles.watch(this);
 
-        load();if(mIconPackPage!=null)mIconPackPage.refresh();if(mCallRecordingSettings!=null)mCallRecordingSettings.reload();if(mStoreBlockerPage!=null)mStoreBlockerPage.resume();if(mBackupPage!=null)mBackupPage.resume();if(mBackupSummary!=null)BackupRestorePage.summarize(this,STORE_IO,mBackupSummary);refreshBlockerSummary();
+        load();if(mIconPackPage!=null)mIconPackPage.refresh();if(mCallRecordingSettings!=null)mCallRecordingSettings.reload();if(mStoreBlockerPage!=null)mStoreBlockerPage.resume();if(mBackupPage!=null)mBackupPage.resume();if(mSearchPage!=null)mSearchPage.refresh();if(mBackupSummary!=null)BackupRestorePage.summarize(this,STORE_IO,mBackupSummary);refreshBlockerSummary();
 
         ReleaseUpdates.schedule(SettingsActivity.this); ReleaseUpdates.check(SettingsActivity.this,false,null);
 
@@ -599,13 +605,17 @@ public class SettingsActivity extends Activity {
 
         new FeaturePage("launcher",LauncherHideGlance.KEY,"ic_ps_hide_glance","Hide At a Glance","Removes At a Glance from the top of the home screen. The row is free for your apps, folders and widgets."),
 
+        new FeaturePage("launcher",HomeOptions.HIDE_APPS_KEY,"ic_ps_apps_list_hide","Hide Apps list","Removes Apps list from the menu you see when you hold the home screen."),
+
+        new FeaturePage("launcher",LauncherFeatures.HIDE_HOME_SHORTCUTS,"ic_ps_shortcuts","App shortcuts","Hide the shortcuts you see when you hold an app, like View orders."),
+
         new FeaturePage("launcher","clear_badge","ic_ps_clear_badge","Clear badge","Hold an app or folder with a notification dot and choose Clear badge."),
 
         new FeaturePage("recents",Feature.CLEAR_ALL,"ic_ps_clearall","Clear all in recents","Clear all is always there in recents, no scrolling."),
 
         new FeaturePage("recents",RecentsLock.KEY,"ic_ps_recents_lock","Lock apps in recents","Lock an app's card so Clear all keeps it."),
 
-        new FeaturePage("drawer",LauncherFeatures.HIDE_SHORTCUTS,"ic_ps_shortcuts","Hide app shortcuts","Hides app shortcuts like View orders from the drawer menu."),
+        new FeaturePage("drawer",LauncherFeatures.NO_SWIPE_HINT,"ic_ps_swipe_hint","Hide swipe-up hint","Stops the hint that plays after a few short swipes that don't open the drawer."),
 
         new FeaturePage("themes",SuperDark.KEY,"ic_ps_super_dark","Super Dark-Mode","Pure black backgrounds and darker menus in dark theme."),
 
@@ -625,7 +635,7 @@ public class SettingsActivity extends Activity {
 
     private static boolean premiumPage(String id){
         return "gboard".equals(id)||"gboard_autocorrect".equals(id)||"chrome".equals(id)||"extensions".equals(id)||"ad_blocker".equals(id)
-                ||"vpn".equals(id)||"dark_pages".equals(id)||"google_dialer".equals(id)||"google_app".equals(id)||WidgetPanel.KEY.equals(id);
+                ||"vpn".equals(id)||"dark_pages".equals(id)||"google_dialer".equals(id)||"google_app".equals(id)||WidgetPanel.KEY.equals(id)||PixelSearch.PAGE.equals(id)||"app_scan".equals(id)||"app_dialer".equals(id);
     }
 
     private static void dropRowBadges(View v){
@@ -635,6 +645,7 @@ public class SettingsActivity extends Activity {
     }
 
     int pageColor(){return mBg;}
+    int inkColor(){return mText;}int mutedColor(){return mTextSecondary;}int accentColor(){return mAccent;}
     private String pageTitle(String id){
         FeaturePage f=feature(id);if(f!=null)return f.title;
 
@@ -675,6 +686,8 @@ public class SettingsActivity extends Activity {
         if("pixel_watch".equals(id))return "Pixel watch";
 
         if("pixelsuite_widget_panel".equals(id))return "Widgets feed";
+        if("pixel_search".equals(id))return "Pixel search";
+        if("suite_apps".equals(id))return "Pixel Suite apps";if("app_dialer".equals(id))return "Pixel dialer";if("app_scan".equals(id))return "Pixel PDF";
         if("otp".equals(id))return "Autofill OTP";
         if("miscellaneous".equals(id))return "Miscellaneous";
 
@@ -693,7 +706,7 @@ public class SettingsActivity extends Activity {
         if("doodles".equals(id))return "Draw on screenshots and photos.";
         if("aod".equals(id))return "The clock and info while charging, and after the power button.";
 
-        if("drawer".equals(id))return "Folders, dragging and app shortcuts.";if("launcher".equals(id))return "Folders, names, search bar and recents.";
+        if("drawer".equals(id))return "Folders, dragging and the swipe-up hint.";if("launcher".equals(id))return "Folders, names, search bar and recents.";
 
         if("files".equals(id))return "A better starting view for your files.";if("themes".equals(id))return "System colors, your way.";
 
@@ -727,6 +740,8 @@ public class SettingsActivity extends Activity {
         if("pixel_watch".equals(id))return "eSIM setup with a QR code";
 
         if("pixelsuite_widget_panel".equals(id))return "A fully customizable page of your own widgets, on the side you choose. Keep the Google feed on the other side, or leave it out.";
+        if("pixel_search".equals(id))return "Everything on your phone, one search away.";
+        if("suite_apps".equals(id))return "Apps that come with Pixel Suite.";if("app_dialer".equals(id))return "Your phone app, made for Pixel Suite.";if("app_scan".equals(id))return "Scan, convert, edit and sign PDFs.";
         if("otp".equals(id))return "One-time codes, filled in for you.";
         if("miscellaneous".equals(id))return "Small fixes, simple controls.";
 
@@ -735,7 +750,7 @@ public class SettingsActivity extends Activity {
         if("updates".equals(id))return "";if("about".equals(id))return "Made by RovianDev";return HomeLayout.TAGLINE;
     }
 
-    private boolean mPageResumed,mPageNavigation,mPageClosing;
+    private boolean mPageResumed,mPageNavigation,mPageClosing,mPageShown;
     private boolean mClaiming;
     private void claimSignIn(final int attempt){
         if(mClaiming&&attempt==0)return;mClaiming=true;
@@ -748,22 +763,34 @@ public class SettingsActivity extends Activity {
             mMain.postDelayed(new Runnable(){public void run(){if(mPageResumed&&PatronAccess.claimPending(SettingsActivity.this))claimSignIn(attempt+1);else mClaiming=false;}},2000);
         }});
     }
+    private int pageAnimation(String name){return getResources().getIdentifier(name,"anim",getPackageName());}
     @Override public void startActivity(Intent intent,Bundle options){
         boolean page=intent.getComponent()!=null&&SettingsActivity.class.getName().equals(intent.getComponent().getClassName());
-        mPageNavigation=page&&!"privacy".equals(intent.getStringExtra("page"));
+        if(!page){mPageNavigation=false;super.startActivity(intent,options);return;}
+        if(mPageClosing)return;
+        mPageNavigation=!"privacy".equals(intent.getStringExtra("page"));
+        int in=pageAnimation("ps_bloom_in"),hold=pageAnimation("ps_page_hold");
+        if(options==null&&in!=0&&hold!=0&&AppMotion.enabled(this)){super.startActivity(intent,android.app.ActivityOptions.makeCustomAnimation(this,in,hold).toBundle());return;}
         super.startActivity(intent,options);
-        if(page)overridePendingTransition(0,0);
+        overridePendingTransition(0,0);
     }
     private void animatePageIn(){
         if(mPageScroll==null)return;
-        mPageScroll.animate().cancel();
-        if(!AppMotion.enabled(this)){mPageScroll.setAlpha(1);mPageScroll.setTranslationY(0);return;}
-        mPageScroll.setAlpha(0);mPageScroll.setTranslationY(dp(20));
+        mPageScroll.animate().cancel();mPageScroll.setAlpha(1);mPageScroll.setTranslationY(0);
+        if(!AppMotion.enabled(this)||mPageScroll.getChildCount()==0||!(mPageScroll.getChildAt(0) instanceof ViewGroup))return;
+        final ViewGroup list=(ViewGroup)mPageScroll.getChildAt(0);
+        final int count=list.getChildCount();
+        final float[] shown=new float[count];
+        final float drop=-dp(10);
+        for(int i=1;i<count;i++){View v=list.getChildAt(i);shown[i]=v.getAlpha();v.setAlpha(0f);v.setTranslationY(drop);}
         mPageScroll.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener(){
             public boolean onPreDraw(){
                 if(!mInitialReads.isEmpty())return true;
                 mPageScroll.getViewTreeObserver().removeOnPreDrawListener(this);
-                if(!mPageClosing)mPageScroll.animate().alpha(1).translationY(0).setDuration(240).setInterpolator(new android.view.animation.DecelerateInterpolator()).start();
+                for(int i=1;i<count&&i<list.getChildCount();i++){
+                    View v=list.getChildAt(i);
+                    v.animate().alpha(shown[i]).translationY(0).setStartDelay(40+Math.min(i,10)*36L).setDuration(300).setInterpolator(new android.view.animation.DecelerateInterpolator(2f)).start();
+                }
                 return true;
             }
         });
@@ -773,8 +800,11 @@ public class SettingsActivity extends Activity {
         if(mPageClosing)return;
         mPageNavigation=true;mPageClosing=true;
         if(mPageScroll!=null&&AppMotion.enabled(this)&&(mPrivacyGate==null||mPrivacyGate.isOpen())){
+            int settle=pageAnimation("ps_page_settle"),out=pageAnimation("ps_bloom_out");
+            String at=getIntent().getStringExtra("page");
             mPageScroll.animate().cancel();
-            mPageScroll.animate().alpha(0).translationY(dp(20)).setDuration(160).setInterpolator(new android.view.animation.AccelerateInterpolator()).withEndAction(()->finishPage()).start();
+            if(settle!=0&&out!=0&&at!=null&&!"home".equals(at)){super.finish();overridePendingTransition(settle,out);}
+            else mPageScroll.animate().alpha(0).translationY(dp(20)).setDuration(160).setInterpolator(new android.view.animation.AccelerateInterpolator()).withEndAction(()->finishPage()).start();
         }else finishPage();
     }
     private void openPage(String id){startActivity(new Intent(this,SettingsActivity.class).putExtra("page",id));}
@@ -842,6 +872,12 @@ public class SettingsActivity extends Activity {
                 explanation(page,"For Android 16 and older. Newer versions can remove At a Glance from the home screen itself.");
                 return;
             }
+            if(HomeOptions.HIDE_APPS_KEY.equals(f.key)){
+                LinearLayout controls=group(page);row(controls,f.key,f.icon,mAccent,f.title,f.summary);finishGroup(controls);
+                section(page,"How it works");
+                explanation(page,"Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.");
+                return;
+            }
             if(LauncherFeatures.HIDE_SEARCH.equals(f.key)){
                 LinearLayout controls=group(page);row(controls,f.key,f.icon,mAccent,f.title,f.summary);finishGroup(controls);
                 section(page,"How it works");
@@ -857,7 +893,7 @@ public class SettingsActivity extends Activity {
                 featurePreview(page,f);return;
             }
 
-            LinearLayout controls=group(page);row(controls,f.key,Feature.TAP_CHECK.equals(f.key)?"ic_ps_tapwake_toggle":f.icon,mAccent,(Feature.SCREENSHOT_DOODLES.equals(f.key)||Feature.PHOTOS_DOODLES.equals(f.key)?"Use Doodles":LauncherFeatures.HIDE_SHORTCUTS.equals(f.key)?"Hide app shortcuts":LauncherFeatures.ICONS.equals(f.key)?"Use custom app icons":LauncherFeatures.LABEL_SIZE.equals(f.key)?"Customize icon labels":SuperDark.KEY.equals(f.key)?"Use Super Dark-Mode":"Use "+(I18n.on()?f.title:f.title.toLowerCase(java.util.Locale.ROOT))),"Turn this feature on or off.");if(LauncherFeatures.ICONS.equals(f.key))row(controls,DrawerIconColors.KEY,"ic_ps_drawer",mAccent,"Colorful icons in the app drawer (Stock)","With themed icons on, the app drawer keeps each app's own colors.");finishGroup(controls);
+            LinearLayout controls=group(page);row(controls,f.key,Feature.TAP_CHECK.equals(f.key)?"ic_ps_tapwake_toggle":f.icon,mAccent,(Feature.SCREENSHOT_DOODLES.equals(f.key)||Feature.PHOTOS_DOODLES.equals(f.key)?"Use Doodles":LauncherFeatures.HIDE_HOME_SHORTCUTS.equals(f.key)?"Hide on the home screen":LauncherFeatures.ICONS.equals(f.key)?"Use custom app icons":LauncherFeatures.LABEL_SIZE.equals(f.key)?"Customize icon labels":SuperDark.KEY.equals(f.key)?"Use Super Dark-Mode":"Use "+(I18n.on()?f.title:f.title.toLowerCase(java.util.Locale.ROOT))),LauncherFeatures.HIDE_HOME_SHORTCUTS.equals(f.key)?"Home screen, dock and folders.":"Turn this feature on or off.");if(LauncherFeatures.ICONS.equals(f.key))row(controls,DrawerIconColors.KEY,"ic_ps_drawer",mAccent,"Colorful icons in the app drawer (Stock)","With themed icons on, the app drawer keeps each app's own colors.");if(LauncherFeatures.HIDE_HOME_SHORTCUTS.equals(f.key)){row(controls,LauncherFeatures.HIDE_SHORTCUTS,"ic_ps_shortcuts_drawer",mAccent,"Hide in the app drawer","App drawer and its folders.");}finishGroup(controls);
 
             if(Feature.TAP_CHECK.equals(f.key)){
                 LinearLayout options=group(page);
@@ -1206,6 +1242,110 @@ public class SettingsActivity extends Activity {
             return;
         }
 
+        if("suite_apps".equals(id)){
+            LinearLayout apps=group(page);
+            navigation(apps,"Pixel dialer","Your phone app, with call recording","ic_ps_app_dialer",new Runnable(){public void run(){openPage("app_dialer");}});
+            PatronUi.navigationBadge(this,(LinearLayout)apps.getChildAt(apps.getChildCount()-1),"Pixel dialer");
+            navigation(apps,"Pixel search","Find apps, contacts, files and more","ic_ps_pixel_search",new Runnable(){public void run(){openPage("pixel_search");}});
+            PatronUi.navigationBadge(this,(LinearLayout)apps.getChildAt(apps.getChildCount()-1),"Pixel search");
+            navigation(apps,"Pixel PDF","Scan, convert and edit PDFs","ic_ps_app_scan",new Runnable(){public void run(){openPage("app_scan");}});
+            PatronUi.navigationBadge(this,(LinearLayout)apps.getChildAt(apps.getChildCount()-1),"Pixel PDF");
+            finishGroup(apps);
+            explanation(page,"Turn each app on or off and change its settings.");
+            return;
+        }
+        if("app_dialer".equals(id)){
+            final boolean there=SuiteApps.dialerInstalled(this);
+            LinearLayout main=group(page);
+            appSwitch(main,"ic_ps_app_dialer_switch","Pixel dialer",there?"Calls, contacts, favorites and call recording.":"Turn on to install",there&&SuiteApps.dialerOn(this),true,true,new SuiteApps.Toggle(){public void set(final boolean on){
+                if(on&&!there){
+                    AppToast.makeText(SettingsActivity.this,I18n.cs("Installing Pixel dialer…"),Toast.LENGTH_SHORT).show();
+                    final android.content.Context app=getApplicationContext();
+                    IO.execute(new Runnable(){public void run(){final boolean ok=SuiteApps.install(app,SuiteApps.DIALER);mMain.post(new Runnable(){public void run(){if(isFinishing()||isDestroyed())return;if(ok)AppToast.makeText(SettingsActivity.this,I18n.cs("Pixel dialer is installed. Restart your phone once so it can record calls."),Toast.LENGTH_LONG).show();else{showRootBanner(true);AppToast.makeText(SettingsActivity.this,I18n.cs("Couldn't install: root access needed"),Toast.LENGTH_SHORT).show();}recreate();}});}});
+                    return;
+                }
+                IO.execute(new Runnable(){public void run(){final boolean ok=SuiteApps.dialer(on);mMain.post(new Runnable(){public void run(){if(!ok&&!isFinishing()&&!isDestroyed()){showRootBanner(true);AppToast.makeText(SettingsActivity.this,I18n.cs("Couldn't save: root access needed"),Toast.LENGTH_SHORT).show();}}});}});
+            }});
+            finishGroup(main);
+            if(there){
+                LinearLayout more=group(page);
+                navigation(more,"Open Pixel dialer","Calls, favorites, contacts and recordings","ic_ps_app_open",new Runnable(){public void run(){if(!SuiteApps.openDialer(SettingsActivity.this))AppToast.makeText(SettingsActivity.this,I18n.cs("Turn Pixel dialer on first"),Toast.LENGTH_SHORT).show();}});
+                navigation(more,"Dialer settings","Theme, sounds and call recording","ic_ps_app_prefs",new Runnable(){public void run(){IO.execute(new Runnable(){public void run(){final boolean ok=SuiteApps.dialerSettings();mMain.post(new Runnable(){public void run(){if(!ok&&!isFinishing()&&!isDestroyed())showRootBanner(true);}});}});}});
+                finishGroup(more);
+            }else explanation(page,"Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.");
+            section(page,"How it works");
+            explanation(page,"Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.");
+            explanation(page,"Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.");
+            explanation(page,"Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.");
+            View law=page.getChildAt(page.getChildCount()-1);
+            if(law instanceof TextView){TextView t=(TextView)law;t.setText("("+t.getText()+")");t.setTypeface(android.graphics.Typeface.create("serif",android.graphics.Typeface.BOLD_ITALIC));}
+            return;
+        }
+        if("app_scan".equals(id)){
+            LinearLayout main=group(page);
+            appSwitch(main,"ic_ps_app_scan_switch","Pixel PDF","Shows Pixel PDF with your apps, with its own icon.",SuiteApps.scanShown(this),true,true,new SuiteApps.Toggle(){public void set(final boolean on){
+                final android.content.Context app=getApplicationContext();final boolean fresh=on&&!SuiteApps.pdfInstalled(app);
+                if(fresh)AppToast.makeText(SettingsActivity.this,I18n.cs("Installing Pixel PDF…"),Toast.LENGTH_SHORT).show();
+                IO.execute(new Runnable(){public void run(){SuiteApps.showScan(app,on);final boolean got=fresh&&SuiteApps.pdfInstalled(app);mMain.post(new Runnable(){public void run(){if(got&&!isFinishing()&&!isDestroyed())AppToast.makeText(SettingsActivity.this,I18n.cs("Pixel PDF is installed"),Toast.LENGTH_SHORT).show();}});}});
+            }});
+            finishGroup(main);
+            LinearLayout more=group(page);
+            navigation(more,"Open Pixel PDF","All your PDFs and tools","ic_ps_app_camera",new Runnable(){public void run(){
+                if(!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}
+                if(SuiteApps.openPdf(SettingsActivity.this,false))return;
+                try{startActivity(new Intent(SettingsActivity.this,PdfApp.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));}catch(Throwable ignored){}
+            }});
+            choice(more,SuiteApps.LOOK_KEY,"Look for new pages",SuiteApps.LOOK_NAMES,1);
+            choice(more,SuiteApps.QUALITY_KEY,"PDF quality",SuiteApps.QUALITY_NAMES,1);
+            finishGroup(more);
+            section(page,"How it works");
+            explanation(page,"Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.");
+            explanation(page,"Your PDFs are kept in Documents/Pixel PDF.");
+            explanation(page,"The Scan to PDF button on the search bar is set in Pixel search.");
+            return;
+        }
+        if(PixelSearch.PAGE.equals(id)){
+            mSearchPage=new PixelSearchPage(this,new PixelSearchPage.Host(){
+                public boolean blocked(String key){return PatronUi.intercept(SettingsActivity.this,key);}
+                public void failed(){showRootBanner(true);AppToast.makeText(SettingsActivity.this,I18n.cs("Couldn't save: root access needed"),Toast.LENGTH_SHORT).show();}
+            },mText,mTextSecondary,mAccent,mOnAccent,mDark);
+            LinearLayout main=group(page);
+            row(main,PixelSearch.KEY,"ic_ps_search_dock",mAccent,"Pixel search","A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.");
+            finishGroup(main);
+            LinearLayout.LayoutParams preview=new LinearLayout.LayoutParams(-1,dp(132));preview.bottomMargin=dp(6);
+            page.addView(mSearchPage.preview(),preview);
+            LinearLayout tray=group(page);tray.addView(mSearchPage.tray(),new LinearLayout.LayoutParams(-1,-2));finishGroup(tray);
+            LinearLayout sizes=group(page);sizes.addView(mSearchPage.sliders(),new LinearLayout.LayoutParams(-1,-2));finishGroup(sizes);
+            section(page,"Look");
+            LinearLayout look=group(page);
+            look.addView(mSearchPage.look(),new LinearLayout.LayoutParams(-1,-2));
+            row(look,PixelSearch.GLASS_KEY,"ic_ps_search_glass",mAccent,"Frosted Glass","Blurs what's behind the bar, with glowing edges.");
+            row(look,PixelSearch.COLORFUL_KEY,"ic_ps_search_colorful",mAccent,"Colorful icons","App and shortcut buttons keep their own colors.");
+            finishGroup(look);
+            LinearLayout closing=group(page);closing.addView(mSearchPage.closing(),new LinearLayout.LayoutParams(-1,-2));finishGroup(closing);
+            section(page,"Search");
+            LinearLayout search=group(page);
+            search.addView(mSearchPage.scopes(),new LinearLayout.LayoutParams(-1,-2));
+            navigation(search,"Search inside files","Tap to look through your files now.","ic_ps_search_index",new Runnable(){public void run(){mSearchPage.indexNow();}});
+            mSearchPage.indexSummary=navigationSummary(search);
+            row(search,SearchIndex.AUTO_KEY,"ic_ps_search_auto",mAccent,"Refresh automatically","Adds new and changed files the moment they appear.");
+            finishGroup(search);
+            LinearLayout start=group(page);
+            row(start,PixelSearch.FEATURED_KEY,"ic_ps_search_featured",mAccent,"Featured apps","Shows the apps you open most from Pixel search before you type.");
+            row(start,PixelSearch.RECENTS_KEY,"ic_ps_search_recent",mAccent,"Recent searches","Shows your latest searches before you type. Hold one to remove it.");
+            row(start,PixelSearch.ENTER_APP_KEY,"ic_ps_search_enter",mAccent,"Enter opens the first app","Turn off to always search the web when you press Enter.");
+            finishGroup(start);
+            LinearLayout pins=group(page);pins.addView(mSearchPage.pins(),new LinearLayout.LayoutParams(-1,-2));finishGroup(pins);
+            LinearLayout money=group(page);money.addView(mSearchPage.money(),new LinearLayout.LayoutParams(-1,-2));finishGroup(money);
+            mSearchPage.indexStatus();
+            section(page,"How it works");
+            explanation(page,"Tap the search bar and start typing. Hold the bar to edit it right on your home screen.");
+            explanation(page,"Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.");
+            explanation(page,"Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.");
+            explanation(page,"Everything is searched on your phone. Only web searches and currency rates go online.");
+            explanation(page,"Pixel search shows when Hide search bar is off.");
+            return;
+        }
         if(WidgetPanel.KEY.equals(id)){
             section(page,"Home screen");
             feedPreview(page,FeedPreview.HOME);
@@ -1213,6 +1353,10 @@ public class SettingsActivity extends Activity {
             LinearLayout homeOpacity=group(page);widgetPanelOpacity(homeOpacity,WidgetPanel.OPACITY_KEY,"How much of the feed's background shows. The status bar and home bar follow it.");finishGroup(homeOpacity);
             LinearLayout home=group(page);
             row(home,WidgetPanel.KEY,"ic_ps_widget_home",mAccent,"Widgets feed","Your widgets, the weather and the date, one swipe from your home screen.");
+            row(home,PixelSearch.FEED_PULL_KEY,"ic_ps_search_pull",mAccent,"Pixel search","Pull down at the top of the feed to search. Works even with the search bar off.");
+            LinearLayout searchMore=dropdown(home,"feed_search_more_open","More Pixel search options");
+            row(searchMore,PixelSearch.FEED_LOCK_KEY,"ic_ps_search_lock",mAccent,"Search on the lock screen","Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.");
+            row(searchMore,PixelSearch.LOCK_CLIP_KEY,"ic_ps_search_clip",mAccent,"Clipboard on the lock screen","Paste what you copied in lock screen search. Anyone holding your phone could paste it too.");
             feedSide(home,WidgetPanel.SIDE_KEY,"ic_ps_feed_side","Side","The feed comes in from this side of your home screen.");
             feedGoogle(home,WidgetPanel.NO_GOOGLE_KEY,"ic_ps_feed_google","Keep the Google feed","Swipe the other way for the Google feed.");
             row(home,WidgetPanel.HEADER_KEY,"ic_ps_widget_header",mAccent,"Hide weather and date","Your widgets start at the top of the feed.");finishGroup(home);
@@ -1275,6 +1419,8 @@ public class SettingsActivity extends Activity {
             row(controls,RefreshRate90.KEY,"ic_ps_refresh_rate",mAccent,"Refresh rate slider","Adds a 60 / 120 Hz slider under Smooth display (Settings > Display & touch)");
 
             row(controls,ShowFps.KEY,"ic_ps_fps",mAccent,"Show FPS","Live frame counter at the top right");
+
+            row(controls,MiscOptions.CLOCK_SECONDS,"ic_ps_clock_seconds",mAccent,"Seconds in the status bar","The clock at the top shows seconds. Uses a little more battery.");
 
             finishGroup(controls);
 
@@ -1362,7 +1508,7 @@ public class SettingsActivity extends Activity {
             }
 
             LinearLayout features=group(page);if("launcher".equals(id)){
-                navigation(features,"App drawer","Folders, dragging and app shortcuts","ic_ps_drawer",new Runnable(){public void run(){openPage("drawer");}});
+                navigation(features,"App drawer","Folders, dragging and the swipe-up hint","ic_ps_drawer",new Runnable(){public void run(){openPage("drawer");}});
 
                 navigation(features,"Recent apps","Clear all, locked cards and landscape view","ic_ps_recent_apps",new Runnable(){public void run(){openPage("recents");}});
             }for(final FeaturePage item:PAGES)if(item.group.equals(id)&&(!"themes".equals(id)||SuperDark.KEY.equals(item.key))&&(!LauncherHideGlance.KEY.equals(item.key)||LauncherHideGlance.supported()))navigation(features,item.title,item.summary,item.icon,new Runnable(){public void run(){openPage(item.key);}});
@@ -1426,6 +1572,9 @@ public class SettingsActivity extends Activity {
         navigation(categories,"Google apps","Phone, Chrome, Gboard, Google, News and watch","ic_ps_google_apps",new Runnable(){public void run(){openPage("google_apps");}});
 
         googleNavigationIcon(categories);
+
+        navigation(categories,"Pixel Suite apps","Pixel dialer, Pixel search and Pixel PDF","ic_ps_suite_apps",new Runnable(){public void run(){openPage("suite_apps");}});
+        PatronUi.navigationBadge(this,(LinearLayout)categories.getChildAt(categories.getChildCount()-1),"Pixel Suite apps");
 
         navigation(categories,"Widgets feed","Your own widgets, left or right.","ic_ps_widget_panel",new Runnable(){public void run(){openPage("pixelsuite_widget_panel");}});
 
@@ -1522,7 +1671,7 @@ public class SettingsActivity extends Activity {
         int height="chrome_plus_transform".equals(key)||"chrome_extensions".equals(key)?360:"privacy_combined".equals(key)?400:
                 (SuperDark.KEY.equals(key)||LauncherFeatures.DRAWER.equals(key)||LauncherFeatures.GRID.equals(key)
                 ||"folder_sort".equals(key)||FolderDrag.TWO_FINGER.equals(key)||MultiDrag.KEY.equals(key))?330:300;
-        FeaturePreview preview=new FeaturePreview(this,key);
+        FeaturePreview preview=new FeaturePreview(this,LauncherFeatures.HIDE_HOME_SHORTCUTS.equals(key)?LauncherFeatures.HIDE_SHORTCUTS:key);
         preview.setContentDescription(I18n.cs(feature.title+". A looping demo. It doesn't change your settings."));
         card.addView(preview,new LinearLayout.LayoutParams(-1,dp(height)));
         mPreviews.add(preview);
@@ -1711,7 +1860,7 @@ public class SettingsActivity extends Activity {
                 }}).create());}});}});
     }
 
-    @Override protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if((request==Backup.SAVE||request==Backup.OPEN)&&result==RESULT_OK){backupResult(request,data);return;}if(request==CallRecordingSettings.PICK_FOLDER&&mCallRecordingSettings!=null){mCallRecordingSettings.result(result,data);return;}if(request==202&&getIntent().getBooleanExtra("resume_update_install",false)){getIntent().removeExtra("resume_update_install");try{if((Boolean)getPackageManager().getClass().getMethod("canRequestPackageInstalls").invoke(getPackageManager()))beginUpdateInstall();else if(mUpdateStatus!=null)mUpdateStatus.setText(I18n.cs("Installation permission was not enabled. Tap Download and install when ready."));}catch(Exception unavailable){}}}
+    @Override protected void onActivityResult(int request,int result,Intent data){super.onActivityResult(request,result,data);if(request==PixelSearchPage.PICK_CONTACT){if(mSearchPage!=null)mSearchPage.picked(result,data);return;}if((request==Backup.SAVE||request==Backup.OPEN)&&result==RESULT_OK){backupResult(request,data);return;}if(request==CallRecordingSettings.PICK_FOLDER&&mCallRecordingSettings!=null){mCallRecordingSettings.result(result,data);return;}if(request==202&&getIntent().getBooleanExtra("resume_update_install",false)){getIntent().removeExtra("resume_update_install");try{if((Boolean)getPackageManager().getClass().getMethod("canRequestPackageInstalls").invoke(getPackageManager()))beginUpdateInstall();else if(mUpdateStatus!=null)mUpdateStatus.setText(I18n.cs("Installation permission was not enabled. Tap Download and install when ready."));}catch(Exception unavailable){}}}
 
     private void buildUpdates(LinearLayout page){
         explanation(page,"Pixel Suite checks for updates and installs them right here.");
@@ -1744,7 +1893,9 @@ public class SettingsActivity extends Activity {
     private final java.util.List<AlertDialog> mSettingsDialogs=new java.util.ArrayList<AlertDialog>();
 
     private void showSettingsDialog(final AlertDialog dialog){
-        dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(true);dialog.show();Rtl.dialog(dialog);mSettingsDialogs.add(dialog);dialog.setOnDismissListener(new DialogInterface.OnDismissListener(){public void onDismiss(DialogInterface d){mSettingsDialogs.remove(dialog);}});
+        dialog.setCancelable(true);dialog.setCanceledOnTouchOutside(true);
+        if(dialog.getWindow()!=null&&AppMotion.enabled(this)){int bloom=getResources().getIdentifier("PsBloomDialog","style",getPackageName());if(bloom!=0)dialog.getWindow().setWindowAnimations(bloom);}
+        dialog.show();Rtl.dialog(dialog);mSettingsDialogs.add(dialog);dialog.setOnDismissListener(new DialogInterface.OnDismissListener(){public void onDismiss(DialogInterface d){mSettingsDialogs.remove(dialog);}});
 
         Window window=dialog.getWindow();if(window==null)return;TapFeedback.watch(window.getDecorView());
 
@@ -1978,9 +2129,9 @@ public class SettingsActivity extends Activity {
         ImageView icon=mChoiceIcons.get(key);
 
         if(icon!=null){
-            String name=folderGridKey(key)?gridIcon(key):Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":DarkPages.KEY_STYLE.equals(key)?"ic_ps_cr_dark":DarkPages.KEY_WHEN.equals(key)?"ic_ps_cr_schedule":value==1?"ic_ps_double_tap":"ic_ps_single_tap";
+            String name=folderGridKey(key)?gridIcon(key):Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":DarkPages.KEY_STYLE.equals(key)?"ic_ps_cr_dark":DarkPages.KEY_WHEN.equals(key)?"ic_ps_cr_schedule":SuiteApps.LOOK_KEY.equals(key)?"ic_ps_scan_look":SuiteApps.QUALITY_KEY.equals(key)?"ic_ps_scan_quality":value==1?"ic_ps_double_tap":"ic_ps_single_tap";
 
-            Drawable d=drawable(name);if(d!=null){d=d.mutate();d.setTint(badgedChoice(key)?sectionInk(Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":"ic_ps_single_tap"):mAccent);icon.setImageDrawable(d);}
+            Drawable d=drawable(name);if(d!=null){d=d.mutate();d.setTint(badgedChoice(key)?sectionInk(badgeIcon(key)):mAccent);icon.setImageDrawable(d);}
         }
     }
 
@@ -2232,15 +2383,17 @@ public class SettingsActivity extends Activity {
 
     private void choice(LinearLayout group,String key,String title,String[] items){choice(group,key,title,items,0);}
 
-    private static boolean badgedChoice(String key){return Feature.DOUBLE_TAP_WAKE.equals(key)||Feature.LOCK_SHORTCUTS.equals(key);}
+    private static boolean badgedChoice(String key){return Feature.DOUBLE_TAP_WAKE.equals(key)||Feature.LOCK_SHORTCUTS.equals(key)||SuiteApps.LOOK_KEY.equals(key)||SuiteApps.QUALITY_KEY.equals(key);}
+
+    private static String badgeIcon(String key){return Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":SuiteApps.LOOK_KEY.equals(key)?"ic_ps_scan_look":SuiteApps.QUALITY_KEY.equals(key)?"ic_ps_scan_quality":"ic_ps_single_tap";}
 
     private void choice(LinearLayout group,final String key,final String title,final String[] items,final int offset){
         LinearLayout row=new LinearLayout(this);row.setOrientation(0);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(18),dp(22),dp(18),dp(22));row.setMinimumHeight(dp(96));
 
-        ImageView icon=new ImageView(this);Drawable d=drawable(folderGridKey(key)?gridIcon(key):Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":DarkPages.KEY_STYLE.equals(key)?"ic_ps_cr_dark":DarkPages.KEY_WHEN.equals(key)?"ic_ps_cr_schedule":"ic_ps_single_tap");if(d!=null){d=d.mutate();d.setTint(mAccent);icon.setImageDrawable(d);}
+        ImageView icon=new ImageView(this);Drawable d=drawable(folderGridKey(key)?gridIcon(key):Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":DarkPages.KEY_STYLE.equals(key)?"ic_ps_cr_dark":DarkPages.KEY_WHEN.equals(key)?"ic_ps_cr_schedule":SuiteApps.LOOK_KEY.equals(key)?"ic_ps_scan_look":SuiteApps.QUALITY_KEY.equals(key)?"ic_ps_scan_quality":"ic_ps_single_tap");if(d!=null){d=d.mutate();d.setTint(mAccent);icon.setImageDrawable(d);}
 
         if(badgedChoice(key)){
-            String name=Feature.LOCK_SHORTCUTS.equals(key)?"ic_ps_lock_options":"ic_ps_single_tap";
+            String name=badgeIcon(key);
             if(d!=null)d.setTint(sectionInk(name));
             FrameLayout badge=new FrameLayout(this);GradientDrawable circle=new GradientDrawable();circle.setShape(GradientDrawable.OVAL);circle.setColor(sectionColor(name));badge.setBackground(circle);
             badge.addView(icon,new FrameLayout.LayoutParams(dp(22),dp(22),Gravity.CENTER));
@@ -2299,7 +2452,7 @@ public class SettingsActivity extends Activity {
                 }else if(MiscOptions.defaultOff(keys[i])){
                     try{values[i]="1".equals(android.provider.Settings.Secure.getString(getContentResolver(),keys[i]))?1:0;}catch(Throwable ignored){}
                 }else if(PrivacyLock.ENABLED_KEY.equals(keys[i])||PrivacyLock.PROTECT_KEY.equals(keys[i])){
-                    try{values[i]=PrivacyLock.onValue(android.provider.Settings.Secure.getString(getContentResolver(),keys[i]))?1:0;}catch(Throwable ignored){}
+                    try{String raw=android.provider.Settings.Secure.getString(getContentResolver(),keys[i]);values[i]=(PrivacyLock.ENABLED_KEY.equals(keys[i])?PrivacyLock.enabledValue(raw):PrivacyLock.onValue(raw))?1:0;}catch(Throwable ignored){}
                 }
 
                 mMain.post(new Runnable() {
@@ -2351,10 +2504,35 @@ public class SettingsActivity extends Activity {
         });
     }
 
+    private boolean mLockSearchAgreed;
+    private android.os.CancellationSignal mLockSearchSignal;
+
+    private void agreeLockSearch(final Switch sw,boolean clip){
+        try{
+            final java.util.concurrent.Executor onMain=new java.util.concurrent.Executor(){public void execute(Runnable r){mMain.post(r);}};
+            android.hardware.biometrics.BiometricPrompt.Builder b=new android.hardware.biometrics.BiometricPrompt.Builder(this);
+            b.setTitle(I18n.cs(clip?"Use the clipboard on the lock screen?":"Use Pixel search on the lock screen?"));
+            b.setDescription(I18n.cs(clip?"Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.":"Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock."));
+            b.setAllowedAuthenticators(255);
+            b.setConfirmationRequired(false);
+            b.setNegativeButton(I18n.cs("Not now"),onMain,new android.content.DialogInterface.OnClickListener(){public void onClick(android.content.DialogInterface d,int which){}});
+            mLockSearchSignal=new android.os.CancellationSignal();
+            b.build().authenticate(mLockSearchSignal,onMain,new android.hardware.biometrics.BiometricPrompt.AuthenticationCallback(){
+                @Override public void onAuthenticationSucceeded(android.hardware.biometrics.BiometricPrompt.AuthenticationResult r){
+                    if(isFinishing()||isDestroyed())return;
+                    mLockSearchAgreed=true;
+                    sw.setChecked(true);
+                }
+            });
+        }catch(Throwable t){android.util.Log.w("PixelSuite","lock search: confirm",t);}
+    }
+
     private void save(final String key, final boolean on, final Switch sw) {
         if(mPrivacyGate!=null&&!mPrivacyGate.isOpen())return;
 
         if(PatronUi.intercept(this,key)){mUpdating=true;sw.setChecked(false);mUpdating=false;return;}
+        if((PixelSearch.FEED_LOCK_KEY.equals(key)||PixelSearch.LOCK_CLIP_KEY.equals(key))&&on&&!mLockSearchAgreed){mUpdating=true;sSwitchValues.put(key,false);sw.setChecked(false);mUpdating=false;agreeLockSearch(sw,PixelSearch.LOCK_CLIP_KEY.equals(key));return;}
+        mLockSearchAgreed=false;
 
         if("pixelsuite_dna_watch".equals(key)&&on&&android.os.Build.VERSION.SDK_INT>=31&&checkSelfPermission("android.permission.BLUETOOTH_CONNECT")!=android.content.pm.PackageManager.PERMISSION_GRANTED){
             mUpdating=true;sSwitchValues.put(key,false);sw.setChecked(false);mUpdating=false;
@@ -2381,7 +2559,7 @@ public class SettingsActivity extends Activity {
                     public void run() {
                         if (isFinishing() || isDestroyed()) return;
 
-                        if (ok) {searchSaved(key,on);if(DoNotAnnoy.KEY.equals(key)){DoNotAnnoyTile.refresh(SettingsActivity.this);if(on)DoNotAnnoyPermissions.request(SettingsActivity.this);}updateMiscPicker();if(MiscSystem.DEV_KEY.equals(key))AppToast.makeText(SettingsActivity.this,I18n.cs("Reopen apps that were already open."),Toast.LENGTH_LONG).show();if(MiscSystem.A11Y_KEY.equals(key))AppToast.makeText(SettingsActivity.this,I18n.cs("Changes apply the next time the chosen apps open."),Toast.LENGTH_LONG).show();RestartPill.changed(key); if (mRestart != null) mRestart.refresh(); return; }
+                        if (ok) {searchSaved(key,on);if(SearchIndex.AUTO_KEY.equals(key)&&PixelSearch.active(SettingsActivity.this)){SearchIndex.watch(SettingsActivity.this,on);if(on)SearchIndex.refreshSoon(SettingsActivity.this,0);}if(PixelSearch.KEY.equals(key)||PixelSearch.FEED_PULL_KEY.equals(key)){if(PixelSearch.active(SettingsActivity.this)){SearchIndex.schedule(SettingsActivity.this);SearchIndex.refreshSoon(SettingsActivity.this,0);}else SearchIndex.cancel(SettingsActivity.this);}if(mSearchPage!=null&&key.startsWith("pixelsuite_search_"))mSearchPage.refresh();if(DoNotAnnoy.KEY.equals(key)){DoNotAnnoyTile.refresh(SettingsActivity.this);if(on)DoNotAnnoyPermissions.request(SettingsActivity.this);}updateMiscPicker();if(MiscSystem.DEV_KEY.equals(key))AppToast.makeText(SettingsActivity.this,I18n.cs("Reopen apps that were already open."),Toast.LENGTH_LONG).show();if(MiscSystem.A11Y_KEY.equals(key))AppToast.makeText(SettingsActivity.this,I18n.cs("Changes apply the next time the chosen apps open."),Toast.LENGTH_LONG).show();RestartPill.changed(key); if (mRestart != null) mRestart.refresh(); return; }
 
                         mUpdating = true;
 
@@ -2423,6 +2601,8 @@ public class SettingsActivity extends Activity {
         }
 
         if (Feature.FILES_SORT.equals(key)) return put + "; am force-stop " + RestartPill.FILES + "; am force-stop com.google.android.documentsui; am force-stop com.android.documentsui; true";
+
+        if (PixelSearch.KEY.equals(key) || PixelSearch.FEED_PULL_KEY.equals(key)) return put + PixelSearchPage.commands(on);
 
         if (SuperDark.KEY.equals(key)) return put + "; " + SuperDark.commands(on) + (on ? "" : "; if [ \"$(settings get secure " + SurfaceStyle.KEY + ")\" = 0 ]; then settings put global disable_window_blurs 1; fi; true");
 
@@ -2586,6 +2766,28 @@ public class SettingsActivity extends Activity {
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
     }
 
+    private void appSwitch(LinearLayout group,String icon,String title,String summary,boolean on,final boolean usable,final boolean paid,final SuiteApps.Toggle toggle){
+        LinearLayout row=new LinearLayout(this);row.setOrientation(LinearLayout.HORIZONTAL);row.setGravity(Gravity.CENTER_VERTICAL);row.setPadding(dp(18),dp(16),dp(16),dp(16));row.setMinimumHeight(dp(72));
+        FrameLayout badge=new FrameLayout(this);GradientDrawable circle=new GradientDrawable();circle.setShape(GradientDrawable.OVAL);circle.setColor(sectionColor(icon));badge.setBackground(circle);
+        ImageView iv=new ImageView(this);Drawable d=drawable(icon);if(d!=null){d=d.mutate();d.setTint(sectionInk(icon));iv.setImageDrawable(d);}
+        badge.addView(iv,new FrameLayout.LayoutParams(dp(22),dp(22),Gravity.CENTER));
+        LinearLayout.LayoutParams blp=new LinearLayout.LayoutParams(dp(40),dp(40));blp.rightMargin=dp(16);row.addView(badge,blp);
+        LinearLayout texts=new LinearLayout(this);texts.setOrientation(LinearLayout.VERTICAL);texts.addView(text(title,17,mText,false));
+        TextView s=text(summary,14,mTextSecondary,false);s.setPadding(0,dp(2),0,0);texts.addView(s);
+        row.addView(texts,new LinearLayout.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT,1f));
+        final Switch sw=new Switch(this);
+        sw.setThumbTintList(new ColorStateList(new int[][]{new int[]{android.R.attr.state_checked},new int[]{}},new int[]{mAccent,mTextSecondary}));
+        sw.setContentDescription(I18n.cs(title));sw.setChecked(on);sw.jumpDrawablesToCurrentState();sw.setClickable(false);sw.setFocusable(false);
+        if(!usable){badge.setAlpha(0.4f);texts.setAlpha(0.4f);sw.setAlpha(0.4f);}
+        LinearLayout.LayoutParams slp=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);slp.leftMargin=dp(12);row.addView(sw,slp);
+        row.setClickable(true);row.setFocusable(true);row.setContentDescription(I18n.cs(title));
+        row.setOnClickListener(new View.OnClickListener(){public void onClick(View v){
+            if(!usable)return;
+            if(paid&&!PatronAccess.unlocked()){PatronPaper.open(SettingsActivity.this,0,null);return;}
+            sw.toggle();toggle.set(sw.isChecked());
+        }});
+        group.addView(row,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+    }
     private void startDeveloperGear(){
         if(mDeveloperGear==null||mGearRotation!=null)return;
 
@@ -3054,7 +3256,7 @@ public class SettingsActivity extends Activity {
             final int[] values=stored==null?null:new int[keys.length];
             if(stored!=null){java.util.Map<String,String> selected=new java.util.HashMap<String,String>();for(String line:stored){int split=line.indexOf('=');if(split>0&&unique.contains(line.substring(0,split)))selected.put(line.substring(0,split),line.substring(split+1));}
                 for(int i=0;i<keys.length;i++){String raw=selected.get(keys[i]);try{values[i]=Integer.parseInt(raw);}catch(Exception unset){values[i]=Feature.defaultFor(keys[i]);}
-                    if(PrivacyLock.ENABLED_KEY.equals(keys[i])||PrivacyLock.PROTECT_KEY.equals(keys[i]))values[i]=PrivacyLock.onValue(raw)?1:0;
+                    if(PrivacyLock.ENABLED_KEY.equals(keys[i]))values[i]=PrivacyLock.enabledValue(raw)?1:0;else if(PrivacyLock.PROTECT_KEY.equals(keys[i]))values[i]=PrivacyLock.onValue(raw)?1:0;
                     else if(PrivacyLock.GRACE_KEY.equals(keys[i]))values[i]=PrivacyLock.graceOn(raw)?1:0;
                     else if(MiscOptions.defaultOff(keys[i]))values[i]="1".equals(raw)?1:0;
                     else if(GboardMain.KEY.equals(keys[i]))try{values[i]=GboardMain.on(getContentResolver())?1:0;}catch(Throwable ignored){}
@@ -3087,7 +3289,7 @@ public class SettingsActivity extends Activity {
         return super.dispatchTouchEvent(e);
     }
     private void closePanels(){if(mRestart!=null&&mRestart.whyOpen())mRestart.closeWhy();else if(mLanguage!=null&&mLanguage.isOpen())mLanguage.close();}
-    @Override public void onBackPressed(){if(mRestart!=null&&mRestart.back())return;if(mLanguage!=null&&mLanguage.back())return;if(mSearch!=null&&mSearch.back())return;super.onBackPressed();}
+    @Override public void onBackPressed(){if(PhoneStatus.back())return;if(mRestart!=null&&mRestart.back())return;if(mLanguage!=null&&mLanguage.back())return;if(mSearch!=null&&mSearch.back())return;if(mSearchPage!=null&&mSearchPage.back())return;super.onBackPressed();}
 
     private LanguagePill mLanguage;private static boolean sLanguageFade;
     private void languagePicked(final String code){
@@ -3107,12 +3309,23 @@ public class SettingsActivity extends Activity {
     @Override public void onWindowFocusChanged(boolean focus){
         super.onWindowFocusChanged(focus);
         if(mSearch==null)return;
-        if(focus){mSearch.setVisibility(View.VISIBLE);return;}
+        if(focus){fadeSearch(true);return;}
         mMain.post(()->{
             if(mSearch==null||hasWindowFocus())return;
             boolean authentication=mPrivacyGate!=null&&!mPrivacyGate.isOpen();
-            mSearch.setVisibility(!authentication&&(mPageNavigation||!mPageResumed)?View.VISIBLE:View.INVISIBLE);
+            fadeSearch(!authentication&&(mPageNavigation||!mPageResumed));
         });
+    }
+    private void fadeSearch(final boolean show){
+        final View v=mSearch;if(v==null)return;
+        v.animate().cancel();
+        if(show){
+            if(v.getVisibility()!=View.VISIBLE){v.setAlpha(0f);v.setVisibility(View.VISIBLE);}
+            v.animate().alpha(1f).setDuration(220).setInterpolator(new android.view.animation.DecelerateInterpolator()).start();
+        }else{
+            if(v.getVisibility()!=View.VISIBLE)return;
+            v.animate().alpha(0f).setDuration(160).setInterpolator(new android.view.animation.AccelerateInterpolator()).withEndAction(()->{if(v.getAlpha()<0.01f)v.setVisibility(View.INVISIBLE);}).start();
+        }
     }
     private void revealSearchAnchor(){
         String anchor=getIntent().getStringExtra("search_anchor");if(anchor==null||mPageScroll==null)return;getIntent().removeExtra("search_anchor");

@@ -109,7 +109,7 @@ final class ShapeWatch {
                         Object bitmap = LauncherFeatures.get(info, "bitmap");
                         Object themed = bitmap == null ? null : LauncherFeatures.get(bitmap, "themedBitmap");
                         boolean low = false; try { low = Boolean.TRUE.equals(LauncherFeatures.call(bitmap, "isLowRes")); } catch (Throwable ignored) { }
-                        int flags = ((Number) LauncherFeatures.call(cell, "getIconCreationFlagsForInfo", info)).intValue();
+                        int flags; try { flags = ((Number) LauncherFeatures.call(cell, "getIconCreationFlagsForInfo", info)).intValue(); } catch (RuntimeException e) { flags = ((Number) LauncherFeatures.call(cell, "getIconCreationFlagsForInfo")).intValue(); }
                         final String key = LauncherFeatures.identity(info);
                         boolean wants = (flags & 1) != 0 && themeOn(cell.getContext()) && !low && key != null;
                         if (waiting != null) {

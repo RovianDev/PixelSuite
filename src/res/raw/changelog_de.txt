@@ -1,3 +1,59 @@
+## v3.2.1
+Volle Unterstützung für das November-Update, Pixel-Suche, Pixel Telefon, Pixel PDF, ein Ordnermenü auf dem Startbildschirm, Beenden erzwingen, Handy-Check und viele Fehlerbehebungen.
+
+📱 November-Update
+• **Android 17 QPR2 (November-Update)**: Pixel Suite läuft auf dem neuen Build, und ältere Builds funktionieren weiter wie bisher. Das Update hatte Folgendes kaputt gemacht, und alles funktioniert wieder:
+• **Super-Dunkelmodus**: wieder echtes Schwarz in der Benachrichtigungsleiste, der App-Übersicht, in Ordnern und überall sonst, wo er greift, auch nach einem Neustart, und kein grauer Bildschirm beim Entsperren. (Designs › Super-Dunkelmodus)
+• **App-Menüs**: Wenn du eine App auf dem Startbildschirm oder in der App-Übersicht gedrückt hältst, öffnet sich ihr Menü jedes Mal, als ein mattiertes Feld mit Rand, ihren Verknüpfungen und den Optionen von Pixel Suite.
+• **Ordner**: Ordner auf dem Startbildschirm öffnen sich mit demselben mattierten Look, derselben Unschärfe und demselben Rand wie in der App-Übersicht, und der Effekt beim Entfernen eines Ordners ist zurück.
+• **Mehrere Symbole auf einmal**: Ziehst du mehrere ausgewählte Symbole auf Entfernen, werden alle entfernt (Rückgängig holt alle zurück), und beim Verschieben auf eine andere Seite bleiben keine Originale mehr zurück.
+• **Screenshots**: Der Auslöserton ist wieder da und folgt deiner Klingeltonlautstärke.
+• **App- & Ordnersperre**: Eine gesperrte App fragt nach deinem Fingerabdruck, bevor sie sich öffnet, nicht danach, und das Entfernen einer gesperrten App oder eines gesperrten Ordners vom Startbildschirm fragt wieder nach deinem Fingerabdruck.
+• **Doppeltippen zum Sperren**: Doppeltippen auf Wecker, Wetter oder Datum auf dem Sperrbildschirm schaltet den Bildschirm aus, statt sie zu öffnen, und das Eintippen deiner PIN schaltet den Bildschirm nicht mehr aus. (Gesten › Zum Aktivieren tippen oder doppeltippen › Verhalten auf dem Sperrbildschirm › Pixel Suite)
+• **Bildschirmaufnahme-Feld**: öffnet sich sauber, ohne durchscheinende Schnelleinstellungen, Aufblitzen oder blasse Karte, und seine Tasten sitzen richtig.
+• **Teilen-Menü**: Ausgeblendete Apps zum Teilen bleiben wieder ausgeblendet, und die Bearbeiten-Schaltfläche ist zurück, wenn du aus Google Fotos teilst.
+• **Toasts**: „Video gespeichert“, „Video gelöscht“ und andere Systemmeldungen sind wieder eine einzige Pille und folgen deinem Design, auch Super Dark.
+• **Auch wieder da**: die Pixel Suite-Zeile mit ihrem Symbol im Halte-Menü des Startbildschirms, der Stil der Fingerabdruck-Abfrage, Symbolformen, „Alle löschen“ für App-Paare und das Ausblenden von Verknüpfungen in den Menüs der App-Übersicht.
+
+✨ Neu
+• **Neue Animation für Pixel Suite**: Seiten, Dialoge und Menüs öffnen und schließen sich mit einer komplett neuen Animation, viel flüssiger und mit neuen Techniken gebaut.
+• **Handy-Check**: Tippe oben links auf der Hauptseite auf das **!**, um dein Handy, die Android-Version und das Sicherheitsupdate zu sehen und ob Pixel Suite darauf **Sicher**, **Ungetestet** oder **Unsicher** ist, mit schnellen Links zu OTA-Blocker und Telegram.
+• **Ordnermenü auf dem Startbildschirm**: Halte einen Ordner gedrückt, um ihn umzubenennen, zu sortieren (A–Z oder deine eigene Reihenfolge), zu sperren oder zu entfernen, mit demselben Menü wie die Ordner in der App-Übersicht.
+• **Beenden erzwingen**: Halte eine beliebige App gedrückt und wähle „Beenden erzwingen“, um sie komplett zu schließen.
+• **App-Verknüpfungen auf dem Startbildschirm, in der App-Übersicht oder beidem ausblenden**. (Pixel-Launcher › App-Verknüpfungen)
+• **Pausierte Apps**: Wenn du eine pausierte App gedrückt hältst, öffnet sich ihr Menü mit ihren Verknüpfungen.
+• **Sichere und unsichere Versionen**: Wartet für eine App ein Update, wird deine installierte Version grün als Sicher und die wartende rot als Unsicher angezeigt. Tippe auf die sichere Version, um genau diese Version herunterzuladen. (OTA- & Store-Blocker › Play Store-Blocker)
+• **„App-Liste“ ausblenden** im Menü, das erscheint, wenn du eine leere Stelle auf dem Startbildschirm gedrückt hältst. (Pixel-Launcher › „App-Liste“ ausblenden)
+• **Hinweis zum Hochwischen ausblenden**: kein Hinweis mehr nach ein paar missglückten Wischern zur App-Übersicht. (App-Übersicht › Hinweis zum Hochwischen ausblenden)
+• **Sekunden in der Uhr der Statusleiste**. (Sonstiges › Sekunden in der Statusleiste)
+• **Frischer Start**: Bei einer Neuinstallation sind alle Funktionen zuerst aus, damit du nur einschaltest, was du willst. Ein Update behält deine Einstellungen bei.
+
+💎 Patreon
+• **Pixel Suite-Apps**: Pixel-Suche, Pixel Telefon und Pixel PDF, an denen ich lange gearbeitet habe, sind endlich da, alle an einem Ort. (Pixel Suite-Apps)
+• **Pixel-Suche**: Ersetze die nutzlose Google-Suchleiste komplett durch eine, die wirklich dein Handy durchsucht. Apps, Kontakte, Einstellungen und Dateien, alles direkt auf dem Handy gefunden (nur Websuchen gehen online). Sie findet sogar Wörter und Zahlen in deinen PDFs und in Word-, Excel- und PowerPoint-Dateien. Halte die Leiste gedrückt, um Größe, Farben, Design und Schaltflächen zu ändern. (Pixel Suite-Apps › Pixel-Suche)
+• **Pixel-Suche, alles drin**: Favoriten und Lieblingskontakte hinter dem Herz, Währungsumrechnung mit Flaggen, ein Rechner, der auch Einheiten umrechnet (etwa 5 km in Meilen), empfohlene Apps und letzte Suchen, Pins und eine Suchmaschinen-Taste auf der Leiste, die Wortvorschläge deiner Tastatur, Schließanimationen, die du in einer Live-Vorschau auswählst, und ein Widget für den Startbildschirm. Dateien zeigen, wann sie zuletzt geändert wurden, und erscheinen, sobald sie hinzukommen; halte eine Datei gedrückt, um sie zu teilen, in ihrem Ordner zu zeigen oder zu löschen.
+• **Pixel-Suche im Widget-Feed**: Beide arbeiten zusammen. Ziehe im Widget-Feed nach unten und die Pixel-Suche öffnet sich über dem verschwommenen Feed. (Widget-Feed › Pixel-Suche) Das klappt auch auf dem Sperrbildschirm, wo Rechnungen und Währungen ohne Entsperren funktionieren. (Widget-Feed › Pfeil neben Pixel-Suche › Auf dem Sperrbildschirm suchen)
+• **Pixel Telefon**: eine vollständige Telefon-App für Pixel Suite. Sie nimmt jeden Anruf automatisch auf, beide Seiten, in der Qualität deiner Wahl, und **nimmt auch WhatsApp-Sprach- und Videoanrufe auf**, gespeichert als Video des Anrufs mit dem Ton beider Seiten. Notizen, die du während eines Anrufs schreibst, werden in Google Keep gespeichert, eine Notiz pro Person. Tabs für Favoriten, Anrufe, Kontakte und Aufnahmen, Annehmen per Tippen oder Wischen und der Pixel Suite-Look, Super Dark inklusive. (Pixel Suite-Apps › Pixel Telefon) ***(Jemanden ohne sein Wissen aufzunehmen kann dort, wo du lebst, gesetzlich verboten sein. Du bist für deine Aufnahmen und ihre Nutzung verantwortlich, nicht RovianDev.)***
+• **Pixel PDF**: eine vollständige PDF-App. Scanne Dokumente und Ausweise, wandle Bilder, Word- und PowerPoint-Dateien in PDFs um und PDFs in Word, PowerPoint oder JPG. PDFs zusammenführen, komprimieren, sperren und entsperren, Text hinzufügen, unterschreiben und darauf zeichnen, drucken und PDFs aus anderen Apps öffnen. (Pixel Suite-Apps › Pixel PDF)
+• **Widget-Feed auf dem Sperrbildschirm** mit dem November-Update: Der Sperrbildschirm bewegt sich wie eine Seite, und du kannst den Feed von fast überall aufwischen, sogar unterhalb einer Benachrichtigung, ohne die Benachrichtigungsleiste, das PIN-Feld, den Zurück-Pfeil oder den Fingerabdrucksensor auszulösen. Er federt wie auf dem Startbildschirm, wenn er sich einpendelt und wenn du über die Widgets hinauswischst. (Widget-Feed)
+• **Sperrbildschirm und Fingerabdruck**: Nachdem du den Widget-Feed verlässt, erscheint sofort das Fingerabdruck-Symbol (nie ein Schloss), und dein Fingerabdruck entsperrt gleich. Berührst du die Fingerabdruckstelle direkt nach der Nutzung des Feeds, wird nicht versehentlich entsperrt.
+
+🛠️ Patreon-Fehlerbehebungen
+• **Widget-Feed auf dem Sperrbildschirm**: Mit eingeblendetem PIN-Feld schiebt ein seitlicher Wisch den Feed nicht mehr dahinter, und der Feed sperrt das Handy nicht mehr direkt nach dem Entsperren per Fingerabdruck wieder.
+• **Gboard+**: Ein Tippen auf das Zwischenablage-Symbol funktioniert wieder direkt nach dem Kopieren, die Tasten kommen nach dem Schließen des Werkzeugfelds zurück, die Spracheingabe funktioniert auf Arabisch und in anderen Sprachen und lässt die Symbolleiste nicht mehr leer und blau zurück, Wischer drücken keine Tasten der Symbolleiste mehr und blockieren die Zurück-Geste nicht, und die schwebende Tastatur behält ihr Layout, auch oben auf dem Bildschirm, mit runden Ecken und einer Symbolleiste, die sie ausfüllt.
+• **Chrome+**: Tabs öffnen sich ohne Wartezeit nach dem Tippen, das Bild eines Tabs blendet nicht mehr auf eine leere Seite über, und ein schlafender Tab behält sein Bild, bis die Seite gezeichnet ist.
+
+🐞 Fehlerbehebungen in Pixel Suite
+• **OTP automatisch ausfüllen**: Der Code steht am Anfang der Vorschlagszeile der Tastatur, nie oben auf dem Bildschirm oder über Googles eigenem Code-Vorschlag. Er funktioniert mit der schwebenden Tastatur, verschwindet, sobald der Code eingegeben ist, und auch Codes nur aus Buchstaben werden erkannt.
+• **Auf Telegram teilen** ist zurück in Pixel Stack, Pixel Blast und Pixel Siege: Teile nach einem Spiel deinen Punktestand in der Telegram-Gruppe.
+• **Sperrbildschirm**: Ein seitlicher oder schräger Wisch zieht die Benachrichtigungsleiste nicht mehr kurz herunter.
+• **PIN-Feld**: Ein Wisch über eine Zahl lässt sie nicht mehr hervorgehoben.
+• **Ordner in der App-Übersicht**: Das Halte-Menü sitzt direkt neben dem Ordner, auch weit unten in der Übersicht.
+• **Nicht nerven**: „Uhr nicht erreichbar“ erscheint nicht mehr ohne Pixel Watch mit LTE oder solange diese Option aus ist.
+
+Über die aktuelle Version installieren und neu starten.
+
+
 ## v3.2.0
 Widget-Feed, OTP automatisch ausfüllen, WhatsApp-Anrufe blockieren, ein viel größeres Pixel Arcade, Filme zu den Funktionen und viele Fehlerbehebungen.
 

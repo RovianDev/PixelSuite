@@ -105,7 +105,6 @@ final class CropRemember {
             @Override public void run() {
                 if (pressCrop() != 0) return;
                 if (attempt < 15) pressCropSoon(attempt + 1);
-                else { }
             }
         }, attempt == 1 ? 0 : 100);
     }

@@ -104,7 +104,8 @@ final class WatchEsim {
     private static boolean on() {
         try {
             Context c = (Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
-            return c != null && !"0".equals(Settings.Secure.getString(c.getContentResolver(), KEY)) && PatronGate.esimOk(c);
+            String v = c == null ? null : Settings.Secure.getString(c.getContentResolver(), KEY);
+            return c != null && (v == null ? Defaults.legacy() : !"0".equals(v)) && PatronGate.esimOk(c);
         } catch (Throwable t) { return false; }
     }
 

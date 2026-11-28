@@ -40,6 +40,8 @@ final class PrivacyLock {
     static boolean graceOn(String value) { return "1".equals(value) || "true".equals(value); }
     static final String ENABLED_KEY = "pixelsuite_privacy_enabled", PROTECT_KEY = "pixelsuite_privacy_protect";
     static boolean onValue(String v) { return !"0".equals(v) && !"false".equals(v); }
+
+    static boolean enabledValue(String v) { return v == null || "null".equals(v) ? Defaults.legacy() : onValue(v); }
     static final String MODE_CONFIRM = "confirm", ACTION_CONFIRMED = "io.github.pixelsuite.APP_LOCK_CONFIRMED";
     static final String EXTRA_REASON = "pixelsuite_reason", EXTRA_TOKEN = "pixelsuite_token", EXTRA_OK = "pixelsuite_ok";
     static final String REASON_UNINSTALL = "uninstall", REASON_DISABLE = "disable", REASON_PAUSE = "pause";
@@ -125,12 +127,16 @@ final class PrivacyLock {
         } catch (Throwable error) { }
         try {
             Class<?> interceptor = Xp.findClass("com.android.server.wm.ActivityStartInterceptor", cl);
-            Xp.hookAllMethods(interceptor, "intercept", new Xp.Callback() {
+            Xp.Callback gateway = new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     try { if (!Boolean.TRUE.equals(p.getResult()) && intercept(p.thisObject)) p.setResult(Boolean.TRUE); }
                     catch (Throwable error) { }
                 }
-            });
+            };
+            Xp.hookAllMethods(interceptor, "intercept", gateway);
+            try { Xp.hookAllMethods(interceptor, "interceptInternal", gateway); } catch (Throwable ignored) { }
+            try { Xp.deoptimizeAll(interceptor, "intercept"); } catch (Throwable ignored) { }
+            try { Xp.deoptimizeAll(Xp.findClass("com.android.server.wm.ActivityStarter", cl), "executeRequest"); } catch (Throwable ignored) { }
         } catch (Throwable error) { }
         try {
             Class<?> atms = Xp.findClass("com.android.server.wm.ActivityTaskManagerService", cl);
@@ -330,7 +336,7 @@ final class PrivacyLock {
         worker = h;
         final Runnable load = new Runnable() { public void run() {
             try {
-                boolean on = onValue(Settings.Secure.getString(c.getContentResolver(), ENABLED_KEY));
+                boolean on = enabledValue(Settings.Secure.getString(c.getContentResolver(), ENABLED_KEY));
                 locked = on ? Collections.unmodifiableSet(parse(Settings.Secure.getString(c.getContentResolver(), KEY))) : Collections.<String>emptySet();
             } catch (Throwable error) { }
             try { protect = onValue(Settings.Secure.getString(c.getContentResolver(), PROTECT_KEY)); } catch (Throwable ignored) { }
@@ -526,7 +532,7 @@ final class PrivacyLock {
         int keep = original == null ? 0 : original.getFlags() & (Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_FORWARD_RESULT);
         lock.addFlags(keep | Intent.FLAG_ACTIVITY_NO_ANIMATION | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         Object supervisor = Xp.getObjectField(it, "mSupervisor");
-        ResolveInfo ri = (ResolveInfo) Xp.callMethod(supervisor, "resolveIntent", lock, null, userId, 0, realUid, realPid);
+        ResolveInfo ri = resolve(supervisor, lock, userId, realUid, realPid);
         if (ri == null) return false;
         int startFlags = 0; try { startFlags = ((Number) Xp.getObjectField(it, "mStartFlags")).intValue(); } catch (Throwable ignored) { }
         ActivityInfo ai = (ActivityInfo) Xp.callMethod(supervisor, "resolveActivity", lock, ri, startFlags, null);
@@ -541,11 +547,24 @@ final class PrivacyLock {
         return true;
     }
 
+    private static ResolveInfo resolve(Object supervisor, Intent lock, int userId, int realUid, int realPid) throws Exception {
+        for (Class<?> k = supervisor.getClass(); k != null; k = k.getSuperclass()) {
+            for (java.lang.reflect.Method m : k.getDeclaredMethods()) {
+                Class<?>[] t = m.getParameterTypes();
+                if (!m.getName().equals("resolveIntent") || t.length != 6 || t[0] != Intent.class || t[1] != String.class) continue;
+                Object flags = t[3] == long.class ? (Object) 0L : (Object) 0;
+                m.setAccessible(true);
+                return (ResolveInfo) m.invoke(supervisor, lock, null, userId, flags, realUid, realPid);
+            }
+        }
+        return (ResolveInfo) Xp.callMethod(supervisor, "resolveIntent", lock, null, userId, 0, realUid, realPid);
+    }
+
     private static long readAt; private static Set<String> readList = Collections.emptySet();
     static Set<String> lockedNow(Context c) {
         long now = SystemClock.uptimeMillis();
         if (now - readAt > 500) {
-            try { readList = onValue(Settings.Secure.getString(c.getContentResolver(), ENABLED_KEY)) ? parse(Settings.Secure.getString(c.getContentResolver(), KEY)) : Collections.<String>emptySet(); } catch (Throwable ignored) { }
+            try { readList = enabledValue(Settings.Secure.getString(c.getContentResolver(), ENABLED_KEY)) ? parse(Settings.Secure.getString(c.getContentResolver(), KEY)) : Collections.<String>emptySet(); } catch (Throwable ignored) { }
             readAt = now;
         }
         return readList;

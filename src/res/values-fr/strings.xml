@@ -2,4 +2,5 @@
 <resources>
     <string name="description">Gestes, personnalisation de Pixel Launcher, verrouillage des applis et dossiers, Mode Super Sombre, tri des fichiers, recadrage libre des captures et Griffonnages dans Pixel Studio et Google Photos. Tout se règle dans l’appli Pixel Suite. Activez les champs d’application LSPosed recommandés, y compris les éditeurs que vous utilisez, puis redémarrez ces applis ou le téléphone.</string>
     <string name="search_in_chrome">Rechercher dans Chrome</string>
+    <string name="scan_app">Pixel PDF</string>
 </resources>

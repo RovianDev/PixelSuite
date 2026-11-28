@@ -91,9 +91,30 @@ final class SystemToasts {
     }
 
     static View pill(View v) {
+        android.widget.TextView text = message(v);
+        if (text != null) {
+            for (View at = text; at != null; at = at != v && at.getParent() instanceof View ? (View) at.getParent() : null)
+                if (shows(at.getBackground())) return at;
+        }
+        return first(v);
+    }
+
+    static View first(View v) {
         if (v.getBackground() != null) return v;
-        if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) { View f = pill(g.getChildAt(i)); if (f != null) return f; } }
+        if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) { View f = first(g.getChildAt(i)); if (f != null) return f; } }
         return null;
+    }
+
+    static android.widget.TextView message(View v) {
+        if (v instanceof android.widget.TextView && ((android.widget.TextView) v).getText() != null && ((android.widget.TextView) v).getText().length() > 0) return (android.widget.TextView) v;
+        if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) { android.widget.TextView t = message(g.getChildAt(i)); if (t != null) return t; } }
+        return null;
+    }
+
+    static boolean shows(android.graphics.drawable.Drawable d) {
+        if (d == null) return false;
+        if (d instanceof android.graphics.drawable.ColorDrawable) return (((android.graphics.drawable.ColorDrawable) d).getColor() >>> 24) != 0;
+        return true;
     }
 
     static int statusBar(View v) {

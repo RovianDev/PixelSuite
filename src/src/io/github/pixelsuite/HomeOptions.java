@@ -18,6 +18,7 @@ import java.util.List;
 
 final class HomeOptions {
     static final String LABEL = "Pixel Suite settings";
+    static final String HIDE_APPS_KEY = "pixelsuite_hide_apps_list";
     static final String PACKAGE = "io.github.roviandev.pixelsuite";
     static final String ACTIVITY = "io.github.pixelsuite.SettingsActivity";
 
@@ -65,7 +66,9 @@ final class HomeOptions {
                 protected void afterHookedMethod(Xp.Param p) { if (options.isInstance(p.thisObject) && Xp.getAdditionalInstanceField(p.thisObject, "pixelsuite_follow") == null) follow((View) p.thisObject); }
             });
         } catch (Throwable error) { }
-        Class<?> popup = LauncherFeatures.type("views.OptionsPopupView");
+        Class<?> popup;
+        try { popup = LauncherFeatures.type("views.OptionsPopupView"); }
+        catch (RuntimeException composeMenu) { installComposeOptions(); installNexusBuilder(); return; }
         int hooks = 0;
         for (Method m : popup.getDeclaredMethods()) {
             if (!m.getName().equals("show") || !Modifier.isStatic(m.getModifiers())) continue;
@@ -85,6 +88,36 @@ final class HomeOptions {
         if (hooks == 0) installNexusBuilder();
     }
 
+    static void installComposeOptions() {
+        try { Xp.deoptimizeAll(LauncherFeatures.type("touch.WorkspaceTouchListener"), "onLongPress"); } catch (Throwable missing) { }
+        try { Xp.deoptimizeAll(LauncherFeatures.type("Launcher"), "onKeyUp"); } catch (Throwable missing) { }
+        try {
+            Xp.hookAllMethods(LauncherFeatures.type("popup.WorkspaceLongPressOptions"), "getAll", new Xp.Callback() {
+                protected void afterHookedMethod(Xp.Param p) {
+                    try {
+                        Object got = p.getResult();
+                        if (!(got instanceof List)) return;
+                        List<?> before = (List<?>) got, after = withSettings(before);
+                        if (!sStockNoted) {
+                            sStockNoted = true;
+                            StringBuilder names = new StringBuilder();
+                            for (Object item : before) names.append(item == null ? "-" : label(item)).append(" | ");
+                        }
+                        if (after == before) { return; }
+                        if (got.getClass().isInstance(after)) { p.setResult(after); return; }
+                        Object made;
+                        try { made = got.getClass().getDeclaredConstructor().newInstance(); }
+                        catch (NoSuchMethodException sized) { Constructor<?> k = got.getClass().getDeclaredConstructor(int.class); k.setAccessible(true); made = k.newInstance(after.size()); }
+                        for (Object item : after) ((List<Object>) made).add(item);
+                        try { Method build = made.getClass().getMethod("build"); made = build.invoke(made); } catch (NoSuchMethodException none) { }
+                        if (got.getClass().isInstance(made)) p.setResult(made);
+                    } catch (Throwable error) { }
+                }
+            });
+        } catch (Throwable error) { }
+    }
+
+    private static boolean sStockNoted;
     private static java.lang.reflect.Field sPopupField;
     static void installNexusBuilder() {
         try {
@@ -134,6 +167,7 @@ final class HomeOptions {
         return "Apps list";
     }
     static void removeAppsList(android.view.ViewGroup popup){
+        if(!Feature.on(popup.getContext(),HIDE_APPS_KEY))return;
         CharSequence apps=appsListLabel(popup.getContext());
         for(int i=popup.getChildCount()-1;i>=0;i--){
             View child=popup.getChildAt(i);Object label;
@@ -159,10 +193,12 @@ final class HomeOptions {
         if (a == null || items == null || items.isEmpty()) return items;
         boolean homeMenu=false; for(Object item:items)if(item!=null&&isHomeSettings(item,a)){homeMenu=true;break;}
         if(!homeMenu)return items;
-        CharSequence apps = appsListLabel(a);
-        ArrayList<Object> kept = new ArrayList<Object>();
-        for (Object item : items) { CharSequence l = item == null ? "" : label(item); if (!(apps.toString().contentEquals(l) || "Apps list".contentEquals(l))) kept.add(item); }
-        if (kept.size() != items.size()) { items = kept; }
+        if (Feature.on(a, HIDE_APPS_KEY)) {
+            CharSequence apps = appsListLabel(a);
+            ArrayList<Object> kept = new ArrayList<Object>();
+            for (Object item : items) { CharSequence l = item == null ? "" : label(item); if (!(apps.toString().contentEquals(l) || "Apps list".contentEquals(l))) kept.add(item); }
+            if (kept.size() != items.size()) { items = kept; }
+        }
         int home = -1;
         for (int i = 0; i < items.size(); i++) {
             Object item = items.get(i);
@@ -172,6 +208,7 @@ final class HomeOptions {
         }
         if (home < 0) return items;
         Object ours = create(items.get(home), a);
+        if (ours == null) ours = popupData(items.get(home), a);
         if (ours == null) return items;
         ArrayList<Object> copy = new ArrayList<Object>(items);
         copy.add(home + 1, ours);
@@ -194,7 +231,22 @@ final class HomeOptions {
 
     static CharSequence label(Object item) {
         Object label = field(item, CharSequence.class, "label", "mLabel");
-        return label instanceof CharSequence ? (CharSequence) label : "";
+        if (label instanceof CharSequence) return (CharSequence) label;
+        if (label == null) return "";
+        try {
+            for (Class<?> k = label.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+                for (Field f : k.getDeclaredFields()) {
+                    if (Modifier.isStatic(f.getModifiers())) continue;
+                    f.setAccessible(true);
+                    Object v = f.get(label);
+                    if (v instanceof CharSequence) return (CharSequence) v;
+                    if (f.getType() == int.class && (Integer) v != 0) {
+                        Activity a = LauncherFeatures.activity.get();
+                        if (a != null) return a.getString((Integer) v);
+                    }
+                }
+        } catch (Throwable ignored) { }
+        return "";
     }
 
     static int menuInk(Context c) {
@@ -216,6 +268,138 @@ final class HomeOptions {
             } catch (Throwable error) { return null; }
         }
         return null;
+    }
+
+    static Object popupData(Object settings, final Context c) {
+        try {
+            if (!settings.getClass().getName().endsWith(".PopupData")) return null;
+            Class<?> u = Class.forName("sun.misc.Unsafe"); Field uf;
+            try { uf = u.getDeclaredField("theUnsafe"); } catch (NoSuchFieldException e) { uf = u.getDeclaredField("THE_ONE"); }
+            uf.setAccessible(true);
+            Object out = u.getMethod("allocateInstance", Class.class).invoke(uf.get(null), settings.getClass());
+            for (Class<?> k = settings.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+                for (Field f : k.getDeclaredFields()) { if (Modifier.isStatic(f.getModifiers())) continue; f.setAccessible(true); f.set(out, f.get(settings)); }
+            ClassLoader loader = settings.getClass().getClassLoader();
+            Field label = settings.getClass().getDeclaredField("label"); label.setAccessible(true);
+            Class<?> fixed = Class.forName(label.getType().getName() + "$FixedString", false, loader);
+            Object text = null;
+            for (Constructor<?> k : fixed.getDeclaredConstructors()) {
+                Class<?>[] t = k.getParameterTypes();
+                if (t.length == 1 && t[0].isAssignableFrom(String.class)) { k.setAccessible(true); text = k.newInstance(I18n.cs(LABEL).toString()); break; }
+            }
+            if (text == null) { return null; }
+            label.set(out, text);
+            Field action = settings.getClass().getDeclaredField("popupAction"); action.setAccessible(true);
+            Class<?> fn = action.getType();
+            if (!fn.isInterface()) { return null; }
+            Object done = null;
+            try { done = Class.forName("kotlin.Unit", false, loader).getField("INSTANCE").get(null); } catch (Throwable renamed) { }
+            if (done == null) try {
+                Object v = Class.forName("bd.i", false, loader).getField("a").get(null);
+                if (v != null && "kotlin.Unit".equals(String.valueOf(v))) done = v;
+            } catch (Throwable renamed) { }
+            final Object unit = done;
+            action.set(out, java.lang.reflect.Proxy.newProxyInstance(loader, new Class<?>[]{fn}, (self, m, args) -> {
+                if (m.getDeclaringClass() == Object.class) {
+                    if ("equals".equals(m.getName())) return self == args[0];
+                    if ("hashCode".equals(m.getName())) return System.identityHashCode(self);
+                    return "pixelsuite";
+                }
+                Context from = c;
+                if (args != null) for (Object x : args) if (x instanceof Context) { from = (Context) x; break; }
+                openFrom(from);
+                return unit;
+            }));
+            try { Field id = settings.getClass().getDeclaredField("id"); id.setAccessible(true); id.setInt(out, 0x50535549); } catch (NoSuchFieldException ignored) { }
+            try {
+                Field icon = settings.getClass().getDeclaredField("iconResId"); icon.setAccessible(true);
+                int glyph = glyphRes(c);
+                if (glyph != 0) icon.setInt(out, glyph);
+                else for (String name : new String[]{"ic_palette", "ic_customize", "ic_style", "ic_wallpaper"}) {
+                    int res = c.getResources().getIdentifier(name, "drawable", c.getPackageName());
+                    if (res != 0) { icon.setInt(out, res); break; }
+                }
+            } catch (NoSuchFieldException ignored) { }
+            return out;
+        } catch (Throwable error) { return null; }
+    }
+
+    private static volatile int sGlyphRes, sSuiteGlyph;
+    private static volatile android.content.res.Resources sSuiteRes;
+    private static boolean sGlyphTried;
+
+    static synchronized int glyphRes(Context c) {
+        if (sGlyphTried) return sGlyphRes;
+        sGlyphTried = true;
+        try {
+            android.content.res.Resources suite = c.createPackageContext(PACKAGE, Context.CONTEXT_IGNORE_SECURITY).getResources();
+            int own = suite.getIdentifier("ic_ps_menu_glyph", "drawable", PACKAGE);
+            if (own == 0) { return 0; }
+            int host = 0;
+            android.content.res.Resources sys = android.content.res.Resources.getSystem();
+            android.util.TypedValue v = new android.util.TypedValue();
+            for (String name : new String[]{"ic_print_error", "ic_print", "ic_doc_generic", "ic_doc_folder"}) {
+                int id = sys.getIdentifier(name, "drawable", "android");
+                if (id == 0) continue;
+                try { c.getResources().getValue(id, v, true); } catch (Throwable missing) { continue; }
+                if (v.string != null && v.string.toString().endsWith(".xml")) { host = id; break; }
+            }
+            if (host == 0) { return 0; }
+            if (!readable(c, suite, own)) return 0;
+            sSuiteRes = suite; sSuiteGlyph = own;
+            final int target = host;
+            Xp.hookAllMethods(android.content.res.Resources.class, "getXml", new Xp.Callback() {
+                protected void beforeHookedMethod(Xp.Param p) {
+                    try { if (p.args.length == 1 && Integer.valueOf(target).equals(p.args[0])) p.setResult(sSuiteRes.getXml(sSuiteGlyph)); } catch (Throwable ignored) { }
+                }
+            });
+            Xp.Callback drawable = new Xp.Callback() {
+                protected void beforeHookedMethod(Xp.Param p) {
+                    try { if (p.args.length >= 1 && Integer.valueOf(target).equals(p.args[0])) p.setResult(SuiteIcon.glyph(menuInk(((android.content.res.Resources) p.thisObject).getConfiguration()))); } catch (Throwable ignored) { }
+                }
+            };
+            Xp.hookAllMethods(android.content.res.Resources.class, "getDrawable", drawable);
+            Xp.hookAllMethods(android.content.res.Resources.class, "getDrawableForDensity", drawable);
+            sGlyphRes = host;
+        } catch (Throwable error) { sGlyphRes = 0; }
+        return sGlyphRes;
+    }
+
+    static boolean readable(Context c, android.content.res.Resources suite, int own) {
+        android.content.res.XmlResourceParser x = null;
+        try {
+            x = suite.getXml(own);
+            boolean vector = false, path = false;
+            for (int t = x.next(); t != org.xmlpull.v1.XmlPullParser.END_DOCUMENT; t = x.next()) {
+                if (t != org.xmlpull.v1.XmlPullParser.START_TAG) continue;
+                android.util.AttributeSet set = android.util.Xml.asAttributeSet(x);
+                if ("vector".equals(x.getName())) {
+                    android.content.res.TypedArray a = c.getResources().obtainAttributes(set, new int[]{android.R.attr.viewportWidth});
+                    vector = a.getFloat(0, -1f) == 24f; a.recycle();
+                    android.content.res.TypedArray b = c.getTheme().obtainStyledAttributes(set, new int[]{android.R.attr.viewportWidth}, 0, 0);
+                    vector = vector && b.getFloat(0, -1f) == 24f; b.recycle();
+                } else if ("path".equals(x.getName()) && !path) {
+                    android.content.res.TypedArray a = c.getResources().obtainAttributes(set, new int[]{android.R.attr.pathData});
+                    String d = a.getString(0); a.recycle();
+                    path = d != null && d.startsWith("M");
+                }
+            }
+            return vector && path;
+        } catch (Throwable error) { return false; }
+        finally { if (x != null) try { x.close(); } catch (Throwable ignored) { } }
+    }
+
+    static int menuInk(android.content.res.Configuration config) {
+        boolean night = (config.uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES;
+        return night ? 0xFFFFFFFF : 0xFF1F1F1F;
+    }
+
+    static void openFrom(Context c) {
+        Intent intent = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+                .setComponent(new ComponentName(PACKAGE, ACTIVITY))
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+        try { c.startActivity(intent); }
+        catch (Throwable error) { Toast.makeText(c, I18n.cs("Pixel Suite isn't available"), Toast.LENGTH_SHORT).show(); }
     }
 
     static void open(View v) {

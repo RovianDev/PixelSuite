@@ -1811,3 +1811,366 @@ Couldn't put back {0}	Не удалось вернуть {0}
 Couldn't save {0}	Не удалось сохранить {0}
 It didn't install	Не установилось
 Root isn't available	Root недоступен
+Pixel search	Поиск Pixel
+Find apps, contacts, files and more	Ищите приложения, контакты, файлы и не только
+Everything on your phone, one search away.	Всё на вашем телефоне — в одном поиске.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	Новая строка поиска на главном экране. Приложения, контакты, файлы, настройки и многое другое — в одном месте.
+Look	Внешний вид
+Color	Цвет
+Blurs what's behind the bar, with glowing edges.	Размывает то, что за строкой, и добавляет светящиеся края.
+How much of the outer bar shows.	Насколько видна внешняя строка.
+How much of the search box and side buttons shows.	Насколько видны поле поиска и боковые кнопки.
+Voice search, Google Lens, Song search	Голосовой поиск, Google Объектив, Поиск песни
+Choose and order what shows up	Выберите, что показывать и в каком порядке
+Web search	Поиск в интернете
+What to search	Что искать
+Search inside files	Поиск внутри файлов
+Tap to look through your files now.	Нажмите, чтобы просмотреть файлы сейчас.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	Находите слова и числа в файлах PDF, Word, Excel и текстовых файлах — с номером страницы. Удерживайте файл, чтобы просмотреть его, поделиться им или найти его.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	Введите пример или перевод единиц, например 15% of 80 или 5 km in miles, и нажмите на ответ, чтобы скопировать его.
+Pixel search shows when Hide search bar is off.	Поиск Pixel виден, когда функция «Скрыть строку поиска» выключена.
+System colors	Цвета системы
+Your color	Ваш цвет
+Any color	Любой цвет
+Light	Светлая
+Calculator and units	Калькулятор и единицы
+App shortcuts	Ярлыки приложений
+Files and media	Файлы и медиа
+Inside files	Внутри файлов
+Web	Интернет
+All	Все
+Google Lens	Google Объектив
+Song search	Поиск песни
+Assistant	Ассистент
+QR code scanner	Сканер QR-кодов
+Action	Действие
+App	Приложение
+App shortcut	Ярлык приложения
+Contact	Контакт
+Shortcut	Ярлык
+Add a button	Добавить кнопку
+Choose an app	Выберите приложение
+Couldn't open your contacts	Не удалось открыть контакты
+Getting the app's shortcuts…	Получаем ярлыки приложения…
+Go to your home screen once, then try again.	Откройте главный экран, затем повторите попытку.
+In the search box	В поле поиска
+Left side	Слева
+Right side	Справа
+Looking through your files…	Просматриваем ваши файлы…
+Looking through your files… {0}	Просматриваем ваши файлы… {0}
+Move down	Переместить вниз
+Move left	Переместить влево
+Move right	Переместить вправо
+Move up	Переместить вверх
+No buttons	Нет кнопок
+Preview	Предпросмотр
+Results show in this order. Turn off what you don't need.	Результаты идут в этом порядке. Выключите то, что не нужно.
+That side is full	Эта сторона заполнена
+This app has no shortcuts	У этого приложения нет ярлыков
+This contact has no phone number	У этого контакта нет номера телефона
+Turn Pixel search off and on again to allow searching your files.	Выключите и снова включите Поиск Pixel, чтобы разрешить поиск по файлам.
+Turn on Pixel search first	Сначала включите Поиск Pixel
+Your files are looked through after you turn on Pixel search.	Файлы просматриваются после включения Поиска Pixel.
+{0} files, {1} with text you can search. Updated {2}.	Файлов: {0}, с текстом для поиска: {1}. Обновлено {2}.
+{0} of {1} turned on	Включено: {0} из {1}
+No app can open this file	Нет приложения, чтобы открыть этот файл
+No app can open this folder	Нет приложения, чтобы открыть эту папку
+That file isn't there any more	Этого файла больше нет
+Couldn't open it	Не удалось открыть
+About phone	О телефоне
+Accessibility	Специальные возможности
+Airplane mode	Режим полета
+Android settings	Настройки Android
+Battery	Батарея
+Battery Saver	Режим энергосбережения
+Cast	Трансляция
+Copied	Скопировано
+Dark theme	Тёмная тема
+Data usage	Передача данных
+Default apps	Приложения по умолчанию
+Developer options	Параметры разработчика
+Display	Экран
+Getting your files ready. They show up here in a few minutes.	Готовим ваши файлы. Через несколько минут они появятся здесь.
+Keyboard	Клавиатура
+Location	Местоположение
+Network & internet	Сеть и интернет
+Night Light	Ночной режим
+No results	Ничего не найдено
+Open	Открыть
+Page {0}	Стр. {0}
+Passwords & accounts	Пароли и аккаунты
+Printing	Печать
+Privacy	Конфиденциальность
+Search apps, contacts, files, settings and more	Ищите приложения, контакты, файлы, настройки и не только
+Search your phone and the web	Поиск по телефону и в интернете
+Search {0} for “{1}”	Искать «{1}» в {0}
+Security & privacy	Безопасность и конфиденциальность
+Show in folder	Показать в папке
+Sound & vibration	Звук и вибрация
+Storage	Хранилище
+System update	Обновление системы
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	Выключите и снова включите Поиск Pixel в Pixel Suite, чтобы разрешить поиск по файлам.
+Users	Пользователи
+Wi-Fi	Wi-Fi
+Colorful icons	Цветные значки
+App and shortcut buttons keep their own colors.	Кнопки приложений и ярлыков сохраняют свои цвета.
+Edit search bar	Изменить строку поиска
+Size	Размер
+Outer bar	Внешняя строка
+Search box	Поле поиска
+More settings	Другие настройки
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	Нажмите на строку поиска и начните вводить текст. Удерживайте строку, чтобы изменить её прямо на главном экране.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	Перетаскивайте кнопки на строке, чтобы переместить их. Перетащите кнопку за пределы строки, чтобы убрать её.
+The bar is full. Drag a button off the bar first.	Строка заполнена. Сначала перетащите кнопку за её пределы.
+Hold and drag to change the order.	Удерживайте и перетаскивайте, чтобы изменить порядок.
+Favorites	Избранное
+Favorite	В избранное
+Added to favorites	Добавлено в избранное
+Removed from favorites	Удалено из избранного
+Hold an app, a contact or a file to add it here	Удерживайте приложение, контакт или файл, чтобы добавить его сюда
+Open Pixel Suite once to download currency rates	Откройте Pixel Suite один раз, чтобы загрузить курсы валют
+Currency	Валюта
+Convert to	Переводить в
+Update automatically	Обновлять автоматически
+Update now	Обновить сейчас
+Updating the rates…	Обновляем курсы…
+Rates updated	Курсы обновлены
+Rates updated {0}	Курсы обновлены: {0}
+Rates not downloaded yet	Курсы ещё не загружены
+Couldn't update the rates	Не удалось обновить курсы
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	Введите сумму и валюту, например 200 USD, чтобы пересчитать её. Курсы загружаются из интернета, данные о вас не отправляются.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	Нажмите на кнопку, чтобы добавить её, или удерживайте и перетащите на строку. Перетаскивайте кнопки на строке, чтобы переместить их, или за её пределы, чтобы убрать.
+Drop it on the bar to add it	Отпустите на строке, чтобы добавить
+No contacts with a phone number	Нет контактов с номером телефона
+Everything is searched on your phone. Only web searches and currency rates go online.	Поиск идёт прямо на телефоне. В интернет уходят только веб-запросы и обновление курсов валют.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	Удерживайте «Тёмный» или «Сверхтёмный», чтобы выбрать, что «Автоматически» включает ночью.
+Lock the sliders	Заблокировать ползунки
+Search currencies	Поиск валюты
+Search engine	Поисковая система
+Search settings	Настройки поиска
+Show keyboard	Показать клавиатуру
+Replace	Заменить
+Favorite contacts	Избранные контакты
+Add dialer favorites	Добавить избранные из телефона
+Search contacts	Поиск контактов
+Added to favorite contacts	Добавлено в избранные контакты
+Hold the search bar and add contacts first	Сначала удерживайте строку поиска и добавьте контакты
+No favorites in your dialer yet	В телефоне пока нет избранных
+Hide swipe-up hint	Скрыть подсказку о свайпе вверх
+Stops the hint that plays after a few short swipes that don't open the drawer.	Отключает подсказку, которая появляется после нескольких коротких свайпов, не открывших меню приложений.
+Closing animation	Анимация закрытия
+Shutter	Шторка
+Glide	Скольжение
+Balloons	Шарики
+Jelly	Желе
+Pop	Хлопок
+Wave	Волна
+Swell	Раздувание
+Classic	Классика
+Scan to PDF	Сканировать в PDF
+Add from gallery	Добавить из галереи
+Take photo	Сделать снимок
+Pages	Страницы
+Couldn't open the camera	Не удалось открыть камеру
+Camera access is needed to scan	Для сканирования нужен доступ к камере
+Save as PDF	Сохранить как PDF
+Rotate	Повернуть
+All pages	Все страницы
+{0} selected	Выбрано: {0}
+File name	Имя файла
+Making the PDF…	Создаём PDF…
+Saved to Download	Сохранено в «Загрузки»
+Couldn't save the PDF	Не удалось сохранить PDF
+Original	Оригинал
+Auto	Авто
+Enhanced	Улучшенный
+Grayscale	Оттенки серого
+Black & white	Чёрно-белый
+Lighten	Осветлить
+Image to PDF	Изображение в PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	Добавляет «Сканировать в PDF» в кнопки, которые можно разместить на строке поиска. Сфотографируйте страницы или выберите фото, поправьте их, затем сохраните или отправьте одним PDF.
+Tools	Инструменты
+Featured apps	Избранные приложения
+Shows the apps you open most from Pixel search before you type.	Показывает приложения, которые вы чаще всего открываете из Pixel search, ещё до ввода.
+Recent searches	Недавние запросы
+Shows your latest searches before you type. Hold one to remove it.	Показывает последние запросы ещё до ввода. Удерживайте запрос, чтобы убрать его.
+Enter opens the first app	Enter открывает первое приложение
+Turn off to always search the web when you press Enter.	Выключите, чтобы по нажатию Enter всегда искать в интернете.
+Delete this file?	Удалить этот файл?
+Deleted	Удалено
+Couldn't delete it	Не удалось удалить
+Unpin	Открепить
+Add to favorites	Добавить в избранное
+Remove from favorites	Убрать из избранного
+Clear recent searches?	Очистить недавние запросы?
+Pixel Suite apps	Приложения Pixel Suite
+Pixel dialer	Pixel звонилка
+Your phone app, with call recording	Ваш телефон с записью звонков
+Scan pages into one PDF	Сканируйте страницы в один PDF
+Apps that come with Pixel Suite.	Приложения, которые идут с Pixel Suite.
+Your phone app, made for Pixel Suite.	Ваш телефон, созданный для Pixel Suite.
+Pages and photos, turned into one PDF.	Страницы и фото в одном PDF.
+Calls, contacts, favorites and call recording.	Звонки, контакты, избранное и запись звонков.
+Calls, favorites, contacts and recordings	Звонки, избранное, контакты и записи
+Dialer settings	Настройки звонилки
+Theme, sounds and call recording	Тема, звуки и запись звонков
+Install the Pixel Suite apps module in your root manager, then restart your phone.	Установите модуль Pixel Suite Apps в менеджере root и перезагрузите телефон.
+Look for new pages	Вид новых страниц
+Open Image to PDF	Открыть «Изображение в PDF»
+Open Pixel dialer	Открыть Pixel звонилку
+Photograph pages or pick photos	Снимите страницы или выберите фото
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	Снимите страницы или выберите фото, выровняйте и поправьте их, затем сохраните или отправьте одним PDF.
+Shows Image to PDF with your apps, with its own icon.	Показывает «Изображение в PDF» среди ваших приложений со своим значком.
+The Scan to PDF button on the search bar is set in Pixel search.	Кнопка «Сканировать в PDF» на строке поиска настраивается в разделе «Поиск Pixel».
+Turn Pixel dialer on first	Сначала включите Pixel звонилку
+Turn each app on or off and change its settings.	Включайте и отключайте каждое приложение и меняйте его настройки.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	Если отключить, приложение скрывается, а звонки возвращаются в другой телефон. Включить можно в любой момент.
+Gray	Серый
+High	Высокое
+Standard	Стандартное
+PDF quality	Качество PDF
+Pixel dialer, Pixel search and Image to PDF	Pixel звонилка, Поиск Pixel и «Изображение в PDF»
+A file with that name already exists	Файл с таким именем уже есть
+Add Text	Добавить текст
+All PDFs	Все PDF
+All tools	Все инструменты
+All your PDFs and tools	Все ваши PDF и инструменты
+Allow	Разрешить
+Allow access to your files to see and save PDFs.	Разрешите доступ к файлам, чтобы видеть и сохранять PDF.
+Anyone opening it will need this password.	Для открытия понадобится этот пароль.
+Back side	Обратная сторона
+Best quality	Лучшее качество
+Browse	Обзор
+Choose PDFs to merge	Выберите PDF для объединения
+Choose a PDF	Выберите PDF
+Compress	Сжать
+Convert	Конвертация
+Couldn't finish	Не удалось завершить
+Couldn't rename it	Не удалось переименовать
+Docx to PDF	Docx в PDF
+Doodle	Рисунок
+Draw on the page with your finger.	Рисуйте пальцем на странице.
+Front side	Лицевая сторона
+Good balance	Золотая середина
+Import PDF	Импорт PDF
+Largest first	Сначала большие
+Leave	Выйти
+Leave without saving?	Выйти без сохранения?
+Lock PDF	Защитить PDF
+Merge PDF	Объединить PDF
+No PDFs yet.	PDF пока нет.
+Oldest first	Сначала старые
+Open Pixel PDF	Открыть Pixel PDF
+PDF to JPG	PDF в JPG
+PDF to PPT	PDF в PPT
+PDF to Word	PDF в Word
+PPT to PDF	PPT в PDF
+Page	Страница
+Password	Пароль
+Pick some files first	Сначала выберите файлы
+Pick two or more PDFs to merge	Выберите два или больше PDF
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Pixel звонилка, Поиск Pixel и Pixel PDF
+Popular	Популярное
+Print PDF	Печать PDF
+Repeat password	Повторите пароль
+Saved to	Сохранено в
+Saved to Pixel PDF	Сохранено в Pixel PDF
+Saving	Сохранение
+Scan ID Card	Сканировать удостоверение
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	Сканируйте страницы и документы, превращайте фото, файлы Word и PowerPoint в PDF, сжимайте, объединяйте, подписывайте, защищайте и печатайте их.
+Scan, convert and edit PDFs	Сканирование, конвертация и правка PDF
+Scan, convert, edit and sign PDFs.	Сканируйте, конвертируйте, правьте и подписывайте PDF.
+Scanned and made PDFs show here. Tap + to scan your first one.	Отсканированные и созданные PDF появятся здесь. Нажмите +, чтобы отсканировать первый.
+Search files	Поиск файлов
+Shows Pixel PDF with your apps, with its own icon.	Показывает Pixel PDF среди приложений со своим значком.
+Sign inside the box first	Сначала распишитесь в рамке
+Sign inside the box.	Распишитесь в рамке.
+Signature	Подпись
+Smallest file	Самый маленький файл
+Smart Scan	Умное сканирование
+Strong	Сильное
+Tap to place your signature. Drag the corner to resize it.	Нажмите, чтобы поставить подпись. Тяните за угол, чтобы изменить размер.
+Tap where the text goes. Drag it to move it.	Нажмите, где будет текст. Перетащите, чтобы сдвинуть.
+That password isn't right.	Неверный пароль.
+The passwords don't match	Пароли не совпадают
+They can't be brought back.	Их нельзя будет вернуть.
+Thick	Толстая
+Thin	Тонкая
+This PDF is locked	Этот PDF защищён
+This PDF is locked. Opening it needs a newer Android version.	Этот PDF защищён. Для открытия нужна более новая версия Android.
+This file couldn't be read. It may be damaged or locked.	Не удалось прочитать файл. Возможно, он повреждён или защищён.
+This needs a newer Android version.	Для этого нужна более новая версия Android.
+Type a password	Введите пароль
+Type here	Введите здесь
+Unlock PDF	Снять защиту PDF
+Unlock it first to edit	Сначала снимите защиту, чтобы править
+Unlock it first to print	Сначала снимите защиту, чтобы напечатать
+Unlocking needs a newer Android version	Для снятия защиты нужна более новая версия Android
+Use	Использовать
+Working…	Обработка…
+Your PDFs are kept in Documents/Pixel PDF.	Ваши PDF хранятся в Documents/Pixel PDF.
+Your changes will be lost.	Изменения будут потеряны.
+selected	выбрано
+Delete these files?	Удалить эти файлы?
+Pinned	Закреплено
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	До 5 приложений, которые всегда идут первыми в избранных. Нажмите на приложение, чтобы открепить его.
+Seconds in the status bar	Секунды в строке состояния
+The clock at the top shows seconds. Uses a little more battery.	Часы вверху показывают секунды. Расходует чуть больше заряда.
+Pull down at the top of the feed to search. Works even with the search bar off.	Потяните вниз вверху ленты, чтобы искать. Работает, даже если строка поиска выключена.
+Use Pixel search on the lock screen?	Использовать Поиск Pixel на заблокированном экране?
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	Коснитесь сканера отпечатков, чтобы включить. Чтобы открыть приложения и другие результаты, всё равно нужна разблокировка.
+Not now	Не сейчас
+More Pixel search options	Ещё параметры Поиска Pixel
+Search on the lock screen	Поиск на заблокированном экране
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	Потяните вниз и в ленте на заблокированном экране. Вычисления, перевод единиц и звонки работают сразу. Чтобы открыть приложение, по-прежнему нужен отпечаток.
+Safe	Безопасно
+Unsafe	Небезопасно
+Customize	Настроить
+Previous page	Предыдущая страница
+Next page	Следующая страница
+Glide (default)	Скольжение (по умолчанию)
+Refresh automatically	Обновлять автоматически
+Adds new and changed files the moment they appear.	Добавляет новые и изменённые файлы сразу, как только они появляются.
+Pen	Перо
+Tap or drag to add a shape. Drag its dots to resize it.	Нажмите или проведите, чтобы добавить фигуру. Тяните за точки, чтобы изменить размер.
+Hold to edit	Удерживайте, чтобы изменить
+Hide Apps list	Скрыть «Список приложений»
+Removes Apps list from the menu you see when you hold the home screen.	Убирает «Список приложений» из меню, которое появляется, если удерживать главный экран.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	Удерживайте пустое место на главном экране, чтобы открыть меню. Проведите вверх, чтобы открыть приложения.
+Your phone	Ваш телефон
+Android version	Версия Android
+Build number	Номер сборки
+Security update	Обновление безопасности
+Untested	Не проверено
+Tested on this Android version. Everything should work.	Проверено на этой версии Android. Всё должно работать.
+This Android version is known to break Pixel Suite features.	Известно, что эта версия Android ломает функции Pixel Suite.
+Not tested on this Android version yet. Some features may work, some may not.	На этой версии Android ещё не проверено. Что-то может работать, а что-то нет.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	Обратите внимание: обновление телефона может сломать части Pixel Suite и обязательно сломает. Если вы обновитесь до того, как я дам зелёный свет, я не отвечаю за то, что сломается. Я делаю это в свободное время и работаю один, поэтому не ждите, что я всегда буду успевать за всем, что выпускает Google.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	Рекомендую всегда держать {0} включённым, чтобы ничего не установилось по ошибке. Неожиданное обновление может отправить телефон в бутлуп или незаметно что-то сломать.
+To know when it's safe to update, follow Announcements in my {0}.	Чтобы знать, когда обновляться безопасно, следите за Announcements в моём {0}-канале.
+Thank you 💙	Спасибо 💙
+Phone compatibility	Совместимость телефона
+Hide the shortcuts you see when you hold an app, like View orders.	Скройте ярлыки, которые появляются при долгом нажатии на приложение, например «Посмотреть заказы».
+Hide on the home screen	Скрыть на главном экране
+Home screen, dock and folders.	Главный экран, док и папки.
+Hide in the app drawer	Скрыть в меню приложений
+App drawer and its folders.	Меню приложений и его папки.
+Folders, dragging and the swipe-up hint.	Папки, перетаскивание и подсказка о свайпе вверх.
+Folders, dragging and the swipe-up hint	Папки, перетаскивание и подсказка о свайпе вверх
+Force stop	Остановить
+{0} stopped	Приложение {0} остановлено
+Could not remove the folder	Не удалось удалить папку
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	Записывает каждый звонок, а также голосовые и видеозвонки WhatsApp, со звуком обеих сторон, во вкладку Записи.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	Запись человека без его ведома может быть незаконной там, где вы живёте. Вы отвечаете за свои записи и за то, как их используете, а не RovianDev.
+Clipboard on the lock screen	Буфер обмена на заблокированном экране
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	Вставляйте скопированное в поиск на заблокированном экране. Любой, у кого в руках ваш телефон, тоже сможет это вставить.
+Use the clipboard on the lock screen?	Использовать буфер обмена на заблокированном экране?
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	Коснитесь сканера отпечатков, чтобы включить. Любой, у кого в руках ваш телефон, сможет вставить скопированное, например пароли или коды.
+Turn on to install	Включите, чтобы установить
+Installing Pixel dialer…	Устанавливаем Pixel звонилку…
+Installing Pixel PDF…	Устанавливаем Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Pixel звонилка установлена. Перезагрузите телефон один раз, чтобы она могла записывать звонки.
+Couldn't install: root access needed	Не удалось установить: нужен root-доступ
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	Включите — и Pixel Suite установит её сам. Потом один раз перезагрузите телефон, чтобы она могла записывать звонки.
+Pixel PDF is installed	Pixel PDF установлен

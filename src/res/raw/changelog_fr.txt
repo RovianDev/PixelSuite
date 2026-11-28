@@ -1,3 +1,59 @@
+## v3.2.1
+Prise en charge complète de la mise à jour de novembre, Recherche Pixel, Téléphone Pixel, Pixel PDF, un menu de dossiers sur l'écran d'accueil, Forcer l'arrêt, Vérification du téléphone et beaucoup de corrections.
+
+📱 Mise à jour de novembre
+• **Android 17 QPR2 (mise à jour de novembre)** : Pixel Suite fonctionne sur la nouvelle version, et les versions précédentes continuent de fonctionner comme avant. La mise à jour avait cassé tout ceci, et tout fonctionne de nouveau :
+• **Mode Super Sombre** : de nouveau un vrai noir dans le volet des notifications, le panneau des applis, les dossiers et partout ailleurs où il s'applique, même après un redémarrage, sans écran gris au déverrouillage. (Thèmes › Mode Super Sombre)
+• **Menus des applis** : un appui long sur une appli de l'écran d'accueil ou du panneau des applis ouvre son menu à chaque fois, en un seul panneau givré avec son contour, ses raccourcis et les options de Pixel Suite.
+• **Dossiers** : les dossiers de l'écran d'accueil s'ouvrent avec le même aspect givré, le même flou et le même contour que ceux du panneau des applis, et l'effet quand vous supprimez un dossier est de retour.
+• **Plusieurs icônes à la fois** : déposer plusieurs icônes sélectionnées sur Supprimer les supprime toutes (Annuler les ramène toutes), et les déplacer vers une autre page ne laisse plus les originaux derrière.
+• **Captures d'écran** : le son de l'obturateur est de retour et suit le volume de la sonnerie.
+• **Verrouillage des applis et dossiers** : une appli verrouillée demande votre empreinte avant de s'ouvrir et non après, et retirer une appli ou un dossier verrouillé de l'écran d'accueil demande de nouveau votre empreinte.
+• **Appuyer deux fois pour verrouiller** : appuyer deux fois sur l'alarme, la météo ou la date de l'écran de verrouillage éteint l'écran au lieu de les ouvrir, et saisir votre code PIN n'éteint plus l'écran. (Gestes › Appuyer une ou deux fois pour activer l'écran › Comportement de l'écran de verrouillage › Pixel Suite)
+• **Panneau d'enregistrement d'écran** : s'ouvre proprement, sans les Réglages rapides visibles derrière, sans flash ni carte pâle, et ses boutons sont bien en place.
+• **Menu de partage** : les applis de partage masquées restent de nouveau masquées, et le bouton Modifier est de retour quand vous partagez depuis Google Photos.
+• **Toasts** : « Vidéo enregistrée », « Vidéo supprimée » et les autres messages système redeviennent une seule pilule qui suit votre thème, Super Dark compris.
+• **Également de retour** : la ligne Pixel Suite et son icône dans le menu par appui long de l'écran d'accueil, le style de la demande d'empreinte, les formes des icônes, Tout effacer pour les paires d'applis et le masquage des raccourcis dans les menus du panneau des applis.
+
+✨ Nouveautés
+• **Nouvelle animation pour Pixel Suite** : les pages, dialogues et menus s'ouvrent et se ferment avec une animation entièrement nouvelle, bien plus fluide et conçue avec de nouvelles techniques.
+• **Vérification du téléphone** : appuyez sur le **!** en haut à gauche de la page principale pour voir votre téléphone, la version d'Android et la mise à jour de sécurité, et si Pixel Suite y est **Sûr**, **Non testé** ou **Non sûr**, avec des liens rapides vers Bloqueur OTA et Telegram.
+• **Menu des dossiers sur l'écran d'accueil** : maintenez un dossier pour le renommer, le trier (A–Z ou votre propre ordre), le verrouiller ou le supprimer, avec le même menu que les dossiers du panneau des applis.
+• **Forcer l'arrêt** : maintenez n'importe quelle appli et choisissez Forcer l'arrêt pour la fermer complètement.
+• **Masquer les raccourcis d'applis sur l'écran d'accueil, dans le panneau des applis, ou les deux**. (Lanceur Pixel › Raccourcis d'applis)
+• **Applis en pause** : maintenir une appli mise en pause ouvre son menu avec ses raccourcis.
+• **Versions sûres et non sûres** : quand une mise à jour attend pour une appli, votre version installée apparaît comme Sûr en vert et celle en attente comme Non sûr en rouge. Appuyez sur la version sûre pour télécharger exactement cette version. (Bloqueur OTA et Store › Bloqueur du Play Store)
+• **Masquer Liste des applis** dans le menu qui apparaît quand vous maintenez un emplacement vide de l'écran d'accueil. (Lanceur Pixel › Masquer Liste des applis)
+• **Masquer l'indice de balayage vers le haut** : plus d'indice après quelques balayages ratés pour ouvrir le panneau des applis. (Panneau des applis › Masquer l'indice de balayage vers le haut)
+• **Secondes dans l'horloge de la barre d'état**. (Divers › Secondes dans la barre d'état)
+• **Départ à zéro** : sur une nouvelle installation, toutes les fonctions sont d'abord désactivées, pour n'activer que ce que vous voulez. Une mise à jour garde vos réglages tels quels.
+
+💎 Patreon
+• **Applis Pixel Suite** : Recherche Pixel, Téléphone Pixel et Pixel PDF, sur lesquelles je travaille depuis longtemps, sont enfin là, toutes au même endroit. (Applis Pixel Suite)
+• **Recherche Pixel** : remplacez complètement l'inutile barre de recherche Google par une barre qui fouille vraiment votre téléphone. Applis, contacts, réglages et fichiers, tout est trouvé sur le téléphone (seules les recherches web passent par internet). Elle trouve même des mots et des nombres dans vos PDF et vos fichiers Word, Excel et PowerPoint. Maintenez la barre pour changer sa taille, ses couleurs, son thème et ses boutons. (Applis Pixel Suite › Recherche Pixel)
+• **Recherche Pixel, tout compris** : Favoris et contacts favoris derrière le cœur, conversion de devises avec drapeaux, une calculatrice qui convertit aussi les unités (comme 5 km en miles), applis à la une et recherches récentes, des épingles et un bouton de moteur de recherche sur la barre, les suggestions de mots de votre clavier, des animations de fermeture choisies dans un aperçu en direct, et un widget pour l'écran d'accueil. Les fichiers indiquent leur date de modification et apparaissent dès qu'ils sont ajoutés ; maintenez-en un pour le partager, l'afficher dans son dossier ou le supprimer.
+• **Recherche Pixel dans le Flux de widgets** : les deux fonctionnent ensemble. Tirez vers le bas dans le Flux de widgets et Recherche Pixel s'ouvre sur le flux flouté. (Flux de widgets › Recherche Pixel) Ça marche aussi sur l'écran de verrouillage, où les calculs et les devises fonctionnent sans déverrouiller. (Flux de widgets › flèche à côté de Recherche Pixel › Rechercher sur l'écran de verrouillage)
+• **Téléphone Pixel** : une appli téléphone complète faite pour Pixel Suite. Elle enregistre chaque appel automatiquement, des deux côtés, dans la qualité de votre choix, et **enregistre aussi les appels vocaux et vidéo WhatsApp**, sauvegardés en vidéo de l'appel avec le son des deux côtés. Les notes que vous tapez pendant un appel sont enregistrées dans Google Keep, une note par personne. Onglets Favoris, Appels, Contacts et Enregistrements, réponse d'un appui ou d'un balayage, et le style Pixel Suite, Super Dark compris. (Applis Pixel Suite › Téléphone Pixel) ***(Enregistrer quelqu'un à son insu peut être illégal là où vous vivez. Vous êtes responsable de vos enregistrements et de leur usage, pas RovianDev.)***
+• **Pixel PDF** : une appli PDF complète. Scannez des documents et des cartes d'identité, transformez des images et des fichiers Word et PowerPoint en PDF, et des PDF en Word, PowerPoint ou JPG. Fusionnez, compressez, verrouillez et déverrouillez des PDF, ajoutez du texte, signez et dessinez dessus, imprimez-les et ouvrez des PDF depuis d'autres applis. (Applis Pixel Suite › Pixel PDF)
+• **Flux de widgets sur l'écran de verrouillage** avec la mise à jour de novembre : l'écran de verrouillage bouge comme une page, et vous pouvez ouvrir le flux en balayant de presque n'importe où, même sous une notification, sans tirer le volet ni déclencher le pavé PIN, la flèche retour ou le capteur d'empreinte. Il rebondit comme sur l'écran d'accueil quand il se pose et quand vous balayez au-delà des widgets. (Flux de widgets)
+• **Écran de verrouillage et empreinte** : quand vous quittez le Flux de widgets, l'icône d'empreinte s'affiche aussitôt (jamais un cadenas) et votre empreinte déverrouille tout de suite. Toucher l'emplacement de l'empreinte juste après avoir utilisé le flux ne déverrouille pas par erreur.
+
+🛠️ Corrections Patreon
+• **Flux de widgets sur l'écran de verrouillage** : avec le pavé PIN affiché, un balayage latéral ne fait plus glisser le flux derrière, et le flux ne reverrouille plus le téléphone juste après un déverrouillage par empreinte.
+• **Gboard+** : appuyer sur l'icône du presse-papiers marche de nouveau juste après une copie, les touches reviennent après la fermeture du panneau d'outils, la saisie vocale marche en arabe et dans d'autres langues et ne laisse plus la barre vide et bleue, les balayages n'appuient plus sur les boutons de la barre et ne bloquent plus le geste retour, et le clavier flottant garde sa disposition, même en haut de l'écran, avec des coins arrondis et une barre qui le remplit.
+• **Chrome+** : les onglets s'ouvrent sans attente après l'appui, l'image d'un onglet ne se fond plus sur une page vide, et un onglet en veille garde son image jusqu'à ce que la page soit dessinée.
+
+🐞 Corrections de Pixel Suite
+• **Saisie auto des OTP** : le code se place au début de la ligne de suggestions du clavier, jamais en haut de l'écran ni par-dessus la suggestion de code de Google. Il marche avec le clavier flottant, disparaît une fois le code saisi, et les codes faits uniquement de lettres sont aussi trouvés.
+• **Partager sur Telegram** est de retour dans Pixel Stack, Pixel Blast et Pixel Siege : après une partie, partagez votre score dans le groupe Telegram.
+• **Écran de verrouillage** : un balayage latéral ou en diagonale ne fait plus descendre un instant le volet des notifications.
+• **Pavé PIN** : balayer sur un chiffre ne le laisse plus en surbrillance.
+• **Dossiers du panneau des applis** : le menu par appui long se place juste à côté du dossier, même en bas du panneau.
+• **Ne me dérange pas** : « Impossible de joindre votre montre » ne s'affiche plus sans Pixel Watch LTE, ni quand cette option est désactivée.
+
+Installez par-dessus votre version actuelle et redémarrez.
+
+
 ## v3.2.0
 Flux de widgets, Saisie auto des OTP, Bloquer les appels WhatsApp, un Pixel Arcade bien plus grand, des films pour chaque fonction, et de nombreuses corrections.
 

@@ -1,7 +1,7 @@
 id=io.github.roviandev.pixelsuite
 name=Pixel Suite
-version=3.1.0
-versionCode=566
+version=3.2.1
+versionCode=800
 author=RovianDev
 description=Pixel gestures, launcher folders and customization, file sorting, Pixel Studio screenshot tools, Google Photos doodles and a true-black Super Dark-Mode. Configure features inside Pixel Suite.
 minApiVersion=102

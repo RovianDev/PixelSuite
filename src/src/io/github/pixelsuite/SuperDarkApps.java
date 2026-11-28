@@ -160,7 +160,119 @@ final class SuperDarkApps {
                     if (p.args.length == 1 && p.args[0] instanceof Integer && activeAnywhere()) p.args[0] = ((Integer) p.args[0]) & 0xff000000;
                 }
             });
+            Xp.hookAllMethods(scrim, "onDraw", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try { if (activeAnywhere()) blackInt(p.thisObject, "mBackgroundColor"); } catch (Throwable ignored) { }
+                }
+            });
         } catch (Throwable t) { }
+        try {
+            Class<?> apps = Class.forName("com.android.launcher3.allapps.ActivityAllAppsContainerView", false, cl);
+            Xp.Callback black = new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    try { if (activeAnywhere()) drawerBlack(p.thisObject); else drawerBack(p.thisObject); } catch (Throwable ignored) { }
+                }
+            };
+            Xp.hookAllMethods(apps, "dispatchDraw", black);
+            Xp.hookAllMethods(apps, "drawOnScrimWithScaleAndBottomOffset", black);
+            Xp.Callback panel = new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) { sPanel = activeAnywhere(); }
+                @Override protected void afterHookedMethod(Xp.Param p) { sPanel = false; }
+            };
+            Xp.hookAllMethods(apps, "drawOnScrimWithScaleAndBottomOffset", panel);
+            Xp.hookAllMethods(apps, "updateHeaderScroll", panel);
+            Xp.hookMethod(android.content.res.Resources.class.getDeclaredMethod("getColor", int.class, android.content.res.Resources.Theme.class), new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    if (!sPanel || android.os.Looper.myLooper() != android.os.Looper.getMainLooper()) return;
+                    Object r = p.getResult();
+                    if (!(r instanceof Integer) || (Integer) r == 0xff000000) return;
+                    p.setResult(0xff000000);
+                    if (!sPanelSaid) { sPanelSaid = true; }
+                }
+            });
+        } catch (Throwable t) { }
+    }
+
+    private static volatile boolean sPanel;
+    private static boolean sPanelSaid;
+
+    private static boolean sDrawerSaid;
+
+    private static void drawerBlack(Object apps) throws Throwable {
+        blackInt(apps, "mHeaderColor");
+        blackInt(apps, "mHeaderProtectionColor");
+        for (String name : new String[] {"mHeaderPaint", "mNavBarScrimPaint"}) {
+            try {
+                Object paint = Xp.getObjectField(apps, name);
+                if (paint instanceof android.graphics.Paint) {
+                    android.graphics.Paint pt = (android.graphics.Paint) paint;
+                    int c = pt.getColor();
+                    if ((c & 0xffffff) != 0) pt.setColor(c & 0xff000000);
+                }
+            } catch (Throwable ignored) { }
+        }
+        Object sheet;
+        try { sheet = Xp.getObjectField(apps, "mBottomSheetBackground"); } catch (Throwable none) { sheet = null; }
+        if (!(sheet instanceof android.view.View)) return;
+        android.graphics.drawable.Drawable bg = ((android.view.View) sheet).getBackground();
+        if (bg == null || Boolean.TRUE.equals(Xp.getAdditionalInstanceField(bg, "pixelsuite_black"))) return;
+        String was;
+        if (bg instanceof android.graphics.drawable.GradientDrawable) {
+            android.graphics.drawable.GradientDrawable g = (android.graphics.drawable.GradientDrawable) bg;
+            android.content.res.ColorStateList now = null;
+            try { now = (android.content.res.ColorStateList) android.graphics.drawable.GradientDrawable.class.getMethod("getColor").invoke(g); } catch (Throwable ignored) { }
+            was = now == null ? "gradient" : Integer.toHexString(now.getDefaultColor());
+            if (now != null) Xp.setAdditionalInstanceField(bg, "pixelsuite_was", now);
+            g.setColor(0xff000000);
+        } else if (bg instanceof android.graphics.drawable.ColorDrawable) {
+            int c = ((android.graphics.drawable.ColorDrawable) bg).getColor();
+            was = Integer.toHexString(c);
+            Xp.setAdditionalInstanceField(bg, "pixelsuite_was", c);
+            ((android.graphics.drawable.ColorDrawable) bg).setColor(0xff000000);
+        } else {
+            was = bg.getClass().getName();
+            bg.setColorFilter(new android.graphics.PorterDuffColorFilter(0xff000000, android.graphics.PorterDuff.Mode.SRC_IN));
+        }
+        try { Xp.setAdditionalInstanceField(bg, "pixelsuite_alpha", (Integer) android.graphics.drawable.Drawable.class.getMethod("getAlpha").invoke(bg)); } catch (Throwable ignored) { }
+        bg.setAlpha(255);
+        Xp.setAdditionalInstanceField(bg, "pixelsuite_black", Boolean.TRUE);
+        if (!sDrawerSaid) { sDrawerSaid = true; }
+    }
+
+    private static void drawerBack(Object apps) throws Throwable {
+        Object sheet;
+        try { sheet = Xp.getObjectField(apps, "mBottomSheetBackground"); } catch (Throwable none) { return; }
+        if (!(sheet instanceof android.view.View)) return;
+        android.graphics.drawable.Drawable bg = ((android.view.View) sheet).getBackground();
+        if (bg == null || !Boolean.TRUE.equals(Xp.getAdditionalInstanceField(bg, "pixelsuite_black"))) return;
+        Object was = Xp.getAdditionalInstanceField(bg, "pixelsuite_was");
+        if (bg instanceof android.graphics.drawable.GradientDrawable && was instanceof android.content.res.ColorStateList) ((android.graphics.drawable.GradientDrawable) bg).setColor((android.content.res.ColorStateList) was);
+        else if (bg instanceof android.graphics.drawable.ColorDrawable && was instanceof Integer) ((android.graphics.drawable.ColorDrawable) bg).setColor((Integer) was);
+        else bg.setColorFilter(null);
+        Object a = Xp.getAdditionalInstanceField(bg, "pixelsuite_alpha");
+        if (a instanceof Integer) bg.setAlpha((Integer) a);
+        Xp.setAdditionalInstanceField(bg, "pixelsuite_black", Boolean.FALSE);
+        ((android.view.View) sheet).invalidate();
+    }
+
+    private static final java.util.Map<String, java.lang.reflect.Field> sFields = new java.util.HashMap<String, java.lang.reflect.Field>();
+
+    private static void blackInt(Object o, String field) {
+        try {
+            String key = o.getClass().getName() + "#" + field;
+            java.lang.reflect.Field f;
+            if (sFields.containsKey(key)) f = sFields.get(key);
+            else {
+                f = null;
+                for (Class<?> k = o.getClass(); k != null && f == null; k = k.getSuperclass()) try { f = k.getDeclaredField(field); } catch (NoSuchFieldException none) { }
+                if (f != null && f.getType() != int.class) f = null;
+                if (f != null) f.setAccessible(true);
+                sFields.put(key, f);
+            }
+            if (f == null) return;
+            int c = f.getInt(o);
+            if ((c & 0xffffff) != 0) f.setInt(o, c & 0xff000000);
+        } catch (Throwable ignored) { }
     }
 
     static boolean active() {

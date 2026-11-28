@@ -48,12 +48,16 @@ final class AdBlock {
     static boolean isOn() {
         List<String> out = Root.run("settings get secure " + KEY);
         if (out == null || out.isEmpty()) return true;
-        return !"0".equals(out.get(0).trim());
+        String v = out.get(0).trim();
+        if (v.isEmpty() || "null".equals(v)) return Defaults.legacy();
+        return !"0".equals(v);
     }
 
     static boolean hostsOn() {
         List<String> out = Root.run("settings get secure " + HOSTS_KEY);
-        return out == null || out.isEmpty() || !"0".equals(out.get(0).trim());
+        if (out == null || out.isEmpty()) return true;
+        String v = out.get(0).trim();
+        return v.isEmpty() || "null".equals(v) ? Defaults.legacy() : !"0".equals(v);
     }
 
     static Result setHosts(Context c, boolean on) {

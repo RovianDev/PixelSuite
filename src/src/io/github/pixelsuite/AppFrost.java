@@ -38,10 +38,17 @@ final class AppFrost extends Drawable {
         if(style==SurfaceStyle.STOCK)return LauncherFeatures.surface(c,dark?"system_surface_container_high_dark":"system_surface_container_high_light",dark?0xff2b2930:0xfff3edf7);
         return null;
     }
+    private boolean moving,still;private Object stillNode,stillHolder;private int stillW=-1,stillH=-1,stillR=-1;private Boolean stillAllowed;
+    private final Paint liteEdge=new Paint(Paint.ANTI_ALIAS_FLAG),liteShine=new Paint(Paint.ANTI_ALIAS_FLAG);private final Matrix liteAt=new Matrix();private int liteMode=-1;
+    void moving(boolean on){if(moving!=on){moving=on;invalidateSelf();}}
+    void still(boolean on){if(still==on)return;still=on;stillAllowed=null;if(!on)dropStill();invalidateSelf();}
     @Override public void draw(Canvas canvas){
         if(released||getBounds().isEmpty())return;Context c=host.getContext();Rect b=getBounds();box.set(b);shape.reset();shape.addRoundRect(box,radius,radius,Path.Direction.CW);
-        Integer solid=solid();boolean blurred=false;int color=frostTint();if(pillSurface){tint.setColor(color|0xff000000);canvas.drawPath(shape,tint);}
-        if(solid==null&&canvas.isHardwareAccelerated()&&blurAllowed()&&init()){
+        Integer solid=solid();boolean blurred=false;int color=still||moving?frost:frostTint();if(pillSurface){tint.setColor(color|0xff000000);canvas.drawPath(shape,tint);}
+        boolean allowed=still?(stillAllowed!=null?stillAllowed:(stillAllowed=blurAllowed())):blurAllowed();
+        if(solid==null&&canvas.isHardwareAccelerated()&&allowed&&init()){
+            if(still&&drawStill(canvas))blurred=true;
+            else{
             boolean recording=false;
             try{
                 int r=radiusPx();if(blur!=r){Class<?> fx=Class.forName("android.graphics.RenderEffect");Object filter=fx.getMethod("createBlurEffect",float.class,float.class,Shader.TileMode.class).invoke(null,(float)r,(float)r,Shader.TileMode.CLAMP);effect.invoke(node,filter);blur=r;}
@@ -51,11 +58,50 @@ final class AppFrost extends Drawable {
                 rec.drawColor(pageColor|0xff000000);rec.translate(-dx+pad-content.getScrollX(),-dy+pad-content.getScrollY());content.draw(rec);end.invoke(node);recording=false;
                 int save=canvas.save();try{canvas.clipPath(shape);canvas.translate(b.left-pad,b.top-pad);draw.invoke(canvas,node);blurred=true;}finally{canvas.restoreToCount(save);}
             }catch(Throwable unavailable){if(recording)try{end.invoke(node);}catch(Throwable ignored){}blurred=false;}
+            }
         }
         blurredLastFrame=blurred;tint.setColor(solid!=null?solid:blurred?color:color|0xff000000);canvas.drawPath(shape,tint);
         int mode=GlassRim.mode(c);if(mode!=rimMode){rimMode=mode;rim=mode==GlassRim.NONE?null:GlassRim.of(c,radius);}
-        if(rim!=null)rim.draw(canvas,box.left,box.top,box.right,box.bottom,radius,255);
+        if(rim!=null){if(moving)liteRim(canvas,mode);else rim.draw(canvas,box.left,box.top,box.right,box.bottom,radius,255);}
     }
-    void release(){released=true;if(content.getViewTreeObserver().isAlive())content.getViewTreeObserver().removeOnPreDrawListener(follow);if(node!=null)try{discard.invoke(node);}catch(Throwable ignored){}node=null;}
+    private boolean drawStill(Canvas canvas){
+        try{
+            Class<?> n=Class.forName("android.graphics.RenderNode");
+            int r=radiusPx(),pad=r*2,w=content.getWidth()+pad*2,h=content.getHeight()+pad*2;
+            if(content.getWidth()<=0||content.getHeight()<=0)return false;
+            if(stillNode==null){stillNode=n.getConstructor(String.class).newInstance("Pixel Suite still frost");stillHolder=n.getConstructor(String.class).newInstance("Pixel Suite still frost layer");n.getMethod("setUseCompositingLayer",boolean.class,Paint.class).invoke(stillHolder,true,null);}
+            if(stillW!=w||stillH!=h||stillR!=r){
+                Class<?> fx=Class.forName("android.graphics.RenderEffect");
+                effect.invoke(stillNode,fx.getMethod("createBlurEffect",float.class,float.class,Shader.TileMode.class).invoke(null,(float)r,(float)r,Shader.TileMode.CLAMP));
+                position.invoke(stillNode,0,0,w,h);
+                Canvas rec=(Canvas)begin.invoke(stillNode,w,h);
+                try{rec.drawColor(pageColor|0xff000000);rec.translate(pad-content.getScrollX(),pad-content.getScrollY());content.draw(rec);}finally{end.invoke(stillNode);}
+                position.invoke(stillHolder,0,0,w,h);
+                Canvas hold=(Canvas)begin.invoke(stillHolder,w,h);
+                try{draw.invoke(hold,stillNode);}finally{end.invoke(stillHolder);}
+                stillW=w;stillH=h;stillR=r;
+            }
+            host.getLocationInWindow(hostAt);content.getLocationInWindow(pageAt);
+            int save=canvas.save();
+            try{canvas.clipPath(shape);canvas.translate(pageAt[0]-hostAt[0]-pad,pageAt[1]-hostAt[1]-pad);draw.invoke(canvas,stillHolder);}finally{canvas.restoreToCount(save);}
+            return true;
+        }catch(Throwable unavailable){dropStill();return false;}
+    }
+    private void dropStill(){for(Object o:new Object[]{stillNode,stillHolder})if(o!=null)try{discard.invoke(o);}catch(Throwable ignored){}stillNode=stillHolder=null;stillW=stillH=stillR=-1;}
+    private void liteRim(Canvas canvas,int mode){
+        float d=host.getResources().getDisplayMetrics().density,w=1.5f*d;
+        if(liteMode!=mode){
+            liteMode=mode;
+            liteEdge.setStyle(Paint.Style.STROKE);liteEdge.setStrokeWidth(w);liteShine.setStyle(Paint.Style.STROKE);liteShine.setStrokeWidth(w);
+            liteShine.setShader(new LinearGradient(0,0,0,1,mode==GlassRim.DARK?new int[]{0x34ffffff,0x14ffffff,0x0effffff,0x18ffffff}:new int[]{0xd0ffffff,0x80ffffff,0x5cffffff,0x74ffffff},new float[]{0f,.3f,.75f,1f},Shader.TileMode.CLAMP));
+            liteEdge.setShader(mode==GlassRim.DARK?null:new LinearGradient(0,0,0,1,new int[]{0x14000000,0x1f000000,0x29000000},new float[]{0f,.5f,1f},Shader.TileMode.CLAMP));
+        }
+        liteAt.setScale(1f,Math.max(1f,box.height()));liteAt.postTranslate(0,box.top);
+        float in=w/2f;
+        if(liteEdge.getShader()!=null){liteEdge.getShader().setLocalMatrix(liteAt);canvas.drawRoundRect(box.left+in,box.top+in,box.right-in,box.bottom-in,Math.max(0,radius-in),Math.max(0,radius-in),liteEdge);in=w*1.4f;}
+        liteShine.getShader().setLocalMatrix(liteAt);
+        canvas.drawRoundRect(box.left+in,box.top+in,box.right-in,box.bottom-in,Math.max(0,radius-in),Math.max(0,radius-in),liteShine);
+    }
+    void release(){released=true;if(content.getViewTreeObserver().isAlive())content.getViewTreeObserver().removeOnPreDrawListener(follow);if(node!=null)try{discard.invoke(node);}catch(Throwable ignored){}node=null;dropStill();}
     @Override public void setAlpha(int value){}@Override public void setColorFilter(ColorFilter f){}@Override public int getOpacity(){return PixelFormat.TRANSLUCENT;}
 }

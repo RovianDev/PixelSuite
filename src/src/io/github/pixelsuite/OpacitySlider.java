@@ -24,6 +24,9 @@ final class OpacitySlider extends View implements Choreographer.FrameCallback {
         setFocusable(true);
     }
 
+    private float mark = -1;
+    private boolean onMark;
+    void mark(int percent) { mark = Math.max(1, Math.min(100, percent)) / 100f; invalidate(); }
     void listen(Listener l) { listener = l; }
     boolean held() { return dragging; }
     int percent() { return Math.max(1, Math.min(100, Math.round(value * 100))); }
@@ -41,6 +44,10 @@ final class OpacitySlider extends View implements Choreographer.FrameCallback {
 
     private void put(float x) {
         value = Math.max(.01f, Math.min(1f, (x - left()) / Math.max(1f, right() - left())));
+        boolean hit = mark > 0 && Math.abs(value - mark) < .025f;
+        if (hit) value = mark;
+        if (hit && !onMark) performHapticFeedback(android.view.HapticFeedbackConstants.CLOCK_TICK);
+        onMark = hit;
         tick();
     }
 
@@ -51,8 +58,36 @@ final class OpacitySlider extends View implements Choreographer.FrameCallback {
         if (listener != null) listener.changed(now);
     }
 
+    private boolean locked;
+    Runnable refused;
+
+    private float dim = 1f;
+    private android.animation.ValueAnimator dimming;
+
+    void lock(boolean on, boolean gradual) {
+        locked = on;
+        if (dimming != null) dimming.cancel();
+        float to = on ? 0.4f : 1f;
+        if (!gradual) { dim = to; invalidate(); return; }
+        dimming = android.animation.ValueAnimator.ofFloat(dim, to);
+        dimming.setDuration(380);
+        dimming.addUpdateListener(a -> { dim = (Float) a.getAnimatedValue(); invalidate(); });
+        dimming.start();
+    }
+
+    @Override public void draw(Canvas c) {
+        if (dim >= 0.995f) { super.draw(c); return; }
+        int layer = c.saveLayerAlpha(0, 0, getWidth(), getHeight(), Math.round(255 * dim));
+        super.draw(c);
+        c.restoreToCount(layer);
+    }
+
     @Override public boolean onTouchEvent(MotionEvent e) {
         int a = e.getActionMasked();
+        if (locked) {
+            if (a == MotionEvent.ACTION_DOWN) { performHapticFeedback(android.view.HapticFeedbackConstants.CLOCK_TICK); if (refused != null) refused.run(); }
+            return true;
+        }
         if (a == MotionEvent.ACTION_DOWN) {
             dragging = true;
             if (getParent() != null) getParent().requestDisallowInterceptTouchEvent(true);
@@ -90,6 +125,13 @@ final class OpacitySlider extends View implements Choreographer.FrameCallback {
 
     @Override protected void onDraw(Canvas c) {
         float cy = getHeight() / 2f, left = left(), right = right(), x = left + (right - left) * at;
+        if (mark > 0) {
+            float mx = left + (right - left) * mark;
+            paint.setShadowLayer(0, 0, 0, 0);
+            paint.setStyle(Paint.Style.FILL); paint.setColor(accent); paint.setAlpha(150);
+            c.drawRoundRect(mx - 1.5f * d, cy + 11 * d, mx + 1.5f * d, cy + 17 * d, 1.5f * d, 1.5f * d, paint);
+            paint.setAlpha(255);
+        }
 
         float rr = 8 * d, rx = getPaddingLeft() + 12 * d;
         paint.setShadowLayer(0, 0, 0, 0);

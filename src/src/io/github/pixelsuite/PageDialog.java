@@ -20,7 +20,8 @@ class PageDialog extends Dialog {
         mPage = page instanceof ViewGroup ? (ViewGroup) page : null;
         Window w = getWindow();
         if (w != null) {
-            w.setWindowAnimations(0);
+            int bloom = AppMotion.enabled(getContext()) ? getContext().getResources().getIdentifier("PsBloomDialog", "style", getContext().getPackageName()) : 0;
+            w.setWindowAnimations(bloom);
             w.setBackgroundDrawable(new ColorDrawable(bg));
         }
         if (mPage == null || !AppMotion.enabled(getContext())) return;

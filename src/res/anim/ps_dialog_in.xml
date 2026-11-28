@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:shareInterpolator="false">
+    <scale android:fromXScale="0.3" android:toXScale="1" android:fromYScale="0.2" android:toYScale="1" android:pivotX="50%" android:pivotY="50%" android:duration="430" android:interpolator="@anim/ps_bloom_spring" />
+    <alpha android:fromAlpha="0" android:toAlpha="1" android:duration="110" android:interpolator="@android:anim/decelerate_interpolator" />
+</set>

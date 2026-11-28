@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.github.roviandev.pixelsuite"
-    android:versionCode="630"
-    android:versionName="3.2.0">
+    android:versionCode="800"
+    android:versionName="3.2.1">
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
     <uses-sdk android:minSdkVersion="26" android:targetSdkVersion="35" />
@@ -43,8 +43,14 @@
         <package android:name="com.google.android.apps.authenticator2" />
     </queries>
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-permission android:name="android.permission.BLUETOOTH" android:maxSdkVersion="30" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <application
         android:supportsRtl="true"
         android:label="@string/app_name"
@@ -53,6 +59,10 @@
         android:roundIcon="@mipmap/ic_ps_app"
         android:allowBackup="false">
         <service android:name="io.github.pixelsuite.WatchCell$Job" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE" />
+        <receiver android:name="io.github.pixelsuite.SearchWidget" android:exported="true" android:label="Pixel search">
+            <intent-filter><action android:name="android.appwidget.action.APPWIDGET_UPDATE" /></intent-filter>
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/ps_search_widget" />
+        </receiver>
         <receiver android:name="io.github.pixelsuite.WatchCell$Receiver" android:exported="true"><intent-filter><action android:name="android.bluetooth.device.action.ACL_CONNECTED" /></intent-filter></receiver>
         <service android:name="io.github.pixelsuite.PatronRefreshJob" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false" />
         <activity android:name="io.github.pixelsuite.PatronCallbackActivity" android:exported="true" android:excludeFromRecents="true" android:theme="@style/Theme.PixelSuite">
@@ -95,7 +105,7 @@
             <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE" /></intent-filter>
             <meta-data android:name="android.service.quicksettings.TOGGLEABLE_TILE" android:value="true" />
         </service>
-        <activity android:name="io.github.pixelsuite.DoNotAnnoyTileActivity" android:exported="true" android:excludeFromRecents="true" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        <activity android:name="io.github.pixelsuite.DoNotAnnoyTileActivity" android:taskAffinity="" android:exported="true" android:excludeFromRecents="true" android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <intent-filter><action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" /><category android:name="android.intent.category.DEFAULT" /></intent-filter>
         </activity>
         <receiver android:name="io.github.pixelsuite.DoNotAnnoyReceiver" android:exported="true" android:permission="android.permission.MODIFY_PHONE_STATE">
@@ -118,13 +128,27 @@
         </service>
         <provider android:name="io.github.pixelsuite.KeyboardPreviewProvider" android:authorities="io.github.roviandev.pixelsuite.keyboard" android:exported="true" android:grantUriPermissions="false" />
         <provider android:name="io.github.pixelsuite.VpnProvider" android:authorities="io.github.roviandev.pixelsuite.vpn" android:exported="true" android:grantUriPermissions="false" />
-        <activity android:name="io.github.pixelsuite.ChromeTextSearch" android:exported="true" android:excludeFromRecents="true" android:noHistory="true" android:label="@string/search_in_chrome" android:theme="@android:style/Theme.NoDisplay">
+        <activity android:name="io.github.pixelsuite.ChromeTextSearch" android:taskAffinity="" android:exported="true" android:excludeFromRecents="true" android:noHistory="true" android:label="@string/search_in_chrome" android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.PROCESS_TEXT" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
             </intent-filter>
         </activity>
-        <activity android:name="io.github.pixelsuite.VpnPermissionActivity" android:exported="true" android:excludeFromRecents="true" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name="io.github.pixelsuite.VpnPermissionActivity" android:taskAffinity="" android:exported="true" android:excludeFromRecents="true" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <provider android:name="io.github.pixelsuite.SearchProvider" android:authorities="io.github.roviandev.pixelsuite.search" android:exported="true" android:grantUriPermissions="false" />
+        <provider android:name="io.github.pixelsuite.PdfLink" android:authorities="io.github.roviandev.pixelsuite.pdf" android:exported="true" android:grantUriPermissions="false" />
+        <provider android:name="io.github.pixelsuite.SearchFileProvider" android:authorities="io.github.roviandev.pixelsuite.searchfile" android:exported="false" android:grantUriPermissions="true" />
+        <activity android:name="io.github.pixelsuite.SearchAction" android:taskAffinity="" android:exported="true" android:excludeFromRecents="true" android:noHistory="true" android:theme="@android:style/Theme.NoDisplay" />
+        <activity android:name="io.github.pixelsuite.SearchScan" android:exported="false" android:label="@string/scan_app" android:icon="@mipmap/ic_ps_scan_app" android:roundIcon="@mipmap/ic_ps_scan_app" android:taskAffinity="io.github.pixelsuite.pdf" android:screenOrientation="portrait" android:configChanges="uiMode|orientation|screenSize|keyboardHidden" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity android:name="io.github.pixelsuite.PdfApp" android:exported="false" android:label="@string/scan_app" android:icon="@mipmap/ic_ps_scan_app" android:roundIcon="@mipmap/ic_ps_scan_app" android:taskAffinity="io.github.pixelsuite.pdf" android:launchMode="singleTask" android:windowSoftInputMode="adjustResize|stateHidden" android:configChanges="orientation|screenSize|keyboardHidden" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity android:name="io.github.pixelsuite.PdfEdit" android:exported="false" android:label="@string/scan_app" android:taskAffinity="io.github.pixelsuite.pdf" android:windowSoftInputMode="adjustResize|stateHidden" android:configChanges="orientation|screenSize|keyboardHidden" android:theme="@android:style/Theme.DeviceDefault.NoActionBar" />
+        <activity-alias android:name="io.github.pixelsuite.ScanApp" android:targetActivity="io.github.pixelsuite.PdfApp" android:exported="true" android:enabled="false" android:label="@string/scan_app" android:icon="@mipmap/ic_ps_scan_app" android:roundIcon="@mipmap/ic_ps_scan_app">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+        <service android:name="io.github.pixelsuite.SearchIndexJob" android:permission="android.permission.BIND_JOB_SERVICE" android:exported="false" />
 </application>
 </manifest>

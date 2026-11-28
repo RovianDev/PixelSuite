@@ -93,7 +93,7 @@ final class GoogleFeedAds {
         return v;
     }
     private static boolean read(Context c) {
-        try { return !"0".equals(Settings.Secure.getString(c.getContentResolver(), KEY)); } catch (Throwable t) { return true; }
+        try { String v = Settings.Secure.getString(c.getContentResolver(), KEY); return v == null ? Defaults.legacy() : !"0".equals(v); } catch (Throwable t) { return true; }
     }
 
     private static void measured(View lv) throws Throwable {

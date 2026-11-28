@@ -80,10 +80,151 @@ final class GboardPlus {
         try { installDeleteSwipe(cl); } catch (Throwable t) { Log.w("delete swipe", t); }
         try { installPanelSwipe(cl); } catch (Throwable t) { Log.w("panel swipe", t); }
         try { installBarTaps(cl); } catch (Throwable t) { Log.w("shortcut taps", t); }
+        try { installEdgeBack(); } catch (Throwable t) { Log.w("edge back", t); }
+        try { installSearchGuard(); } catch (Throwable t) { Log.w("search guard", t); }
+        try { LockClipboard.installGboard(); } catch (Throwable t) { Log.w("lock clip", t); }
+        try { installBodyKeeper(); } catch (Throwable t) { Log.w("body keeper", t); }
         try { installVoice(cl); } catch (Throwable t) { Log.w("voice", t); }
         try { installGeometry(); } catch (Throwable t) { Log.w("geometry", t); }
         try { installTwoLineFit(); } catch (Throwable t) { Log.w("two-line fit", t); }
         try { GboardFrost.install(); } catch (Throwable t) { Log.w("frosted glass", t); }
+    }
+
+    static final String SEARCH_FIELD = "io.github.pixelsuite.search";
+    private static volatile boolean sSearchField;
+
+    private static final class Guard implements java.lang.reflect.InvocationHandler {
+        final android.view.Window window;
+        final android.view.Window.Callback real;
+        private MotionEvent held;
+        private boolean dropping;
+
+        Guard(android.view.Window window, android.view.Window.Callback real) { this.window = window; this.real = real; }
+
+        private boolean low(MotionEvent e) {
+            View d = window.getDecorView();
+            if (d == null || d.getHeight() <= 0) return false;
+            float dp = d.getResources().getDisplayMetrics().density;
+            int strip = 0;
+            try { android.view.WindowInsets in = d.getRootWindowInsets(); if (in != null) strip = in.getStableInsetBottom(); } catch (Throwable ignored) { }
+            if (strip <= 0) strip = Math.round(20 * dp);
+            return e.getY() >= d.getHeight() - Math.min(strip, Math.round(56 * dp));
+        }
+
+        private boolean take(MotionEvent e) {
+            int a = e.getActionMasked();
+            if (a == MotionEvent.ACTION_DOWN) {
+                if (held != null) { held.recycle(); held = null; }
+                dropping = false;
+                if (!sSearchField || !low(e)) return false;
+                held = MotionEvent.obtain(e);
+                return true;
+            }
+            if (dropping) {
+                if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) dropping = false;
+                return true;
+            }
+            if (held == null) return false;
+            if (a == MotionEvent.ACTION_UP) {
+                MotionEvent down = held;
+                held = null;
+                try { if (real != null) real.dispatchTouchEvent(down); } finally { down.recycle(); }
+                return false;
+            }
+            if (a == MotionEvent.ACTION_CANCEL) { held.recycle(); held = null; return true; }
+            float slop = 8 * window.getDecorView().getResources().getDisplayMetrics().density;
+            if (a != MotionEvent.ACTION_MOVE || Math.hypot(e.getX() - held.getX(), e.getY() - held.getY()) > slop) { held.recycle(); held = null; dropping = true; }
+            return true;
+        }
+
+        @Override public Object invoke(Object proxy, Method m, Object[] args) throws Throwable {
+            if ("dispatchTouchEvent".equals(m.getName()) && args != null && args.length == 1 && args[0] instanceof MotionEvent) {
+                boolean taken = false;
+                try { taken = take((MotionEvent) args[0]); } catch (Throwable t) { Log.w("search guard touch", t); }
+                if (taken) return true;
+            }
+            if (real == null) {
+                Class<?> r = m.getReturnType();
+                return r == boolean.class ? (Object) Boolean.FALSE : null;
+            }
+            try { return m.invoke(real, args); }
+            catch (java.lang.reflect.InvocationTargetException e) { throw e.getCause() == null ? e : e.getCause(); }
+        }
+    }
+
+    private static void installBodyKeeper() {
+        Xp.Callback started = new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                if (!(p.thisObject instanceof InputMethodService)) return;
+                final InputMethodService ims = (InputMethodService) p.thisObject;
+                for (long wait : new long[]{180, 600}) MAIN.postDelayed(new Runnable() { public void run() { try { keepBody(ims); } catch (Throwable ignored) { } } }, wait);
+            }
+        };
+        Xp.hookAllMethods(InputMethodService.class, "doStartInput", started);
+        Xp.hookAllMethods(InputMethodService.class, "showWindow", started);
+    }
+
+    private static void keepBody(InputMethodService ims) {
+        if (!ims.isInputViewShown()) return;
+        View decor = ims.getWindow().getWindow().getDecorView();
+        int id = decor.getResources().getIdentifier("keyboard_holder", "id", decor.getContext().getPackageName());
+        View found = id == 0 ? null : decor.findViewById(id);
+        if (!(found instanceof ViewGroup) || !found.isShown()) return;
+        ViewGroup holder = (ViewGroup) found;
+        View header = null, hidden = null;
+        for (int i = 0; i < holder.getChildCount(); i++) {
+            View c = holder.getChildAt(i);
+            if (!c.getClass().getName().endsWith("KeyboardViewHolder")) continue;
+            if ("keyboard_header_view_holder".equals(idName(c))) { header = c; continue; }
+            if (c.getVisibility() == View.INVISIBLE && c.getHeight() > 0 && c.getWidth() > 0) hidden = c;
+        }
+        if (header == null || hidden == null || header.getVisibility() != View.VISIBLE || !(hidden instanceof ViewGroup)) return;
+        for (int i = 0; i < holder.getChildCount(); i++) {
+            View c = holder.getChildAt(i);
+            if (c == hidden || c == header || c.getVisibility() != View.VISIBLE || c.getHeight() <= 0) continue;
+            if (c.getTop() < hidden.getBottom() && c.getBottom() > hidden.getTop()) return;
+        }
+        ViewGroup body = (ViewGroup) hidden;
+        boolean keys = false;
+        for (int i = 0; i < body.getChildCount(); i++) {
+            View c = body.getChildAt(i);
+            if (c.getVisibility() == View.VISIBLE && c.getHeight() > 0 && c.getClass().getName().endsWith("SoftKeyboardView") && c instanceof ViewGroup && ((ViewGroup) c).getChildCount() > 0) keys = true;
+        }
+        if (!keys) return;
+        boolean was = sOwnVis;
+        sOwnVis = true;
+        try { hidden.setVisibility(View.VISIBLE); } finally { sOwnVis = was; }
+    }
+
+    static boolean searchField() { return sSearchField; }
+
+    private static void installSearchGuard() {
+        Xp.Callback mark = new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                if (p.args.length > 0 && p.args[0] instanceof android.view.inputmethod.EditorInfo)
+                    sSearchField = SEARCH_FIELD.equals(((android.view.inputmethod.EditorInfo) p.args[0]).privateImeOptions);
+            }
+        };
+        Xp.hookAllMethods(InputMethodService.class, "onStartInput", mark);
+        Xp.hookAllMethods(InputMethodService.class, "onStartInputView", mark);
+        Xp.hookAllMethods(InputMethodService.class, "onStartInputView", new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                try {
+                    android.view.inputmethod.EditorInfo info = p.args.length > 0 && p.args[0] instanceof android.view.inputmethod.EditorInfo ? (android.view.inputmethod.EditorInfo) p.args[0] : null;
+                    sSearchField = info != null && SEARCH_FIELD.equals(info.privateImeOptions);
+                    if (!sSearchField || !(p.thisObject instanceof InputMethodService)) return;
+                    android.app.Dialog soft = ((InputMethodService) p.thisObject).getWindow();
+                    android.view.Window w = soft == null ? null : soft.getWindow();
+                    if (w == null) return;
+                    android.view.Window.Callback now = w.getCallback();
+                    if (now != null && java.lang.reflect.Proxy.isProxyClass(now.getClass()) && java.lang.reflect.Proxy.getInvocationHandler(now) instanceof Guard) return;
+                    w.setCallback((android.view.Window.Callback) java.lang.reflect.Proxy.newProxyInstance(android.view.Window.Callback.class.getClassLoader(), new Class<?>[]{android.view.Window.Callback.class}, new Guard(w, now)));
+                } catch (Throwable t) { Log.w("search guard", t); }
+            }
+        });
+        Xp.hookAllMethods(InputMethodService.class, "onFinishInputView", new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) { sSearchField = false; }
+        });
     }
 
     private static void installTwoLineFit() {
@@ -290,6 +431,7 @@ final class GboardPlus {
                         try { prepareNga(ims, cl); } catch (Throwable t) { Log.w("voice nga", t); }
                         try { prepareRambler(ims, cl); } catch (Throwable t) { Log.w("voice rambler", t); }
                         try { prepareClassicVoice(ims, cl); } catch (Throwable t) { Log.w("classic voice", t); }
+                        try { prepareLanguageSwitch(ims); } catch (Throwable t) { Log.w("voice language", t); }
                         try { prepareDictationFlag(ims, cl); } catch (Throwable t) { android.util.Log.w(VOICE_TAG, "toolbar dictation: " + t); }
                         try { preparePowerKey(ims, cl); } catch (Throwable t) { Log.w("emoji button", t); }
                         try { prepareShowing(ims, cl); } catch (Throwable t) { Log.w("toolbar showing", t); }
@@ -1355,7 +1497,7 @@ final class GboardPlus {
         MAIN.post(new Runnable() { public void run() {
             try {
                 target.setOutlineProvider(new android.view.ViewOutlineProvider() {
-                    @Override public void getOutline(View view, android.graphics.Outline o) { o.setRoundRect(0, 0, view.getWidth(), Math.round(view.getHeight() + r), r); }
+                    @Override public void getOutline(View view, android.graphics.Outline o) { o.setRoundRect(0, 0, view.getWidth(), apart(view) ? view.getHeight() : Math.round(view.getHeight() + r), r); }
                 });
                 target.setClipToOutline(true);
                 target.invalidateOutline();
@@ -1523,14 +1665,20 @@ final class GboardPlus {
                         View ch = g.getChildAt(i);
                         if (ch.getVisibility() == View.GONE) continue;
                         int cw = Math.max(0, w - g.getPaddingLeft() - g.getPaddingRight()), chh = Math.max(0, target - g.getPaddingTop() - g.getPaddingBottom());
+                        float kx = ch.getScaleX(), ky = ch.getScaleY();
+                        if (kx > 0.4f && kx < 0.99f) cw = (int) Math.ceil(cw / kx);
+                        if (ky > 0.4f && ky < 0.99f) chh = (int) Math.ceil(chh / ky);
                         ch.measure(View.MeasureSpec.makeMeasureSpec(cw, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(chh, View.MeasureSpec.EXACTLY));
                         if (ch instanceof ViewGroup) {
                             ViewGroup sk = (ViewGroup) ch;
                             for (int k = 0; k < sk.getChildCount(); k++) {
                                 View in = sk.getChildAt(k);
                                 if (in.getVisibility() == View.GONE || !in.getClass().getName().endsWith("ScaledKeyboardViewInner")) continue;
-                                in.measure(View.MeasureSpec.makeMeasureSpec(Math.max(0, cw - sk.getPaddingLeft() - sk.getPaddingRight()), View.MeasureSpec.EXACTLY),
-                                        View.MeasureSpec.makeMeasureSpec(Math.max(0, chh - sk.getPaddingTop() - sk.getPaddingBottom()), View.MeasureSpec.EXACTLY));
+                                int iw = Math.max(0, cw - sk.getPaddingLeft() - sk.getPaddingRight()), ih = Math.max(0, chh - sk.getPaddingTop() - sk.getPaddingBottom());
+                                float sx = in.getScaleX(), sy = in.getScaleY();
+                                if (sx > 0.4f && sx < 0.99f) iw = Math.round(iw / sx);
+                                if (sy > 0.4f && sy < 0.99f) ih = Math.round(ih / sy);
+                                in.measure(View.MeasureSpec.makeMeasureSpec(iw, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(ih, View.MeasureSpec.EXACTLY));
                             }
                         }
                     }
@@ -1612,6 +1760,77 @@ final class GboardPlus {
         for (int i = 0; i < g.getChildCount(); i++) voiceTitles(g.getChildAt(i));
     }
 
+    private static final Map<ViewGroup, int[]> sStrips = new WeakHashMap<ViewGroup, int[]>();
+    private static final Map<View, Integer> sOwnLeft = new WeakHashMap<View, Integer>();
+    private static volatile int sReserve;
+    private static int sStripSeq;
+
+    static void reserve(int px) {
+        if (px < 0) px = 0;
+        if (sReserve == px) return;
+        sReserve = px;
+        List<ViewGroup> all;
+        synchronized (sStrips) { all = new ArrayList<ViewGroup>(sStrips.keySet()); }
+        for (ViewGroup f : all) { try { if (f != null && f.isAttachedToWindow()) f.requestLayout(); } catch (Throwable ignored) { } }
+    }
+
+    static boolean strips() { synchronized (sStrips) { return !sStrips.isEmpty(); } }
+
+    static int held(View frame) { synchronized (sStrips) { int[] g = sStrips.get(frame); return g == null ? 0 : g[3]; } }
+
+    static float stripScale(View v) {
+        float s = 1f;
+        for (View c = v; c != null; c = c.getParent() instanceof View ? (View) c.getParent() : null) s *= c.getScaleX();
+        return s;
+    }
+
+    static View slot(android.graphics.Rect out) {
+        List<ViewGroup> all;
+        synchronized (sStrips) { all = new ArrayList<ViewGroup>(sStrips.keySet()); }
+        ViewGroup best = null;
+        int[] geo = null;
+        for (ViewGroup f : all) {
+            if (f == null || !f.isAttachedToWindow() || f.getWidth() <= 0 || f.getHeight() <= 0 || !f.isShown() || !f.getGlobalVisibleRect(new android.graphics.Rect())) continue;
+            int[] g;
+            synchronized (sStrips) { g = sStrips.get(f); }
+            if (g == null || g[1] <= 0) continue;
+            if (geo == null || g[2] > geo[2]) { best = f; geo = g; }
+        }
+        if (best == null) return null;
+        float s = stripScale(best);
+        int[] at = new int[2];
+        best.getLocationOnScreen(at);
+        out.set(at[0] + Math.round(best.getPaddingLeft() * s), at[1] + Math.round(geo[0] * s), at[0] + Math.round((best.getWidth() - best.getPaddingRight()) * s), at[1] + Math.round((geo[0] + geo[1]) * s));
+        return best;
+    }
+
+    private static void strip(ViewGroup frame, int top, int h, int held) {
+        synchronized (sStrips) { sStrips.put(frame, new int[] { top, h, ++sStripSeq, held }); }
+        try { OtpFill.nudge(); } catch (Throwable ignored) { }
+    }
+
+    private static int hold(ViewGroup frame, View barView) {
+        int want = sReserve;
+        boolean done = true;
+        for (int i = 0; i < frame.getChildCount(); i++) {
+            final View ch = frame.getChildAt(i);
+            if (ch == barView || !(ch.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)) continue;
+            final ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) ch.getLayoutParams();
+            Integer own;
+            synchronized (sOwnLeft) { own = sOwnLeft.get(ch); }
+            if (want <= 0 && own == null) continue;
+            if (own == null) { own = lp.leftMargin; synchronized (sOwnLeft) { sOwnLeft.put(ch, own); } }
+            final int target = own + Math.max(0, want);
+            if (want <= 0) synchronized (sOwnLeft) { sOwnLeft.remove(ch); }
+            if (lp.leftMargin == target) continue;
+            done = false;
+            MAIN.post(new Runnable() { public void run() {
+                try { if (lp.leftMargin != target) { lp.leftMargin = target; ch.setLayoutParams(lp); } } catch (Throwable ignored) { }
+            }});
+        }
+        return done ? Math.max(0, want) : 0;
+    }
+
     private static void rows(ViewGroup inner, Class<?> bar, int W, int H, int rowH) {
         boolean shortcutsTop = on(KEY_ROWS_TOP);
         int sTop = shortcutsTop ? 0 : H - rowH, gTop = shortcutsTop ? H - rowH : 0;
@@ -1643,16 +1862,19 @@ final class GboardPlus {
         final boolean adopt = custNow && colW > 0 && column.getHeight() > 0;
         final int barLeft = adopt ? Math.max(0, menuRight - colL) : menuRight;
         final int barRight = adopt ? Math.max(0, colL + colW - powerLeft) : W - powerLeft;
+        final int held = sReserve;
         if (frame instanceof ViewGroup) {
-            ViewGroup f = (ViewGroup) frame;
+            final ViewGroup f = (ViewGroup) frame;
+            boolean shifted = false;
             for (int i = 0; i < f.getChildCount(); i++) {
                 View ch = f.getChildAt(i);
                 if (!(ch.getLayoutParams() instanceof android.widget.FrameLayout.LayoutParams)) continue;
                 android.widget.FrameLayout.LayoutParams lp = (android.widget.FrameLayout.LayoutParams) ch.getLayoutParams();
                 boolean isBar = ch == barView;
-                int wantTop = isBar ? sTop : gTop, wantLeft = isBar ? barLeft : 0, wantRight = isBar ? barRight : 0;
+                int wantTop = isBar ? sTop : gTop, wantLeft = isBar ? barLeft : held, wantRight = isBar ? barRight : 0;
                 if (lp.height != rowH || lp.topMargin != wantTop || lp.leftMargin != wantLeft || lp.rightMargin != wantRight || lp.width != ViewGroup.LayoutParams.MATCH_PARENT
                         || lp.gravity != (android.view.Gravity.TOP | android.view.Gravity.START)) lpChanged = true;
+                if (!isBar && lp.leftMargin != wantLeft) shifted = true;
                 lp.height = rowH;
                 lp.gravity = android.view.Gravity.TOP | android.view.Gravity.START;
                 lp.topMargin = isBar ? sTop : gTop;
@@ -1661,6 +1883,8 @@ final class GboardPlus {
                 lp.width = ViewGroup.LayoutParams.MATCH_PARENT;
                 if (!isBar) voiceTitle(ch);
             }
+            if (shifted) MAIN.post(new Runnable() { public void run() { try { if (f.isAttachedToWindow()) f.requestLayout(); } catch (Throwable ignored) { } } });
+            strip(f, gTop, rowH, shifted ? 0 : held);
         }
         if (adopt) {
             if (lpChanged) {
@@ -1675,7 +1899,7 @@ final class GboardPlus {
         column.measure(View.MeasureSpec.makeMeasureSpec(W, View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(H, View.MeasureSpec.EXACTLY));
         column.layout(0, 0, W, H);
         grow(barView, before, W);
-        if (frame instanceof ViewGroup) fitChips((ViewGroup) frame, barView);
+        if (frame instanceof ViewGroup && held == 0) fitChips((ViewGroup) frame, barView);
             }
 
     private static void fitChips(final ViewGroup frame, final View bar) {
@@ -1719,6 +1943,7 @@ final class GboardPlus {
         if (barView == null || !(barView.getParent() instanceof ViewGroup)) return;
         ViewGroup frame = (ViewGroup) barView.getParent();
         try { span(inner, barView); } catch (Throwable t) { Log.w("toolbar span", t); }
+        try { strip(frame, 0, frame.getHeight(), hold(frame, barView)); } catch (Throwable t) { Log.w("strip", t); }
         boolean suggesting = false;
         for (int i = 0; i < frame.getChildCount() && !suggesting; i++) {
             View ch = frame.getChildAt(i);
@@ -2135,6 +2360,11 @@ final class GboardPlus {
         }});
     }
 
+    private static boolean apart(View panel) {
+        View top = panel.getRootView();
+        return top != null && top != panel && top.getWidth() > 0 && panel.getWidth() < top.getWidth() * 0.97f;
+    }
+
     private static final Map<View, Boolean> sOutlined = new WeakHashMap<View, Boolean>();
 
     private static void outline(final View panel, final ViewGroup lin, final int[] orig, final Geo g, final float d) {
@@ -2150,7 +2380,7 @@ final class GboardPlus {
                         int b = y + lin.getHeight() - (lin.getPaddingBottom() - orig[2]);
                         boolean full = l <= 0 && r >= view.getWidth() && lin.getPaddingBottom() == orig[2];
                         float rad = (full ? 24 : 20) * d;
-                        if (full) o.setRoundRect(0, 0, view.getWidth(), Math.round(view.getHeight() + rad), rad);
+                        if (full) o.setRoundRect(0, 0, view.getWidth(), apart(view) ? view.getHeight() : Math.round(view.getHeight() + rad), rad);
                         else o.setRoundRect(Math.max(0, l), 0, Math.min(view.getWidth(), r), Math.min(view.getHeight(), b), rad);
                     }
                 });
@@ -2502,6 +2732,25 @@ final class GboardPlus {
                         float[] d = toolbarOn() && !sVoice && !sCustomizing ? snapToKey(kb, e, keyClass, barClass) : null;
                         if (d != null) { sSnapKb = new WeakReference<View>(kb); sSnapDx = d[0]; sSnapDy = d[1]; }
                     }
+                    if (a == MotionEvent.ACTION_DOWN) {
+                        sSwipeDead = false; sSwipeTrack = false;
+                        if (!sCustomizing && !sVoice) {
+                            View hb = header(kb.getRootView());
+                            if (hb != null && hb.isShown() && inside(hb, e.getRawX(), e.getRawY())) { sSwipeTrack = true; sSwipeX = e.getRawX(); sSwipeY = e.getRawY(); }
+                        }
+                    } else if (sSwipeDead) {
+                        if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) { sSwipeDead = false; sSwipeTrack = false; }
+                        p.setResult(Boolean.TRUE);
+                        return;
+                    } else if (sSwipeTrack && a == MotionEvent.ACTION_MOVE) {
+                        int slop = android.view.ViewConfiguration.get(kb.getContext()).getScaledTouchSlop() * 2;
+                        if (Math.abs(e.getRawX() - sSwipeX) > slop && Math.abs(e.getRawX() - sSwipeX) > Math.abs(e.getRawY() - sSwipeY)) {
+                            sSwipeDead = true; sSwipeTrack = false;
+                            MotionEvent cancel = MotionEvent.obtain(e);
+                            cancel.setAction(MotionEvent.ACTION_CANCEL);
+                            p.args[0] = cancel; e = cancel; a = MotionEvent.ACTION_CANCEL;
+                        }
+                    } else if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) sSwipeTrack = false;
                     View snapKb = sSnapKb == null ? null : sSnapKb.get();
                     if (snapKb == kb) {
                         MotionEvent moved = MotionEvent.obtain(e);
@@ -2577,6 +2826,35 @@ final class GboardPlus {
     }
 
     private static View sRouteTo;
+    private static boolean sSwipeTrack, sSwipeDead;
+    private static float sSwipeX, sSwipeY;
+
+    private static View header(View root) {
+        if (root == null) return null;
+        int id = root.getResources().getIdentifier("keyboard_header_view_holder", "id", root.getContext().getPackageName());
+        return id == 0 ? null : root.findViewById(id);
+    }
+
+    private static void installEdgeBack() throws Throwable {
+        Xp.hookAllMethods(View.class, "setSystemGestureExclusionRects", new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                try {
+                    if (p.args.length != 1 || !(p.args[0] instanceof java.util.List)) return;
+                    java.util.List<?> in = (java.util.List<?>) p.args[0];
+                    if (in.isEmpty()) return;
+                    View v = (View) p.thisObject;
+                    View hb = header(v.getRootView());
+                    if (hb == null || !hb.isShown()) return;
+                    int[] a = new int[2], b = new int[2];
+                    hb.getLocationInWindow(a); v.getLocationInWindow(b);
+                    android.graphics.Rect head = new android.graphics.Rect(a[0] - b[0], a[1] - b[1], a[0] - b[0] + hb.getWidth(), a[1] - b[1] + hb.getHeight());
+                    java.util.ArrayList<android.graphics.Rect> out = new java.util.ArrayList<android.graphics.Rect>();
+                    for (Object o : in) if (o instanceof android.graphics.Rect && !android.graphics.Rect.intersects((android.graphics.Rect) o, head)) out.add((android.graphics.Rect) o);
+                    if (out.size() != in.size()) p.args[0] = out;
+                } catch (Throwable ignored) { }
+            }
+        });
+    }
 
     private static View shownBar(View v, Class<?> type) {
         if (type.isInstance(v)) return v.isShown() && v.getWidth() > 0 && v.getAlpha() > 0.01f ? v : null;
@@ -2758,6 +3036,7 @@ final class GboardPlus {
         return null;
     }
     private static boolean sShowingProbed;
+    private static String sShowingSaid;
 
     static void prepareShowing(InputMethodService ims, ClassLoader cl) throws Throwable {
         final String mgr = Shortcuts.cachedClass(ims, "apmanager", "Can't handle click event: The access points are not showing");
@@ -2767,7 +3046,8 @@ final class GboardPlus {
         final Class<?> bar = cl.loadClass(BAR);
         for (Method m : cl.loadClass(mgr).getDeclaredMethods()) {
             Class<?>[] t = m.getParameterTypes();
-            if (Modifier.isStatic(m.getModifiers()) || m.getReturnType() != boolean.class || t.length != 1 || t[0].isPrimitive() || t[0].getName().startsWith("java") || t[0].getName().startsWith("android")) continue;
+            if (Modifier.isStatic(m.getModifiers()) || t.length < 1 || t[0].isPrimitive() || t[0].getName().startsWith("java") || t[0].getName().startsWith("android")) continue;
+            final String sig = m.getName() + "/" + t.length + "/" + m.getReturnType().getSimpleName();
             Xp.hookMethod(m, new Xp.Callback() {
                 @Override protected void beforeHookedMethod(Xp.Param p) {
                     try {
@@ -2778,8 +3058,17 @@ final class GboardPlus {
                         for (Field f : p.thisObject.getClass().getDeclaredFields()) if (f.getType() == hc && !Modifier.isStatic(f.getModifiers())) { f.setAccessible(true); h = f.get(p.thisObject); break; }
                         if (h == null) return;
                         if (!sShowingProbed) { sShowingProbed = true; sShowingField = boolField(h.getClass(), "o"); sPanelField = boolField(h.getClass(), "p"); }
-                        if (sShowingField == null || sPanelField == null || sShowingField.getBoolean(h) || sPanelField.getBoolean(h)) return;
                         InputMethodService ims = sIme.get();
+                        if (sShowingField == null || sPanelField == null || !sShowingField.getBoolean(h)) {
+                            android.app.Dialog w = ims == null ? null : ims.getWindow();
+                            View top = w == null || w.getWindow() == null ? null : w.getWindow().peekDecorView();
+                            StringBuilder sb = new StringBuilder("gboard bar: ").append(sig).append(" showing=").append(sShowingField == null ? "none" : String.valueOf(sShowingField.getBoolean(h)))
+                                    .append(" panel=").append(sPanelField == null ? "none" : String.valueOf(sPanelField.getBoolean(h))).append(" bar=").append(top != null && barOnScreen(top, bar) != null).append(" holder=").append(h.getClass().getName()).append(" {");
+                            for (Map.Entry<Field, Boolean> e : booleans(h).entrySet()) sb.append(e.getKey().getName()).append('=').append(e.getValue()).append(' ');
+                            String line = sb.append('}').toString();
+                            if (!line.equals(sShowingSaid)) { sShowingSaid = line; }
+                        }
+                        if (sShowingField == null || sPanelField == null || sShowingField.getBoolean(h) || sPanelField.getBoolean(h)) return;
                         android.app.Dialog dlg = ims == null ? null : ims.getWindow();
                         View decor = dlg == null || dlg.getWindow() == null ? null : dlg.getWindow().peekDecorView();
                         if (decor == null || barOnScreen(decor, bar) == null) return;
@@ -2857,7 +3146,7 @@ final class GboardPlus {
         } catch (Throwable t) { Log.w("reshow bar", t); }
     }
 
-    private static volatile boolean sVoice;
+    private static volatile boolean sVoice, sViewUp;
     static boolean previewBusy() { return sVoice || sCustomizing; }
     private static final Map<View, Boolean> sGlows = new WeakHashMap<View, Boolean>(), sGlowSeen = new WeakHashMap<View, Boolean>();
     private static final Map<View, Integer> sAsked = new WeakHashMap<View, Integer>();
@@ -2870,6 +3159,11 @@ final class GboardPlus {
             @Override protected void afterHookedMethod(Xp.Param p) {
                 try {
                     MAIN.post(new Runnable() { public void run() { tags(); } });
+                    if (p.thisObject instanceof InputMethodService) readLanguage((InputMethodService) p.thisObject);
+                    boolean again = p.args.length > 1 && Boolean.TRUE.equals(p.args[1]);
+                    boolean stale = sVoice && (!sViewUp || !again);
+                    sViewUp = true;
+                    if (stale) { voiceFresh(); return; }
                     if (sVoice) return;
                     endShot();
                     micBack();
@@ -2909,16 +3203,44 @@ final class GboardPlus {
                     micBack(); showBars();
                     showVoiceHidden();
                     glowOff();
+                    sViewUp = false;
                     if (!sVoice) return;
-                    View any;
-                    synchronized (sGlows) { any = sGlows.isEmpty() ? null : sGlows.keySet().iterator().next(); sGlows.clear(); }
-                    if (any != null) glow(any, false); else { sClassicVoice = false; sVoice = false; }
+                    synchronized (sGlows) { sGlows.clear(); }
+                    voiceOn(false);
                 } catch (Throwable t) { Log.w("voice end", t); }
             }
         });
     }
 
     private static volatile int sUiModeWas;
+    private static boolean sLanguageHooked;
+
+    private static void prepareLanguageSwitch(InputMethodService ims) {
+        if (sLanguageHooked) return;
+        sLanguageHooked = true;
+        readLanguage(ims);
+        Xp.Callback end = new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                try {
+                    if (p.args.length > 0 && p.args[0] instanceof android.view.inputmethod.InputMethodSubtype) sLanguage = GboardAutoCorrect.tag((android.view.inputmethod.InputMethodSubtype) p.args[0]);
+                    else if (p.thisObject instanceof InputMethodService) readLanguage((InputMethodService) p.thisObject);
+                } catch (Throwable ignored) { }
+                if (!sVoice) return;
+                MAIN.post(new Runnable() { public void run() {
+                    if (!sVoice) return;
+                    voiceFresh();
+                }});
+            }
+        };
+        java.util.HashSet<Method> done = new java.util.HashSet<Method>();
+        for (Class<?> k = ims.getClass(); k != null && k != Object.class; k = k.getSuperclass()) {
+            for (Method m : k.getDeclaredMethods()) {
+                if (!"onCurrentInputMethodSubtypeChanged".equals(m.getName()) || Modifier.isAbstract(m.getModifiers()) || !done.add(m)) continue;
+                Xp.hookMethod(m, end);
+            }
+            if (k == InputMethodService.class) break;
+        }
+    }
 
     private static void voiceFresh() {
         try {
@@ -3520,6 +3842,12 @@ final class GboardPlus {
                     sMicShifted = null;
                     e.offsetLocation(sMicShift, 0f);
                     int a = e.getActionMasked();
+                    if (a == MotionEvent.ACTION_UP && sVoice) {
+                        MAIN.postDelayed(new Runnable() { public void run() {
+                            if (!sVoice) return;
+                            voiceFresh();
+                        }}, 260);
+                    }
                     if (a == MotionEvent.ACTION_UP || a == MotionEvent.ACTION_CANCEL) sMicRoute = false;
                 } catch (Throwable ignored) { }
             }
@@ -4921,6 +5249,58 @@ final class GboardPlus {
         } catch (Throwable t) { return false; }
     }
 
+    private static volatile String sLanguage;
+    private static final String[] DICTATION_LANGUAGES = { "en", "es", "fr", "de", "it", "ja" };
+
+    private static boolean dictationSpeaks(String tag) {
+        if (tag == null || tag.isEmpty()) return true;
+        String l = tag.toLowerCase(java.util.Locale.ROOT);
+        int cut = l.indexOf('-');
+        if (cut < 0) cut = l.indexOf('_');
+        if (cut > 0) l = l.substring(0, cut);
+        for (String ok : DICTATION_LANGUAGES) if (ok.equals(l)) return true;
+        return false;
+    }
+
+    private static void readLanguage(InputMethodService ims) {
+        try {
+            android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) ims.getSystemService(Context.INPUT_METHOD_SERVICE);
+            android.view.inputmethod.InputMethodSubtype s = imm == null ? null : imm.getCurrentInputMethodSubtype();
+            if (s != null) sLanguage = GboardAutoCorrect.tag(s);
+        } catch (Throwable ignored) { }
+    }
+
+    private static long sVoiceAt;
+    private static int sQuiet;
+    private static final Runnable VOICE_WATCH = new Runnable() { public void run() {
+        if (!sVoice) return;
+        try {
+            if (android.os.SystemClock.uptimeMillis() - sVoiceAt > 700 && headerQuiet()) {
+                if (++sQuiet >= 2) { voiceFresh(); return; }
+            } else sQuiet = 0;
+        } catch (Throwable ignored) { }
+        MAIN.postDelayed(this, 220);
+    }};
+
+    private static boolean headerQuiet() {
+        View h = headerHolder();
+        if (h == null || !h.isShown() || h.getAlpha() < 0.9f || h.getWidth() <= 0) return false;
+        return !anythingShown(h, 0);
+    }
+
+    private static boolean anythingShown(View v, int depth) {
+        if (depth > 14 || v.getVisibility() != View.VISIBLE || v.getAlpha() < 0.05f || v.getWidth() <= 0 || v.getHeight() <= 0) return false;
+        if (v instanceof VoiceX) return false;
+        if (!(v instanceof ViewGroup)) {
+            if (v instanceof android.widget.TextView) return ((android.widget.TextView) v).length() > 0;
+            if (v instanceof android.widget.ImageView) return ((android.widget.ImageView) v).getDrawable() != null;
+            return v.getClass() != View.class;
+        }
+        ViewGroup g = (ViewGroup) v;
+        for (int i = 0; i < g.getChildCount(); i++) if (anythingShown(g.getChildAt(i), depth + 1)) return true;
+        return false;
+    }
+
     private static volatile boolean sDictationReady;
     private static final String TOOLBAR_DICTATION = "enable_jetson_in_toolbar";
     private static volatile Object sToolbarDictation;
@@ -4957,7 +5337,7 @@ final class GboardPlus {
             Xp.hookMethod(g, new Xp.Callback() {
                 @Override protected void afterHookedMethod(Xp.Param p) {
                     if (p.thisObject != sToolbarDictation || !Boolean.FALSE.equals(p.getResult())) return;
-                    if (on(KEY_DICTATION)) p.setResult(Boolean.TRUE);
+                    if (on(KEY_DICTATION) && dictationSpeaks(sLanguage)) p.setResult(Boolean.TRUE);
                 }
             });
         }
@@ -5086,8 +5466,11 @@ final class GboardPlus {
 
     private static void voiceOn(boolean on) {
         if (!on) { sClassicVoice = false; if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) { showVoiceHidden(); glowOff(); } }
+        if (on && !sViewUp) { InputMethodService shown = sIme.get(); if (shown == null || !shown.isInputViewShown()) return; }
         if (sVoice == on) return;
         sVoice = on;
+        MAIN.removeCallbacks(VOICE_WATCH);
+        if (on) { sVoiceAt = android.os.SystemClock.uptimeMillis(); sQuiet = 0; MAIN.postDelayed(VOICE_WATCH, 700); }
         MAIN.removeCallbacks(VOICE_TITLES); MAIN.post(VOICE_TITLES); MAIN.postDelayed(VOICE_TITLES, 150);
         final boolean o = on;
         if (!on && android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) {
@@ -5170,6 +5553,7 @@ final class GboardPlus {
         if (views.size() < 2) return;
         View popup = views.get(0), anchor = views.get(1);
         if (key.isInstance(popup) && !key.isInstance(anchor)) { View x = popup; popup = anchor; anchor = x; }
+        if (hostsKeyboard(popup, 0)) return;
         boolean keyBubble = key.isInstance(anchor) ? styled(anchor) : findInstance(popup, key) != null && !(anchor.getClass().getName().contains("AccessPoint"));
         if (!keyBubble) return;
         noDots(popup);
@@ -5251,11 +5635,24 @@ final class GboardPlus {
         } catch (Throwable ignored) { }
     }
 
+    private static boolean hostsKeyboard(View v, int depth) {
+        if (v == null || depth > 6) return false;
+        if (v.getClass().getName().endsWith("KeyboardViewHolder")) return true;
+        String n = idName(v);
+        if ("keyboard_holder".equals(n) || "keyboard_header_view_holder".equals(n)) return true;
+        if (v instanceof ViewGroup) {
+            ViewGroup g = (ViewGroup) v;
+            for (int i = 0; i < g.getChildCount(); i++) if (hostsKeyboard(g.getChildAt(i), depth + 1)) return true;
+        }
+        return false;
+    }
+
     private static void popOut(Xp.Param p) {
         if (!(p.args[0] instanceof View)) return;
         final View v = (View) p.args[0];
         synchronized (sPopOut) { if (sPopped.remove(v) == null) return; }
         v.animate().cancel();
+        if (hostsKeyboard(v, 0)) { v.setScaleX(1f); v.setScaleY(1f); v.setAlpha(1f); return; }
         if (p.args[1] != null || !v.isShown()) { v.setScaleX(1f); v.setScaleY(1f); v.setAlpha(1f); return; }
         android.animation.ObjectAnimator fade = android.animation.ObjectAnimator.ofFloat(v, "alpha", v.getAlpha(), 0f);
         fade.setStartDelay(45);

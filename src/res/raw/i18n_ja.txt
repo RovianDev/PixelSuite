@@ -1811,3 +1811,366 @@ Couldn't put back {0}	{0} を戻せませんでした
 Couldn't save {0}	{0} を保存できませんでした
 It didn't install	インストールできませんでした
 Root isn't available	root が使えません
+Pixel search	Pixel 検索
+Find apps, contacts, files and more	アプリ、連絡先、ファイルなどを検索
+Everything on your phone, one search away.	スマホのすべてを、ひとつの検索で。
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	ホーム画面の新しい検索バー。アプリ、連絡先、ファイル、設定などをひとつの場所で検索できます。
+Look	外観
+Color	色
+Blurs what's behind the bar, with glowing edges.	バーの背後をぼかし、縁を光らせます。
+How much of the outer bar shows.	外側のバーの見え方。
+How much of the search box and side buttons shows.	検索ボックスと横のボタンの見え方。
+Voice search, Google Lens, Song search	音声検索、Google レンズ、曲を検索
+Choose and order what shows up	表示する項目と順番を選択
+Web search	ウェブ検索
+What to search	検索する対象
+Search inside files	ファイル内を検索
+Tap to look through your files now.	タップすると今すぐファイルを読み込みます。
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	PDF、Word、Excel、テキスト ファイル内の文字や数字を、ページ番号付きで見つけられます。ファイルを長押しすると、プレビュー、共有、保存場所の表示ができます。
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	15% of 80 や 5 km in miles のように計算や単位変換を入力し、答えをタップするとコピーできます。
+Pixel search shows when Hide search bar is off.	Pixel 検索は「検索バーを非表示」がオフのときに表示されます。
+System colors	システムの色
+Your color	選んだ色
+Any color	好きな色
+Light	ライト
+Calculator and units	電卓と単位換算
+App shortcuts	アプリのショートカット
+Files and media	ファイルとメディア
+Inside files	ファイルの中身
+Web	ウェブ
+All	すべて
+Google Lens	Google レンズ
+Song search	曲を検索
+Assistant	アシスタント
+QR code scanner	QR コードスキャナ
+Action	アクション
+App	アプリ
+App shortcut	アプリのショートカット
+Contact	連絡先
+Shortcut	ショートカット
+Add a button	ボタンを追加
+Choose an app	アプリを選択
+Couldn't open your contacts	連絡先を開けませんでした
+Getting the app's shortcuts…	アプリのショートカットを取得しています…
+Go to your home screen once, then try again.	一度ホーム画面に戻ってから、もう一度お試しください。
+In the search box	検索ボックス内
+Left side	左側
+Right side	右側
+Looking through your files…	ファイルを読み込んでいます…
+Looking through your files… {0}	ファイルを読み込んでいます… {0}
+Move down	下へ移動
+Move left	左へ移動
+Move right	右へ移動
+Move up	上へ移動
+No buttons	ボタンなし
+Preview	プレビュー
+Results show in this order. Turn off what you don't need.	結果はこの順番で表示されます。不要なものはオフにしてください。
+That side is full	その側はいっぱいです
+This app has no shortcuts	このアプリにはショートカットがありません
+This contact has no phone number	この連絡先には電話番号がありません
+Turn Pixel search off and on again to allow searching your files.	ファイルの検索を許可するには、Pixel 検索をオフにしてから再度オンにしてください。
+Turn on Pixel search first	先に Pixel 検索をオンにしてください
+Your files are looked through after you turn on Pixel search.	Pixel 検索をオンにすると、ファイルの読み込みが始まります。
+{0} files, {1} with text you can search. Updated {2}.	{0} 件のファイル、うち {1} 件は文字を検索できます。{2}に更新。
+{0} of {1} turned on	{1} 件中 {0} 件がオン
+No app can open this file	このファイルを開けるアプリがありません
+No app can open this folder	このフォルダを開けるアプリがありません
+That file isn't there any more	そのファイルはもうありません
+Couldn't open it	開けませんでした
+About phone	デバイス情報
+Accessibility	ユーザー補助
+Airplane mode	機内モード
+Android settings	Android の設定
+Battery	バッテリー
+Battery Saver	バッテリー セーバー
+Cast	キャスト
+Copied	コピーしました
+Dark theme	ダークモード
+Data usage	データ使用量
+Default apps	デフォルトのアプリ
+Developer options	開発者向けオプション
+Display	ディスプレイ
+Getting your files ready. They show up here in a few minutes.	ファイルを準備しています。数分後にここに表示されます。
+Keyboard	キーボード
+Location	位置情報
+Network & internet	ネットワークとインターネット
+Night Light	夜間モード
+No results	結果なし
+Open	開く
+Page {0}	{0} ページ
+Passwords & accounts	パスワードとアカウント
+Printing	印刷
+Privacy	プライバシー
+Search apps, contacts, files, settings and more	アプリ、連絡先、ファイル、設定などを検索
+Search your phone and the web	スマホとウェブを検索
+Search {0} for “{1}”	{0} で「{1}」を検索
+Security & privacy	セキュリティとプライバシー
+Show in folder	フォルダに表示
+Sound & vibration	音とバイブレーション
+Storage	ストレージ
+System update	システム アップデート
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	ファイルの検索を許可するには、Pixel Suite で Pixel 検索をオフにしてから再度オンにしてください。
+Users	ユーザー
+Wi-Fi	Wi-Fi
+Colorful icons	カラーアイコン
+App and shortcut buttons keep their own colors.	アプリとショートカットのボタンを元の色で表示します。
+Edit search bar	検索バーを編集
+Size	サイズ
+Outer bar	外側のバー
+Search box	検索ボックス
+More settings	その他の設定
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	検索バーをタップして入力を始めます。バーを長押しすると、ホーム画面でそのまま編集できます。
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	バーのボタンをドラッグすると移動できます。バーの外へドラッグすると削除できます。
+The bar is full. Drag a button off the bar first.	バーがいっぱいです。先にボタンをバーの外へドラッグしてください。
+Hold and drag to change the order.	長押ししてドラッグすると順番を変更できます。
+Favorites	お気に入り
+Favorite	お気に入り
+Added to favorites	お気に入りに追加しました
+Removed from favorites	お気に入りから削除しました
+Hold an app, a contact or a file to add it here	アプリ、連絡先、ファイルを長押しするとここに追加できます
+Open Pixel Suite once to download currency rates	Pixel Suite を一度開くと為替レートをダウンロードします
+Currency	通貨
+Convert to	換算先
+Update automatically	自動で更新
+Update now	今すぐ更新
+Updating the rates…	レートを更新しています…
+Rates updated	レートを更新しました
+Rates updated {0}	レートの更新: {0}
+Rates not downloaded yet	レートはまだダウンロードされていません
+Couldn't update the rates	レートを更新できませんでした
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	200 USD のように金額と通貨を入力すると換算できます。レートはインターネットからダウンロードされ、あなたに関する情報は送信されません。
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	ボタンをタップすると追加できます。長押ししてバーにドラッグすることもできます。バーのボタンはドラッグで移動、バーの外にドラッグで削除できます。
+Drop it on the bar to add it	バーの上で離すと追加できます
+No contacts with a phone number	電話番号のある連絡先がありません
+Everything is searched on your phone. Only web searches and currency rates go online.	検索はすべてスマホ内で行われます。オンラインになるのはウェブ検索と為替レートだけです。
+Hold Dark or Super Dark to choose which one Automatic uses at night.	「ダーク」または「スーパーダーク」を長押しすると、「自動」が夜間に使う方を選べます。
+Lock the sliders	スライダーをロック
+Search currencies	通貨を検索
+Search engine	検索エンジン
+Search settings	検索の設定
+Show keyboard	キーボードを表示
+Replace	置き換える
+Favorite contacts	お気に入りの連絡先
+Add dialer favorites	電話アプリのお気に入りを追加
+Search contacts	連絡先を検索
+Added to favorite contacts	お気に入りの連絡先に追加しました
+Hold the search bar and add contacts first	先に検索バーを長押しして連絡先を追加してください
+No favorites in your dialer yet	電話アプリにお気に入りがまだありません
+Hide swipe-up hint	上スワイプのヒントを非表示
+Stops the hint that plays after a few short swipes that don't open the drawer.	ドロワーが開かない短いスワイプが続いたあとに出るヒントを止めます。
+Closing animation	閉じるアニメーション
+Shutter	シャッター
+Glide	グライド
+Balloons	バルーン
+Jelly	ゼリー
+Pop	ポップ
+Wave	ウェーブ
+Swell	ふくらみ
+Classic	クラシック
+Scan to PDF	PDF にスキャン
+Add from gallery	ギャラリーから追加
+Take photo	写真を撮る
+Pages	ページ
+Couldn't open the camera	カメラを開けませんでした
+Camera access is needed to scan	スキャンするにはカメラへのアクセスが必要です
+Save as PDF	PDF として保存
+Rotate	回転
+All pages	すべてのページ
+{0} selected	{0} 件を選択中
+File name	ファイル名
+Making the PDF…	PDF を作成中…
+Saved to Download	ダウンロードに保存しました
+Couldn't save the PDF	PDF を保存できませんでした
+Original	オリジナル
+Auto	自動
+Enhanced	くっきり
+Grayscale	グレースケール
+Black & white	白黒
+Lighten	明るく
+Image to PDF	画像を PDF に
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	検索バーに置けるボタンに「PDF にスキャン」を追加します。ページを撮影するか写真を選び、整えてから 1 つの PDF として保存または共有できます。
+Tools	ツール
+Featured apps	おすすめのアプリ
+Shows the apps you open most from Pixel search before you type.	入力する前に、Pixel search からよく開くアプリを表示します。
+Recent searches	最近の検索
+Shows your latest searches before you type. Hold one to remove it.	入力する前に最近の検索を表示します。長押しで削除できます。
+Enter opens the first app	Enter で最初のアプリを開く
+Turn off to always search the web when you press Enter.	オフにすると、Enter を押したときに常にウェブを検索します。
+Delete this file?	このファイルを削除しますか？
+Deleted	削除しました
+Couldn't delete it	削除できませんでした
+Unpin	固定を解除
+Add to favorites	お気に入りに追加
+Remove from favorites	お気に入りから削除
+Clear recent searches?	最近の検索を消去しますか？
+Pixel Suite apps	Pixel Suite アプリ
+Pixel dialer	Pixel 電話
+Your phone app, with call recording	通話録音付きの電話アプリ
+Scan pages into one PDF	ページを 1 つの PDF にスキャン
+Apps that come with Pixel Suite.	Pixel Suite に付属するアプリ。
+Your phone app, made for Pixel Suite.	Pixel Suite のために作られた電話アプリ。
+Pages and photos, turned into one PDF.	ページや写真を 1 つの PDF に。
+Calls, contacts, favorites and call recording.	通話、連絡先、お気に入り、通話録音。
+Calls, favorites, contacts and recordings	通話、お気に入り、連絡先、録音
+Dialer settings	電話の設定
+Theme, sounds and call recording	テーマ、サウンド、通話録音
+Install the Pixel Suite apps module in your root manager, then restart your phone.	root マネージャーに Pixel Suite Apps モジュールをインストールしてから、スマートフォンを再起動してください。
+Look for new pages	新しいページのルック
+Open Image to PDF	画像を PDF に を開く
+Open Pixel dialer	Pixel 電話を開く
+Photograph pages or pick photos	ページを撮影するか写真を選択
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	ページを撮影するか写真を選び、まっすぐに整えてから、1 つの PDF として保存または共有できます。
+Shows Image to PDF with your apps, with its own icon.	画像を PDF に を専用アイコン付きでアプリ一覧に表示します。
+The Scan to PDF button on the search bar is set in Pixel search.	検索バーの「PDF にスキャン」ボタンは「Pixel 検索」で設定します。
+Turn Pixel dialer on first	先に Pixel 電話をオンにしてください
+Turn each app on or off and change its settings.	各アプリのオン / オフと設定の変更ができます。
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	オフにするとアプリは非表示になり、通話はほかの電話アプリに戻ります。いつでもオンに戻せます。
+Gray	グレー
+High	高
+Standard	標準
+PDF quality	PDF の品質
+Pixel dialer, Pixel search and Image to PDF	Pixel 電話、Pixel 検索、画像を PDF に
+A file with that name already exists	同じ名前のファイルがすでにあります
+Add Text	テキストを追加
+All PDFs	すべての PDF
+All tools	すべてのツール
+All your PDFs and tools	すべての PDF とツール
+Allow	許可
+Allow access to your files to see and save PDFs.	PDF を表示・保存するには、ファイルへのアクセスを許可してください。
+Anyone opening it will need this password.	開くにはこのパスワードが必要になります。
+Back side	裏面
+Best quality	最高画質
+Browse	参照
+Choose PDFs to merge	結合する PDF を選択
+Choose a PDF	PDF を選択
+Compress	圧縮
+Convert	変換
+Couldn't finish	完了できませんでした
+Couldn't rename it	名前を変更できませんでした
+Docx to PDF	Docx を PDF に
+Doodle	落書き
+Draw on the page with your finger.	指でページに描きます。
+Front side	表面
+Good balance	バランス良好
+Import PDF	PDF を取り込む
+Largest first	大きい順
+Leave	移動する
+Leave without saving?	保存せずに移動しますか？
+Lock PDF	PDF をロック
+Merge PDF	PDF を結合
+No PDFs yet.	まだ PDF はありません。
+Oldest first	古い順
+Open Pixel PDF	Pixel PDF を開く
+PDF to JPG	PDF を JPG に
+PDF to PPT	PDF を PPT に
+PDF to Word	PDF を Word に
+PPT to PDF	PPT を PDF に
+Page	ページ
+Password	パスワード
+Pick some files first	先にファイルを選んでください
+Pick two or more PDFs to merge	結合する PDF を 2 つ以上選んでください
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Pixel 電話、Pixel 検索、Pixel PDF
+Popular	人気
+Print PDF	PDF を印刷
+Repeat password	パスワードをもう一度
+Saved to	保存先
+Saved to Pixel PDF	Pixel PDF に保存しました
+Saving	保存中
+Scan ID Card	身分証をスキャン
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	ページや身分証をスキャンし、写真や Word、PowerPoint ファイルを PDF にして、圧縮・結合・署名・ロック・印刷ができます。
+Scan, convert and edit PDFs	PDF のスキャン・変換・編集
+Scan, convert, edit and sign PDFs.	PDF のスキャン、変換、編集、署名。
+Scanned and made PDFs show here. Tap + to scan your first one.	スキャンや作成した PDF がここに表示されます。+ をタップして最初の 1 枚をスキャン。
+Search files	ファイルを検索
+Shows Pixel PDF with your apps, with its own icon.	Pixel PDF を専用アイコン付きでアプリ一覧に表示します。
+Sign inside the box first	先に枠内に署名してください
+Sign inside the box.	枠内に署名してください。
+Signature	署名
+Smallest file	最小サイズ
+Smart Scan	スマートスキャン
+Strong	強
+Tap to place your signature. Drag the corner to resize it.	タップして署名を配置。角をドラッグしてサイズを変更。
+Tap where the text goes. Drag it to move it.	テキストを置く場所をタップ。ドラッグで移動。
+That password isn't right.	パスワードが正しくありません。
+The passwords don't match	パスワードが一致しません
+They can't be brought back.	元に戻せません。
+Thick	太い
+Thin	細い
+This PDF is locked	この PDF はロックされています
+This PDF is locked. Opening it needs a newer Android version.	この PDF はロックされています。開くには新しい Android バージョンが必要です。
+This file couldn't be read. It may be damaged or locked.	このファイルを読み込めませんでした。破損しているか、ロックされている可能性があります。
+This needs a newer Android version.	新しい Android バージョンが必要です。
+Type a password	パスワードを入力してください
+Type here	ここに入力
+Unlock PDF	PDF のロックを解除
+Unlock it first to edit	編集するには先にロックを解除してください
+Unlock it first to print	印刷するには先にロックを解除してください
+Unlocking needs a newer Android version	ロック解除には新しい Android バージョンが必要です
+Use	使用
+Working…	処理中…
+Your PDFs are kept in Documents/Pixel PDF.	PDF は Documents/Pixel PDF に保存されます。
+Your changes will be lost.	変更は失われます。
+selected	件選択
+Delete these files?	これらのファイルを削除しますか？
+Pinned	固定済み
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	おすすめのアプリで常に先頭に表示されるアプリを 5 個まで。アプリをタップすると固定を解除します。
+Seconds in the status bar	ステータスバーに秒を表示
+The clock at the top shows seconds. Uses a little more battery.	上の時計に秒を表示します。バッテリーを少し多く使います。
+Pull down at the top of the feed to search. Works even with the search bar off.	フィードの一番上で下に引くと検索できます。検索バーがオフでも使えます。
+Use Pixel search on the lock screen?	ロック画面で Pixel 検索を使いますか？
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	指紋センサーに触れるとオンになります。アプリやその他の結果を開くには、引き続きロック解除が必要です。
+Not now	後で
+More Pixel search options	Pixel 検索のその他のオプション
+Search on the lock screen	ロック画面で検索
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	ロック画面のフィードでも下に引くと検索できます。計算、単位換算、電話はすぐに使えます。アプリを開くには引き続き指紋が必要です。
+Safe	安全
+Unsafe	安全ではない
+Customize	カスタマイズ
+Previous page	前のページ
+Next page	次のページ
+Glide (default)	グライド (デフォルト)
+Refresh automatically	自動で更新
+Adds new and changed files the moment they appear.	新しいファイルや変更されたファイルをすぐに追加します。
+Pen	ペン
+Tap or drag to add a shape. Drag its dots to resize it.	タップまたはドラッグして図形を追加。点をドラッグしてサイズを変更。
+Hold to edit	長押しで編集
+Hide Apps list	「アプリリスト」を非表示
+Removes Apps list from the menu you see when you hold the home screen.	ホーム画面を長押ししたときのメニューから「アプリリスト」を削除します。
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	ホーム画面の空いている場所を長押しするとメニューが表示されます。上にスワイプするとアプリが開きます。
+Your phone	お使いのスマートフォン
+Android version	Android バージョン
+Build number	ビルド番号
+Security update	セキュリティ アップデート
+Untested	未検証
+Tested on this Android version. Everything should work.	この Android バージョンで検証済みです。すべて動作するはずです。
+This Android version is known to break Pixel Suite features.	この Android バージョンでは Pixel Suite の機能が動かなくなることがわかっています。
+Not tested on this Android version yet. Some features may work, some may not.	この Android バージョンではまだ検証していません。動く機能もあれば、動かない機能もあるかもしれません。
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	ご注意ください：スマートフォンをアップデートすると、Pixel Suite の一部が動かなくなる可能性があり、実際にそうなります。私が OK を出す前にアップデートした場合、動かなくなったものについて私は責任を負えません。これは空き時間に一人でやっているので、Google が出すすべてのアップデートにいつも追いつけるとは思わないでください。
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	誤って何かがインストールされないよう、{0} は常にオンにしておくことをおすすめします。予期しないアップデートでスマートフォンがブートループしたり、気づかないうちに何かが壊れたりすることがあります。
+To know when it's safe to update, follow Announcements in my {0}.	アップデートしても安全なタイミングを知るには、私の {0} チャンネルの Announcements をフォローしてください。
+Thank you 💙	ありがとう 💙
+Phone compatibility	スマートフォンの互換性
+Hide the shortcuts you see when you hold an app, like View orders.	アプリを長押ししたときに表示される「注文を表示」などのショートカットを隠します。
+Hide on the home screen	ホーム画面で非表示
+Home screen, dock and folders.	ホーム画面、ドック、フォルダ。
+Hide in the app drawer	アプリドロワーで非表示
+App drawer and its folders.	アプリドロワーとそのフォルダ。
+Folders, dragging and the swipe-up hint.	フォルダ、ドラッグ、上スワイプのヒント。
+Folders, dragging and the swipe-up hint	フォルダ、ドラッグ、上スワイプのヒント
+Force stop	強制停止
+{0} stopped	{0} を停止しました
+Could not remove the folder	フォルダを削除できませんでした
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	すべての通話と WhatsApp の音声・ビデオ通話を、両方の声とともに録音タブに録音します。
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	相手に知らせずに録音することは、お住まいの地域では法律に反する場合があります。録音とその使い方の責任はあなたにあり、RovianDev は責任を負いません。
+Clipboard on the lock screen	ロック画面でクリップボード
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	コピーした内容をロック画面の検索に貼り付けられます。スマホを手にした人なら誰でも貼り付けられます。
+Use the clipboard on the lock screen?	ロック画面でクリップボードを使いますか？
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	オンにするには指紋センサーに触れてください。スマホを手にした人なら誰でも、パスワードやコードなどコピーした内容を貼り付けられます。
+Turn on to install	オンにするとインストールされます
+Installing Pixel dialer…	Pixel 電話をインストールしています…
+Installing Pixel PDF…	Pixel PDF をインストールしています…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Pixel 電話をインストールしました。通話を録音できるように、スマートフォンを一度再起動してください。
+Couldn't install: root access needed	インストールできませんでした：root アクセスが必要です
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	オンにすると Pixel Suite がインストールします。その後、通話を録音できるようにスマートフォンを一度再起動してください。
+Pixel PDF is installed	Pixel PDF をインストールしました

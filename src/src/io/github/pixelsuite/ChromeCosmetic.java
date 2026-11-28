@@ -73,7 +73,8 @@ final class ChromeCosmetic {
     private static void inject(Object proxy) throws Throwable {
         Context app = (Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
         if (app == null) return;
-        boolean on = !"0".equals(Settings.Secure.getString(app.getContentResolver(), AdBlock.KEY)) && PatronGate.ok(app);
+        String set = Settings.Secure.getString(app.getContentResolver(), AdBlock.KEY);
+        boolean on = (set == null ? Defaults.legacy() : !"0".equals(set)) && PatronGate.ok(app);
         Object wc = webContents(proxy);
         if (wc == null) return;
         String host = host(wc);

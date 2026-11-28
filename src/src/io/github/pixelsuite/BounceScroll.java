@@ -20,10 +20,32 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
     private final float density;
     private VelocityTracker tracker; private long trackedAt = -1; private int trackedAction = -1;
     private int pointer = -1;
-    private float downY, lastY; private long downAt = -1;
+    private float downY, downX, lastY; private long downAt = -1;
     private boolean dragging, caught, ticking, internal;
 
     private View inner; private boolean yielded;
+
+    interface Pull { boolean ready(); float reach(); void pulled(float by); void released(boolean go); }
+    Pull pull;
+    private boolean armed;
+    private float most;
+
+    private void report() {
+        if (!armed || pull == null) return;
+        float by = finger < 0f ? -finger : 0f;
+        most = Math.max(most, by);
+        pull.pulled(by);
+    }
+
+    private void letGo(boolean up, float v) {
+        if (!armed) return;
+        armed = false;
+        float by = finger < 0f ? -finger : 0f;
+        boolean fast = -v >= 900f * density;
+        boolean go = up && pull != null && (by >= pull.reach() || (fast && by >= pull.reach() * 0.3f));
+        most = 0;
+        if (pull != null) pull.released(go);
+    }
 
     private static View scrollableAt(android.view.ViewGroup g, float x, float y) {
         for (int i = g.getChildCount() - 1; i >= 0; i--) {
@@ -92,8 +114,11 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
     }
 
     private boolean down(MotionEvent e) {
+        boolean top = getScrollY() == 0 && pos <= 0.5f;
+        if (armed && pull != null) pull.released(false);
+        armed = false; most = 0;
         downAt = e.getEventTime();
-        pointer = e.getPointerId(0); downY = lastY = e.getY(); dragging = false;
+        pointer = e.getPointerId(0); downY = lastY = e.getY(); downX = e.getX(); dragging = false;
         caught = mode == SPRING || (mode == GLIDE && Math.abs(velocity) > 120f * density);
         carried = mode == GLIDE && Math.abs(velocity) > 300f * density ? velocity : 0f;
         stop();
@@ -102,6 +127,7 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
         if (o != 0f) { dragging = true; hold(); }
         yielded = false; inner = null;
         if (!caught && !dragging) try { inner = scrollableAt(this, e.getX(), e.getY()); } catch (Throwable ignored) { }
+        armed = top && pull != null && pull.ready();
         return caught || dragging;
     }
 
@@ -111,7 +137,7 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
         int i = e.getActionIndex();
         if (e.getPointerId(i) != pointer || e.getPointerCount() < 2) return;
         int n = i == 0 ? 1 : 0;
-        pointer = e.getPointerId(n); lastY = downY = e.getY(n);
+        pointer = e.getPointerId(n); lastY = downY = e.getY(n); downX = e.getX(n);
     }
 
     @Override public boolean onInterceptTouchEvent(MotionEvent e) {
@@ -124,13 +150,14 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
                 int i = e.findPointerIndex(pointer); if (i < 0) return caught;
                 float y = e.getY(i);
                 if (Math.abs(y - downY) > slop) {
+                    if (Math.abs(e.getX(i) - downX) > Math.abs(y - downY)) { yielded = true; armed = false; return false; }
                     if (inner != null && inner.isAttachedToWindow() && inner.canScrollVertically(y < downY ? 1 : -1)) { yielded = true; return false; }
                     dragging = true; lastY = y; hold(); return true;
                 }
                 return caught;
             }
             case MotionEvent.ACTION_POINTER_UP: pointerUp(e); break;
-            case MotionEvent.ACTION_UP: case MotionEvent.ACTION_CANCEL: finish(); break;
+            case MotionEvent.ACTION_UP: case MotionEvent.ACTION_CANCEL: letGo(false, 0f); finish(); break;
         }
         return dragging || caught;
     }
@@ -139,21 +166,25 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
         track(e);
         switch (e.getActionMasked()) {
             case MotionEvent.ACTION_DOWN: if (e.getEventTime() != downAt) down(e); return true;
-            case MotionEvent.ACTION_POINTER_DOWN: { int i = e.getActionIndex(); pointer = e.getPointerId(i); lastY = downY = e.getY(i); break; }
+            case MotionEvent.ACTION_POINTER_DOWN: { int i = e.getActionIndex(); pointer = e.getPointerId(i); lastY = downY = e.getY(i); downX = e.getX(i); break; }
             case MotionEvent.ACTION_POINTER_UP: pointerUp(e); break;
             case MotionEvent.ACTION_MOVE: {
                 int i = e.findPointerIndex(pointer); if (i < 0) break;
                 float y = e.getY(i);
-                if (!dragging && Math.abs(y - downY) > slop) { dragging = true; lastY = y; hold(); }
-                if (dragging) { float dy = y - lastY; lastY = y; if (dy != 0f) { moveBy(dy); show(); } }
+                if (!dragging && Math.abs(y - downY) > slop) {
+                    if (Math.abs(e.getX(i) - downX) > Math.abs(y - downY)) { armed = false; break; }
+                    dragging = true; lastY = y; hold();
+                }
+                if (dragging) { float dy = y - lastY; lastY = y; if (dy != 0f) { moveBy(dy); show(); report(); } }
                 break;
             }
             case MotionEvent.ACTION_UP: {
                 float v = 0f;
                 if (dragging && tracker != null && pointer >= 0) { tracker.computeCurrentVelocity(1000, maxFling); v = -tracker.getYVelocity(pointer); }
+                letGo(true, v);
                 finish(); release(v); break;
             }
-            case MotionEvent.ACTION_CANCEL: finish(); release(0f); break;
+            case MotionEvent.ACTION_CANCEL: letGo(false, 0f); finish(); release(0f); break;
         }
         return true;
     }
@@ -232,8 +263,26 @@ final class BounceScroll extends ScrollView implements Choreographer.FrameCallba
         if (mode == IDLE && !dragging) { float in = Math.max(0f, Math.min(range(), pos)); if (in != pos) { pos = in; finger = 0f; show(); } }
     }
 
+    @Override protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (pull == null) post(this::wirePull);
+    }
+
+    private void wirePull() {
+        try {
+            if (pull != null || !(getParent() instanceof WidgetPanel.Edge)) return;
+            WidgetPanel.Edge edge = (WidgetPanel.Edge) getParent();
+            if (!(edge.getParent() instanceof android.widget.FrameLayout)) return;
+            FeedPull f = new FeedPull(getContext());
+            f.panel = edge.panel;
+            ((android.widget.FrameLayout) edge.getParent()).addView(f, new android.widget.FrameLayout.LayoutParams(-1, -1));
+            pull = f;
+        } catch (Throwable t) { android.util.Log.w("PixelSuite", "feed pull: attach", t); }
+    }
+
     @Override protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        letGo(false, 0f);
         stop(); finish(); finger = 0f; pos = Math.max(0f, Math.min(range(), pos));
         View c = getChildCount() > 0 ? getChildAt(0) : null; if (c != null) c.setTranslationY(0f);
     }

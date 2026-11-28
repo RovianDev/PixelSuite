@@ -343,7 +343,7 @@ final class StoreBlockerPage {
             }else{row=(LinearLayout)reuse;h=(Holder)row.getTag();}
             row.animate().cancel();row.setTranslationY(0);
             h.packageName=e.info.packageName;boolean guarded=locked(e.info.packageName);boolean enabled=!saving&&!guarded;
-            h.name.setText(I18n.cs(e.name));h.pkg.setText(I18n.cs(versionLine(e))); h.check.setChecked(selected.contains(e.info.packageName)||kept.containsKey(e.info.packageName));h.check.jumpDrawablesToCurrentState(); h.check.setEnabled(!saving);h.check.setAlpha(guarded?.55f:1f);
+            h.name.setText(I18n.cs(e.name));h.pkg.setText(I18n.cs(versionLine(e)));bindSafe(e,h.pkg); h.check.setChecked(selected.contains(e.info.packageName)||kept.containsKey(e.info.packageName));h.check.jumpDrawablesToCurrentState(); h.check.setEnabled(!saving);h.check.setAlpha(guarded?.55f:1f);
             Drawable icon=icons.get(e.info.packageName);if(icon==null)try{icon=e.info.loadIcon(activity.getPackageManager());icons.put(e.info.packageName,icon);}catch(Exception ignored){}if(icon!=null&&icon.getConstantState()!=null)icon=icon.getConstantState().newDrawable(activity.getResources()).mutate();h.icon.setImageDrawable(icon);
             row.setEnabled(!saving);row.setAlpha(1);h.name.setAlpha(enabled?1f:.55f);h.pkg.setAlpha(enabled?1f:.65f);h.icon.setAlpha(enabled?1f:.55f);h.info.setEnabled(!saving);
             bindRestore(e,h);
@@ -358,13 +358,43 @@ final class StoreBlockerPage {
             }});return row;
     }
     private StoreUpdates.Available newer(Entry e){StoreUpdates.Available a=updates.get(e.info.packageName);return a!=null&&a.code>e.code&&(saved.contains(e.info.packageName)||locked(e.info.packageName))?a:null;}
+    private int safeFrom,safeTo;
     private CharSequence versionLine(Entry e){
-        String base=e.info.packageName+"  ·  "+e.version;StoreUpdates.Available a=newer(e);if(a==null)return base;
-        String extra="  ("+(a.name!=null?a.name:I18n.t("Build {0}").equals("Build {0}")?"build "+a.code:I18n.t("Build "+a.code))+")";
-        SpannableString t=new SpannableString(base+extra);
-        int red=FrostedSurface.dark(activity)?0xFFFF8A80:0xFFC62828;
-        t.setSpan(new android.text.style.ForegroundColorSpan(red),base.length(),t.length(),0);
+        String base=e.info.packageName+"  ·  ";StoreUpdates.Available a=newer(e);safeFrom=safeTo=0;if(a==null)return base+e.version;
+        String safe=e.version+" ("+I18n.t("Safe")+")";
+        String next=(a.name!=null?a.name:I18n.t("Build {0}").equals("Build {0}")?"build "+a.code:I18n.t("Build "+a.code))+" ("+I18n.t("Unsafe")+")";
+        SpannableString t=new SpannableString(base+safe+"  ·  "+next);
+        boolean dark=FrostedSurface.dark(activity);
+        int red=dark?0xFFFF8A80:0xFFC62828,green=dark?0xFF81C995:0xFF1E8E3E;
+        safeFrom=base.length();safeTo=safeFrom+safe.length();
+        t.setSpan(new android.text.style.ForegroundColorSpan(green),safeFrom,safeTo,0);
+        t.setSpan(new android.text.style.UnderlineSpan(),safeFrom,safeFrom+e.version.length(),0);
+        t.setSpan(new android.text.style.ForegroundColorSpan(red),t.length()-next.length(),t.length(),0);
         return t;
+    }
+    private void bindSafe(final Entry e,final TextView line){
+        final int from=safeFrom,to=safeTo;
+        if(to<=from){line.setOnTouchListener(null);return;}
+        line.setOnTouchListener(new View.OnTouchListener(){boolean mine;public boolean onTouch(View v,android.view.MotionEvent ev){
+            int action=ev.getActionMasked();
+            if(action==android.view.MotionEvent.ACTION_DOWN){
+                mine=false;android.text.Layout l=line.getLayout();if(l==null)return false;
+                float x=ev.getX()-line.getTotalPaddingLeft()+line.getScrollX(),y=ev.getY()-line.getTotalPaddingTop()+line.getScrollY();
+                int row=l.getLineForVertical(Math.round(y));if(x<l.getLineLeft(row)||x>l.getLineRight(row))return false;
+                int at=l.getOffsetForHorizontal(row,x);mine=at>=from&&at<=to;return mine;
+            }
+            if(!mine)return false;
+            if(action==android.view.MotionEvent.ACTION_UP){mine=false;openSafe(e);}
+            else if(action==android.view.MotionEvent.ACTION_CANCEL)mine=false;
+            return true;
+        }});
+    }
+    private void openSafe(Entry e){
+        try{
+            String q=e.info.packageName+" "+e.version;
+            android.net.Uri link=android.net.Uri.parse("https://www.apkmirror.com/").buildUpon().appendQueryParameter("post_type","app_release").appendQueryParameter("searchtype","apk").appendQueryParameter("s",q).build();
+            activity.startActivity(new android.content.Intent(android.content.Intent.ACTION_VIEW,link).addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK));
+        }catch(Throwable failure){say("Couldn't open it");}
     }
     private boolean backupOn(){return true;}
     private void hideKeyboard(){

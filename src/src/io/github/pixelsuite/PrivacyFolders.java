@@ -48,7 +48,7 @@ final class PrivacyFolders {
     static Set<String> locked(Context c) {
         long now = SystemClock.uptimeMillis();
         if (now - readAt > 500) {
-            try { readList = PrivacyLock.onValue(Settings.Secure.getString(c.getContentResolver(), PrivacyLock.ENABLED_KEY)) ? PrivacyLock.parse(Settings.Secure.getString(c.getContentResolver(), KEY)) : Collections.<String>emptySet(); } catch (Throwable ignored) { }
+            try { readList = PrivacyLock.enabledValue(Settings.Secure.getString(c.getContentResolver(), PrivacyLock.ENABLED_KEY)) ? PrivacyLock.parse(Settings.Secure.getString(c.getContentResolver(), KEY)) : Collections.<String>emptySet(); } catch (Throwable ignored) { }
             readAt = now;
         }
         return readList;

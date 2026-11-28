@@ -45,9 +45,9 @@ final class PatronAccess {
     static boolean unlocked(){return unlocked;}
     static SharedPreferences prefs(Context c){return c.getSharedPreferences("pixelsuite_patron",0);}
     static boolean configured(){return PatronConfig.SERVER.startsWith("https://")&&!PatronConfig.CAMPAIGN.isEmpty();}
-    static boolean protectedKey(String key){return key != null && (CallRecording.KEY.equals(key) || CallRecording.QUALITY_KEY.equals(key) || GoogleFeedAds.KEY.equals(key) || WatchEsim.KEY.equals(key) || ChromeLayout.KEY.equals(key) || AdBlock.KEY.equals(key) || ChromeShield.KEY_ON.equals(key) || DarkPages.KEY.equals(key) || DarkPages.KEY_STYLE.equals(key) || DarkPages.KEY_WHEN.equals(key) || DarkPages.KEY_FROM.equals(key) || DarkPages.KEY_TO.equals(key) || WidgetPanel.KEY.equals(key) || WidgetPanel.HEADER_KEY.equals(key) || WidgetPanel.OPACITY_KEY.equals(key) || WidgetPanel.LOCK_KEY.equals(key) || WidgetPanel.LOCK_HEADER_KEY.equals(key) || WidgetPanel.LOCK_OPACITY_KEY.equals(key) || WidgetPanel.LOCK_OPEN_KEY.equals(key) || WidgetPanel.LOCK_APPS_KEY.equals(key) || key.startsWith("pixelsuite_gboard_"));}
+    static boolean protectedKey(String key){return key != null && (CallRecording.KEY.equals(key) || CallRecording.QUALITY_KEY.equals(key) || GoogleFeedAds.KEY.equals(key) || WatchEsim.KEY.equals(key) || ChromeLayout.KEY.equals(key) || AdBlock.KEY.equals(key) || ChromeShield.KEY_ON.equals(key) || DarkPages.KEY.equals(key) || DarkPages.KEY_STYLE.equals(key) || DarkPages.KEY_WHEN.equals(key) || DarkPages.KEY_FROM.equals(key) || DarkPages.KEY_TO.equals(key) || WidgetPanel.KEY.equals(key) || WidgetPanel.HEADER_KEY.equals(key) || WidgetPanel.OPACITY_KEY.equals(key) || WidgetPanel.LOCK_KEY.equals(key) || WidgetPanel.LOCK_HEADER_KEY.equals(key) || WidgetPanel.LOCK_OPACITY_KEY.equals(key) || WidgetPanel.LOCK_OPEN_KEY.equals(key) || WidgetPanel.LOCK_APPS_KEY.equals(key) || key.startsWith("pixelsuite_gboard_") || key.startsWith("pixelsuite_search_"));}
     static boolean allowed(Context c,String key){return WatchEsim.KEY.equals(key)?EsimPurchase.unlocked(c):unlocked();}
-    static boolean protectedPage(String page){return "google_dialer".equals(page)||"google_app".equals(page)||WidgetPanel.KEY.equals(page);}
+    static boolean protectedPage(String page){return "google_dialer".equals(page)||"google_app".equals(page)||WidgetPanel.KEY.equals(page)||PixelSearch.PAGE.equals(page);}
     static String random(){byte[] bytes=new byte[32];new SecureRandom().nextBytes(bytes);return Base64.encodeToString(bytes,Base64.URL_SAFE|Base64.NO_WRAP|Base64.NO_PADDING);}
     static synchronized String device(Context c){String id=prefs(c).getString("device",null);if(id==null){id=random();prefs(c).edit().putString("device",id).commit();}return id;}
     static void watch(Runnable action){listeners.addIfAbsent(action);}
@@ -76,33 +76,43 @@ final class PatronAccess {
     private static void publishDevice(Context c){try{String id=device(c);if(!id.equals(android.provider.Settings.Secure.getString(c.getContentResolver(),PatronGate.DEVICE_PASS_KEY)))Root.run("settings put secure "+PatronGate.DEVICE_PASS_KEY+" '"+id+"'");}catch(Throwable ignored){}}
     static void reconcile(Context c){synchronized(APPLY){reconcileLocked(c);initialized=true;}}
     private static void reconcileLocked(Context c){
-        publishDevice(c);
+        publishDevice(c);PatronGate.stamp(c);
         List<String> lines=Root.run("settings get secure "+KEY);String token=lines!=null&&!lines.isEmpty()?lines.get(0).trim():prefs(c).getString("pass","");
         if(prefs(c).getBoolean("signed_out",false)){if(!"null".equals(token)&&token.length()>0)Root.run("settings delete secure "+KEY);token="";}
         boolean allowed=false;JSONObject claims=null;try{claims=verify(c,token,false);allowed=claims.optBoolean("entitled",false);}catch(Exception ignored){}
         boolean before=unlocked;unlocked=allowed;
         if(!allowed){
             if(claims!=null&&!claims.optBoolean("entitled",false))Root.run("settings delete secure "+KEY);
+            if(prefs(c).getBoolean("entitled_seen",false)&&!prefs(c).getBoolean("lapse_saved",false)){
+                List<String> st=Root.run("settings get secure "+CallRecording.KEY+"; settings get secure "+GoogleFeedAds.KEY);
+                if(st!=null&&st.size()>=2)prefs(c).edit().putBoolean("lapse_saved",true).putString("lapse_call",st.get(0).trim()).putString("lapse_feed",st.get(1).trim()).apply();
+            }
             Root.run("settings put secure "+CallRecording.KEY+" 0; settings put secure "+GoogleFeedAds.KEY+" 0");
             if(AdBlock.isOn())AdBlock.setEnabled(c,false);
             prefs(c).edit().putBoolean("defaults_applied",false).apply();
-            if(configured()&&!offline(c))try{verify(c,token,false,true);prefs(c).edit().putString("pass",token).apply();if(System.currentTimeMillis()-prefs(c).getLong("checked",0)>7*DAY*1000)refresh(c);}catch(Exception ignored){}
+            if(configured()&&!offline(c))try{verify(c,token,false,true);prefs(c).edit().putString("pass",token).apply();if(System.currentTimeMillis()-prefs(c).getLong("checked",0)>DAY*1000)refresh(c);}catch(Exception ignored){}
         }else{
             prefs(c).edit().putString("pass",token).apply();
-            if(!prefs(c).getBoolean("defaults_applied",false)){
-                if(Root.run("settings put secure "+GoogleFeedAds.KEY+" 1")!=null){
+            if(prefs(c).getBoolean("lapse_saved",false)){
+                String cmd=keep(CallRecording.KEY,prefs(c).getString("lapse_call","null"))+keep(GoogleFeedAds.KEY,prefs(c).getString("lapse_feed","null"));
+                if(Root.run(cmd)!=null){prefs(c).edit().remove("lapse_saved").remove("lapse_call").remove("lapse_feed").putBoolean("defaults_applied",true).apply();updateBlocker(c,true);}
+            }else if(!prefs(c).getBoolean("defaults_applied",false)){
+                if(!Defaults.legacy()){prefs(c).edit().putBoolean("defaults_applied",true).apply();updateBlocker(c,true);}
+                else if(Root.run("settings put secure "+GoogleFeedAds.KEY+" 1")!=null){
                     prefs(c).edit().putBoolean("defaults_applied",true).apply();updateBlocker(c,true);
                 }
             }else updateBlocker(c,false);
             schedule(c);
             long age=System.currentTimeMillis()-prefs(c).getLong("checked",0);
-            if(age>7*DAY*1000||claims.optLong("exp")-System.currentTimeMillis()/1000<7*DAY)refresh(c);
+            if(age>DAY*1000||claims.optLong("exp")-System.currentTimeMillis()/1000<7*DAY)refresh(c);
         }
         boolean seen=prefs(c).contains("entitled_seen"),was=prefs(c).getBoolean("entitled_seen",false);
         if(!seen||was!=allowed)prefs(c).edit().putBoolean("entitled_seen",allowed).apply();
         if(seen&&was!=allowed){if(!allowed)try{PixelVpnService.stop(c);}catch(Throwable ignored){}refreshPremiumApps(c);}
+        SuiteApps.membership(c,allowed);
         if(before!=allowed)changed();
     }
+    private static String keep(String key,String value){return value!=null&&value.matches("[0-9]+")?"settings put secure "+key+" "+value+";":"settings delete secure "+key+";";}
     private static void updateBlocker(Context context,final boolean activate){
         if(!blockerRunning.compareAndSet(false,true))return;final Context c=context.getApplicationContext();
         BLOCKER.execute(new Runnable(){public void run(){try{if(!valid(c))return;if(activate||!AdBlock.isOn())AdBlock.setEnabled(c,true);else AdBlock.ensure(c);if(prefs(c).getBoolean("refresh_after_blocker",false)){prefs(c).edit().remove("refresh_after_blocker").apply();refreshPremiumApps(c);}}finally{if(!valid(c)&&AdBlock.isOn())AdBlock.setEnabled(c,false);blockerRunning.set(false);}}});
@@ -125,7 +135,7 @@ final class PatronAccess {
         String command=paid?"settings put secure "+PatronGate.DEVICE_PASS_KEY+" '"+device(c)+"'; settings put secure "+KEY+" '"+fresh+"'":"settings delete secure "+KEY;
         if(Root.run(command)==null)throw new Exception("Root access is needed to save membership changes.");
         prefs(c).edit().putString("pass",fresh).putLong("checked",System.currentTimeMillis()).putBoolean("logged_in",true).remove("signed_out").putString("membership",claims.optString("membership",paid?"paid":"none")).remove("refresh_error").apply();
-        if(login&&paid){Root.run("settings put secure "+CallRecording.KEY+" 1; settings put secure "+GoogleFeedAds.KEY+" 1");prefs(c).edit().putBoolean("defaults_applied",false).putBoolean("refresh_after_blocker",true).apply();}
+        if(login&&paid){if(Defaults.legacy()&&!prefs(c).getBoolean("lapse_saved",false))Root.run("settings put secure "+CallRecording.KEY+" 1; settings put secure "+GoogleFeedAds.KEY+" 1");prefs(c).edit().putBoolean("defaults_applied",false).putBoolean("refresh_after_blocker",true).apply();}
         reconcile(c);changed();
         if(login)refreshPremiumApps(c);
     }
@@ -181,7 +191,7 @@ final class PatronAccess {
             if(result!=null&&claimPending(c))accept(c,result,done);else if(pending!=null)MAIN.post(pending);
         }});
     }
-    private static void schedule(Context c){try{android.app.job.JobScheduler scheduler=(android.app.job.JobScheduler)c.getSystemService(Context.JOB_SCHEDULER_SERVICE);if(scheduler==null)return;for(android.app.job.JobInfo job:scheduler.getAllPendingJobs())if(job.getId()==0x5AD1)return;scheduler.schedule(new android.app.job.JobInfo.Builder(0x5AD1,new android.content.ComponentName(c,PatronRefreshJob.class)).setRequiredNetworkType(android.app.job.JobInfo.NETWORK_TYPE_ANY).setPersisted(true).setPeriodic(7*DAY*1000).build());}catch(Exception ignored){}}
+    private static void schedule(Context c){try{android.app.job.JobScheduler scheduler=(android.app.job.JobScheduler)c.getSystemService(Context.JOB_SCHEDULER_SERVICE);if(scheduler==null)return;for(android.app.job.JobInfo job:scheduler.getAllPendingJobs())if(job.getId()==0x5AD1&&job.getIntervalMillis()==DAY*1000)return;scheduler.schedule(new android.app.job.JobInfo.Builder(0x5AD1,new android.content.ComponentName(c,PatronRefreshJob.class)).setRequiredNetworkType(android.app.job.JobInfo.NETWORK_TYPE_ANY).setPersisted(true).setPeriodic(DAY*1000).build());}catch(Exception ignored){}}
     static boolean loggedIn(Context c){return prefs(c).getBoolean("logged_in",false);}
     static boolean valid(Context c){try{List<String> data=Root.run("settings get secure "+KEY);return data!=null&&!data.isEmpty()&&verify(c,data.get(0),false).optBoolean("entitled",false);}catch(Exception e){return false;}}
     private static final java.util.concurrent.atomic.AtomicBoolean profileRunning=new java.util.concurrent.atomic.AtomicBoolean();

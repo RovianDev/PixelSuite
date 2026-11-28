@@ -843,7 +843,6 @@ final class TextTool {
                         Object sel = selected();
                         try { if (cIvl.isInstance(sel)) open(sel); } catch (Throwable t) { }
                     } else if (onSelf) showKeyboard();
-                    else { }
                     return true;
                 }
                 return replay(a, e, false);

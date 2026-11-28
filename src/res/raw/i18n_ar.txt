@@ -1811,3 +1811,366 @@ Couldn't put back {0}	تعذّرت إعادة {0}
 Couldn't save {0}	تعذّر حفظ {0}
 It didn't install	لم يتم تثبيته
 Root isn't available	الروت غير متاح
+Pixel search	بحث Pixel
+Find apps, contacts, files and more	ابحث عن التطبيقات وجهات الاتصال والملفات وغيرها
+Everything on your phone, one search away.	كل ما في هاتفك، على بُعد بحث واحد.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	شريط بحث جديد على شاشتك الرئيسية. ابحث عن التطبيقات وجهات الاتصال والملفات والإعدادات وغيرها في مكان واحد.
+Look	المظهر
+Color	اللون
+Blurs what's behind the bar, with glowing edges.	يطمس ما خلف الشريط، مع حواف متوهجة.
+How much of the outer bar shows.	مقدار ظهور الشريط الخارجي.
+How much of the search box and side buttons shows.	مقدار ظهور مربع البحث والأزرار الجانبية.
+Voice search, Google Lens, Song search	البحث الصوتي، عدسة Google، البحث عن أغنية
+Choose and order what shows up	اختر ما يظهر وترتيبه
+Web search	البحث على الويب
+What to search	ما يتم البحث فيه
+Search inside files	البحث داخل الملفات
+Tap to look through your files now.	انقر لفحص ملفاتك الآن.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	ابحث عن الكلمات والأرقام داخل ملفات PDF وWord وExcel والملفات النصية، مع الصفحة التي تظهر فيها. اضغط مطولًا على ملف لمعاينته أو مشاركته أو العثور عليه.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	اكتب عملية حسابية أو تحويلًا، مثل 15% of 80 أو 5 km in miles، وانقر على الناتج لنسخه.
+Pixel search shows when Hide search bar is off.	يظهر بحث Pixel عندما يكون إخفاء شريط البحث متوقفًا.
+System colors	ألوان النظام
+Your color	لونك
+Any color	أي لون
+Light	فاتح
+Calculator and units	الآلة الحاسبة والوحدات
+App shortcuts	اختصارات التطبيقات
+Files and media	الملفات والوسائط
+Inside files	داخل الملفات
+Web	الويب
+All	الكل
+Google Lens	عدسة Google
+Song search	البحث عن أغنية
+Assistant	المساعد
+QR code scanner	ماسح رموز QR
+Action	إجراء
+App	تطبيق
+App shortcut	اختصار تطبيق
+Contact	جهة اتصال
+Shortcut	اختصار
+Add a button	إضافة زر
+Choose an app	اختر تطبيقًا
+Couldn't open your contacts	تعذّر فتح جهات الاتصال
+Getting the app's shortcuts…	جارٍ جلب اختصارات التطبيق…
+Go to your home screen once, then try again.	انتقل إلى شاشتك الرئيسية مرة، ثم حاول مجددًا.
+In the search box	داخل مربع البحث
+Left side	الجانب الأيسر
+Right side	الجانب الأيمن
+Looking through your files…	جارٍ فحص ملفاتك…
+Looking through your files… {0}	جارٍ فحص ملفاتك… {0}
+Move down	نقل لأسفل
+Move left	نقل لليسار
+Move right	نقل لليمين
+Move up	نقل لأعلى
+No buttons	بلا أزرار
+Preview	معاينة
+Results show in this order. Turn off what you don't need.	تظهر النتائج بهذا الترتيب. أوقف ما لا تحتاجه.
+That side is full	هذا الجانب ممتلئ
+This app has no shortcuts	لا يحتوي هذا التطبيق على اختصارات
+This contact has no phone number	لا يحتوي جهة الاتصال هذه على رقم هاتف
+Turn Pixel search off and on again to allow searching your files.	أوقف بحث Pixel وشغّله مجددًا للسماح بالبحث في ملفاتك.
+Turn on Pixel search first	شغّل بحث Pixel أولًا
+Your files are looked through after you turn on Pixel search.	يتم فحص ملفاتك بعد تشغيل بحث Pixel.
+{0} files, {1} with text you can search. Updated {2}.	{0} ملف، منها {1} تحتوي على نص يمكنك البحث فيه. آخر تحديث {2}.
+{0} of {1} turned on	{0} من {1} مفعّلة
+No app can open this file	لا يوجد تطبيق يمكنه فتح هذا الملف
+No app can open this folder	لا يوجد تطبيق يمكنه فتح هذا المجلد
+That file isn't there any more	لم يعد هذا الملف موجودًا
+Couldn't open it	تعذّر فتحه
+About phone	لمحة عن الهاتف
+Accessibility	سهولة الاستخدام
+Airplane mode	وضع الطيران
+Android settings	إعدادات Android
+Battery	البطارية
+Battery Saver	توفير شحن البطارية
+Cast	البث
+Copied	تم النسخ
+Dark theme	المظهر الداكن
+Data usage	استخدام البيانات
+Default apps	التطبيقات التلقائية
+Developer options	خيارات المطورين
+Display	الشاشة
+Getting your files ready. They show up here in a few minutes.	جارٍ تجهيز ملفاتك. ستظهر هنا خلال بضع دقائق.
+Keyboard	لوحة المفاتيح
+Location	الموقع الجغرافي
+Network & internet	الشبكة والإنترنت
+Night Light	الإضاءة الليلية
+No results	لا توجد نتائج
+Open	فتح
+Page {0}	الصفحة {0}
+Passwords & accounts	كلمات المرور والحسابات
+Printing	الطباعة
+Privacy	الخصوصية
+Search apps, contacts, files, settings and more	ابحث في التطبيقات وجهات الاتصال والملفات والإعدادات وغيرها
+Search your phone and the web	ابحث في هاتفك وعلى الويب
+Search {0} for “{1}”	البحث عن “{1}” في {0}
+Security & privacy	الأمان والخصوصية
+Show in folder	العرض في المجلد
+Sound & vibration	الصوت والاهتزاز
+Storage	مساحة التخزين
+System update	تحديث النظام
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	أوقف بحث Pixel وشغّله مجددًا في Pixel Suite للسماح بالبحث في ملفاتك.
+Users	المستخدمون
+Wi-Fi	Wi-Fi
+Colorful icons	أيقونات ملوّنة
+App and shortcut buttons keep their own colors.	تحتفظ أزرار التطبيقات والاختصارات بألوانها الأصلية.
+Edit search bar	تعديل شريط البحث
+Size	الحجم
+Outer bar	الشريط الخارجي
+Search box	مربع البحث
+More settings	إعدادات أخرى
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	انقر على شريط البحث وابدأ الكتابة. اضغط مطولًا على الشريط لتعديله مباشرةً على شاشتك الرئيسية.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	اسحب الأزرار على الشريط لتحريكها. اسحب زرًا خارج الشريط لإزالته.
+The bar is full. Drag a button off the bar first.	الشريط ممتلئ. اسحب زرًا خارج الشريط أولًا.
+Hold and drag to change the order.	اضغط مطولًا واسحب لتغيير الترتيب.
+Favorites	المفضلة
+Favorite	مفضلة
+Added to favorites	تمت الإضافة إلى المفضلة
+Removed from favorites	تمت الإزالة من المفضلة
+Hold an app, a contact or a file to add it here	اضغط مطولًا على تطبيق أو جهة اتصال أو ملف لإضافته هنا
+Open Pixel Suite once to download currency rates	افتح Pixel Suite مرة واحدة لتنزيل أسعار العملات
+Currency	العملة
+Convert to	التحويل إلى
+Update automatically	التحديث تلقائيًا
+Update now	التحديث الآن
+Updating the rates…	جارٍ تحديث الأسعار…
+Rates updated	تم تحديث الأسعار
+Rates updated {0}	آخر تحديث للأسعار: {0}
+Rates not downloaded yet	لم يتم تنزيل الأسعار بعد
+Couldn't update the rates	تعذّر تحديث الأسعار
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	اكتب مبلغًا وعملة، مثل 200 USD، لتحويله. تُنزَّل الأسعار من الإنترنت ولا يُرسَل أي شيء عنك.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	انقر على زر لإضافته، أو اضغط عليه مطولًا واسحبه إلى الشريط. اسحب أزرار الشريط لتحريكها، أو خارج الشريط لإزالتها.
+Drop it on the bar to add it	أفلته على الشريط لإضافته
+No contacts with a phone number	لا توجد جهات اتصال لها رقم هاتف
+Everything is searched on your phone. Only web searches and currency rates go online.	يتم البحث في كل شيء على هاتفك. عمليات البحث على الويب وأسعار العملات فقط هي التي تتصل بالإنترنت.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	اضغط مطولًا على «داكن» أو «الداكن الفائق» لاختيار أيّهما يستخدمه «تلقائي» ليلًا.
+Lock the sliders	قفل أشرطة التمرير
+Search currencies	البحث في العملات
+Search engine	محرك البحث
+Search settings	إعدادات البحث
+Show keyboard	إظهار لوحة المفاتيح
+Replace	استبدال
+Favorite contacts	جهات الاتصال المفضلة
+Add dialer favorites	إضافة مفضلات تطبيق الهاتف
+Search contacts	البحث في جهات الاتصال
+Added to favorite contacts	تمت الإضافة إلى جهات الاتصال المفضلة
+Hold the search bar and add contacts first	اضغط مطولًا على شريط البحث وأضف جهات اتصال أولًا
+No favorites in your dialer yet	لا توجد مفضلات في تطبيق الهاتف بعد
+Hide swipe-up hint	إخفاء تلميح السحب للأعلى
+Stops the hint that plays after a few short swipes that don't open the drawer.	يوقف التلميح الذي يظهر بعد عدة سحبات قصيرة لا تفتح درج التطبيقات.
+Closing animation	حركة الإغلاق
+Shutter	ستارة
+Glide	انزلاق
+Balloons	بالونات
+Jelly	هلام
+Pop	فرقعة
+Wave	موجة
+Swell	انتفاخ
+Classic	كلاسيكية
+Scan to PDF	مسح ضوئي إلى PDF
+Add from gallery	إضافة من المعرض
+Take photo	التقاط صورة
+Pages	الصفحات
+Couldn't open the camera	تعذّر فتح الكاميرا
+Camera access is needed to scan	يلزم السماح بالوصول إلى الكاميرا للمسح الضوئي
+Save as PDF	حفظ بتنسيق PDF
+Rotate	تدوير
+All pages	كل الصفحات
+{0} selected	تم تحديد {0}
+File name	اسم الملف
+Making the PDF…	جارٍ إنشاء ملف PDF…
+Saved to Download	تم الحفظ في التنزيلات
+Couldn't save the PDF	تعذّر حفظ ملف PDF
+Original	الأصل
+Auto	تلقائي
+Enhanced	محسَّن
+Grayscale	تدرّج الرمادي
+Black & white	أبيض وأسود
+Lighten	تفتيح
+Image to PDF	صورة إلى PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	يضيف «مسح ضوئي إلى PDF» إلى الأزرار التي يمكنك وضعها على شريط البحث. صوّر الصفحات أو اختر صورًا، ورتّبها، ثم احفظها أو شاركها كملف PDF واحد.
+Tools	الأدوات
+Featured apps	التطبيقات المميزة
+Shows the apps you open most from Pixel search before you type.	يعرض التطبيقات التي تفتحها أكثر من Pixel search قبل أن تكتب.
+Recent searches	عمليات البحث الأخيرة
+Shows your latest searches before you type. Hold one to remove it.	يعرض أحدث عمليات بحثك قبل أن تكتب. اضغط مطولًا على أحدها لإزالته.
+Enter opens the first app	Enter يفتح أول تطبيق
+Turn off to always search the web when you press Enter.	أوقفه للبحث دائمًا على الويب عند الضغط على Enter.
+Delete this file?	هل تريد حذف هذا الملف؟
+Deleted	تم الحذف
+Couldn't delete it	تعذّر الحذف
+Unpin	إلغاء التثبيت
+Add to favorites	إضافة إلى المفضلة
+Remove from favorites	إزالة من المفضلة
+Clear recent searches?	هل تريد محو عمليات البحث الأخيرة؟
+Pixel Suite apps	تطبيقات Pixel Suite
+Pixel dialer	متصل Pixel
+Your phone app, with call recording	تطبيق الهاتف الخاص بك، مع تسجيل المكالمات
+Scan pages into one PDF	امسح الصفحات في ملف PDF واحد
+Apps that come with Pixel Suite.	تطبيقات تأتي مع Pixel Suite.
+Your phone app, made for Pixel Suite.	تطبيق الهاتف الخاص بك، مصمم لـ Pixel Suite.
+Pages and photos, turned into one PDF.	صفحات وصور تتحول إلى ملف PDF واحد.
+Calls, contacts, favorites and call recording.	المكالمات وجهات الاتصال والمفضلة وتسجيل المكالمات.
+Calls, favorites, contacts and recordings	المكالمات والمفضلة وجهات الاتصال والتسجيلات
+Dialer settings	إعدادات المتصل
+Theme, sounds and call recording	السمة والأصوات وتسجيل المكالمات
+Install the Pixel Suite apps module in your root manager, then restart your phone.	ثبّت وحدة Pixel Suite Apps في مدير الروت لديك، ثم أعد تشغيل هاتفك.
+Look for new pages	مظهر الصفحات الجديدة
+Open Image to PDF	فتح صورة إلى PDF
+Open Pixel dialer	فتح متصل Pixel
+Photograph pages or pick photos	صوّر الصفحات أو اختر صورًا
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	صوّر الصفحات أو اختر صورًا، ثم عدّلها ورتّبها، واحفظها أو شاركها كملف PDF واحد.
+Shows Image to PDF with your apps, with its own icon.	يعرض صورة إلى PDF بين تطبيقاتك، بأيقونته الخاصة.
+The Scan to PDF button on the search bar is set in Pixel search.	زر مسح ضوئي إلى PDF في شريط البحث يُضبط من بحث Pixel.
+Turn Pixel dialer on first	شغّل متصل Pixel أولًا
+Turn each app on or off and change its settings.	شغّل كل تطبيق أو أوقفه وغيّر إعداداته.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	عند إيقافه يُخفى التطبيق وتعود المكالمات إلى تطبيق الهاتف الآخر. شغّله مجددًا في أي وقت.
+Gray	رمادي
+High	عالية
+Standard	عادية
+PDF quality	جودة PDF
+Pixel dialer, Pixel search and Image to PDF	متصل Pixel وبحث Pixel وصورة إلى PDF
+A file with that name already exists	يوجد ملف بهذا الاسم بالفعل
+Add Text	إضافة نص
+All PDFs	كل ملفات PDF
+All tools	كل الأدوات
+All your PDFs and tools	كل ملفات PDF والأدوات
+Allow	سماح
+Allow access to your files to see and save PDFs.	اسمح بالوصول إلى ملفاتك لعرض ملفات PDF وحفظها.
+Anyone opening it will need this password.	سيحتاج كل من يفتحه إلى كلمة المرور هذه.
+Back side	الوجه الخلفي
+Best quality	أفضل جودة
+Browse	تصفح
+Choose PDFs to merge	اختر ملفات PDF لدمجها
+Choose a PDF	اختر ملف PDF
+Compress	ضغط
+Convert	تحويل
+Couldn't finish	تعذّر الإنهاء
+Couldn't rename it	تعذّرت إعادة التسمية
+Docx to PDF	Docx إلى PDF
+Doodle	رسم حر
+Draw on the page with your finger.	ارسم على الصفحة بإصبعك.
+Front side	الوجه الأمامي
+Good balance	توازن جيد
+Import PDF	استيراد PDF
+Largest first	الأكبر أولًا
+Leave	مغادرة
+Leave without saving?	هل تريد المغادرة دون حفظ؟
+Lock PDF	قفل PDF
+Merge PDF	دمج PDF
+No PDFs yet.	لا توجد ملفات PDF بعد.
+Oldest first	الأقدم أولًا
+Open Pixel PDF	فتح Pixel PDF
+PDF to JPG	PDF إلى JPG
+PDF to PPT	PDF إلى PPT
+PDF to Word	PDF إلى Word
+PPT to PDF	PPT إلى PDF
+Page	صفحة
+Password	كلمة المرور
+Pick some files first	اختر بعض الملفات أولًا
+Pick two or more PDFs to merge	اختر ملفي PDF أو أكثر للدمج
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	متصل Pixel وبحث Pixel وPixel PDF
+Popular	الأكثر استخدامًا
+Print PDF	طباعة PDF
+Repeat password	أعد إدخال كلمة المرور
+Saved to	تم الحفظ في
+Saved to Pixel PDF	تم الحفظ في Pixel PDF
+Saving	جارٍ الحفظ
+Scan ID Card	مسح بطاقة الهوية
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	امسح الصفحات وبطاقات الهوية، وحوّل الصور وملفات Word وPowerPoint إلى PDF، ثم اضغطها أو ادمجها أو وقّعها أو اقفلها أو اطبعها.
+Scan, convert and edit PDFs	امسح ملفات PDF وحوّلها وعدّلها
+Scan, convert, edit and sign PDFs.	امسح ملفات PDF وحوّلها وعدّلها ووقّعها.
+Scanned and made PDFs show here. Tap + to scan your first one.	تظهر ملفات PDF الممسوحة والمنشأة هنا. اضغط + لمسح أول ملف.
+Search files	البحث في الملفات
+Shows Pixel PDF with your apps, with its own icon.	يعرض Pixel PDF بين تطبيقاتك بأيقونته الخاصة.
+Sign inside the box first	وقّع داخل المربع أولًا
+Sign inside the box.	وقّع داخل المربع.
+Signature	التوقيع
+Smallest file	أصغر ملف
+Smart Scan	المسح الذكي
+Strong	قوي
+Tap to place your signature. Drag the corner to resize it.	اضغط لوضع توقيعك. اسحب الزاوية لتغيير حجمه.
+Tap where the text goes. Drag it to move it.	اضغط حيث تريد النص. اسحبه لتحريكه.
+That password isn't right.	كلمة المرور غير صحيحة.
+The passwords don't match	كلمتا المرور غير متطابقتين
+They can't be brought back.	لا يمكن استرجاعها.
+Thick	سميك
+Thin	رفيع
+This PDF is locked	ملف PDF هذا مقفل
+This PDF is locked. Opening it needs a newer Android version.	ملف PDF هذا مقفل. فتحه يحتاج إصدار Android أحدث.
+This file couldn't be read. It may be damaged or locked.	تعذّرت قراءة هذا الملف. قد يكون تالفًا أو مقفلًا.
+This needs a newer Android version.	يتطلب هذا إصدار Android أحدث.
+Type a password	اكتب كلمة مرور
+Type here	اكتب هنا
+Unlock PDF	إلغاء قفل PDF
+Unlock it first to edit	ألغِ القفل أولًا للتعديل
+Unlock it first to print	ألغِ القفل أولًا للطباعة
+Unlocking needs a newer Android version	يتطلب إلغاء القفل إصدار Android أحدث
+Use	استخدام
+Working…	جارٍ العمل…
+Your PDFs are kept in Documents/Pixel PDF.	تُحفظ ملفات PDF في Documents/Pixel PDF.
+Your changes will be lost.	ستفقد تغييراتك.
+selected	محدد
+Delete these files?	هل تريد حذف هذه الملفات؟
+Pinned	مثبّت
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	حتى 5 تطبيقات تظهر دائمًا أولًا في التطبيقات المميزة. انقر على تطبيق لإلغاء تثبيته.
+Seconds in the status bar	الثواني في شريط الحالة
+The clock at the top shows seconds. Uses a little more battery.	تعرض الساعة في الأعلى الثواني. تستهلك البطارية قليلًا أكثر.
+Pull down at the top of the feed to search. Works even with the search bar off.	اسحب لأسفل في أعلى الموجز للبحث. يعمل حتى مع إيقاف شريط البحث.
+Use Pixel search on the lock screen?	هل تريد استخدام بحث Pixel على شاشة القفل؟
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	المس مستشعر بصمة الإصبع لتفعيله. فتح التطبيقات والنتائج الأخرى سيطلب منك فتح القفل.
+Not now	ليس الآن
+More Pixel search options	خيارات إضافية لبحث Pixel
+Search on the lock screen	البحث على شاشة القفل
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	اسحب للأسفل في موجز شاشة القفل أيضًا. الحسابات وتحويل الوحدات والاتصال تعمل مباشرة. فتح أي تطبيق ما زال يطلب بصمة إصبعك.
+Safe	آمن
+Unsafe	غير آمن
+Customize	تخصيص
+Previous page	الصفحة السابقة
+Next page	الصفحة التالية
+Glide (default)	انزلاق (افتراضي)
+Refresh automatically	تحديث تلقائي
+Adds new and changed files the moment they appear.	يضيف الملفات الجديدة والمعدّلة لحظة ظهورها.
+Pen	قلم
+Tap or drag to add a shape. Drag its dots to resize it.	انقر أو اسحب لإضافة شكل. اسحب نقاطه لتغيير حجمه.
+Hold to edit	اضغط مطولًا للتعديل
+Hide Apps list	إخفاء قائمة التطبيقات
+Removes Apps list from the menu you see when you hold the home screen.	يزيل «قائمة التطبيقات» من القائمة التي تظهر عند الضغط مع الاستمرار على الشاشة الرئيسية.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	اضغط مع الاستمرار على مساحة فارغة في الشاشة الرئيسية لعرض القائمة. اسحب لأعلى لفتح تطبيقاتك.
+Your phone	هاتفك
+Android version	إصدار Android
+Build number	رقم الإصدار
+Security update	تحديث الأمان
+Untested	غير مُختبَر
+Tested on this Android version. Everything should work.	تم اختباره على إصدار Android هذا. يُفترض أن يعمل كل شيء.
+This Android version is known to break Pixel Suite features.	من المعروف أن إصدار Android هذا يعطّل ميزات في Pixel Suite.
+Not tested on this Android version yet. Some features may work, some may not.	لم يُختبر على إصدار Android هذا بعد. قد تعمل بعض الميزات وقد لا يعمل بعضها.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	يُرجى الانتباه: تحديث هاتفك يمكن أن يعطّل أجزاء من Pixel Suite، وسيعطّلها فعلًا. إذا حدّثت قبل أن أعطي الضوء الأخضر، فلست مسؤولًا عمّا يتعطّل. أعمل على هذا في وقت فراغي وأنا شخص واحد فقط، فلا تتوقع مني أن أواكب دائمًا كل ما تطلقه Google.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	أنصح بإبقاء {0} مفعّلًا دائمًا حتى لا يُثبَّت أي شيء عن طريق الخطأ. قد يُدخل تحديث مفاجئ هاتفك في حلقة إعادة تشغيل (bootloop) أو يعطّل أشياء دون أن تعلم.
+To know when it's safe to update, follow Announcements in my {0}.	لتعرف متى يصبح التحديث آمنًا، تابع Announcements في قناتي على {0}.
+Thank you 💙	شكرًا لك 💙
+Phone compatibility	توافق الهاتف
+Hide the shortcuts you see when you hold an app, like View orders.	أخفِ الاختصارات التي تظهر عند الضغط مطولًا على تطبيق، مثل عرض الطلبات.
+Hide on the home screen	إخفاء في الشاشة الرئيسية
+Home screen, dock and folders.	الشاشة الرئيسية والشريط السفلي والمجلدات.
+Hide in the app drawer	إخفاء في درج التطبيقات
+App drawer and its folders.	درج التطبيقات ومجلداته.
+Folders, dragging and the swipe-up hint.	المجلدات والسحب وتلميح السحب للأعلى.
+Folders, dragging and the swipe-up hint	المجلدات والسحب وتلميح السحب للأعلى
+Force stop	فرض الإيقاف
+{0} stopped	تم إيقاف {0}
+Could not remove the folder	تعذّرت إزالة المجلد
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	يسجّل كل مكالمة، ومكالمات WhatsApp الصوتية والمرئية، بصوت الطرفين، في تبويب التسجيلات.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	تسجيل شخص دون علمه قد يكون مخالفًا للقانون في بلدك. أنت مسؤول عن تسجيلاتك وطريقة استخدامها، وليس RovianDev.
+Clipboard on the lock screen	الحافظة على شاشة القفل
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	الصق ما نسخته في البحث على شاشة القفل. أي شخص يحمل هاتفك يمكنه لصقه أيضًا.
+Use the clipboard on the lock screen?	استخدام الحافظة على شاشة القفل؟
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	المس مستشعر البصمة لتفعيلها. أي شخص يحمل هاتفك يمكنه لصق ما نسخته، مثل كلمات المرور أو الرموز.
+Turn on to install	شغّله ليتم تثبيته
+Installing Pixel dialer…	جارٍ تثبيت متصل Pixel…
+Installing Pixel PDF…	جارٍ تثبيت Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	تم تثبيت متصل Pixel. أعد تشغيل هاتفك مرة واحدة ليتمكن من تسجيل المكالمات.
+Couldn't install: root access needed	تعذّر التثبيت: يلزم الوصول إلى الروت
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	شغّله وسيثبّته Pixel Suite لك. بعد ذلك أعد تشغيل هاتفك مرة واحدة ليتمكن من تسجيل المكالمات.
+Pixel PDF is installed	تم تثبيت Pixel PDF

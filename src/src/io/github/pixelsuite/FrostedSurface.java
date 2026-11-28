@@ -23,7 +23,7 @@ final class FrostedSurface {
         try{Object manager=c.getSystemService(Context.WINDOW_SERVICE);return (Boolean)manager.getClass().getMethod("isCrossWindowBlurEnabled").invoke(manager);}catch(Throwable ignored){return android.provider.Settings.Global.getInt(c.getContentResolver(),"disable_window_blurs",0)==0;}
     }
     static int fallback(Context c){
-        if(dark(c)&&Feature.on(c,SuperDark.KEY))return SUPER_DARK_PANEL;
+        if(SuperDark.inEffect(c))return SUPER_DARK_PANEL;
         if(!SurfaceStyle.blur(c))return dark(c)?offDark(c):0xffffffff;
         return LauncherFeatures.surface(c,dark(c)?"system_accent2_800":"system_accent2_200",dark(c)?0xff2f3036:0xffc6c5cc);}
     static int offDark(Context c){int a=LauncherFeatures.surface(c,"system_accent2_900",0xff1a1b1f),b=LauncherFeatures.surface(c,"system_accent2_800",0xff2f3036);return Color.rgb((Color.red(a)+Color.red(b))/2,(Color.green(a)+Color.green(b))/2,(Color.blue(a)+Color.blue(b))/2);}
@@ -38,12 +38,12 @@ final class FrostedSurface {
     static int[] folderColors(Context c){return colors(c);}
     static final int SUPER_DARK_PANEL=0xff000000,SUPER_DARK_CLOSED_FOLDER=0xff161616;
     static int closedFolderColor(Context c){
-        if(dark(c)&&Feature.on(c,SuperDark.KEY))return SUPER_DARK_CLOSED_FOLDER;
+        if(SuperDark.inEffect(c))return SUPER_DARK_CLOSED_FOLDER;
         if(!dark(c)&&!SurfaceStyle.restyled(c))return 0xebffffff;
         return (blend(tone(c),dark(c)?44:8)&0xffffff)|0xeb000000;}
     static void popupWindow(View content,float radius){frost(content,radius,"Dropdown");}
     static final int SUPER_DARK_MENU=SUPER_DARK_PANEL;
-    static int menuColor(Context c){return dark(c)&&Feature.on(c,SuperDark.KEY)?SUPER_DARK_MENU:tone(c)|0xff000000;}
+    static int menuColor(Context c){return SuperDark.inEffect(c)?SUPER_DARK_MENU:tone(c)|0xff000000;}
     static GradientDrawable solidMenu(Context c,float radius){GradientDrawable d=new GradientDrawable();d.setColor(menuColor(c));d.setCornerRadius(dp(c,radius));return d;}
     static void frost(View content,float radius,final String what){
         if(!content.isAttachedToWindow()){

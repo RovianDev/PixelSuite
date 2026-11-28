@@ -168,5 +168,30 @@ final class ScatterEffect {
                 }
             });
         } catch (Throwable error) { }
+        try {
+            Xp.hookAllMethods(LauncherFeatures.type("dragndrop.ItemDeleteHandler"), "removeItem", new Xp.Callback() {
+                protected void beforeHookedMethod(Xp.Param p) {
+                    try {
+                        if (p.args.length < 1 || p.args[0] instanceof View) return;
+                        Object info = p.args[0];
+                        if (info == null || info != armedFolder || android.os.SystemClock.uptimeMillis() - armedAt > 30000) return;
+                        Activity a = LauncherFeatures.activity.get();
+                        if (a == null || FolderDrag.dragging(a)) return;
+                        View shown = viewFor(a.getWindow().getDecorView(), info);
+                        if (shown == null) return;
+                        armedFolder = null;
+                        play(shown);
+                    } catch (Throwable error) { }
+                }
+            });
+        } catch (Throwable error) { }
+    }
+
+    private static View viewFor(View v, Object info) {
+        if (v.getTag() == info && v.isShown()) return v;
+        if (!(v instanceof android.view.ViewGroup)) return null;
+        android.view.ViewGroup g = (android.view.ViewGroup) v;
+        for (int i = 0; i < g.getChildCount(); i++) { View hit = viewFor(g.getChildAt(i), info); if (hit != null) return hit; }
+        return null;
     }
 }

@@ -37,6 +37,14 @@ final class DrawerPopupLayout {
     static void compact(final ViewGroup popup){
         if(!eligible(popup)||Xp.getAdditionalInstanceField(popup,"pixelsuite_compact_menu")!=null)return;
         final ViewGroup layer=(ViewGroup)LauncherFeatures.call(LauncherFeatures.activity.get(),"getDragLayer");
+        if(composed(popup)){
+            Xp.setAdditionalInstanceField(popup,"pixelsuite_compact_menu",Boolean.TRUE);
+            place(popup);
+            popup.addOnLayoutChangeListener(new View.OnLayoutChangeListener(){
+                public void onLayoutChange(View v,int l,int t,int r,int b,int ol,int ot,int or,int ob){place(popup);}
+            });
+            return;
+        }
         int width=Math.min(popup.getMeasuredWidth(),FrostedSurface.dp(popup.getContext(),240));
         if(width<=0)return;
         compactRows(popup,width);
@@ -81,6 +89,11 @@ final class DrawerPopupLayout {
         popup.addOnLayoutChangeListener(new View.OnLayoutChangeListener(){
             public void onLayoutChange(View v,int l,int t,int r,int b,int ol,int ot,int or,int ob){place(popup);}
         });
+    }
+    static boolean composed(ViewGroup popup){
+        if(ComposeMenu.active)return true;
+        try{if(LauncherFeatures.get(popup,"viewModel")!=null)return true;}catch(Throwable none){}
+        return false;
     }
     private static final int ROW_DP=48,MIN_ROW_DP=38;
     static int countRows(View v){

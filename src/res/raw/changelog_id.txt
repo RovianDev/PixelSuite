@@ -1,3 +1,59 @@
+## v3.2.1
+Dukungan penuh untuk pembaruan November, Pencarian Pixel, Dialer Pixel, Pixel PDF, menu folder di layar utama, Paksa berhenti, Cek ponsel, dan banyak perbaikan.
+
+📱 Pembaruan November
+• **Android 17 QPR2 (pembaruan November)**: Pixel Suite berjalan di build baru, dan build lama tetap berjalan seperti sebelumnya. Pembaruan ini merusak semua ini, dan semuanya kembali berfungsi:
+• **Mode Super Gelap**: hitam pekat lagi di panel notifikasi, panel aplikasi, folder, dan di mana pun mode ini berlaku, juga setelah memulai ulang, tanpa layar abu-abu saat membuka kunci. (Tema › Mode Super Gelap)
+• **Menu aplikasi**: menahan aplikasi di layar utama atau panel aplikasi selalu membuka menunya, sebagai satu panel buram dengan bingkai, pintasannya, dan opsi Pixel Suite.
+• **Folder**: folder di layar utama terbuka dengan tampilan buram, blur, dan bingkai yang sama seperti folder di panel aplikasi, dan efek saat menghapus folder kembali.
+• **Beberapa ikon sekaligus**: menjatuhkan beberapa ikon pilihan ke Hapus menghapus semuanya (Urungkan mengembalikan semuanya), dan memindahkannya ke halaman lain tidak lagi meninggalkan aslinya.
+• **Screenshot**: suara rana kembali, mengikuti volume dering.
+• **Kunci aplikasi & folder**: aplikasi terkunci meminta sidik jari sebelum terbuka, bukan setelahnya, dan menghapus aplikasi atau folder terkunci dari layar utama kembali meminta sidik jari.
+• **Ketuk dua kali untuk mengunci**: mengetuk dua kali alarm, cuaca, atau tanggal di layar kunci mematikan layar alih-alih membukanya, dan mengetik PIN tidak lagi mematikan layar. (Gestur › Ketuk atau ketuk dua kali untuk membangunkan › Perilaku layar kunci › Pixel Suite)
+• **Panel perekaman layar**: terbuka bersih, tanpa Setelan Cepat terlihat di belakangnya, tanpa kilatan atau kartu pucat, dan tombolnya tetap di tempatnya.
+• **Menu berbagi**: aplikasi berbagi yang disembunyikan kembali tetap tersembunyi, dan tombol Edit kembali saat berbagi dari Google Foto.
+• **Toast**: "Video disimpan", "Video dihapus", dan pesan sistem lain kembali menjadi satu pil yang mengikuti tema Anda, termasuk Super Dark.
+• **Juga kembali**: baris dan ikon Pixel Suite di menu tahan layar utama, gaya permintaan sidik jari, bentuk ikon, Hapus semua untuk pasangan aplikasi, dan menyembunyikan pintasan di menu panel aplikasi.
+
+✨ Baru
+• **Animasi baru untuk Pixel Suite**: halaman, dialog, dan menu terbuka dan tertutup dengan animasi yang benar-benar baru, jauh lebih mulus dan dibuat dengan teknik baru.
+• **Cek ponsel**: ketuk **!** di kiri atas halaman utama untuk melihat ponsel Anda, versi Android dan pembaruan keamanan, serta apakah Pixel Suite **Aman**, **Belum diuji**, atau **Tidak aman** di ponsel itu, dengan tautan cepat ke Pemblokir OTA dan Telegram.
+• **Menu folder di layar utama**: tahan folder untuk mengganti nama, mengurutkan (A–Z atau urutan Anda sendiri), mengunci, atau menghapusnya, dengan menu yang sama seperti folder di panel aplikasi.
+• **Paksa berhenti**: tahan aplikasi apa pun dan pilih Paksa berhenti untuk menutupnya sepenuhnya.
+• **Sembunyikan pintasan aplikasi di layar utama, di panel aplikasi, atau keduanya**. (Peluncur Pixel › Pintasan aplikasi)
+• **Aplikasi yang dijeda**: menahan aplikasi yang Anda jeda membuka menunya beserta pintasannya.
+• **Versi aman dan tidak aman**: saat aplikasi punya pembaruan yang menunggu, versi terpasang Anda tampil hijau sebagai Aman dan versi yang menunggu merah sebagai Tidak aman. Ketuk versi aman untuk mengunduh versi itu persis. (Pemblokir OTA & Store › Pemblokir Play Store)
+• **Sembunyikan Daftar aplikasi** dari menu yang muncul saat Anda menahan tempat kosong di layar utama. (Peluncur Pixel › Sembunyikan Daftar aplikasi)
+• **Sembunyikan petunjuk geser ke atas**: tidak ada lagi petunjuk setelah beberapa kali gagal menggeser untuk membuka panel aplikasi. (Panel aplikasi › Sembunyikan petunjuk geser ke atas)
+• **Detik di jam bilah status**. (Lain-lain › Detik di bilah status)
+• **Mulai bersih**: pada pemasangan baru semua fitur dimulai dalam keadaan mati, jadi Anda hanya menyalakan yang Anda mau. Memperbarui tetap menyimpan pengaturan Anda.
+
+💎 Patreon
+• **Aplikasi Pixel Suite**: Pencarian Pixel, Dialer Pixel, dan Pixel PDF, yang sudah lama saya kerjakan, akhirnya hadir, semuanya di satu tempat. (Aplikasi Pixel Suite)
+• **Pencarian Pixel**: ganti sepenuhnya bilah pencarian Google yang tidak berguna dengan bilah yang benar-benar mencari di ponsel Anda. Aplikasi, kontak, pengaturan, dan file, semuanya ditemukan di ponsel (hanya pencarian web yang online). Bahkan kata dan angka di dalam PDF serta file Word, Excel, dan PowerPoint Anda juga ditemukan. Tahan bilah untuk mengubah ukuran, warna, tema, dan tombolnya. (Aplikasi Pixel Suite › Pencarian Pixel)
+• **Pencarian Pixel, lengkap di dalamnya**: Favorit dan kontak favorit di balik hati, konversi mata uang dengan bendera, kalkulator yang juga mengonversi satuan (seperti 5 km ke mil), aplikasi unggulan dan pencarian terbaru, pin dan tombol mesin pencari di bilah, saran kata dari keyboard Anda, animasi tutup yang Anda pilih dari pratinjau langsung, dan widget layar utama. File menampilkan kapan terakhir diubah dan langsung muncul saat ditambahkan; tahan file untuk membagikan, menampilkan di foldernya, atau menghapusnya.
+• **Pencarian Pixel di Feed widget**: keduanya bekerja bersama. Tarik ke bawah di Feed widget dan Pencarian Pixel terbuka di atas feed yang diburamkan. (Feed widget › Pencarian Pixel) Juga berfungsi di layar kunci, tempat perhitungan dan mata uang bisa dipakai tanpa membuka kunci. (Feed widget › panah di samping Pencarian Pixel › Cari di layar kunci)
+• **Dialer Pixel**: aplikasi telepon lengkap yang dibuat untuk Pixel Suite. Merekam setiap panggilan secara otomatis, kedua sisi, dengan kualitas pilihan Anda, dan juga **merekam panggilan suara dan video WhatsApp**, disimpan sebagai video panggilan dengan suara kedua sisi. Catatan yang Anda ketik saat panggilan disimpan ke Google Keep, satu catatan per orang. Tab Favorit, Panggilan, Kontak, dan Rekaman, jawab dengan ketukan atau geseran, dan tampilan Pixel Suite, termasuk Super Dark. (Aplikasi Pixel Suite › Dialer Pixel) ***(Merekam seseorang tanpa sepengetahuannya bisa melanggar hukum di tempat Anda tinggal. Anda bertanggung jawab atas rekaman Anda dan cara menggunakannya, bukan RovianDev.)***
+• **Pixel PDF**: aplikasi PDF lengkap. Pindai dokumen dan kartu identitas, ubah gambar serta file Word dan PowerPoint menjadi PDF, dan PDF menjadi Word, PowerPoint, atau JPG. Gabungkan, kompres, kunci, dan buka kunci PDF, tambahkan teks, tanda tangani dan gambar di atasnya, cetak, dan buka PDF dari aplikasi lain. (Aplikasi Pixel Suite › Pixel PDF)
+• **Feed widget di layar kunci** pada pembaruan November: layar kunci bergerak seperti halaman, dan Anda bisa membuka feed dengan menggeser dari hampir mana saja, bahkan di bawah notifikasi, tanpa menarik panel notifikasi atau memicu papan PIN, panah kembali, atau sensor sidik jari. Ia memantul seperti di layar utama saat berhenti dan saat Anda menggeser melewati widget. (Feed widget)
+• **Layar kunci dan sidik jari**: setelah keluar dari Feed widget, ikon sidik jari langsung muncul (tidak pernah gembok) dan sidik jari Anda langsung membuka kunci. Menyentuh titik sidik jari tepat setelah memakai feed tidak membuka kunci secara tidak sengaja.
+
+🛠️ Perbaikan Patreon
+• **Feed widget di layar kunci**: saat papan PIN terbuka, menggeser ke samping tidak lagi memasukkan feed di belakangnya, dan feed tidak lagi mengunci ponsel tepat setelah Anda membukanya dengan sidik jari.
+• **Gboard+**: mengetuk ikon papan klip kembali berfungsi tepat setelah menyalin sesuatu, tombol keyboard kembali setelah menutup panel alat, mengetik dengan suara berfungsi dalam bahasa Arab dan bahasa lain dan tidak lagi membuat bilah alat kosong dan biru, geseran tidak lagi menekan tombol bilah alat atau menghalangi gestur kembali, dan keyboard mengambang mempertahankan tata letaknya, juga di atas layar, dengan sudut membulat dan bilah alat yang memenuhinya.
+• **Chrome+**: tab terbuka tanpa menunggu setelah diketuk, gambar tab tidak lagi memudar ke halaman kosong, dan tab yang tidur mempertahankan gambarnya sampai halaman selesai digambar.
+
+🐞 Perbaikan Pixel Suite
+• **Isi otomatis OTP**: kode ada di awal baris saran keyboard, tidak pernah di atas layar atau di atas saran kode milik Google. Berfungsi dengan keyboard mengambang, hilang setelah kode diketik, dan kode yang hanya berisi huruf juga ditemukan.
+• **Bagikan ke Telegram** kembali di Pixel Stack, Pixel Blast, dan Pixel Siege: setelah bermain, bagikan skor Anda ke grup Telegram.
+• **Layar kunci**: geseran ke samping atau diagonal tidak lagi menarik panel notifikasi sesaat.
+• **Papan PIN**: menggeser di atas angka tidak lagi membuatnya tetap tersorot.
+• **Folder panel aplikasi**: menu tahan muncul tepat di samping folder, bahkan di dekat bagian bawah panel.
+• **Jangan Ganggu Saya**: "Tidak dapat menjangkau jam Anda" tidak lagi muncul tanpa Pixel Watch dengan LTE, atau saat opsi itu mati.
+
+Pasang di atas versi Anda saat ini lalu mulai ulang.
+
+
 ## v3.2.0
 Feed widget, Isi otomatis OTP, Blokir panggilan WhatsApp, Pixel Arcade yang jauh lebih besar, film fitur, dan banyak perbaikan.
 

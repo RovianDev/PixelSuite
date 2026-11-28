@@ -44,7 +44,13 @@ final class BackdropSurface extends GradientDrawable {
     @Override public void setColors(int[] colors){solidSet=false;super.setColors(colors);}
 
     float morph(View view){
-        if(!solidSet||view==null||!isFolder(view)||!DrawerFolders.drawerFolderView(view))return -1f;
+        if(!solidSet||view==null||!isFolder(view))return -1f;
+        if(DrawerFolders.drawerFolderView(view))return reveal(view);
+        try{if(LauncherFeatures.get(view,"mClipPath")!=null){float r=reveal(view);if(r>=0f)return r;}}catch(Throwable ignored){}
+        try{Object state=LauncherFeatures.get(view,"mState");if(state instanceof Integer&&(Integer)state==2)return 1f;}catch(Throwable ignored){}
+        return -1f;
+    }
+    float reveal(View view){
         try{
             Object clip=LauncherFeatures.get(view,"mClipPath");
             Path reveal=clip instanceof Path?(Path)clip:clip!=null?(Path)LauncherFeatures.get(clip,"path"):null;
@@ -77,6 +83,13 @@ final class BackdropSurface extends GradientDrawable {
         }
         if(len<1f)return 1f;
         return Math.max(0f,Math.min(1f,dot/len));
+    }
+    float rimStrength(View view){
+        if(view!=null&&isFolder(view)&&!DrawerFolders.drawerFolderView(view)){
+            try{if(LauncherFeatures.get(view,"mClipPath")!=null){float r=reveal(view);if(r>=0f)return r;}}catch(Throwable ignored){}
+            try{Object state=LauncherFeatures.get(view,"mState");if(state instanceof Integer&&(Integer)state==2)return 1f;}catch(Throwable ignored){}
+        }
+        return strength(view);
     }
     private void colors(){openColor=FrostedSurface.colors(context)[0];closedColor=FrostedSurface.closedFolderColor(context);}
 
@@ -112,7 +125,7 @@ final class BackdropSurface extends GradientDrawable {
             try{
                 int m=GlassRim.mode(context);
                 if(rim==null||rimMode!=m){rim=GlassRim.of(context,radius());rimMode=m;}
-                float s=view==null?1f:Math.max(0f,Math.min(1f,strength(view)));
+                float s=view==null?1f:Math.max(0f,Math.min(1f,rimStrength(view)));
                 android.graphics.Rect b=getBounds();
                 if(s>0.01f&&!b.isEmpty())rim.draw(canvas,b.left,b.top,b.right,b.bottom,Math.min(radius(),Math.min(b.width(),b.height())/2f),Math.round(255*s));
             }catch(Throwable ignored){}

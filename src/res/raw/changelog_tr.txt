@@ -1,3 +1,59 @@
+## v3.2.1
+Kasım güncellemesine tam destek, Pixel Arama, Pixel çevirici, Pixel PDF, ana ekranda klasör menüsü, Durmaya zorla, Telefon kontrolü ve birçok düzeltme.
+
+📱 Kasım güncellemesi
+• **Android 17 QPR2 (Kasım güncellemesi)**: Pixel Suite yeni sürümde çalışıyor, eski sürümler de eskisi gibi çalışmaya devam ediyor. Güncelleme bunları bozmuştu, hepsi yeniden çalışıyor:
+• **Süper Karanlık Mod**: bildirim panelinde, uygulama çekmecesinde, klasörlerde ve uygulandığı her yerde yeniden gerçek siyah, yeniden başlattıktan sonra da, kilit açılırken gri ekran olmadan. (Temalar › Süper Karanlık Mod)
+• **Uygulama menüleri**: ana ekranda veya uygulama çekmecesinde bir uygulamaya basılı tutmak her seferinde menüsünü açar; kenarlıklı tek bir buzlu panel, kısayolları ve Pixel Suite seçenekleriyle.
+• **Klasörler**: ana ekran klasörleri uygulama çekmecesindekilerle aynı buzlu görünüm, bulanıklık ve kenarlıkla açılır, bir klasörü kaldırırken görülen efekt de geri döndü.
+• **Aynı anda birden çok simge**: seçilen birkaç simgeyi Kaldır'a bırakınca hepsi kaldırılır (Geri al hepsini geri getirir), başka bir sayfaya taşıyınca da asılları geride kalmaz.
+• **Ekran görüntüleri**: deklanşör sesi geri geldi, zil sesi düzeyine göre çalar.
+• **Uygulama ve klasör kilidi**: kilitli bir uygulama açılmadan önce parmak izinizi ister, sonra değil, kilitli bir uygulamayı veya klasörü ana ekrandan kaldırmak da yeniden parmak izi ister.
+• **Kilitlemek için çift dokunun**: kilit ekranındaki alarma, hava durumuna veya tarihe çift dokunmak onları açmak yerine ekranı kapatır, PIN'inize dokunmak da artık ekranı kapatmaz. (Hareketler › Uyandırmak için dokunun veya çift dokunun › Kilit ekranı davranışı › Pixel Suite)
+• **Ekran kaydı paneli**: arkasından Hızlı Ayarlar görünmeden, parlama veya soluk kart olmadan temiz açılır ve düğmeleri yerinde durur.
+• **Paylaşım menüsü**: gizlenen paylaşım uygulamaları yeniden gizli kalıyor ve Google Fotoğraflar'dan paylaşırken Düzenle düğmesi geri geldi.
+• **Bildirim baloncukları**: "Video kaydedildi", "Video silindi" ve diğer sistem mesajları yeniden tek bir hap; Super Dark dahil temanıza uyar.
+• **Bunlar da geri döndü**: ana ekranın basılı tutma menüsündeki Pixel Suite satırı ve simgesi, parmak izi isteminin görünümü, simge şekilleri, uygulama çiftleri için Tümünü temizle ve uygulama çekmecesi menülerinde kısayolları gizleme.
+
+✨ Yeni
+• **Pixel Suite için yeni animasyon**: sayfalar, iletişim kutuları ve menüler tamamen yeni bir animasyonla açılıp kapanır; çok daha akıcı ve yeni tekniklerle yapıldı.
+• **Telefon kontrolü**: telefonunuzu, Android sürümünü ve güvenlik güncellemesini, Pixel Suite'in onda **Güvenli**, **Test edilmedi** veya **Güvenli değil** olduğunu görmek için ana sayfanın sol üstündeki **!** işaretine dokunun; OTA engelleyici ve Telegram'a hızlı bağlantılar da var.
+• **Ana ekranda klasör menüsü**: bir klasörü yeniden adlandırmak, sıralamak (A–Z veya kendi sıranız), kilitlemek veya kaldırmak için basılı tutun; uygulama çekmecesindeki klasörlerle aynı menü.
+• **Durmaya zorla**: herhangi bir uygulamaya basılı tutup Durmaya zorla'yı seçerek tamamen kapatın.
+• **Uygulama kısayollarını ana ekranda, uygulama çekmecesinde veya ikisinde birden gizleyin**. (Pixel Başlatıcı › Uygulama kısayolları)
+• **Duraklatılmış uygulamalar**: duraklattığınız bir uygulamaya basılı tutmak menüsünü kısayollarıyla açar.
+• **Güvenli ve güvenli olmayan sürümler**: bir uygulamanın bekleyen güncellemesi varsa yüklü sürümünüz yeşil Güvenli, bekleyen sürüm kırmızı Güvenli değil olarak görünür. Tam o sürümü indirmek için güvenli sürüme dokunun. (OTA ve Store engelleyici › Play Store engelleyici)
+• **Uygulama listesini gizle**: ana ekranda boş bir yere basılı tutunca açılan menüden. (Pixel Başlatıcı › Uygulama listesini gizle)
+• **Yukarı kaydırma ipucunu gizle**: uygulama çekmecesini açmak için birkaç başarısız kaydırmadan sonra ipucu çıkmaz. (Uygulama çekmecesi › Yukarı kaydırma ipucunu gizle)
+• **Durum çubuğu saatinde saniye**. (Çeşitli › Durum çubuğunda saniye)
+• **Temiz başlangıç**: yeni kurulumda tüm özellikler kapalı başlar, siz yalnızca istediğinizi açarsınız. Güncelleme ayarlarınızı olduğu gibi korur.
+
+💎 Patreon
+• **Pixel Suite uygulamaları**: Uzun zamandır üzerinde çalıştığım Pixel Arama, Pixel çevirici ve Pixel PDF sonunda burada, hepsi tek bir yerde. (Pixel Suite uygulamaları)
+• **Pixel Arama**: işe yaramaz Google arama çubuğunu telefonunuzda gerçekten arama yapan bir çubukla tamamen değiştirin. Uygulamalar, kişiler, ayarlar ve dosyalar, hepsi telefonun içinde bulunur (yalnızca web aramaları internete çıkar). PDF'lerinizin ve Word, Excel ve PowerPoint dosyalarınızın içindeki kelimeleri ve sayıları bile bulur. Boyutunu, renklerini, temasını ve düğmelerini değiştirmek için çubuğa basılı tutun. (Pixel Suite uygulamaları › Pixel Arama)
+• **Pixel Arama, her şey içinde**: Favoriler ve kalbin arkasındaki favori kişiler, bayraklı döviz çevirme, birim de çeviren hesap makinesi (5 km'yi mile çevirmek gibi), öne çıkan uygulamalar ve son aramalar, çubukta sabitlemeler ve arama motoru düğmesi, klavyenizin kelime önerileri, canlı önizlemeden seçtiğiniz kapanış animasyonları ve bir ana ekran widget'ı. Dosyalar en son ne zaman değiştiklerini gösterir ve eklendikleri anda görünür; bir dosyayı paylaşmak, klasöründe göstermek veya silmek için basılı tutun.
+• **Widget akışında Pixel Arama**: ikisi birlikte çalışır. Widget akışında aşağı çekin, Pixel Arama bulanık akışın üzerinde açılır. (Widget akışı › Pixel Arama) Kilit ekranında da çalışır; orada hesaplamalar ve döviz kilidi açmadan kullanılabilir. (Widget akışı › Pixel Arama'nın yanındaki ok › Kilit ekranında ara)
+• **Pixel çevirici**: Pixel Suite için yapılmış eksiksiz bir telefon uygulaması. Her aramayı otomatik olarak, iki taraflı ve seçtiğiniz kalitede kaydeder; **WhatsApp sesli ve görüntülü aramalarını da kaydeder**, iki tarafın sesiyle aramanın videosu olarak saklanır. Arama sırasında yazdığınız notlar Google Keep'e kaydedilir, her kişi için bir not. Favoriler, Aramalar, Kişiler ve Kayıtlar sekmeleri, dokunarak ya da kaydırarak yanıtlama ve Super Dark dahil Pixel Suite görünümü. (Pixel Suite uygulamaları › Pixel çevirici) ***(Birini haberi olmadan kaydetmek yaşadığınız yerde yasa dışı olabilir. Kayıtlarınızdan ve onları nasıl kullandığınızdan RovianDev değil, siz sorumlusunuz.)***
+• **Pixel PDF**: eksiksiz bir PDF uygulaması. Belgeleri ve kimlik kartlarını tarayın, resimleri, Word ve PowerPoint dosyalarını PDF'ye, PDF'leri de Word, PowerPoint veya JPG'ye dönüştürün. PDF'leri birleştirin, sıkıştırın, kilitleyin ve kilidini açın, metin ekleyin, imzalayın ve üzerine çizin, yazdırın ve diğer uygulamalardan PDF açın. (Pixel Suite uygulamaları › Pixel PDF)
+• **Kasım güncellemesinde kilit ekranı Widget akışı**: kilit ekranı bir sayfa gibi kayar, akışı neredeyse her yerden, bir bildirimin altından bile kaydırarak açabilirsiniz; bildirim paneli, PIN tuş takımı, geri oku veya parmak izi sensörü tetiklenmez. Yerine otururken ve widget'ların ötesine kaydırırken ana ekrandaki gibi esner. (Widget akışı)
+• **Kilit ekranı ve parmak izi**: Widget akışından çıkınca parmak izi simgesi hemen görünür (asla kilit simgesi değil) ve parmak iziniz hemen kilidi açar. Akışı kullandıktan hemen sonra parmak izi noktasına dokunmak yanlışlıkla kilidi açmaz.
+
+🛠️ Patreon düzeltmeleri
+• **Kilit ekranı Widget akışı**: PIN tuş takımı açıkken yana kaydırmak akışı arkasına kaydırmaz, akış da parmak iziyle kilidi açtıktan hemen sonra telefonu yeniden kilitlemez.
+• **Gboard+**: bir şey kopyaladıktan hemen sonra pano simgesine dokunmak yeniden çalışıyor, araç panelini kapatınca tuşlar geri geliyor, sesle yazma Arapça ve diğer dillerde çalışıyor ve araç çubuğunu boş ve mavi bırakmıyor, kaydırmalar araç çubuğu düğmelerine basmıyor ve geri hareketini engellemiyor, yüzen klavye de ekranın üstünde bile düzenini koruyor, köşeleri yuvarlak ve araç çubuğu onu dolduruyor.
+• **Chrome+**: sekmeler dokunduktan sonra beklemeden açılır, bir sekmenin resmi boş bir sayfanın üstüne solarak geçmez, uyuyan bir sekme de sayfa çizilene kadar resmini korur.
+
+🐞 Pixel Suite düzeltmeleri
+• **OTP otomatik doldurma**: kod, klavyenin öneri satırının başında durur; asla ekranın üstünde ya da Google'ın kendi kod önerisinin üzerinde değil. Yüzen klavyeyle de çalışır, kod yazılınca kaybolur ve yalnızca harflerden oluşan kodları da bulur.
+• **Telegram'da paylaşma** Pixel Stack, Pixel Blast ve Pixel Siege'e geri döndü: oyundan sonra skorunuzu Telegram grubunda paylaşın.
+• **Kilit ekranı**: yana veya çapraz kaydırma bildirim panelini bir anlığına aşağı çekmez.
+• **PIN tuş takımı**: bir rakamın üzerinden kaydırınca rakam vurgulu kalmaz.
+• **Uygulama çekmecesi klasörleri**: basılı tutma menüsü, çekmecenin altlarında bile klasörün hemen yanında durur.
+• **Beni Rahatsız Etme**: "Saatinize ulaşılamadı" mesajı LTE'li Pixel Watch olmadan veya o seçenek kapalıyken artık görünmez.
+
+Mevcut sürümün üzerine kurun ve yeniden başlatın.
+
+
 ## v3.2.0
 Widget akışı, OTP otomatik doldurma, WhatsApp aramalarını engelleme, çok daha büyük bir Pixel Arcade, özellik videoları ve bir sürü düzeltme.
 

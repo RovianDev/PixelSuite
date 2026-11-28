@@ -30,13 +30,18 @@ final class ChangelogText {
         while (at < source.length()) {
             int open = source.indexOf("**", at);
             if (open < 0) { text.append(source.substring(at)); break; }
-            int close = source.indexOf("**", open + 2);
+            boolean note = source.startsWith("***", open);
+            String mark = note ? "***" : "**";
+            int close = source.indexOf(mark, open + mark.length());
             if (close < 0) { text.append(source.substring(at)); break; }
             text.append(source.substring(at, open));
             int start = text.length();
-            text.append(source.substring(open + 2, close));
-            if (text.length() > start) text.setSpan(new android.text.style.StyleSpan(android.graphics.Typeface.BOLD), start, text.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            at = close + 2;
+            text.append(source.substring(open + mark.length(), close));
+            if (text.length() > start) {
+                text.setSpan(new android.text.style.StyleSpan(note ? android.graphics.Typeface.BOLD_ITALIC : android.graphics.Typeface.BOLD), start, text.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                if (note) text.setSpan(new android.text.style.TypefaceSpan("serif"), start, text.length(), android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+            at = close + mark.length();
         }
         return text;
     }

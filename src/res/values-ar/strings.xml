@@ -2,4 +2,5 @@
 <resources>
     <string name="description">الإيماءات، وتخصيص Pixel Launcher، وقفل التطبيقات والمجلدات، والوضع الداكن الفائق، وترتيب الملفات، والاقتصاص الحر للقطات الشاشة، والرسومات في Pixel Studio وصور Google. يتم إعداد كل شيء في تطبيق Pixel Suite. فعّل نطاقات LSPosed المقترحة، بما فيها المحررات التي تستخدمها، ثم أعد تشغيل تلك التطبيقات أو الهاتف.</string>
     <string name="search_in_chrome">البحث في Chrome</string>
+    <string name="scan_app">Pixel PDF</string>
 </resources>

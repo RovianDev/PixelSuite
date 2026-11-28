@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ps_search_widget"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/ps_search_widget_text"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:background="@drawable/ps_search_widget_bg"
+        android:gravity="center_vertical"
+        android:paddingStart="22dp"
+        android:paddingEnd="22dp"
+        android:singleLine="true"
+        android:text="Pixel search"
+        android:textColor="#FFE6E6E6"
+        android:textSize="16sp" />
+</FrameLayout>

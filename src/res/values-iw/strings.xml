@@ -2,4 +2,5 @@
 <resources>
     <string name="description">תנועות, התאמה אישית של Pixel Launcher, נעילת אפליקציות ותיקיות, מצב כהה במיוחד, מיון קבצים, חיתוך חופשי של צילומי מסך ו-שרבוטים ב-Pixel Studio וב-תמונות Google. הכול מוגדר באפליקציית Pixel Suite. צריך להפעיל את היקפי LSPosed המומלצים, כולל העורכים שבהם משתמשים, ואז להפעיל מחדש את האפליקציות האלה או את הטלפון.</string>
     <string name="search_in_chrome">חיפוש ב-Chrome</string>
+    <string name="scan_app">Pixel PDF</string>
 </resources>

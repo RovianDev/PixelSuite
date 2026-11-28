@@ -326,9 +326,16 @@ final class GoogleFeedSwipe {
 
     private static int visibility(Class<?> k) {
         synchronized (sVisibility) { if (!sVisibility.add(k)) return 0; }
-        return Xp.hookAllMethods(k, "onOverlayVisibilityChanged", new Xp.Callback() {
+        Xp.Callback cb = new Xp.Callback() {
             @Override protected void beforeHookedMethod(Xp.Param p) { if (p.args.length == 1 && p.args[0] instanceof Boolean) sFeedShown = (Boolean) p.args[0]; }
-        }).size();
+        };
+        int n = 0;
+        for (Class<?> c = k; c != null && c != Object.class && n == 0; c = c.getSuperclass())
+            for (java.lang.reflect.Method m : c.getDeclaredMethods()) {
+                if (!m.getName().equals("onOverlayVisibilityChanged") || java.lang.reflect.Modifier.isAbstract(m.getModifiers())) continue;
+                try { Xp.hookMethod(m, cb); n++; } catch (Throwable ignored) { }
+            }
+        return n;
     }
 
     private static void findSession(Class<?> k) {

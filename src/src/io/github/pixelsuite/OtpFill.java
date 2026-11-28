@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.inputmethodservice.InputMethodService;
@@ -116,7 +117,13 @@ final class OtpFill {
         }
         if (out.length() < 4) return null;
 
-        for (int i = 0; i < out.length(); i++) if (Character.isDigit(out.charAt(i))) return out.toString();
+        int caps = 0;
+        for (int i = 0; i <= out.length(); i++) {
+            char ch = i < out.length() ? out.charAt(i) : ' ';
+            if (Character.isDigit(ch)) return out.toString();
+            if (ch >= 'A' && ch <= 'Z') caps++;
+            else { if (caps >= 6 && caps <= 8 && !Character.isLetter(ch)) return out.toString(); caps = Character.isLetter(ch) ? 99 : 0; }
+        }
         return null;
     }
 
@@ -189,11 +196,19 @@ final class OtpFill {
             }
         };
         Xp.hookAllMethods(ims, "showWindow", shown);
-        Xp.hookAllMethods(ims, "doStartInput", shown);
+        Xp.hookAllMethods(ims, "doStartInput", new Xp.Callback() {
+            @Override protected void afterHookedMethod(final Xp.Param p) {
+                if (sCode == null && sChip.get() == null) return;
+                MAIN.post(new Runnable() { public void run() {
+                    try { sAutoTried = false; if (p.thisObject instanceof InputMethodService) refresh((InputMethodService) p.thisObject); } catch (Throwable ignored) { }
+                } });
+            }
+        });
     }
 
     private static void listen(final InputMethodService ime) {
         sIme = new WeakReference<InputMethodService>(ime);
+        reach(ime);
         InputMethodService held = sHeld.get();
         if (sReceiver != null && held == ime) return;
         if (sReceiver != null) {
@@ -240,9 +255,11 @@ final class OtpFill {
                         }
                         long now = SystemClock.uptimeMillis();
                         View chip = sChip.get();
-                        if (now - last > 250 && !sTyping && (chip == null || !chip.isAttachedToWindow()) && ime.isInputViewShown()) {
+                        if (now - last > 250 && !sTyping && ime.isInputViewShown()) {
                             last = now;
-                            MAIN.post(EXPIRE);
+                            if (chip == null || !chip.isAttachedToWindow()) MAIN.post(EXPIRE);
+                            else if (entered(ime, sCode)) { sCode = null; MAIN.post(EXPIRE); }
+                            else nudge();
                         }
                     } catch (Throwable ignored) { }
                     return true;
@@ -251,7 +268,19 @@ final class OtpFill {
         } catch (Throwable ignored) { }
     }
 
-    private static void refresh(InputMethodService ime) {
+    private static boolean sNudged;
+
+    static void nudge() {
+        if (sCode == null && sChip.get() == null) return;
+        if (sNudged) return;
+        sNudged = true;
+        MAIN.post(new Runnable() { public void run() {
+            sNudged = false;
+            try { InputMethodService ime = sIme.get(); if (ime != null) refresh(ime); } catch (Throwable ignored) { }
+        } });
+    }
+
+    private static void refresh(final InputMethodService ime) {
         boolean live = sCode != null && SystemClock.uptimeMillis() - sAt < LIFE && on(ime, KEY);
         if (!live) { sCode = null; drop(); return; }
         if (sTyping) return;
@@ -263,23 +292,224 @@ final class OtpFill {
             boolean auto = on(ime, AUTO_KEY), waiting = auto && waitingForCode(ime, sCode);
             if (waiting) { type(ime, sCode); return; }
         }
+        try {
+            View strip = GboardPlus.slot(new Rect());
+            if (strip == null && GboardPlus.strips()) { drop(); return; }
+            if (strip != null && strip.getRootView() != frame.getRootView() && strip.getRootView() instanceof FrameLayout) frame = (ViewGroup) strip.getRootView();
+        } catch (Throwable ignored) { }
         View chip = sChip.get();
-        if (chip == null || chip.getParent() != frame) { drop(); chip = chip(ime); sChip = new WeakReference<View>(chip);
-            FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.TOP | Gravity.CENTER_HORIZONTAL);
-            lp.topMargin = dp(ime, 4);
-            frame.addView(chip, lp);
+        if (chip == null || chip.getParent() != frame) {
+            drop(); chip = chip(ime); sChip = new WeakReference<View>(chip);
+            chip.setVisibility(View.INVISIBLE);
+            frame.addView(chip, new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.TOP | Gravity.LEFT));
+            chip.post(new Runnable() { public void run() { nudge(); } });
         }
-        chip.bringToFront();
-        ((TextView) chip.findViewWithTag("code")).setText(sCode);
+        TextView code = (TextView) chip.findViewWithTag("code");
+        if (!sCode.contentEquals(code.getText())) code.setText(sCode);
         TextView from = (TextView) chip.findViewWithTag("from");
-        from.setText(sFrom == null ? "" : sFrom);
-        from.setVisibility(sFrom == null || sFrom.isEmpty() ? View.GONE : View.VISIBLE);
+        String who = sFrom == null ? "" : sFrom;
+        if (!who.contentEquals(from.getText())) from.setText(who);
+        place(ime, frame, chip);
+    }
+
+    private static final int HIDE = 0, SLOT = 1, LIFT = 2, APART = 3, PLAIN = 4;
+    private static boolean sClash;
+    private static int sKept;
+
+    private static void keep(int px) {
+        if (px == sKept || px != 0 && Math.abs(px - sKept) <= 2) return;
+        sKept = px;
+        try { GboardPlus.reserve(px); } catch (Throwable ignored) { }
+    }
+
+    private static View inline(View v) {
+        if (v.getVisibility() != View.VISIBLE) return null;
+        if ("android.widget.inline.InlineContentView".equals(v.getClass().getName())) return v.getWidth() > 0 && v.isShown() ? v : null;
+        if (v instanceof ViewGroup) {
+            ViewGroup g = (ViewGroup) v;
+            for (int i = 0; i < g.getChildCount(); i++) { View hit = inline(g.getChildAt(i)); if (hit != null) return hit; }
+        }
+        return null;
+    }
+
+    private static void place(InputMethodService ime, ViewGroup frame, View chip) {
+        try {
+            int W = frame.getWidth(), H = frame.getHeight();
+            if (W <= 0 || H <= 0) return;
+            int[] home = new int[2], at = new int[2];
+            frame.getLocationOnScreen(home);
+            frame.getLocationInWindow(at);
+            Rect row = new Rect();
+            View strip = null;
+            boolean known = false;
+            try { strip = GboardPlus.slot(row); known = GboardPlus.strips(); } catch (Throwable ignored) { }
+            int mode = strip == null ? (known ? HIDE : PLAIN) : strip.getRootView() != frame.getRootView() ? APART : sClash ? LIFT : SLOT;
+            TextView from = (TextView) chip.findViewWithTag("from");
+            int label = (mode == APART || mode == PLAIN) && from.getText().length() > 0 ? View.VISIBLE : View.GONE;
+            if (from.getVisibility() != label) from.setVisibility(label);
+            float lift = dp(ime, mode == SLOT ? 1.5f : 6);
+            if (chip.getElevation() != lift) chip.setElevation(lift);
+            int cw, tall;
+            if (chip.getWidth() > 0 && !chip.isLayoutRequested()) { cw = chip.getWidth(); tall = chip.getHeight(); }
+            else { chip.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED)); cw = chip.getMeasuredWidth(); tall = chip.getMeasuredHeight(); }
+            if (cw <= 0 || tall <= 0) return;
+            int pad = dp(ime, 6), x = 0, y = 0;
+            float k = 1f;
+            boolean show = true;
+            if (mode == SLOT) {
+                float s = 1f;
+                try { s = GboardPlus.stripScale(strip); } catch (Throwable ignored) { }
+                if (!(s > 0.3f && s < 3f)) s = 1f;
+                k = Math.max(0.6f, Math.min(1f, (row.height() - dp(ime, 6)) / (float) tall));
+                int need = Math.round((pad + cw * k + dp(ime, 8)) / s);
+                keep(need);
+                x = row.left + pad - home[0];
+                y = row.top + Math.round((row.height() - tall * k) / 2f) - home[1];
+                try {
+                    View busy = strip.isLayoutRequested() || GboardPlus.held(strip) < need - 3 ? null : inline(frame.getRootView());
+                    Rect seen = new Rect();
+                    if (busy != null && busy.getGlobalVisibleRect(seen)) {
+                        Rect mine = new Rect(at[0] + x, at[1] + y, at[0] + x + Math.round(cw * k), at[1] + y + Math.round(tall * k));
+                        if (Rect.intersects(mine, seen)) { sClash = true; mode = LIFT; }
+                    }
+                } catch (Throwable ignored) { }
+            }
+            if (mode == LIFT) {
+                keep(0);
+                k = 1f;
+                x = row.left + pad - home[0];
+                y = row.top - tall - dp(ime, 6) - home[1];
+                if (y < 0) y = row.top + Math.round((row.height() - tall) / 2f) - home[1];
+            } else if (mode == APART) {
+                keep(0);
+                View root = strip.getRootView();
+                int[] p = new int[2];
+                root.getLocationOnScreen(p);
+                x = p[0] + root.getWidth() / 2 - cw / 2 - home[0];
+                int above = p[1] - tall - dp(ime, 8) - home[1], below = p[1] + root.getHeight() + dp(ime, 8) - home[1];
+                if (above >= dp(ime, 24)) y = above; else if (below + tall <= H - dp(ime, 8)) y = below; else show = false;
+            } else if (mode == HIDE) {
+                show = false;
+            } else if (mode == PLAIN) {
+                int top = dp(ime, 4);
+                float shift = 0;
+                if (sSeenTop >= 0) {
+                    Rect area = sSeenRegion ? sSeenArea : null;
+                    int edge = sSeenTop;
+                    boolean apart = area != null && edge >= area.bottom - dp(ime, 8);
+                    if (area != null && !(edge > area.top && edge < area.bottom)) edge = area.top;
+                    int room = H - dp(ime, 44);
+                    if (apart) {
+                        int above = area.top - at[1] - tall - dp(ime, 8), below = area.bottom - at[1] + dp(ime, 8);
+                        if (above > 0) top = above; else if (below < room) top = below;
+                    } else if (edge - at[1] > 0 && edge - at[1] < room) top = edge - at[1] + dp(ime, 4);
+                    if (area != null && area.width() > dp(ime, 120)) shift = area.exactCenterX() - at[0] - W / 2f;
+                }
+                try {
+                    View busy = inline(frame.getRootView());
+                    if (busy != null) {
+                        int[] b = new int[2];
+                        busy.getLocationInWindow(b);
+                        int above = b[1] - at[1] - tall - dp(ime, 6);
+                        if (above >= 0) top = above;
+                    }
+                } catch (Throwable ignored) { }
+                x = Math.round((W - cw) / 2f + shift);
+                y = top;
+            }
+            x = Math.max(0, Math.min(x, W - Math.round(cw * k)));
+            y = Math.max(0, Math.min(y, H - Math.round(tall * k)));
+            if (chip.getPivotX() != 0f) chip.setPivotX(0f);
+            if (chip.getPivotY() != 0f) chip.setPivotY(0f);
+            if (chip.getScaleX() != k) { chip.setScaleX(k); chip.setScaleY(k); }
+            if (chip.getTranslationX() != 0f) chip.setTranslationX(0f);
+            ViewGroup.MarginLayoutParams lp = (ViewGroup.MarginLayoutParams) chip.getLayoutParams();
+            if (lp.leftMargin != x || lp.topMargin != y) { lp.leftMargin = x; lp.topMargin = y; chip.setLayoutParams(lp); }
+            int vis = show ? View.VISIBLE : View.INVISIBLE;
+            if (chip.getVisibility() != vis) chip.setVisibility(vis);
+            if (show && frame.getChildAt(frame.getChildCount() - 1) != chip) chip.bringToFront();
+        } catch (Throwable ignored) { }
+    }
+
+    private static int sSeenTop = -1;
+    private static boolean sSeenRegion;
+    private static final Rect sSeenArea = new Rect();
+    private static Class<?> sInsetsOwner;
+
+    private static void reach(InputMethodService ime) {
+        try {
+            Class<?> c = ime.getClass();
+            while (c != null && c != Object.class) {
+                try { c.getDeclaredMethod("onComputeInsets", InputMethodService.Insets.class); break; } catch (Throwable none) { c = c.getSuperclass(); }
+            }
+            if (c == null || c == Object.class || c == sInsetsOwner) return;
+            sInsetsOwner = c;
+            Xp.hookAllMethods(c, "onComputeInsets", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    try {
+                        if (p.args == null || p.args.length != 1 || !(p.args[0] instanceof InputMethodService.Insets)) return;
+                        InputMethodService.Insets in = (InputMethodService.Insets) p.args[0];
+                        boolean region = in.touchableInsets == InputMethodService.Insets.TOUCHABLE_INSETS_REGION && !in.touchableRegion.isEmpty();
+                        Rect now = region ? in.touchableRegion.getBounds() : null;
+                        boolean moved = in.visibleTopInsets != sSeenTop || region != sSeenRegion || region && !now.equals(sSeenArea);
+                        sSeenTop = in.visibleTopInsets;
+                        sSeenRegion = region;
+                        if (region) sSeenArea.set(now); else sSeenArea.setEmpty();
+                        View chip = sChip.get();
+                        InputMethodService owner = sIme.get();
+                        if (in.touchableInsets == InputMethodService.Insets.TOUCHABLE_INSETS_REGION && chip != null && chip.isAttachedToWindow() && chip.getWidth() > 0 && chip.getVisibility() == View.VISIBLE
+                                && owner != null && chip.getRootView() == owner.getWindow().getWindow().getDecorView()) {
+                            int[] at = new int[2];
+                            chip.getLocationInWindow(at);
+                            in.touchableRegion.union(new Rect(at[0], at[1], at[0] + Math.round(chip.getWidth() * chip.getScaleX()), at[1] + Math.round(chip.getHeight() * chip.getScaleY())));
+                        }
+                        if (moved) nudge();
+                    } catch (Throwable ignored) { }
+                }
+            });
+        } catch (Throwable ignored) { }
+    }
+
+    private static boolean entered(InputMethodService ime, String code) {
+        try {
+            InputConnection ic = ime.getCurrentInputConnection();
+            if (ic == null || code == null) return false;
+            CharSequence before = ic.getTextBeforeCursor(code.length() + 1, 0);
+            if (before == null || before.length() < code.length()) return false;
+            String text = before.toString();
+            if (!text.regionMatches(true, text.length() - code.length(), code, 0, code.length())) return false;
+            return text.length() == code.length() || !Character.isLetterOrDigit(text.charAt(0));
+        } catch (Throwable t) { return false; }
     }
 
     private static void drop() {
         View chip = sChip.get();
         sChip = new WeakReference<View>(null);
+        sClash = false;
+        keep(0);
         try { if (chip != null && chip.getParent() instanceof ViewGroup) ((ViewGroup) chip.getParent()).removeView(chip); } catch (Throwable ignored) { }
+    }
+
+    private static final class Digits extends android.graphics.drawable.Drawable {
+        private final android.graphics.Paint paint = new android.graphics.Paint(android.graphics.Paint.ANTI_ALIAS_FLAG);
+        private final int color;
+        Digits(int color) { this.color = color; }
+        @Override public void draw(android.graphics.Canvas c) {
+            Rect b = getBounds();
+            float s = Math.min(b.width(), b.height()), u = s / 20f, x = b.left, y = b.top;
+            paint.setColor(color);
+            paint.setStyle(android.graphics.Paint.Style.STROKE);
+            paint.setStrokeWidth(1.6f * u);
+            c.drawRoundRect(x + 2 * u, y + 3.5f * u, x + 18 * u, y + 17.5f * u, 3 * u, 3 * u, paint);
+            paint.setStyle(android.graphics.Paint.Style.FILL);
+            paint.setTextAlign(android.graphics.Paint.Align.CENTER);
+            paint.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+            paint.setTextSize(7.2f * u);
+            c.drawText("123", x + 10 * u, y + 13.2f * u, paint);
+        }
+        @Override public void setAlpha(int a) { }
+        @Override public void setColorFilter(android.graphics.ColorFilter f) { }
+        @Override public int getOpacity() { return android.graphics.PixelFormat.TRANSLUCENT; }
     }
 
     private static int dp(Context c, float v) { return Math.round(v * c.getResources().getDisplayMetrics().density); }
@@ -290,14 +520,18 @@ final class OtpFill {
         pill.setOrientation(LinearLayout.HORIZONTAL);
         pill.setGravity(Gravity.CENTER_VERTICAL);
         pill.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-        pill.setPadding(dp(ime, 16), 0, dp(ime, 16), 0);
+        pill.setPadding(dp(ime, 12), 0, dp(ime, 16), 0);
         pill.setMinimumHeight(dp(ime, 36));
         GradientDrawable bg = new GradientDrawable();
         bg.setCornerRadius(dp(ime, 18));
         bg.setColor(dark ? 0xFF2E3136 : 0xFFFFFFFF);
-        bg.setStroke(Math.max(1, dp(ime, 1)), dark ? 0xFF8AB4F8 : 0xFF1A73E8);
         pill.setBackground(bg);
         pill.setElevation(dp(ime, 6));
+        View mark = new View(ime);
+        mark.setBackground(new Digits(dark ? 0xFFE3E3E3 : 0xFF444746));
+        LinearLayout.LayoutParams ml = new LinearLayout.LayoutParams(dp(ime, 20), dp(ime, 20));
+        ml.rightMargin = dp(ime, 8);
+        pill.addView(mark, ml);
         TextView code = new TextView(ime);
         code.setTag("code");
         code.setTextSize(17);

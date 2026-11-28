@@ -510,29 +510,39 @@ final class MultiDrag {
     }
 
     private static void removeNow(Activity a, List<Pick> todo) throws Exception {
+        int gone = 0, missed = 0;
         java.util.LinkedHashMap<Integer, List<Object>> byFolder = new java.util.LinkedHashMap<Integer, List<Object>>();
         for (Pick p : todo) {
             int container = ((Number) get(p.info, "container")).intValue();
             if (container >= 0) { List<Object> l = byFolder.get(container); if (l == null) byFolder.put(container, l = new ArrayList<Object>()); l.add(p.info); continue; }
             View view = p.view != null && p.view.isAttachedToWindow() && p.view.getTag() == p.info ? p.view : viewOf(a.getWindow().getDecorView(), p.info);
-            if (view == null) { continue; }
-            try { call(a, "removeItem", view, p.info, true, "Pixel Suite: moved with other apps"); }
-            catch (Throwable fourArgs) { call(a, "removeItem", view, p.info, true); }
+            if (view == null) { missed++; continue; }
+            if (forget(a, view, p.info)) gone++; else missed++;
         }
         for (java.util.Map.Entry<Integer, List<Object>> e : byFolder.entrySet()) {
             View icon = findFolderIcon(a.getWindow().getDecorView(), e.getKey());
-            if (icon == null) { continue; }
+            if (icon == null) { missed += e.getValue().size(); continue; }
             Object folder = get(icon, "mFolder"), info = get(icon, "mInfo");
             List<?> contents = (List<?>) get(info, "contents");
             List<Object> removing = new ArrayList<Object>();
             for (Object item : e.getValue()) if (contents.contains(item)) removing.add(item);
             if (removing.isEmpty()) continue;
             int count = contents.size();
-            if (removing.size() >= count) {
-                try { call(a, "removeItem", icon, info, true, "Pixel Suite: moved with other apps"); }
-                catch (Throwable fourArgs) { call(a, "removeItem", icon, info, true); }
-            } else HomeFolderApps.remove(a, folder, removing);
+            if (removing.size() >= count) { if (forget(a, icon, info)) gone += removing.size(); else missed += removing.size(); }
+            else { HomeFolderApps.remove(a, folder, removing); gone += removing.size(); }
         }
+    }
+
+    private static boolean forget(Activity a, View view, Object info) { return remove(a, view, info, "Pixel Suite: moved with other apps"); }
+
+    static boolean remove(Activity a, View view, Object info, String why) {
+        try { call(a, "removeItem", view, info, true, why); return true; } catch (Throwable older) { }
+        try { call(a, "removeItem", view, info, true); return true; } catch (Throwable older) { }
+        try {
+            Object handler = call(call(a, "getActivityComponent"), "getItemDeleteHandler");
+            Object done = call(handler, "removeItem", info, true, why);
+            return !Boolean.FALSE.equals(done);
+        } catch (Throwable t) { return false; }
     }
 
     private static View viewOf(View v, Object tag) {

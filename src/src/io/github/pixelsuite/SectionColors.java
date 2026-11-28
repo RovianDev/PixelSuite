@@ -9,7 +9,7 @@ final class SectionColors {
         if("files".equals(page)||"share_menu".equals(page))return 5;
         if("miscellaneous".equals(page)||"otp".equals(page))return 0;
 
-        if(WidgetPanel.KEY.equals(page)||(icon!=null&&icon.contains("widget")))return 1;
+        if(WidgetPanel.KEY.equals(page)||PixelSearch.PAGE.equals(page)||(icon!=null&&icon.contains("widget")))return 1;
         if("chrome".equals(page)||"google_news".equals(page)||"google_apps".equals(page)||"google_app".equals(page)||"google_dialer".equals(page)||"pixel_watch".equals(page))return 1;
         if(icon==null)return 1;
         if(icon.contains("themes")||icon.contains("doodles")||icon.contains("launcher")||icon.contains("aod")||icon.contains("widget"))return 3;

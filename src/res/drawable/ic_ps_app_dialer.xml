@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="24dp" android:height="24dp" android:viewportWidth="24" android:viewportHeight="24">
+    <path android:strokeColor="#FFFFFFFF" android:strokeWidth="1.7" android:fillColor="#00000000" android:pathData="M12,2.4 a9.6,9.6 0 1 1 -0.01,0 z"/>
+    <group android:translateX="-4.740" android:translateY="-4.740" android:scaleX="0.310" android:scaleY="0.310">
+        <group android:translateX="10.04" android:translateY="10.03" android:scaleX="0.04114" android:scaleY="0.04114">
+            <path android:fillColor="#FFFFFFFF" android:fillAlpha="0.55" android:pathData="M789,565 C852,520 911,541 941,599 L1021,748 C1049,802 1023,849 980,873 L843,946 C895,1084 987,1224 1112,1331 L1224,1230 C1268,1190 1318,1190 1362,1236 L1478,1360 C1522,1407 1510,1465 1462,1505 C1365,1587 1219,1613 1097,1574 C863,1500 693,1304 631,1062 C573,837 660,663 789,565 Z"/>
+            <path android:fillColor="#FFFFFFFF" android:pathData="M789,565 C760,594 745,635 758,681 C780,763 808,854 843,946 L777,980 C763,987 758,1000 765,1019 C817,1164 908,1292 1015,1382 C1029,1394 1042,1393 1057,1380 L1112,1331 C1184,1394 1261,1458 1338,1507 C1380,1534 1426,1531 1462,1505 C1365,1587 1219,1613 1097,1574 C863,1500 693,1304 631,1062 C573,837 660,663 789,565 Z"/>
+        </group>
+    </group>
+</vector>

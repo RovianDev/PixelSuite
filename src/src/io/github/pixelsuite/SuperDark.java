@@ -55,6 +55,27 @@ final class SuperDark {
                 }
             });
         } catch (Throwable t) { }
+        composeScrims(cl);
+        try {
+            Class<?> sd = Class.forName("com.android.systemui.scrim.ScrimDrawable", false, cl);
+            Xp.hookAllMethods(sd, "setColor", new Xp.Callback() {
+                @Override protected void beforeHookedMethod(Xp.Param p) {
+                    if (p.args.length == 0 || !(p.args[0] instanceof Integer) || !effectiveCached()) return;
+                    int c = (Integer) p.args[0]; if ((c & 0xffffff) == 0) return;
+                    p.args[0] = c & 0xff000000;
+                }
+            });
+        } catch (Throwable t) { }
+        try {
+            Class<?> panel = Class.forName("com.android.systemui.common.shared.colors.BlurPanelColors", false, cl);
+            Xp.Callback black = new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    try { if (p.getResult() instanceof Integer && effectiveCached()) p.setResult((Integer) p.getResult() & 0xff000000); } catch (Throwable ignored) { }
+                }
+            };
+            Xp.hookAllMethods(panel, "panelColor", black);
+            Xp.hookAllMethods(panel, "panelWithSE0", black);
+        } catch (Throwable t) { }
         hookPanel(android.graphics.drawable.ColorDrawable.class, "setColor");
         hookPanel(android.graphics.drawable.GradientDrawable.class, "setColor");
         hookPanel(android.view.View.class, "setBackgroundColor");
@@ -62,6 +83,45 @@ final class SuperDark {
         backdropHooks();
         splashHooks(cl);
     }
+
+    private static void composeScrims(ClassLoader cl) {
+        try {
+            Class<?> colors = Class.forName("com.android.systemui.shade.ui.ShadeColors", false, cl);
+            Xp.hookAllMethods(colors, "shadePanel", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    try {
+                        if (!(p.getResult() instanceof Integer) || !effectiveCached()) return;
+                        p.setResult((Integer) p.getResult() & 0xff000000);
+                    } catch (Throwable ignored) { }
+                }
+            });
+        } catch (Throwable t) { }
+        try {
+            Class<?> overlay = Class.forName("com.android.systemui.bouncer.ui.composable.BouncerOverlayKt", false, cl);
+            for (java.lang.reflect.Method m : overlay.getDeclaredMethods()) {
+                if (!m.getName().startsWith("Background")) continue;
+                Class<?>[] t = m.getParameterTypes();
+                int at = -1;
+                for (int i = 0; i < t.length; i++) if (t[i] == long.class) { at = i; break; }
+                if (at < 0) continue;
+                final int ci = at;
+                Xp.hookMethod(m, new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) {
+                        try {
+                            if (!(p.args[ci] instanceof Long)) return;
+                            long c = (Long) p.args[ci];
+                            boolean srgb = (c & 0x3fL) == 0;
+                            int alpha = srgb ? (int) (c >>> 56) & 0xff : Math.round(((c >>> 6) & 0x3ff) / 1023f * 255f);
+                            if (effectiveCached()) { p.args[ci] = packed(alpha << 24); return; }
+                            if (srgb && stockPanel((int) (c >>> 32) & 0xffffff) && blurOffDark()) p.args[ci] = packed((alpha << 24) | 0x17181c);
+                        } catch (Throwable ignored) { }
+                    }
+                });
+            }
+        } catch (Throwable t) { }
+    }
+
+    private static long packed(int argb) { return ((long) argb & 0xffffffffL) << 32; }
 
     private static void notificationTints(ClassLoader cl) {
         try {
@@ -135,9 +195,15 @@ final class SuperDark {
             int kind;
             synchronized (sBackdropKind) { kind = sBackdropKind.get(id, 0); }
             if (kind == 0) {
-                String name; try { name = r.getResourceEntryName(id); } catch (Throwable t) { name = ""; }
-                kind = name.contains("surface_effect_0_fallback") ? 3 : 1;
+                String name, pkg; try { name = r.getResourceEntryName(id); pkg = r.getResourcePackageName(id); } catch (Throwable t) { name = ""; pkg = ""; }
+                kind = name.contains("surface_effect_0_fallback") ? 3 : "android".equals(pkg) && name.contains("shade_panel") ? 4 : 1;
                 synchronized (sBackdropKind) { sBackdropKind.put(id, kind); }
+            }
+            if (kind == 4) {
+                if (!effectiveCached()) return;
+                int v = (Integer) p.getResult();
+                if ((v & 0xffffff) != 0) p.setResult(v & 0xff000000);
+                return;
             }
             if (kind != 3 || !blurOffDark()) return;
             int v = (Integer) p.getResult();
@@ -198,6 +264,103 @@ final class SuperDark {
         } catch (Throwable t) { return 0; }
     }
 
+
+    private static final ThreadLocal<int[]> sBuilding = new ThreadLocal<int[]>();
+    private static volatile Boolean sBuilt;
+    private static volatile Object sStates;
+    private static volatile boolean sWatching;
+
+    static void installSystem(ClassLoader cl) {
+        final Class<?> helper;
+        try { helper = Class.forName("com.android.server.theming.ThemeOverlayHelper", false, cl); } catch (Throwable t) { return; }
+        Xp.hookAllMethods(helper, "createDynamicOverlay", new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) { int[] d = sBuilding.get(); if (d == null) sBuilding.set(d = new int[1]); d[0]++; }
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                int[] d = sBuilding.get(); if (d != null && d[0] > 0) d[0]--;
+                sBuilt = effective(null);
+            }
+        });
+        Xp.Callback build = new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                int[] d = sBuilding.get();
+                if (d == null || d[0] <= 0) return;
+                if (p.args.length < 3 || !(p.args[0] instanceof String) || !(p.args[2] instanceof Integer)) return;
+                String full = (String) p.args[0];
+                if (!full.contains("color/") || !effective(null)) return;
+                String config = p.args.length > 3 && p.args[3] instanceof String ? (String) p.args[3] : "";
+                Integer black = colorFor(full.substring(full.lastIndexOf('/') + 1), config);
+                if (black != null) p.args[2] = black;
+            }
+        };
+        for (String c : new String[] {"android.content.om.FabricatedOverlay", "android.content.om.FabricatedOverlay$Builder"}) {
+            try { Xp.hookAllMethods(Class.forName(c), "setResourceValue", build); } catch (Throwable t) { }
+        }
+        Xp.hookAllMethods(helper, "isColorSchemeApplied", new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                if (!Boolean.TRUE.equals(p.getResult())) return;
+                boolean eff = effective(null);
+                Boolean built = sBuilt;
+                if (built == null ? eff : built != eff) p.setResult(Boolean.FALSE);
+            }
+        });
+        try {
+            Class<?> states = Class.forName("com.android.server.theming.ThemeStateManager", false, cl);
+            Xp.Callback keep = new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) { sStates = p.thisObject; watch(); }
+            };
+            Xp.hookAllMethods(states, "setThemeOverlayHelper", keep);
+            Xp.hookAllMethods(states, "onServicesReady", keep);
+            Xp.hookAllMethods(states, "evaluateAllUsers", keep);
+        } catch (Throwable t) { }
+    }
+
+    private static Context systemContext() {
+        try {
+            Object at = Class.forName("android.app.ActivityThread").getMethod("currentActivityThread").invoke(null);
+            return (Context) at.getClass().getMethod("getSystemContext").invoke(at);
+        } catch (Throwable t) { return null; }
+    }
+
+    private static void watch() {
+        if (sWatching) return;
+        final Context ctx = systemContext();
+        if (ctx == null) return;
+        sWatching = true;
+        final android.os.Handler h = new android.os.Handler(android.os.Looper.getMainLooper());
+        final Runnable check = new Runnable() { public void run() { recheck(); } };
+        try {
+            ctx.registerReceiver(new android.content.BroadcastReceiver() {
+                @Override public void onReceive(Context c, android.content.Intent i) { h.removeCallbacks(check); h.postDelayed(check, 400); }
+            }, new android.content.IntentFilter(android.content.Intent.ACTION_CONFIGURATION_CHANGED), null, h);
+        } catch (Throwable t) { }
+        try {
+            android.database.ContentObserver o = new android.database.ContentObserver(h) {
+                @Override public void onChange(boolean self) { h.removeCallbacks(check); h.postDelayed(check, 400); }
+            };
+            android.content.ContentResolver cr = ctx.getContentResolver();
+            cr.registerContentObserver(android.provider.Settings.Secure.getUriFor("ui_night_mode"), false, o);
+            cr.registerContentObserver(android.provider.Settings.Secure.getUriFor("theme_customization_overlay_packages"), false, o);
+            cr.registerContentObserver(android.provider.Settings.Secure.getUriFor(KEY), false, o);
+        } catch (Throwable t) { }
+        for (long later : new long[] {15000, 45000, 120000}) h.postDelayed(check, later);
+    }
+
+    private static void recheck() {
+        Object states = sStates;
+        if (states == null) return;
+        boolean eff = effective(null);
+        Boolean built = sBuilt;
+        if (built == null ? !eff : built == eff) return;
+        try {
+            java.lang.reflect.Method m = null;
+            for (java.lang.reflect.Method x : states.getClass().getDeclaredMethods())
+                if (x.getName().equals("evaluateAllUsers") && x.getParameterTypes().length == 1) { m = x; break; }
+            if (m == null) return;
+            m.setAccessible(true);
+            m.invoke(states, false);
+        } catch (Throwable t) { }
+    }
+
     private static volatile Boolean sApplied;
     private static volatile Object sController;
     private static boolean sStarted;
@@ -236,6 +399,7 @@ final class SuperDark {
         final android.os.Handler h = new android.os.Handler(android.os.Looper.getMainLooper());
         h.postDelayed(new Runnable() { public void run() { sync(why); } }, 300);
         h.postDelayed(new Runnable() { public void run() { sync(why + ", again"); } }, 1500);
+        h.postDelayed(new Runnable() { public void run() { ensure(why); } }, 4000);
     }
 
     private static void syncBlur(Context ctx, boolean eff) {
@@ -266,6 +430,26 @@ final class SuperDark {
         } catch (Throwable t) { return false; }
     }
 
+    private static int sForced;
+
+    private static boolean overlayBlack(Context ctx) {
+        try {
+            int id = android.content.res.Resources.getSystem().getIdentifier("system_neutral1_900", "color", "android");
+            if (id == 0) return true;
+            int c = ctx.getResources().getColor(id, null);
+            return (c & 0xffffff) == 0;
+        } catch (Throwable t) { return true; }
+    }
+
+    private static void ensure(String why) {
+        Context ctx = app();
+        if (sController == null || ctx == null || sForced >= 6) return;
+        if (!effective(ctx) || overlayBlack(ctx)) return;
+        sForced++;
+        sApplied = Boolean.FALSE;
+        sync(why + ", colours weren't applied");
+    }
+
     private static void sync(String why) {
         Object controller = sController; Context ctx = app();
         if (controller == null || ctx == null) return;
@@ -273,7 +457,7 @@ final class SuperDark {
         if (sApplied != null && sApplied == eff) return;
         sApplied = eff;
         syncBlur(ctx, eff);
-        if (!needCreation(controller)) return;
+        if (!needCreation(controller)) { return; }
         try {
             java.lang.reflect.Method m = null;
             for (Class<?> k = controller.getClass(); k != null && m == null; k = k.getSuperclass()) {
@@ -294,6 +478,7 @@ final class SuperDark {
                 if (ctx == null) { if (++tries < 10) h.postDelayed(this, 2000); return; }
                 sApplied = effective(ctx) ? Boolean.FALSE : null;
                 if (sApplied != null) sync("after boot"); else { sApplied = Boolean.FALSE; syncBlur(ctx, false); }
+                for (long later : new long[] {8000, 25000, 60000, 150000}) h.postDelayed(new Runnable() { public void run() { ensure("check"); } }, later);
                 try {
                     ctx.registerComponentCallbacks(new android.content.ComponentCallbacks() {
                         public void onConfigurationChanged(android.content.res.Configuration c) { scheduleSync("configuration"); }
@@ -316,7 +501,7 @@ final class SuperDark {
             String name = full.substring(full.lastIndexOf('/') + 1);
             String config = p.args.length > 3 && p.args[3] instanceof String ? (String) p.args[3] : "";
             Context ctx = app();
-            if (!effective(ctx)) return;
+            if (!effective(ctx)) { return; }
             Integer black = colorFor(name, config);
             if (black == null) return;
             p.args[2] = black;

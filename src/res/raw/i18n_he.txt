@@ -1811,3 +1811,366 @@ Couldn't put back {0}	לא ניתן להחזיר את {0}
 Couldn't save {0}	לא ניתן לשמור את {0}
 It didn't install	ההתקנה לא הצליחה
 Root isn't available	root לא זמין
+Pixel search	חיפוש Pixel
+Find apps, contacts, files and more	מצאו אפליקציות, אנשי קשר, קבצים ועוד
+Everything on your phone, one search away.	כל מה שבטלפון, במרחק חיפוש אחד.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	סרגל חיפוש חדש במסך הבית. מצאו אפליקציות, אנשי קשר, קבצים, הגדרות ועוד במקום אחד.
+Look	מראה
+Color	צבע
+Blurs what's behind the bar, with glowing edges.	מטשטש את מה שמאחורי הסרגל, עם קצוות זוהרים.
+How much of the outer bar shows.	כמה מהסרגל החיצוני נראה.
+How much of the search box and side buttons shows.	כמה מתיבת החיפוש ומהכפתורים בצדדים נראה.
+Voice search, Google Lens, Song search	חיפוש קולי, Google Lens, חיפוש שיר
+Choose and order what shows up	בחרו מה יופיע ובאיזה סדר
+Web search	חיפוש באינטרנט
+What to search	במה לחפש
+Search inside files	חיפוש בתוך קבצים
+Tap to look through your files now.	הקישו כדי לעבור על הקבצים עכשיו.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	מצאו מילים ומספרים בתוך קובצי PDF,‏ Word,‏ Excel וקובצי טקסט, כולל העמוד שבו הם נמצאים. לחיצה ארוכה על קובץ מאפשרת תצוגה מקדימה, שיתוף או איתור.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	הקלידו חישוב או המרה, כמו 15% of 80 או 5 km in miles, והקישו על התוצאה כדי להעתיק אותה.
+Pixel search shows when Hide search bar is off.	חיפוש Pixel מופיע כשהסתרת סרגל החיפוש כבויה.
+System colors	צבעי המערכת
+Your color	הצבע שלכם
+Any color	כל צבע
+Light	בהיר
+Calculator and units	מחשבון ויחידות
+App shortcuts	קיצורי דרך של אפליקציות
+Files and media	קבצים ומדיה
+Inside files	בתוך קבצים
+Web	אינטרנט
+All	הכול
+Google Lens	Google Lens
+Song search	חיפוש שיר
+Assistant	Assistant
+QR code scanner	סורק קודי QR
+Action	פעולה
+App	אפליקציה
+App shortcut	קיצור דרך של אפליקציה
+Contact	איש קשר
+Shortcut	קיצור דרך
+Add a button	הוספת כפתור
+Choose an app	בחרו אפליקציה
+Couldn't open your contacts	לא ניתן לפתוח את אנשי הקשר
+Getting the app's shortcuts…	מביאים את קיצורי הדרך של האפליקציה…
+Go to your home screen once, then try again.	עברו פעם אחת למסך הבית ונסו שוב.
+In the search box	בתוך תיבת החיפוש
+Left side	צד שמאל
+Right side	צד ימין
+Looking through your files…	עוברים על הקבצים שלכם…
+Looking through your files… {0}	עוברים על הקבצים שלכם… {0}
+Move down	הזזה למטה
+Move left	הזזה שמאלה
+Move right	הזזה ימינה
+Move up	הזזה למעלה
+No buttons	אין כפתורים
+Preview	תצוגה מקדימה
+Results show in this order. Turn off what you don't need.	התוצאות מופיעות בסדר הזה. כבו את מה שלא צריך.
+That side is full	הצד הזה מלא
+This app has no shortcuts	לאפליקציה הזו אין קיצורי דרך
+This contact has no phone number	לאיש הקשר הזה אין מספר טלפון
+Turn Pixel search off and on again to allow searching your files.	כבו והפעילו מחדש את חיפוש Pixel כדי לאפשר חיפוש בקבצים.
+Turn on Pixel search first	הפעילו קודם את חיפוש Pixel
+Your files are looked through after you turn on Pixel search.	הקבצים נבדקים אחרי שמפעילים את חיפוש Pixel.
+{0} files, {1} with text you can search. Updated {2}.	{0} קבצים, ב-{1} מהם יש טקסט שאפשר לחפש. עודכן {2}.
+{0} of {1} turned on	{0} מתוך {1} מופעלים
+No app can open this file	אין אפליקציה שיכולה לפתוח את הקובץ הזה
+No app can open this folder	אין אפליקציה שיכולה לפתוח את התיקייה הזו
+That file isn't there any more	הקובץ הזה כבר לא שם
+Couldn't open it	לא ניתן לפתוח
+About phone	מידע על הטלפון
+Accessibility	נגישות
+Airplane mode	מצב טיסה
+Android settings	הגדרות Android
+Battery	סוללה
+Battery Saver	חיסכון בסוללה
+Cast	העברה (Cast)
+Copied	הועתק
+Dark theme	עיצוב כהה
+Data usage	שימוש בנתונים
+Default apps	אפליקציות ברירת מחדל
+Developer options	אפשרויות למפתחים
+Display	תצוגה
+Getting your files ready. They show up here in a few minutes.	מכינים את הקבצים שלכם. הם יופיעו כאן בעוד כמה דקות.
+Keyboard	מקלדת
+Location	מיקום
+Network & internet	רשת ואינטרנט
+Night Light	תאורת לילה
+No results	אין תוצאות
+Open	פתיחה
+Page {0}	עמוד {0}
+Passwords & accounts	סיסמאות וחשבונות
+Printing	הדפסה
+Privacy	פרטיות
+Search apps, contacts, files, settings and more	חפשו אפליקציות, אנשי קשר, קבצים, הגדרות ועוד
+Search your phone and the web	חיפוש בטלפון ובאינטרנט
+Search {0} for “{1}”	חיפוש “{1}” ב-{0}
+Security & privacy	אבטחה ופרטיות
+Show in folder	הצגה בתיקייה
+Sound & vibration	צליל ורטט
+Storage	אחסון
+System update	עדכון מערכת
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	כבו והפעילו מחדש את חיפוש Pixel ב-Pixel Suite כדי לאפשר חיפוש בקבצים.
+Users	משתמשים
+Wi-Fi	Wi-Fi
+Colorful icons	סמלים צבעוניים
+App and shortcut buttons keep their own colors.	כפתורי האפליקציות וקיצורי הדרך שומרים על הצבעים שלהם.
+Edit search bar	עריכת סרגל החיפוש
+Size	גודל
+Outer bar	הסרגל החיצוני
+Search box	תיבת החיפוש
+More settings	הגדרות נוספות
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	הקישו על סרגל החיפוש והתחילו להקליד. לחיצה ארוכה על הסרגל מאפשרת לערוך אותו ישירות במסך הבית.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	גררו את הכפתורים בסרגל כדי להזיז אותם. גררו כפתור אל מחוץ לסרגל כדי להסיר אותו.
+The bar is full. Drag a button off the bar first.	הסרגל מלא. גררו קודם כפתור אל מחוץ לסרגל.
+Hold and drag to change the order.	לחצו לחיצה ארוכה וגררו כדי לשנות את הסדר.
+Favorites	מועדפים
+Favorite	מועדף
+Added to favorites	נוסף למועדפים
+Removed from favorites	הוסר מהמועדפים
+Hold an app, a contact or a file to add it here	לחיצה ארוכה על אפליקציה, איש קשר או קובץ מוסיפה אותם לכאן
+Open Pixel Suite once to download currency rates	פתחו את Pixel Suite פעם אחת כדי להוריד שערי מטבע
+Currency	מטבע
+Convert to	המרה אל
+Update automatically	עדכון אוטומטי
+Update now	עדכון עכשיו
+Updating the rates…	מעדכן את השערים…
+Rates updated	השערים עודכנו
+Rates updated {0}	השערים עודכנו: {0}
+Rates not downloaded yet	השערים עדיין לא הורדו
+Couldn't update the rates	לא ניתן היה לעדכן את השערים
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	הקלידו סכום ומטבע, כמו 200 USD, כדי להמיר אותו. השערים מורדים מהאינטרנט ושום מידע עליכם לא נשלח.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	הקישו על כפתור כדי להוסיף אותו, או לחצו לחיצה ארוכה וגררו אותו אל הסרגל. גררו את הכפתורים שבסרגל כדי להזיז אותם, או אל מחוץ לסרגל כדי להסיר אותם.
+Drop it on the bar to add it	שחררו על הסרגל כדי להוסיף
+No contacts with a phone number	אין אנשי קשר עם מספר טלפון
+Everything is searched on your phone. Only web searches and currency rates go online.	הכול נבדק בטלפון עצמו. רק חיפושים באינטרנט ושערי מטבע יוצאים לרשת.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	לחיצה ארוכה על כהה או כהה במיוחד בוחרת במה ישתמש אוטומטי בלילה.
+Lock the sliders	נעילת המחוונים
+Search currencies	חיפוש מטבעות
+Search engine	מנוע חיפוש
+Search settings	הגדרות חיפוש
+Show keyboard	הצגת המקלדת
+Replace	החלפה
+Favorite contacts	אנשי קשר מועדפים
+Add dialer favorites	הוספת המועדפים מהחייגן
+Search contacts	חיפוש אנשי קשר
+Added to favorite contacts	נוסף לאנשי הקשר המועדפים
+Hold the search bar and add contacts first	קודם לחצו לחיצה ארוכה על סרגל החיפוש והוסיפו אנשי קשר
+No favorites in your dialer yet	אין עדיין מועדפים בחייגן
+Hide swipe-up hint	הסתרת רמז ההחלקה למעלה
+Stops the hint that plays after a few short swipes that don't open the drawer.	מפסיק את הרמז שמופיע אחרי כמה החלקות קצרות שלא פותחות את המגירה.
+Closing animation	אנימציית סגירה
+Shutter	תריס
+Glide	גלישה
+Balloons	בלונים
+Jelly	ג'לי
+Pop	פופ
+Wave	גל
+Swell	התנפחות
+Classic	קלאסי
+Scan to PDF	סריקה ל-PDF
+Add from gallery	הוספה מהגלריה
+Take photo	צילום
+Pages	עמודים
+Couldn't open the camera	לא ניתן לפתוח את המצלמה
+Camera access is needed to scan	נדרשת גישה למצלמה כדי לסרוק
+Save as PDF	שמירה כ-PDF
+Rotate	סיבוב
+All pages	כל העמודים
+{0} selected	{0} נבחרו
+File name	שם הקובץ
+Making the PDF…	יוצר את ה-PDF…
+Saved to Download	נשמר בהורדות
+Couldn't save the PDF	לא ניתן לשמור את ה-PDF
+Original	מקורי
+Auto	אוטומטי
+Enhanced	משופר
+Grayscale	גווני אפור
+Black & white	שחור-לבן
+Lighten	הבהרה
+Image to PDF	תמונה ל-PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	מוסיף את «סריקה ל-PDF» ללחצנים שאפשר להציב בסרגל החיפוש. צלמו עמודים או בחרו תמונות, סדרו אותם ואז שמרו או שתפו אותם כקובץ PDF אחד.
+Tools	כלים
+Featured apps	אפליקציות מומלצות
+Shows the apps you open most from Pixel search before you type.	מציג לפני ההקלדה את האפליקציות שאתם פותחים הכי הרבה מ-Pixel search.
+Recent searches	חיפושים אחרונים
+Shows your latest searches before you type. Hold one to remove it.	מציג לפני ההקלדה את החיפושים האחרונים שלכם. לחצו לחיצה ארוכה על אחד כדי להסיר אותו.
+Enter opens the first app	Enter פותח את האפליקציה הראשונה
+Turn off to always search the web when you press Enter.	כבו כדי ש-Enter תמיד יחפש באינטרנט.
+Delete this file?	למחוק את הקובץ הזה?
+Deleted	נמחק
+Couldn't delete it	לא ניתן למחוק
+Unpin	ביטול הצמדה
+Add to favorites	הוספה למועדפים
+Remove from favorites	הסרה מהמועדפים
+Clear recent searches?	לנקות את החיפושים האחרונים?
+Pixel Suite apps	אפליקציות Pixel Suite
+Pixel dialer	חייגן Pixel
+Your phone app, with call recording	אפליקציית הטלפון שלך, עם הקלטת שיחות
+Scan pages into one PDF	סריקת דפים ל-PDF אחד
+Apps that come with Pixel Suite.	אפליקציות שמגיעות עם Pixel Suite.
+Your phone app, made for Pixel Suite.	אפליקציית הטלפון שלך, שנבנתה עבור Pixel Suite.
+Pages and photos, turned into one PDF.	דפים ותמונות, ב-PDF אחד.
+Calls, contacts, favorites and call recording.	שיחות, אנשי קשר, מועדפים והקלטת שיחות.
+Calls, favorites, contacts and recordings	שיחות, מועדפים, אנשי קשר והקלטות
+Dialer settings	הגדרות החייגן
+Theme, sounds and call recording	ערכת נושא, צלילים והקלטת שיחות
+Install the Pixel Suite apps module in your root manager, then restart your phone.	יש להתקין את המודול Pixel Suite Apps במנהל הרוט ואז להפעיל מחדש את הטלפון.
+Look for new pages	מראה לדפים חדשים
+Open Image to PDF	פתיחת תמונה ל-PDF
+Open Pixel dialer	פתיחת חייגן Pixel
+Photograph pages or pick photos	צילום דפים או בחירת תמונות
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	מצלמים דפים או בוחרים תמונות, מיישרים ומסדרים אותם, ואז שומרים או משתפים כ-PDF אחד.
+Shows Image to PDF with your apps, with its own icon.	מציג את תמונה ל-PDF בין האפליקציות שלך, עם סמל משלו.
+The Scan to PDF button on the search bar is set in Pixel search.	הלחצן סריקה ל-PDF בסרגל החיפוש מוגדר בחיפוש Pixel.
+Turn Pixel dialer on first	יש להפעיל קודם את חייגן Pixel
+Turn each app on or off and change its settings.	אפשר להפעיל או לכבות כל אפליקציה ולשנות את ההגדרות שלה.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	בכיבוי האפליקציה מוסתרת והשיחות חוזרות לאפליקציית הטלפון האחרת שלך. אפשר להפעיל שוב בכל עת.
+Gray	אפור
+High	גבוהה
+Standard	רגילה
+PDF quality	איכות ה-PDF
+Pixel dialer, Pixel search and Image to PDF	חייגן Pixel, חיפוש Pixel ותמונה ל-PDF
+A file with that name already exists	כבר קיים קובץ בשם הזה
+Add Text	הוספת טקסט
+All PDFs	כל קובצי ה-PDF
+All tools	כל הכלים
+All your PDFs and tools	כל קובצי ה-PDF והכלים שלך
+Allow	אישור
+Allow access to your files to see and save PDFs.	יש לאשר גישה לקבצים כדי לראות ולשמור קובצי PDF.
+Anyone opening it will need this password.	כל מי שיפתח אותו יצטרך את הסיסמה הזו.
+Back side	צד אחורי
+Best quality	האיכות הטובה ביותר
+Browse	עיון
+Choose PDFs to merge	בחירת קובצי PDF למיזוג
+Choose a PDF	בחירת PDF
+Compress	דחיסה
+Convert	המרה
+Couldn't finish	לא ניתן היה לסיים
+Couldn't rename it	לא ניתן היה לשנות את השם
+Docx to PDF	Docx ל-PDF
+Doodle	שרבוט
+Draw on the page with your finger.	מציירים על הדף עם האצבע.
+Front side	צד קדמי
+Good balance	איזון טוב
+Import PDF	ייבוא PDF
+Largest first	הגדולים קודם
+Leave	יציאה
+Leave without saving?	לצאת בלי לשמור?
+Lock PDF	נעילת PDF
+Merge PDF	מיזוג PDF
+No PDFs yet.	עדיין אין קובצי PDF.
+Oldest first	הישנים קודם
+Open Pixel PDF	פתיחת Pixel PDF
+PDF to JPG	PDF ל-JPG
+PDF to PPT	PDF ל-PPT
+PDF to Word	PDF ל-Word
+PPT to PDF	PPT ל-PDF
+Page	עמוד
+Password	סיסמה
+Pick some files first	יש לבחור קודם קבצים
+Pick two or more PDFs to merge	יש לבחור שני קובצי PDF או יותר למיזוג
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	חייגן Pixel, חיפוש Pixel ו-Pixel PDF
+Popular	פופולרי
+Print PDF	הדפסת PDF
+Repeat password	חזרה על הסיסמה
+Saved to	נשמר ב-
+Saved to Pixel PDF	נשמר ב-Pixel PDF
+Saving	שומר
+Scan ID Card	סריקת תעודה מזהה
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	סורקים דפים ותעודות, ממירים תמונות וקובצי Word ו-PowerPoint ל-PDF, ודוחסים, ממזגים, חותמים, נועלים או מדפיסים אותם.
+Scan, convert and edit PDFs	סריקה, המרה ועריכה של PDF
+Scan, convert, edit and sign PDFs.	סריקה, המרה, עריכה וחתימה של PDF.
+Scanned and made PDFs show here. Tap + to scan your first one.	קובצי PDF שנסרקו ונוצרו מופיעים כאן. אפשר להקיש על + כדי לסרוק את הראשון.
+Search files	חיפוש קבצים
+Shows Pixel PDF with your apps, with its own icon.	מציג את Pixel PDF בין האפליקציות שלך, עם סמל משלו.
+Sign inside the box first	יש לחתום קודם בתוך המסגרת
+Sign inside the box.	חותמים בתוך המסגרת.
+Signature	חתימה
+Smallest file	הקובץ הקטן ביותר
+Smart Scan	סריקה חכמה
+Strong	חזקה
+Tap to place your signature. Drag the corner to resize it.	מקישים כדי להציב את החתימה. גוררים את הפינה כדי לשנות את הגודל.
+Tap where the text goes. Drag it to move it.	מקישים איפה שהטקסט יהיה. גוררים כדי להזיז אותו.
+That password isn't right.	הסיסמה הזו לא נכונה.
+The passwords don't match	הסיסמאות לא תואמות
+They can't be brought back.	לא ניתן יהיה לשחזר אותם.
+Thick	עבה
+Thin	דק
+This PDF is locked	קובץ ה-PDF הזה נעול
+This PDF is locked. Opening it needs a newer Android version.	קובץ ה-PDF הזה נעול. כדי לפתוח אותו צריך גרסת Android חדשה יותר.
+This file couldn't be read. It may be damaged or locked.	לא ניתן היה לקרוא את הקובץ. ייתכן שהוא פגום או נעול.
+This needs a newer Android version.	לשם כך צריך גרסת Android חדשה יותר.
+Type a password	יש להקליד סיסמה
+Type here	הקלידו כאן
+Unlock PDF	ביטול נעילת PDF
+Unlock it first to edit	יש לבטל קודם את הנעילה כדי לערוך
+Unlock it first to print	יש לבטל קודם את הנעילה כדי להדפיס
+Unlocking needs a newer Android version	ביטול נעילה דורש גרסת Android חדשה יותר
+Use	שימוש
+Working…	מעבד…
+Your PDFs are kept in Documents/Pixel PDF.	קובצי ה-PDF נשמרים ב-Documents/Pixel PDF.
+Your changes will be lost.	השינויים יאבדו.
+selected	נבחרו
+Delete these files?	למחוק את הקבצים האלה?
+Pinned	מוצמד
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	עד 5 אפליקציות שתמיד מופיעות ראשונות באפליקציות המומלצות. הקישו על אפליקציה כדי לבטל את ההצמדה.
+Seconds in the status bar	שניות בשורת הסטטוס
+The clock at the top shows seconds. Uses a little more battery.	השעון למעלה מציג שניות. צורך מעט יותר סוללה.
+Pull down at the top of the feed to search. Works even with the search bar off.	משכו למטה בראש הפיד כדי לחפש. עובד גם כשסרגל החיפוש כבוי.
+Use Pixel search on the lock screen?	להשתמש בחיפוש Pixel במסך הנעילה?
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	יש לגעת בחיישן טביעת האצבע כדי להפעיל. פתיחת אפליקציות ותוצאות אחרות עדיין דורשת ביטול נעילה.
+Not now	לא עכשיו
+More Pixel search options	אפשרויות נוספות של חיפוש Pixel
+Search on the lock screen	חיפוש במסך הנעילה
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	אפשר למשוך למטה גם בפיד של מסך הנעילה. חישובים, המרת יחידות ושיחות פועלים מיד. פתיחת אפליקציה עדיין דורשת טביעת אצבע.
+Safe	בטוח
+Unsafe	לא בטוח
+Customize	התאמה אישית
+Previous page	העמוד הקודם
+Next page	העמוד הבא
+Glide (default)	גלישה (ברירת מחדל)
+Refresh automatically	רענון אוטומטי
+Adds new and changed files the moment they appear.	מוסיף קבצים חדשים וקבצים שהשתנו ברגע שהם מופיעים.
+Pen	עט
+Tap or drag to add a shape. Drag its dots to resize it.	הקישו או גררו כדי להוסיף צורה. גררו את הנקודות שלה כדי לשנות את גודלה.
+Hold to edit	לחיצה ארוכה לעריכה
+Hide Apps list	הסתרת ״רשימת האפליקציות״
+Removes Apps list from the menu you see when you hold the home screen.	מסיר את ״רשימת האפליקציות״ מהתפריט שמופיע בלחיצה ארוכה על מסך הבית.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	לוחצים לחיצה ארוכה על מקום ריק במסך הבית כדי לראות את התפריט. מחליקים למעלה כדי לפתוח את האפליקציות.
+Your phone	הטלפון שלכם
+Android version	גרסת Android
+Build number	מספר Build
+Security update	עדכון אבטחה
+Untested	לא נבדק
+Tested on this Android version. Everything should work.	נבדק בגרסת Android הזו. הכול אמור לעבוד.
+This Android version is known to break Pixel Suite features.	ידוע שגרסת Android הזו שוברת תכונות של Pixel Suite.
+Not tested on this Android version yet. Some features may work, some may not.	עדיין לא נבדק בגרסת Android הזו. חלק מהתכונות עשויות לעבוד וחלק לא.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	שימו לב: עדכון הטלפון יכול לשבור חלקים מ-Pixel Suite, וזה גם יקרה. אם תעדכנו לפני שאתן אור ירוק, אני לא אחראי למה שיישבר. אני עושה את זה בזמני הפנוי ואני רק בן אדם אחד, אז אל תצפו שאתעדכן תמיד בכל מה ש-Google משחררת.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	אני ממליץ להשאיר את {0} תמיד מופעל, כדי ששום דבר לא יותקן בטעות. עדכון מפתיע עלול להכניס את הטלפון ללולאת אתחול (bootloop) או לשבור דברים בלי שתדעו.
+To know when it's safe to update, follow Announcements in my {0}.	כדי לדעת מתי בטוח לעדכן, עקבו אחרי Announcements בערוץ ה{0} שלי.
+Thank you 💙	תודה 💙
+Phone compatibility	תאימות הטלפון
+Hide the shortcuts you see when you hold an app, like View orders.	הסתירו את קיצורי הדרך שמופיעים כשלוחצים לחיצה ארוכה על אפליקציה, כמו ״הצגת הזמנות״.
+Hide on the home screen	הסתרה במסך הבית
+Home screen, dock and folders.	מסך הבית, הדוק והתיקיות.
+Hide in the app drawer	הסתרה במגירת האפליקציות
+App drawer and its folders.	מגירת האפליקציות והתיקיות שלה.
+Folders, dragging and the swipe-up hint.	תיקיות, גרירה ורמז ההחלקה למעלה.
+Folders, dragging and the swipe-up hint	תיקיות, גרירה ורמז ההחלקה למעלה
+Force stop	אילוץ עצירה
+{0} stopped	האפליקציה {0} נעצרה
+Could not remove the folder	לא ניתן היה להסיר את התיקייה
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	מקליט כל שיחה, וגם שיחות קול ווידאו ב-WhatsApp, עם הקול של שני הצדדים, בכרטיסייה הקלטות.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	הקלטת אדם בלי ידיעתו עלולה להיות לא חוקית במקום שבו אתם גרים. אתם אחראים להקלטות שלכם ולשימוש בהן, לא RovianDev.
+Clipboard on the lock screen	הלוח במסך הנעילה
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	הדביקו את מה שהעתקתם בחיפוש במסך הנעילה. כל מי שמחזיק את הטלפון שלכם יוכל להדביק את זה גם.
+Use the clipboard on the lock screen?	להשתמש בלוח במסך הנעילה?
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	געו בחיישן טביעת האצבע כדי להפעיל. כל מי שמחזיק את הטלפון שלכם יוכל להדביק את מה שהעתקתם, כמו סיסמאות או קודים.
+Turn on to install	יש להפעיל כדי להתקין
+Installing Pixel dialer…	מתקין את חייגן Pixel…
+Installing Pixel PDF…	מתקין את Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	חייגן Pixel הותקן. יש להפעיל מחדש את הטלפון פעם אחת כדי שיוכל להקליט שיחות.
+Couldn't install: root access needed	לא ניתן להתקין: נדרשת הרשאת root
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	מפעילים אותו ו-Pixel Suite מתקין אותו בשבילך. אחר כך יש להפעיל מחדש את הטלפון פעם אחת כדי שיוכל להקליט שיחות.
+Pixel PDF is installed	Pixel PDF הותקן

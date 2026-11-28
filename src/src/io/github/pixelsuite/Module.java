@@ -21,12 +21,16 @@ public class Module extends XposedModule {
     @Override
     public void onSystemServerStarting(SystemServerStartingParam param) {
         ClassLoader cl = param.getClassLoader();
+        Safe.run(() -> Defaults.installSystem(cl));
+        Safe.run(() -> LockClipboard.installSystem(cl));
         Safe.run(() -> Flashlight.installSystem(cl));
         Safe.run(() -> VolumeCamera.installSystem(cl));
         Safe.run(() -> ThreeFinger.installSystem(cl));
         Safe.run(() -> DoubleTapSleep.installSystem(cl));
         Safe.run(() -> DoubleTapWake.installSystem(cl));
         Safe.run(() -> PrivacyLock.installSystem(cl));
+        Safe.run(() -> ForceStop.installSystem(cl));
+        Safe.run(() -> SuperDark.installSystem(cl));
         Safe.run(() -> ScreenshotWarm.installSystem(cl));
         Safe.run(() -> MiscSystem.installSystem(cl));
         Safe.run(() -> OtaBlocker.installSystem(cl));
@@ -66,6 +70,7 @@ public class Module extends XposedModule {
             Safe.run(() -> WidgetPanel.installLock(cl));
             Safe.run(() -> SuperDark.installSystemUi(cl));
             Safe.run(() -> StatusBarFade.installSystemUi(cl));
+            Safe.run(() -> LockChipTap.installSystemUi(cl));
             Safe.run(() -> SystemToasts.install(cl));
             Safe.run(() -> PromptStyle.install(cl));
             Safe.run(() -> AodPlus.installSystemUi(cl));

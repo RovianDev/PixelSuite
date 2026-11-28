@@ -80,6 +80,32 @@ final class ScreenshotWarm {
     }
 
     static void installScreenshotProcess(ClassLoader cl) {
+        boolean ownSounds = false;
+        try {
+            Class<?> policy = Class.forName("com.android.systemui.screenshot.ScreenshotSoundPolicy", false, cl);
+            ownSounds = true;
+            Xp.hookAllMethods(policy, "shouldForceShutterSound", new Xp.Callback() {
+                @Override protected void afterHookedMethod(Xp.Param p) {
+                    if (!Boolean.FALSE.equals(p.getResult())) return;
+                    p.setResult(Boolean.TRUE);
+                }
+            });
+            try { Xp.deoptimizeAll(Class.forName("com.android.systemui.screenshot.ScreenshotSoundControllerImpl$playScreenshotSound$2", false, cl), "invokeSuspend"); } catch (Throwable ignored) { }
+        } catch (Throwable error) { }
+        if (!ownSounds) try {
+            Class<?> sound = Class.forName("com.android.systemui.screenshot.ScreenshotSoundControllerImpl", false, cl);
+            Object unit = null;
+            try { unit = Class.forName("kotlin.Unit", false, cl).getField("INSTANCE").get(null); } catch (Throwable ignored) { }
+            final Object done = unit;
+            for (final java.lang.reflect.Method m : sound.getDeclaredMethods()) {
+                if (!m.getName().startsWith("releaseScreenshotSound")) continue;
+                final Class<?> type = m.getReturnType();
+                if (type != void.class && !(done != null && type.isInstance(done))) continue;
+                Xp.hookMethod(m, new Xp.Callback() {
+                    @Override protected void beforeHookedMethod(Xp.Param p) { if (keptWarm()) p.setResult(type == void.class ? null : done); }
+                });
+            }
+        } catch (Throwable error) { }
         try {
             Class<?> service = Class.forName("com.android.systemui.screenshot.TakeScreenshotService", false, cl);
             Xp.hookAllMethods(service, "onBind", new Xp.Callback() {
@@ -104,6 +130,13 @@ final class ScreenshotWarm {
                 }
             });
         } catch (Throwable error) { }
+    }
+
+    private static boolean keptWarm() {
+        try {
+            Context c = (Context) Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null);
+            return c == null || enabled(Settings.Secure.getString(c.getContentResolver(), KEY));
+        } catch (Throwable t) { return true; }
     }
 
     private static synchronized void start(final Context c) {
@@ -133,8 +166,10 @@ final class ScreenshotWarm {
     }
 
     private static boolean on() {
-        try { return !"0".equals(Settings.Secure.getString(system.getContentResolver(), KEY)); } catch (Throwable t) { return true; }
+        try { return enabled(Settings.Secure.getString(system.getContentResolver(), KEY)); } catch (Throwable t) { return true; }
     }
+
+    private static boolean enabled(String v) { return v == null ? Defaults.legacy() : !"0".equals(v); }
 
     private static synchronized void update() {
         armed = on();

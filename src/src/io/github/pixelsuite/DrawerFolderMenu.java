@@ -20,10 +20,31 @@ final class DrawerFolderMenu {
 
     private DrawerFolderMenu() {}
 
+    private static Object holder;
+
     static void show(final View icon) {
-        dismiss();
         final Object info = icon.getTag();
-        if (!DrawerFolders.isFolder(info) || DrawerFolders.record(info) == null) return;
+        if (!DrawerFolders.isFolder(info) || DrawerFolders.record(info) == null) { dismiss(); return; }
+        present(icon, info, null);
+    }
+
+    static void showHome(final View icon, final Object container) {
+        final Object info = icon == null ? null : icon.getTag();
+        if (info == null || DrawerFolders.isFolder(info)) return;
+        present(icon, info, container);
+    }
+
+    static void closedWith(Object container) {
+        if (container != null && container == holder) { holder = null; dismiss(); }
+    }
+
+    static void dragStarted() {
+        if (holder == null || open == null) return;
+        holder = null; dismiss();
+    }
+
+    private static void present(final View icon, final Object info, final Object container) {
+        dismiss();
         Context c = icon.getContext();
         final LinearLayout card = new LinearLayout(c); card.setOrientation(LinearLayout.VERTICAL);
         card.setPadding(0, FrostedSurface.dp(c, 6), 0, FrostedSurface.dp(c, 6));
@@ -31,8 +52,10 @@ final class DrawerFolderMenu {
         menu.setBackground(FrostedSurface.windowDrawable(c, 20)); menu.setClipToOutline(true);
         menu.setVerticalScrollBarEnabled(false); menu.setOverScrollMode(View.OVER_SCROLL_NEVER);
         menu.setElevation(FrostedSurface.dp(c, 8));
-        fill(card, info);
-        final FrameLayout root = new FrameLayout(c); root.addView(menu, new FrameLayout.LayoutParams(-1, -2, Gravity.TOP));
+        if (container == null) fill(card, info); else fillHome(card, info, icon);
+        final FrameLayout root = new FrameLayout(c);
+        final FrameLayout.LayoutParams place = new FrameLayout.LayoutParams(-1, -2, Gravity.TOP);
+        root.addView(menu, place);
         final PopupWindow window = new PopupWindow(root, FrostedSurface.dp(c, 164), -2, false);
         window.setBackgroundDrawable(new ColorDrawable(0)); window.setOutsideTouchable(true);
         window.setInputMethodMode(PopupWindow.INPUT_METHOD_NOT_NEEDED);
@@ -43,23 +66,71 @@ final class DrawerFolderMenu {
         if (!icon.getGlobalVisibleRect(visible)) return;
         int margin = FrostedSurface.dp(c, 12), gap = FrostedSurface.dp(c, 6);
         int width = FolderOptions.fitWidth(card, FrostedSurface.dp(c, 164 * Math.max(1f, c.getResources().getConfiguration().fontScale)), frame.width() - 2 * margin);
-        int height = FrostedSurface.dp(c, 12 + 48 * card.getChildCount() + 12);
-        window.setWidth(width); window.setHeight(height);
+        int row = FrostedSurface.dp(c, 48), edge = card.getPaddingTop() + card.getPaddingBottom();
+        int full = edge, shown = edge;
+        for (int i = 0; i < card.getChildCount(); i++) {
+            int h = card.getChildAt(i).getLayoutParams().height;
+            full += row; shown += h >= 0 ? h : row;
+        }
         int left = Math.max(frame.left + margin, Math.min(visible.centerX() - width / 2, frame.right - width - margin));
-        int top = visible.bottom + gap;
-        if (top + height > frame.bottom - margin && visible.top - gap - height >= frame.top + margin) top = visible.top - gap - height;
+        int below = frame.bottom - margin - (visible.bottom + gap), above = visible.top - gap - (frame.top + margin);
+        boolean up = below < full && (above >= full || (below < shown && above > below));
+        int height = Math.min(full, Math.max(up ? above : below, shown)), top;
+        if (up) { top = visible.top - gap - height; place.gravity = Gravity.BOTTOM; }
+        else top = visible.bottom + gap;
+        window.setWidth(width); window.setHeight(height);
         final View.OnAttachStateChangeListener lifecycle = new View.OnAttachStateChangeListener() {
             public void onViewAttachedToWindow(View v) { }
             public void onViewDetachedFromWindow(View v) { if (open == window) dismiss(); }
         };
         icon.addOnAttachStateChangeListener(lifecycle);
         window.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            public void onDismiss() { icon.removeOnAttachStateChangeListener(lifecycle); if (open == window) open = null; }
+            public void onDismiss() {
+                icon.removeOnAttachStateChangeListener(lifecycle); if (open == window) open = null;
+                if (container != null && holder == container) { holder = null; try { LauncherFeatures.call(container, "close", true); } catch (Throwable ignored) { } }
+            }
         });
         window.showAtLocation(icon.getRootView(), Gravity.TOP | Gravity.LEFT, left, top);
         FrostedSurface.popupWindow(menu, 20);
         menu.setAlpha(0); menu.animate().alpha(1).setDuration(150).start();
-        open = window;
+        open = window; holder = container;
+    }
+
+    private static void fillHome(final LinearLayout card, final Object info, final View icon) {
+        card.removeAllViews();
+        FolderOptions.row(card, "Rename", 1, false, new Runnable() { public void run() { dismiss(); FolderSort.homeRename(info); } });
+        FolderOptions.sortGroup(card, FolderSort.homeMode(info) == FolderSort.AUTO, new Runnable() { public void run() {
+            dismiss();
+            if (FolderSort.homeMode(info) == FolderSort.AUTO) return;
+            confirm("Sort apps?", "Sort the apps in “" + title(info) + "” from A to Z?", new Runnable() { public void run() { FolderSort.sortHome(info); } });
+        }}, new Runnable() { public void run() {
+            dismiss();
+            if (FolderSort.homeMode(info) == FolderSort.AUTO) FolderSort.setHomeMode(info, FolderSort.CUSTOM);
+        }});
+        PrivacyFolders.addDrawerRow(card, info, new Runnable() { public void run() { dismiss(); } });
+        FolderOptions.row(card, "Remove", 8, false, new Runnable() { public void run() { dismiss(); removeHome(info, icon); } });
+        if (BadgeClear.has(info)) {
+            FolderOptions.row(card, "Clear badge", 16, false, new Runnable() { public void run() { dismiss(); BadgeClear.clear(info); } });
+            View badge = card.getChildAt(card.getChildCount() - 1);
+            card.removeView(badge); card.addView(badge, 0);
+        }
+    }
+
+    private static String title(Object info) {
+        try { Object t = LauncherFeatures.get(info, "title"); if (t != null && t.toString().length() > 0) return t.toString(); } catch (Throwable ignored) { }
+        return I18n.t("Folder");
+    }
+
+    private static void removeHome(final Object info, final View icon) {
+        confirm("Remove folder?", "Remove “" + title(info) + "”? Its apps go back to the app drawer. No apps are uninstalled.", new Runnable() {
+            public void run() {
+                final Activity a = LauncherFeatures.activity.get();
+                if (a == null) return;
+                Runnable go = new Runnable() { public void run() { if (!MultiDrag.remove(a, icon, info, "Pixel Suite: folder menu")) Toast.makeText(a, I18n.cs("Could not remove the folder"), Toast.LENGTH_SHORT).show(); } };
+                if (PrivacyGuard.ask(a, info, go)) return;
+                go.run();
+            }
+        });
     }
 
     private static void fill(final LinearLayout card, final Object info) {

@@ -500,6 +500,8 @@ final class DoNotAnnoyWhatsApp {
         }
         if (t.length > 0) a[0] = id;
         if (t.length > 1 && t[1] == String.class) a[1] = REASON;
+        StringBuilder shape = new StringBuilder();
+        for (Class<?> x : t) shape.append(x.getSimpleName()).append(' ');
         try { m.setAccessible(true); m.invoke(target, a); return true; }
         catch (Throwable e) { Log.w(TAG, "dna whatsapp: rejectCall", e); return false; }
     }

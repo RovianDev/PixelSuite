@@ -1811,3 +1811,366 @@ Couldn't put back {0}	{0} वापस नहीं रखा जा सका
 Couldn't save {0}	{0} सेव नहीं हो सका
 It didn't install	यह इंस्टॉल नहीं हुआ
 Root isn't available	रूट उपलब्ध नहीं है
+Pixel search	Pixel सर्च
+Find apps, contacts, files and more	ऐप, संपर्क, फ़ाइलें और बहुत कुछ खोजें
+Everything on your phone, one search away.	आपके फ़ोन की हर चीज़, बस एक खोज दूर।
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	आपकी होम स्क्रीन पर नया सर्च बार। ऐप, संपर्क, फ़ाइलें, सेटिंग और बहुत कुछ एक ही जगह खोजें।
+Look	लुक
+Color	रंग
+Blurs what's behind the bar, with glowing edges.	बार के पीछे की चीज़ों को धुंधला करता है, चमकते किनारों के साथ।
+How much of the outer bar shows.	बाहरी बार कितना दिखे।
+How much of the search box and side buttons shows.	सर्च बॉक्स और साइड बटन कितने दिखें।
+Voice search, Google Lens, Song search	वॉइस सर्च, Google Lens, गाना खोजें
+Choose and order what shows up	चुनें कि क्या दिखे और किस क्रम में
+Web search	वेब सर्च
+What to search	क्या खोजें
+Search inside files	फ़ाइलों के अंदर खोजें
+Tap to look through your files now.	अभी अपनी फ़ाइलें देखने के लिए टैप करें।
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	अपनी PDF, Word, Excel और टेक्स्ट फ़ाइलों के अंदर शब्द और नंबर खोजें, उनके पेज के साथ। प्रीव्यू, शेयर या फ़ाइल ढूँढने के लिए उसे दबाकर रखें।
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	कोई हिसाब या कन्वर्ज़न लिखें, जैसे 15% of 80 या 5 km in miles, और कॉपी करने के लिए जवाब पर टैप करें।
+Pixel search shows when Hide search bar is off.	Pixel सर्च तब दिखता है जब सर्च बार छिपाएँ बंद हो।
+System colors	सिस्टम रंग
+Your color	आपका रंग
+Any color	कोई भी रंग
+Light	लाइट
+Calculator and units	कैलकुलेटर और यूनिट
+App shortcuts	ऐप शॉर्टकट
+Files and media	फ़ाइलें और मीडिया
+Inside files	फ़ाइलों के अंदर
+Web	वेब
+All	सभी
+Google Lens	Google Lens
+Song search	गाना खोजें
+Assistant	असिस्टेंट
+QR code scanner	QR कोड स्कैनर
+Action	ऐक्शन
+App	ऐप
+App shortcut	ऐप शॉर्टकट
+Contact	संपर्क
+Shortcut	शॉर्टकट
+Add a button	बटन जोड़ें
+Choose an app	ऐप चुनें
+Couldn't open your contacts	आपके संपर्क नहीं खुल सके
+Getting the app's shortcuts…	ऐप के शॉर्टकट लाए जा रहे हैं…
+Go to your home screen once, then try again.	एक बार अपनी होम स्क्रीन पर जाएँ, फिर दोबारा कोशिश करें।
+In the search box	सर्च बॉक्स में
+Left side	बाईं ओर
+Right side	दाईं ओर
+Looking through your files…	आपकी फ़ाइलें देखी जा रही हैं…
+Looking through your files… {0}	आपकी फ़ाइलें देखी जा रही हैं… {0}
+Move down	नीचे ले जाएँ
+Move left	बाईं ओर ले जाएँ
+Move right	दाईं ओर ले जाएँ
+Move up	ऊपर ले जाएँ
+No buttons	कोई बटन नहीं
+Preview	प्रीव्यू
+Results show in this order. Turn off what you don't need.	नतीजे इसी क्रम में दिखते हैं। जो ज़रूरी नहीं, उसे बंद करें।
+That side is full	यह तरफ़ भर चुकी है
+This app has no shortcuts	इस ऐप में कोई शॉर्टकट नहीं है
+This contact has no phone number	इस संपर्क का कोई फ़ोन नंबर नहीं है
+Turn Pixel search off and on again to allow searching your files.	अपनी फ़ाइलें खोजने देने के लिए Pixel सर्च को बंद करके फिर से चालू करें।
+Turn on Pixel search first	पहले Pixel सर्च चालू करें
+Your files are looked through after you turn on Pixel search.	Pixel सर्च चालू करने के बाद आपकी फ़ाइलें देखी जाती हैं।
+{0} files, {1} with text you can search. Updated {2}.	{0} फ़ाइलें, जिनमें से {1} में खोजने लायक टेक्स्ट है। {2} अपडेट हुआ।
+{0} of {1} turned on	{1} में से {0} चालू
+No app can open this file	कोई ऐप यह फ़ाइल नहीं खोल सकता
+No app can open this folder	कोई ऐप यह फ़ोल्डर नहीं खोल सकता
+That file isn't there any more	वह फ़ाइल अब वहाँ नहीं है
+Couldn't open it	इसे खोला नहीं जा सका
+About phone	फ़ोन के बारे में
+Accessibility	सुलभता
+Airplane mode	हवाई जहाज़ मोड
+Android settings	Android सेटिंग
+Battery	बैटरी
+Battery Saver	बैटरी सेवर
+Cast	कास्ट
+Copied	कॉपी हो गया
+Dark theme	गहरे रंग वाली थीम
+Data usage	डेटा खर्च
+Default apps	डिफ़ॉल्ट ऐप
+Developer options	डेवलपर के लिए सेटिंग और टूल
+Display	डिसप्ले
+Getting your files ready. They show up here in a few minutes.	आपकी फ़ाइलें तैयार की जा रही हैं। कुछ मिनटों में वे यहाँ दिखेंगी।
+Keyboard	कीबोर्ड
+Location	जगह की जानकारी
+Network & internet	नेटवर्क और इंटरनेट
+Night Light	नाइट लाइट
+No results	कोई नतीजा नहीं
+Open	खोलें
+Page {0}	पेज {0}
+Passwords & accounts	पासवर्ड और खाते
+Printing	प्रिंट करना
+Privacy	निजता
+Search apps, contacts, files, settings and more	ऐप, संपर्क, फ़ाइलें, सेटिंग और बहुत कुछ खोजें
+Search your phone and the web	अपने फ़ोन और वेब पर खोजें
+Search {0} for “{1}”	{0} पर “{1}” खोजें
+Security & privacy	सुरक्षा और निजता
+Show in folder	फ़ोल्डर में दिखाएँ
+Sound & vibration	आवाज़ और वाइब्रेशन
+Storage	स्टोरेज
+System update	सिस्टम अपडेट
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	अपनी फ़ाइलें खोजने देने के लिए Pixel Suite में Pixel सर्च को बंद करके फिर से चालू करें।
+Users	उपयोगकर्ता
+Wi-Fi	वाई-फ़ाई
+Colorful icons	रंगीन आइकन
+App and shortcut buttons keep their own colors.	ऐप और शॉर्टकट बटन अपने असली रंगों में दिखते हैं।
+Edit search bar	सर्च बार बदलें
+Size	आकार
+Outer bar	बाहरी बार
+Search box	सर्च बॉक्स
+More settings	और सेटिंग
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	सर्च बार पर टैप करें और टाइप करना शुरू करें। उसे सीधे होम स्क्रीन पर बदलने के लिए बार को दबाकर रखें।
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	बटन की जगह बदलने के लिए उन्हें बार पर खींचें। हटाने के लिए बटन को बार से बाहर खींचें।
+The bar is full. Drag a button off the bar first.	बार भर चुका है। पहले किसी बटन को बार से बाहर खींचें।
+Hold and drag to change the order.	क्रम बदलने के लिए दबाकर खींचें।
+Favorites	पसंदीदा
+Favorite	पसंदीदा
+Added to favorites	पसंदीदा में जोड़ा गया
+Removed from favorites	पसंदीदा से हटाया गया
+Hold an app, a contact or a file to add it here	यहाँ जोड़ने के लिए किसी ऐप, संपर्क या फ़ाइल को दबाकर रखें
+Open Pixel Suite once to download currency rates	करेंसी रेट डाउनलोड करने के लिए एक बार Pixel Suite खोलें
+Currency	करेंसी
+Convert to	इसमें बदलें
+Update automatically	अपने आप अपडेट करें
+Update now	अभी अपडेट करें
+Updating the rates…	रेट अपडेट हो रहे हैं…
+Rates updated	रेट अपडेट हो गए
+Rates updated {0}	रेट अपडेट हुए: {0}
+Rates not downloaded yet	रेट अभी डाउनलोड नहीं हुए
+Couldn't update the rates	रेट अपडेट नहीं हो सके
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	रकम और करेंसी लिखें, जैसे 200 USD, और वह बदल जाएगी। रेट इंटरनेट से डाउनलोड होते हैं और आपके बारे में कुछ नहीं भेजा जाता।
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	जोड़ने के लिए किसी बटन पर टैप करें, या उसे दबाकर बार पर खींचें। बार के बटन खींचकर उनकी जगह बदलें, या हटाने के लिए बार से बाहर खींचें।
+Drop it on the bar to add it	जोड़ने के लिए इसे बार पर छोड़ें
+No contacts with a phone number	फ़ोन नंबर वाला कोई संपर्क नहीं
+Everything is searched on your phone. Only web searches and currency rates go online.	सब कुछ आपके फ़ोन पर ही खोजा जाता है। सिर्फ़ वेब सर्च और करेंसी रेट ऑनलाइन जाते हैं।
+Hold Dark or Super Dark to choose which one Automatic uses at night.	डार्क या सुपर डार्क को दबाकर रखें और चुनें कि अपने-आप रात में किसे इस्तेमाल करे।
+Lock the sliders	स्लाइडर लॉक करें
+Search currencies	करेंसी खोजें
+Search engine	सर्च इंजन
+Search settings	सर्च सेटिंग
+Show keyboard	कीबोर्ड दिखाएँ
+Replace	बदलें
+Favorite contacts	पसंदीदा संपर्क
+Add dialer favorites	डायलर के पसंदीदा जोड़ें
+Search contacts	संपर्क खोजें
+Added to favorite contacts	पसंदीदा संपर्कों में जोड़ा गया
+Hold the search bar and add contacts first	पहले सर्च बार को दबाकर रखें और संपर्क जोड़ें
+No favorites in your dialer yet	आपके डायलर में अभी कोई पसंदीदा नहीं है
+Hide swipe-up hint	ऊपर स्वाइप का संकेत छिपाएँ
+Stops the hint that plays after a few short swipes that don't open the drawer.	ड्रॉअर न खोल पाने वाले कुछ छोटे स्वाइप के बाद दिखने वाला संकेत बंद करता है।
+Closing animation	बंद होने का एनिमेशन
+Shutter	शटर
+Glide	ग्लाइड
+Balloons	गुब्बारे
+Jelly	जेली
+Pop	पॉप
+Wave	लहर
+Swell	फुलाव
+Classic	क्लासिक
+Scan to PDF	PDF में स्कैन करें
+Add from gallery	गैलरी से जोड़ें
+Take photo	फ़ोटो लें
+Pages	पेज
+Couldn't open the camera	कैमरा नहीं खुल सका
+Camera access is needed to scan	स्कैन करने के लिए कैमरे की अनुमति चाहिए
+Save as PDF	PDF के रूप में सेव करें
+Rotate	घुमाएँ
+All pages	सभी पेज
+{0} selected	{0} चुने गए
+File name	फ़ाइल का नाम
+Making the PDF…	PDF बन रही है…
+Saved to Download	Download में सेव हो गया
+Couldn't save the PDF	PDF सेव नहीं हो सकी
+Original	मूल
+Auto	ऑटो
+Enhanced	बेहतर
+Grayscale	ग्रेस्केल
+Black & white	ब्लैक एंड व्हाइट
+Lighten	हल्का करें
+Image to PDF	इमेज से PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	सर्च बार पर रखे जा सकने वाले बटनों में “PDF में स्कैन करें” जोड़ता है। पेजों की फ़ोटो लें या फ़ोटो चुनें, उन्हें ठीक करें, फिर एक PDF के रूप में सेव या शेयर करें।
+Tools	टूल
+Featured apps	खास ऐप
+Shows the apps you open most from Pixel search before you type.	टाइप करने से पहले वे ऐप दिखाता है जिन्हें आप Pixel search से सबसे ज़्यादा खोलते हैं।
+Recent searches	हाल की खोजें
+Shows your latest searches before you type. Hold one to remove it.	टाइप करने से पहले आपकी हाल की खोजें दिखाता है। हटाने के लिए किसी को दबाकर रखें।
+Enter opens the first app	Enter से पहला ऐप खुलता है
+Turn off to always search the web when you press Enter.	बंद करने पर Enter दबाने से हमेशा वेब पर खोज होगी।
+Delete this file?	यह फ़ाइल मिटाएँ?
+Deleted	मिटा दिया गया
+Couldn't delete it	इसे मिटाया नहीं जा सका
+Unpin	अनपिन करें
+Add to favorites	पसंदीदा में जोड़ें
+Remove from favorites	पसंदीदा से हटाएँ
+Clear recent searches?	हाल की खोजें मिटाएँ?
+Pixel Suite apps	Pixel Suite ऐप्स
+Pixel dialer	Pixel डायलर
+Your phone app, with call recording	आपका फ़ोन ऐप, कॉल रिकॉर्डिंग के साथ
+Scan pages into one PDF	पन्नों को एक PDF में स्कैन करें
+Apps that come with Pixel Suite.	Pixel Suite के साथ आने वाले ऐप्स।
+Your phone app, made for Pixel Suite.	आपका फ़ोन ऐप, Pixel Suite के लिए बना।
+Pages and photos, turned into one PDF.	पन्ने और फ़ोटो, एक PDF में।
+Calls, contacts, favorites and call recording.	कॉल, संपर्क, पसंदीदा और कॉल रिकॉर्डिंग।
+Calls, favorites, contacts and recordings	कॉल, पसंदीदा, संपर्क और रिकॉर्डिंग
+Dialer settings	डायलर सेटिंग
+Theme, sounds and call recording	थीम, आवाज़ें और कॉल रिकॉर्डिंग
+Install the Pixel Suite apps module in your root manager, then restart your phone.	अपने रूट मैनेजर में Pixel Suite Apps मॉड्यूल इंस्टॉल करें, फिर फ़ोन रीस्टार्ट करें।
+Look for new pages	नए पन्नों का लुक
+Open Image to PDF	इमेज से PDF खोलें
+Open Pixel dialer	Pixel डायलर खोलें
+Photograph pages or pick photos	पन्नों की फ़ोटो लें या फ़ोटो चुनें
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	पन्नों की फ़ोटो लें या फ़ोटो चुनें, उन्हें सीधा और साफ़ करें, फिर एक PDF के रूप में सेव या शेयर करें।
+Shows Image to PDF with your apps, with its own icon.	इमेज से PDF को आपके ऐप्स में उसके अपने आइकन के साथ दिखाता है।
+The Scan to PDF button on the search bar is set in Pixel search.	सर्च बार का "PDF में स्कैन करें" बटन Pixel सर्च में सेट होता है।
+Turn Pixel dialer on first	पहले Pixel डायलर चालू करें
+Turn each app on or off and change its settings.	हर ऐप को चालू या बंद करें और उसकी सेटिंग बदलें।
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	बंद करने पर ऐप छिप जाता है और कॉल आपके दूसरे फ़ोन ऐप पर लौट जाती हैं। कभी भी फिर चालू करें।
+Gray	ग्रे
+High	उच्च
+Standard	मानक
+PDF quality	PDF क्वालिटी
+Pixel dialer, Pixel search and Image to PDF	Pixel डायलर, Pixel सर्च और इमेज से PDF
+A file with that name already exists	इस नाम की फ़ाइल पहले से मौजूद है
+Add Text	टेक्स्ट जोड़ें
+All PDFs	सभी PDF
+All tools	सभी टूल
+All your PDFs and tools	आपके सभी PDF और टूल
+Allow	अनुमति दें
+Allow access to your files to see and save PDFs.	PDF देखने और सेव करने के लिए अपनी फ़ाइलों का एक्सेस दें।
+Anyone opening it will need this password.	इसे खोलने वाले हर व्यक्ति को यह पासवर्ड चाहिए होगा।
+Back side	पिछला हिस्सा
+Best quality	सबसे अच्छी क्वालिटी
+Browse	ब्राउज़ करें
+Choose PDFs to merge	मर्ज करने के लिए PDF चुनें
+Choose a PDF	एक PDF चुनें
+Compress	कंप्रेस करें
+Convert	कन्वर्ट
+Couldn't finish	पूरा नहीं हो सका
+Couldn't rename it	नाम नहीं बदला जा सका
+Docx to PDF	Docx से PDF
+Doodle	डूडल
+Draw on the page with your finger.	उंगली से पेज पर ड्रॉ करें।
+Front side	सामने का हिस्सा
+Good balance	अच्छा संतुलन
+Import PDF	PDF इंपोर्ट करें
+Largest first	सबसे बड़ी पहले
+Leave	छोड़ें
+Leave without saving?	सेव किए बिना छोड़ें?
+Lock PDF	PDF लॉक करें
+Merge PDF	PDF मर्ज करें
+No PDFs yet.	अभी कोई PDF नहीं।
+Oldest first	सबसे पुरानी पहले
+Open Pixel PDF	Pixel PDF खोलें
+PDF to JPG	PDF से JPG
+PDF to PPT	PDF से PPT
+PDF to Word	PDF से Word
+PPT to PDF	PPT से PDF
+Page	पेज
+Password	पासवर्ड
+Pick some files first	पहले कुछ फ़ाइलें चुनें
+Pick two or more PDFs to merge	मर्ज करने के लिए दो या ज़्यादा PDF चुनें
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	Pixel डायलर, Pixel सर्च और Pixel PDF
+Popular	लोकप्रिय
+Print PDF	PDF प्रिंट करें
+Repeat password	पासवर्ड दोबारा लिखें
+Saved to	यहाँ सेव किया गया
+Saved to Pixel PDF	Pixel PDF में सेव किया गया
+Saving	सेव हो रहा है
+Scan ID Card	ID कार्ड स्कैन करें
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	पन्ने और ID कार्ड स्कैन करें, फ़ोटो, Word और PowerPoint फ़ाइलों को PDF बनाएँ, और उन्हें कंप्रेस, मर्ज, साइन, लॉक या प्रिंट करें।
+Scan, convert and edit PDFs	PDF स्कैन, कन्वर्ट और एडिट करें
+Scan, convert, edit and sign PDFs.	PDF स्कैन, कन्वर्ट, एडिट और साइन करें।
+Scanned and made PDFs show here. Tap + to scan your first one.	स्कैन और बनाए गए PDF यहाँ दिखते हैं। पहला स्कैन करने के लिए + पर टैप करें।
+Search files	फ़ाइलें खोजें
+Shows Pixel PDF with your apps, with its own icon.	Pixel PDF को आपके ऐप्स में उसके अपने आइकन के साथ दिखाता है।
+Sign inside the box first	पहले बॉक्स के अंदर साइन करें
+Sign inside the box.	बॉक्स के अंदर साइन करें।
+Signature	हस्ताक्षर
+Smallest file	सबसे छोटी फ़ाइल
+Smart Scan	स्मार्ट स्कैन
+Strong	ज़्यादा
+Tap to place your signature. Drag the corner to resize it.	हस्ताक्षर लगाने के लिए टैप करें। साइज़ बदलने के लिए कोना खींचें।
+Tap where the text goes. Drag it to move it.	जहाँ टेक्स्ट चाहिए वहाँ टैप करें। खिसकाने के लिए खींचें।
+That password isn't right.	यह पासवर्ड सही नहीं है।
+The passwords don't match	पासवर्ड मेल नहीं खाते
+They can't be brought back.	इन्हें वापस नहीं लाया जा सकता।
+Thick	मोटा
+Thin	पतला
+This PDF is locked	यह PDF लॉक है
+This PDF is locked. Opening it needs a newer Android version.	यह PDF लॉक है। इसे खोलने के लिए नया Android वर्शन चाहिए।
+This file couldn't be read. It may be damaged or locked.	यह फ़ाइल पढ़ी नहीं जा सकी। हो सकता है यह खराब या लॉक हो।
+This needs a newer Android version.	इसके लिए नया Android वर्शन चाहिए।
+Type a password	पासवर्ड लिखें
+Type here	यहाँ लिखें
+Unlock PDF	PDF अनलॉक करें
+Unlock it first to edit	एडिट करने के लिए पहले अनलॉक करें
+Unlock it first to print	प्रिंट करने के लिए पहले अनलॉक करें
+Unlocking needs a newer Android version	अनलॉक करने के लिए नया Android वर्शन चाहिए
+Use	इस्तेमाल करें
+Working…	काम चल रहा है…
+Your PDFs are kept in Documents/Pixel PDF.	आपके PDF Documents/Pixel PDF में रखे जाते हैं।
+Your changes will be lost.	आपके बदलाव खो जाएँगे।
+selected	चुने गए
+Delete these files?	ये फ़ाइलें मिटाएँ?
+Pinned	पिन किया गया
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	अधिकतम 5 ऐप, जो फ़ीचर्ड ऐप में हमेशा सबसे पहले आते हैं। अनपिन करने के लिए ऐप पर टैप करें।
+Seconds in the status bar	स्टेटस बार में सेकंड
+The clock at the top shows seconds. Uses a little more battery.	ऊपर की घड़ी सेकंड दिखाती है। थोड़ी ज़्यादा बैटरी लगती है।
+Pull down at the top of the feed to search. Works even with the search bar off.	खोजने के लिए फ़ीड में सबसे ऊपर नीचे खींचें। सर्च बार बंद होने पर भी काम करता है।
+Use Pixel search on the lock screen?	लॉक स्क्रीन पर Pixel सर्च इस्तेमाल करें?
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	इसे चालू करने के लिए फ़िंगरप्रिंट सेंसर को छुएं। ऐप्स और दूसरे नतीजे खोलने के लिए अब भी अनलॉक करना होगा।
+Not now	अभी नहीं
+More Pixel search options	Pixel सर्च के और विकल्प
+Search on the lock screen	लॉक स्क्रीन पर सर्च
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	लॉक स्क्रीन की फ़ीड में भी नीचे खींचें। कैलकुलेशन, यूनिट बदलना और कॉल तुरंत काम करते हैं। ऐप खोलने के लिए अब भी फ़िंगरप्रिंट चाहिए।
+Safe	सुरक्षित
+Unsafe	असुरक्षित
+Customize	कस्टमाइज़ करें
+Previous page	पिछला पेज
+Next page	अगला पेज
+Glide (default)	ग्लाइड (डिफ़ॉल्ट)
+Refresh automatically	अपने-आप रीफ़्रेश करें
+Adds new and changed files the moment they appear.	नई और बदली हुई फ़ाइलें आते ही जोड़ देता है।
+Pen	पेन
+Tap or drag to add a shape. Drag its dots to resize it.	आकृति जोड़ने के लिए टैप करें या खींचें। आकार बदलने के लिए उसके बिंदु खींचें।
+Hold to edit	बदलने के लिए दबाकर रखें
+Hide Apps list	ऐप्लिकेशन सूची छिपाएं
+Removes Apps list from the menu you see when you hold the home screen.	होम स्क्रीन को दबाकर रखने पर दिखने वाले मेन्यू से ऐप्लिकेशन सूची हटा देता है।
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	मेन्यू देखने के लिए होम स्क्रीन पर किसी खाली जगह को दबाकर रखें। अपने ऐप्लिकेशन खोलने के लिए ऊपर की ओर स्वाइप करें।
+Your phone	आपका फ़ोन
+Android version	Android वर्शन
+Build number	बिल्ड नंबर
+Security update	सुरक्षा अपडेट
+Untested	टेस्ट नहीं हुआ
+Tested on this Android version. Everything should work.	इस Android वर्शन पर टेस्ट किया गया है। सब कुछ काम करना चाहिए।
+This Android version is known to break Pixel Suite features.	यह Android वर्शन Pixel Suite के फ़ीचर्स बिगाड़ने के लिए जाना जाता है।
+Not tested on this Android version yet. Some features may work, some may not.	इस Android वर्शन पर अभी टेस्ट नहीं हुआ है। कुछ फ़ीचर्स काम कर सकते हैं, कुछ नहीं भी।
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	कृपया ध्यान दें: फ़ोन अपडेट करने से Pixel Suite के कुछ हिस्से बिगड़ सकते हैं, और बिगड़ेंगे ही। अगर आप मेरे ग्रीन सिग्नल देने से पहले अपडेट करते हैं, तो जो भी बिगड़ेगा उसकी ज़िम्मेदारी मेरी नहीं है। मैं यह अपने खाली समय में करता हूँ और मैं अकेला हूँ, इसलिए यह उम्मीद न करें कि Google जो कुछ भी लाता है, उसके साथ मैं हमेशा तालमेल रख पाऊँगा।
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	मेरी सलाह है कि {0} हमेशा चालू रखें, ताकि गलती से कुछ इंस्टॉल न हो। अचानक आया अपडेट आपके फ़ोन को बूटलूप में डाल सकता है या आपको पता चले बिना चीज़ें बिगाड़ सकता है।
+To know when it's safe to update, follow Announcements in my {0}.	अपडेट करना कब सुरक्षित है, यह जानने के लिए मेरे {0} चैनल पर Announcements फ़ॉलो करें।
+Thank you 💙	धन्यवाद 💙
+Phone compatibility	फ़ोन की संगतता
+Hide the shortcuts you see when you hold an app, like View orders.	किसी ऐप को दबाकर रखने पर दिखने वाले शॉर्टकट, जैसे ऑर्डर देखें, छिपाएँ।
+Hide on the home screen	होम स्क्रीन पर छिपाएँ
+Home screen, dock and folders.	होम स्क्रीन, डॉक और फ़ोल्डर।
+Hide in the app drawer	ऐप्लिकेशन ड्रॉअर में छिपाएँ
+App drawer and its folders.	ऐप्लिकेशन ड्रॉअर और उसके फ़ोल्डर।
+Folders, dragging and the swipe-up hint.	फ़ोल्डर, खींचना और ऊपर स्वाइप का संकेत।
+Folders, dragging and the swipe-up hint	फ़ोल्डर, खींचना और ऊपर स्वाइप का संकेत
+Force stop	ज़बरदस्ती रोकें
+{0} stopped	{0} रोका गया
+Could not remove the folder	फ़ोल्डर हटाया नहीं जा सका
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	हर कॉल और WhatsApp की वॉइस व वीडियो कॉल को दोनों तरफ़ की आवाज़ के साथ रिकॉर्डिंग टैब में रिकॉर्ड करता है।
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	किसी को बताए बिना रिकॉर्ड करना आपके इलाके में गैरकानूनी हो सकता है। अपनी रिकॉर्डिंग और उनके इस्तेमाल के ज़िम्मेदार आप हैं, RovianDev नहीं।
+Clipboard on the lock screen	लॉक स्क्रीन पर क्लिपबोर्ड
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	लॉक स्क्रीन सर्च में कॉपी की गई चीज़ पेस्ट करें। आपका फ़ोन पकड़ने वाला कोई भी इसे पेस्ट कर सकता है।
+Use the clipboard on the lock screen?	लॉक स्क्रीन पर क्लिपबोर्ड इस्तेमाल करें?
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	चालू करने के लिए फ़िंगरप्रिंट सेंसर छुएं। आपका फ़ोन पकड़ने वाला कोई भी आपकी कॉपी की गई चीज़, जैसे पासवर्ड या कोड, पेस्ट कर सकता है।
+Turn on to install	इंस्टॉल करने के लिए चालू करें
+Installing Pixel dialer…	Pixel डायलर इंस्टॉल हो रहा है…
+Installing Pixel PDF…	Pixel PDF इंस्टॉल हो रहा है…
+Pixel dialer is installed. Restart your phone once so it can record calls.	Pixel डायलर इंस्टॉल हो गया। कॉल रिकॉर्ड करने के लिए फ़ोन एक बार रीस्टार्ट करें।
+Couldn't install: root access needed	इंस्टॉल नहीं हो सका: रूट ऐक्सेस ज़रूरी है
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	इसे चालू करें और Pixel Suite इसे आपके लिए इंस्टॉल कर देगा। उसके बाद कॉल रिकॉर्ड करने के लिए फ़ोन एक बार रीस्टार्ट करें।
+Pixel PDF is installed	Pixel PDF इंस्टॉल हो गया

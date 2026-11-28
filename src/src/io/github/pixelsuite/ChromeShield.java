@@ -410,7 +410,7 @@ final class ChromeShield {
         void refresh() {
             if (!sChecked) {
                 sChecked = true;
-                try { sEnabled = !"0".equals(android.provider.Settings.Secure.getString(getContext().getContentResolver(), AdBlock.KEY)) && PatronGate.ok(getContext().getApplicationContext()); } catch (Throwable ignored) { }
+                try { String set = android.provider.Settings.Secure.getString(getContext().getContentResolver(), AdBlock.KEY); sEnabled = (set == null ? Defaults.legacy() : !"0".equals(set)) && PatronGate.ok(getContext().getApplicationContext()); } catch (Throwable ignored) { }
             }
             if (!sEnabled || !pinned(getContext())) { if (getVisibility() != GONE) setVisibility(GONE); return; }
             if (getVisibility() != VISIBLE) setVisibility(VISIBLE);

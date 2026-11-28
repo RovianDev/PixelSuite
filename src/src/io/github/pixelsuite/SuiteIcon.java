@@ -28,7 +28,7 @@ final class SuiteIcon extends Drawable {
     }
 
     static SuiteIcon glyph(int colour) {
-        SuiteIcon g = new SuiteIcon(0, 0, 0, .36f, .13f, .1f);
+        SuiteIcon g = new SuiteIcon(0, 0, 0, .325f, .117f, .09f);
         g.tintable = true; g.colour(colour); return g;
     }
 

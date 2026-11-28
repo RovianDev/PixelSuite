@@ -261,6 +261,10 @@ final class ShareSheet {
                 Xp.setAdditionalInstanceField(p.thisObject, F_PINNED, n);
             }
         });
+        boolean oldList = false;
+        if (rla != null) for (java.lang.reflect.Method m : rla.getDeclaredMethods()) if (m.getName().equals("processSortedList")) oldList = true;
+        sNewResolver = !oldList;
+        if (!oldList) try { installLoader(cl); } catch (Throwable t) { }
         Xp.hookAllMethods(cListAdapter, "getRankedTargetCount", new Xp.Callback() {
             @Override protected void afterHookedMethod(Xp.Param p) {
                 if (!sOn) return;
@@ -737,6 +741,109 @@ final class ShareSheet {
     }
 
     @SuppressWarnings("unchecked")
+    private static final Map<Object, Object> sLoaderAdapters = new java.util.WeakHashMap<>();
+    private static boolean sNewResolver;
+
+    private static Object adapterOf(Object loader) {
+        synchronized (sLoaderAdapters) { Object known = sLoaderAdapters.get(loader); if (known != null) return known; }
+        Object found = adapterIn(loader, 2);
+        if (found != null) synchronized (sLoaderAdapters) { sLoaderAdapters.put(loader, found); }
+        return found;
+    }
+
+    private static Object adapterIn(Object o, int depth) {
+        if (o == null || depth < 0) return null;
+        if (cListAdapter.isInstance(o)) return o;
+        if (depth == 0 || o.getClass().getName().startsWith("java.") || o.getClass().getName().startsWith("android.")) return null;
+        for (Class<?> k = o.getClass(); k != null && k != Object.class; k = k.getSuperclass())
+            for (java.lang.reflect.Field f : k.getDeclaredFields()) {
+                if (java.lang.reflect.Modifier.isStatic(f.getModifiers()) || f.getType().isPrimitive()) continue;
+                try {
+                    f.setAccessible(true);
+                    Object v = f.get(o);
+                    if (v == null || v == o) continue;
+                    if (cListAdapter.isInstance(v)) return v;
+                    if (depth > 1 && v.getClass().getName().startsWith("com.android.intentresolver.")) { Object deeper = adapterIn(v, depth - 1); if (deeper != null) return deeper; }
+                } catch (Throwable ignored) { }
+            }
+        return null;
+    }
+
+    private static void installLoader(ClassLoader cl) {
+        Class<?> loader = Xp.findClass("com.android.intentresolver.AppTargetLoader", cl);
+        Xp.hookAllMethods(loader, "processSortedList", new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                Object la = adapterOf(p.thisObject);
+                if (la == null) { return; }
+                stash(la).clear();
+                cstash(la).clear();
+                if (!sOn || p.args.length != 2 || !(p.args[1] instanceof List)) return;
+                try {
+                    List<?> in = (List<?>) p.args[1];
+                    List<Object> pinned = new ArrayList<>(), rest = new ArrayList<>();
+                    for (Object o : in) {
+                        boolean pin = false;
+                        try { pin = Xp.getBooleanField(o, "mPinned") && userId((ResolveInfo) Xp.callMethod(o, "getResolveInfoAt")) == -2; } catch (Throwable ignored) { }
+                        (pin ? pinned : rest).add(o);
+                    }
+                    if (pinned.size() < 2 && (pinned.isEmpty() || in.indexOf(pinned.get(0)) == 0)) return;
+                    final Map<String, Integer> o = sOrder;
+                    Collections.sort(pinned, (a, b) -> {
+                        Integer ia = o.get(flat(Xp.getObjectField(a, "name"))), ib = o.get(flat(Xp.getObjectField(b, "name")));
+                        if (ia != null || ib != null) return ia == null ? 1 : ib == null ? -1 : Integer.compare(ia, ib);
+                        String pa = String.valueOf(((ComponentName) Xp.getObjectField(a, "name")).getPackageName());
+                        String pb = String.valueOf(((ComponentName) Xp.getObjectField(b, "name")).getPackageName());
+                        return pa.compareToIgnoreCase(pb);
+                    });
+                    List<Object> out = new ArrayList<>(pinned);
+                    out.addAll(rest);
+                    p.args[1] = out;
+                } catch (Throwable t) { }
+            }
+        });
+        Xp.hookAllMethods(loader, "addResolveInfo", new Xp.Callback() {
+            @Override protected void beforeHookedMethod(Xp.Param p) {
+                if (!sOn || p.args.length != 2 || p.args[1] == null) return;
+                Object la = adapterOf(p.thisObject);
+                if (la == null) return;
+                Object dri = p.args[1];
+                if (Xp.getBooleanField(dri, "mPinned")) return;
+                String c = flat(Xp.callMethod(dri, "getResolvedComponentName"));
+                if (c == null) return;
+                String lk = null;
+                if (!sHidden.contains(c)) {
+                    if (!sHiddenPkgs.contains(ComponentName.unflattenFromString(c).getPackageName())) return;
+                    lk = labelKey((ResolveInfo) Xp.getObjectField(dri, "mResolveInfo"), ((Context) Xp.getObjectField(la, "mContext")).getPackageManager());
+                    if (lk == null || !sHidden.contains(lk)) return;
+                }
+                List<Object> st = stash(la);
+                for (Object o : st) {
+                    if (c.equals(flat(Xp.callMethod(o, "getResolvedComponentName")))) { p.setResult(null); return; }
+                    if (lk != null && lk.equals(Xp.getAdditionalInstanceField(o, F_LABELKEY))) { p.setResult(null); return; }
+                }
+                if (lk != null) Xp.setAdditionalInstanceField(dri, F_LABELKEY, lk);
+                st.add(dri);
+                p.setResult(null);
+            }
+        });
+        Xp.hookAllMethods(loader, "onTargetsReady", new Xp.Callback() {
+            @Override protected void afterHookedMethod(Xp.Param p) {
+                Object la = adapterOf(p.thisObject);
+                if (la == null) return;
+                if (sOn) try { groupPinned(la); } catch (Throwable t) { }
+                int n = 0;
+                try {
+                    for (Object o : (List<?>) Xp.getObjectField(la, "mDisplayList")) {
+                        boolean pin;
+                        try { pin = Xp.getBooleanField(o, "mPinned"); } catch (Throwable t) { pin = bool(o, "isPinned"); }
+                        if (pin) n++;
+                    }
+                } catch (Throwable ignored) { }
+                Xp.setAdditionalInstanceField(la, F_PINNED, n);
+            }
+        });
+    }
+
     private static List<Object> stash(Object la) {
         Object s = Xp.getAdditionalInstanceField(la, F_STASH);
         if (s == null) { s = new ArrayList<Object>(); Xp.setAdditionalInstanceField(la, F_STASH, s); }
@@ -3247,6 +3354,7 @@ final class ShareSheet {
             EditBubble eb = new EditBubble(a, th);
             size = eb.wantWidth(); bh = EditBubble.wantHeight(a);
             layer = new FrameLayout(a);
+            layer.setTag(CHROME_TAG);
             layer.setClipChildren(false);
             decor.addView(layer, new FrameLayout.LayoutParams(-1, -1));
             layer.setTranslationZ(dp(a, 16));
@@ -3307,6 +3415,7 @@ final class ShareSheet {
             }
         }
 
+        View header;
         final Map<String, Integer> ids = new HashMap<>();
         View byId(String name) {
             Integer id = ids.get(name);
@@ -3360,6 +3469,13 @@ final class ShareSheet {
                     }
                 }
                 y = cy - bh / 2f;
+            } else if (sNewResolver && (header = byId("chooser_header")) != null && header.isShown() && header.getHeight() > 0) {
+                int need = bh + dp(act, 8);
+                ViewGroup.LayoutParams hp = header.getLayoutParams();
+                if (hp != null && header.getHeight() < need && hp.height != need) { hp.height = need; header.setLayoutParams(hp); }
+                header.getLocationInWindow(l);
+                x = l[0] + header.getWidth() - size - dp(act, 16);
+                y = l[1] + header.getHeight() / 2f - bh / 2f;
             } else {
                 View drawer = findByClass(decor, "ResolverDrawerLayout");
                 if (drawer == null || !(drawer instanceof ViewGroup) || ((ViewGroup) drawer).getChildCount() == 0) { pin.setVisibility(View.INVISIBLE); return; }
@@ -3374,6 +3490,15 @@ final class ShareSheet {
                 if (above >= ld[1] + topInset + dp(act, 4)) {
                     y = above + 8f * act.getResources().getDisplayMetrics().density; panelTop = l[1];
                     x = l[0] + (top.getWidth() - size) / 2f;
+                    View title = titleOf(decor, ld[1] + topInset);
+                    if (title != null || crowded(decor, x, y, x + size, y + bh)) {
+                        x = ld[0] + decor.getWidth() - size - dp(act, 16);
+                        if (title != null) {
+                            int[] lt = new int[2]; title.getLocationInWindow(lt);
+                            y = lt[1] + title.getHeight() / 2f - bh / 2f;
+                        } else y = ld[1] + topInset + dp(act, 28) - bh / 2f;
+                        panelTop = Float.NaN;
+                    }
                 }
                 else y = l[1] + dp(act, 12);
             }
@@ -3418,6 +3543,49 @@ final class ShareSheet {
             }
         }
     }
+
+    private static boolean crowded(ViewGroup decor, float left, float top, float right, float bottom) {
+        int[] at = new int[2];
+        ArrayList<View> walk = new ArrayList<>();
+        walk.add(decor);
+        float most = decor.getWidth() * (float) decor.getHeight() * 0.6f;
+        while (!walk.isEmpty()) {
+            View v = walk.remove(walk.size() - 1);
+            if (v.getVisibility() != View.VISIBLE || v.getAlpha() < 0.05f || v.getWidth() <= 0 || v.getHeight() <= 0) continue;
+            if (v instanceof FrameLayout && v.getTag() == CHROME_TAG) continue;
+            boolean leaf = !(v instanceof ViewGroup) || ((ViewGroup) v).getChildCount() == 0;
+            boolean compose = v.getClass().getName().contains("ComposeView");
+            if (!leaf && !compose) {
+                ViewGroup g = (ViewGroup) v;
+                for (int i = 0; i < g.getChildCount(); i++) walk.add(g.getChildAt(i));
+                if (v.getBackground() == null || v.getWidth() * (float) v.getHeight() >= most) continue;
+            } else if (!compose && v.getWidth() * (float) v.getHeight() >= most) continue;
+            v.getLocationInWindow(at);
+            if (at[0] < right && at[0] + v.getWidth() > left && at[1] < bottom && at[1] + v.getHeight() > top) return true;
+        }
+        return false;
+    }
+
+    private static View titleOf(ViewGroup decor, float below) {
+        int[] at = new int[2];
+        View best = null; int bestY = Integer.MAX_VALUE;
+        ArrayList<View> walk = new ArrayList<>();
+        walk.add(decor);
+        float limit = below + decor.getHeight() * 0.2f;
+        while (!walk.isEmpty()) {
+            View v = walk.remove(walk.size() - 1);
+            if (v.getVisibility() != View.VISIBLE || v.getWidth() <= 0 || v.getHeight() <= 0) continue;
+            if (v instanceof FrameLayout && v.getTag() == CHROME_TAG) continue;
+            if (v instanceof ViewGroup) { ViewGroup g = (ViewGroup) v; for (int i = 0; i < g.getChildCount(); i++) walk.add(g.getChildAt(i)); continue; }
+            if (!(v instanceof TextView) || TextUtils.isEmpty(((TextView) v).getText())) continue;
+            v.getLocationInWindow(at);
+            if (at[1] < below || at[1] > limit || at[1] >= bestY) continue;
+            best = v; bestY = at[1];
+        }
+        return best;
+    }
+
+    private static final Object CHROME_TAG = new Object();
 
     private static final class EditBubble extends View {
         final Th th; final Paint fill = new Paint(Paint.ANTI_ALIAS_FLAG), sheen = new Paint(Paint.ANTI_ALIAS_FLAG),

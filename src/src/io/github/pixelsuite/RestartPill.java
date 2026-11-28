@@ -90,7 +90,7 @@ final class RestartPill {
         if (key == null) return null;
         if (key.equals(LauncherFeatures.GRID) || key.equals(LauncherFeatures.GRID_SIZE) || key.equals(LauncherFeatures.DRAWER)
                 || key.equals(LauncherFeatures.DRAWER_GRID_SIZE) || key.equals(LauncherFeatures.ICONS)
-                || key.equals(LauncherFeatures.HIDE_SHORTCUTS) || key.equals(LauncherFeatures.LABEL_SIZE)
+                || key.equals(LauncherFeatures.HIDE_SHORTCUTS) || key.equals(LauncherFeatures.HIDE_HOME_SHORTCUTS) || key.equals(LauncherFeatures.LABEL_SIZE)
                 || key.equals(LauncherFeatures.LABEL_LEVEL) || key.equals(LauncherFeatures.RENAME)
                 || key.equals(Feature.CLEAR_ALL) || key.equals(ClearAll.KEY_ONLY)
                 || key.equals(LauncherHideGlance.KEY)

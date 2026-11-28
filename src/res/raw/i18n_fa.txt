@@ -1811,3 +1811,366 @@ Couldn't put back {0}	{0} برگردانده نشد
 Couldn't save {0}	{0} ذخیره نشد
 It didn't install	نصب نشد
 Root isn't available	روت در دسترس نیست
+Pixel search	جستجوی Pixel
+Find apps, contacts, files and more	برنامه‌ها، مخاطب‌ها، فایل‌ها و بیشتر رو پیدا کن
+Everything on your phone, one search away.	همه‌چیز گوشیت، فقط با یه جستجو.
+A new search bar on your home screen. Find apps, contacts, files, settings and more in one place.	یه نوار جستجوی جدید روی صفحه اصلی. برنامه‌ها، مخاطب‌ها، فایل‌ها، تنظیمات و بیشتر رو یه‌جا پیدا کن.
+Look	ظاهر
+Color	رنگ
+Blurs what's behind the bar, with glowing edges.	پشت نوار رو مات می‌کنه، با لبه‌های درخشان.
+How much of the outer bar shows.	نوار بیرونی چقدر دیده بشه.
+How much of the search box and side buttons shows.	کادر جستجو و دکمه‌های کناری چقدر دیده بشن.
+Voice search, Google Lens, Song search	جستجوی صوتی، Google Lens، جستجوی آهنگ
+Choose and order what shows up	انتخاب کن چی نشون داده بشه و به چه ترتیبی
+Web search	جستجوی وب
+What to search	چه چیزهایی جستجو بشه
+Search inside files	جستجو داخل فایل‌ها
+Tap to look through your files now.	بزن تا همین حالا فایل‌هات بررسی بشن.
+Find words and numbers inside your PDF, Word, Excel and text files, with the page they're on. Hold a file to preview, share or find it.	کلمه‌ها و عددها رو داخل فایل‌های PDF، Word، Excel و متنی پیدا کن، همراه با صفحه‌ای که توشن. برای پیش‌نمایش، اشتراک یا پیدا کردن فایل، نگهش دار.
+Type a sum or a conversion, like 15% of 80 or 5 km in miles, and tap the answer to copy it.	یه حساب یا تبدیل بنویس، مثل 15% of 80 یا 5 km in miles، و روی جواب بزن تا کپی بشه.
+Pixel search shows when Hide search bar is off.	جستجوی Pixel وقتی نشون داده می‌شه که پنهان کردن نوار جستجو خاموش باشه.
+System colors	رنگ‌های سیستم
+Your color	رنگ خودت
+Any color	هر رنگی
+Light	روشن
+Calculator and units	ماشین‌حساب و واحدها
+App shortcuts	میان‌برهای برنامه
+Files and media	فایل‌ها و رسانه
+Inside files	داخل فایل‌ها
+Web	وب
+All	همه
+Google Lens	Google Lens
+Song search	جستجوی آهنگ
+Assistant	دستیار
+QR code scanner	اسکنر کد QR
+Action	کار
+App	برنامه
+App shortcut	میان‌بر برنامه
+Contact	مخاطب
+Shortcut	میان‌بر
+Add a button	افزودن دکمه
+Choose an app	یه برنامه انتخاب کن
+Couldn't open your contacts	مخاطب‌ها باز نشدن
+Getting the app's shortcuts…	در حال گرفتن میان‌برهای برنامه…
+Go to your home screen once, then try again.	یه بار برو صفحه اصلی، بعد دوباره امتحان کن.
+In the search box	داخل کادر جستجو
+Left side	سمت چپ
+Right side	سمت راست
+Looking through your files…	در حال بررسی فایل‌هات…
+Looking through your files… {0}	در حال بررسی فایل‌هات… {0}
+Move down	انتقال به پایین
+Move left	انتقال به چپ
+Move right	انتقال به راست
+Move up	انتقال به بالا
+No buttons	بدون دکمه
+Preview	پیش‌نمایش
+Results show in this order. Turn off what you don't need.	نتیجه‌ها به همین ترتیب نشون داده می‌شن. هرچی لازم نداری رو خاموش کن.
+That side is full	این سمت پره
+This app has no shortcuts	این برنامه میان‌بر نداره
+This contact has no phone number	این مخاطب شماره تلفن نداره
+Turn Pixel search off and on again to allow searching your files.	برای اجازهٔ جستجو تو فایل‌هات، جستجوی Pixel رو خاموش و دوباره روشن کن.
+Turn on Pixel search first	اول جستجوی Pixel رو روشن کن
+Your files are looked through after you turn on Pixel search.	بعد از روشن کردن جستجوی Pixel، فایل‌هات بررسی می‌شن.
+{0} files, {1} with text you can search. Updated {2}.	{0} فایل، {1} تاش متن قابل جستجو داره. به‌روزرسانی: {2}.
+{0} of {1} turned on	{0} از {1} روشن
+No app can open this file	هیچ برنامه‌ای نمی‌تونه این فایل رو باز کنه
+No app can open this folder	هیچ برنامه‌ای نمی‌تونه این پوشه رو باز کنه
+That file isn't there any more	اون فایل دیگه اونجا نیست
+Couldn't open it	باز نشد
+About phone	درباره تلفن
+Accessibility	دسترس‌پذیری
+Airplane mode	حالت هواپیما
+Android settings	تنظیمات Android
+Battery	باتری
+Battery Saver	بهینه‌سازی باتری
+Cast	ارسال محتوا
+Copied	کپی شد
+Dark theme	طرح زمینه تیره
+Data usage	مصرف داده
+Default apps	برنامه‌های پیش‌فرض
+Developer options	گزینه‌های برنامه‌نویسی
+Display	نمایشگر
+Getting your files ready. They show up here in a few minutes.	داریم فایل‌هات رو آماده می‌کنیم. چند دقیقه دیگه اینجا نشون داده می‌شن.
+Keyboard	صفحه‌کلید
+Location	مکان
+Network & internet	شبکه و اینترنت
+Night Light	نور شب
+No results	نتیجه‌ای نیست
+Open	باز کردن
+Page {0}	صفحه {0}
+Passwords & accounts	گذرواژه‌ها و حساب‌ها
+Printing	چاپ
+Privacy	حریم خصوصی
+Search apps, contacts, files, settings and more	برنامه‌ها، مخاطب‌ها، فایل‌ها، تنظیمات و بیشتر رو جستجو کن
+Search your phone and the web	گوشی و وب رو جستجو کن
+Search {0} for “{1}”	جستجوی «{1}» در {0}
+Security & privacy	امنیت و حریم خصوصی
+Show in folder	نمایش در پوشه
+Sound & vibration	صدا و لرزش
+Storage	فضای ذخیره‌سازی
+System update	به‌روزرسانی سیستم
+Turn Pixel search off and on again in Pixel Suite to allow searching your files.	برای اجازهٔ جستجو تو فایل‌هات، جستجوی Pixel رو توی Pixel Suite خاموش و دوباره روشن کن.
+Users	کاربران
+Wi-Fi	Wi-Fi
+Colorful icons	آیکون‌های رنگی
+App and shortcut buttons keep their own colors.	دکمه‌های برنامه و میان‌بر رنگ خودشون رو نگه می‌دارن.
+Edit search bar	ویرایش نوار جستجو
+Size	اندازه
+Outer bar	نوار بیرونی
+Search box	کادر جستجو
+More settings	تنظیمات بیشتر
+Tap the search bar and start typing. Hold the bar to edit it right on your home screen.	روی نوار جستجو بزن و شروع کن به تایپ. برای ویرایشش همون‌جا روی صفحه اصلی، نوار رو نگه دار.
+Drag the buttons on the bar to move them. Drag one off the bar to remove it.	برای جابه‌جایی، دکمه‌های روی نوار رو بکش. برای حذف، یه دکمه رو از نوار بیرون بکش.
+The bar is full. Drag a button off the bar first.	نوار پره. اول یه دکمه رو از نوار بیرون بکش.
+Hold and drag to change the order.	برای تغییر ترتیب، نگه دار و بکش.
+Favorites	علاقه‌مندی‌ها
+Favorite	علاقه‌مندی
+Added to favorites	به علاقه‌مندی‌ها اضافه شد
+Removed from favorites	از علاقه‌مندی‌ها حذف شد
+Hold an app, a contact or a file to add it here	یه برنامه، مخاطب یا فایل رو نگه دار تا اینجا اضافه بشه
+Open Pixel Suite once to download currency rates	یه بار Pixel Suite رو باز کن تا نرخ ارزها دانلود بشه
+Currency	ارز
+Convert to	تبدیل به
+Update automatically	به‌روزرسانی خودکار
+Update now	الان به‌روز کن
+Updating the rates…	در حال به‌روزرسانی نرخ‌ها…
+Rates updated	نرخ‌ها به‌روز شدن
+Rates updated {0}	آخرین به‌روزرسانی نرخ‌ها: {0}
+Rates not downloaded yet	نرخ‌ها هنوز دانلود نشدن
+Couldn't update the rates	نرخ‌ها به‌روز نشدن
+Type an amount and a currency, like 200 USD, to convert it. Rates are downloaded from the internet, and nothing about you is sent.	یه مبلغ و یه ارز بنویس، مثل 200 USD، تا تبدیل بشه. نرخ‌ها از اینترنت دانلود می‌شن و هیچ چیزی درباره‌ی تو فرستاده نمی‌شه.
+Tap a button to add it, or hold it and drag it onto the bar. Drag the buttons on the bar to move them, or off the bar to remove them.	برای اضافه کردن روی یه دکمه بزن، یا نگهش دار و بکشش روی نوار. دکمه‌های روی نوار رو بکش تا جابه‌جا بشن، یا بکش بیرون تا حذف بشن.
+Drop it on the bar to add it	روی نوار رهاش کن تا اضافه بشه
+No contacts with a phone number	هیچ مخاطبی با شماره تلفن نیست
+Everything is searched on your phone. Only web searches and currency rates go online.	همه‌چیز روی خود گوشی جستجو می‌شه. فقط جستجوهای وب و نرخ ارزها آنلاین می‌رن.
+Hold Dark or Super Dark to choose which one Automatic uses at night.	«تیره» یا «فوق‌تیره» رو نگه دار تا انتخاب کنی «خودکار» شب‌ها از کدوم استفاده کنه.
+Lock the sliders	قفل کردن اسلایدرها
+Search currencies	جستجوی ارز
+Search engine	موتور جستجو
+Search settings	تنظیمات جستجو
+Show keyboard	نمایش صفحه‌کلید
+Replace	جایگزین کردن
+Favorite contacts	مخاطب‌های محبوب
+Add dialer favorites	افزودن محبوب‌های شماره‌گیر
+Search contacts	جستجوی مخاطب‌ها
+Added to favorite contacts	به مخاطب‌های محبوب اضافه شد
+Hold the search bar and add contacts first	اول نوار جستجو رو نگه دار و مخاطب اضافه کن
+No favorites in your dialer yet	هنوز محبوبی توی شماره‌گیر نیست
+Hide swipe-up hint	پنهان کردن راهنمای کشیدن به بالا
+Stops the hint that plays after a few short swipes that don't open the drawer.	راهنمایی که بعد از چند کشیدن کوتاه که کشو رو باز نمی‌کنه پخش می‌شه رو متوقف می‌کنه.
+Closing animation	انیمیشن بسته شدن
+Shutter	کرکره
+Glide	سُر خوردن
+Balloons	بادکنک
+Jelly	ژله
+Pop	پاپ
+Wave	موج
+Swell	باد کردن
+Classic	کلاسیک
+Scan to PDF	اسکن به PDF
+Add from gallery	از گالری اضافه کن
+Take photo	عکس بگیر
+Pages	صفحه‌ها
+Couldn't open the camera	دوربین باز نشد
+Camera access is needed to scan	برای اسکن باید به دوربین دسترسی بدی
+Save as PDF	ذخیره به‌صورت PDF
+Rotate	بچرخون
+All pages	همه صفحه‌ها
+{0} selected	{0} تا انتخاب شده
+File name	اسم فایل
+Making the PDF…	دارم PDF رو می‌سازم…
+Saved to Download	توی Download ذخیره شد
+Couldn't save the PDF	PDF ذخیره نشد
+Original	اصلی
+Auto	خودکار
+Enhanced	بهترشده
+Grayscale	سیاه‌وسفید ملایم
+Black & white	سیاه و سفید
+Lighten	روشن‌تر
+Image to PDF	عکس به PDF
+Adds Scan to PDF to the buttons you can put on the search bar. Photograph pages or pick photos, tidy them up, then save or share them as one PDF.	«اسکن به PDF» رو به دکمه‌هایی که می‌تونی روی نوار جستجو بذاری اضافه می‌کنه. از صفحه‌ها عکس بگیر یا عکس انتخاب کن، مرتبشون کن و بعد به‌صورت یه PDF ذخیره یا همرسانی کن.
+Tools	ابزارها
+Featured apps	برنامه‌های پیشنهادی
+Shows the apps you open most from Pixel search before you type.	قبل از اینکه تایپ کنی، برنامه‌هایی رو که بیشتر از Pixel search باز می‌کنی نشون می‌ده.
+Recent searches	جستجوهای اخیر
+Shows your latest searches before you type. Hold one to remove it.	قبل از اینکه تایپ کنی، آخرین جستجوهات رو نشون می‌ده. برای حذف، یکی رو نگه دار.
+Enter opens the first app	Enter اولین برنامه رو باز می‌کنه
+Turn off to always search the web when you press Enter.	خاموشش کن تا با زدن Enter همیشه توی وب جستجو بشه.
+Delete this file?	این فایل حذف بشه؟
+Deleted	حذف شد
+Couldn't delete it	حذف نشد
+Unpin	برداشتن سنجاق
+Add to favorites	به علاقه‌مندی‌ها اضافه کن
+Remove from favorites	از علاقه‌مندی‌ها بردار
+Clear recent searches?	جستجوهای اخیر پاک بشه؟
+Pixel Suite apps	برنامه‌های Pixel Suite
+Pixel dialer	شماره‌گیر Pixel
+Your phone app, with call recording	برنامه تلفنت، با ضبط تماس
+Scan pages into one PDF	صفحه‌ها رو توی یک PDF اسکن کن
+Apps that come with Pixel Suite.	برنامه‌هایی که همراه Pixel Suite میان.
+Your phone app, made for Pixel Suite.	برنامه تلفنت، ساخته‌شده برای Pixel Suite.
+Pages and photos, turned into one PDF.	صفحه‌ها و عکس‌ها، توی یک PDF.
+Calls, contacts, favorites and call recording.	تماس‌ها، مخاطب‌ها، موردعلاقه‌ها و ضبط تماس.
+Calls, favorites, contacts and recordings	تماس‌ها، موردعلاقه‌ها، مخاطب‌ها و ضبط‌ها
+Dialer settings	تنظیمات شماره‌گیر
+Theme, sounds and call recording	پوسته، صداها و ضبط تماس
+Install the Pixel Suite apps module in your root manager, then restart your phone.	ماژول Pixel Suite Apps رو توی مدیر روتت نصب کن، بعد گوشی رو ری‌استارت کن.
+Look for new pages	ظاهر صفحه‌های جدید
+Open Image to PDF	باز کردن عکس به PDF
+Open Pixel dialer	باز کردن شماره‌گیر Pixel
+Photograph pages or pick photos	از صفحه‌ها عکس بگیر یا عکس انتخاب کن
+Photograph pages or pick photos, straighten and tidy them, then save or share them as one PDF.	از صفحه‌ها عکس بگیر یا عکس انتخاب کن، صاف و مرتبشون کن، بعد به‌صورت یک PDF ذخیره یا هم‌رسانی کن.
+Shows Image to PDF with your apps, with its own icon.	عکس به PDF رو با آیکون خودش بین برنامه‌هات نشون می‌ده.
+The Scan to PDF button on the search bar is set in Pixel search.	دکمه اسکن به PDF روی نوار جستجو توی جستجوی Pixel تنظیم می‌شه.
+Turn Pixel dialer on first	اول شماره‌گیر Pixel رو روشن کن
+Turn each app on or off and change its settings.	هر برنامه رو روشن یا خاموش کن و تنظیماتش رو عوض کن.
+Turn it off and the app is hidden, and calls go back to your other phone app. Turn it on again any time.	خاموشش کنی برنامه مخفی می‌شه و تماس‌ها برمی‌گردن به برنامه تلفن دیگه‌ت. هر وقت خواستی دوباره روشنش کن.
+Gray	خاکستری
+High	بالا
+Standard	معمولی
+PDF quality	کیفیت PDF
+Pixel dialer, Pixel search and Image to PDF	شماره‌گیر Pixel، جستجوی Pixel و عکس به PDF
+A file with that name already exists	فایلی با این اسم از قبل هست
+Add Text	افزودن متن
+All PDFs	همه PDFها
+All tools	همه ابزارها
+All your PDFs and tools	همه PDFها و ابزارهات
+Allow	اجازه بده
+Allow access to your files to see and save PDFs.	برای دیدن و ذخیره PDFها به فایل‌هات دسترسی بده.
+Anyone opening it will need this password.	هر کی بخواد بازش کنه این رمز رو لازم داره.
+Back side	پشت
+Best quality	بهترین کیفیت
+Browse	مرور
+Choose PDFs to merge	PDFهایی که می‌خوای ادغام بشن رو انتخاب کن
+Choose a PDF	یک PDF انتخاب کن
+Compress	فشرده‌سازی
+Convert	تبدیل
+Couldn't finish	تموم نشد
+Couldn't rename it	اسمش عوض نشد
+Docx to PDF	Docx به PDF
+Doodle	نقاشی
+Draw on the page with your finger.	با انگشتت روی صفحه بکش.
+Front side	رو
+Good balance	تعادل خوب
+Import PDF	وارد کردن PDF
+Largest first	اول بزرگ‌ترها
+Leave	خروج
+Leave without saving?	بدون ذخیره بری بیرون؟
+Lock PDF	قفل کردن PDF
+Merge PDF	ادغام PDF
+No PDFs yet.	هنوز PDFی نیست.
+Oldest first	اول قدیمی‌ترها
+Open Pixel PDF	باز کردن Pixel PDF
+PDF to JPG	PDF به JPG
+PDF to PPT	PDF به PPT
+PDF to Word	PDF به Word
+PPT to PDF	PPT به PDF
+Page	صفحه
+Password	رمز
+Pick some files first	اول چند تا فایل انتخاب کن
+Pick two or more PDFs to merge	برای ادغام دو یا چند PDF انتخاب کن
+Pixel PDF	Pixel PDF
+Pixel dialer, Pixel search and Pixel PDF	شماره‌گیر Pixel، جستجوی Pixel و Pixel PDF
+Popular	پرکاربرد
+Print PDF	چاپ PDF
+Repeat password	تکرار رمز
+Saved to	ذخیره شد در
+Saved to Pixel PDF	توی Pixel PDF ذخیره شد
+Saving	در حال ذخیره
+Scan ID Card	اسکن کارت شناسایی
+Scan pages and ID cards, turn photos, Word and PowerPoint files into PDFs, and compress, merge, sign, lock or print them.	صفحه‌ها و کارت شناسایی رو اسکن کن، عکس‌ها و فایل‌های Word و PowerPoint رو PDF کن، و فشرده، ادغام، امضا، قفل یا چاپشون کن.
+Scan, convert and edit PDFs	اسکن، تبدیل و ویرایش PDF
+Scan, convert, edit and sign PDFs.	PDFها رو اسکن، تبدیل، ویرایش و امضا کن.
+Scanned and made PDFs show here. Tap + to scan your first one.	PDFهای اسکن‌شده و ساخته‌شده اینجا میان. برای اسکن اولی + رو بزن.
+Search files	جستجوی فایل‌ها
+Shows Pixel PDF with your apps, with its own icon.	Pixel PDF رو با آیکون خودش بین برنامه‌هات نشون می‌ده.
+Sign inside the box first	اول توی کادر امضا کن
+Sign inside the box.	توی کادر امضا کن.
+Signature	امضا
+Smallest file	کوچک‌ترین فایل
+Smart Scan	اسکن هوشمند
+Strong	زیاد
+Tap to place your signature. Drag the corner to resize it.	برای گذاشتن امضا بزن. برای تغییر اندازه گوشه‌ش رو بکش.
+Tap where the text goes. Drag it to move it.	جایی که متن بره رو بزن. برای جابه‌جایی بکشش.
+That password isn't right.	این رمز درست نیست.
+The passwords don't match	رمزها یکی نیستن
+They can't be brought back.	دیگه برنمی‌گردن.
+Thick	ضخیم
+Thin	نازک
+This PDF is locked	این PDF قفله
+This PDF is locked. Opening it needs a newer Android version.	این PDF قفله. برای باز کردنش نسخه جدیدتر اندروید لازمه.
+This file couldn't be read. It may be damaged or locked.	این فایل خونده نشد. ممکنه خراب یا قفل باشه.
+This needs a newer Android version.	برای این نسخه جدیدتر اندروید لازمه.
+Type a password	یک رمز بنویس
+Type here	اینجا بنویس
+Unlock PDF	باز کردن قفل PDF
+Unlock it first to edit	برای ویرایش اول قفلش رو باز کن
+Unlock it first to print	برای چاپ اول قفلش رو باز کن
+Unlocking needs a newer Android version	برای باز کردن قفل نسخه جدیدتر اندروید لازمه
+Use	استفاده
+Working…	در حال انجام…
+Your PDFs are kept in Documents/Pixel PDF.	PDFهات توی Documents/Pixel PDF نگه داشته می‌شن.
+Your changes will be lost.	تغییراتت از بین می‌ره.
+selected	انتخاب شده
+Delete these files?	این فایل‌ها پاک بشن؟
+Pinned	سنجاق شده
+Up to 5 apps that always come first in Featured apps. Tap an app to unpin it.	تا ۵ برنامه که همیشه اول برنامه‌های ویژه میان. برای برداشتن سنجاق روی برنامه بزن.
+Seconds in the status bar	ثانیه در نوار وضعیت
+The clock at the top shows seconds. Uses a little more battery.	ساعت بالای صفحه ثانیه رو نشون می‌ده. کمی باتری بیشتری مصرف می‌کنه.
+Pull down at the top of the feed to search. Works even with the search bar off.	بالای فید به پایین بکش تا جستجو کنی. حتی وقتی نوار جستجو خاموشه هم کار می‌کنه.
+Use Pixel search on the lock screen?	از جستجوی Pixel روی صفحه قفل استفاده کنی؟
+Touch the fingerprint sensor to turn it on. Opening apps and other results still asks you to unlock.	برای روشن کردنش حسگر اثر انگشت رو لمس کن. برای باز کردن برنامه‌ها و بقیه نتیجه‌ها هنوز باید قفل رو باز کنی.
+Not now	الان نه
+More Pixel search options	گزینه‌های بیشتر جستجوی Pixel
+Search on the lock screen	جستجو روی صفحه قفل
+Pull down in the lock screen feed too. Calculations, unit conversions and calls work right away. Opening an app still asks for your fingerprint.	توی فید صفحه قفل هم پایین بکش. حساب‌وکتاب، تبدیل واحد و تماس همون لحظه کار می‌کنن. برای باز کردن برنامه هنوز اثر انگشتت لازمه.
+Safe	ایمن
+Unsafe	ناایمن
+Customize	سفارشی‌سازی
+Previous page	صفحه قبلی
+Next page	صفحه بعدی
+Glide (default)	سُر خوردن (پیش‌فرض)
+Refresh automatically	تازه‌سازی خودکار
+Adds new and changed files the moment they appear.	فایل‌های جدید و تغییریافته را همان لحظه اضافه می‌کند.
+Pen	قلم
+Tap or drag to add a shape. Drag its dots to resize it.	برای افزودن شکل ضربه بزنید یا بکشید. برای تغییر اندازه، نقطه‌هایش را بکشید.
+Hold to edit	برای ویرایش نگه دارید
+Hide Apps list	پنهان کردن فهرست برنامه‌ها
+Removes Apps list from the menu you see when you hold the home screen.	«فهرست برنامه‌ها» را از منویی که با نگه داشتن صفحهٔ اصلی باز می‌شود حذف می‌کند.
+Hold an empty spot on the home screen to see the menu. Swipe up to open your apps.	برای دیدن منو، جای خالی صفحهٔ اصلی را نگه دارید. برای باز کردن برنامه‌ها، تند به بالا بکشید.
+Your phone	گوشیت
+Android version	نسخهٔ Android
+Build number	شمارهٔ ساخت
+Security update	به‌روزرسانی امنیتی
+Untested	تست‌نشده
+Tested on this Android version. Everything should work.	روی این نسخهٔ Android تست شده. همه‌چیز باید کار کنه.
+This Android version is known to break Pixel Suite features.	معلومه که این نسخهٔ Android بعضی قابلیت‌های Pixel Suite رو خراب می‌کنه.
+Not tested on this Android version yet. Some features may work, some may not.	هنوز روی این نسخهٔ Android تست نشده. ممکنه بعضی قابلیت‌ها کار کنن و بعضی‌ها نه.
+Please be advised: updating your phone can and will break parts of Pixel Suite. If you update before I give the green light, I'm not responsible for what breaks. I do this in my free time and I'm just one guy, so don't expect me to always keep up with everything Google pushes.	لطفاً حواست باشه: آپدیت کردن گوشیت می‌تونه بخش‌هایی از Pixel Suite رو خراب کنه، و خراب هم می‌کنه. اگه قبل از اینکه من چراغ سبز بدم آپدیت کنی، مسئولیت چیزهایی که خراب می‌شن با من نیست. این کار رو توی وقت آزادم انجام می‌دم و فقط یه نفرم، پس انتظار نداشته باش همیشه با هر چیزی که Google منتشر می‌کنه همگام باشم.
+I recommend always keeping {0} on, so nothing installs by mistake. A surprise update could bootloop your phone or break things without you knowing.	پیشنهاد می‌کنم {0} رو همیشه روشن نگه داری تا چیزی اشتباهی نصب نشه. یه آپدیت غافلگیرکننده می‌تونه گوشیت رو توی بوت‌لوپ بندازه یا بدون اینکه بفهمی چیزهایی رو خراب کنه.
+To know when it's safe to update, follow Announcements in my {0}.	برای اینکه بفهمی کی آپدیت کردن امنه، بخش Announcements رو توی کانال {0}م دنبال کن.
+Thank you 💙	ممنونم 💙
+Phone compatibility	سازگاری گوشی
+Hide the shortcuts you see when you hold an app, like View orders.	میان‌برهایی را که با نگه داشتن یک برنامه می‌بینی، مثل «مشاهده سفارش‌ها»، پنهان کن.
+Hide on the home screen	پنهان در صفحه اصلی
+Home screen, dock and folders.	صفحه اصلی، داک و پوشه‌ها.
+Hide in the app drawer	پنهان در کشوی برنامه
+App drawer and its folders.	کشوی برنامه و پوشه‌هایش.
+Folders, dragging and the swipe-up hint.	پوشه‌ها، کشیدن و راهنمای کشیدن به بالا.
+Folders, dragging and the swipe-up hint	پوشه‌ها، کشیدن و راهنمای کشیدن به بالا
+Force stop	توقف اجباری
+{0} stopped	{0} متوقف شد
+Could not remove the folder	پوشه حذف نشد
+Records every call, and WhatsApp voice and video calls, with both sides' sound, into the Recordings tab.	هر تماس و تماس‌های صوتی و تصویری WhatsApp رو با صدای هر دو طرف ضبط می‌کنه و تو زبانه ضبط‌ها می‌ذاره.
+Recording someone without their knowledge can be against the law where you live. You are responsible for your recordings and how you use them; RovianDev is not.	ضبط صدای کسی بدون اطلاع خودش ممکنه جایی که زندگی می‌کنی غیرقانونی باشه. مسئولیت ضبط‌ها و نحوه استفاده ازشون با خودته، نه RovianDev.
+Clipboard on the lock screen	کلیپ‌بورد روی صفحه قفل
+Paste what you copied in lock screen search. Anyone holding your phone could paste it too.	چیزی رو که کپی کردی تو جستجوی صفحه قفل جای‌گذاری کن. هر کسی گوشیت دستش باشه هم می‌تونه جای‌گذاریش کنه.
+Use the clipboard on the lock screen?	کلیپ‌بورد روی صفحه قفل استفاده بشه؟
+Touch the fingerprint sensor to turn it on. Anyone holding your phone could paste what you copied, like passwords or codes.	برای روشن کردنش حسگر اثر انگشت رو لمس کن. هر کسی گوشیت دستش باشه می‌تونه چیزی رو که کپی کردی، مثل رمز یا کد، جای‌گذاری کنه.
+Turn on to install	برای نصب روشنش کن
+Installing Pixel dialer…	در حال نصب شماره‌گیر Pixel…
+Installing Pixel PDF…	در حال نصب Pixel PDF…
+Pixel dialer is installed. Restart your phone once so it can record calls.	شماره‌گیر Pixel نصب شد. یک بار گوشی رو ری‌استارت کن تا بتونه تماس‌ها رو ضبط کنه.
+Couldn't install: root access needed	نصب نشد: دسترسی روت لازم است
+Turn it on and Pixel Suite installs it for you. Restart your phone once after that so it can record calls.	روشنش کن تا Pixel Suite خودش نصبش کنه. بعدش یک بار گوشی رو ری‌استارت کن تا بتونه تماس‌ها رو ضبط کنه.
+Pixel PDF is installed	Pixel PDF نصب شد

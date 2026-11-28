@@ -58,11 +58,18 @@ final class PatronGate {
         }
     }
 
+    private static String sWhy;
+
+    private static boolean no(String why) {
+        if (!why.equals(sWhy)) { sWhy = why; android.util.Log.w("PixelSuite", "pass: " + why); }
+        return false;
+    }
+
     static boolean passOk(Context c, String pass) {
         try {
-            if (pass == null) return false;
+            if (pass == null) return no("none");
             pass = pass.trim();
-            if (pass.isEmpty() || "null".equals(pass)) return false;
+            if (pass.isEmpty() || "null".equals(pass)) return no("none");
             long exp, off;
             String did;
             synchronized (PatronGate.class) {
@@ -72,15 +79,45 @@ final class PatronGate {
                     Claims t = verify(pass);
                     if (t != null) { sValid = true; sExp = t.exp; sOffline = t.off; sDid = t.did; }
                 }
-                if (!sValid) return false;
+                if (!sValid) return no("not valid");
                 exp = sExp; off = sOffline; did = sDid;
             }
-            if (!thisDevice(c, did)) return false;
-            long now = System.currentTimeMillis() / 1000L;
-            return now < (online(c) ? exp : off);
+            if (!thisDevice(c, did)) return no("device");
+            if (now(c) < (online(c) ? exp : off)) { sWhy = null; return true; }
+            return no("expired");
         } catch (Throwable t) {
-            return false;
+            return no("error " + t.getClass().getSimpleName());
         }
+    }
+
+    static final String CLOCK_KEY = "pixelsuite_patron_clock";
+    private static java.lang.reflect.Method sNetClock;
+    private static boolean sNetTried;
+
+    private static long netMillis() {
+        try {
+            if (!sNetTried) { sNetTried = true; sNetClock = android.os.SystemClock.class.getMethod("currentNetworkTimeClock"); }
+            if (sNetClock == null) return 0;
+            Object clock = sNetClock.invoke(null);
+            return (Long) Class.forName("java.time.Clock").getMethod("millis").invoke(clock);
+        } catch (Throwable t) {
+            return 0;
+        }
+    }
+
+    private static long now(Context c) {
+        long mark = 0;
+        try { mark = Settings.Secure.getLong(c.getContentResolver(), CLOCK_KEY, 0L); } catch (Throwable ignored) { }
+        return Math.max(System.currentTimeMillis(), Math.max(netMillis(), mark)) / 1000L;
+    }
+
+    static void stamp(Context c) {
+        try {
+            long n = netMillis();
+            if (n <= 0) return;
+            long mark = Settings.Secure.getLong(c.getContentResolver(), CLOCK_KEY, 0L);
+            if (n > mark + 6L * 3600L * 1000L) Root.run("settings put secure " + CLOCK_KEY + " " + n);
+        } catch (Throwable ignored) { }
     }
 
     static final String ESIM_KEY = "pixelsuite_esim", DEVICE_KEY = "pixelsuite_device_id";
@@ -140,7 +177,7 @@ final class PatronGate {
 
     private static boolean thisDevice(Context c, String did) {
         String own = Settings.Secure.getString(c.getContentResolver(), DEVICE_PASS_KEY);
-        if (own == null || own.trim().isEmpty()) return true;
+        if (own == null || own.trim().isEmpty()) return false;
         return own.trim().equals(did);
     }
 

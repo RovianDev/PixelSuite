@@ -18,8 +18,9 @@ final class ComposeFrost {
     private ComposeFrost() {}
 
     static final class Frame {
-        Object root; View view; int editor; boolean dialog; int regions; int want = -1;
+        Object root; View view; int editor; boolean dialog; int regions; int want = -1; int seq;
     }
+    private static int frameSeq;
     static final ThreadLocal<Frame> frame = new ThreadLocal<Frame>();
 
     static final Map<Object, List<Drawable>> regions = new WeakHashMap<Object, List<Drawable>>();
@@ -133,6 +134,10 @@ final class ComposeFrost {
                         if (title == null || !title.toString().contains(titleFilter)) return;
                         synchronized (titled) { if (titled.containsKey(p.args[0])) return; titled.put(p.args[0], Boolean.TRUE); }
                         enableDraw();
+                        try {
+                            Object vri = Xp.callMethod(p.args[0], "getViewRootImpl");
+                            if (vri != null && "ScreenCaptureUi".equals(titleFilter)) { Frame early = new Frame(); early.root = vri; early.view = (View) p.args[0]; region(early, 0); region(early, 1); }
+                        } catch (Throwable ignored) { }
                     } catch (Throwable ignored) { }
                 }
             };
@@ -165,6 +170,7 @@ final class ComposeFrost {
 
     static Frame newFrame(Object vri) {
         Frame f = new Frame();
+        f.seq = ++frameSeq;
         f.root = vri;
         f.view = view(vri);
         f.editor = editorState(f.view);
@@ -335,12 +341,41 @@ final class ComposeFrost {
         return list.get(i);
     }
 
+    private static final Map<Drawable, int[]> ages = new WeakHashMap<Drawable, int[]>();
+    static void young(final Drawable d, Frame f, int tint) {
+        synchronized (ages) {
+            if (ages.containsKey(d)) return;
+            ages.put(d, new int[]{f.seq, 0, 1});
+        }
+        try { Xp.callMethod(d, "setColor", (tint & 0xffffff) | 0xd0000000); } catch (Throwable ignored) { }
+        final View host = f.view;
+        if (host != null) host.postDelayed(new Runnable() { public void run() {
+            int[] a; synchronized (ages) { a = ages.get(d); }
+            if (a == null || a[2] == 0) return;
+            a[2] = 0;
+            try { Xp.callMethod(d, "setColor", 0); } catch (Throwable ignored) { }
+            host.invalidate();
+        } }, 60);
+    }
+    static boolean grow(Drawable d, Frame f) {
+        int[] a;
+        synchronized (ages) { a = ages.get(d); }
+        if (a == null || a[2] == 0) return false;
+        if (a[0] != f.seq) { a[0] = f.seq; a[1]++; }
+        if (a[1] < 2) return true;
+        a[2] = 0;
+        try { Xp.callMethod(d, "setColor", 0); } catch (Throwable ignored) { }
+        return true;
+    }
+
     private static final Map<Object, List<RecordingSlot>> recordingSlots = new WeakHashMap<Object, List<RecordingSlot>>();
     private static final class RecordingSlot {
         java.lang.ref.WeakReference<Object> owner;
         float l, t, r, b;
-        RecordingSlot(Object node, float left, float top, float right, float bottom) {
-            owner = new java.lang.ref.WeakReference<Object>(node); l = left; t = top; r = right; b = bottom;
+        int used;
+        void set(Object node, float left, float top, float right, float bottom, int frameNo) {
+            if (owner == null || owner.get() != node) owner = new java.lang.ref.WeakReference<Object>(node);
+            l = left; t = top; r = right; b = bottom; used = frameNo;
         }
     }
     private static Drawable recordingRegion(Frame f, Canvas canvas, float l, float t, float r, float b) {
@@ -349,16 +384,22 @@ final class ComposeFrost {
             synchronized (recordingSlots) {
                 List<RecordingSlot> slots = recordingSlots.get(f.root);
                 if (slots == null) { slots = new ArrayList<RecordingSlot>(); recordingSlots.put(f.root, slots); }
-                int free = -1;
+                int exact = -1, near = -1, free = -1, oldest = -1;
+                float best = Float.MAX_VALUE;
                 for (int i = 0; i < slots.size(); i++) {
-                    RecordingSlot slot = slots.get(i); Object owner = slot.owner.get();
-                    if (owner == node && slot.l == l && slot.t == t && slot.r == r && slot.b == b) return region(f, i);
-                    if (owner == null && free < 0) free = i;
+                    RecordingSlot slot = slots.get(i); Object owner = slot.owner == null ? null : slot.owner.get();
+                    if (owner == null) { if (free < 0) free = i; continue; }
+                    if (slot.used == f.seq) continue;
+                    if (oldest < 0 || slot.used < slots.get(oldest).used) oldest = i;
+                    if (owner != node) continue;
+                    if (slot.l == l && slot.t == t && slot.r == r && slot.b == b) { exact = i; break; }
+                    float d = Math.abs(slot.l - l) + Math.abs(slot.t - t) + Math.abs(slot.r - r) + Math.abs(slot.b - b);
+                    if (d < best) { best = d; near = i; }
                 }
-                int index = free < 0 ? slots.size() : free;
-                if (index >= 64) return null;
-                RecordingSlot slot = new RecordingSlot(node, l, t, r, b);
-                if (free < 0) slots.add(slot); else slots.set(free, slot);
+                int index = exact >= 0 ? exact : near >= 0 ? near : free >= 0 ? free : slots.size() < 64 ? slots.size() : oldest;
+                if (index < 0) return null;
+                if (index == slots.size()) slots.add(new RecordingSlot());
+                slots.get(index).set(node, l, t, r, b, f.seq);
                 return region(f, index);
             }
         } catch (Throwable ignored) { return null; }
@@ -390,6 +431,7 @@ final class ComposeFrost {
         boolean changed = false;
         for (int i = 0; i < list.size(); i++) {
             Drawable d = list.get(i);
+            if (grow(d, f)) changed = true;
             int a;
             try { a = Math.round(255f * shown(sBlurNode.get(d), alpha)); } catch (Throwable t) { continue; }
             Integer was; synchronized (shownAlpha) { was = shownAlpha.get(d); }
@@ -460,7 +502,9 @@ final class ComposeFrost {
                 d.setBounds(Math.round(l), Math.round(t), Math.round(r), Math.round(b));
                 try { Xp.callMethod(d, "setCornerRadius", rx); } catch (Throwable ignored) { }
                 d.draw((Canvas) p.thisObject);
-                paint.setColor(flip ? preInvert(tone(ctx, false)) : tone(ctx, darkCard));
+                int tint = flip ? preInvert(tone(ctx, false)) : tone(ctx, darkCard);
+                if ("ScreenCaptureUi".equals(titleFilter)) young(d, f, tint);
+                paint.setColor(tint);
                 Xp.setAdditionalInstanceField(p, "pixelsuite_card", c);
                 if (GlassRim.wanted(ctx)) Xp.setAdditionalInstanceField(p, "pixelsuite_glass", new float[]{l, t, r, b, rx, flip ? 1f : 0f});
             } catch (Throwable ignored) { }

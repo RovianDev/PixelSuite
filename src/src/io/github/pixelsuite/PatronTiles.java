@@ -33,5 +33,6 @@ final class PatronTiles {
             int want = PatronAccess.unlocked() ? PackageManager.COMPONENT_ENABLED_STATE_DEFAULT : PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
             if (pm.getComponentEnabledSetting(tile) != want) pm.setComponentEnabledSetting(tile, want, PackageManager.DONT_KILL_APP);
         } catch (Throwable ignored) { }
+        SuiteApps.sync(c);
     }
 }
